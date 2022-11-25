@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MyPlaceFavPhoto" representedClassName="MyPlaceFavPhoto" syncable="YES">
+        <attribute name="authorName" optional="YES" attributeType="String"/>
+        <attribute name="imageID" optional="YES" attributeType="String"/>
+        <attribute name="imagePathForVLC" optional="YES" attributeType="String"/>
+        <attribute name="jobNumber" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="uploadedDate" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="urlID" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="MyPlacePackages" representedClassName="MyPlacePackages" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="alfrescosq" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="bathRooms" optional="YES" attributeType="String"/>
+        <attribute name="bedRooms" optional="YES" attributeType="String"/>
+        <attribute name="brand" optional="YES" attributeType="String"/>
+        <attribute name="carSpace" optional="YES" attributeType="String"/>
+        <attribute name="dateAvailable" optional="YES" attributeType="String"/>
+        <attribute name="ensuite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="estateName" optional="YES" attributeType="String"/>
+        <attribute name="facade" optional="YES" attributeType="String"/>
+        <attribute name="facadePermanentUrl" optional="YES" attributeType="String"/>
+        <attribute name="houseName" optional="YES" attributeType="String"/>
+        <attribute name="housePrice" optional="YES" attributeType="String"/>
+        <attribute name="houseSize" optional="YES" attributeType="String"/>
+        <attribute name="inclusionFileName" optional="YES" attributeType="String"/>
+        <attribute name="inclusions" optional="YES" attributeType="String"/>
+        <attribute name="isCompare" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isDisplay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isFav" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isShowOnWeb" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="landSizeSqm" optional="YES" attributeType="String"/>
+        <attribute name="landTitleDate" optional="YES" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="String"/>
+        <attribute name="longitude" optional="YES" attributeType="String"/>
+        <attribute name="minLotLength" optional="YES" attributeType="String"/>
+        <attribute name="minLotWidth" optional="YES" attributeType="String"/>
+        <attribute name="packageDescription" optional="YES" attributeType="String"/>
+        <attribute name="packageId" optional="YES" attributeType="String"/>
+        <attribute name="packageId_LandBank" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="region" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="stateId" optional="YES" attributeType="String"/>
+        <attribute name="storey" optional="YES" attributeType="String"/>
+        <attribute name="study" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MyPlacePhotoNote" representedClassName="MyPlacePhotoNote" syncable="YES">
+        <attribute name="authorName" optional="YES" attributeType="String"/>
+        <attribute name="jobNumber" optional="YES" attributeType="String"/>
+        <attribute name="noteDescription" optional="YES" attributeType="String"/>
+        <attribute name="photoTitle" optional="YES" attributeType="String"/>
+        <attribute name="urlID" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="MyPlaceStageCompleteDetails" representedClassName="MyPlaceStageCompleteDetails" syncable="YES">
+        <attribute name="dateActual" optional="YES" attributeType="String"/>
+        <attribute name="dateDescription" optional="YES" attributeType="String"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="jobNumber" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phasecode" optional="YES" attributeType="String"/>
+        <attribute name="stageID" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="stageName" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="taskid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MyPlaceStoredPhotoInfo" representedClassName="MyPlaceStoredPhotoInfo" syncable="YES">
+        <attribute name="authorName" optional="YES" attributeType="String"/>
+        <attribute name="byClient" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="current" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="docDate" optional="YES" attributeType="String"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="jobNumber" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="urlId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MyPlaceStoredProgressDetails" representedClassName="MyPlaceStoredProgressDetails" syncable="YES">
+        <attribute name="currentStatus" optional="YES" attributeType="String"/>
+        <attribute name="dateActual" optional="YES" attributeType="String"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="jobNumber" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phaseCode" optional="YES" attributeType="String"/>
+        <attribute name="previousStatus" optional="YES" attributeType="String"/>
+        <attribute name="stageName" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="taskID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="NotificationTypes" representedClassName="NotificationTypes" syncable="YES">
+        <attribute name="photoAdded" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="stageChange" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="stageComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="TestEntity" representedClassName="TestEntity" syncable="YES">
+        <attribute name="toBoolean" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="toDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="toDecimal" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="toDouble" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="toFloat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="toInt16" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="toInt32" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="toInt64" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="toString" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="MyPlaceFavPhoto" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="MyPlacePackages" positionX="-63" positionY="117" width="128" height="568"/>
+        <element name="MyPlacePhotoNote" positionX="-63" positionY="18" width="128" height="120"/>
+        <element name="MyPlaceStageCompleteDetails" positionX="-63" positionY="90" width="128" height="195"/>
+        <element name="MyPlaceStoredPhotoInfo" positionX="-63" positionY="108" width="128" height="180"/>
+        <element name="MyPlaceStoredProgressDetails" positionX="-63" positionY="36" width="128" height="195"/>
+        <element name="NotificationTypes" positionX="-63" positionY="36" width="128" height="90"/>
+        <element name="TestEntity" positionX="-63" positionY="63" width="128" height="180"/>
+    </elements>
+</model>

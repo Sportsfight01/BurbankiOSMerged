@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="129" id="KGk-i7-Jjw" customClass="TimingsAndDirectionTVC" customModule="BurbankApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6i-5G-Sot" userLabel="View1">
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="90"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-Hp-n85">
+                                <rect key="frame" x="10" y="5" width="409" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epm-uK-2hI">
+                                        <rect key="frame" x="10" y="5" width="389" height="35"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">TRADING HOURS
+Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="epm-uK-2hI" secondAttribute="bottom" constant="5" id="49B-Iy-T4P"/>
+                                    <constraint firstItem="epm-uK-2hI" firstAttribute="leading" secondItem="8mC-Hp-n85" secondAttribute="leading" constant="10" id="5Y8-1A-PYo"/>
+                                    <constraint firstAttribute="trailing" secondItem="epm-uK-2hI" secondAttribute="trailing" constant="10" id="iuW-aC-4uM"/>
+                                    <constraint firstItem="epm-uK-2hI" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="top" constant="5" id="nMa-cn-Aft"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q4P-sF-qbB">
+                                <rect key="frame" x="20" y="55" width="389" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pZ-4M-4fq">
+                                        <rect key="frame" x="0.0" y="0.0" width="116" height="30"/>
+                                        <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="116" id="RHt-Uu-blE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <state key="normal" title="   GET DIRECTIONS   ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-uM-4oE">
+                                        <rect key="frame" x="126" y="0.0" width="263" height="30"/>
+                                        <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <state key="normal" title="BOOK AN APPOINTMENT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6hz-aH-poU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q4P-sF-qbB" firstAttribute="leading" secondItem="o6i-5G-Sot" secondAttribute="leading" constant="20" id="2LD-hz-sHA"/>
+                            <constraint firstAttribute="bottom" secondItem="Q4P-sF-qbB" secondAttribute="bottom" constant="5" id="9nv-Ya-bNF"/>
+                            <constraint firstItem="8mC-Hp-n85" firstAttribute="top" secondItem="o6i-5G-Sot" secondAttribute="top" constant="5" id="JjR-kN-ZE6"/>
+                            <constraint firstAttribute="trailing" secondItem="8mC-Hp-n85" secondAttribute="trailing" constant="10" id="SkI-zL-nue"/>
+                            <constraint firstAttribute="height" constant="90" id="dtE-hx-gyo"/>
+                            <constraint firstItem="Q4P-sF-qbB" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="bottom" constant="5" id="gQv-la-I1I"/>
+                            <constraint firstAttribute="trailing" secondItem="Q4P-sF-qbB" secondAttribute="trailing" constant="20" id="hQ2-5Y-0VT"/>
+                            <constraint firstItem="8mC-Hp-n85" firstAttribute="leading" secondItem="o6i-5G-Sot" secondAttribute="leading" constant="10" id="xmd-Zp-B7F"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="o6i-5G-Sot" secondAttribute="trailing" id="TOt-JK-1Z0"/>
+                    <constraint firstItem="o6i-5G-Sot" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aJm-gB-gMj"/>
+                    <constraint firstAttribute="bottom" secondItem="o6i-5G-Sot" secondAttribute="bottom" id="iXO-Bc-NgI"/>
+                    <constraint firstItem="o6i-5G-Sot" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ySn-XG-7zD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bookAnAppointmentBTN" destination="zLB-uM-4oE" id="zBJ-B3-kWj"/>
+                <outlet property="cardViewTwo" destination="8mC-Hp-n85" id="1q0-gq-ofP"/>
+                <outlet property="getDirectionBTN" destination="0pZ-4M-4fq" id="SEB-z6-2sz"/>
+                <outlet property="tradingHoursLBL" destination="epm-uK-2hI" id="D8J-23-TnD"/>
+            </connections>
+            <point key="canvasLocation" x="250" y="-26"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

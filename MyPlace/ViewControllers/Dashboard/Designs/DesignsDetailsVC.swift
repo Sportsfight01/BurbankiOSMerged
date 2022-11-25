@@ -1,0 +1,815 @@
+//
+//  DesignsDetailsVC.swift
+//  MyPlaceNew
+//
+//  Created by Mohan Kumar on 01/04/20.
+//  Copyright © 2020 Burbank. All rights reserved.
+//
+
+import UIKit
+
+class DesignsDetailsVC: HeaderVC {
+    
+    @IBOutlet weak var homeDetailView : UIView!
+    @IBOutlet weak var plotView : UIView!
+    @IBOutlet weak var enquireView : UIView!
+    
+    @IBOutlet weak var displayHomesTable : UITableView!
+    
+    @IBOutlet weak var pageControl : UIPageControl!
+    @IBOutlet weak var imageScrollView : UIScrollView!
+    
+    
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var lBHouseName : UILabel!
+    @IBOutlet weak var lBPrice : UILabel!
+    
+    @IBOutlet weak var lBBedrooms : UILabel!
+    @IBOutlet weak var lBBathrooms : UILabel!
+    @IBOutlet weak var lBParking : UILabel!
+    
+    @IBOutlet weak var btnFavorite : UIButton!
+    
+    @IBOutlet weak var lBLot : UILabel!
+    @IBOutlet weak var lBLotWidth : UILabel!
+    
+    @IBOutlet weak var scrollViewHouseDesign : UIScrollView!
+    @IBOutlet weak var imageHouseDesign : UIImageView! //floor plan
+    
+    
+    
+    @IBOutlet weak var btnMyPlace : UIButton!
+    @IBOutlet weak var btnHomeLand : UIButton!
+    
+    @IBOutlet weak var lBMyPlace : UILabel!
+    @IBOutlet weak var lBHomeLand : UILabel!
+    
+    
+    @IBOutlet weak var facadeTop1: NSLayoutConstraint!
+    @IBOutlet weak var facadeTop2: NSLayoutConstraint!
+    
+    @IBOutlet weak var lBFacadeName : UILabel!
+//    @IBOutlet weak var btnSaveDesign : UIButton!
+
+    
+    @IBOutlet weak var lBOnDisplay : UILabel!
+    
+    
+    @IBOutlet weak var btnEnquire : UIButton!
+    @IBOutlet weak var btnSaveDesign: UIButton!
+  
+  var validFacadeNamesArray = [String]()
+    var containerViewRegion: UIView?
+    
+    lazy var regionView: RegionVC = {
+        kStoryboardMain.instantiateViewController(withIdentifier: "RegionVC") as! RegionVC
+    }()
+    
+    
+    var regionSelected : RegionMyPlace?
+    
+    var selectedIndex = 0
+    
+    var myPlaceQuiz: MyPlaceQuiz?
+    
+    
+    var homeDesign: HomeDesigns? {
+        didSet {
+            
+        }
+    }
+    
+    var homeDesignDetails: HomeDesignDetails?
+    
+    
+    var arrScrollImageUrls = [String] ()
+    var arrOnDisplay = [Any] ()
+    
+    var isFromFavorites: Bool?
+    
+    
+    var displayText: String? {
+        didSet {
+            self.addBreadCrumb(from: displayText ?? "")
+        }
+    }
+    
+
+    //MARK: - ViewLife Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_detailView_screen_loading)
+        
+        if kUserRegion != String.zero(), let regions = kStateRegions {
+            for reg in regions {
+                if kUserRegion == reg.regionId {
+                    regionSelected = reg
+                    break
+                }
+            }
+        }
+        
+        
+        
+        adjustTableHeight ()
+        
+        pageUISetup()
+        
+        headerLogoText = "MyCollection"
+        
+        if btnBack.isHidden {
+            showBackButton()
+            btnBack.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
+            btnBackFull.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
+        }
+        
+        
+        
+        if let design = homeDesign {
+            fillAllDetails ()
+            
+            getDesignDetails(design)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let filter = displayText {
+            if filter.count > 0 {
+                self.addBreadCrumb(from: filter)
+            }else {
+                self.addBreadCrumb(from: infoStaicText)
+            }
+        }
+        
+        if let design = homeDesign {
+            self.addBreadCrumb (from: (design.houseName ?? "") + " " + (design.houseSize ?? ""))
+        }
+        
+    }
+    
+    //MARK: - View
+    
+    func fillAllDetails () {
+//      validFacadeNamesArray = homeDesignDetails?.lsthouses?.validFacades?.components(separatedBy: "|")
+        if let imageurl = homeDesign?.facadePermanentUrl {
+            
+            arrScrollImageUrls.removeAll()
+            arrScrollImageUrls.append(ServiceAPI.shared.URL_imageUrl(imageurl))
+            
+            bannerImageScroll (arrScrollImageUrls)
+        }
+        
+//        self.lBPrice.text = String.currencyFormate(Int32(self.homeDesign!.price!)!)  // -------> v2.2 changes 
+        
+        self.lBPrice.isHidden = true // -------> v2.2 changes
+      //CodeManager.sharedInstance.sendScreenName("BB_HomeDesign_NameAndSize_\(self.homeDesign?.houseName ?? "")_design,\(self.homeDesign?.houseSize ?? "")")
+        Analytics.logEvent("BB_profile_HomeDesign_NameAndSize", parameters: ["name" : self.homeDesign?.houseName ?? "","size" : self.homeDesign?.houseSize ?? "","jobID" : appDelegate.currentUser?.jobNumber ?? "0"])
+        self.lBHouseName.text = (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? "")
+        self.lBBedrooms.text = self.homeDesign!.bedRooms
+        self.lBBathrooms.text = self.homeDesign!.bathRooms
+        self.lBParking.text = self.homeDesign!.carSpace
+        
+        self.addBreadCrumb (from: (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? ""))
+        
+        
+        self.lBLotWidth.text = (self.homeDesign?.minLotWidth ?? "0") + "m"
+//        let tex = (self.homeDesign!.minLotWidth ?? "0") + "m2"
+        
+//        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_8)
+//        let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_6)
+//        let attString:NSMutableAttributedString = NSMutableAttributedString(string: tex, attributes: [.font:font!])
+//        attString.setAttributes([.font:fontSuper!,.baselineOffset:4], range: NSRange(location:tex.count-1,length:1))
+//        lBLotWidth.attributedText = attString
+
+        
+        
+        
+        
+        self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+        
+        if Int(kUserID)! > 0 {
+            
+            if self.homeDesign?.isFav == true {
+                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
+            }else {
+                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
+            }
+            
+            if isFromFavorites == true {
+                btnFavorite.isHidden = homeDesign?.favouritedUser?.userID != kUserID
+            }
+        }else {
+            
+//            self.btnFavorite.isHidden = true
+        }
+        
+        self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
+        self.btnSaveDesign.backgroundColor = self.homeDesign?.isFav == true ? COLOR_DARK_GRAY : COLOR_ORANGE
+
+        enquireView.isHidden = arrOnDisplay.count == 0
+        
+        
+        if let designDetails = self.homeDesignDetails {
+            
+            arrScrollImageUrls.removeAll()
+            
+            if let imageurl = designDetails.lsthouses?.facadeLargeImageUrls {
+                for imagURL in imageurl {
+                    let imageArr = imagURL.components(separatedBy: "_")
+                    let imageName = imageArr[1].replacingOccurrences(of: ".jpg", with: "")
+                    print("--=-=---=-=-=-=-=-: ",imageName)
+                    validFacadeNamesArray.append(imageName )
+                    arrScrollImageUrls.append(imagURL)
+                    bannerImageScroll (arrScrollImageUrls)
+                }
+            }
+            
+            if let floorplanURL = designDetails.lsthouses?.homePlan?.floorPlanImageURLMobile {
+                
+                self.imageHouseDesign.showActivityIndicator()
+                
+                ImageDownloader.downloadImage(withUrl: floorplanURL, withFilePath: nil, with: { (image, success, error) in
+                    
+                    self.imageHouseDesign.hideActivityIndicator()
+                    
+                    if success, let img = image {
+                        self.imageHouseDesign.image = img
+                        
+                        let scrollView = self.scrollViewHouseDesign
+                        scrollView?.delegate = self
+                        scrollView?.minimumZoomScale = 1.0
+                        scrollView?.maximumZoomScale = 10.0
+                    }
+                    
+                }, withProgress: nil)
+            }
+            
+        }
+        
+        if let subViews3D = self.btnMyPlace.superview?.subviews {
+            for vi in subViews3D {
+                vi.isHidden = !(self.homeDesign?.visualisation ?? false)
+            }
+        }
+        
+        if (enquireView.isHidden) {
+            facadeTop1.isActive = true
+            facadeTop2.isActive = false
+        }else {
+            facadeTop1.isActive = false
+            facadeTop2.isActive = true
+        }
+        
+        lBFacadeName.text = self.validFacadeNamesArray.first
+        
+        if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
+//            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
+            lBFacadeName.text = (self.validFacadeNamesArray.first ?? "") + " facade"
+          
+          
+        }
+        
+    }
+    
+    
+    
+    func bannerImageScroll(_ arrImageUrls: [String]) {
+        
+        self.imageScrollView.frame = CGRect(x:0, y:0, width:self.plotView.frame.width, height:self.plotView.frame.height)
+        
+        let scrollViewWidth:CGFloat = UIScreen.screens[0].bounds.size.width
+        let scrollViewHeight:CGFloat = 0.265*UIScreen.screens[0].bounds.size.height // self.plotView.frame.height
+        
+        for imageview in imageScrollView.subviews {
+            imageview.removeFromSuperview()
+        }
+        
+        self.imageScrollView.contentSize = CGSize(width: 0, height: 0)
+        
+        var xPos: CGFloat = 0
+        
+        
+        for imageUrl in arrImageUrls {
+            
+            let imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: scrollViewWidth, height: scrollViewHeight))
+            self.imageScrollView.addSubview(imgOne)
+            
+            imgOne.showActivityIndicator()
+            
+            ImageDownloader.downloadImage(withUrl: ServiceAPI.shared.URL_imageUrl(imageUrl), withFilePath: nil, with: { (image, success, error) in
+                
+                imgOne.hideActivityIndicator()
+                
+                imgOne.contentMode = .scaleToFill
+                
+                if let img = image {
+                    imgOne.image = img
+                }else {
+                    imgOne.image = UIImage (named: "BG-Half")
+                }
+                
+            }) { (progress) in
+                
+            }
+            
+            
+            xPos = xPos + scrollViewWidth
+            
+        }
+        
+        
+        self.imageScrollView.contentSize = CGSize(width: scrollViewWidth * CGFloat (arrImageUrls.count), height: scrollViewHeight)
+        
+        self.imageScrollView.delegate = self
+        self.pageControl.numberOfPages = arrImageUrls.count
+        
+        if arrImageUrls.count > 0 {
+            self.pageControl.currentPage = 0
+        }
+        
+        //Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+    }
+    
+    
+    private func addContainerViewRegion () {
+        
+        let viewContro =  self.tabBarController ?? self
+        let viewSuper = viewContro.view!
+        
+        containerViewRegion = UIView()
+        
+        
+        containerViewRegion!.backgroundColor = COLOR_CUSTOM_VIEWS_OVERLAY
+        
+        containerViewRegion!.translatesAutoresizingMaskIntoConstraints = false
+        
+        viewSuper.addSubview(containerViewRegion!)
+        
+        viewSuper.bringSubviewToFront(containerViewRegion!)
+        
+        
+        NSLayoutConstraint.activate([
+            containerViewRegion!.leadingAnchor.constraint(equalTo: viewSuper.leadingAnchor, constant: 0),
+            containerViewRegion!.trailingAnchor.constraint(equalTo: viewSuper.trailingAnchor, constant: 0),
+            containerViewRegion!.topAnchor.constraint(equalTo: viewSuper.topAnchor, constant: 0),
+            containerViewRegion!.bottomAnchor.constraint(equalTo: viewSuper.bottomAnchor, constant: 0),
+        ])
+        
+        // add child view controller view to container
+        
+        viewContro.addChild(regionView)
+        //            addChildViewController(controller)
+        regionView.view.translatesAutoresizingMaskIntoConstraints = false
+        containerViewRegion!.addSubview(regionView.view)
+        
+        NSLayoutConstraint.activate([
+            regionView.view.leadingAnchor.constraint(equalTo: containerViewRegion!.leadingAnchor, constant: 0),
+            regionView.view.trailingAnchor.constraint(equalTo: containerViewRegion!.trailingAnchor, constant: 0),
+            regionView.view.topAnchor.constraint(equalTo: containerViewRegion!.topAnchor, constant: 0),
+            regionView.view.bottomAnchor.constraint(equalTo: containerViewRegion!.bottomAnchor, constant: 0)
+        ])
+        
+        regionView.view.backgroundColor = COLOR_CUSTOM_VIEWS_OVERLAY
+        regionView.view.backgroundColor = COLOR_CLEAR
+        
+        
+        regionView.didMove(toParent: viewContro)
+        
+        regionView.delegate = self
+        
+        containerViewRegion!.isHidden = true
+        
+    }
+    
+    
+    //MARK: - Button Actions
+    
+    @IBAction func handleBackButton (_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func handleMyPlaceButton (_ sender: UIButton) {
+       
+        //MARK: In v2.3 navigating myPlace3D to browser beacuase of webview issues
+
+        
+        CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_detailView_myPlace3d_button_touch)
+        
+        var state = kUserStateName.lowercased().trim().replacingOccurrences(of: " ", with: "-")
+        if kUserStateName.contains("NSW & ACT"){
+            state = "nsw"
+        }
+        guard let url = URL(string:"\(My_Place3DBASEURL)/\(state)/myplace3dmobile/housename.\(self.homeDesign?.houseName ?? "");housesize.\(self.homeDesign?.houseSize ?? "0")/") else { return }
+        UIApplication.shared.open(url)
+        
+//        let myPlace3DVC = self.storyboard?.instantiateViewController(withIdentifier: "MyPlace3DVC") as! MyPlace3DVC
+//        myPlace3DVC.url = "\(My_Place3DBASEURL)/\(state)/myplace3dmobile/housename.\(self.homeDesign?.houseName ?? "");housesize.\(self.homeDesign?.houseSize ?? "0")/"
+//        self.tabBarController?.navigationController?.pushViewController(myPlace3DVC, animated: true)
+        
+    }
+    
+    @IBAction func handleHomeLandButton (_ sender: UIButton) {
+        
+        CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_detailView_homeAndLand_button_touch)
+        
+        if let design = homeDesign {
+            getPackagesWithDesign(design)
+        }
+        
+    }
+    
+    @IBAction func handleEnquireButton (_ sender: UIButton) {
+        
+        CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_detailView_enquire_button_touch)
+        
+        let enquire = self.storyboard?.instantiateViewController(withIdentifier: "EnquireNowVC") as! EnquireNowVC
+        enquire.homeDesign = self.homeDesign!
+        if let navigation = self.tabBarController?.navigationController {
+            navigation.pushViewController(enquire, animated: true)
+        }else {
+            self.navigationController?.pushViewController(enquire, animated: true)
+        }
+    }
+    
+    
+    @IBAction func handleFavoriteButtonAction (_ sender: UIButton) {
+        
+        if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
+            
+            CodeManager.sharedInstance.sendScreenName (burbank_homeDesigns_detailView_makeFavourite_button_touch)
+            
+            self.makeHomeDesignFavorite(!(homeDesign!.isFav), homeDesign!) { (success) in
+                if success {
+                    
+                    if (!(self.homeDesign!.isFav) == true) {
+                        DispatchQueue.main.async(execute: {
+                            ActivityManager.showToast("Added to your favourites", self)
+                        })
+                    }else{
+                        DispatchQueue.main.async(execute: {
+                            ActivityManager.showToast("Item removed from favourites", self)
+                        })
+                    }
+                    
+                    self.homeDesign!.isFav = !(self.homeDesign!.isFav)
+                    
+                    self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+                    
+                    self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
+                    self.btnSaveDesign.backgroundColor = (self.homeDesign?.isFav ?? false) == true ? COLOR_DARK_GRAY : COLOR_ORANGE
+                    
+                    
+                    if self.homeDesign!.favouritedUser?.userID == kUserID {
+                        updateHomeDesignsFavouritesCount(self.homeDesign!.isFav == true)
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func handleSaveDesignButton (_ sender: UIButton) {
+        if let _ = self.homeDesign {
+            if (self.homeDesign?.isFav == true) {
+                ActivityManager.showToast("Design saved in favourites", self)
+            }else {
+                self.handleFavoriteButtonAction(btnFavorite)
+            }
+        }
+    }
+    
+}
+
+
+
+extension DesignsDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    @objc func moveToNextPage (){
+        
+        let pageWidth:CGFloat = self.imageScrollView.frame.width
+        let maxWidth:CGFloat = pageWidth * CGFloat (arrScrollImageUrls.count)
+        let contentOffset:CGFloat = self.imageScrollView.contentOffset.x
+        
+        var slideToX = contentOffset + pageWidth
+        
+        if  contentOffset + pageWidth == maxWidth
+        {
+            slideToX = 0
+        }
+        self.imageScrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.imageScrollView.frame.height), animated: true)
+        let currentPage:CGFloat = floor((imageScrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
+        // Change the indicator
+        self.pageControl.currentPage = Int(currentPage);
+    }
+    
+    //ScrollViewDelegate Methods
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
+        
+        if scrollView == imageScrollView {
+            if validFacadeNamesArray.count > 0{
+                let pageWidth:CGFloat = scrollView.frame.width
+                let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
+                // Change the indicator
+                lBFacadeName.text = self.validFacadeNamesArray[Int(currentPage)]
+                
+                if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
+        //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
+                  lBFacadeName.text = (self.lBFacadeName.text ?? "") + " facade"
+                  
+                  
+                }
+                self.pageControl.currentPage = Int(currentPage);
+            }
+            
+            // Test the offset and calculate the current page after scrolling ends
+           
+        }
+        
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        if scrollView == scrollViewHouseDesign {
+            return imageHouseDesign
+        }
+        return nil
+    }
+    
+    //MARK: - Table View Delegate
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrOnDisplay.count
+        
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeDesignTVCell", for: indexPath) as! HomeDesignTVCell
+        
+        // Configure the cell...
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print(log: "Add row")
+        
+        if selectedIndex == indexPath.row {
+            selectedIndex = -1
+        }else {
+            selectedIndex = indexPath.row
+        }
+        
+        adjustTableHeight ()
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if selectedIndex == indexPath.row {
+            return 240
+        }
+        return 80
+    }
+    
+    func adjustTableHeight () {
+        
+        tableHeight.constant = 0
+        
+    }
+    
+}
+
+
+
+extension DesignsDetailsVC: ChildVCDelegate, RegionVCDelegate
+{
+    //headervc
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
+        
+        
+    }
+    
+    //RegionVCDelegate
+    func handleRegionDelegate(close: Bool, regionBtn: Bool, region: RegionMyPlace) {
+        
+        if close {
+            containerViewRegion!.isHidden = true
+        }else {
+            self.regionSelected = region
+            
+            containerViewRegion!.isHidden = true
+        }
+    }
+}
+
+
+
+
+extension DesignsDetailsVC {
+    
+    func pageUISetup () {
+        
+        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        
+        
+        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
+
+        
+        setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        
+        
+        setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_6))
+        setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        
+        
+        setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_LIGHT(size: FONT_14))
+        
+        setAppearanceFor(view: btnEnquire, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_16))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_16))
+
+        lBMyPlace.text = "Interactive \nHome Tour"
+        lBHomeLand.text = "House & Land"
+        
+//        _ = setAttributetitleFor(view: lBMyPlace, title: "Interactive Home Tour", rangeStrings: ["Interactive", "\nHomeTour"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_HEADING(size: FONT_13), FONT_LABEL_HEADING(size: FONT_13)], alignmentCenter: false)
+//        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House&Land", ""], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [FONT_LABEL_HEADING(size: FONT_17), FONT_LABEL_HEADING(size: FONT_17)], alignmentCenter: false)
+        
+        
+        
+        lBLot.text = "LOT\nWIDTH"
+        
+        if let superview = lBLot.superview {
+            
+            superview.layer.cornerRadius = (superview.frame.size.height)/2
+            //            setShadow(view: superview, color: COLOR_LIGHT_GRAY, shadowRadius: 8)
+            setBorder(view: superview, color: COLOR_APP_GRAY, width: 0.5)
+            
+            setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: 6))
+            setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: 10))
+            
+        }
+        
+        lBMyPlace.superview?.layer.cornerRadius = radius_10
+        lBHomeLand.superview?.layer.cornerRadius = radius_10
+        
+    }
+    
+    
+    //MARK: - APIs
+    
+    func getDesignDetails (_ design: HomeDesigns) {
+        
+        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_HomeDesignDetails(kUserState, design.houseName ?? "", design.houseSize ?? ""), userInfo: nil, success: { (data, response) in
+            
+            if (response as! HTTPURLResponse).statusCode == 200, let jsonData = data as? Data {
+                
+                if let jsonObj: AnyObject = Networking.shared.jsonResponse(jsonData) {
+                    if jsonObj is Error {
+                        
+                    }else {
+                        print(log: jsonObj)
+                        if let _ = (jsonObj as! NSDictionary).value(forKey: "status"), ((jsonObj as! NSDictionary).value(forKey: "status") as? Bool) == true {
+                            
+                            do {
+                                self.homeDesignDetails = try JSONDecoder().decode(HomeDesignDetails.self, from: jsonData)
+                                
+                                self.fillAllDetails()
+                                
+                            } catch let jsonError {
+                                print(log: jsonError)
+                            }
+                        }
+                    }
+                }
+                
+            }
+            
+        }, errorblock: { (error, isJSONerror) in
+            
+            
+        }, progress: nil, showActivity: true, returnJSON: false)
+        
+    }
+    
+    
+    func makeHomeDesignFavorite (_ favorite: Bool, _ design: HomeDesigns, callBack: @escaping ((_ successss: Bool) -> Void)) {
+        
+        let params = NSMutableDictionary()
+        params.setValue(SearchType.shared.newHomes, forKey: "TypeId")
+        params.setValue(appDelegate.userData?.user?.userID, forKey: "UserId")
+        params.setValue(design.houseId_LandBank, forKey: "HouseId")
+        params.setValue(kUserState, forKey: "StateId")
+        params.setValue(favorite, forKey: "isfavourite")
+        
+        
+        
+        _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_Favorite, parameters: params, userInfo: nil, success: { (json, response) in
+            
+            if let result: AnyObject = json {
+                
+                let result = result as! NSDictionary
+                
+                if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+                    
+                    callBack (true)
+                    
+                }else { print(log: String.init(format: "Couldn't %@ home", arguments: [favorite ? "Favourite" : "Unfavourite"])) }
+                
+            }else {
+                
+                showToast(kServerErrorMessage)
+            }
+            
+        }, errorblock: { (error, isJSONerror) in
+            
+            if isJSONerror {
+                showToast(String.init(format: "Couldn't %@ home", arguments: [favorite ? "Favourite" : "Unfavourite"]))
+            }else {
+                print(log: error?.localizedDescription as Any)
+                showToast(String.init(format: "Couldn't %@ home", arguments: [favorite ? "Favourite" : "Unfavourite"]))
+            }
+            
+        }, progress: nil)
+        
+    }
+    
+    
+    
+    func getPackagesWithDesign (_ design: HomeDesigns) {
+        
+        
+        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_HomeLandPackagesWithDesign(kUserState, design.houseName ?? ""), userInfo: nil, success: { (json, response) in
+            
+            if let result: AnyObject = json {
+                
+                let result = result as! NSDictionary
+                
+                if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+                    
+                    
+                    var arrHomeLandPackages = [HomeLandPackage] ()
+                    
+                    
+                    if let homeLandPackages = result.value(forKey: "getpackagebyName") as? [NSDictionary] {
+                        
+                        for package in homeLandPackages {
+                            arrHomeLandPackages.append(HomeLandPackage (package as! [String : Any]))
+                        }
+                        
+                        if arrHomeLandPackages.count > 0 {
+                            
+                            let homeLand = kStoryboardMain.instantiateViewController(withIdentifier: "HomeLandVC") as! HomeLandVC
+                            
+                            homeLand.filter = SortFilter ()
+                            
+                            homeLand.isFromHomeDesigns = true
+                            homeLand.isFromProfileFavorites = true
+                            
+                            homeLand.design = self.homeDesign
+                            
+                            homeLand.arrHomeLand = arrHomeLandPackages
+                            
+                            self.navigationController?.pushViewController(homeLand, animated: true)
+                            
+                        }else {
+                            
+                            ActivityManager.showToast("No Packages found", self, .bottom)
+                        }
+                    }else {
+                        ActivityManager.showToast("No Packages found", self, .bottom)
+                    }
+                    
+                }else {
+                    
+                    ActivityManager.showToast("Couldn't get details")
+                }
+            }else {
+                
+                ActivityManager.showToast(kServerErrorMessage)
+            }
+        }, errorblock: { (error, isJSONerror) in
+            
+            if isJSONerror {
+                ActivityManager.showToast("Couldn't get details")
+            }else {
+                print(log: error?.localizedDescription as Any)
+            }
+            
+            
+        }, progress: nil)
+        
+    }
+    
+    
+}
+

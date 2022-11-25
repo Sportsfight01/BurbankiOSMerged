@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bay-D4-S4f">
+                                <rect key="frame" x="0.0" y="219" width="320" height="130"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo-1" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-ag-9wW">
+                                        <rect key="frame" x="96" y="0.0" width="128" height="65"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-Myplace-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="TMd-Nv-bu5">
+                                        <rect key="frame" x="80" y="52" width="160" height="78"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="H2k-WX-RI0"/>
+                                    <constraint firstItem="Om0-ag-9wW" firstAttribute="width" secondItem="bay-D4-S4f" secondAttribute="width" multiplier="0.4" id="UoF-0P-AOA"/>
+                                    <constraint firstItem="Om0-ag-9wW" firstAttribute="centerX" secondItem="bay-D4-S4f" secondAttribute="centerX" id="VNj-0o-E6Z"/>
+                                    <constraint firstItem="Om0-ag-9wW" firstAttribute="top" secondItem="bay-D4-S4f" secondAttribute="top" id="aNE-lz-mis"/>
+                                    <constraint firstItem="TMd-Nv-bu5" firstAttribute="centerX" secondItem="bay-D4-S4f" secondAttribute="centerX" id="d1t-ux-twL"/>
+                                    <constraint firstAttribute="bottom" secondItem="TMd-Nv-bu5" secondAttribute="bottom" id="dzS-dl-hD5"/>
+                                    <constraint firstItem="Om0-ag-9wW" firstAttribute="height" secondItem="bay-D4-S4f" secondAttribute="height" multiplier="0.5" id="fIO-9X-ws6"/>
+                                    <constraint firstItem="TMd-Nv-bu5" firstAttribute="height" secondItem="bay-D4-S4f" secondAttribute="height" multiplier="0.6" id="oqb-uj-SQw"/>
+                                    <constraint firstItem="TMd-Nv-bu5" firstAttribute="width" secondItem="bay-D4-S4f" secondAttribute="width" multiplier="0.5" id="xNc-Fy-GIJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bay-D4-S4f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7hm-r2-20w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bay-D4-S4f" secondAttribute="trailing" id="Bns-pI-yrO"/>
+                            <constraint firstItem="bay-D4-S4f" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wbd-3R-cGs"/>
+                            <constraint firstItem="bay-D4-S4f" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dsM-ys-ZkU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Img-BB-Logo-1" width="290" height="67"/>
+        <image name="Img-Myplace-Logo" width="376.5" height="85"/>
+    </resources>
+</document>

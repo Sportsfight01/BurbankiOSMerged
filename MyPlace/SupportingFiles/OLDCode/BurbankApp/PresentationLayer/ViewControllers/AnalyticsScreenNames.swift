@@ -1,0 +1,351 @@
+//
+//  AnalyticsScreenNames.swift
+//  BurbankApp
+//
+//  Created by Madhusudhan on 08/07/19.
+//  Copyright © 2019 DMSS. All rights reserved.
+//
+
+import Foundation
+
+let landing_screen_loading = "landing_screen_loading"
+let landing_screen_next_button_touch = "landing_screen_next_button_touch"
+
+let login_screen_loading = "login_screen_loading"
+let login_screen_login_button_touch = "login_screen_login_button_touch"
+let login_screen_usetouch_id_touch = "login_screen_usetouch_id_touch"
+let login_screen_back_button_touch = "login_screen_back_button_touch"
+let login_screen_forgot_password_button_touch = "login_screen_forgot_password_button_touch"
+
+let notification_screen_loading = "notification_screen_loading"
+let notification_screen_bell_icon_touch = "notification_screen_bell_icon_touch"
+let notifications_screen_notifications_touch = "notifications_screen_notifications_touch"
+
+
+let dashboard_loading = "dashboard_loading"
+let dashboard_inivitation_button_touch = "dashboard_invitation_button_touch"
+let dashboard_dropdown_job_arrow_touch = "dashboard_dropdown_job_arrow_touch"
+let dashboard_plus_button_touch = "dashboard_plus_button_touch"
+let dashboard_progress_icon_button_touch = "dashboard_progress_icon_button_touch"
+let dashboard_photos_icon_button_touch = "dashboard_photos_icon_button_touch"
+let dashboard_details_icon_button_touch = "dashboard_details_icon_button_touch"
+let dashboard_finance_icon_button_touch = "dashboard_finance_icon_button_touch"
+let dashboard_support_help_button_touch = "dashboard_support_help_button_touch"
+let dashboard_more_button_touch = "dashboard_more_button_touch"
+let dashboard_myappointments_icon_touch = "dashboard_myappointments_icon_touch"
+let dashboard_history_log_icon_touch = "dashboard_history_log_icon_touch"
+let dashboard_contacts_icon_touch = "dashboard_contacts_icon_touch"
+let dashboard_contacts_email_icon_touch = "dashboard_contacts_email_icon_touch"
+let dashboard_contacts_call_icon_touch = "dashboard_contacts_call_icon_touch"
+
+let myprogress_adminstration_stage_break_down_button_touch = "myprogress_adminstration_stage_break_down_button_touch"
+let myprogress_frame_stage_break_down_button_touch = "myprogress_frame_stage_break_down_button_touch"
+let myprogress_lockup_stage_break_down_button_touch = "myprogress_lockup_stage_break_down_button_touch"
+let myprogress_fixout_stage_break_down_button_touch = "myprogress_fixout_stage_break_down_button_touch"
+let myprogress_finishing_stage_break_down_button_touch = "myprogress_finishing_stage_break_down_button_touch"
+
+let photo_touch = "photo_touch"
+let photos_symbol_touch = "photos_symbol_touch"
+let photos_add_button_touch = "photos_add_button_touch"
+let photos_back_button_touch = "photos_back_button_touch"
+let photos_fullscreen_button_touch = "photos_fullscreen_button_touch"
+
+let dashboard_details_icon_touch = "dashboard_details_icon_touch"
+let dashboard_finance_icon_touch = "dashboard_finance_icon_touch"
+
+let dashboard_supporthelp_email_button_touch = "dashboard_supporthelp_email_button_touch"
+let dashboard_supporthelp_call_button_touch = "dashboard_supporthelp_call_button_touch"
+let dashboard_supporthelp_close_icon_touch = "dashboard_supporthelp_close_icon_touch"
+
+let dashboard_more_features_button_touch = "dashboard_more_features_button_touch"
+let dashboard_fav_photos_button_touch = "dashboard_fav_photos_button_touch"
+let dashboard_share_with_partners_button_touch = "dashboard_share_with_partners_button_touch"
+let dashboard_faq_button_touch = "dashboard_faq_button_touch"
+let dashboard_back_button_touch = "dashboard_back_button_touch"
+
+let photo_fav_touch = "photo_fav_touch"
+let photos_fav_symbol_touch = "photos_fav_symbol_touch"
+let photos__fav_add_button_touch = "photos_add_button_touch"
+let photos_fav_back_button_touch = "photos_back_button_touch"
+let photos_fav_fullscreen_button_touch = "photos_fav_fullscreen_button_touch"
+
+let documents_icon_touch = "documents_icon_touch"
+let documents_viewed = "documents_viewed"
+
+let more_features_sharewith_partner_invite_button_touch = "more_features_sharewith_partner_invite_button_touch"
+let more_features_sharewith_partner_refer_button_touch = "more_features_sharewith_partner_refer_button_touch"
+let more_features_sharewith_partner_delete_button_touch = "more_features_sharewith_partner_delete_button_touch"
+
+let settings_save_button_touch = "settings_save_button_touch"
+let settings_edit_icon_touch = "settings_edit_icon_touch"
+let settings_reset_password_touch = "settings_reset_password_touch"
+let settings_photos_added_on_off_icon_touch = "settings_photos_added_on_off_icon_touch"
+let settings_stage_completion_added_on_off_icon_touch = "settings_stage_completion_added_on_off_icon_touch"
+let settings_stages_changes_on_off_icon_touch = "settings_stages_changes_on_off_icon_touch"
+let settings_what_is_burbank_app_foward_arrow_touch = "settings_what_is_burbank_app_foward_arrow_touch"
+let settings_terms_of_use_foward_arrow_touch = "settings_terms_of_use_foward_arrow_touch"
+let settings_privacy_policy_forward_arrow_touch = "settings_privacy_policy_forward_arrow_touch"
+let settings_logout_button_touch = "settings_logout_button_touch"
+
+
+
+                            /********************Burbank App Analytics Data***************************/
+
+
+// Below variables For burbank app created by Mohan.
+
+//Burbank Home Screen
+let burbank_home_screen_loading = "BB_home_screen_loading"
+let burbank_home_screen_howDoesItWork_button_touch = "BB_home_screen_howDoesItWork"
+let burbank_home_screen_justLooking_button_touch = "BB_home_screen_justLooking"
+let burbank_home_screen_deposited_button_touch = "BB_home_screen_deposited"
+let burbank_home_screen_continue_button_touch = "BB_home_screen_continue"
+
+let burbank_home_howDoesItWork_screen_loading = "BB_home_howDoesItWork_screen_loading"
+let burbank_home_howDoesItWork_close_button_touch = "BB_home_howDoesItWork_close"
+let burbank_home_howDoesItWork_pause_button_touch = "BB_home_howDoesItWork_pause"
+let burbank_home_howDoesItWork_volume_button_touch = "BB_home_howDoesItWork_volume"
+let burbank_home_howDoesItWork_previous_button_touch = "BB_home_howDoesItWork_previous"
+let burbank_home_howDoesItWork_next_button_touch = "BB_home_howDoesItWork_next"
+
+
+//Burbank SignIn, SignUp, Forgot Password, Reset Password Screens
+let burbank_signIn_screen_loading = "BB_signIn_screen_loading"
+let burbank_signIn_google_button_touch = "BB_signIn_google"
+let burbank_signIn_facebook_button_touch = "BB_signIn_facebook"
+let burbank_signIn_email_button_touch = "BB_signIn_email"
+let burbank_signIn_skip_button_touch = "BB_signIn_skip"
+let burbank_signIn_next_button_touch = "BB_signIn_next"
+let burbank_signIn_sign_button_touch = "BB_signIn_sign"
+
+
+let burbank_signIn_password_screen_loading = "BB_signIn_password_screen_loading"
+let burbank_signIn_createAccount_button_touch = "BB_signIn_createAccount"
+let burbank_signIn_login_button_touch = "BB_signIn_login"
+
+
+let burbank_password_screen_loading = "BB_password_screen_loading"
+let burbank_password_login_button = "BB_password_login"
+let burbank_password_forgotPassword_button = "BB_password_forgotPassword"
+
+
+let burbank_forgotPassword_screen_loading = "BB_forgotPassword_screen_loading"
+//let burbank_forgotPassword_forgot_button_touch = "BB_signIn_forgotPassword_button_touch"
+let burbank_forgotPassword_next_button_touch = "BB_forgotPassword_next"
+
+let burbank_resetPassword_screen_loading = "BB_resetPassword_screen_loading"
+let burbank_resetPassword_submit_button_touch = "BB_resetPassword_submit"
+let burbank_resetPassword_resendPasscode_button_touch = "BB_resetPassword_resendPasscode"
+
+let burbank_signUp_screen_loading = "BB_signUp_screen_loading"
+let burbank_signUp_signIn_button_touch = "BB_signUp_signIn"
+let burbank_signUp_createAccount_button_touch = "BB_signUp_createAccount"
+
+//var selectedState : String = ""
+//Burbank Select State Screen
+let burbank_selectState_screen_loading = "BB_selectState_screen_loading"
+let burbank_selectState_state_button_touch = "BB_selectState_state"
+let burbank_selectState_close_button_touch = "BB_selectState_close"
+//var burbank_stateSelected_stateName = "BB_selectedState_\(selectedState)"
+
+//Burbank Dashboard Sceen
+let burbank_dashboard_screen_loading = "BB_dashboard_screen_loading"
+let burbank_dashboard_selectState_button_touch = "BB_dashboard_profile"
+let burbank_dashboard_profile_button_touch = "BB_dashboard_profile"
+let burbank_dashboard_homeDesigns_button_touch = "BB_dashboard_homeDesigns"
+let burbank_dashboard_homeAndLand_button_touch = "BB_dashboard_homeAndLand"
+let burbank_dashboard_displayHomes_button_touch = "BB_dashboard_displayHomes"  //until this added
+
+
+//Burbank Profile Screen
+let burbank_profile_screen_loading = "BB_profile_screen_loading"
+let burbank_profile_profilePic_button_touch = "BB_profile_profilePic_button"
+let burbank_profile_myDetails_button_touch = "BB_profile_myDetails_button"
+let burbank_profile_shareAccount_button_touch = "BB_profile_shareAccount_button"
+let burbank_profile_myCollection_button_touch = "BB_profile_myCollection_button"
+let burbank_profile_homeAndLand_button_touch = "BB_profile_homeAndLand_button"
+let burbank_profile_homeDesigns_button_touch = "BB_profile_homeDesigns_button"
+let burbank_profile_appSettings_button_touch = "BB_profile_appSettings_button"
+
+let burbank_profile_myDetails_select_button_touch = "BB_profile_myDetails_select"
+let burbank_profile_myDetails_update_button_touch = "BB_profile_myDetails_update"
+
+let burbank_profile_shareAccount_share_button_touch = "BB_profile_shareAccount_share"
+let burbank_profile_shareAccount_delete_button_touch = "BB_profile_shareAccount_delete"
+
+let burbank_profile_myCollection_designs_button_touch = "BB_profile_myCollection_designs"
+let burbank_profile_myCollection_recentSearch_button_touch = "BB_profile_myCollection_recentSearch"
+
+let burbank_profile_homeAndLand_designs_button_touch = "BB_profile_homeAndLand_designs"
+let burbank_profile_homeAndLand_recentSearch_button_touch = "BB_profile_homeAndLand_recentSearch"
+
+let burbank_profile_homeDesigns_savedDesigns_button_touch = "BB_profile_homeDesigns_savedDesigns"
+let burbank_profile_displayHomes_savedDesigns_button_touch = "BB_profile_displayHomes_savedDesigns"
+
+let burbank_profile_appSettings_notification_switch_touch = "BB_profile_Settings_notification"
+let burbank_profile_appSettings_location_switch_touch = "BB_profile_Settings_location"
+let burbank_profile_appSettings_logout_button_touch = "BB_profile_appSettings_logout"
+
+
+//Burbank HomeDesigns Screen
+let burbank_homeDesigns_screen_loading = "BB_homeDesigns_screen_loading"
+
+let burbank_homeDesigns_recentQuiz_screen_loading = "BB_homeDesigns_recentQuiz_screen"
+let burbank_homeDesigns_recentQuiz_startNew_button_touch = "BB_homeDesigns_recentQuiz_startNew"
+let burbank_homeDesigns_recentQuiz_showDesigns_button_touch = "BB_homeDesigns_recentQuiz_showDesigns"
+//let burbank_homeDesigns_recentQuiz_close_button_touch = "BB_homeDesigns_recentQuiz_close_button_touch"
+
+//let burbank_homeDesigns_newQuiz_screen_loading = "BB_homeDesigns_newQuiz_screen_loading"
+//let burbank_homeDesigns_newQuiz_home_button_touch = "BB_homeDesigns_newQuiz_home_button_touch"
+let burbank_homeDesigns_newQuiz_back_button_touch = "BB_homeDesigns_newQuiz_back_button"
+let burbank_homeDesigns_newQuiz_selectedAnswer_button_touch = "BB_homeDesigns_newQuiz_selectedAnswer"
+let burbank_homeDesigns_newQuiz_howDoesItWork_button_touch = "BB_homeDesigns_newQuiz_howDoesItWork"
+let burbank_homeDesigns_newQuiz_favourites_button_touch = "BB_homeDesigns_newQuiz_favourites"
+let burbank_homeDesigns_newQuiz_totalDesigns_button_touch = "BB_homeDesigns_newQuiz_totalDesigns"
+let burbank_homeDesigns_newQuiz_previous_button_touch = "BB_homeDesigns_newQuiz_previous"
+let burbank_homeDesigns_newQuiz_next_button_touch = "BB_homeDesigns_newQuiz_next"
+let burbank_homeDesigns_homeDesigns_tabBarButton_touch = "BB_homeDesigns_homeDesigns_tabBar"
+let burbank_homeDesigns_homeAndLand_tabBarButton_touch = "BB_homeDesigns_homeAndLand_tabBar"
+
+// Burbank Homedesigns HowDoesItWork Screen
+let burbank_homeDesigns_howDoesItWork_screen_loading = "BB_homeDesigns_howDoesItWork_screen"
+let burbank_homeDesigns_howDoesItWork_close_button_touch = "BB_homeDesigns_howDoesItWork_close"
+let burbank_homeDesigns_howDoesItWork_pause_button_touch = "BB_homeDesigns_howDoesItWork_pause"
+let burbank_homeDesigns_howDoesItWork_volume_button_touch = "BB_homeDesigns_howDoesItWork_volume"
+let burbank_homeDesigns_howDoesItWork_previous_button_touch = "BB_homeDesigns_howDoesItWork_previous"
+let burbank_homeDesigns_howDoesItWork_next_button_touch = "BB_homeDesigns_howDoesItWork_next"
+
+// Burbank Homedesigns Favourite Screen
+let burbank_homeDesigns_favourite_screen_loading = "BB_homeDesigns_favourite_screen"
+let burbank_homeDesigns_favourite_makeFavourite_button_touch = "BB_homeDesigns_favourite_makeFavourite"
+let burbank_homeDesigns_favourite_homeDetail_tableCell_touch = "BB_homeDesigns_favourite_homeDetail"
+
+
+// Burbank Homedesigns results screen
+let burbank_homeDesigns_results_screen_loading = "BB_homeDesigns_results_screen"
+let burbank_homeDesigns_results_makeFavourite_button_touch = "BB_homeDesigns_results_makeFavourite"
+let burbank_homeDesigns_results_homeDetail_tableCell_touch = "BB_homeDesigns_results_homeDetail"
+
+
+
+//Burbank Homedesigns Detail View Screen
+let burbank_homeDesigns_detailView_screen_loading = "BB_homeDesigns_detailView_screen_"
+let burbank_homeDesigns_detailView_makeFavourite_button_touch = "BB_homeDesigns_detailView_Favorite"
+let burbank_homeDesigns_detailView_myPlace3d_button_touch = "BB_homeDesigns_detailView_myPlace3d"
+let burbank_homeDesigns_detailView_homeAndLand_button_touch = "BB_homeDesigns_detailView_homeAndLand"
+let burbank_homeDesigns_detailView_enquire_button_touch = "BB_homeDesigns_detailView_enquire"
+
+let burbank_homeDesigns_detailView_myPlace3d_screen_loading = "BB_myPlace3d_screen"
+let burbank_homeDesigns_detailView_myPlace3d_back_button_touch = "BB_myPlace3d_back"
+let burbank_homeDesigns_detailView_myPlace3d_close_button_touch = "BB_myPlace3d_close"
+
+
+//let burbank_homeDesigns_detailView_homeAndLand_screen_loading = "BB_homeDesigns_detailView_homeAndLand_screen_loading"
+//let burbank_homeDesigns_detailView_homeAndLand_makeFavourite_button_touch = "BB_homeDesigns_homeAndLand_Favourite_button_touch"
+
+let burbank_homeDesigns_detailView_enquire_screen_loading = "BB_homeDesigns_enquire_screen_loading"
+let burbank_homeDesigns_detailView_enquire_accept_button_touch = "BB_homeDesigns_enquire_accept"
+let burbank_homeDesigns_detailView_enquire_enquire_button_touch = "BB_homeDesigns_enquire_enquire"
+
+//BurBank Quiz Questions
+let burbank_homeDesigns_detailView_storey_screen = "BB_homeDesigns_storey_screen"
+let burbank_homeDesigns_detailView_No_Of_Bedrooms_screen = "BB_homeDesigns_No_Of_Bedrooms_screen"
+let burbank_homeDesigns_detailView_Alfresco_screen = "BB_homeDesigns_Alfresco_screen"
+let burbank_homeDesigns_detailView_study_screen = "BB_homeDesigns_study_screen"
+let burbank_homeDesigns_detailView_lot_width_screen = "BB_homeDesigns_lot_width_screen"
+let burbank_homeDesigns_detailView_storage_more_than_1_room_screen = "BB_homeDesigns_storage_more_than_1_room_screen"
+let burbank_homeDesigns_detailView_European_Laundry_screen = "BB_homeDesigns_European_Laundry_screen"
+let burbank_homeDesigns_detailView_Separate_Kids_Living_Area_screen = "BB_homeDesigns_Separate_Kids_Living_Area_screen"
+let burbank_homeDesigns_detailView_Straight_Corridor_screen = "BB_homeDesigns_Straight_Corridor_screen"
+let burbank_homeDesigns_detailView_Living_Meals_Entire_Rear_screen = "BB_homeDesigns_Living/Meals_Entire_Rear_screen"
+let burbank_homeDesigns_detailView_Minor_Bedrooms_Wing_screen = "BB_homeDesigns_Minor_Bedrooms_Wing_screen"
+let burbank_homeDesigns_detailView_Bedroom_At_Front_screen = "BB_homeDesigns_Bedroom_At_Front_screen"
+let burbank_homeDesigns_detailView_Price_screen = "BB_homeDesigns_Price_screen"
+
+//Burbank Home&Land Screen
+let burbank_homeAndLand_screen_loading = "BB_homeLand_screen_loading"
+
+let burbank_homeAndLand_recentQuiz_screen_loading = "BB_homeLand_recentQuiz_screen"
+let burbank_homeAndLand_recentQuiz_startNew_button_touch = "BB_homeLand_recentQuiz_startNew"
+let burbank_homeAndLand_recentQuiz_showDesigns_button_touch = "BB_homeLand_recentQuiz_showDesigns"
+//let burbank_homeAndLand_recentQuiz_close_button_touch = "BB_homeAndLand_recentQuiz_close"
+
+//let burbank_homeAndLand_newQuiz_screen_loading = "BB_homeAndLand_newQuiz_screen_loading"
+//let burbank_homeAndLand_newQuiz_home_button_touch = "BB_homeAndLand_newQuiz_home"
+let burbank_homeAndLand_newQuiz_back_button_touch = "BB_homeLand_newQuiz_back"
+let burbank_homeAndLand_newQuiz_selectedAnswer_button_touch = "BB_homeLand_newQuiz_selectedAnswer"
+let burbank_homeAndLand_newQuiz_favourites_button_touch = "BB_homeLand_newQuiz_favourites"
+let burbank_homeAndLand_newQuiz_skip_button_touch = "BB_homeLand_newQuiz_skip"
+let burbank_homeAndLand_newQuiz_totalDesigns_button_touch = "BB_homeLand_newQuiz_totalDesigns"
+let burbank_homeAndLand_newQuiz_previous_button_touch = "BB_homeLand_newQuiz_previous"
+let burbank_homeAndLand_newQuiz_next_button_touch = "BB_homeLand_newQuiz_next"
+//let burbank_homeAndLand_homeDesigns_tabBarButton_touch = "BB_homeAndLand_homeDesigns_tabBarButton"
+//let burbank_homeAndLand_homeAndLand_tabBarButton_touch = "BB_homeAndLand_homeAndLand_tabBarButton"
+
+// Burbank Home&Land results screen
+let burbank_homeAndLand_results_screen_loading = "BB_homeLand_results_screen_loading"
+let burbank_homeAndLand_results_sortFilter_button_touch = "BB_homeLand_results_sortFilter"
+let burbank_homeAndLand_results_map_button_touch = "BB_homeLand_results_map_button_touch"
+let burbank_homeAndLand_results_makeFavourite_button_touch = "BB_homeLand_results_Favorite"
+let burbank_homeAndLand_results_homeDetail_tableCell_touch = "BB_homeLand_results_homeDetail"
+
+//Burbank Home&Land Detail View Screen
+let burbank_homeAndLand_detailView_screen_loading = "BB_homeLand_detailView_screen"
+let burbank_homeAndLand_detailView_makeFavourite_button_touch = "BB_homeLand_detailView_Favorite"
+let burbank_homeAndLand_detailView_enquire_button_touch = "BB_homeLand_detailView_enquire"
+
+let burbank_homeAndLand_detailView_enquire_screen_loading = "BB_homeLand_enquire_screen_loading"
+let burbank_homeAndLand_detailView_enquire_back_button_touch = "BB_homeLand_enquire_back"
+let burbank_homeAndLand_detailView_enquire_accept_button_touch = "BB_homeLand_enquire_accept"
+let burbank_homeAndLand_detailView_enquire_enquire_button_touch = "BB_homeLand_detailView_enquire"
+
+
+// Burbank Home&Land Sort&Filter Screen
+let burbank_homeAndLand_sortFilter_screen_loading = "BB_homeLand_sortFilter_screen"
+let burbank_homeAndLand_sortFilter_close_button_touch = "BB_homeLand_sortFilter_close"
+let burbank_homeAndLand_sortFilter_minPrice_slider_swipe = "BB_homeLand_sortFilter_Price_slider"
+
+let burbank_homeAndLand_sortFilter_storeys_segment_touch = "BB_homeLand_sortFilter_storeys"
+let burbank_homeAndLand_sortFilter_bedRooms_segment_touch = "BB_homeLand_sortFilter_bedRooms"
+let burbank_homeAndLand_sortFilter_carspaces_segment_touch = "BB_homeLand_sortFilter_carspaces"
+let burbank_homeAndLand_sortFilter_bathRooms_segment_touch = "BB_homeLand_sortFilter_bathRooms"
+let burbank_homeAndLand_sortFilter_sort_button_touch = "BB_homeLand_sortFilter_sort"
+let burbank_homeAndLand_sortFilter_sort_done_button_touch = "BB_homeLand_sortFilter_sort_done"
+let burbank_homeAndLand_sortFilter_search_button_touch = "BB_homeLand_sortFilter_search"
+
+// Burbank Home&Land Map Screen
+let burbank_homeAndLand_map_screen_loading = "BB_homeLand_map_screen_loading"
+let burbank_homeAndLand_map_zoomIn_button_touch = "BB_homeLand_map_zoomIn"
+let burbank_homeAndLand_map_zoomOut_button_touch = "BB_homeLand_map_zoomOut"
+let burbank_homeAndLand_map_cluster_button_touch = "BB_homeLand_map_cluster"
+let burbank_homeAndLand_map_markers_button_touch = "BB_homeLand_map_markers"
+let burbank_homeAndLand_map_cluster_close_button_touch = "BB_homeLand_map_cluster_close"
+let burbank_homeAndLand_map_cluster_makeFavourite_button_touch = "BB_homeLand_map_cluster_Favorite"
+
+// Burbank Home&Land Favourite Screen
+let burbank_homeAndLand_favourite_screen_loading = "BB_homeLand_favourite_screen"
+let burbank_homeAndLand_favourite_makeFavourite_button_touch = "BB_homeLand_favourite_Favorite"
+let burbank_homeAndLand_favourite_homeDetail_tableCell_touch = "BB_homeLand_favourite_homeDetail"
+
+// Burbank DisplayHomes Favourite Screen
+let burbank_DisplayHomes_favourite_screen_loading = "BB_DisplayHomes_favourite_screen"
+let burbank_DisplayHomes_favourite_makeFavourite_button_touch = "BB_DisplayHomes_favourite_Favorite"
+let burbank_DisplayHomes_favourite_homeDetail_tableCell_touch = "BB_DisplayHomes_favourite_homeDetail"
+
+// Burbank DisplayHomes Selection Screen
+let burbank_DisplayHomes_TappedOn_NearBy = "BB_DisplayHomes_NearBy_Screen"
+let burbank_DisplayHomes_TappedOn_Display_Design = "BB_DisplayHomes_Display_Design_Screen"
+let burbank_DisplayHomes_TappedOn_Display_Regions = "BB_DisplayHomes_Display_Region_Screen"
+let burbank_DisplayHomes_TappedOn_Display_Maps = "BB_DisplayHomes_Display_Map_Screen"
+
+// Burbank DisplayHomes Detail View Screen
+let  burbank_DisplayHomes_detailView_screen_loading = "BB_DisplayHomes_detailView_screen"
+let burbank_DisplayHomes_detailView_makeFavourite_button_touch = "BB_DisplayHomes_detailView_Favorite"
+let burbank_DisplayHomes_detailView_enquire_button_touch = "BB_DisplayHomes_detailView_enquire"
+
+let burbank_DisplayHomes_detailView_enquire_screen_loading = "BB_DisplayHomes_enquire_screen_loading"
+let burbank_DisplayHomes_detailView_enquire_back_button_touch = "BB_DisplayHomes_enquire_back"
+let burbank_DisplayHomes_detailView_enquire_accept_button_touch = "BB_DisplayHomes_enquire_accept"
+let burbank_DisplayHomes_detailView_enquire_enquire_button_touch = "BB_DisplayHomes_detailView_enquire"
+let burbank_DisplayHomes_detailView_myPlace3d_screen_loading = "BB_myPlace3d_screen"
+let burbank_DisplayHomes_detailView_HomeAndLand_BTN_screen_loading = "BB_HomeAndLand_BTN_Tapped_screen"

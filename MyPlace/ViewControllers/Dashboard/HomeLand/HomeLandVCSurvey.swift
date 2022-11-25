@@ -1,0 +1,1434 @@
+//
+//  HomeLandVCSurvey.swift
+//  MyPlace
+//
+//  Created by sreekanth reddy Tadi on 26/03/20.
+//  Copyright © 2020 Sreekanth tadi. All rights reserved.
+//
+
+import UIKit
+
+class HomeLandVCSurvey: HeaderVC {
+    
+    
+    @IBOutlet weak var mainView : UIView!
+    
+    @IBOutlet weak var regionView : UIView!
+    @IBOutlet weak var storeysView : UIView!
+    @IBOutlet weak var bedroomsView : UIView!
+    @IBOutlet weak var priceView : UIView!
+    
+    
+    
+    @IBOutlet weak var btnDesignsCount: UIButton!
+    
+    
+    //MARK: - regionView
+    
+    @IBOutlet weak var region_lBregion: UILabel!
+    @IBOutlet weak var regionsTable: UITableView!
+    @IBOutlet weak var regionTableHeight: NSLayoutConstraint!
+    
+    
+    
+    //MARK: - storeysView
+    
+    @IBOutlet weak var storeys_lBstoreys: UILabel!
+    
+    @IBOutlet weak var storeys_iconSingle: UIImageView!
+    @IBOutlet weak var storeys_lBSingle: UILabel!
+    @IBOutlet weak var storeys_btnSingle: UIButton!
+    
+    @IBOutlet weak var storeys_iconDouble: UIImageView!
+    @IBOutlet weak var storeys_lBDouble: UILabel!
+    @IBOutlet weak var storeys_btnDouble: UIButton!
+    
+    @IBOutlet weak var storeys_iconNotSure: UIImageView!
+    @IBOutlet weak var storeys_lBNotSure: UILabel!
+    @IBOutlet weak var storeys_btnNotSure: UIButton!
+    
+    
+    
+    //MARK: - priceView
+    
+    @IBOutlet weak var price_lBPrice: UILabel!
+    
+//    @IBOutlet weak var price_btnContinue: UIButton!
+//    @IBOutlet weak var price_btnSkip: UIButton!
+    //    @IBOutlet weak var price_priceRange: PriceRangeView!
+    @IBOutlet weak var priceRangeContainerView: UIView!
+    
+    
+    //MARK: - BedroomsView
+    @IBOutlet weak var bedrooms_lBbedrooms: UILabel!
+    @IBOutlet weak var bedrooms_btn3Bedrooms: UIButton!
+    @IBOutlet weak var bedrooms_btn4Bedrooms: UIButton!
+    @IBOutlet weak var bedrooms_btn5Bedrooms: UIButton!
+
+  @IBOutlet weak var bedrooms_btnNotSure: UIButton!
+  
+    
+    
+    
+    
+    @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var btnPrevious: UIButton!
+
+    
+    @IBOutlet weak var viewRecentSearch: UIView!
+
+    
+    
+    //MARK: - myPlaceQuiz
+    
+    let myPlaceQuiz = MyPlaceQuiz()
+    
+    let minViewTag = 101
+    var viewTag = 101//Int = minViewTag
+    
+    var priceRangeVC: PriceRangeVC?
+    
+    
+    
+    var arrRegions: [RegionMyPlace]?
+    
+    
+//    var selectedRegion: RegionMyPlace = RegionMyPlace.init()
+//    var previousRegion: RegionMyPlace?
+    
+    
+    var packagesCount: Int? {
+        didSet {
+            if packagesCount == 0 {
+                
+                self.btnDesignsCount.setTitle("NO PACKAGES", for: .normal)
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+                self.btnDesignsCount.isUserInteractionEnabled = false
+                
+                self.btnNext.superview!.alpha = 0.4
+                
+                btnNext.isUserInteractionEnabled = self.btnNext.superview!.alpha == 1.0
+                
+            }else {
+                
+                self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", packagesCount!, packagesCount! == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
+
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+                
+                self.btnNext.superview!.alpha = 1.0
+                btnNext.isUserInteractionEnabled = self.btnNext.superview!.alpha == 1.0
+
+                self.btnDesignsCount.isUserInteractionEnabled = true
+                
+            }
+        }
+    }
+    
+    
+    var recentSearch: RecentSearchPopUp?
+    
+    
+    
+    //MARK: - ViewLife Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+                
+        CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_screen_loading)
+    
+        headerLogoText = "MyHome&Land"
+        
+        viewTag = 101
+        
+        pageUISetup ()
+        
+        if btnBack.isHidden {
+            showBackButton()
+            //            hideBackButton()
+            btnBack.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
+            btnBackFull.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
+        }
+        
+        addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, delegate: self)
+                
+        if let _ = AppConfigurations.shared.getHowDoesitWorkURLinHomeandLand() {
+//            self.btnHowWorks.isHidden = false
+        }else {
+            btnHowWorks.isHidden = true
+        }
+
+        
+        viewRecentSearch.isHidden = true
+        
+        breadcrumbView.delegate = self
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print(log: self.breadcrumbView.arrBreadCrumbs)
+        print(log: self.heightCollection?.constant as Any)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//        self.tabBarController?.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
+        if (self.priceRangeVC?.rangeslider.maximumValue ?? 0) > 1 {
+            self.filter.defaultPriceRange.priceStart = self.priceRangeVC?.rangeslider.minimumValue ?? 0
+            self.filter.defaultPriceRange.priceEnd = self.priceRangeVC?.rangeslider.maximumValue ?? 0
+            
+            self.filter.priceRange.priceStart = self.priceRangeVC?.rangeslider.lowerValue ?? self.priceRangeVC?.rangeslider.minimumValue ?? 0
+            self.filter.priceRange.priceEnd = self.priceRangeVC?.rangeslider.upperValue ?? self.priceRangeVC?.rangeslider.maximumValue ?? 0
+        }
+        
+        priceRangeVC?.searchType = SearchType.shared.homeLand
+        priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
+        priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
+        
+        priceRangeVC?.updateRangeSlider()
+        
+        
+        
+        getRegions ()
+        
+        
+        self.filter.searchType = SearchType.shared.homeLand
+
+//        self.searchType = SearchType.shared.homeLand
+        
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+//        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+//        self.tabBarController?.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+//
+//    }
+    
+    
+    //MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "priceRange" {
+            priceRangeVC = segue.destination as? PriceRangeVC
+            priceRangeVC?.searchType = SearchType.shared.homeLand
+            
+            priceRangeVC?.updatedPriceRangeValues = {
+                
+                if self.viewTag == 102 {
+
+                    self.filter.priceRange.priceStart = (self.priceRangeVC?.rangeslider.lowerValue)!
+                    self.filter.priceRange.priceEnd = (self.priceRangeVC?.rangeslider.upperValue)!
+                    
+                    self.myPlaceQuiz.priceRangeLow = "$\(self.filter.priceRange.priceStartStringValue)K"
+                    self.myPlaceQuiz.priceRangeHigh = "$\(self.filter.priceRange.priceEndStringValue)K"
+                    
+                    
+//                    self.labelInfo.text = self.myPlaceQuiz.filterStringDisplayHomes()
+                    
+                    self.addBreadCrumb(from: self.myPlaceQuiz.filterStringDisplayHomes())
+                    self.getPriceValues(after: 1)
+                    self.selectBreadCrumb ()
+                }
+            }
+            priceRangeVC?.tapedOnBarPriceRangeValues = {
+                
+                if self.viewTag == 102 {
+
+                    self.filter.priceRange.priceStart = (self.priceRangeVC?.rangeslider.lowerValue)!
+                    self.filter.priceRange.priceEnd = (self.priceRangeVC?.rangeslider.upperValue)!
+                    
+                    self.myPlaceQuiz.priceRangeLow = "$\(self.filter.priceRange.priceStartStringValue)K"
+                    self.myPlaceQuiz.priceRangeHigh = "$\(self.filter.priceRange.priceEndStringValue)K"
+                    
+//                    self.labelInfo.text = self.myPlaceQuiz.filterStringDisplayHomes()
+                    
+                    self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", self.priceRangeVC?.selectedBarValue as! CVarArg, self.priceRangeVC?.selectedBarValue == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
+
+                    self.addBreadCrumb(from: self.myPlaceQuiz.filterStringDisplayHomes())
+                    
+//                    self.getPriceValues(after: 1)
+                    
+                    self.selectBreadCrumb ()
+                }
+            }
+
+            
+        }else if segue.identifier == "recentSearch" {
+            
+            recentSearch = segue.destination as? RecentSearchPopUp
+        }
+    }
+    
+    
+    //MARK: - View UISetup
+    
+    func pageUISetup () {
+        
+        regionViewSetUp()
+        priceViewSetUp()
+        storeysViewSetUp()
+        bedroomViewSetUp()
+        
+        
+        
+        btnDesignsCount.setTitle("SKIP >", for: .normal)
+        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+        
+        setAppearanceFor(view: btnNext, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnPrevious, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+
+        //        arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
+        //        arrButtons.forEach({$0.setTitleColor(COLOR_DARK_GRAY, for: .normal)})
+        //
+        //        region_btnNorth.backgroundColor = COLOR_ORANGE
+        //        region_btnNorth.setTitleColor(COLOR_WHITE, for: .normal)
+        
+        
+        showHideAllViews ()
+    
+        
+//        let swipeRight = UISwipeGestureRecognizer (target: self, action: #selector(respondToSwipeGesture(gesture:)))
+//        swipeRight.direction = .right
+//        self.mainView.addGestureRecognizer(swipeRight)
+//
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+//        swipeLeft.direction = .left
+//        self.mainView.addGestureRecognizer(swipeLeft)
+
+    }
+    
+    func regionViewSetUp () {
+        
+        let str = "WHAT REGION ARE YOU\nLOOKING FOR YOUR NEW HOME?"
+        region_lBregion.text = str
+        
+        setAppearanceFor(view: region_lBregion, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_18))
+        
+    }
+    
+    
+    func storeysViewSetUp () {
+        
+        setAppearanceFor(view: storeys_lBstoreys, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        
+        storeys_iconSingle.image = UIImage(named: "Ico-Single")
+        storeys_iconDouble.image = UIImage(named: "Ico-Double")
+        storeys_iconNotSure.image = UIImage(named: "Ico-Question")
+
+        
+        setAppearanceFor(view: storeys_lBSingle, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
+        setAppearanceFor(view: storeys_lBDouble, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
+        setAppearanceFor(view: storeys_lBNotSure, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
+        
+        storeys_btnSingle.superview?.layer.cornerRadius = radius_5
+        storeys_btnDouble.superview?.layer.cornerRadius = radius_5
+        storeys_btnNotSure.superview?.layer.cornerRadius = radius_5
+        
+        
+        
+        setAppearanceFor(view: storeys_btnSingle.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: storeys_btnDouble.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: storeys_btnNotSure.superview!, backgroundColor: COLOR_WHITE)
+        
+    }
+    
+    
+    func priceViewSetUp () {
+        
+        setAppearanceFor(view: price_lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        
+//        setAppearanceFor(view: price_btnContinue, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+//        setAppearanceFor(view: price_btnSkip, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+//
+//        price_btnSkip.layer.cornerRadius = radius_5
+//        price_btnContinue.layer.cornerRadius = radius_5
+        
+    }
+    
+    func bedroomViewSetUp () {
+        
+        setAppearanceFor(view: bedrooms_lBbedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        
+        _ = setAttributetitleFor(view: bedrooms_btn3Bedrooms, title: "3\nBEDROOMS", rangeStrings: ["3","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+        
+        _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+      _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+
+        
+        bedrooms_btn3Bedrooms.superview?.layer.cornerRadius = radius_5
+        bedrooms_btn4Bedrooms.superview?.layer.cornerRadius = radius_5
+        bedrooms_btn5Bedrooms.superview?.layer.cornerRadius = radius_5
+        bedrooms_btnNotSure.superview?.layer.cornerRadius = radius_5
+
+
+        setAppearanceFor(view: bedrooms_btn3Bedrooms.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: bedrooms_btn4Bedrooms.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: bedrooms_btn5Bedrooms.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: bedrooms_btnNotSure.superview!, backgroundColor: COLOR_WHITE)
+
+    }
+    
+    
+    //MARK: - Button Actions
+    
+    
+    @IBAction func handleBackButton (_ sender: UIButton) {
+        
+        CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_back_button_touch)
+        
+        if viewTag == 101 {
+            
+            if (btnDesignsCount.title(for: .normal) == "SKIP >") {
+                
+                if navigationController?.viewControllers.count == 1 {
+                    self.tabBarController?.navigationController?.popViewController(animated: true)
+                }else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                self.filter = SortFilter ()
+                
+                selectStoreys ()
+                selectBedrooms()
+                
+                
+                return
+            }
+            
+            if self.btnBack.isHidden {
+                
+            } else {
+                
+                btnDesignsCount.setTitle("SKIP >", for: .normal)
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+
+                
+                myPlaceQuiz.region = nil
+                filter.region = RegionMyPlace()
+                filter.regionsArr = []
+
+                
+                if let _ = self.arrRegions {
+//                    self.filter.region = regions[0]
+//                    myPlaceQuiz.region = self.filter.region.regionName
+//                    self.filter.regionsArr =
+                    arrRegions?.forEach { $0.isSelected =  true ? false: $0.isSelected  }
+                    self.regionsTable.reloadData()
+                }
+
+                self.addBreadCrumb(from: myPlaceQuiz.filterStringDisplayHomes())
+//                self.labelInfo.text = myPlaceQuiz.filterStringDisplayHomes()
+                
+                selectBreadCrumb ()
+
+            }
+        }else if viewTag == 103 {
+            
+            myPlaceQuiz.storeysCount = nil
+            filter.storeysCount = .none
+                        
+            myPlaceQuiz.bedRoomCount = nil
+            filter.bedRoomsCount = .none
+
+//            myPlaceQuiz.priceRangeLow = nil
+//            myPlaceQuiz.priceRangeHigh = nil
+            
+            filter.priceRange = PriceRange()
+            
+            filter.defaultPriceRange = PriceRange ()
+
+        }else if viewTag == 104 {
+            
+            myPlaceQuiz.bedRoomCount = nil
+            filter.bedRoomsCount = .none
+            
+//            myPlaceQuiz.priceRangeLow = nil
+//            myPlaceQuiz.priceRangeHigh = nil
+            
+            filter.priceRange = PriceRange()
+            
+            filter.defaultPriceRange = PriceRange ()
+
+        }else if viewTag == 102 {
+            myPlaceQuiz.storeysCount = nil
+            filter.storeysCount = .none
+                        
+            myPlaceQuiz.bedRoomCount = nil
+            filter.bedRoomsCount = .none
+
+            myPlaceQuiz.priceRangeLow = nil
+            myPlaceQuiz.priceRangeHigh = nil
+            
+            filter.priceRange = PriceRange()
+            
+            filter.defaultPriceRange = PriceRange ()
+        }
+        
+        
+        
+        
+        if viewTag > 101 {
+            viewTag = viewTag - 1
+            
+            updateDesignsCount()
+
+        }else {
+            //            arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
+            //            arrButtons.forEach({$0.setTitleColor(COLOR_DARK_GRAY, for: .normal)})
+            //
+            //            region_btnNorth.backgroundColor = COLOR_ORANGE
+            //            region_btnNorth.setTitleColor(COLOR_WHITE, for: .normal)
+            
+        }
+        
+        //remove previous data
+        selectStoreys ()
+        selectBedrooms()
+
+        
+        
+        showHideAllViews ()
+        
+    }
+    
+    
+    
+    //    @IBAction func regionBtnClicked(_ sender: UIButton) {
+    //
+    //        arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
+    //        arrButtons.forEach({$0.setTitleColor(COLOR_DARK_GRAY, for: .normal)})
+    //
+    //        sender.backgroundColor = COLOR_ORANGE
+    //        sender.setTitleColor(COLOR_WHITE, for: .normal)
+    //
+    //        viewTag = minViewTag
+    //
+    //        anyButtonTapped(sender: sender)
+    //
+    //    }
+    
+    
+    @IBAction func anyButtonTapped(sender: UIButton) {
+        
+        
+        if sender == btnDesignsCount {
+            
+//            if Int(self.filter.region.regionId)! == 0 {
+//                showToast("Please select one region", self, .top)
+//                return
+//            }
+            
+            if viewTag == 101, !(btnDesignsCount.title(for: .normal)?.contains("SKIP TO"))! {
+
+                CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_skip_button_touch)
+                
+                viewTag = viewTag + 1
+
+                self.filter = SortFilter ()
+                
+                selectStoreys ()
+                selectBedrooms()
+                
+
+                updateDesignsCount()
+                
+                showHideAllViews ()
+            
+                return
+            }
+            
+            CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_totalDesigns_button_touch)
+            
+            
+            if filter.priceRange.priceStart == 0 || filter.priceRange.priceEnd == 1 {
+                
+//                getPriceRanges {
+                    self.moveToHomeLandListPage ()
+//                }
+            }else {
+                
+                self.moveToHomeLandListPage ()
+            }
+            
+            return
+        }
+                
+        
+        if btnBack.isHidden {
+            showBackButton()
+        }
+        
+        
+        CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_selectedAnswer_button_touch)
+        
+        if viewTag == 101 {
+            
+            myPlaceQuiz.region = sender.title(for: .normal)?.capitalized
+            filter.region = RegionMyPlace()
+            
+//            btnDesignsCount.setTitle("0 PACKAGES >", for: .normal)
+
+        }else if viewTag == 103 {
+            
+            
+            
+            
+            if sender == storeys_btnSingle {
+                
+                myPlaceQuiz.storeysCount = "SINGLE"
+                filter.storeysCount = .one
+            }else if sender == storeys_btnDouble {
+                
+                myPlaceQuiz.storeysCount = "DOUBLE"
+                filter.storeysCount = .two
+            }else if sender == storeys_btnNotSure {
+                
+                myPlaceQuiz.storeysCount = ""
+                filter.storeysCount = .ALL
+            }
+            
+            selectStoreys ()
+
+            
+            selectBedrooms()
+
+        }else if viewTag == 104 {
+            
+//            myPlaceQuiz.priceRangeLow = ""
+//            myPlaceQuiz.priceRangeHigh = ""
+//            
+//            filter.defaultPriceRange.priceStart = 0
+//            filter.defaultPriceRange.priceEnd = 1
+//
+//            
+//            filter.priceRange.priceStart = 0
+//            filter.priceRange.priceEnd = 1
+
+            
+            if sender == bedrooms_btn3Bedrooms {
+                
+                myPlaceQuiz.bedRoomCount = "3 BED"
+                filter.bedRoomsCount = .three
+                
+            }else if sender == bedrooms_btn4Bedrooms {
+                
+                myPlaceQuiz.bedRoomCount = "4 BED"
+                filter.bedRoomsCount = .four
+            }else if sender == bedrooms_btn5Bedrooms {
+                
+                myPlaceQuiz.bedRoomCount = "5+ BED"
+                filter.bedRoomsCount = .five
+            }else if sender == bedrooms_btnNotSure{
+                myPlaceQuiz.bedRoomCount = ""
+                filter.bedRoomsCount = .ALL
+            }
+            
+            selectBedrooms()
+            
+            getPriceRanges (nil)
+            
+        }else if viewTag == 102 {
+            
+            myPlaceQuiz.bedRoomCount = ""
+            filter.bedRoomsCount = .none
+
+            
+            myPlaceQuiz.priceRangeLow = ""
+            myPlaceQuiz.priceRangeHigh = ""
+            
+            filter.defaultPriceRange.priceStart = 0
+            filter.defaultPriceRange.priceEnd = 1
+
+            filter.priceRange.priceStart = 0
+            filter.priceRange.priceEnd = 1
+
+            
+//            if sender == price_btnContinue {
+//
+//                myPlaceQuiz.priceRangeLow = "$\(Int((priceRangeVC?.rangeslider.lowerValue)!))K"
+//                myPlaceQuiz.priceRangeHigh = "$\(Int((priceRangeVC?.rangeslider.upperValue)!))K"
+//
+//
+//                filter.priceRange.priceStart = priceRangeVC?.rangeslider.lowerValue ?? 0
+//                filter.priceRange.priceEnd = priceRangeVC?.rangeslider.upperValue ?? 1
+//
+//            }else if sender == price_btnSkip {
+//
+//                myPlaceQuiz.priceRangeLow = ""
+//                myPlaceQuiz.priceRangeHigh = ""
+//
+//                filter.priceRange.priceStart = priceRangeVC?.rangeslider.minimumValue ?? 0
+//                filter.priceRange.priceEnd = priceRangeVC?.rangeslider.maximumValue ?? 1
+//            }
+            
+        }
+        
+        
+        if viewTag > 104 {
+                        
+            moveToHomeLandListPage ()
+        }else {
+
+        }
+        
+        updateDesignsCount()
+        
+        
+        showHideAllViews ()
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+        {
+            switch swipeGesture.direction
+            {
+            case .right:
+                //write your logic for right swipe
+                print("Swiped right")
+                
+//                UIView.animate(withDuration: 5, animations: {
+                    
+                    self.handlePreviousNextButtonsAction(self.btnPrevious)
+//                }) { (completed) in
+//
+//                }
+                
+            case .left:
+                //write your logic for left swipe
+                print("Swiped left")
+                
+//                UIView.animateKeyframes(withDuration: 1, delay: 0, options: .calculationModeCubicPaced, animations: {
+                    
+                    self.handlePreviousNextButtonsAction (self.btnNext)
+
+//                }) { (completed) in
+//
+//                }
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    @IBAction func handlePreviousNextButtonsAction (_ sender: UIButton) {
+        
+        if sender == btnNext {
+            
+            CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_next_button_touch)
+            
+            if btnNext.isUserInteractionEnabled == true { }
+            else { return }
+        }else {
+            
+            CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_previous_button_touch)
+
+            if btnPrevious.isUserInteractionEnabled == true { }
+            else { return }
+        }
+        
+        
+        if sender == btnNext {
+            
+            if viewTag == 101 {
+                if let reg = myPlaceQuiz.region {
+                    if reg == "" {
+                        showToast("Please select region", self)
+                        return
+                    }
+                }else {
+                    showToast("Please select region", self)
+                    return
+                }
+            }else if viewTag == 103 {
+                if let storeysCount = myPlaceQuiz.storeysCount, self.filter.storeysCount == .none {
+                    if storeysCount == "" {
+                        showToast("Please select storeys", self)
+                        return
+                    }
+                }else {
+                    if self.filter.storeysCount == .none {
+                        showToast("Please select storeys", self)
+                        return
+                    }
+                }
+            }else if viewTag == 104 {
+                
+                if let bedRoomsCount = myPlaceQuiz.bedRoomCount, self.filter.bedRoomsCount == .none {
+                    if bedRoomsCount == "" {
+                        showToast("Please select bedrooms", self)
+                        return
+                    }
+                }else {
+                    if self.filter.bedRoomsCount == .none{
+                    showToast("Please select bedrooms", self)
+                    return
+                    }
+                }
+                
+                self.myPlaceQuiz.priceRangeLow = "$\(self.filter.priceRange.priceStartStringValue)K"
+                self.myPlaceQuiz.priceRangeHigh = "$\(self.filter.priceRange.priceEndStringValue)K"
+                
+                
+            }else if viewTag == 102 {
+                if let storeysCount = myPlaceQuiz.priceRangeLow {
+                    if storeysCount == "" {
+                        showToast("Please select price", self)
+                        return
+                    }
+                }else {
+                    showToast("Please select price", self)
+                    return
+                }
+            }
+            
+            if viewTag != 104 {
+                
+//                DashboardDataManagement.shared.getDesignsCount(filter: self.filter) { (count) in
+                    
+//                    self.btnDesignsCount.setTitle("\(count) PACKAGES >", for: .normal)
+                    self.viewTag = self.viewTag + 1
+                    self.showHideAllViews ()
+//                }
+                updateDesignsCount()
+            }else {
+                if packagesCount == 0 {
+                    showToast("Please choose other options", self)
+                    return
+                }
+                self.filter.defaultPriceRange.priceStart = self.filter.priceRange.priceStart
+                self.filter.defaultPriceRange.priceEnd = self.filter.priceRange.priceEnd
+                self.moveToHomeLandListPage()
+            }
+                        
+//            self.anyButtonTapped(sender: btnNext)
+            
+        }else {
+            
+            //            self.handleBackButton(btnPrevious)
+            
+            if viewTag == 101 {
+                
+                if (btnDesignsCount.title(for: .normal) == "SKIP >") {
+                    
+//                    if navigationController?.viewControllers.count == 1 {
+//                        self.tabBarController?.navigationController?.popViewController(animated: true)
+//                    }else {
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                    return
+                }
+                
+                if self.btnBack.isHidden {
+                    
+                } else {
+                    
+                    btnDesignsCount.setTitle("SKIP >", for: .normal)
+                    setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+
+                    myPlaceQuiz.region = nil
+                    filter.region = RegionMyPlace()
+                    
+                    
+                    if let _ = self.arrRegions {
+                        //                    self.filter.region = regions[0]
+                        //                    myPlaceQuiz.region = self.filter.region.regionName
+//                        self.filter.regionsArr = []
+                        self.regionsTable.reloadData()
+                    }
+                    
+                    self.addBreadCrumb(from: myPlaceQuiz.filterStringDisplayHomes())
+//                    self.labelInfo.text = myPlaceQuiz.filterStringDisplayHomes()
+                    
+                    selectBreadCrumb ()
+                }
+            }
+            
+            if viewTag > 101 {
+                viewTag = viewTag - 1
+            }else {
+                
+            }
+            
+            showHideAllViews ()
+        }
+    }
+    
+    
+    // MARK: - View Updates
+    
+    func updateDesignsCount () {
+        
+        _ = DashboardDataManagement.shared.getHomeLandFilterValues(with: self.filter) { (filterNew) in
+            
+            
+            if filterNew.defaultPriceRange.priceStart > 0 || filterNew.defaultPriceRange.priceEnd > 1 {
+                self.filter.defaultPriceRange = filterNew.defaultPriceRange
+                self.filter.priceRange = filterNew.priceRange
+            }
+
+            self.packagesCount = filterNew.priceRange.totalCount
+            
+            if self.filter.priceRange.totalCount !=  self.filter.priceRange.priceRangeCounts.reduce (0, +) {
+                self.filter.priceRange.priceRangeCounts[0] = self.filter.priceRange.priceRangeCounts[0] + 1
+            }
+            
+
+            
+            self.priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
+            self.priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
+            
+            self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
+            
+        }
+        
+                
+//        DashboardDataManagement.shared.getDesignsCount(filter: self.filter) { (count) in
+//
+//            self.packagesCount = count
+////            self.btnDesignsCount.setTitle("\(count) PACKAGES >", for: .normal)
+//
+//        }
+    }
+    
+    
+    
+    
+    func selectAllViewsBasedonFilter () {
+        
+        let regionsArr =  filter.regionsArr.map{ $0.regionName }
+        print("----1-1-1-1-1,",regionsArr)
+        let regions = regionsArr.joined(separator: ",")
+        print("----1-1-1-1-1,",regions)
+              
+        if filter.regionsArr.count == arrRegions?.count{
+            myPlaceQuiz.region = "All regions"
+        }
+        else{
+            myPlaceQuiz.region = regions
+        }
+        
+        if filter.storeysCount == .one {
+            
+            myPlaceQuiz.storeysCount = "SINGLE"
+        }else if filter.storeysCount == .two {
+            
+            myPlaceQuiz.storeysCount = "DOUBLE"
+        }else {
+            
+            myPlaceQuiz.storeysCount = ""
+        }
+        
+        
+        if filter.bedRoomsCount == .three {
+            
+            myPlaceQuiz.bedRoomCount = "3 BED"
+        }else if filter.bedRoomsCount == .four {
+            
+            myPlaceQuiz.bedRoomCount = "4 BED"
+        }else if filter.bedRoomsCount == .five {
+            
+            myPlaceQuiz.bedRoomCount = "5+ BED"
+        }else if filter.bedRoomsCount == .ALL {
+            myPlaceQuiz.bedRoomCount = ""
+        }
+        
+        
+        if self.filter.priceRange.priceStart == 0 {
+            myPlaceQuiz.priceRangeLow = ""
+            myPlaceQuiz.priceRangeHigh = ""
+        }else {
+            myPlaceQuiz.priceRangeLow = "$\(self.filter.priceRange.priceStartStringValue)K"
+            myPlaceQuiz.priceRangeHigh = "$\(self.filter.priceRange.priceEndStringValue)K"
+        }
+        
+        /*
+         
+         
+         
+         */
+        
+        
+        self.regionsTable.reloadData()
+        
+        selectStoreys()
+        
+        selectBedrooms()
+        
+        self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
+    }
+    
+    
+    func selectStoreys () {
+        
+        storeysViewSetUp()
+        
+        if self.filter.storeysCount == .one {
+            
+            storeys_btnSingle.superview?.backgroundColor = COLOR_ORANGE
+            storeys_iconSingle.image = UIImage(named: "Ico-SingeWhite")
+            storeys_lBSingle.textColor = COLOR_WHITE
+        }else if self.filter.storeysCount == .two {
+            
+            storeys_btnDouble.superview?.backgroundColor = COLOR_ORANGE
+            storeys_iconDouble.image = UIImage(named: "Ico-DoubleWhite")
+
+            storeys_lBDouble.textColor = COLOR_WHITE
+        }else if self.filter.storeysCount == .ALL {
+
+            storeys_btnNotSure.superview?.backgroundColor = COLOR_ORANGE
+            storeys_iconNotSure.image = UIImage(named: "Ico-FaqWhite")
+            storeys_lBNotSure.textColor = COLOR_WHITE
+        }
+
+    }
+    
+    func selectBedrooms () {
+        
+        bedroomViewSetUp()
+        
+        if self.filter.bedRoomsCount == .three {
+            
+            bedrooms_btn3Bedrooms.superview?.backgroundColor = COLOR_ORANGE
+            _ = setAttributetitleFor(view: bedrooms_btn3Bedrooms, title: "3\nBEDROOMS", rangeStrings: ["3","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            
+        }else if self.filter.bedRoomsCount == .four {
+            
+            bedrooms_btn4Bedrooms.superview?.backgroundColor = COLOR_ORANGE
+            _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+
+        }else if self.filter.bedRoomsCount == .five {
+            
+            bedrooms_btn5Bedrooms.superview?.backgroundColor = COLOR_ORANGE
+            _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+        }else if self.filter.bedRoomsCount == .ALL{
+            bedrooms_btnNotSure.superview?.backgroundColor = COLOR_ORANGE
+            _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [COLOR_DARK_GRAY, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+        }
+
+    }
+    
+    
+    func showHideAllViews () {
+        
+        self.btnNext.superview!.alpha = viewTag > 104 ? 0.4 : 1.0
+                
+        self.btnPrevious.superview!.alpha = viewTag == 101 ? 0.4 : 1.0
+        
+        
+        btnNext.isUserInteractionEnabled = self.btnNext.superview!.alpha == 1.0
+        btnPrevious.isUserInteractionEnabled = self.btnPrevious.superview!.alpha == 1.0
+        
+        
+        
+        print("viewTag: \(viewTag)")
+        
+        regionView.isHidden = true
+        storeysView.isHidden = true
+        bedroomsView.isHidden = true
+        priceView.isHidden = true
+        
+        view.viewWithTag(viewTag)?.isHidden = false
+         view.bringSubviewToFront(view.viewWithTag(viewTag)!)
+        
+        self.addBreadCrumb(from: myPlaceQuiz.filterStringDisplayHomes())
+//        self.labelInfo.text = myPlaceQuiz.filterStringDisplayHomes()
+                
+        //        showHideHeaderOptions()
+        selectBreadCrumb ()
+    }
+    
+    func selectBreadCrumb () {
+        
+        if viewTag == 101 {
+            breadcrumbView.changeColorForSelectedBreadCrumb(myPlaceQuiz.region ?? "")
+        }else if viewTag == 103 {
+            breadcrumbView.changeColorForSelectedBreadCrumb(myPlaceQuiz.storeysCount ?? "")
+        }else if viewTag == 104 {
+            breadcrumbView.changeColorForSelectedBreadCrumb(myPlaceQuiz.bedRoomCount ?? "")
+        }else if viewTag == 102 {
+            breadcrumbView.changeColorForSelectedBreadCrumb(((myPlaceQuiz.priceRangeLow ?? "") + "-" + (myPlaceQuiz.priceRangeHigh ?? "")))
+        }
+        
+    }
+    
+    
+    func getRegions () {
+        
+        if let regions = kStateRegions {
+            
+            
+            for region in regions {
+                if self.filter.regionsArr.contains(where: {$0.regionName == region.regionName}){
+                    region.isSelected = true
+                }
+                
+            }
+            self.arrRegions = regions
+         //   self.filter.regionsArr = []
+//            self.filter.region = regions[0]
+//            myPlaceQuiz.region = self.filter.region.regionName
+                
+            self.layoutTable ()
+        }else {
+            
+            DashboardDataManagement.shared.getRegions(stateId: kUserState, showActivity: true) { (regions) in
+                
+                
+                if let reg = regions {
+                    
+                    self.arrRegions = reg
+                    self.filter.regionsArr = []
+//                    self.filter.region = reg[0]
+//                    self.myPlaceQuiz.region = self.filter.region.regionName
+                }
+                
+                self.layoutTable ()
+            }
+            
+        }
+        
+    }
+    
+    func layoutTable () {
+        
+        self.region_lBregion.layoutIfNeeded()
+        self.regionView.layoutIfNeeded()
+        
+        self.regionsTable.reloadData()
+        self.regionsTable.layoutIfNeeded()
+        
+        
+        self.regionsTable.isScrollEnabled = true
+        
+        let maxHeight = self.mainView.frame.size.height - (0 + self.regionsTable.frame.origin.y + 0)
+        
+        
+        regionTableHeight.constant = self.regionsTable.contentSize.height
+        
+        if let regions = arrRegions {
+            
+            regionTableHeight.constant = cellHeight*CGFloat((regions.count)) + 10.0*CGFloat((regions.count))
+            
+            
+            if (/*regionsTable.frame.origin.y*/ 0 + regionTableHeight.constant + 0) > maxHeight {
+                
+                regionTableHeight.constant = (maxHeight - 0)
+                
+            }else {
+                self.regionsTable.isScrollEnabled = false
+            }
+        }else {
+            regionTableHeight.constant = 0
+        }
+        
+//        regionView.backgroundColor = .blue
+//        regionsTable.backgroundColor = .yellow
+//
+//        mainView.backgroundColor = .cyan
+        
+    }
+    
+    func moveToHomeLandListPage (_ favorites: Bool = false) {
+        
+        let homeLand = kStoryboardMain.instantiateViewController(withIdentifier: "HomeLandVC") as! HomeLandVC
+
+        homeLand.myPlaceQuiz = MyPlaceQuiz ()
+        homeLand.arrRegions = arrRegions
+        homeLand.filter = filter.newFilter()
+        
+        if (self.filter.priceRange.priceStart != self.filter.defaultPriceRange.priceStart) || (self.filter.priceRange.priceEnd != self.filter.defaultPriceRange.priceEnd) {
+        
+            homeLand.filter.defaultPriceRange.priceStart = self.filter.priceRange.priceStart
+            homeLand.filter.defaultPriceRange.priceEnd = self.filter.priceRange.priceEnd
+        }
+        
+//        homeLand.quizPriceMinimumValue = myPlaceQuiz.sortfilter.priceRange.priceStart ?? "100"
+//        homeLand.quizPriceMaximumValue = myPlaceQuiz.sortfilter.priceRange.priceEnd ?? "500"
+        
+        homeLand.isFavoritesService = favorites
+        
+        if favorites {
+            homeLand.isFromProfileFavorites = true
+            
+            homeLand.filter = SortFilter ()
+        }
+
+//        homeLand.getDefaultPriceRanges(stateId: kUserState, region: self.filter.region)
+        
+        self.navigationController?.pushViewController(homeLand, animated: true)
+        
+    }
+    
+    
+    //MARK: - perform selector
+
+    func getPriceValues (after: TimeInterval) {
+        cancelPreviousSelector()
+        perform(#selector(getPriceRangesForSliderChanges), with: nil, afterDelay: after)
+    }
+    
+    func cancelPreviousSelector () {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(getPriceRangesForSliderChanges), object: nil)
+    }
+    
+    
+}
+
+
+
+//MARK: - Delegates
+
+extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCDelegate, HeaderBreadCrumpDelegate {
+    
+    // MARK: - TableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrRegions?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RegionTableViewCell", for: indexPath) as! RegionTableViewCell
+        
+        let region = arrRegions![indexPath.row]
+        
+        cell.titleLabel.text = region.regionName.uppercased()
+        
+       // cell.selectedRegion = filter.region.regionId == region.regionId
+        
+      /*  if filter.region.regionName == region.regionName{
+            cell.titleLabel.textColor = COLOR_WHITE
+            cell.titleLabel.backgroundColor = COLOR_ORANGE
+        }else{
+            cell.titleLabel.textColor = COLOR_BLACK
+            cell.titleLabel.backgroundColor = COLOR_WHITE
+        }*/
+        
+        if region.isSelected{
+            cell.titleLabel.textColor = COLOR_WHITE
+            cell.titleLabel.backgroundColor = COLOR_ORANGE
+        }else{
+            cell.titleLabel.textColor = COLOR_BLACK
+            cell.titleLabel.backgroundColor = COLOR_WHITE
+
+        }
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //MARK: changed region to multiple selection in v2.3
+//        filter.regionsArr = [] v2.2
+        filter.region = arrRegions![indexPath.row]
+//        filter.regionsArr.append(filter.region) v2.2
+        if arrRegions?[indexPath.row].isSelected == true{
+            arrRegions?[indexPath.row].isSelected = false
+            let index = filter.regionsArr.firstIndex(where: { $0.regionName == filter.region.regionName  })
+//            filter({ $0.regionName == filter.region.regionName  })
+            print(index)
+            filter.regionsArr.remove(at: index ?? 0)
+        }  else{
+            arrRegions?[indexPath.row].isSelected = true
+            filter.regionsArr.append(filter.region)
+        }
+        
+        
+        tableView.reloadData()
+        
+        viewTag = minViewTag
+        
+        let regionsArr =  filter.regionsArr.map{ $0.regionName }
+        print("----1-1-1-1-1,",regionsArr)
+        let regions = regionsArr.joined(separator: ",")
+        print("----1-1-1-1-1,",regions)
+        if filter.regionsArr.count == arrRegions?.count{
+            myPlaceQuiz.region = "All regions"
+        }
+        else{
+            myPlaceQuiz.region = regions
+        }
+//        filter.region = selectedRegion
+        
+        
+        myPlaceQuiz.storeysCount = ""
+        filter.storeysCount = .none
+
+        
+        myPlaceQuiz.bedRoomCount = ""
+        filter.bedRoomsCount = .none
+
+        
+        myPlaceQuiz.priceRangeLow = ""
+        myPlaceQuiz.priceRangeHigh = ""
+
+        filter.defaultPriceRange.priceStart = 0
+        filter.defaultPriceRange.priceEnd = 1
+
+        
+        filter.priceRange.priceStart = 0
+        filter.priceRange.priceEnd = 1
+
+        
+        selectStoreys ()
+        
+        selectBedrooms()
+
+        
+        updateDesignsCount()
+        
+        
+        self.addBreadCrumb(from: self.myPlaceQuiz.filterStringDisplayHomes())
+//        self.labelInfo.text = self.myPlaceQuiz.filterStringDisplayHomes()
+        
+        selectBreadCrumb ()
+
+    }
+    
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight + 10
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight + 10
+    }
+    
+    //MARK: HeaderView
+    
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
+        
+        if sort {
+            
+        }
+        
+        if map {
+            
+            
+        }
+        
+        if favourites {
+            CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_favourites_button_touch)
+            moveToHomeLandListPage (true)
+        }
+        
+        if howWorks {
+            
+            if let url = AppConfigurations.shared.getHowDoesitWorkURLinHomeandLand(), let _ = URL(string: url) {
+                print(log: url)
+                playVideoIn(self, url)
+            }
+            
+            CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_howDoesItWork_button_touch)
+        }
+        
+    }
+    
+    //MARK: BreadCrumb
+    
+    func selectedBreadCrumb(_ str: String) {
+        print("\(myPlaceQuiz.storeysCount) == \(str)")
+        print("\(myPlaceQuiz.bedRoomCount) == \(str)")
+        print("\(myPlaceQuiz.region) == \(str)")
+        print("\((myPlaceQuiz.priceRangeLow ?? "") + "-" + (myPlaceQuiz.priceRangeHigh ?? "")) == \(str)")
+        
+        if myPlaceQuiz.region == str.capitalized {
+            viewTag = 101
+        }else if myPlaceQuiz.storeysCount == str.uppercased() {
+            viewTag = 103
+        }else if myPlaceQuiz.bedRoomCount == str.uppercased() {
+            viewTag = 104
+        }else if ((myPlaceQuiz.priceRangeLow ?? "") + "-" + (myPlaceQuiz.priceRangeHigh ?? "")) == str {
+            viewTag = 102
+        }
+        
+        showHideAllViews ()
+
+    }
+    
+}
+
+//MARK: - APIs
+
+extension HomeLandVCSurvey {
+    
+    @objc func getPriceRangesForSliderChanges () {
+                        
+        for task in NetworkingManager.shared.arrayPriceRangeTasks {
+            if (task as AnyObject).isKind(of: URLSessionDataTask.self), (task as! URLSessionDataTask).state == .running {
+                (task as! URLSessionDataTask).cancel()
+            }
+        }
+        
+        let datatask = DashboardDataManagement.shared.getHomeLandFilterValues(with: self.filter) { (filterNew) in
+            
+            self.filter.priceRange.priceRangeCounts = filterNew.priceRange.priceRangeCounts
+            self.filter.priceRange.totalCount = filterNew.priceRange.totalCount
+            
+            self.packagesCount = filterNew.priceRange.totalCount
+            
+            
+            if self.filter.priceRange.totalCount !=  self.filter.priceRange.priceRangeCounts.reduce (0, +) {
+                self.filter.priceRange.priceRangeCounts[0] = self.filter.priceRange.priceRangeCounts[0] + 1
+            }
+            
+            
+            self.priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
+            self.priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
+            
+            self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
+        }
+        
+        if let task = datatask {
+            NetworkingManager.shared.arrayPriceRangeTasks.add(task)
+        }
+        
+    }
+    
+    
+    func getPriceRanges ( _ succe: (() -> Void)?) {
+                
+        
+        DashboardDataManagement.shared.getPriceRanges(filter: self.filter) { (priceRange) in
+            
+            if let range = priceRange {
+                
+                self.filter.defaultPriceRange = range
+                
+                self.filter.priceRange.priceStart = range.priceStart
+                self.filter.priceRange.priceEnd = range.priceEnd
+                                
+                
+                self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
+                
+//                if self.viewTag != 104 {
+//                    self.viewTag = self.viewTag + 1
+//                }
+//
+//                self.showHideAllViews ()
+                
+//                self.priceRangeVC?.updateRangeSlider()
+                
+                if let succ = succe {
+                    succ ()
+                }
+                
+            }
+        }
+        
+//        viewTag = viewTag - 1
+    }
+    
+}
