@@ -49,7 +49,7 @@ class DesignsVC: HeaderVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        headerLogoText = "HomeDesigns"
+        headerLogoText = "MyCollection"
         isFromProfile = true
         
         //        if isFromCollection {
