@@ -2612,7 +2612,7 @@ adipiscing elitsed</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="lGu-fo-6pd" firstAttribute="centerY" secondItem="Ktr-Bi-TYc" secondAttribute="centerY" id="JKn-UY-amq"/>
                                     <constraint firstItem="VIL-md-4HN" firstAttribute="centerY" secondItem="Ktr-Bi-TYc" secondAttribute="centerY" id="Qyg-Uk-29J"/>
@@ -2747,6 +2747,7 @@ adipiscing elitsed</string>
                         <outlet property="searchBar" destination="fAA-6Q-auS" id="RK3-cK-iAC"/>
                         <outlet property="searchBarHeight" destination="0rz-Tu-tQ9" id="sDR-bc-Y4G"/>
                         <outlet property="tableView" destination="cf2-Ah-iKF" id="yhg-Lk-LPz"/>
+                        <outlet property="viewFavouritesContainerView" destination="Ktr-Bi-TYc" id="qza-lN-KYS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKG-vs-fFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3707,14 +3708,6 @@ adipiscing elitsed</string>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="height" constant="170" id="zNE-JB-J8F"/>
                                                                                                     </constraints>
-                                                                                                    <userDefinedRuntimeAttributes>
-                                                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                                            <color key="value" name="orangeColor"/>
-                                                                                                        </userDefinedRuntimeAttribute>
-                                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                                            <integer key="value" value="2"/>
-                                                                                                        </userDefinedRuntimeAttribute>
-                                                                                                    </userDefinedRuntimeAttributes>
                                                                                                 </view>
                                                                                             </subviews>
                                                                                         </stackView>
@@ -5425,6 +5418,9 @@ Tap below to see all.</string>
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

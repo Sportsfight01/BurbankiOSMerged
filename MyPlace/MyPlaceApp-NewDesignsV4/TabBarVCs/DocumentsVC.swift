@@ -16,7 +16,6 @@ enum DifSection{
 }
 
 
-@available(iOS 13.0, *)
 class DocumentsVC: UIViewController {
     
     //MARK: - Properties
@@ -49,6 +48,16 @@ class DocumentsVC: UIViewController {
             tableView.separatorColor = .clear
         }
     }
+    @IBOutlet weak var viewFavouritesContainerView: UIView!{
+        didSet{
+            if #available(iOS 13.0, *) {
+                viewFavouritesContainerView.backgroundColor = .systemGray6
+            } else {
+                viewFavouritesContainerView.backgroundColor = .lightGray
+            }
+            
+        }
+    }
     let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     var documentList : [DocumentsDetailsStruct]?
     var tableDataSource : [DocumentsDetailsStruct]?
@@ -61,7 +70,7 @@ class DocumentsVC: UIViewController {
     @available(iOS 13.0, *)
     typealias SnapShot = NSDiffableDataSourceSnapshot<DifSection ,DocumentsDetailsStruct>
 
-    public lazy var dataSource = makeDataSource()
+    //    public var dataSource : DataSource?
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +86,11 @@ class DocumentsVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         setupProfile()
-      //  if #available(iOS 13.0, *) {
+        if #available(iOS 13.0, *) {
             tableView.backgroundColor = .systemGray6
-        // }
+        }else{
+            tableView.backgroundColor = .lightGray
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -189,7 +200,7 @@ class DocumentsVC: UIViewController {
         var snapShot = SnapShot()
         snapShot.appendSections([.first])
         snapShot.appendItems(array)
-        dataSource.apply(snapShot, animatingDifferences: true)
+        makeDataSource().apply(snapShot, animatingDifferences: true)
     }
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         

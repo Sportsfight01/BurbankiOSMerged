@@ -83,6 +83,11 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         myTabBarItem5.title = "FINANCE"
   //    myTabBarItem5.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 6)
      //   myTabBarItem5.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        let selectedColor   = AppColors.appOrange
+        let unselectedColor = AppColors.appGray
+
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: unselectedColor], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: selectedColor], for: .selected)
         
     }
 

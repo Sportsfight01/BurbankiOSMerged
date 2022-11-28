@@ -18,8 +18,9 @@ class FinanceDetailVC: UIViewController {
         {
             let currentDate = Date()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy"
+            dateFormatter.dateFormat = "EEEE, dd/MM/yyyy"
             let str = dateFormatter.string(from: currentDate)
+            lb_lastUpdated.font = UIFont.systemFont(ofSize: 14,weight: .medium)
             lb_lastUpdated.text = "Last Updated \(str)"
         }
     }
