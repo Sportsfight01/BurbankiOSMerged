@@ -134,6 +134,12 @@ extension StateSelectionVC: UITableViewDelegate, UITableViewDataSource {
         }else {
             cell.viewS.backgroundColor = COLOR_CLEAR
             cell.lBTitle.textColor = COLOR_DARK_GRAY
+            if #available(iOS 13.0, *) {
+                cell.viewS.cardView(cornerRadius: radius_5, shadowOpacity: 0.3, shadowColor: UIColor.systemGray3.cgColor)
+            } else {
+                // Fallback on earlier versions
+                cell.viewS.cardView(cornerRadius: radius_5, shadowOpacity: 0.3)
+            }
         }
         
         //        cell.lBTitle.frame = CGRect.init(x: 2, y: 2, width: cell.frame.size.width - 4, height: cell.frame.size.height - 4 - 4)
@@ -176,10 +182,10 @@ class StateSelection: UITableViewCell {
         
         setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         
-        viewS.layer.cornerRadius = radius_3
-        viewS.clipsToBounds = true
-        
-        setBorder(view: viewS, color: COLOR_ORANGE, width: 1.0)
+//        viewS.layer.cornerRadius = radius_3
+      //  viewS.clipsToBounds = true
+        viewS.cardView(cornerRadius: radius_5)
+       // setBorder(view: viewS, color: COLOR_ORANGE, width: 1.0)
         
     }
     

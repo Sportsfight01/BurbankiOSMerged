@@ -180,6 +180,13 @@ class RegionTableViewCell: UITableViewCell {
             }else {
                 titleLabel.textColor = COLOR_BLACK
                 titleLabel.backgroundColor = COLOR_WHITE
+                if #available(iOS 13.0, *) {
+                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.3, shadowColor: UIColor.systemGray3.cgColor)
+                } else {
+                    // Fallback on earlier versions
+                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.3)
+                }
+                
             }
         }
     }
@@ -190,12 +197,15 @@ class RegionTableViewCell: UITableViewCell {
         // Initialization code
         
         setAppearanceFor(view: titleLabel, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_14))
-        
-        titleLabel.layer.cornerRadius = radius_5
-        
-        setBorder(view: titleLabel, color: COLOR_ORANGE, width: 1.0)
-        
-        titleLabel.clipsToBounds = true
+////
+//        titleLabel.layer.cornerRadius = radius_5
+//
+//        setBorder(view: titleLabel, color: COLOR_ORANGE, width: 1.0)
+//
+//        titleLabel.clipsToBounds = true
+      
+          // titleLabel.cardView(cornerRadius: radius_5)
+     
     }
     
     

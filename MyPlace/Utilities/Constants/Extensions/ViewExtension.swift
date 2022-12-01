@@ -89,6 +89,23 @@ extension UIView {
             alpha = 0.0
         }
     }
+    
+    
+    func cardView(cornerRadius : CGFloat = 5.0 , shadowRadius : CGFloat = 6.0 , shadowOpacity : Float = 0.7, shadowColor : CGColor = UIColor.lightGray.cgColor)
+    {
+        self.backgroundColor = .white
+        
+        self.layer.cornerRadius = cornerRadius
+        
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        
+        self.layer.shadowRadius = shadowRadius
+        
+        self.layer.shadowOpacity = shadowOpacity
+        
+    }
 }
 
 extension NSLayoutConstraint {

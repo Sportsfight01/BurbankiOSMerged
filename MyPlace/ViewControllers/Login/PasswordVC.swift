@@ -48,21 +48,27 @@ class PasswordVC: UIViewController {
     
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
-        setAppearanceFor(view: labelEnter, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: labelEnter, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_13))
         
         setAppearanceFor(view: txtEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: txtPassword, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
-        setAppearanceFor(view: btnLogin, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: btnForgot, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: btnLogin, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnForgot, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         
-        viewEmailText.layer.cornerRadius = radius_5
-        viewPasswordText.layer.cornerRadius = radius_5
+        [viewEmailText , viewPasswordText].forEach({ view in
+            if #available(iOS 13.0, *) {
+                view?.cardView(cornerRadius: radius_5, shadowOpacity: 0.3, shadowColor: UIColor.systemGray3.cgColor)
+            } else {
+                // Fallback on earlier versions
+                view?.cardView(cornerRadius: radius_5, shadowOpacity: 0.3)
+            }
+        })
         btnLogin.layer.cornerRadius = radius_5
         
     }

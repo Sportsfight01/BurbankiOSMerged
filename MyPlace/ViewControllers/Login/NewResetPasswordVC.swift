@@ -55,24 +55,33 @@ class NewResetPasswordVC: UIViewController {
     
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
-        setAppearanceFor(view: labelReset, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: labelReset, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_13))
         
         setAppearanceFor(view: txtOTP, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: txtNewPassword, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: txtConfirmPassword, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
-        setAppearanceFor(view: btnNext, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: btnResend, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: btnNext, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnResend, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         
         
-        viewOTPText.layer.cornerRadius = radius_5
-        viewNewPasswordText.layer.cornerRadius = radius_5
-        viewConfirmPasswordText.layer.cornerRadius = radius_5
+//        viewOTPText.layer.cornerRadius = radius_5
+//        viewNewPasswordText.layer.cornerRadius = radius_5
+//        viewConfirmPasswordText.layer.cornerRadius = radius_5
+        
+        [viewOTPText,viewNewPasswordText,viewConfirmPasswordText].forEach { view in
+            if #available(iOS 13.0, *) {
+                view?.cardView(cornerRadius: radius_5, shadowOpacity: 0.3, shadowColor: UIColor.systemGray3.cgColor)
+            } else {
+                // Fallback on earlier versions
+                view?.cardView(cornerRadius: radius_5, shadowOpacity: 0.3)
+            }
+        }
         
         btnNext.layer.cornerRadius = radius_5
         

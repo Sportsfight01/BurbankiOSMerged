@@ -32,7 +32,7 @@ class H_LQuiz: HeaderVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         
         
                 
-        headerLogoText = "MyHome&Land"
+        headerLogoText = "House&Land"
                 
         if btnBack.isHidden {
             showBackButton()

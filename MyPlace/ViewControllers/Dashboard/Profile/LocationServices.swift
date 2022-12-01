@@ -22,29 +22,31 @@ class LocationServices: NSObject, CLLocationManagerDelegate {
     }
     
     func onLocationService () {
-        
-        if CLLocationManager.locationServicesEnabled() == true {
-            //settings
-            switch authorizationStatus() {
-            case .restricted, .denied :
-                print(log: "removed access")
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() == true {
+                //settings
+                switch self.authorizationStatus() {
+                case .restricted, .denied :
+                    print(log: "removed access")
+                    self.offLocationServices ()
+                    
+                case .authorizedAlways, .authorizedWhenInUse :
+                    print(log: "Access available")
+
+                case .notDetermined:
+                    print(log: "Not determined")
+                    self.requestUsertoAllowLocationPermissions()
+                    
+                default:
+                    print(log: "Default")
+
+                }
+            }else {
+                
                 self.offLocationServices ()
-                
-            case .authorizedAlways, .authorizedWhenInUse :
-                print(log: "Access available")
-
-            case .notDetermined:
-                print(log: "Not determined")
-                self.requestUsertoAllowLocationPermissions()
-                
-            default:
-                print(log: "Default")
-
             }
-        }else {
-            
-            offLocationServices ()
         }
+
     }
     
     

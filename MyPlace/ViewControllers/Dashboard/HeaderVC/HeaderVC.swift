@@ -102,25 +102,29 @@ class HeaderVC: UIViewController {
     
     var headerLogoText: String? {
         didSet {
-            if self.headerLogoText!.contains("My") {
-                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["My"], colors: [COLOR_BLACK], fonts: [logoFont], alignmentCenter: false)
-            } else if  self.headerLogoText!.contains("Displays") {
-                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Displays"], colors: [COLOR_BLACK], fonts: [logoFont], alignmentCenter: false)
-            }
-            else if  self.headerLogoText!.contains("Home") {
-                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Home"], colors: [COLOR_BLACK], fonts: [logoFontRegular], alignmentCenter: false)
-            }
-            else if  self.headerLogoText!.contains("Designs") {
-                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Designs"], colors: [COLOR_BLACK], fonts: [logoFontSubHedding], alignmentCenter: false)
-            }
-            else{
-                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: [""], colors: [COLOR_WHITE], fonts: [logoFont], alignmentCenter: false)
-            }
+            
+            setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size : 30))
+            logoLabel.text = headerLogoText
+            
+//            if self.headerLogoText!.contains("My") {
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["My"], colors: [COLOR_BLACK], fonts: [logoFont], alignmentCenter: false)
+//            } else if  self.headerLogoText!.contains("Displays") {
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Displays"], colors: [COLOR_BLACK], fonts: [logoFont], alignmentCenter: false)
+//            }
+//            else if  self.headerLogoText!.contains("Home") {
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Home"], colors: [COLOR_BLACK], fonts: [logoFontRegular], alignmentCenter: false)
+//            }
+//            else if  self.headerLogoText!.contains("Designs") {
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Designs"], colors: [COLOR_BLACK], fonts: [logoFontSubHedding], alignmentCenter: false)
+//            }
+//            else{
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: [""], colors: [COLOR_WHITE], fonts: [logoFont], alignmentCenter: false)
+//            }
         }
     }
     
@@ -270,8 +274,8 @@ class HeaderVC: UIViewController {
     
      func addHeaderView () {
         
-        headerView_header.backgroundColor = COLOR_ORANGE
-        headerView_header.tintColor = COLOR_ORANGE
+         headerView_header.backgroundColor = AppColors.white
+        //headerView_header.tintColor = COLOR_ORANGE
         
         headerView_header.translatesAutoresizingMaskIntoConstraints = false
         
@@ -409,6 +413,7 @@ class HeaderVC: UIViewController {
         
         
         btnBack.setBackgroundImage(imageBack, for: .normal)
+        btnBack.tintColor = AppColors.darkGray
         btnBack.clipsToBounds = true
         btnBack.isHidden = true
         headerView_header.addSubview(btnBack)
@@ -683,7 +688,7 @@ extension HeaderVC {
                 
             } else {
                 
-                setAppearanceFor(view: btnSortFilter, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_12))
+                setAppearanceFor(view: btnSortFilter, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_12))
                 containerViewSortFilter!.isHidden = true
             }
         }
@@ -786,7 +791,7 @@ extension HeaderVC {
         optionsView.addSubview(btnSortFilter)
         
         btnSortFilter.setTitle("  SORT / FILTER  ", for: .normal)
-        setAppearanceFor(view: btnSortFilter, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnSortFilter, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
     
@@ -795,7 +800,7 @@ extension HeaderVC {
         optionsView.addSubview(btnMap)
         
         btnMap.setTitle("     MAP     ", for: .normal)
-        setAppearanceFor(view: btnMap, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnMap, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnMap.addTarget(self, action: #selector(handleMapAction), for: .touchUpInside)
     }
     

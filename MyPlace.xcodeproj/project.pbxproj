@@ -16,6 +16,8 @@
 		1BEBA0958985D5B3B9BBFEC0 /* Pods_BurbankApp_MyPlaceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */; };
 		259621B9274C9F4A0085D46C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
+		42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7E829349BD80038179F /* Assets.xcassets */; };
+		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
 		6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */; };
 		A144018F27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist in Resources */ = {isa = PBXBuildFile; fileRef = A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */; };
@@ -311,7 +313,6 @@
 		D188C62C2424D37600DFE678 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188C60C2424D37500DFE678 /* SignInVC.swift */; };
 		D188C62D2424D37600DFE678 /* UserPreferenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188C60D2424D37500DFE678 /* UserPreferenceVC.swift */; };
 		D188C62E2424D37600DFE678 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188C60E2424D37500DFE678 /* CreateAccountVC.swift */; };
-		D188C62F2424D37600DFE678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D188C6102424D37500DFE678 /* Assets.xcassets */; };
 		D188C6302424D37600DFE678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D188C6112424D37500DFE678 /* LaunchScreen.storyboard */; };
 		D188C6342424D37600DFE678 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188C61A2424D37500DFE678 /* ActivityManager.swift */; };
 		D188C6362424D37600DFE678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188C61C2424D37500DFE678 /* SceneDelegate.swift */; };
@@ -324,7 +325,6 @@
 		D28F895E2671D9AC00737035 /* DisplayHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28F895D2671D9AC00737035 /* DisplayHomeModel.swift */; };
 		ED1E952B2500E89000343B10 /* NotificationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E952A2500E89000343B10 /* NotificationServices.swift */; };
 		ED3060BD2462796200C53DCD /* NVImageLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3060BC2462796100C53DCD /* NVImageLoader.framework */; };
-		ED3060BF2462AEF300C53DCD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3060BE2462AEF300C53DCD /* Login.storyboard */; };
 		ED3143A624C6A1EF00F048D2 /* HomeLandPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3143A524C6A1EF00F048D2 /* HomeLandPopupVC.swift */; };
 		ED359738243B0376003A1159 /* HomeLandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED359737243B0376003A1159 /* HomeLandTVCell.swift */; };
 		ED35973B243B573C003A1159 /* HomeLandPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35973A243B573B003A1159 /* HomeLandPackage.swift */; };
@@ -459,6 +459,8 @@
 		259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp_MyPlaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
+		42E6D7E829349BD80038179F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBC195AC9DDB9C68F5CDD05 /* Pods-BurbankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.release.xcconfig"; sourceTree = "<group>"; };
 		6EA4C7D2432698A18CEE720A /* Pods-BurbankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.debug.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -778,7 +780,6 @@
 		D188C60C2424D37500DFE678 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		D188C60D2424D37500DFE678 /* UserPreferenceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceVC.swift; sourceTree = "<group>"; };
 		D188C60E2424D37500DFE678 /* CreateAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
-		D188C6102424D37500DFE678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D188C6122424D37500DFE678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D188C61A2424D37500DFE678 /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		D188C61C2424D37500DFE678 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -791,7 +792,6 @@
 		D28F895D2671D9AC00737035 /* DisplayHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayHomeModel.swift; sourceTree = "<group>"; };
 		ED1E952A2500E89000343B10 /* NotificationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServices.swift; sourceTree = "<group>"; };
 		ED3060BC2462796100C53DCD /* NVImageLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVImageLoader.framework; sourceTree = "<group>"; };
-		ED3060BE2462AEF300C53DCD /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		ED3143A524C6A1EF00F048D2 /* HomeLandPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLandPopupVC.swift; sourceTree = "<group>"; };
 		ED359737243B0376003A1159 /* HomeLandTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLandTVCell.swift; sourceTree = "<group>"; };
 		ED35973A243B573B003A1159 /* HomeLandPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLandPackage.swift; sourceTree = "<group>"; };
@@ -1794,11 +1794,11 @@
 		D188C60F2424D37500DFE678 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				D188C6102424D37500DFE678 /* Assets.xcassets */,
+				42E6D7EA29349DB10038179F /* Login.storyboard */,
+				42E6D7E829349BD80038179F /* Assets.xcassets */,
 				D188C6112424D37500DFE678 /* LaunchScreen.storyboard */,
 				A1DB603C28FD1D1900E3322D /* Main.storyboard */,
 				ED51DE9924BDAF7E008681C0 /* HomeDesign.storyboard */,
-				ED3060BE2462AEF300C53DCD /* Login.storyboard */,
 				ED8E4E2D24442B1F0010BF57 /* SortFilter.storyboard */,
 				ED67C5912510871A0078E6F9 /* GoogleService-MyPlace-Info.plist */,
 				ED8E040725384E39000FCFED /* GoogleService-MyPlace-burbank-Info.plist */,
@@ -2372,6 +2372,7 @@
 				A1659AD2292F4A4500C36B3B /* CommonOLD.xcassets in Resources */,
 				A1659ABC292F4A4400C36B3B /* Privacy Policy.html in Resources */,
 				ED8E040825384E39000FCFED /* GoogleService-MyPlace-burbank-Info.plist in Resources */,
+				42E6D7EB29349DB20038179F /* Login.storyboard in Resources */,
 				A1659AE1292F4A4500C36B3B /* ImagesOLD.xcassets in Resources */,
 				A1659ADC292F4A4500C36B3B /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D16FE45D2428EF6F0082DECF /* Proxima Nova Black Italic.otf in Resources */,
@@ -2381,7 +2382,6 @@
 				A1659990292F32BB00C36B3B /* MyPlaceLogin.storyboard in Resources */,
 				D16FE45C2428EF6F0082DECF /* Proxima Nova Extra Condensed Light Italic.otf in Resources */,
 				A1659ADE292F4A4500C36B3B /* OpenSans-BoldItalic.ttf in Resources */,
-				D188C62F2424D37600DFE678 /* Assets.xcassets in Resources */,
 				D16FE45E2428EF6F0082DECF /* Proxima Nova Condensed Bold_1.otf in Resources */,
 				D16FE4752428EF6F0082DECF /* Proxima Nova Extra Condensed Black Italic.otf in Resources */,
 				ED4F54FA24E5686000FC53B0 /* Turn-Phone-Large3_with-Circle.gif in Resources */,
@@ -2389,7 +2389,6 @@
 				A1659AD4292F4A4500C36B3B /* Ico-Right.png in Resources */,
 				A165998B292F32BB00C36B3B /* ProfileViewClass.xib in Resources */,
 				D16FE47A2428EF6F0082DECF /* Proxima Nova Condensed Light.otf in Resources */,
-				ED3060BF2462AEF300C53DCD /* Login.storyboard in Resources */,
 				A1659954292F32BA00C36B3B /* MyPlaceNewAssets.xcassets in Resources */,
 				A1659ACB292F4A4500C36B3B /* MyriadPro-It.otf in Resources */,
 				D16FE47B2428EF6F0082DECF /* Proxima Nova Extra Condensed Semibold.otf in Resources */,
@@ -2435,6 +2434,7 @@
 				ED8E4E2E24442B1F0010BF57 /* SortFilter.storyboard in Resources */,
 				D16FE47D2428EF6F0082DECF /* Proxima Nova Condensed Light Italic.otf in Resources */,
 				A1659ADA292F4A4500C36B3B /* OpenSans-Bold.ttf in Resources */,
+				42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */,
 				D16FE4822428EF6F0082DECF /* Proxima Nova Extra Condensed Extrabold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

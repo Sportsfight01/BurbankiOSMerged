@@ -12,7 +12,6 @@ class HomeLandVCSurvey: HeaderVC {
     
     
     @IBOutlet weak var mainView : UIView!
-    
     @IBOutlet weak var regionView : UIView!
     @IBOutlet weak var storeysView : UIView!
     @IBOutlet weak var bedroomsView : UIView!
@@ -52,7 +51,6 @@ class HomeLandVCSurvey: HeaderVC {
     //MARK: - priceView
     
     @IBOutlet weak var price_lBPrice: UILabel!
-    
 //    @IBOutlet weak var price_btnContinue: UIButton!
 //    @IBOutlet weak var price_btnSkip: UIButton!
     //    @IBOutlet weak var price_priceRange: PriceRangeView!
@@ -64,17 +62,10 @@ class HomeLandVCSurvey: HeaderVC {
     @IBOutlet weak var bedrooms_btn3Bedrooms: UIButton!
     @IBOutlet weak var bedrooms_btn4Bedrooms: UIButton!
     @IBOutlet weak var bedrooms_btn5Bedrooms: UIButton!
-
-  @IBOutlet weak var bedrooms_btnNotSure: UIButton!
+    @IBOutlet weak var bedrooms_btnNotSure: UIButton!
   
-    
-    
-    
-    
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnPrevious: UIButton!
-
-    
     @IBOutlet weak var viewRecentSearch: UIView!
 
     
@@ -82,14 +73,10 @@ class HomeLandVCSurvey: HeaderVC {
     //MARK: - myPlaceQuiz
     
     let myPlaceQuiz = MyPlaceQuiz()
-    
     let minViewTag = 101
     var viewTag = 101//Int = minViewTag
     
     var priceRangeVC: PriceRangeVC?
-    
-    
-    
     var arrRegions: [RegionMyPlace]?
     
     
@@ -113,7 +100,7 @@ class HomeLandVCSurvey: HeaderVC {
                 
                 self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", packagesCount!, packagesCount! == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
 
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
                 
                 self.btnNext.superview!.alpha = 1.0
                 btnNext.isUserInteractionEnabled = self.btnNext.superview!.alpha == 1.0
@@ -138,7 +125,7 @@ class HomeLandVCSurvey: HeaderVC {
                 
         CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_screen_loading)
     
-        headerLogoText = "MyHome&Land"
+        headerLogoText = "House&Land"
         
         viewTag = 101
         
@@ -283,8 +270,8 @@ class HomeLandVCSurvey: HeaderVC {
         btnDesignsCount.setTitle("SKIP >", for: .normal)
         setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
         
-        setAppearanceFor(view: btnNext, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: btnPrevious, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnNext, backgroundColor: AppColors.darkGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnPrevious, backgroundColor: AppColors.lightGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
         //        arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
         //        arrButtons.forEach({$0.setTitleColor(COLOR_DARK_GRAY, for: .normal)})
@@ -741,7 +728,7 @@ class HomeLandVCSurvey: HeaderVC {
         
         if sender == btnNext {
             
-            if viewTag == 101 {
+            if viewTag == 101 {//region
                 if let reg = myPlaceQuiz.region {
                     if reg == "" {
                         showToast("Please select region", self)
@@ -751,7 +738,7 @@ class HomeLandVCSurvey: HeaderVC {
                     showToast("Please select region", self)
                     return
                 }
-            }else if viewTag == 103 {
+            }else if viewTag == 103 {//storeys
                 if let storeysCount = myPlaceQuiz.storeysCount, self.filter.storeysCount == .none {
                     if storeysCount == "" {
                         showToast("Please select storeys", self)
@@ -763,7 +750,7 @@ class HomeLandVCSurvey: HeaderVC {
                         return
                     }
                 }
-            }else if viewTag == 104 {
+            }else if viewTag == 104 {//bedrooms
                 
                 if let bedRoomsCount = myPlaceQuiz.bedRoomCount, self.filter.bedRoomsCount == .none {
                     if bedRoomsCount == "" {
@@ -781,7 +768,7 @@ class HomeLandVCSurvey: HeaderVC {
                 self.myPlaceQuiz.priceRangeHigh = "$\(self.filter.priceRange.priceEndStringValue)K"
                 
                 
-            }else if viewTag == 102 {
+            }else if viewTag == 102 {//pricerange
                 if let storeysCount = myPlaceQuiz.priceRangeLow {
                     if storeysCount == "" {
                         showToast("Please select price", self)

@@ -14,6 +14,8 @@ import AVKit
 class UserPreferenceVC: UIViewController {
     
     
+    @IBOutlet weak var lb_myPlace_heading: UILabel!
+    @IBOutlet weak var lbWelcomeDescription: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var icon: UIButton!
@@ -22,9 +24,9 @@ class UserPreferenceVC: UIViewController {
     
     @IBOutlet weak var viewWelcome: UIView!
     @IBOutlet weak var labelWelcome: UILabel!
-    @IBOutlet weak var imageAppLogo: UIImageView!
-    @IBOutlet weak var labelWelcomeDescription: UILabel!
-    @IBOutlet weak var textViewWelcomeDescription: UITextView!
+    //@IBOutlet weak var imageAppLogo: UIImageView!
+   // @IBOutlet weak var labelWelcomeDescription: UILabel!
+ //   @IBOutlet weak var textViewWelcomeDescription: UITextView!
     @IBOutlet weak var btnHowWorks: UIButton!
     
     
@@ -84,7 +86,7 @@ class UserPreferenceVC: UIViewController {
         
         stackView.addConstraint(NSLayoutConstraint(item: stackView as Any, attribute: .width, relatedBy: .equal, toItem: stackView, attribute: .height, multiplier: 2, constant: 1*stackView.spacing))
         
-        textViewWelcomeDescription.text = "Find your perfect home on Burbank Homes app - The only property app you need for your home purchase or property needs in Australia. If you are looking to build your dream home, buy a brand new house or invest in home building in Australia, this property finder app will simplify your property search.\nBurbank is proudly an Australian home builder, building homes in Victoria, New South Wales, Queensland and South Australia. "
+     //   textViewWelcomeDescription.text = "Find your perfect home on Burbank Homes app - The only property app you need for your home purchase or property needs in Australia. If you are looking to build your dream home, buy a brand new house or invest in home building in Australia, this property finder app will simplify your property search.\nBurbank is proudly an Australian home builder, building homes in Victoria, New South Wales, Queensland and South Australia. "
         
     }
     
@@ -93,7 +95,7 @@ class UserPreferenceVC: UIViewController {
         
         CodeManager.sharedInstance.sendScreenName(burbank_home_screen_loading)
 
-        textViewWelcomeDescription.contentOffset = CGPoint (x: 0, y: 0)
+     //   textViewWelcomeDescription.contentOffset = CGPoint (x: 0, y: 0)
         
         if let _ = AppConfigurations.shared.getHowDoesitWorkURL() {
             
@@ -108,10 +110,10 @@ class UserPreferenceVC: UIViewController {
 
     func pageUISetup () {
         
-        setAppearanceFor(view: viewWelcome, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: viewWelcome, backgroundColor: AppColors.white)
         
-        setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
-        setAppearanceFor(view: textViewWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
@@ -164,7 +166,7 @@ class UserPreferenceVC: UIViewController {
     
     func setModuleSelection () {
         
-        if let sele = kUserDefaults.value(forKey: selectedAppModule) {            
+        if let sele = kUserDefaults.value(forKey: selectedAppModule) {
             selectedModule = Int((sele as! String))!
         }else {
             
@@ -214,7 +216,7 @@ class UserPreferenceVC: UIViewController {
                 return
             }else {
                                 
-                self.navigationController?.pushViewController(UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateViewController(withIdentifier: "LaunchVCNew") as! LaunchVCNew, animated: true)
+                self.navigationController?.pushViewController(UIStoryboard(name: "Main_OLD", bundle: nil).instantiateViewController(withIdentifier: "LaunchVC") as! LaunchVC, animated: true)
             }
         }
     }

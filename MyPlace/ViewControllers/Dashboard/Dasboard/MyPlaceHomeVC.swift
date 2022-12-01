@@ -206,29 +206,35 @@ class MyPlaceHomeVC: UIViewController {
         print("font13===\(FONT_13)")
         print("font11===\(FONT_11)")
         #endif
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
-        setAppearanceFor(view: btnState, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
-        
-        
-        setAppearanceFor(view: lBWelcome, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBChooseMethod, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: btnState, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray , textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         
         
-        setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBChooseMethod, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
         
         
-        setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_LABEL_BODY(size: FONT_10))
-        
-        setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        viewHomeLand.layer.cornerRadius = radius_5
-        viewHomeDesign.layer.cornerRadius = radius_5
-        viewHomeDisplay.layer.cornerRadius = radius_5
+        setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+        
+        setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+    
+        //make card vuew
+        
+        viewHomeLand.cardView()
+        viewHomeDesign.cardView()
+        viewHomeDisplay.cardView()
+        //stateView
+        stateView.layer.cornerRadius = stateView.frame.height/2
+        //stateView.clipsToBounds = true
+        stateView.layer.borderWidth = 1.0
+        stateView.layer.borderColor = AppColors.lightGray.cgColor
         
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
         self.btnIcon.clipsToBounds = true
@@ -311,8 +317,8 @@ class MyPlaceHomeVC: UIViewController {
         
         btnState.setTitle(region, for: .normal)
         
-        btnState.superview?.layer.cornerRadius = (btnState.superview?.frame.size.height)!/2 //radius_3
-        setBorder(view: btnState.superview!, color: COLOR_WHITE, width: 1)
+//        btnState.superview?.layer.cornerRadius = (btnState.superview?.frame.size.height)!/2 //radius_3
+//        setBorder(view: btnState.superview!, color: COLOR_WHITE, width: 1)
     }
     
     
@@ -605,7 +611,7 @@ class MyPlaceHomeVC: UIViewController {
                         appDelegate.userData?.loadUserDetails()
                         
                         
-                        homeLand.recentSearch?.recentSearchFrom = "MyHome&Land"
+                        homeLand.recentSearch?.recentSearchFrom = "House&Land"
                         
                         homeLand.recentSearch?.recentSearch.text = recentSearchText.capitalized
                         
@@ -892,7 +898,7 @@ extension MyPlaceHomeVC {
                         if states.count > 0 {
                             self.showStateSelectionView(states)
                         }
-                    }                    
+                    }
                 }else {
                     print(log: "states not found")
                     ActivityManager.showToast(result.value(forKey: "message") as? String ?? "", self)

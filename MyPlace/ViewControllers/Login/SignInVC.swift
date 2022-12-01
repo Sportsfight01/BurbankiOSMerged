@@ -174,14 +174,15 @@ class SignInVC: UIViewController {
 
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
         
-        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_HEADING(size: FONT_30))
         
-        setAppearanceFor(view: labelChooseMethod, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
-        
+        setAppearanceFor(view: labelChooseMethod, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
+       
+        //setAppearanceFor(view: btnContinue, backgroundColor: COLOR_ORANGE, textColor: AppColors.white, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: systemRegularFont(size: FONT_signin))
         setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
@@ -199,22 +200,22 @@ class SignInVC: UIViewController {
 
         
         
-        setAppearanceFor(view: labelNoteHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelNoteHeading, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: 30))
 
-        setAppearanceFor(view: labelNote, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: labelNote, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_14))
 
-        setAppearanceFor(view: labelNoteAlert, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: labelNoteAlert, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_14))
 
         labelNoteAlert.addCharacterSpacing(kernValue: -0.3)
         
         
-        setAppearanceFor(view: btnContinue, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: btnContinue, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
         setAppearanceFor(view: btnSignIn, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
 
         
-        viewGoogle.layer.cornerRadius = radius_5
+        viewGoogle.cardView()
         viewFacebook.layer.cornerRadius = radius_5
-        viewEmail.layer.cornerRadius = radius_5
+        viewEmail.cardView()
         btnSkip.layer.cornerRadius = radius_5
 
         
@@ -259,7 +260,7 @@ class SignInVC: UIViewController {
             let jobNumberView = kStoryboardLogin.instantiateViewController(withIdentifier: "JobNumberVC") as! JobNumberVC
             self.navigationController?.pushViewController(jobNumberView, animated: true)
 
-        }        
+        }
     }
     
     @IBAction func handleBackButtonAction (_ sender: UIButton) {

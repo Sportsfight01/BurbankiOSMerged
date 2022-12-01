@@ -12,6 +12,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     //MARK: - Properties
     
+    @IBOutlet weak var viewWhereWouldYouliketolive: UIView!
     @IBOutlet weak var titleLabel : UILabel!
     @IBOutlet weak var btnback : UIButton!
     @IBOutlet weak var iconAccept : UIImageView!
@@ -98,10 +99,24 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     func handleUISetup () {
         
-        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [logoFont, logoFont], alignmentCenter: false)
-
+        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [logoFont, logoFont], alignmentCenter: false)
         
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        //cardView of viewElements
+        [viewEmailText,viewFirstNameText,viewLastNameText,viewPhoneText,viewWhatToBuildText, viewMessage , viewWhereWouldYouliketolive].forEach { view in
+            if #available(iOS 13.0, *) {
+                view?.cardView(cornerRadius: radius_5 , shadowOpacity: 0.3 , shadowColor: UIColor.systemGray3.cgColor)
+            } else {
+                // Fallback on earlier versions
+                view?.cardView(cornerRadius: radius_5 , shadowOpacity: 0.3)
+            }
+        }
+        
+        if #available(iOS 13.0, *) {
+            setAppearanceFor(view: view, backgroundColor: UIColor.systemGray6)
+        } else {
+            // Fallback on earlier versions
+            setAppearanceFor(view: view, backgroundColor: UIColor.lightGray)
+        }
         
         setAppearanceFor(view: emailTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
@@ -115,17 +130,21 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         
         
         setAppearanceFor(view: btnAccept, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
-        setAppearanceFor(view: btnEnquire, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnEnquire, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
         
         
-        viewEmailText.layer.cornerRadius = radius_5
-        viewFirstNameText.layer.cornerRadius = radius_5
-        viewLastNameText.layer.cornerRadius = radius_5
-        viewPhoneText.layer.cornerRadius = radius_5
-        viewWhatToBuildText.layer.cornerRadius = radius_5
-        whereWouldYouLiveTF.superview?.layer.cornerRadius = radius_5
+//        viewEmailText.layer.cornerRadius = radius_5
+//        viewFirstNameText.layer.cornerRadius = radius_5
+//        viewLastNameText.layer.cornerRadius = radius_5
+//        viewPhoneText.layer.cornerRadius = radius_5
+//        viewWhatToBuildText.layer.cornerRadius = radius_5
+//        whereWouldYouLiveTF.superview?.layer.cornerRadius = radius_5
+//
+//        viewMessage.layer.cornerRadius = radius_5
         
-        viewMessage.layer.cornerRadius = radius_5
+      
+        
+        
         
         btnEnquire.layer.cornerRadius = radius_5
         
@@ -136,7 +155,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         }else if let _ = homeDesignDetails{
             self.whatToBuildTF.text = "\(self.homeDesignDetails?.lsthouses?.houseName ?? "") \(self.homeDesignDetails?.lsthouses?.houseSize ?? 0)"
         }
-        setAppearanceFor(view: whatToBuildTF, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: viewWhatToBuildText, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
      self.whatToBuildTF.isUserInteractionEnabled = false
         if Int(kUserID)! > 0 {
             

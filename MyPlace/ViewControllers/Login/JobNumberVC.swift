@@ -28,7 +28,7 @@ class JobNumberVC: UIViewController {
     //MARK: - ViewLifeCycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         handleUISetup()
@@ -49,18 +49,18 @@ class JobNumberVC: UIViewController {
     
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
-        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: txtEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
-        setAppearanceFor(view: btnNext, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnNext, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
         setAppearanceFor(view: btnNewUser, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
-        setAppearanceFor(view: btnCreate, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: btnCreate, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
         
         
 //        let _ = setAttributetitleFor(view: btnCreate, title: "Are you a new user? Create account", rangeStrings: ["Are you a new user?", " Create account"], colors: [COLOR_BLACK, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_13), FONT_BUTTON_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
@@ -68,7 +68,7 @@ class JobNumberVC: UIViewController {
         //New user? Create Account
         
                 
-        viewText.layer.cornerRadius = radius_5
+        viewText.cardView()
         btnNext.layer.cornerRadius = radius_5
         btnCreate.layer.cornerRadius = radius_5
     }
@@ -90,11 +90,11 @@ class JobNumberVC: UIViewController {
         
         if email == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage : "Please enter email")
+            BurbankApp.showAlert("Please enter email", self)
             return
         }else if email.isValidEmail() == false {
             
-            AlertManager.sharedInstance.showAlert(alertMessage : "Please enter valid email")
+            BurbankApp.showAlert("Please enter valid email", self)
             return
         }
         

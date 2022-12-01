@@ -91,9 +91,9 @@ class HomeLandDetailsVC: HeaderVC {
 
        
         if isFromDisplayHomes {
-            headerLogoText = "MyHome&Land"
+            headerLogoText = "House&Land"
         }else{
-            headerLogoText = "MyHome&Land"
+            headerLogoText = "House&Land"
         }
         CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_detailView_screen_loading)
         

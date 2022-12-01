@@ -25,12 +25,12 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         // Do any additional setup after loading the view.
         
         
-        self.tabBar.backgroundColor = COLOR_GRAY
+        self.tabBar.backgroundColor = AppColors.white
         
         
-        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: COLOR_BLACK, .font: FONT_LABEL_HEADING(size: FONT_9)], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.black, .font: FONT_LABEL_HEADING(size: FONT_9)], for: .selected)
         
-        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: COLOR_DARK_GRAY, .font: FONT_LABEL_BODY(size: FONT_9)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.lightGray, .font: FONT_LABEL_BODY(size: FONT_9)], for: .normal)
                 
         
         if let items = self.tabBar.items {

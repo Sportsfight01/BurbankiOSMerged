@@ -58,6 +58,11 @@ struct AppColors
         
     }
     
+    static let darkGray = UIColor(named: "darkGray") ?? UIColor.darkGray
+    static let lightGray = UIColor(named: "lightGray") ?? UIColor.lightGray
+    static let white = UIColor.white
+    static let black = UIColor.black
+    
     
 }
 struct StoryboardNames

@@ -55,7 +55,7 @@ class MyCollectionSurveyVC: HeaderVC {
     
     pageUISetup()
     
-    headerLogoText = "MyCollection"
+    headerLogoText = "HomeDesigns"
     
     
     addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, delegate: self)

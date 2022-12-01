@@ -78,11 +78,11 @@ class CreateAccountVC: UIViewController {
     
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
-        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: emailTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: firstNameTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
@@ -92,17 +92,36 @@ class CreateAccountVC: UIViewController {
         
         
         
-        setAppearanceFor(view: labelAlready, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY(size: FONT_13))
+        setAppearanceFor(view: labelAlready, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_BODY(size: FONT_13))
         
-        setAppearanceFor(view: btnSignIn, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_HEADING (size: FONT_14))
-        setAppearanceFor(view: btnCreate, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnSignIn, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_BUTTON_HEADING (size: FONT_14))
+        setAppearanceFor(view: btnCreate, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        
+//
+//        viewEmailText.layer.cornerRadius = radius_5
+//        viewFirstNameText.layer.cornerRadius = radius_5
+//        viewLastNameText.layer.cornerRadius = radius_5
+//        viewNewPasswordText.layer.cornerRadius = radius_5
+//        viewConfirmPasswordText.layer.cornerRadius = radius_5
         
         
-        viewEmailText.layer.cornerRadius = radius_5
-        viewFirstNameText.layer.cornerRadius = radius_5
-        viewLastNameText.layer.cornerRadius = radius_5
-        viewNewPasswordText.layer.cornerRadius = radius_5
-        viewConfirmPasswordText.layer.cornerRadius = radius_5
+        let textFieldsArr = [viewEmailText,viewFirstNameText,viewLastNameText,viewLastNameText,viewNewPasswordText,viewConfirmPasswordText]
+        textFieldsArr.forEach { view in
+          
+            view?.layer.cornerRadius = 10.0
+            
+            view?.layer.shadowColor = UIColor.lightGray.cgColor
+            view?.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            view?.layer.shadowRadius = 3.0
+            view?.layer.shadowOpacity = 0.5
+          //  view?.layer.masksToBounds = true
+        }
+      
+        
+      // viewFirstNameText.cardView()
+//        viewLastNameText.cardView()
+//        viewNewPasswordText.cardView()
+//        viewConfirmPasswordText.cardView()
         
         btnCreate.layer.cornerRadius = radius_5
         
@@ -140,28 +159,28 @@ class CreateAccountVC: UIViewController {
         
         if firstNameTF.text?.trim() == "" {
                         
-            AlertManager.sharedInstance.showAlert(alertMessage :"Please enter your name")
+            BurbankApp.showAlert("Please enter your name", self)
         }else if lastNameTF.text?.trim() == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage :"Please enter last name")
+            BurbankApp.showAlert("Please enter last name", self)
         }else if emailTF.text?.trim() == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage :"Please enter email")
+            BurbankApp.showAlert("Please enter email", self)
         }else if emailTF.text?.trim().isValidEmail() == false {
             
-            AlertManager.sharedInstance.showAlert(alertMessage :"Please enter valid email id")
+            BurbankApp.showAlert("Please enter valid email id", self)
         }else if newPasswordTF.text?.trim() == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage :"Please enter new password")
+            BurbankApp.showAlert("Please enter new password", self)
         }else if (newPasswordTF.text?.trim().count)! < 6 {
             
-            AlertManager.sharedInstance.showAlert(alertMessage :"Please enter minimum 6 characters for new password")
+            BurbankApp.showAlert("Please enter minimum 6 characters for new password", self)
         }else if confirmPasswordTF.text?.trim() == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage :"Please enter confirm password")
+            BurbankApp.showAlert("Please enter confirm password", self)
         }else if confirmPasswordTF.text?.trim() != newPasswordTF.text?.trim() {
             
-            AlertManager.sharedInstance.showAlert(alertMessage : "New password & Confirm passwords are not matching")
+            BurbankApp.showAlert("New password & Confirm passwords are not matching", self)
         }else {
             
             if let _ = user { }else {
@@ -178,7 +197,7 @@ class CreateAccountVC: UIViewController {
                 if let created = self.createAccountReturn {
                     created (self.user)
                 }
-            }            
+            }
         }
     }
 }

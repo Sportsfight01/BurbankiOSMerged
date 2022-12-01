@@ -120,7 +120,7 @@ class DesignsDetailsVC: HeaderVC {
         
         pageUISetup()
         
-        headerLogoText = "MyCollection"
+        headerLogoText = "HomeDesigns"
         
         if btnBack.isHidden {
             showBackButton()

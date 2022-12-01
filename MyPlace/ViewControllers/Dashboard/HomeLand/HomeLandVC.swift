@@ -90,7 +90,7 @@ class HomeLandVC: HeaderVC {
         // Do any additional setup after loading the view.
         
         //        headerLogoImage = IMAGE_HOMELAND
-        headerLogoText = "MyHome&Land"
+        headerLogoText = "House&Land"
         isFromProfile = true
         
         pageUISetup ()
