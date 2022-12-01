@@ -495,6 +495,14 @@ class MyPlaceHomeVC: UIViewController {
             let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
             (dash as UITabBarController).selectedIndex = 2
             self.navigationController?.pushViewController(dash, animated: true)
+        }else{
+            
+            CodeManager.sharedInstance.sendScreenName (burbank_dashboard_displayHomes_button_touch)
+            //MARK: - Display Homes
+            let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+            (dash as UITabBarController).selectedIndex = 3
+            self.navigationController?.pushViewController(dash, animated: true)
+            
         }
         
     }

@@ -20,7 +20,8 @@ let iconShare = UIImage(named: "Ico-ShareRound")
 let iconProfile = UIImage(named: "Ico-ProfileRound")
 let iconSettings = UIImage(named: "Ico-SettingsRound")
 let iconDH = UIImage(named: "Ico-DisplayHomes-Profile")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-
+let iconFav = UIImage(named: "Ico-favorite-Black")
+let nameFavourites = "MyFavourites"
 
 let nameMyCollection = "MyCollection"
 let nameHL = "Home & Land"
@@ -46,6 +47,7 @@ var selectedRowHeight: CGFloat = rowHeight
 
 
 let logoFontProfile = FONT_LABEL_HEADING (size: FONT_30)
+let logoFontProfileSUBHEADING = FONT_LABEL_SUB_HEADING(size: FONT_30)
 
 
 class UserProfileVC: UIViewController {
@@ -68,8 +70,10 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var profileViewBorder: UIView!
     
     
-    let arrIcons = [iconProfile, iconShare, iconCollection/*, iconMyday*/, iconHL, iconMyDesign, iconDH, iconSettings]
-    let arrNames = [nameMyDetails, nameShare, nameMyCollection/*, nameMyday*/, nameHL, nameMyDesign, nameDisplayHomes, nameSettings]
+    let arrIcons = [iconProfile, iconShare,iconFav/*, iconCollection, iconMyday, iconHL, iconMyDesign, iconDH*/, iconSettings]
+        let arrNames = [nameMyDetails, nameShare,nameFavourites/*, nameMyCollection, nameMyday, nameHL, nameMyDesign, nameDisplayHomes*/, nameSettings]
+    
+    
     
     var selectedIndex = -1
     
@@ -99,11 +103,11 @@ class UserProfileVC: UIViewController {
         
         self.tableProfile.tableFooterView = UIView(frame: .zero)
         
-
+        
         setShadowatBottom(view: profileViewBorder, color: COLOR_BLACK, shadowRadius: 5.0)
         
         
-        tableProfile.backgroundColor = COLOR_ORANGE
+        tableProfile.backgroundColor = AppColors.white
         view.backgroundColor = COLOR_CLEAR
         profileViewBorder.backgroundColor = COLOR_CLEAR
         
@@ -114,7 +118,7 @@ class UserProfileVC: UIViewController {
         
         addHeaderViewOptions()
         
-//        lBInfo.isHidden = true
+        //        lBInfo.isHidden = true
         
         
         profileHeaderViewHeight.constant = profileHeaderHeight
@@ -132,7 +136,7 @@ class UserProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-  
+        
     }
     func getDisplaysNotificationsCount(){
         _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
@@ -142,17 +146,17 @@ class UserProfileVC: UIViewController {
                     if let result: AnyObject = json {
                         if (result.allKeys as! [String]).contains("userFavDisplays") {
                             if (result.value(forKey: "userFavDisplays") as AnyObject).isKind(of: NSArray.self){
-                            let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
-                            self.displayFavorites = []
-                            for package: NSDictionary in packagesResult {
-                                let suggestedData = houseDetailsByHouseType(package as! [String : Any])
+                                let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
+                                self.displayFavorites = []
+                                for package: NSDictionary in packagesResult {
+                                    let suggestedData = houseDetailsByHouseType(package as! [String : Any])
                                     self.displayFavorites.append(suggestedData)
+                                }
+                                DispatchQueue.main.async {
+                                    self.tableProfile.reloadData()
+                                }
+                                
                             }
-                            DispatchQueue.main.async {
-                                self.tableProfile.reloadData()
-                            }
-                            
-                        }
                         }else { print(log: "no favorates found") }
                         
                     }else {
@@ -161,10 +165,10 @@ class UserProfileVC: UIViewController {
                 }
             }
         }, errorblock: { (error, isJSONerror) in
-
+            
             if isJSONerror { }
             else { }
-
+            
         }, progress: nil)
     }
     
@@ -172,12 +176,12 @@ class UserProfileVC: UIViewController {
     
     func addHeaderViewOptions () {
         
-        profileHeaderView.backgroundColor = COLOR_ORANGE
+        profileHeaderView.backgroundColor = AppColors.white
         
         
         labelLine.backgroundColor = COLOR_APP_BACKGROUND
         profileHeaderView.addSubview(labelLine)
-                
+        
         labelLine.isHidden = true
         
         
@@ -186,13 +190,13 @@ class UserProfileVC: UIViewController {
         btnProfileImage.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
         
         
-        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [COLOR_BLACK, COLOR_WHITE], fonts: [logoFontProfile, logoFontProfile], alignmentCenter: false)
+        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [logoFontProfileSUBHEADING, logoFontProfile], alignmentCenter: false)
         profileHeaderView.addSubview(logoLabelProfile)
         
         
         
         lBInfo.text = "View your favourites & information"//infoStaicText
-        setAppearanceFor(view: lBInfo, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBInfo, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
         profileHeaderView.addSubview(lBInfo)
         
         let yPosPadding: CGFloat = 15.0//20.0
@@ -224,7 +228,7 @@ class UserProfileVC: UIViewController {
         yPos = logoLabelProfile.frame.origin.y + logoLabelProfile.frame.size.height
         yPos = btnProfileImage.frame.origin.y + btnProfileImage.frame.size.height
         
-
+        
         lBInfo.frame = CGRect(x: xPos, y: yPos, width: SCREEN_WIDTH - leftPadding - xPos, height: 40)
         lBInfo.numberOfLines = 2
         lBInfo.lineBreakMode = .byTruncatingTail
@@ -271,10 +275,10 @@ class UserProfileVC: UIViewController {
             SDImageCache.shared.removeImage(forKey: url, cacheType: .all) {
                 
                 SDWebImageDownloader.shared.downloadImage(with: urlImage, options: .ignoreCachedResponse, progress: { (receivedsize, totalsize, targeturl) in
-
-
+                    
+                    
                 }) { (image, data, error, finished) in
-
+                    
                     if finished {
                         if let imageDownloaded = image {
                             self.btnProfileImage.setBackgroundImage(imageDownloaded, for: .normal)
@@ -283,36 +287,36 @@ class UserProfileVC: UIViewController {
                         }
                     }
                 }
-
+                
             }
-//            ImageDownloader.removeImage(forKey: imageURL) {
-//
-//                ImageDownloader.downloadImage(withUrl: imageURL, withFilePath: nil, with: { (image, success, error) in
-//
-//                    if success, let img = image {
-//
-//                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
-//                    }else {
-//                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
-//                    }
-//
-//                }) { (progress) in
-//
-//                }
-//            }
+            //            ImageDownloader.removeImage(forKey: imageURL) {
+            //
+            //                ImageDownloader.downloadImage(withUrl: imageURL, withFilePath: nil, with: { (image, success, error) in
+            //
+            //                    if success, let img = image {
+            //
+            //                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
+            //                    }else {
+            //                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+            //                    }
+            //
+            //                }) { (progress) in
+            //
+            //                }
+            //            }
             
-//            downloadImage(from: urlImage) { (image, error, success) in
-//
-//                DispatchQueue.main.async() {
-//
-//                    if success, let img = image {
-//
-//                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
-//                    }else {
-//                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
-//                    }
-//                }
-//            }
+            //            downloadImage(from: urlImage) { (image, error, success) in
+            //
+            //                DispatchQueue.main.async() {
+            //
+            //                    if success, let img = image {
+            //
+            //                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
+            //                    }else {
+            //                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+            //                    }
+            //                }
+            //            }
             
         }else{
             
@@ -386,8 +390,14 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 cell.lBCount.isHidden = true
                 cell.lBCount.text = "0"
             }
+            else if name == nameFavourites {
+               let totalCount = kDesignFavoritesCount + kHomeLandFavoritesCount + self.displayFavorites.count
+              cell.lBCount.text = "\(totalCount)"
+              }
+            
+            
         }
-                
+        
     }
     
     
@@ -506,10 +516,10 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                     }
                     
                 }
-
+                
                 cell.lBPriceRange.layoutIfNeeded()
                 cell.layoutIfNeeded()
-
+                
                 return cell
                 
             }else if name == nameMyDesign {
@@ -517,7 +527,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHomeDesignTVCell", for: indexPath) as! ProfileHomeDesignTVCell
                 cell.icon.image = arrIcons[indexPath.row]
                 cell.lBTitle.text = arrNames[indexPath.row]
-                                
+                
                 if let recentSearch = appDelegate.userData?.user?.userDetails?.collectionRecentSearch {
                     
                     cell.searchResultSortFilter = recentSearch as? [NSDictionary]
@@ -555,20 +565,20 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             }else if name == nameDisplayHomes {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHomeDesignTVCell", for: indexPath) as! ProfileHomeDesignTVCell
-              
+                
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 cell.icon.tintColor = .black
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
-//                if displayFavorites.count
+                //                if displayFavorites.count
                 cell.fillTheData1(diplayFaoritesCount: displayFavorites.count)
                 cell.lBCount.text = "\(displayFavorites.count)"
                 cell.actionHandler = { (button) in
                     CodeManager.sharedInstance.sendScreenName(burbank_profile_displayHomes_savedDesigns_button_touch)
                     let designs = kStoryboardMain.instantiateViewController(withIdentifier: "DisplayHomesFavouritesVC") as! DisplayHomesFavouritesVC
-                        self.navigationController?.pushViewController(designs, animated: true)
-                    }
-               
+                    self.navigationController?.pushViewController(designs, animated: true)
+                }
+                
                 return cell
             }else if name == nameMyday {
                 
@@ -602,22 +612,23 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                         homeLand.myPlaceQuiz = MyPlaceQuiz.init()
                         homeLand.filter = cell.searchResultSortFilter ?? SortFilter()
                         homeLand.dataFromFilter ()
-                                          
+                        
                         CodeManager.sharedInstance.sendScreenName(burbank_profile_homeAndLand_designs_button_touch)
                         
-                    }else {
-                                                
+                    }
+                    else {
+                        
                         CodeManager.sharedInstance.sendScreenName(burbank_profile_homeAndLand_recentSearch_button_touch)
-
+                        
                         
                         homeLand.myPlaceQuiz = MyPlaceQuiz.init()
                         homeLand.isFavoritesService = true
-
+                        
                         //                        "Favourite Designs"
                         
                         homeLand.isFromProfileFavorites = true
                         
-                        if kHomeLandFavoritesCount == 0 {                            
+                        if kHomeLandFavoritesCount == 0 {
                             return
                         }
                     }
@@ -635,13 +646,13 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
                 cell.switchLocation.isOn = LocationServices.shared.isLocationServicesEnabled ()
-
+                
                 NotificationServices.shared.isNotificationServicesEnabled { (enabled) in
                     cell.switchNotifications.isOn = enabled
                     
                     cell.selectionColorsForSwitch(switchService: cell.switchNotifications)
                 }
-
+                
                 
                 cell.selectionColorsForSwitch(switchService: cell.switchLocation)
                 
@@ -651,6 +662,14 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 return cell
                 
             }
+            else if name == nameFavourites{
+             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
+            cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            cell.icon.tintColor = .black
+            cell.lBTitle.text = arrNames[indexPath.row]
+            return cell
+           }
+            
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
@@ -703,7 +722,15 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 CodeManager.sharedInstance.sendScreenName(burbank_profile_shareAccount_button_touch)
                 
             }
-                //            else if name == nameMyCollection { selectedRowHeight = rowHeightCollection }
+            else if name == nameFavourites{
+                
+                let fvrtVC = kStoryboardMain.instantiateViewController(withIdentifier: "FavouritesVC") as! FavouritesVC
+                
+                self.navigationController?.pushViewController(fvrtVC, animated: true)
+                 tabBarController?.selectedIndex = 4
+                
+            }
+            //            else if name == nameMyCollection { selectedRowHeight = rowHeightCollection }
             else if name == nameMyday { selectedRowHeight = rowHeightMyDay }
             else if name == nameHL {
                 
@@ -712,9 +739,9 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 ProfileDataManagement.shared.recentSearchData(SearchType.shared.homeLand, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
                     
                     if let recent = recentSearchResult {
-                                                
+                        
                         appDelegate.userData?.user?.userDetails?.homeLandSortFilter = SortFilter (dict: recent.value(forKey: "SearchJson") as! NSDictionary, recentsearch: true)
-                                                
+                        
                         setHomeLandFavouritesCount(count: (recent.value(forKey: "UserFavourites") as! NSNumber).intValue, state: kUserState)
                         
                         self.selectedIndex = indexPath.row
@@ -752,7 +779,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                         var rece = [NSDictionary] ()
                         
                         for item in resultFeatures as! [NSDictionary] {
-                                                        
+                            
                             if String.checkNullValue(item.value(forKey: "feature") as Any).contains("resultsCount") {
                                 
                                 setCollectionsCount(count: (String.checkNullValue(item.value(forKey: "Answer") as Any) as NSString).integerValue, state: kUserState)
@@ -778,7 +805,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 })
                 
                 CodeManager.sharedInstance.sendScreenName(burbank_profile_myCollection_button_touch)
-
+                
             }
             else if name == nameMyDesign {
                 
@@ -786,53 +813,53 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 ProfileDataManagement.shared.recentSearchData(SearchType.shared.newHomes, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
                     
                     if let recent = recentSearchResult {
-
+                        
                         if let resultFeatures = recent.value(forKey: "SearchJson") as? NSArray {
-
+                            
                             let count = (recent.value(forKey: "UserFavourites") as! NSNumber).intValue
-
+                            
                             if count == 0 {
                                 setHomeDesignsFavouritesCount(count: 0, state: kUserState)
-
+                                
                                 AlertManager.sharedInstance.alert("Favourites not available")
                             }else {
-
+                                
                                 var rece = [NSDictionary] ()
-
+                                
                                 for item in resultFeatures as! [NSDictionary] {
-
+                                    
                                     if String.checkNullValue(item.value(forKey: "feature") as Any).contains("resultsCount") {
-
+                                        
                                         setCollectionsCount(count: (String.checkNullValue(item.value(forKey: "Answer") as Any) as NSString).integerValue, state: kUserState)
                                     }else {
-
+                                        
                                         rece.append(item)
                                     }
-
+                                    
                                     appDelegate.userData?.user?.userDetails?.collectionRecentSearch = rece as NSArray
-
+                                    
                                 }
-
+                                
                                 self.selectedIndex = indexPath.row
-
+                                
                             }
                         } else {
                             
                         }
-
+                        
                         setHomeDesignsFavouritesCount(count: (recent.value(forKey: "UserFavourites") as! NSNumber).intValue, state: kUserState)
                         
                         self.tableProfile.reloadData()
-
+                        
                     }else {
-
+                        
                         setHomeDesignsFavouritesCount(count: 0, state: kUserState)
-
+                        
                         AlertManager.sharedInstance.alert("Favourites not available")
                     }
                 })
                 
-
+                
                 CodeManager.sharedInstance.sendScreenName(burbank_profile_homeDesigns_button_touch)
                 
             }
@@ -850,7 +877,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                                     for package: NSDictionary in packagesResult {
                                         
                                         let suggestedData = houseDetailsByHouseType(package as! [String : Any])
-                                            self.displayFavorites.append(suggestedData)
+                                        self.displayFavorites.append(suggestedData)
                                     }
                                     DispatchQueue.main.async {
                                         
@@ -871,60 +898,60 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                         }
                     }
                 }, errorblock: { (error, isJSONerror) in
-
+                    
                     if isJSONerror { }
                     else { }
-
+                    
                 }, progress: nil)
-//                ProfileDataManagement.shared.recentSearchData(3, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
-//
-//                    if let recent = recentSearchResult {
-//
-//                        if let resultFeatures = recent.value(forKey: "SearchJson") as? NSArray {
-//
-//                            let count = (recent.value(forKey: "UserFavourites") as! NSNumber).intValue
-//
-//                            if count == 0 {
-//                                setDisplayHomesFavouritesCount (count: 0, state: kUserState)
-//
-//                                AlertManager.sharedInstance.alert("Favourites not available")
-//                            }else {
-//
-//                                var rece = [NSDictionary] ()
-//
-//                                for item in resultFeatures as! [NSDictionary] {
-//
-//                                    if String.checkNullValue(item.value(forKey: "feature") as Any).contains("resultsCount") {
-//
-//                                        setDisplayHomesFavouritesCount(count: (String.checkNullValue(item.value(forKey: "Answer") as Any) as NSString).integerValue, state: kUserState)
-//                                    }else {
-//
-//                                        rece.append(item)
-//                                    }
-//
-//                                    appDelegate.userData?.user?.userDetails?.collectionRecentSearch = rece as NSArray
-//                                }
-//
-//                                self.selectedIndex = indexPath.row
-//
-//                            }
-//                        } else {
-//
-//                        }
-//
-//                        setDisplayHomesFavouritesCount(count: (recent.value(forKey: "UserFavourites") as! NSNumber).intValue, state: kUserState)
-//
-//                        self.tableProfile.reloadData()
-//
-//                    }else {
-//
-//                        setDisplayHomesFavouritesCount(count: 0, state: kUserState)
-//
-//                        AlertManager.sharedInstance.alert("Favourites not available")
-//                    }
-//                })
+                //                ProfileDataManagement.shared.recentSearchData(3, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
+                //
+                //                    if let recent = recentSearchResult {
+                //
+                //                        if let resultFeatures = recent.value(forKey: "SearchJson") as? NSArray {
+                //
+                //                            let count = (recent.value(forKey: "UserFavourites") as! NSNumber).intValue
+                //
+                //                            if count == 0 {
+                //                                setDisplayHomesFavouritesCount (count: 0, state: kUserState)
+                //
+                //                                AlertManager.sharedInstance.alert("Favourites not available")
+                //                            }else {
+                //
+                //                                var rece = [NSDictionary] ()
+                //
+                //                                for item in resultFeatures as! [NSDictionary] {
+                //
+                //                                    if String.checkNullValue(item.value(forKey: "feature") as Any).contains("resultsCount") {
+                //
+                //                                        setDisplayHomesFavouritesCount(count: (String.checkNullValue(item.value(forKey: "Answer") as Any) as NSString).integerValue, state: kUserState)
+                //                                    }else {
+                //
+                //                                        rece.append(item)
+                //                                    }
+                //
+                //                                    appDelegate.userData?.user?.userDetails?.collectionRecentSearch = rece as NSArray
+                //                                }
+                //
+                //                                self.selectedIndex = indexPath.row
+                //
+                //                            }
+                //                        } else {
+                //
+                //                        }
+                //
+                //                        setDisplayHomesFavouritesCount(count: (recent.value(forKey: "UserFavourites") as! NSNumber).intValue, state: kUserState)
+                //
+                //                        self.tableProfile.reloadData()
+                //
+                //                    }else {
+                //
+                //                        setDisplayHomesFavouritesCount(count: 0, state: kUserState)
+                //
+                //                        AlertManager.sharedInstance.alert("Favourites not available")
+                //                    }
+                //                })
                 
-
+                
                 CodeManager.sharedInstance.sendScreenName(burbank_profile_homeDesigns_button_touch)
                 
             }
@@ -990,14 +1017,14 @@ extension UserProfileVC {
             
             let cell = tableProfile.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! ProfileDetailsTVCell
             
-//            if let name = cell.txtName.text {
-//                if name == "" {
-//                    showToast("First Name should be minimum of 3 letters", self)
-//                    return
-//                }else{
-//                    
-//                }
-//            }
+            //            if let name = cell.txtName.text {
+            //                if name == "" {
+            //                    showToast("First Name should be minimum of 3 letters", self)
+            //                    return
+            //                }else{
+            //
+            //                }
+            //            }
             if !(cell.txtName.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? false) {
                 print(cell.txtName.text?.trimmingCharacters(in: .whitespaces) ?? "")
                 // string contains non-whitespace characters
@@ -1015,18 +1042,18 @@ extension UserProfileVC {
                 showToast("Last Name should be minimum of 3 letters", self)
                 return
             }
-
             
-//            if let lName = cell.txtLastName.text {
-//                if lName.isEmpty {
-//                    showToast("Last Name should be minimum of 3 letters", self)
-//
-//
-//                }else{
-//
-//                }
-//            }
-                        
+            
+            //            if let lName = cell.txtLastName.text {
+            //                if lName.isEmpty {
+            //                    showToast("Last Name should be minimum of 3 letters", self)
+            //
+            //
+            //                }else{
+            //
+            //                }
+            //            }
+            
             if let existedPhone = appDelegate.userData?.user?.userPhoneNumber {
                 if existedPhone.count > 0, cell.txtPhone.text?.trim().count == 0 {
                     ActivityManager.showToast("Please enter Phone number", self)
@@ -1043,7 +1070,7 @@ extension UserProfileVC {
                 ActivityManager.showToast("Phone number should be a minimum of 8 characters length", self)
                 return
             }
-                        
+            
             
             let user = UserBean.init()
             user.userFirstName = cell.txtName.text
@@ -1066,7 +1093,7 @@ extension UserProfileVC {
             if user.userPhoneNumber != appDelegate.userData?.user?.userPhoneNumber {
                 canUpdate = true
             }
-                        
+            
             
             if canUpdate {
                 
@@ -1102,7 +1129,7 @@ extension UserProfileVC {
     @IBAction func handleLogoutAction (_ sender: UIButton) {
         
         CodeManager.sharedInstance.sendScreenName(burbank_profile_appSettings_logout_button_touch)
-                
+        
         BurbankApp.showAlert("Are you sure, want to Logout?", self, ["NO", "YES"]) { (str) in
             
             if str == "YES" {
@@ -1418,9 +1445,9 @@ class ProfileTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_LIGHT(size: FONT_12))
+        setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: FONT_12))
         
         
         lBCount.layer.cornerRadius = lBCount.frame.size.height/2

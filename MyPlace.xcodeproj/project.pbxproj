@@ -15,6 +15,15 @@
 		017C6EA124C563FF005F6C45 /* HomeDesigns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C6EA024C563FF005F6C45 /* HomeDesigns.swift */; };
 		1BEBA0958985D5B3B9BBFEC0 /* Pods_BurbankApp_MyPlaceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */; };
 		259621B9274C9F4A0085D46C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */; };
+		4212D5FC2938A8EE00855CDC /* HomeAndLandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */; };
+		4212D5FD2938A8EE00855CDC /* DisplayHomesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */; };
+		4212D5FE2938A8EE00855CDC /* DisplayHomesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5F52938A8EE00855CDC /* DisplayHomesTVC.xib */; };
+		4212D5FF2938A8EE00855CDC /* HomeAndLandTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5F62938A8EE00855CDC /* HomeAndLandTVC.xib */; };
+		4212D6002938A8EE00855CDC /* FavouritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F72938A8EE00855CDC /* FavouritesVC.swift */; };
+		4212D6012938A8EE00855CDC /* FavouritesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F82938A8EE00855CDC /* FavouritesTVCell.swift */; };
+		4212D6022938A8EE00855CDC /* MyDesignsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F92938A8EE00855CDC /* MyDesignsTVC.swift */; };
+		4212D6032938A8EE00855CDC /* FavouritesTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5FA2938A8EE00855CDC /* FavouritesTVCell.xib */; };
+		4212D6042938A8EE00855CDC /* MyDesignsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
 		42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7E829349BD80038179F /* Assets.xcassets */; };
 		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
@@ -458,6 +467,15 @@
 		0B16BDB4B1FE8F15AE78670B /* Pods-MyPlaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaceTests.release.xcconfig"; path = "Target Support Files/Pods-MyPlaceTests/Pods-MyPlaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp_MyPlaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAndLandTVC.swift; sourceTree = "<group>"; };
+		4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayHomesTVC.swift; sourceTree = "<group>"; };
+		4212D5F52938A8EE00855CDC /* DisplayHomesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayHomesTVC.xib; sourceTree = "<group>"; };
+		4212D5F62938A8EE00855CDC /* HomeAndLandTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeAndLandTVC.xib; sourceTree = "<group>"; };
+		4212D5F72938A8EE00855CDC /* FavouritesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesVC.swift; sourceTree = "<group>"; };
+		4212D5F82938A8EE00855CDC /* FavouritesTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesTVCell.swift; sourceTree = "<group>"; };
+		4212D5F92938A8EE00855CDC /* MyDesignsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDesignsTVC.swift; sourceTree = "<group>"; };
+		4212D5FA2938A8EE00855CDC /* FavouritesTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouritesTVCell.xib; sourceTree = "<group>"; };
+		4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDesignsTVC.xib; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
 		42E6D7E829349BD80038179F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -947,6 +965,22 @@
 				4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4212D5F22938A8EE00855CDC /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */,
+				4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */,
+				4212D5F52938A8EE00855CDC /* DisplayHomesTVC.xib */,
+				4212D5F62938A8EE00855CDC /* HomeAndLandTVC.xib */,
+				4212D5F72938A8EE00855CDC /* FavouritesVC.swift */,
+				4212D5F82938A8EE00855CDC /* FavouritesTVCell.swift */,
+				4212D5F92938A8EE00855CDC /* MyDesignsTVC.swift */,
+				4212D5FA2938A8EE00855CDC /* FavouritesTVCell.xib */,
+				4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */,
+			);
+			path = Favourites;
 			sourceTree = "<group>";
 		};
 		5E07D3469B1301EA23F9E75C /* Pods */ = {
@@ -1745,6 +1779,7 @@
 		D188C6062424D37500DFE678 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				4212D5F22938A8EE00855CDC /* Favourites */,
 				EDC2E7AE2550531900C87498 /* YoutubeVideoPlayer */,
 				ED679585246A5C9C008FAEED /* Dasboard */,
 				D188C6072424D37500DFE678 /* HeaderVC */,
@@ -2355,6 +2390,7 @@
 				D16FE46E2428EF6F0082DECF /* Proxima Nova Condensed Extrabold Italic.otf in Resources */,
 				4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */,
 				A1659ACF292F4A4500C36B3B /* MyriadPro-BoldCond.otf in Resources */,
+				4212D5FE2938A8EE00855CDC /* DisplayHomesTVC.xib in Resources */,
 				012682A724C0247F006BB92A /* MarkerPopupView.xib in Resources */,
 				A1659ACC292F4A4500C36B3B /* MyriadPro-Bold.otf in Resources */,
 				A1659AE2292F4A4500C36B3B /* LaunchScreen_OLD.storyboard in Resources */,
@@ -2364,8 +2400,10 @@
 				D16FE4682428EF6F0082DECF /* Proxima Nova Extra Condensed Black.otf in Resources */,
 				A1659AC7292F4A4500C36B3B /* MyriadPro-BoldCondIt.otf in Resources */,
 				A1659AE9292F4A4500C36B3B /* sample.pdf in Resources */,
+				4212D6042938A8EE00855CDC /* MyDesignsTVC.xib in Resources */,
 				D16FE4622428EF6F0082DECF /* Proxima Nova Condensed Extrabold.otf in Resources */,
 				A1659AD9292F4A4500C36B3B /* OpenSans-LightItalic.ttf in Resources */,
+				4212D5FF2938A8EE00855CDC /* HomeAndLandTVC.xib in Resources */,
 				D16FE4702428EF6F0082DECF /* Proxima Nova Thin Italic.otf in Resources */,
 				D16FE4662428EF6F0082DECF /* Proxima Nova Extra Condensed Regular.otf in Resources */,
 				D16FE4762428EF6F0082DECF /* Proxima Nova Light Italic.otf in Resources */,
@@ -2400,6 +2438,7 @@
 				D16FE4612428EF6F0082DECF /* Proxima Nova Condensed Black Italic.otf in Resources */,
 				A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */,
 				A1659B4C292F4A4500C36B3B /* DimensionCell.xib in Resources */,
+				4212D6032938A8EE00855CDC /* FavouritesTVCell.xib in Resources */,
 				D16FE4842428EF6F0082DECF /* Proxima Nova Condensed Thin Italic.otf in Resources */,
 				A1659AD3292F4A4500C36B3B /* AssetsOLD.xcassets in Resources */,
 				D16FE4722428EF6F0082DECF /* Proxima Nova Extrabold Italic.otf in Resources */,
@@ -2700,6 +2739,7 @@
 				A1659B0A292F4A4500C36B3B /* AppDelegate.swift in Sources */,
 				EDC0D1CD24B33EA10009B667 /* ProfileShareTVCell.swift in Sources */,
 				ED899B20245AA23600CBB75F /* ConstantGlobalFunctions.swift in Sources */,
+				4212D6002938A8EE00855CDC /* FavouritesVC.swift in Sources */,
 				D16FE3D32428EA110082DECF /* AppTheme.swift in Sources */,
 				D28F895E2671D9AC00737035 /* DisplayHomeModel.swift in Sources */,
 				A1659992292F32BB00C36B3B /* LoginVCNew.swift in Sources */,
@@ -2761,6 +2801,7 @@
 				A1659B05292F4A4500C36B3B /* MyPlaceURLs.swift in Sources */,
 				A1659AA4292F4A4400C36B3B /* User.swift in Sources */,
 				EDED6B99248E10D600BF2C96 /* ProfileDataManagement.swift in Sources */,
+				4212D5FC2938A8EE00855CDC /* HomeAndLandTVC.swift in Sources */,
 				D188C6202424D37600DFE678 /* Networking.swift in Sources */,
 				A1659B24292F4A4500C36B3B /* FiltersVC.swift in Sources */,
 				ED35973E243C553E003A1159 /* HomeDesignTVCell.swift in Sources */,
@@ -2769,6 +2810,7 @@
 				ED38C58824BF04E500548BD2 /* HomeDesignModalHeaderVC.swift in Sources */,
 				A1659977292F32BB00C36B3B /* FinanceDetailVC.swift in Sources */,
 				A1659AD1292F4A4500C36B3B /* BurbankApp.xcdatamodeld in Sources */,
+				4212D6022938A8EE00855CDC /* MyDesignsTVC.swift in Sources */,
 				ED7E41FD25304AD0004377BE /* LabelExtension.swift in Sources */,
 				A1659AE3292F4A4500C36B3B /* MenuTableViewCell.swift in Sources */,
 				EDC2E78225503D1900C87498 /* AppConfigurations.swift in Sources */,
@@ -2802,6 +2844,7 @@
 				ED7369F024F6391E0008B5E5 /* H&LRegionsCVCell.swift in Sources */,
 				A1659974292F32BB00C36B3B /* ZoomImageVC.swift in Sources */,
 				A1659B3A292F4A4500C36B3B /* LaunchVC.swift in Sources */,
+				4212D6012938A8EE00855CDC /* FavouritesTVCell.swift in Sources */,
 				D201A48527203B0B004D44CD /* HavingLotVC.swift in Sources */,
 				A1659B06292F4A4500C36B3B /* NSString+Validations.m in Sources */,
 				ED8C3C5F24BECE8400364CA4 /* MinorBedroomsVC.swift in Sources */,
@@ -2912,6 +2955,7 @@
 				EDC83DDF2645346B000E3343 /* DisplaysDesignsTVCell.swift in Sources */,
 				A1659AA8292F4A4400C36B3B /* CheckBox.swift in Sources */,
 				ED57A02A245FDAF800C24039 /* ArrayExtension.swift in Sources */,
+				4212D5FD2938A8EE00855CDC /* DisplayHomesTVC.swift in Sources */,
 				A1659976292F32BB00C36B3B /* FAQsVc.swift in Sources */,
 				A1659AF0292F4A4500C36B3B /* TestEntity+CoreDataProperties.swift in Sources */,
 				A1659AE6292F4A4500C36B3B /* DataViewController.m in Sources */,
