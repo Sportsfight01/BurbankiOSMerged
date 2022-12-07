@@ -1455,6 +1455,7 @@ class ProfileTVCell: UITableViewCell {
         lBCount.isHidden = true
         
         lBCount.text = "0"
+        lBCount.textColor = .white
         
     }
     

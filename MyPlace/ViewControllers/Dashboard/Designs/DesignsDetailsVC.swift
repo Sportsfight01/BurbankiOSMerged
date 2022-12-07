@@ -96,7 +96,7 @@ class DesignsDetailsVC: HeaderVC {
         }
     }
     
-
+    var designCount : Int?
     //MARK: - ViewLife Cycle
     
     override func viewDidLoad() {
@@ -135,6 +135,13 @@ class DesignsDetailsVC: HeaderVC {
             
             getDesignDetails(design)
         }
+        
+        if isFromFavorites ?? true {
+            addHeaderOptions(sort: false, map: false, favourites: false, howWorks: false, delegate: self)
+        }else {
+            addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, reset: true,totalCount: true,  delegate: self)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,14 +150,15 @@ class DesignsDetailsVC: HeaderVC {
         if let filter = displayText {
             if filter.count > 0 {
                 self.addBreadCrumb(from: filter)
+                self.btnTotalCollectionCount.setTitle("  TOTAL \(designCount ?? 0) DESIGNS  ", for: .normal)
             }else {
                 self.addBreadCrumb(from: infoStaicText)
             }
         }
         
-        if let design = homeDesign {
-            self.addBreadCrumb (from: (design.houseName ?? "") + " " + (design.houseSize ?? ""))
-        }
+//        if let design = homeDesign {
+//            self.addBreadCrumb (from: (design.houseName ?? "") + " " + (design.houseSize ?? ""))
+//        }
         
     }
     
@@ -176,7 +184,7 @@ class DesignsDetailsVC: HeaderVC {
         self.lBBathrooms.text = self.homeDesign!.bathRooms
         self.lBParking.text = self.homeDesign!.carSpace
         
-        self.addBreadCrumb (from: (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? ""))
+//        self.addBreadCrumb (from: (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? ""))
         
         
         self.lBLotWidth.text = (self.homeDesign?.minLotWidth ?? "0") + "m"
@@ -591,11 +599,30 @@ extension DesignsDetailsVC: UITableViewDelegate, UITableViewDataSource {
 
 extension DesignsDetailsVC: ChildVCDelegate, RegionVCDelegate
 {
-    //headervc
-    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
-        
-        
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset: Bool) {
+        if reset{
+            print("------- Reset myCollection Data")
+//            self.arrHomeDesigns.removeAll()
+            if navigationController?.viewControllers.count == 1 {
+                self.tabBarController?.navigationController?.popViewController(animated: true)
+            }else {
+
+                for controller in self.navigationController!.viewControllers as Array {
+                    if controller.isKind(of: MyCollectionSurveyVC.self) {
+                        self.navigationController!.popToViewController(controller, animated: true)
+                        break
+                    }
+                }
+                
+            }
+        }
     }
+    
+    //headervc
+//    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
+//        
+//        
+//    }
     
     //RegionVCDelegate
     func handleRegionDelegate(close: Bool, regionBtn: Bool, region: RegionMyPlace) {

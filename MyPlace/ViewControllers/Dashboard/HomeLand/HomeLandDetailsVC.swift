@@ -341,10 +341,10 @@ class HomeLandDetailsVC: HeaderVC {
 
 extension HomeLandDetailsVC: ChildVCDelegate, UIScrollViewDelegate
 {
-    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
-        
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset: Bool) {
         
     }
+    
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageDesign

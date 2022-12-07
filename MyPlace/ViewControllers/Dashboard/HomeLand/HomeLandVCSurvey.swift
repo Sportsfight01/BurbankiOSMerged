@@ -1295,7 +1295,7 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
     
     //MARK: HeaderView
     
-    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool,reset : Bool) {
         
         if sort {
             

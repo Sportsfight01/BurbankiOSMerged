@@ -98,16 +98,19 @@ class MyCollectionSurveyVC: HeaderVC {
     
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    
-    self.btnDesignsCount.layoutIfNeeded()
-    
-    //        if self.arrHomeDesigns.count > 0 {
-    //            self.loadVCs()
-    //        }
-    
-  }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.btnDesignsCount.layoutIfNeeded()
+        
+        if self.arrHomeDesigns.count > 0 {
+            self.loadVCs()
+            getDesignsCount()
+            checkForRecentSearchData ()
+            viewRecentSearch.isHidden = true
+        }
+        
+    }
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
@@ -388,6 +391,7 @@ class MyCollectionSurveyVC: HeaderVC {
         self.showViewAt(index: 0)
       }
     }
+     
   }
   
   
@@ -842,35 +846,36 @@ extension MyCollectionSurveyVC: ChildVCDelegate, HeaderBreadCrumpDelegate/*, UIC
   //    }
   
   
-  func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
-    
-    if favourites {
-      
-      CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_favourites_button_touch)
-      
-      let designs: DesignsVC = kStoryboardMain.instantiateViewController(withIdentifier: "DesignsVC") as! DesignsVC
-      designs.isFromCollection = true
-      designs.isFavorites = true
-      
-      designs.isFromProfileFavorites = true
-      
-      
-      designs.filter = SortFilter ()
-      self.navigationController?.pushViewController(designs, animated: true)
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset : Bool) {
+        
+        if favourites {
+            
+            CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_favourites_button_touch)
+            
+            let designs: DesignsVC = kStoryboardMain.instantiateViewController(withIdentifier: "DesignsVC") as! DesignsVC
+            designs.isFromCollection = true
+            designs.isFavorites = true
+            
+            designs.isFromProfileFavorites = true
+            
+            
+            designs.filter = SortFilter ()
+            self.navigationController?.pushViewController(designs, animated: true)
+        }
+        
+        
+        if howWorks {
+            
+            if let url = AppConfigurations.shared.getHowDoesitWorkURLinMyCollection(), let _ = URL (string: url) {
+                print(log: url)
+                playVideoIn(self, url)
+            }
+            
+            CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_howDoesItWork_button_touch)
+        }
+        
+        
     }
-    
-    
-    if howWorks {
-      
-      if let url = AppConfigurations.shared.getHowDoesitWorkURLinMyCollection(), let _ = URL (string: url) {
-        print(log: url)
-        playVideoIn(self, url)
-      }
-      
-      CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_howDoesItWork_button_touch)
-    }
-    
-  }
   
   
   func selectedBreadCrumb(_ str: String) {

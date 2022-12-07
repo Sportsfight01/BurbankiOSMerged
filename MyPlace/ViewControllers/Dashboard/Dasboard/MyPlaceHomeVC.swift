@@ -14,6 +14,7 @@ import SDWebImage
 class MyPlaceHomeVC: UIViewController {
     
     
+    @IBOutlet weak var btnMyProfile: UIButton!
     @IBOutlet weak var btnState: UIButton!
     
     @IBOutlet weak var btnIcon: UIButton!
@@ -24,7 +25,8 @@ class MyPlaceHomeVC: UIViewController {
     @IBOutlet weak var btnStateLeading: NSLayoutConstraint!
     
     
-    @IBOutlet weak var imageMyPlace: UIImageView!
+   
+    @IBOutlet weak var lBMyPlace: UILabel!
     @IBOutlet weak var lBWelcome: UILabel!
     @IBOutlet weak var lBChooseMethod: UILabel!
     
@@ -62,28 +64,16 @@ class MyPlaceHomeVC: UIViewController {
     var containerViewStateSelection: UIView?
     var stateSelectionVC: StateSelectionVC = kStoryboardMain.instantiateViewController(withIdentifier: "StateSelectionVC") as! StateSelectionVC
     
-    
-    
-    //    lazy var dashboard: DashboardVC = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
-    
-    
-    
-    
     var containerView: UIView?
-    
     lazy var profileView: UserProfileVC = {
         kStoryboardMain.instantiateViewController(withIdentifier: "UserProfileVC") as! UserProfileVC
     }()
-    
-    
     var shareVC: ShareVC?
-    
-    
-    
-    //MARK: - ViewLifeCycle
-    
     private let fetchedPackgesApi = "fetchedPackgesApi"
     var firstTimeLoading = true
+    
+    //MARK: - ViewLifeCycle
+
     
     
     
@@ -201,11 +191,9 @@ class MyPlaceHomeVC: UIViewController {
     
     func handleUISetup () {
         
-        #if DEDEBUG
-        print("Screen Width ===\(SCREEN_WIDTH)")
-        print("font13===\(FONT_13)")
-        print("font11===\(FONT_11)")
-        #endif
+        btnMyProfile.backgroundColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.7) : AppColors.appOrange
+        
+        _ = setAttributetitleFor(view: lBMyPlace, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 32) , FONT_LABEL_SUB_HEADING(size: 32)], alignmentCenter: true)
         setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
         setAppearanceFor(view: btnState, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray , textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
@@ -415,6 +403,13 @@ class MyPlaceHomeVC: UIViewController {
     
     //MARK: - Button Actions
     
+    @IBAction func handleBtnMyProfileAction(_ sender: UIButton) {
+        
+        CodeManager.sharedInstance.sendScreenName (burbank_dashboard_profile_button_touch)
+        
+        handleProfileImageAction(sender)
+    }
+    
     @IBAction func handleButtonActions (_ sender: UIButton) {
         
 //        fatalError("Manual crash")
@@ -422,21 +417,15 @@ class MyPlaceHomeVC: UIViewController {
         if sender == btnBack {
             
             appDelegate.userData?.removeUserDetails()
-            
             appDelegate.userData?.user = UserBean()
-            
-            
             appDelegate.userData?.saveUserDetails()
-            
             removeFilterFromDefaults()
-            
             loadLoginView()
             
         }else if sender == btnIcon {
             
-            CodeManager.sharedInstance.sendScreenName (burbank_dashboard_profile_button_touch)
-            
-            handleProfileImageAction(sender)
+        //go to main screen
+            loadMainView()
             
         }else if sender == btnState {
             

@@ -62,6 +62,8 @@ struct AppColors
     static let lightGray = UIColor(named: "lightGray") ?? UIColor.lightGray
     static let white = UIColor.white
     static let black = UIColor.black
+    @available(iOS 13.0, *)
+    static let systemGray2  = UIColor.systemGray2
     
     
 }

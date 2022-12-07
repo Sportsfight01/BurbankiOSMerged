@@ -173,7 +173,7 @@ class HomeLandVC: HeaderVC {
         }else {
             if isFavoritesService {
                 
-                setAppearanceFor(view: btnFavorites, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnFavorites.titleLabel!.font)
+                setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
                 
                 loadFavoritePackagesList ()
                 
@@ -404,7 +404,7 @@ extension HomeLandVC: ChildVCDelegate {
     //MARK: Handling of Breadcrumb Buttons
     
     
-    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset : Bool) {
         
         if sort {
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_results_sortFilter_button_touch)
@@ -467,7 +467,7 @@ extension HomeLandVC: ChildVCDelegate {
                 }
                 
                 if isFavoritesService {
-                    setAppearanceFor(view: btnFavorites, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnFavorites.titleLabel!.font)
+                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
                     
                     loadFavoritePackagesList ()
                     
@@ -481,7 +481,7 @@ extension HomeLandVC: ChildVCDelegate {
                     btnSortFilter.isHidden = false
 
                     
-                    setAppearanceFor(view: btnFavorites, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnFavorites.titleLabel!.font)
+                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
                     
                     if isFromHomeDesigns {
                         

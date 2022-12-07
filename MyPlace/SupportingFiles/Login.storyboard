@@ -54,8 +54,8 @@
                                         <state key="normal" backgroundImage="Ico-BB-Black"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Op3-Dh-6E7" secondAttribute="bottom" constant="20" id="5mY-6J-5Pi"/>
                                     <constraint firstItem="Op3-Dh-6E7" firstAttribute="leading" secondItem="7je-Bc-QGY" secondAttribute="leading" constant="30" id="MlG-Ue-lgB"/>
@@ -80,7 +80,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-Ti-r60">
-                                        <rect key="frame" x="40" y="341.5" width="154" height="30"/>
+                                        <rect key="frame" x="40" y="322" width="154" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7WG-GG-cGP"/>
@@ -111,10 +111,10 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstItem="ZLq-Jr-W5C" firstAttribute="leading" secondItem="W5A-EQ-7UN" secondAttribute="leading" id="1hw-l9-Ta6"/>
-                                    <constraint firstAttribute="bottom" secondItem="bbG-Ti-r60" secondAttribute="bottom" constant="5" id="KDI-O2-ile"/>
+                                    <constraint firstItem="bbG-Ti-r60" firstAttribute="top" secondItem="ZLq-Jr-W5C" secondAttribute="bottom" constant="16" id="KWf-KM-Lpi"/>
                                     <constraint firstItem="aAz-MN-8Vd" firstAttribute="top" secondItem="QXd-ZY-P4W" secondAttribute="top" constant="35" id="MmN-k9-90M"/>
                                     <constraint firstItem="W5A-EQ-7UN" firstAttribute="top" secondItem="aAz-MN-8Vd" secondAttribute="bottom" constant="8" id="Y2n-we-1QF"/>
                                     <constraint firstItem="bbG-Ti-r60" firstAttribute="leading" secondItem="aAz-MN-8Vd" secondAttribute="leading" id="ctX-bb-E6d"/>
@@ -313,7 +313,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96462148430000005" green="0.96475988629999998" blue="0.96459132430000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstItem="Xmd-k2-3yC" firstAttribute="height" secondItem="4Yc-Un-YRH" secondAttribute="height" multiplier="0.152" id="2LS-f6-TYq"/>
                                     <constraint firstItem="HS6-JF-Oig" firstAttribute="centerX" secondItem="4Yc-Un-YRH" secondAttribute="centerX" id="FsH-GS-VZ7"/>
@@ -480,6 +480,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                     <constraint firstAttribute="height" constant="18" id="T6G-br-OFU"/>
                                     <constraint firstAttribute="width" constant="10" id="Z9S-jC-dhu"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="KaO-vB-Or6" eventType="touchUpInside" id="P5Y-9x-eUe"/>
@@ -491,6 +492,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                     <constraint firstAttribute="width" constant="40" id="jv5-Mu-Ag0"/>
                                     <constraint firstAttribute="height" constant="40" id="nMe-mF-CVB"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="KaO-vB-Or6" eventType="touchUpInside" id="cfq-i1-8gv"/>
                                 </connections>
@@ -712,7 +714,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qt-gt-V6l">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qt-gt-V6l">
                                 <rect key="frame" x="354" y="68" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="n8B-Ie-PNU"/>
@@ -877,6 +879,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                     <constraint firstAttribute="height" constant="18" id="3Dg-Ey-E4c"/>
                                     <constraint firstAttribute="width" constant="10" id="GJW-vl-gzO"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="Qok-7m-wjz" eventType="touchUpInside" id="KGc-9H-TjB"/>
@@ -955,14 +958,6 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-pR-y5M">
-                                <rect key="frame" x="354" y="68" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="dZk-Uj-Dar"/>
-                                    <constraint firstAttribute="height" constant="40" id="oAu-D9-Ub8"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="Ico-BB-Black"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPl-9j-N1e">
                                 <rect key="frame" x="50" y="317.5" width="50" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
@@ -1019,6 +1014,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                     <constraint firstAttribute="width" constant="10" id="9fS-96-2HL"/>
                                     <constraint firstAttribute="height" constant="18" id="q9u-rv-Y24"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="7S7-gz-k6K" eventType="touchUpInside" id="333-2t-n8n"/>
@@ -1052,16 +1048,25 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                     <action selector="handleCreateButtonActionWithSender:" destination="7S7-gz-k6K" eventType="touchUpInside" id="5th-Te-CkK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-pR-y5M">
+                                <rect key="frame" x="177" y="212.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="dZk-Uj-Dar"/>
+                                    <constraint firstAttribute="width" secondItem="dLn-pR-y5M" secondAttribute="height" multiplier="1:1" id="gIq-Tc-znf"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Ico-BB-Black"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ETO-cW-D8h"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="dLn-pR-y5M" firstAttribute="top" secondItem="ETO-cW-D8h" secondAttribute="top" constant="20" id="07y-zC-HsJ"/>
                             <constraint firstItem="eh6-Wl-wJV" firstAttribute="top" secondItem="D7q-DR-40l" secondAttribute="bottom" constant="40" id="5Z8-NY-yl4"/>
                             <constraint firstItem="D7q-DR-40l" firstAttribute="centerY" secondItem="ETO-cW-D8h" secondAttribute="centerY" id="6As-Vo-4wz"/>
                             <constraint firstItem="EAe-cz-yix" firstAttribute="top" secondItem="AEh-EK-Lr9" secondAttribute="bottom" constant="10" id="6iT-yY-AYn"/>
+                            <constraint firstItem="qQF-U1-5zZ" firstAttribute="top" secondItem="ETO-cW-D8h" secondAttribute="top" constant="31" id="CDx-Iu-UZt"/>
                             <constraint firstItem="8yq-WX-Gx8" firstAttribute="trailing" secondItem="D7q-DR-40l" secondAttribute="trailing" constant="-20" id="D6H-8R-VVf"/>
                             <constraint firstItem="D7q-DR-40l" firstAttribute="height" secondItem="GUe-AN-C69" secondAttribute="height" multiplier="0.06" id="DDc-dl-kT6"/>
+                            <constraint firstItem="dLn-pR-y5M" firstAttribute="centerX" secondItem="GUe-AN-C69" secondAttribute="centerX" id="Dbc-6E-930"/>
                             <constraint firstItem="EAe-cz-yix" firstAttribute="trailing" secondItem="eh6-Wl-wJV" secondAttribute="trailing" id="F1K-ZF-f4x"/>
                             <constraint firstItem="EAe-cz-yix" firstAttribute="height" secondItem="eh6-Wl-wJV" secondAttribute="height" id="Ke7-tE-Dhm"/>
                             <constraint firstItem="ETO-cW-D8h" firstAttribute="trailing" secondItem="D7q-DR-40l" secondAttribute="trailing" constant="30" id="LQ2-Vd-dtF"/>
@@ -1070,9 +1075,8 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                             <constraint firstItem="eh6-Wl-wJV" firstAttribute="leading" secondItem="D7q-DR-40l" secondAttribute="leading" constant="20" id="Q60-ab-W7N"/>
                             <constraint firstItem="9gt-vX-wih" firstAttribute="top" secondItem="ETO-cW-D8h" secondAttribute="top" constant="20" id="XZU-JW-iPp"/>
                             <constraint firstItem="qQF-U1-5zZ" firstAttribute="leading" secondItem="ETO-cW-D8h" secondAttribute="leading" constant="20" id="Xip-PQ-nUK"/>
+                            <constraint firstItem="dLn-pR-y5M" firstAttribute="bottom" secondItem="KA4-ii-Mb6" secondAttribute="bottom" constant="-70" id="YE3-If-dlm"/>
                             <constraint firstItem="eh6-Wl-wJV" firstAttribute="height" secondItem="GUe-AN-C69" secondAttribute="height" multiplier="0.057" id="YZ4-kz-Zoy"/>
-                            <constraint firstItem="ETO-cW-D8h" firstAttribute="trailing" secondItem="dLn-pR-y5M" secondAttribute="trailing" constant="20" id="ZD9-uB-kXn"/>
-                            <constraint firstItem="qQF-U1-5zZ" firstAttribute="centerY" secondItem="dLn-pR-y5M" secondAttribute="centerY" id="acM-8y-wuT"/>
                             <constraint firstItem="8yq-WX-Gx8" firstAttribute="leading" secondItem="D7q-DR-40l" secondAttribute="leading" constant="20" id="bc6-Iz-mu3"/>
                             <constraint firstItem="AEh-EK-Lr9" firstAttribute="centerX" secondItem="GUe-AN-C69" secondAttribute="centerX" id="cWg-un-3UN"/>
                             <constraint firstItem="EAe-cz-yix" firstAttribute="leading" secondItem="eh6-Wl-wJV" secondAttribute="leading" id="dVg-xu-hCE"/>
@@ -1682,6 +1686,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                     <constraint firstAttribute="width" constant="10" id="1sw-S9-OXb"/>
                                     <constraint firstAttribute="height" constant="18" id="nGw-Ry-UeT"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="ubE-zN-PsI" eventType="touchUpInside" id="qlk-uF-JSR"/>
@@ -8925,6 +8930,9 @@ BosGAAaLEwAGixgABosgAAaLIwAGiygABoswAAAAAAAABAEAAAAAAAAAaAAAAAAAAAAAAAAAAAAGizM
         </namedColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

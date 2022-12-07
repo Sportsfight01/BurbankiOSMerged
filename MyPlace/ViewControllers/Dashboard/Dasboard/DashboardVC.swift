@@ -70,16 +70,35 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
                 
         if tabBarController.selectedIndex == 0 {
             CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_homeDesigns_tabBarButton_touch)
-        }else {
+        }else if tabBarController.selectedIndex == 1 {
             CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_homeAndLand_tabBarButton_touch)
+        }
+        else if tabBarController.selectedIndex == 2 {
+            CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_homeAndLand_tabBarButton_touch)
+        }
+        else if tabBarController.selectedIndex == 3 {
+            CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_homeAndLand_tabBarButton_touch)
+            
         }
         
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
-        if viewController.isKind(of: UINavigationController.self) {
-            (viewController as! UINavigationController).interactivePopGestureRecognizer?.isEnabled = false
+        let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController)!
+        if selectedIndex == 3 {
+            print("first tab bar was selected")
+            if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
+                if viewController.isKind(of: UINavigationController.self) {
+                    (viewController as! UINavigationController).interactivePopGestureRecognizer?.isEnabled = false
+                }
+            }else{
+                return false
+            }
+        } else {
+            if viewController.isKind(of: UINavigationController.self) {
+                (viewController as! UINavigationController).interactivePopGestureRecognizer?.isEnabled = false
+            }
         }
         
         return true

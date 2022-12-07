@@ -58,11 +58,11 @@ class FavouritesVC: HeaderVC {
     
     @IBAction func handleBackButton (_ sender: UIButton) {
         
-//        if navigationController?.viewControllers.count == 1 {
+        if navigationController?.viewControllers.count == 1 {
             self.tabBarController?.navigationController?.popViewController(animated: true)
-//        }else {
-//            self.navigationController?.popViewController(animated: true)
-//        }
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     /*

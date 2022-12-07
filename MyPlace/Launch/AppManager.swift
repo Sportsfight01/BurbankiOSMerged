@@ -177,6 +177,8 @@ func noNeedofGuestUserToast (_ vc: UIViewController = kWindow.rootViewController
                 removeFilterFromDefaults()
                 
                 loadLoginView()
+            }else{
+                
             }
         }
         return false

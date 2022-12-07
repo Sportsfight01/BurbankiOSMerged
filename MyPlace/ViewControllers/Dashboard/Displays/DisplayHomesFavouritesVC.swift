@@ -121,11 +121,11 @@ class DisplayHomesFavouritesVC: HeaderVC {
     
     CodeManager.sharedInstance.sendScreenName (burbank_dashboard_displayHomes_button_touch)
     
-    let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
-    (dash as UITabBarController).selectedIndex = 2
-    // self.navigationController?.pushViewController(dash, animated: true)
-    kWindow.rootViewController = dash
-    //  self.navigationController?.popViewController(animated: true)
+//    let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+//    (dash as UITabBarController).selectedIndex = 2
+//    // self.navigationController?.pushViewController(dash, animated: true)
+//    kWindow.rootViewController = dash
+      self.navigationController?.popViewController(animated: true)
   }
   
   func layoutTable () {

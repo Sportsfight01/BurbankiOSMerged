@@ -551,10 +551,12 @@ extension DisplayHomesDetailsVC{
 extension DisplayHomesDetailsVC: ChildVCDelegate, RegionVCDelegate
 {
     //headervc
-    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
-        
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset: Bool) {
         
     }
+    
+   
+    
     
     //RegionVCDelegate
     func handleRegionDelegate(close: Bool, regionBtn: Bool, region: RegionMyPlace) {

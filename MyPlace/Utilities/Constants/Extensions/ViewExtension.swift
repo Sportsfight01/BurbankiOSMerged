@@ -97,7 +97,7 @@ extension UIView {
         
         self.layer.cornerRadius = cornerRadius
         
-        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowColor = shadowColor
         
         self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         

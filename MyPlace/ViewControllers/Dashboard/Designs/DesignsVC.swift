@@ -63,7 +63,7 @@ class DesignsVC: HeaderVC {
         if isFromProfileFavorites {
             addHeaderOptions(sort: false, map: false, favourites: false, howWorks: false, delegate: self)
         }else {
-            addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, delegate: self)
+            addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, reset: true,totalCount: true,  delegate: self)
         }
         
         
@@ -83,8 +83,9 @@ class DesignsVC: HeaderVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        btnMap.setTitle("  0 DESIGNS  ", for: .normal)
-        setFramesForOptionsViews()
+//        btnMap.setTitle("  0 DESIGNS  ", for: .normal)
+//        setFramesForOptionsViews()
+//        btnTotalCollectionCount.setTitle(" TOTAL 0 DESIGNS ", for: .normal)
         
         if isFavorites {
             self.addBreadCrumb(from: "Favourite Designs")
@@ -102,7 +103,7 @@ class DesignsVC: HeaderVC {
         }
         
         if isFavorites {
-            setAppearanceFor(view: btnFavorites, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnFavorites.titleLabel!.font)
+            setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
             getFavoriteDesigns()
         }
         
@@ -256,6 +257,8 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
         let designsDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "DesignsDetailsVC") as! DesignsDetailsVC
         designsDetailsVC.isFromProfile = isFromProfile
         designsDetailsVC.isFromFavorites = isFavorites
+        designsDetailsVC.designCount = arrHomeDesigns.count
+        
         self.navigationController?.pushViewController(designsDetailsVC, animated: true)
         
         
@@ -335,7 +338,7 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
 
 extension DesignsVC: ChildVCDelegate {
     
-    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool) {
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset : Bool) {
         
         if sort {
             btnSortFilter.backgroundColor = COLOR_WHITE
@@ -344,6 +347,15 @@ extension DesignsVC: ChildVCDelegate {
         
         if map {
             
+        }
+        if reset{
+            print("------- Reset myCollection Data")
+            self.arrHomeDesigns.removeAll()
+            if navigationController?.viewControllers.count == 1 {
+                self.tabBarController?.navigationController?.popViewController(animated: true)
+            }else {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
         
         if favourites {
@@ -377,13 +389,13 @@ extension DesignsVC: ChildVCDelegate {
                 
                 if isFavorites {
                     
-                    setAppearanceFor(view: btnFavorites, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnFavorites.titleLabel!.font)
+                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
                     
                     getFavoriteDesigns()
                     
                 }else {
                     
-                    setAppearanceFor(view: btnFavorites, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnFavorites.titleLabel!.font)
+                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
                         getCollectionDesigns (selectedFeatures ?? [])
                     self.searchResultsTable.isScrollEnabled = true
                 }
@@ -457,6 +469,8 @@ extension DesignsVC {
                                 
                                 recent.append(count)
                                 
+                               
+                                
                                 ProfileDataManagement.shared.saveRecentSearch(recent, SearchType.shared.newHomes, kUserID) { (success) in
                                     if success == true {
                                         setCollectionsCount(count: self.arrHomeDesigns.count, state: kUserState)
@@ -464,8 +478,10 @@ extension DesignsVC {
                                 }
                                 
                             }
-                            
+                           
                         }
+                        self.btnTotalCollectionCount.setTitle("   TOTAL \(self.arrHomeDesigns.count) DESIGNS   ", for: .normal)
+                        self.setFramesForOptionsViews()
                     }
                     
                 }else {

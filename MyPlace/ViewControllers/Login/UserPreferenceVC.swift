@@ -81,9 +81,7 @@ class UserPreferenceVC: UIViewController {
         viewFinishedSelection.removeFromSuperview()
         
         stackViewWidth.isActive = false
-        
-        stackView.spacing = 20
-        
+        stackView.spacing = 20        
         stackView.addConstraint(NSLayoutConstraint(item: stackView as Any, attribute: .width, relatedBy: .equal, toItem: stackView, attribute: .height, multiplier: 2, constant: 1*stackView.spacing))
         
      //   textViewWelcomeDescription.text = "Find your perfect home on Burbank Homes app - The only property app you need for your home purchase or property needs in Australia. If you are looking to build your dream home, buy a brand new house or invest in home building in Australia, this property finder app will simplify your property search.\nBurbank is proudly an Australian home builder, building homes in Victoria, New South Wales, Queensland and South Australia. "
@@ -97,12 +95,12 @@ class UserPreferenceVC: UIViewController {
 
      //   textViewWelcomeDescription.contentOffset = CGPoint (x: 0, y: 0)
         
-        if let _ = AppConfigurations.shared.getHowDoesitWorkURL() {
-            
-        }else {
-            
-            btnHowWorks.isHidden = true
-        }
+//        if let _ = AppConfigurations.shared.getHowDoesitWorkURL() {
+//
+//        }else {
+//
+//            btnHowWorks.isHidden = true
+//        }
     }
     
     
@@ -110,11 +108,12 @@ class UserPreferenceVC: UIViewController {
 
     func pageUISetup () {
         
-        setAppearanceFor(view: viewWelcome, backgroundColor: AppColors.white)
+        setAppearanceFor(view: viewWelcome, backgroundColor: AppColors.lightGray.withAlphaComponent(0.2))
+        setAppearanceFor(view: viewModuleSelection, backgroundColor: AppColors.lightGray.withAlphaComponent(0.2))
         
         setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+      //  setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
         setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
@@ -132,8 +131,11 @@ class UserPreferenceVC: UIViewController {
         setAppearanceFor(view: btnContinue, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_HEADING (size: FONT_16))
         
         
-        btnHowWorks.layer.cornerRadius = 5.0
-        setBorder(view: btnHowWorks, color: COLOR_APP_BACKGROUND, width: 1.0)
+      //  btnHowWorks.layer.cornerRadius = 5.0
+       // setBorder(view: btnHowWorks, color: , width: 1.0)
+       
+        btnHowWorks.cardView()
+        btnHowWorks.backgroundColor = AppColors.white
         
         viewLookingSelection.layer.cornerRadius = 5.0
         viewDepositedSelection.layer.cornerRadius = 5.0

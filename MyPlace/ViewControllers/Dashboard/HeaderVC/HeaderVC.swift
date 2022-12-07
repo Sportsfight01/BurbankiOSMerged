@@ -11,7 +11,7 @@ import SDWebImage
 
 protocol ChildVCDelegate: NSObject {
     
-    func handleActionFor (sort: Bool, map: Bool, favourites: Bool, howWorks:Bool)
+    func handleActionFor (sort: Bool, map: Bool, favourites: Bool, howWorks:Bool, reset:Bool)
 }
 
 var headerViewHeight = 0.238*SCREEN_HEIGHT //135 for 375 width 667 height
@@ -92,7 +92,10 @@ class HeaderVC: UIViewController {
     var btnHowWorks = UIButton(frame: .zero)
     var btnSortFilter = UIButton(frame: .zero)
     var btnMap = UIButton(frame: .zero)
-    var btnFavorites = UIButton(frame: .zero)
+    var btnMyProfile = UIButton(frame: .zero)
+    
+    var btnReset = UIButton(frame: .zero)
+    var btnTotalCollectionCount = UIButton(frame: .zero)
     
     var containerView: UIView?
     
@@ -103,8 +106,23 @@ class HeaderVC: UIViewController {
     var headerLogoText: String? {
         didSet {
             
-            setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size : 30))
-            logoLabel.text = headerLogoText
+            
+            
+            switch headerLogoText {
+                
+            case "House&Land":
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["House&" , "Land"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+                
+            case "HomeDesigns":
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Home" , "Designs"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+            
+            default :
+                setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size : 30))
+                logoLabel.text = headerLogoText
+            }
+            
+            
+            
             
 //            if self.headerLogoText!.contains("My") {
 //                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
@@ -700,7 +718,7 @@ extension HeaderVC {
 
 extension HeaderVC {
     
-    func addHeaderOptions (sort: Bool = false, map: Bool = false, favourites: Bool = false, howWorks: Bool = false, delegate: ChildVCDelegate?) {
+    func addHeaderOptions (sort: Bool = false, map: Bool = false, favourites: Bool = false, howWorks: Bool = false, reset : Bool = false,totalCount : Bool = false, delegate: ChildVCDelegate?) {
         
         addHowWorks()
 
@@ -710,6 +728,10 @@ extension HeaderVC {
 
         addFavorites()
 
+        addReset ()
+        
+        addTotalCount()
+        
         if let del = delegate {
             childVCDelegate = del
         }
@@ -725,18 +747,25 @@ extension HeaderVC {
         if !map {
             btnMap.isHidden = true
         }
-        if !favourites {
-            btnFavorites.isHidden = true
+        if !reset {
+            btnReset.isHidden = true
         }
+        if !totalCount {
+            btnTotalCollectionCount.isHidden = true
+        }
+        
+//        if !favourites {
+//            btnFavorites.isHidden = true
+//        }
                 
         
-        btnFavorites.translatesAutoresizingMaskIntoConstraints = false
+        btnMyProfile.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             //            btnFavorites.leadingAnchor.constraint(equalTo: optionsView.leadingAnchor, constant: 0),
-            btnFavorites.trailingAnchor.constraint(equalTo: optionsView.trailingAnchor, constant: 0),
-            btnFavorites.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
-            optionsView.bottomAnchor.constraint(equalTo: btnFavorites.bottomAnchor, constant: 0)
+            btnMyProfile.trailingAnchor.constraint(equalTo: optionsView.trailingAnchor, constant: 0),
+            btnMyProfile.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
+            optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)
         ])
         
         
@@ -746,7 +775,7 @@ extension HeaderVC {
             btnSortFilter.leadingAnchor.constraint(equalTo: optionsView.leadingAnchor, constant: 0),
             //            btnFavorites.trailingAnchor.constraint(equalTo: optionsView.trailingAnchor, constant: 0),
             btnSortFilter.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
-            optionsView.bottomAnchor.constraint(equalTo: btnFavorites.bottomAnchor, constant: 0)
+            optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)
         ])
         
         
@@ -754,10 +783,30 @@ extension HeaderVC {
         
         NSLayoutConstraint.activate([
             btnMap.leadingAnchor.constraint(equalTo: btnSortFilter.trailingAnchor, constant: 5),
-            btnMap.trailingAnchor.constraint(lessThanOrEqualTo: btnFavorites.leadingAnchor, constant: -5),
+            btnMap.trailingAnchor.constraint(lessThanOrEqualTo: btnMyProfile.leadingAnchor, constant: -5),
             btnMap.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
-            optionsView.bottomAnchor.constraint(equalTo: btnFavorites.bottomAnchor, constant: 0)
+            optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)
         ])
+        
+        btnReset.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            btnReset.leadingAnchor.constraint(equalTo: optionsView.leadingAnchor, constant: 0),
+            //            btnFavorites.trailingAnchor.constraint(equalTo: optionsView.trailingAnchor, constant: 0),
+            btnReset.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
+            optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)
+        ])
+        
+        
+        btnTotalCollectionCount.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            btnTotalCollectionCount.leadingAnchor.constraint(equalTo: btnReset.trailingAnchor, constant: 5),
+            btnTotalCollectionCount.trailingAnchor.constraint(lessThanOrEqualTo: btnMyProfile.leadingAnchor, constant: -5),
+            btnTotalCollectionCount.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
+            optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)
+        ])
+        
         
         
         btnHowWorks.translatesAutoresizingMaskIntoConstraints = false
@@ -795,6 +844,26 @@ extension HeaderVC {
         btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
     
+    func addReset () {
+        
+        optionsView.addSubview(btnReset)
+        
+        btnReset.setTitle("  RESET  ", for: .normal)
+        setAppearanceFor(view: btnReset, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        btnReset.addTarget(self, action: #selector(handleResetAction), for: .touchUpInside)
+    }
+    
+    func addTotalCount () {
+        
+        optionsView.addSubview(btnTotalCollectionCount)
+        
+        btnTotalCollectionCount.setTitle("  TOTAL DESIGNS  ", for: .normal)
+        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: AppColors.appGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        //btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
+    }
+
+    
+    
     func addMap () {
         
         optionsView.addSubview(btnMap)
@@ -806,11 +875,14 @@ extension HeaderVC {
     
     func addFavorites () {
         
-        optionsView.addSubview(btnFavorites)
+        optionsView.addSubview(btnMyProfile)
         
-        btnFavorites.setTitle("  FAVOURITES  ", for: .normal)
-        setAppearanceFor(view: btnFavorites, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_11))
-        btnFavorites.addTarget(self, action: #selector(handleFavoritesAction), for: .touchUpInside)
+        btnMyProfile.setTitle("  MY PROFILE  ", for: .normal)
+        //userID == 0 means guest user so we are disabling myprofile button and chaging background color
+        let MyProfilebckColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.6) : AppColors.appOrange
+      //  btnMyProfile.isUserInteractionEnabled = kUserID == "0" ? false : true
+        setAppearanceFor(view: btnMyProfile, backgroundColor: MyProfilebckColor, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_11))
+        btnMyProfile.addTarget(self, action: #selector(handleFavoritesAction), for: .touchUpInside)
     }
     
     func setFramesForOptionsViews () {
@@ -845,13 +917,26 @@ extension HeaderVC {
                 btnMap.layer.cornerRadius = 5.0
             }
         }
+        if let str = btnReset.title(for: .normal) {
+            if str != "" {
+
+                setBorder(view: btnReset, color: COLOR_APP_BACKGROUND, width: 0.5)
+                btnReset.layer.cornerRadius = 5.0
+            }
+        }
+        if let str = btnTotalCollectionCount.title(for: .normal) {
+            if str != "" {
+
+                setBorder(view: btnTotalCollectionCount, color: COLOR_APP_BACKGROUND, width: 0.5)
+                btnTotalCollectionCount.layer.cornerRadius = 5.0
+            }
+        }
         
-        
-        if let str = btnFavorites.title(for: .normal) {
+        if let str = btnMyProfile.title(for: .normal) {
             if str != "" {
                 
-                setBorder(view: btnFavorites, color: COLOR_APP_BACKGROUND, width: 0.5)
-                btnFavorites.layer.cornerRadius = 5.0
+                setBorder(view: btnMyProfile, color: COLOR_APP_BACKGROUND, width: 0.5)
+                btnMyProfile.layer.cornerRadius = 5.0
             }
         }
     }
@@ -866,11 +951,16 @@ extension HeaderVC {
     @objc func handleHowWorksAction () {
                 
         if let delegate = childVCDelegate {
-            delegate.handleActionFor(sort: false, map: false, favourites: false, howWorks: true)
+            delegate.handleActionFor(sort: false, map: false, favourites: false, howWorks: true, reset: false)
         }
 //        playVideoIn(self, URL(string: ServiceAPI.shared.videoURLBurBank)!)
     }
     
+    @objc func handleResetAction () {
+        if let delegate = childVCDelegate {
+            delegate.handleActionFor(sort: false, map: false, favourites: false, howWorks: false, reset : true)
+        }
+    }
     @objc func handleSortFilterAction () {
         
         if let _ = containerViewSortFilter {
@@ -895,7 +985,7 @@ extension HeaderVC {
     
     @objc func handleMapAction () {
         if let delegate = childVCDelegate {
-            delegate.handleActionFor(sort: false, map: true, favourites: false, howWorks: false)
+            delegate.handleActionFor(sort: false, map: true, favourites: false, howWorks: false, reset: false)
         }
     }
     
@@ -904,7 +994,7 @@ extension HeaderVC {
         if noNeedofGuestUserToast(self, message: "Please login to show favourites") {
             
             if let delegate = childVCDelegate {
-                delegate.handleActionFor(sort: false, map: false, favourites: true, howWorks: false)
+                delegate.handleActionFor(sort: false, map: false, favourites: true, howWorks: false, reset: false)
             }
         }
     }
@@ -949,7 +1039,7 @@ extension HeaderVC: SortFilterDelegate {
                 self.filter = results as! SortFilter
                 
                 if let childDelegate = childVCDelegate {
-                    childDelegate.handleActionFor(sort: true, map: false, favourites: false, howWorks: false)
+                    childDelegate.handleActionFor(sort: true, map: false, favourites: false, howWorks: false, reset: false)
                 }
             }
         }
