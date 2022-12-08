@@ -258,7 +258,8 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
         designsDetailsVC.isFromProfile = isFromProfile
         designsDetailsVC.isFromFavorites = isFavorites
         designsDetailsVC.designCount = arrHomeDesigns.count
-        
+        designsDetailsVC.arrHomeDesignsDetails = arrHomeDesigns
+        designsDetailsVC.selectedDesignCount = indexPath.row
         self.navigationController?.pushViewController(designsDetailsVC, animated: true)
         
         

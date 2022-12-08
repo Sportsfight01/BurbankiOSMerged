@@ -491,7 +491,7 @@ class HeaderVC: UIViewController {
         btnBack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            btnBack.leadingAnchor.constraint(equalTo: headerView_header.leadingAnchor, constant: 15),
+            btnBack.leadingAnchor.constraint(equalTo: headerView_header.leadingAnchor, constant: 10),
             btnBack.centerYAnchor.constraint(equalTo: breadcrumbView.centerYAnchor, constant: 0),
             btnBack.heightAnchor.constraint(equalToConstant: 18*1.25),
             btnBack.widthAnchor.constraint(equalToConstant: 10*1.25)
@@ -540,7 +540,7 @@ class HeaderVC: UIViewController {
 
         NSLayoutConstraint.activate([
             breadcrumbView.leadingAnchor.constraint(equalTo: logoLabel.leadingAnchor, constant: 0),
-            breadcrumbView.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 5),
+            breadcrumbView.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 2),
             breadcrumbView.trailingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 0),
             heightCollection!
         ])
@@ -848,7 +848,7 @@ extension HeaderVC {
         
         optionsView.addSubview(btnReset)
         
-        btnReset.setTitle("  RESET  ", for: .normal)
+        btnReset.setTitle("    RESET    ", for: .normal)
         setAppearanceFor(view: btnReset, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnReset.addTarget(self, action: #selector(handleResetAction), for: .touchUpInside)
     }
@@ -857,7 +857,7 @@ extension HeaderVC {
         
         optionsView.addSubview(btnTotalCollectionCount)
         
-        btnTotalCollectionCount.setTitle("  TOTAL DESIGNS  ", for: .normal)
+        btnTotalCollectionCount.setTitle("    TOTAL DESIGNS    ", for: .normal)
         setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: AppColors.appGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         //btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }

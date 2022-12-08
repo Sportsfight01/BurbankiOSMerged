@@ -59,6 +59,11 @@ class DesignsDetailsVC: HeaderVC {
     
     @IBOutlet weak var btnEnquire : UIButton!
     @IBOutlet weak var btnSaveDesign: UIButton!
+    
+    @IBOutlet weak var previousDesignBTN: UIButton!
+    @IBOutlet weak var nextDesignBTN: UIButton!
+    var selectedDesignCount = 0
+    
   
   var validFacadeNamesArray = [String]()
     var containerViewRegion: UIView?
@@ -82,7 +87,7 @@ class DesignsDetailsVC: HeaderVC {
     }
     
     var homeDesignDetails: HomeDesignDetails?
-    
+    var arrHomeDesignsDetails = [HomeDesigns] ()
     
     var arrScrollImageUrls = [String] ()
     var arrOnDisplay = [Any] ()
@@ -142,6 +147,16 @@ class DesignsDetailsVC: HeaderVC {
             addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, reset: true,totalCount: true,  delegate: self)
         }
         
+        if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
+            self.nextDesignBTN.isHidden = true
+        }else{
+            self.nextDesignBTN.isHidden = false
+        }
+        if selectedDesignCount <= 0{
+            self.previousDesignBTN.isHidden = true
+        }else{
+            self.previousDesignBTN.isHidden = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,7 +165,7 @@ class DesignsDetailsVC: HeaderVC {
         if let filter = displayText {
             if filter.count > 0 {
                 self.addBreadCrumb(from: filter)
-                self.btnTotalCollectionCount.setTitle("  TOTAL \(designCount ?? 0) DESIGNS  ", for: .normal)
+                self.btnTotalCollectionCount.setTitle("    TOTAL \(designCount ?? 0) DESIGNS    ", for: .normal)
             }else {
                 self.addBreadCrumb(from: infoStaicText)
             }
@@ -283,7 +298,19 @@ class DesignsDetailsVC: HeaderVC {
           
           
         }
+        self.previousDesignBTN.tintColor = .darkGray
+        self.nextDesignBTN.tintColor = .darkGray
         
+        if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
+            self.nextDesignBTN.isHidden = true
+        }else{
+            self.nextDesignBTN.isHidden = false
+        }
+        if selectedDesignCount <= 0{
+            self.previousDesignBTN.isHidden = true
+        }else{
+            self.previousDesignBTN.isHidden = false
+        }
     }
     
     
@@ -404,6 +431,43 @@ class DesignsDetailsVC: HeaderVC {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func handlePreviousDesignButton (_ sender: UIButton) {
+        
+        
+       
+        if selectedDesignCount <= 0{
+            self.previousDesignBTN.isHidden = true
+        }else{
+//            self.previousDesignBTN.isHidden = false
+            homeDesign = arrHomeDesignsDetails[selectedDesignCount - 1]
+            selectedDesignCount = selectedDesignCount - 1
+            if let design = homeDesign {
+                fillAllDetails ()
+                getDesignDetails(design)
+            }
+        }
+        
+    }
+    
+    @IBAction func handleNextDesignButton (_ sender: UIButton) {
+        
+       
+        if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
+            self.nextDesignBTN.isHidden = true
+            
+        }else{
+//            self.nextDesignBTN.isHidden = false
+            homeDesign = arrHomeDesignsDetails[selectedDesignCount + 1]
+            selectedDesignCount = selectedDesignCount + 1
+            if let design = homeDesign {
+                fillAllDetails ()
+                
+                getDesignDetails(design)
+            }
+            
+        }
+       
+    }
     @IBAction func handleMyPlaceButton (_ sender: UIButton) {
        
         //MARK: In v2.3 navigating myPlace3D to browser beacuase of webview issues
