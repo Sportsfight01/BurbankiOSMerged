@@ -71,7 +71,11 @@ class NewForgotPasswordVC: UIViewController {
         
         if txtEmail.text!.count > 0 {
             self.viewText.isUserInteractionEnabled = false
-            self.viewText.backgroundColor = COLOR_LIGHT_GRAY
+            if #available(iOS 13.0, *) {
+                self.viewText.backgroundColor = .systemGray4
+            } else {
+                self.viewText.backgroundColor = COLOR_LIGHT_GRAY
+            }
         }
     }
 

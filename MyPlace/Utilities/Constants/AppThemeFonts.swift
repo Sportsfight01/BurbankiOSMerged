@@ -60,7 +60,7 @@ let FONT_50 = SCREEN_WIDTH/6.4
 let FONT_55 = SCREEN_WIDTH/5.8 //height/22.7
 
 
-let FONT_signin = SCREEN_HEIGHT/40.6
+let FONT_signin = SCREEN_HEIGHT/50.6
 
 
 

@@ -50,7 +50,7 @@ class StateSelectionVC: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        setAppearanceFor(view: lBSelection, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
+        setAppearanceFor(view: lBSelection, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         
         
         viewSelection.layer.cornerRadius = radius_5

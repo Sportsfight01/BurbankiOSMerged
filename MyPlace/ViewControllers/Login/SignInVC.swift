@@ -177,8 +177,8 @@ class SignInVC: UIViewController {
         setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
         
-        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
         
         setAppearanceFor(view: labelChooseMethod, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
        
@@ -188,7 +188,7 @@ class SignInVC: UIViewController {
         setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
         setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: systemRegularFont(size: FONT_signin))
         
-        viewEmail.backgroundColor = COLOR_WHITE
+        viewEmail.backgroundColor = COLOR_BLACK
         
         
 //        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))

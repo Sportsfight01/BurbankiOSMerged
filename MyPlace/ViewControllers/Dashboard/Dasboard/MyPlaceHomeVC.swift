@@ -193,7 +193,7 @@ class MyPlaceHomeVC: UIViewController {
         
         btnMyProfile.backgroundColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.7) : AppColors.appOrange
         
-        _ = setAttributetitleFor(view: lBMyPlace, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 32) , FONT_LABEL_SUB_HEADING(size: 32)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: lBMyPlace, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
         setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
         setAppearanceFor(view: btnState, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray , textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))

@@ -56,8 +56,8 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate, ASAuthorizat
     ])
     //titleLabel
     let titleLabel = UILabel()
-    titleLabel.text = "Sign in with Apple"
-    titleLabel.font = UIFont.systemFont(ofSize: 21.0 , weight: .semibold)
+    titleLabel.text = "Continue with Apple"
+    titleLabel.font = UIFont.systemFont(ofSize: FONT_signin , weight: .semibold)
     titleLabel.textColor = .white
    
     view.addSubview(titleLabel)
