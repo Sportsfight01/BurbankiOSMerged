@@ -25,7 +25,7 @@ class MyPlaceHomeVC: UIViewController {
     @IBOutlet weak var btnStateLeading: NSLayoutConstraint!
     
     
-   
+    
     @IBOutlet weak var lBMyPlace: UILabel!
     @IBOutlet weak var lBWelcome: UILabel!
     @IBOutlet weak var lBChooseMethod: UILabel!
@@ -45,11 +45,11 @@ class MyPlaceHomeVC: UIViewController {
     @IBOutlet weak var iconHomeLand: UIImageView!
     
     
-        @IBOutlet weak var viewHomeDisplay: UIView!
-        @IBOutlet weak var btnHomeDisplay: UIButton!
-        @IBOutlet weak var lBHomeDisplayTitle: UILabel!
-        @IBOutlet weak var lBHomeDisplaySubTitle: UILabel!
-        @IBOutlet weak var iconHomeDisplay: UIImageView!
+    @IBOutlet weak var viewHomeDisplay: UIView!
+    @IBOutlet weak var btnHomeDisplay: UIButton!
+    @IBOutlet weak var lBHomeDisplayTitle: UILabel!
+    @IBOutlet weak var lBHomeDisplaySubTitle: UILabel!
+    @IBOutlet weak var iconHomeDisplay: UIImageView!
     
     
     @IBOutlet weak var containerViewShare: UIView!
@@ -73,7 +73,7 @@ class MyPlaceHomeVC: UIViewController {
     var firstTimeLoading = true
     
     //MARK: - ViewLifeCycle
-
+    
     
     
     
@@ -84,7 +84,7 @@ class MyPlaceHomeVC: UIViewController {
         handleUISetup()
         
         LocationServices.shared.requestUsertoAllowLocationPermissions()
-
+        
         
         if kUserState == String.zero() || kUserState == String.empty() {
             stateView.isHidden = true
@@ -104,11 +104,11 @@ class MyPlaceHomeVC: UIViewController {
             btnBackWidth.constant = 0
             btnStateLeading.constant = 0
             
-            ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
-                if let url = appDelegate.userData?.user?.userProfileImageURL {
-                    self.addProfileImage(url)
-                }
-            }
+            //            ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
+            //                if let url = appDelegate.userData?.user?.userProfileImageURL {
+            //                    self.addProfileImage(url)
+            //                }
+            //            }
             
             ProfileDataManagement.shared.getSearchTypes {
                 
@@ -134,9 +134,9 @@ class MyPlaceHomeVC: UIViewController {
         
         hideProfileView()
         
-        if let url = appDelegate.userData?.user?.userProfileImageURL {
-            addProfileImage(url)
-        }
+        //        if let url = appDelegate.userData?.user?.userProfileImageURL {
+        //            addProfileImage(url)
+        //        }
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
     }
     
@@ -212,7 +212,7 @@ class MyPlaceHomeVC: UIViewController {
         
         setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
         setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray , textFont: FONT_LABEL_BODY(size: FONT_10))
-    
+        
         //make card vuew
         
         viewHomeLand.cardView()
@@ -305,8 +305,8 @@ class MyPlaceHomeVC: UIViewController {
         
         btnState.setTitle(region, for: .normal)
         
-//        btnState.superview?.layer.cornerRadius = (btnState.superview?.frame.size.height)!/2 //radius_3
-//        setBorder(view: btnState.superview!, color: COLOR_WHITE, width: 1)
+        //        btnState.superview?.layer.cornerRadius = (btnState.superview?.frame.size.height)!/2 //radius_3
+        //        setBorder(view: btnState.superview!, color: COLOR_WHITE, width: 1)
     }
     
     
@@ -412,7 +412,7 @@ class MyPlaceHomeVC: UIViewController {
     
     @IBAction func handleButtonActions (_ sender: UIButton) {
         
-//        fatalError("Manual crash")
+        //        fatalError("Manual crash")
         
         if sender == btnBack {
             
@@ -424,7 +424,7 @@ class MyPlaceHomeVC: UIViewController {
             
         }else if sender == btnIcon {
             
-        //go to main screen
+            //go to main screen
             loadMainView()
             
         }else if sender == btnState {
@@ -434,23 +434,23 @@ class MyPlaceHomeVC: UIViewController {
             CodeManager.sharedInstance.sendScreenName (burbank_dashboard_selectState_button_touch)
             
         }/*else if sender == btnHomeDesign {
-             
-             self.navigationController?.popToRootViewController(animated: true)
-             
-             let collectionSurvey = kStoryboardMain.instantiateViewController(withIdentifier: "MyCollectionSurveyVC") as! MyCollectionSurveyVC
-             self.navigationController?.pushViewController(collectionSurvey, animated: true)
-             
-             }else if sender == btnHomeLand {
-             
-             self.tabBarController?.selectedIndex = 1
-             }else if sender == btnHomeDisplay {
-             
-             //            if let _ = getFilterFromDefaults() {
-             self.tabBarController?.selectedIndex = 2
-             //            }else {
-             //                handleButtonActions(btnHomeDesign)
-             //            }
-             }*/
+          
+          self.navigationController?.popToRootViewController(animated: true)
+          
+          let collectionSurvey = kStoryboardMain.instantiateViewController(withIdentifier: "MyCollectionSurveyVC") as! MyCollectionSurveyVC
+          self.navigationController?.pushViewController(collectionSurvey, animated: true)
+          
+          }else if sender == btnHomeLand {
+          
+          self.tabBarController?.selectedIndex = 1
+          }else if sender == btnHomeDisplay {
+          
+          //            if let _ = getFilterFromDefaults() {
+          self.tabBarController?.selectedIndex = 2
+          //            }else {
+          //                handleButtonActions(btnHomeDesign)
+          //            }
+          }*/
         else if sender == btnHomeDesign {
             
             CodeManager.sharedInstance.sendScreenName (burbank_dashboard_homeDesigns_button_touch)
@@ -519,60 +519,60 @@ class MyPlaceHomeVC: UIViewController {
     
     func addProfileImage (_ url: String) {
         
-        if url.count > 0 {
-            
-            guard let urlImage = URL (string: url) else { return }
-            
-            SDImageCache.shared.removeImage(forKey: url, cacheType: .all) {
-                
-                SDWebImageDownloader.shared.downloadImage(with: urlImage, options: .ignoreCachedResponse, progress: { (receivedsize, totalsize, targeturl) in
-                    
-                    
-                }) { (image, data, error, finished) in
-                    
-                    if finished {
-                        if let imageDownloaded = image {
-                            self.btnIcon.setBackgroundImage(imageDownloaded, for: .normal)
-                        }else {
-                            self.btnIcon.setBackgroundImage(Image_defaultDP, for: .normal)
-                        }
-                    }
-                }
-                
-            }
-            
-            //            ImageDownloader.removeImage(forKey: url) {
-            //
-            //                ImageDownloader.downloadImage(withUrl: url, withFilePath: nil, with: { (image, success, error) in
-            //
-            //                    if success, let img = image {
-            //                        self.btnIcon.setBackgroundImage(img, for: .normal)
-            //                    }else {
-            //                        self.btnIcon.setBackgroundImage(Image_defaultDP, for: .normal)
-            //                    }
-            //
-            //                }) { (progress) in
-            //
-            //                }
-            //            }
-            
-            
-            //            downloadImage(from: urlImage) { (image, error, success) in
-            //
-            //                DispatchQueue.main.async() {
-            //
-            //                    if success, let img = image {
-            //                        self.btnIcon.setBackgroundImage(img, for: .normal)
-            //                    }else {
-            //                        self.btnIcon.setBackgroundImage(Image_defaultDP, for: .normal)
-            //                    }
-            //                }
-            //            }
-            
-            
-        }else{
-            
-        }
+        //        if url.count > 0 {
+        //
+        //            guard let urlImage = URL (string: url) else { return }
+        //
+        //            SDImageCache.shared.removeImage(forKey: url, cacheType: .all) {
+        //
+        //                SDWebImageDownloader.shared.downloadImage(with: urlImage, options: .ignoreCachedResponse, progress: { (receivedsize, totalsize, targeturl) in
+        //
+        //
+        //                }) { (image, data, error, finished) in
+        //
+        //                    if finished {
+        //                        if let imageDownloaded = image {
+        //                            self.btnIcon.setBackgroundImage(imageDownloaded, for: .normal)
+        //                        }else {
+        //                            self.btnIcon.setBackgroundImage(Image_defaultDP, for: .normal)
+        //                        }
+        //                    }
+        //                }
+        //
+        //            }
+        //
+        //            //            ImageDownloader.removeImage(forKey: url) {
+        //            //
+        //            //                ImageDownloader.downloadImage(withUrl: url, withFilePath: nil, with: { (image, success, error) in
+        //            //
+        //            //                    if success, let img = image {
+        //            //                        self.btnIcon.setBackgroundImage(img, for: .normal)
+        //            //                    }else {
+        //            //                        self.btnIcon.setBackgroundImage(Image_defaultDP, for: .normal)
+        //            //                    }
+        //            //
+        //            //                }) { (progress) in
+        //            //
+        //            //                }
+        //            //            }
+        //
+        //
+        //            //            downloadImage(from: urlImage) { (image, error, success) in
+        //            //
+        //            //                DispatchQueue.main.async() {
+        //            //
+        //            //                    if success, let img = image {
+        //            //                        self.btnIcon.setBackgroundImage(img, for: .normal)
+        //            //                    }else {
+        //            //                        self.btnIcon.setBackgroundImage(Image_defaultDP, for: .normal)
+        //            //                    }
+        //            //                }
+        //            //            }
+        //
+        //
+        //        }else{
+        //
+        //        }
     }
     
     
@@ -658,13 +658,13 @@ class MyPlaceHomeVC: UIViewController {
         print("----1-1-1-1-1,",regionsArr)
         let regions = regionsArr.joined(separator: ",")
         print("----1-1-1-1-1,",regions)
-              
-       
-
+        
+        
+        
         
         myPlaceQuiz.region = regions
         
-//        myPlaceQuiz.region = filter.region.regionName
+        //        myPlaceQuiz.region = filter.region.regionName
         
         
         if filter.storeysCount == .one {

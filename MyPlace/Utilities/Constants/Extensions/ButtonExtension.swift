@@ -36,8 +36,8 @@ final class ProfileButton: UIButton {
     func setup() {
         self.clipsToBounds = true
         self.layer.cornerRadius = self.frame.size.width / 2.0
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 1.0
+//        self.layer.borderColor = UIColor.lightGray.cgColor
+//        self.layer.borderWidth = 1.0
     }
 }
 

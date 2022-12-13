@@ -87,7 +87,7 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         
         let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController)!
         if selectedIndex == 3 {
-            print("first tab bar was selected")
+            print("favorites tab bar was selected")
             if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
                 if viewController.isKind(of: UINavigationController.self) {
                     (viewController as! UINavigationController).interactivePopGestureRecognizer?.isEnabled = false

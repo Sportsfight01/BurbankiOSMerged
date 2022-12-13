@@ -71,7 +71,7 @@ class UserProfileVC: UIViewController {
     
     
     let arrIcons = [iconProfile, iconShare,iconFav/*, iconCollection, iconMyday, iconHL, iconMyDesign, iconDH*/, iconSettings]
-        let arrNames = [nameMyDetails, nameShare,nameFavourites/*, nameMyCollection, nameMyday, nameHL, nameMyDesign, nameDisplayHomes*/, nameSettings]
+    let arrNames = [nameMyDetails, nameShare,nameFavourites/*, nameMyCollection, nameMyday, nameHL, nameMyDesign, nameDisplayHomes*/, nameSettings]
     
     
     
@@ -267,60 +267,60 @@ class UserProfileVC: UIViewController {
     
     
     func addProfileImage (_ url: String?) {
-        
-        if let imageURL = url {
-            
-            guard let urlImage = URL (string: imageURL) else { return }
-            
-            SDImageCache.shared.removeImage(forKey: url, cacheType: .all) {
-                
-                SDWebImageDownloader.shared.downloadImage(with: urlImage, options: .ignoreCachedResponse, progress: { (receivedsize, totalsize, targeturl) in
-                    
-                    
-                }) { (image, data, error, finished) in
-                    
-                    if finished {
-                        if let imageDownloaded = image {
-                            self.btnProfileImage.setBackgroundImage(imageDownloaded, for: .normal)
-                        }else {
-                            self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
-                        }
-                    }
-                }
-                
-            }
-            //            ImageDownloader.removeImage(forKey: imageURL) {
-            //
-            //                ImageDownloader.downloadImage(withUrl: imageURL, withFilePath: nil, with: { (image, success, error) in
-            //
-            //                    if success, let img = image {
-            //
-            //                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
-            //                    }else {
-            //                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
-            //                    }
-            //
-            //                }) { (progress) in
-            //
-            //                }
-            //            }
-            
-            //            downloadImage(from: urlImage) { (image, error, success) in
-            //
-            //                DispatchQueue.main.async() {
-            //
-            //                    if success, let img = image {
-            //
-            //                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
-            //                    }else {
-            //                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
-            //                    }
-            //                }
-            //            }
-            
-        }else{
-            
-        }
+//
+//        if let imageURL = url {
+//
+//            guard let urlImage = URL (string: imageURL) else { return }
+//
+//            SDImageCache.shared.removeImage(forKey: url, cacheType: .all) {
+//
+//                SDWebImageDownloader.shared.downloadImage(with: urlImage, options: .ignoreCachedResponse, progress: { (receivedsize, totalsize, targeturl) in
+//
+//
+//                }) { (image, data, error, finished) in
+//
+//                    if finished {
+//                        if let imageDownloaded = image {
+//                            self.btnProfileImage.setBackgroundImage(imageDownloaded, for: .normal)
+//                        }else {
+//                            self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+//                        }
+//                    }
+//                }
+//
+//            }
+//            //            ImageDownloader.removeImage(forKey: imageURL) {
+//            //
+//            //                ImageDownloader.downloadImage(withUrl: imageURL, withFilePath: nil, with: { (image, success, error) in
+//            //
+//            //                    if success, let img = image {
+//            //
+//            //                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
+//            //                    }else {
+//            //                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+//            //                    }
+//            //
+//            //                }) { (progress) in
+//            //
+//            //                }
+//            //            }
+//
+//            //            downloadImage(from: urlImage) { (image, error, success) in
+//            //
+//            //                DispatchQueue.main.async() {
+//            //
+//            //                    if success, let img = image {
+//            //
+//            //                        self.btnProfileImage.setBackgroundImage(img, for: .normal)
+//            //                    }else {
+//            //                        self.btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+//            //                    }
+//            //                }
+//            //            }
+//
+//        }else{
+//
+//        }
     }
     
     

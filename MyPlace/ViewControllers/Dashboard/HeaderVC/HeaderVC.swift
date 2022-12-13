@@ -82,7 +82,7 @@ class HeaderVC: UIViewController {
     var btnBack = UIButton()
     var btnBackProfile = UIButton()
     
-    var btnHome = UIButton()
+   // var btnHome = UIButton()
 
     var btnBackFull = UIButton()
     
@@ -115,6 +115,8 @@ class HeaderVC: UIViewController {
                 
             case "HomeDesigns":
                 _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Home" , "Designs"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+            case "MyProfile":
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Profile"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             
             default :
                 setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size : 30))
@@ -184,9 +186,10 @@ class HeaderVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.profileImage.isHidden = isFromProfile
+       // self.profileImage.isHidden = isFromProfile
         profileImage.layer.cornerRadius = profileImage.frame.size.height/2
         profileImage.clipsToBounds = true
+        profileImage.setImage(UIImage(named: "BurbankLogo"), for: .normal)
         
         hideProfileView()
         hideSortFilterView()
@@ -196,10 +199,10 @@ class HeaderVC: UIViewController {
             updated = true
         }
         
-        if let url = appDelegate.userData?.user?.userProfileImageURL {
-            addProfileImage(url)
-        }
-        
+//        if let url = appDelegate.userData?.user?.userProfileImageURL {
+//            addProfileImage(url)
+//        }
+//
        
         
         
@@ -228,62 +231,62 @@ class HeaderVC: UIViewController {
     
     func addProfileImage (_ url: String?) {
         
-        if let imageURL = url {
-            
-            guard let urlImage = URL (string: imageURL) else { return }
-            
-            SDImageCache.shared.removeImage(forKey: url, cacheType: .all) {
-                
-                SDWebImageDownloader.shared.downloadImage(with: urlImage, options: .ignoreCachedResponse, progress: { (receivedsize, totalsize, targeturl) in
-
-                }) { (image, data, error, finished) in
-
-                    if finished {
-                        if let imageDownloaded = image {
-                            self.profileImage.setBackgroundImage(imageDownloaded, for: .normal)
-                        }else {
-                            self.profileImage.setBackgroundImage(Image_defaultDP, for: .normal)
-                        }
-                    }
-                }
-
-            }
-
-//            ImageDownloader.removeImage(forKey: url) {
+//        if let imageURL = url {
+//            
+//            guard let urlImage = URL (string: imageURL) else { return }
+//            
+//            SDImageCache.shared.removeImage(forKey: url, cacheType: .all) {
+//                
+//                SDWebImageDownloader.shared.downloadImage(with: urlImage, options: .ignoreCachedResponse, progress: { (receivedsize, totalsize, targeturl) in
 //
-//                ImageDownloader.downloadImage(withUrl: imageURL, withFilePath: nil, with: { (image, success, error) in
+//                }) { (image, data, error, finished) in
 //
-//                    if success, let img = image {
-//
-//                        self.profileImage.setBackgroundImage(img, for: .normal)
-//                    }else {
-//                        self.profileImage.setBackgroundImage(Image_defaultDP, for: .normal)
-//                    }
-//
-//                    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2
-//                    self.profileImage.clipsToBounds = true
-//
-//                }) { (progress) in
-//
-//                }
-//            }
-            
-//            downloadImage(from: urlImage) { (image, error, success) in
-//
-//                DispatchQueue.main.async() {
-//
-//                    if success, let img = image {
-//                        self.profileImage.setBackgroundImage(img, for: .normal)
-//                    }else {
-//                        self.profileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+//                    if finished {
+//                        if let imageDownloaded = image {
+//                            self.profileImage.setBackgroundImage(imageDownloaded, for: .normal)
+//                        }else {
+//                            self.profileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+//                        }
 //                    }
 //                }
+//
 //            }
-            
-            
-        }else{
-            
-        }
+//
+////            ImageDownloader.removeImage(forKey: url) {
+////
+////                ImageDownloader.downloadImage(withUrl: imageURL, withFilePath: nil, with: { (image, success, error) in
+////
+////                    if success, let img = image {
+////
+////                        self.profileImage.setBackgroundImage(img, for: .normal)
+////                    }else {
+////                        self.profileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+////                    }
+////
+////                    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2
+////                    self.profileImage.clipsToBounds = true
+////
+////                }) { (progress) in
+////
+////                }
+////            }
+//            
+////            downloadImage(from: urlImage) { (image, error, success) in
+////
+////                DispatchQueue.main.async() {
+////
+////                    if success, let img = image {
+////                        self.profileImage.setBackgroundImage(img, for: .normal)
+////                    }else {
+////                        self.profileImage.setBackgroundImage(Image_defaultDP, for: .normal)
+////                    }
+////                }
+////            }
+//            
+//            
+//        }else{
+//            
+//        }
     }
         
     
@@ -414,7 +417,7 @@ class HeaderVC: UIViewController {
         
         profileImage.setBackgroundImage(Image_defaultDP, for: .normal)
         headerView_header.addSubview(profileImage)
-        profileImage.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
+        profileImage.addTarget(self, action: #selector(handleHomeButtonAction), for: .touchUpInside)
         
         
         headerView_header.addSubview(logoLabel)
@@ -422,11 +425,11 @@ class HeaderVC: UIViewController {
         headerView_header.addSubview(breadcrumbView)
         
         
-        btnHome.setBackgroundImage(imageHome, for: .normal)
-        btnHome.clipsToBounds = true
-        btnHome.isHidden = false
-        btnHome.addTarget(self, action: #selector(handleHomeButtonAction(_:)), for: .touchUpInside)
-        headerView_header.addSubview(btnHome)
+//        btnHome.setBackgroundImage(imageHome, for: .normal)
+//        btnHome.clipsToBounds = true
+//        btnHome.isHidden = false
+//        btnHome.addTarget(self, action: #selector(handleHomeButtonAction(_:)), for: .touchUpInside)
+//        headerView_header.addSubview(btnHome)
 
         
         
@@ -509,14 +512,14 @@ class HeaderVC: UIViewController {
         
         
         
-        btnHome.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            btnHome.leadingAnchor.constraint(equalTo: headerView_header.leadingAnchor, constant: 5),
-            btnHome.centerYAnchor.constraint(equalTo: logoLabel.centerYAnchor, constant: -2),
-            btnHome.heightAnchor.constraint(equalToConstant: 30),
-            btnHome.widthAnchor.constraint(equalToConstant: 30)
-        ])
+//        btnHome.translatesAutoresizingMaskIntoConstraints = false
+//
+//        NSLayoutConstraint.activate([
+//            btnHome.leadingAnchor.constraint(equalTo: headerView_header.leadingAnchor, constant: 5),
+//            btnHome.centerYAnchor.constraint(equalTo: logoLabel.centerYAnchor, constant: -2),
+//            btnHome.heightAnchor.constraint(equalToConstant: 30),
+//            btnHome.widthAnchor.constraint(equalToConstant: 30)
+//        ])
 
         
         
@@ -644,16 +647,16 @@ extension HeaderVC {
         
         view.bringSubviewToFront(containerView!)
         
-        profileView.completionHandlerProfile = { () -> Void in
-            
-            self.hideProfileView()
-            
-            if let url = appDelegate.userData?.user?.userProfileImageURL {
-                ImageDownloader.removeImage(forKey: url) {
-                    self.addProfileImage(url)
-                }
-            }
-        }
+//        profileView.completionHandlerProfile = { () -> Void in
+//
+//            self.hideProfileView()
+//
+//            if let url = appDelegate.userData?.user?.userProfileImageURL {
+//                ImageDownloader.removeImage(forKey: url) {
+//                    self.addProfileImage(url)
+//                }
+//            }
+//        }
         
         profileView.completionHandlerProfilePicUpdate = {
             self.showProfileView()
@@ -882,7 +885,7 @@ extension HeaderVC {
         let MyProfilebckColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.6) : AppColors.appOrange
       //  btnMyProfile.isUserInteractionEnabled = kUserID == "0" ? false : true
         setAppearanceFor(view: btnMyProfile, backgroundColor: MyProfilebckColor, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_11))
-        btnMyProfile.addTarget(self, action: #selector(handleFavoritesAction), for: .touchUpInside)
+        btnMyProfile.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
     }
     
     func setFramesForOptionsViews () {

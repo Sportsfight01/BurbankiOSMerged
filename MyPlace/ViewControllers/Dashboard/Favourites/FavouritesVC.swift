@@ -33,7 +33,7 @@ class FavouritesVC: HeaderVC {
 //        setShadowatBottom(view: profileViewBorder, color: COLOR_BLACK, shadowRadius: 5.0)
         
         
-        tableViewFvrts.backgroundColor = COLOR_ORANGE
+        tableViewFvrts.backgroundColor = AppColors.white
         view.backgroundColor = COLOR_CLEAR
 //        profileViewBorder.backgroundColor = COLOR_CLEAR
         
@@ -269,6 +269,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         cell.icon.tintColor = .black
         cell.lBTitle.text = arrNames[indexPath.row]
+        cell.lBTitle.textColor = AppColors.black
         return cell
 
     }

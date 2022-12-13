@@ -95,12 +95,12 @@ class UserPreferenceVC: UIViewController {
 
      //   textViewWelcomeDescription.contentOffset = CGPoint (x: 0, y: 0)
         
-//        if let _ = AppConfigurations.shared.getHowDoesitWorkURL() {
-//
-//        }else {
-//
-//            btnHowWorks.isHidden = true
-//        }
+        if let _ = AppConfigurations.shared.getHowDoesitWorkURL() {
+
+        }else {
+
+            btnHowWorks.isHidden = true
+        }
     }
     
     

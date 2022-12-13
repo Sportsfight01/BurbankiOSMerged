@@ -80,7 +80,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-Ti-r60">
-                                        <rect key="frame" x="40" y="322" width="154" height="30"/>
+                                        <rect key="frame" x="40" y="307" width="154" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7WG-GG-cGP"/>
@@ -100,12 +100,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLq-Jr-W5C">
-                                        <rect key="frame" x="40" y="141" width="354" height="165"/>
-                                        <string key="text">Find your perfect home on Burbank Homes app - ​
+                                        <rect key="frame" x="40" y="141" width="354" height="150"/>
+                                        <string key="text">Find your perfect home on Burbank Homes app. If you are looking to build your dream home or invest in home building in Australia, this property finder app will simplify your property search.
 
-The only property app you need for your home purchase or property needs in Australia. If you are looking to build your dream home, buy a brand new house or invest in home building in Australia, this property finder app will simplify your property search. ​
-
-Burbank is proudly an Australian home builder, building homes in Victoria, New South Wales, Queensland and South Australia. ​</string>
+Whether you’re looking at building or are already building with us, the MyPlace app will help you either find the best design for you or take you through your building journey with us.
+</string>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -466,7 +465,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                     <constraint firstItem="qgj-Df-Ffa" firstAttribute="height" secondItem="Vtq-al-xv1" secondAttribute="height" multiplier="0.144678" id="krE-ni-0VS"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fb-LH-p76">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fb-LH-p76">
                                 <rect key="frame" x="354" y="68" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="DXR-Wj-NFH"/>
@@ -723,19 +722,19 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                 <state key="normal" backgroundImage="Ico-BB-Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKC-os-uA7">
-                                <rect key="frame" x="60" y="229" width="50.5" height="25"/>
+                                <rect key="frame" x="60" y="222" width="50" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1G-2c-x4w">
-                                <rect key="frame" x="110.5" y="229" width="33" height="25"/>
+                                <rect key="frame" x="110" y="222" width="33" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out this form to save your progress." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAA-qv-0xh">
-                                <rect key="frame" x="60" y="259" width="314" height="14"/>
+                                <rect key="frame" x="60" y="256.5" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -858,13 +857,13 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSe-GM-bhs">
-                                <rect key="frame" x="98" y="737" width="158.5" height="14"/>
+                                <rect key="frame" x="96" y="734.5" width="162.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfy-aH-eJa">
-                                <rect key="frame" x="261.5" y="729.5" width="53" height="29"/>
+                                <rect key="frame" x="263.5" y="726.5" width="52" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -959,19 +958,19 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPl-9j-N1e">
-                                <rect key="frame" x="50" y="317.5" width="50" height="25"/>
+                                <rect key="frame" x="50" y="310.5" width="50" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-ii-Mb6">
-                                <rect key="frame" x="100" y="317.5" width="21.5" height="25"/>
+                                <rect key="frame" x="100" y="310.5" width="20.5" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email to login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yq-WX-Gx8">
-                                <rect key="frame" x="50" y="372.5" width="314" height="16"/>
+                                <rect key="frame" x="50" y="369.5" width="314" height="19"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1021,7 +1020,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-EK-Lr9">
-                                <rect key="frame" x="129" y="633" width="156" height="29"/>
+                                <rect key="frame" x="129.5" y="633" width="155" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Are you a new user?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1038,7 +1037,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAe-cz-yix">
-                                <rect key="frame" x="50" y="672" width="314" height="51"/>
+                                <rect key="frame" x="50" y="675" width="314" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Create Account">
@@ -1049,12 +1048,12 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-pR-y5M">
-                                <rect key="frame" x="177" y="212.5" width="60" height="60"/>
+                                <rect key="frame" x="177" y="209.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="dZk-Uj-Dar"/>
                                     <constraint firstAttribute="width" secondItem="dLn-pR-y5M" secondAttribute="height" multiplier="1:1" id="gIq-Tc-znf"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Ico-BB-Black"/>
+                                <state key="normal" backgroundImage="BurbankLogo"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ETO-cW-D8h"/>
@@ -1133,27 +1132,27 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7J-Wm-4Uy">
-                                <rect key="frame" x="354" y="68" width="40" height="40"/>
+                                <rect key="frame" x="187" y="226" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="drO-3j-4JR"/>
                                     <constraint firstAttribute="height" constant="40" id="nmi-v8-RbA"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Ico-BB-Black"/>
+                                <state key="normal" backgroundImage="BurbankLogo"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEd-zg-iy4">
-                                <rect key="frame" x="50" y="316.5" width="75.5" height="25"/>
+                                <rect key="frame" x="50" y="307" width="73" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZa-Vg-nxl">
-                                <rect key="frame" x="125.5" y="316.5" width="110" height="25"/>
+                                <rect key="frame" x="123" y="307" width="111" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode will be sent to following Email to reset password" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jb-e1-5wo">
-                                <rect key="frame" x="50" y="356.5" width="314" height="32"/>
+                                <rect key="frame" x="50" y="351" width="314" height="37.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1216,14 +1215,13 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <viewLayoutGuide key="safeArea" id="T1h-YC-ck9"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="mN3-L4-Yat" firstAttribute="centerY" secondItem="i7J-Wm-4Uy" secondAttribute="centerY" id="3UV-fz-MVL"/>
                             <constraint firstItem="0Jb-e1-5wo" firstAttribute="trailing" secondItem="oFx-V5-PEh" secondAttribute="trailing" constant="-20" id="624-ZK-bdI"/>
                             <constraint firstItem="oFx-V5-PEh" firstAttribute="leading" secondItem="T1h-YC-ck9" secondAttribute="leading" constant="30" id="9Ag-fJ-4Co"/>
                             <constraint firstItem="oFx-V5-PEh" firstAttribute="centerY" secondItem="T1h-YC-ck9" secondAttribute="centerY" id="ARQ-P0-oCw"/>
                             <constraint firstItem="mN3-L4-Yat" firstAttribute="leading" secondItem="T1h-YC-ck9" secondAttribute="leading" constant="20" id="FBx-W3-WsE"/>
                             <constraint firstItem="oFx-V5-PEh" firstAttribute="height" secondItem="r1S-9h-5Cl" secondAttribute="height" multiplier="0.06" id="I0e-sW-HsK"/>
                             <constraint firstItem="UEd-zg-iy4" firstAttribute="leading" secondItem="oFx-V5-PEh" secondAttribute="leading" constant="20" id="MLC-xU-AEs"/>
-                            <constraint firstItem="i7J-Wm-4Uy" firstAttribute="top" secondItem="T1h-YC-ck9" secondAttribute="top" constant="20" id="QlU-fB-qSW"/>
+                            <constraint firstItem="i7J-Wm-4Uy" firstAttribute="bottom" secondItem="aZa-Vg-nxl" secondAttribute="bottom" constant="-70" id="Oyx-8J-olz"/>
                             <constraint firstItem="aZa-Vg-nxl" firstAttribute="centerY" secondItem="UEd-zg-iy4" secondAttribute="centerY" id="Sr1-29-sJM"/>
                             <constraint firstItem="aZa-Vg-nxl" firstAttribute="leading" secondItem="UEd-zg-iy4" secondAttribute="trailing" id="TlW-CJ-kdq"/>
                             <constraint firstItem="SWt-T2-QsG" firstAttribute="top" secondItem="oFx-V5-PEh" secondAttribute="bottom" constant="40" id="Uf5-YC-aAL"/>
@@ -1236,7 +1234,8 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                             <constraint firstItem="oFx-V5-PEh" firstAttribute="top" secondItem="0Jb-e1-5wo" secondAttribute="bottom" constant="39.5" id="tJj-cS-f7G"/>
                             <constraint firstItem="SWt-T2-QsG" firstAttribute="leading" secondItem="oFx-V5-PEh" secondAttribute="leading" constant="20" id="u0m-72-Ubs"/>
                             <constraint firstItem="9S0-3c-dTG" firstAttribute="top" secondItem="T1h-YC-ck9" secondAttribute="top" constant="20" id="vLK-xS-xG0"/>
-                            <constraint firstItem="T1h-YC-ck9" firstAttribute="trailing" secondItem="i7J-Wm-4Uy" secondAttribute="trailing" constant="20" id="xw0-BJ-pZE"/>
+                            <constraint firstItem="i7J-Wm-4Uy" firstAttribute="centerX" secondItem="r1S-9h-5Cl" secondAttribute="centerX" id="yyQ-JP-cdN"/>
+                            <constraint firstItem="mN3-L4-Yat" firstAttribute="top" secondItem="T1h-YC-ck9" secondAttribute="top" constant="31" id="z1A-2C-rBa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aI9-Rg-PMU"/>
@@ -1263,27 +1262,27 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lai-0I-ZWz">
-                                <rect key="frame" x="354" y="68" width="40" height="40"/>
+                                <rect key="frame" x="187" y="182.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UZB-F2-Yow"/>
                                     <constraint firstAttribute="width" constant="40" id="zXT-UT-IlQ"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Ico-BB-Black"/>
+                                <state key="normal" backgroundImage="BurbankLogo"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3j-kI-ROc">
-                                <rect key="frame" x="60" y="270" width="63.5" height="25"/>
+                                <rect key="frame" x="60" y="263" width="64.5" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lw-u8-JyH">
-                                <rect key="frame" x="123.5" y="270" width="110" height="25"/>
+                                <rect key="frame" x="124.5" y="263" width="111" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset your password here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zu6-TH-eM1">
-                                <rect key="frame" x="60" y="310" width="314" height="14"/>
+                                <rect key="frame" x="60" y="307.5" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1377,7 +1376,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3i-fc-45h">
-                                <rect key="frame" x="139.5" y="683" width="135" height="29"/>
+                                <rect key="frame" x="138" y="683" width="138" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Resend Passcode">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1405,20 +1404,20 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                             <constraint firstItem="F7h-lj-NR1" firstAttribute="top" secondItem="ruc-ba-lz5" secondAttribute="bottom" constant="40" id="83w-T8-GP3"/>
                             <constraint firstItem="eK4-NX-DED" firstAttribute="trailing" secondItem="ruc-ba-lz5" secondAttribute="trailing" constant="40" id="DXA-bR-wEo"/>
                             <constraint firstItem="ruc-ba-lz5" firstAttribute="leading" secondItem="eK4-NX-DED" secondAttribute="leading" constant="40" id="Fh4-i3-D8o"/>
-                            <constraint firstItem="QZW-Sc-GcP" firstAttribute="centerY" secondItem="Lai-0I-ZWz" secondAttribute="centerY" id="G2k-S2-Bt0"/>
+                            <constraint firstItem="Lai-0I-ZWz" firstAttribute="centerX" secondItem="XfA-sg-3AB" secondAttribute="centerX" id="Gbg-Rt-Pkz"/>
                             <constraint firstItem="Iab-b5-6QC" firstAttribute="leading" secondItem="eK4-NX-DED" secondAttribute="leading" constant="20" id="L19-SA-4qB"/>
                             <constraint firstItem="0Lw-u8-JyH" firstAttribute="centerY" secondItem="B3j-kI-ROc" secondAttribute="centerY" id="OqL-5X-nMT"/>
+                            <constraint firstItem="Lai-0I-ZWz" firstAttribute="bottom" secondItem="0Lw-u8-JyH" secondAttribute="bottom" constant="-70" id="Pzh-zg-HEp"/>
                             <constraint firstItem="Iab-b5-6QC" firstAttribute="top" secondItem="eK4-NX-DED" secondAttribute="top" constant="20" id="UhA-TC-jMD"/>
                             <constraint firstItem="S3i-fc-45h" firstAttribute="top" secondItem="F7h-lj-NR1" secondAttribute="bottom" constant="50" id="VMU-hB-gmO"/>
                             <constraint firstItem="ruc-ba-lz5" firstAttribute="centerY" secondItem="XfA-sg-3AB" secondAttribute="centerY" id="WYB-sS-HyK"/>
+                            <constraint firstItem="QZW-Sc-GcP" firstAttribute="top" secondItem="eK4-NX-DED" secondAttribute="top" constant="31" id="Ysn-ZX-48q"/>
                             <constraint firstItem="F7h-lj-NR1" firstAttribute="height" secondItem="XfA-sg-3AB" secondAttribute="height" multiplier="0.057" id="a59-4Q-zCo"/>
                             <constraint firstItem="ruc-ba-lz5" firstAttribute="height" secondItem="XfA-sg-3AB" secondAttribute="height" multiplier="0.21" id="d4G-wj-VpD"/>
                             <constraint firstItem="zu6-TH-eM1" firstAttribute="trailing" secondItem="ruc-ba-lz5" secondAttribute="trailing" id="d7X-ak-Uk0"/>
                             <constraint firstItem="0Lw-u8-JyH" firstAttribute="leading" secondItem="B3j-kI-ROc" secondAttribute="trailing" id="e0W-gZ-NPc"/>
                             <constraint firstItem="S3i-fc-45h" firstAttribute="centerX" secondItem="XfA-sg-3AB" secondAttribute="centerX" id="e2k-99-m6l"/>
-                            <constraint firstItem="eK4-NX-DED" firstAttribute="trailing" secondItem="Lai-0I-ZWz" secondAttribute="trailing" constant="20" id="g4G-Wa-hQ0"/>
                             <constraint firstItem="QZW-Sc-GcP" firstAttribute="leading" secondItem="eK4-NX-DED" secondAttribute="leading" constant="20" id="g9c-jQ-EFp"/>
-                            <constraint firstItem="Lai-0I-ZWz" firstAttribute="top" secondItem="eK4-NX-DED" secondAttribute="top" constant="20" id="gdv-at-Twc"/>
                             <constraint firstItem="B3j-kI-ROc" firstAttribute="leading" secondItem="ruc-ba-lz5" secondAttribute="leading" constant="20" id="ivp-sa-8Om"/>
                             <constraint firstItem="zu6-TH-eM1" firstAttribute="bottom" secondItem="ruc-ba-lz5" secondAttribute="top" constant="-30" id="jtr-6t-Qm5"/>
                             <constraint firstItem="zu6-TH-eM1" firstAttribute="leading" secondItem="ruc-ba-lz5" secondAttribute="leading" constant="20" id="npC-9n-Bdv"/>
@@ -1454,27 +1453,27 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbe-Ep-Bys">
-                                <rect key="frame" x="354" y="68" width="40" height="40"/>
+                                <rect key="frame" x="187" y="216" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="5K3-87-ObZ"/>
                                     <constraint firstAttribute="height" constant="40" id="aQK-y3-Crt"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Ico-BB-Black"/>
+                                <state key="normal" backgroundImage="BurbankLogo"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcH-bv-aKU">
-                                <rect key="frame" x="60" y="303.5" width="60.5" height="25"/>
+                                <rect key="frame" x="60" y="296.5" width="59" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7q-Kk-3zw">
-                                <rect key="frame" x="120.5" y="303.5" width="110" height="25"/>
+                                <rect key="frame" x="119" y="296.5" width="111" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password to login" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8t-TE-J3p">
-                                <rect key="frame" x="60" y="343.5" width="314" height="14"/>
+                                <rect key="frame" x="60" y="341" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1548,7 +1547,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T38-rK-Lla">
-                                <rect key="frame" x="141.5" y="649.5" width="131" height="29"/>
+                                <rect key="frame" x="142" y="649.5" width="130" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Forgot Password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1571,7 +1570,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                         <viewLayoutGuide key="safeArea" id="L3M-4Z-44a"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="L3M-4Z-44a" firstAttribute="trailing" secondItem="Dbe-Ep-Bys" secondAttribute="trailing" constant="20" id="5tQ-EV-KPJ"/>
+                            <constraint firstItem="Dbe-Ep-Bys" firstAttribute="bottom" secondItem="A7q-Kk-3zw" secondAttribute="bottom" constant="-70" id="3IO-u8-dOA"/>
                             <constraint firstItem="Waf-AW-EzA" firstAttribute="trailing" secondItem="VxH-kt-62u" secondAttribute="trailing" id="6L7-2v-sda"/>
                             <constraint firstItem="g8t-TE-J3p" firstAttribute="leading" secondItem="VxH-kt-62u" secondAttribute="leading" constant="20" id="8lW-xD-txJ"/>
                             <constraint firstItem="g8t-TE-J3p" firstAttribute="top" secondItem="wcH-bv-aKU" secondAttribute="bottom" constant="15" id="9gV-hB-w7L"/>
@@ -1579,12 +1578,12 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                             <constraint firstItem="g8t-TE-J3p" firstAttribute="bottom" secondItem="VxH-kt-62u" secondAttribute="top" constant="-30" id="Dgi-g1-LSB"/>
                             <constraint firstItem="T38-rK-Lla" firstAttribute="top" secondItem="Waf-AW-EzA" secondAttribute="bottom" constant="50" id="DyP-TP-sJP"/>
                             <constraint firstItem="A7q-Kk-3zw" firstAttribute="leading" secondItem="wcH-bv-aKU" secondAttribute="trailing" id="Fpl-mc-TpE"/>
-                            <constraint firstItem="dSt-H7-0HJ" firstAttribute="centerY" secondItem="Dbe-Ep-Bys" secondAttribute="centerY" id="LZW-n5-AYF"/>
+                            <constraint firstItem="dSt-H7-0HJ" firstAttribute="top" secondItem="L3M-4Z-44a" secondAttribute="top" constant="31" id="LB9-7d-V6D"/>
                             <constraint firstItem="L3M-4Z-44a" firstAttribute="trailing" secondItem="VxH-kt-62u" secondAttribute="trailing" constant="40" id="OLc-eJ-o2N"/>
                             <constraint firstItem="WiC-zB-C2a" firstAttribute="top" secondItem="L3M-4Z-44a" secondAttribute="top" constant="20" id="OrP-Bk-Hsm"/>
                             <constraint firstItem="Waf-AW-EzA" firstAttribute="top" secondItem="VxH-kt-62u" secondAttribute="bottom" constant="40" id="UxW-kR-fB8"/>
                             <constraint firstItem="VxH-kt-62u" firstAttribute="height" secondItem="ydY-YN-bjx" secondAttribute="height" multiplier="0.135" id="VjL-Ke-IKI"/>
-                            <constraint firstItem="Dbe-Ep-Bys" firstAttribute="top" secondItem="L3M-4Z-44a" secondAttribute="top" constant="20" id="ZGs-kz-t08"/>
+                            <constraint firstItem="Dbe-Ep-Bys" firstAttribute="centerX" secondItem="ydY-YN-bjx" secondAttribute="centerX" id="ZlM-vH-H8I"/>
                             <constraint firstItem="Waf-AW-EzA" firstAttribute="leading" secondItem="VxH-kt-62u" secondAttribute="leading" id="d8v-uJ-N4C"/>
                             <constraint firstItem="A7q-Kk-3zw" firstAttribute="centerY" secondItem="wcH-bv-aKU" secondAttribute="centerY" id="dIZ-cB-Yzb"/>
                             <constraint firstItem="Waf-AW-EzA" firstAttribute="height" secondItem="ydY-YN-bjx" secondAttribute="height" multiplier="0.057" id="fw4-8X-TmM"/>
@@ -1612,7 +1611,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXO-GW-IFT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911" y="898"/>
+            <point key="canvasLocation" x="2910.144927536232" y="897.99107142857133"/>
         </scene>
         <!--Validate EmailVC-->
         <scene sceneID="egY-oB-fnI">
@@ -1750,6 +1749,7 @@ Burbank is proudly an Australian home builder, building homes in Victoria, New S
         </scene>
     </scenes>
     <resources>
+        <image name="BurbankLogo" width="264.5" height="264.5"/>
         <image name="Ico-BB-Black" width="64.5" height="64.5"/>
         <image name="Ico-Back1" width="19" height="24.5"/>
         <image name="Ico-Checked" width="24.5" height="24.5"/>
