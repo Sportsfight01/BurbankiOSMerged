@@ -1041,25 +1041,14 @@ extension UserProfileVC {
                 return
             }
             
-            if !(cell.txtLastName.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? false) {
-                print(cell.txtLastName.text?.trimmingCharacters(in: .whitespaces) ?? "")
-                // string contains non-whitespace characters
-            }else{
-                print(cell.txtLastName.text?.trimmingCharacters(in: .whitespaces) ?? "")
-                showToast("Last Name should be minimum of 3 letters", self)
-                return
-            }
-            
-            
-            //            if let lName = cell.txtLastName.text {
-            //                if lName.isEmpty {
-            //                    showToast("Last Name should be minimum of 3 letters", self)
-            //
-            //
-            //                }else{
-            //
-            //                }
-            //            }
+//            if !(cell.txtLastName.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? false) {
+//                print(cell.txtLastName.text?.trimmingCharacters(in: .whitespaces) ?? "")
+//                // string contains non-whitespace characters
+//            }else{
+//                print(cell.txtLastName.text?.trimmingCharacters(in: .whitespaces) ?? "")
+//                showToast("Last Name should be minimum of 3 letters", self)
+//                return
+//            }
             
             if let existedPhone = appDelegate.userData?.user?.userPhoneNumber {
                 if existedPhone.count > 0, cell.txtPhone.text?.trim().count == 0 {
@@ -1080,8 +1069,9 @@ extension UserProfileVC {
             
             
             let user = UserBean.init()
+            
             user.userFirstName = cell.txtName.text
-            user.userLastName = cell.txtLastName.text
+            user.userLastName = appDelegate.userData?.user?.userLastName
             user.userEmail = appDelegate.userData?.user?.userEmail
             user.userPhoneNumber = cell.txtPhone.text
             

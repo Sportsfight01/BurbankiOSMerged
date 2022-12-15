@@ -26,9 +26,9 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var lBName: UILabel!
     @IBOutlet weak var txtName: UITextField!
-    @IBOutlet weak var lbLastName: UILabel!
+//    @IBOutlet weak var lbLastName: UILabel!
     
-    @IBOutlet weak var txtLastName: UITextField!
+//    @IBOutlet weak var txtLastName: UITextField!
     @IBOutlet weak var lBEmail: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
     
@@ -59,14 +59,14 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBCount, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
         setAppearanceFor(view: lBName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: lbLastName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: lBEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+//        setAppearanceFor(view: lbLastName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+//        setAppearanceFor(view: lBEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         setAppearanceFor(view: lBPhone, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         //setAppearanceFor(view: lBShare, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         
@@ -75,7 +75,7 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         }
         
         setAppearanceFor(view: txtName, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
-        setAppearanceFor(view: txtLastName, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
+//        setAppearanceFor(view: txtLastName, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
         setAppearanceFor(view: txtEmail, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
         setAppearanceFor(view: txtPhone, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
        // setAppearanceFor(view: txtShare, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
@@ -88,25 +88,25 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         }
         
         
-        setAppearanceFor(view: btnUpdate, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnUpdate, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
         
         setBorder(view: btnUpdate, color: COLOR_WHITE, width: 0.5)
         
         txtName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
-        txtLastName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
-        txtEmail.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtEmail.frame.size.height))
+//        txtLastName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
+        txtEmail.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
         txtPhone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtPhone.frame.size.height))
       //  txtShare.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtShare.frame.size.height))
 
         txtName.leftViewMode = .always
-        txtLastName.leftViewMode = .always
+//        txtLastName.leftViewMode = .always
         txtEmail.leftViewMode = .always
         txtPhone.leftViewMode = .always
       //  txtShare.leftViewMode = .always
 
         
         txtName.layer.cornerRadius = 5.0
-        txtLastName.layer.cornerRadius = 5.0
+//        txtLastName.layer.cornerRadius = 5.0
         txtEmail.layer.cornerRadius = 5.0
         txtPhone.layer.cornerRadius = 5.0
        // txtShare.layer.cornerRadius = 5.0
@@ -142,14 +142,10 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
     
     
     func fillDetails () {
-
         lBCount.isHidden = false
-
         lBCount.text = ""
-
-        
-        self.txtName.text = appDelegate.userData?.user?.userFirstName?.capitalized
-        self.txtLastName.text = appDelegate.userData?.user?.userLastName?.capitalized
+        self.txtName.text = "\(appDelegate.userData?.user?.userFirstName?.capitalized ?? "") \(appDelegate.userData?.user?.userLastName?.capitalized ?? "")"
+//        self.txtLastName.text =
         
         self.txtEmail.text = appDelegate.userData?.user?.userEmail
         self.txtPhone.text = appDelegate.userData?.user?.userPhone

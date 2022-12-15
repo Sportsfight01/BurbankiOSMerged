@@ -46,19 +46,21 @@ class ProfileSettingsTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBCount, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_10))
 
                 
         setAppearanceFor(view: lBHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
         setAppearanceFor(view: lBNotifications, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLocationServices, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: btnLogout, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: btnLogout, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_14))
 
 
 //        btnLogoutIcon.setTitle("", for: .normal)
 //        btnLogoutIcon.setBackgroundImage(UIImage(named: "Ico-Settings"), for: .normal)
+        
+        permissionsView.cardView()
         
         selectionColorsForSwitch(switchService: switchNotifications)
         selectionColorsForSwitch(switchService: switchLocation)
@@ -72,9 +74,9 @@ class ProfileSettingsTVCell: UITableViewCell {
         lBHeading.superview?.layer.cornerRadius = radius_5
         
         
-        lBCount.isHidden = true
+        lBCount.isHidden = false
 
-        lBCount.text = "0"
+        lBCount.text = ""
         
     }
 

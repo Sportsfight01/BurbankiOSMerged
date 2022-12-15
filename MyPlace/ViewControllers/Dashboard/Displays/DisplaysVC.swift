@@ -8,7 +8,11 @@
 //
 //import UIKit
 //
-class DisplaysVC: HeaderVC {
+class DisplaysVC: HeaderVC, ChildVCDelegate {
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset: Bool) {
+        print("sort action")
+    }
+    
 //
     @IBOutlet weak var topOptionsView : UIView!
 
@@ -74,7 +78,7 @@ class DisplaysVC: HeaderVC {
         displaysCollectionView.delegate = self
         displaysCollectionView.dataSource = self
         setImages()
-        
+        addHeaderOptions(delegate: self)
         if isFrromProfileFavorates{
             
         }
