@@ -117,6 +117,9 @@ class HeaderVC: UIViewController {
                 _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Home" , "Designs"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             case "MyProfile":
                 _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Profile"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+            case "Displays":
+                setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size : 30))
+                logoLabel.text = headerLogoText
             
             default :
                 setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size : 30))
@@ -480,7 +483,7 @@ class HeaderVC: UIViewController {
         NSLayoutConstraint.activate([
             profileImage.trailingAnchor.constraint(equalTo: headerView_header.trailingAnchor, constant: -15),
             profileImage.topAnchor.constraint(equalTo: headerView_header.topAnchor, constant: statusBarHeight() + 15),
-            profileImage.heightAnchor.constraint(equalTo: headerView_header.widthAnchor, multiplier: 0.123),
+            profileImage.heightAnchor.constraint(equalTo: headerView_header.widthAnchor, multiplier: 0.14),
             profileImage.widthAnchor.constraint(equalTo: profileImage.heightAnchor, multiplier: 1)
         ])
         
@@ -647,16 +650,16 @@ extension HeaderVC {
         
         view.bringSubviewToFront(containerView!)
         
-//        profileView.completionHandlerProfile = { () -> Void in
-//
-//            self.hideProfileView()
-//
+        profileView.completionHandlerProfile = { () -> Void in
+
+            self.hideProfileView()
+
 //            if let url = appDelegate.userData?.user?.userProfileImageURL {
 //                ImageDownloader.removeImage(forKey: url) {
 //                    self.addProfileImage(url)
 //                }
 //            }
-//        }
+        }
         
         profileView.completionHandlerProfilePicUpdate = {
             self.showProfileView()

@@ -70,8 +70,8 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var profileViewBorder: UIView!
     
     
-    let arrIcons = [iconProfile, iconShare,iconFav/*, iconCollection, iconMyday, iconHL, iconMyDesign, iconDH*/, iconSettings]
-    let arrNames = [nameMyDetails, nameShare,nameFavourites/*, nameMyCollection, nameMyday, nameHL, nameMyDesign, nameDisplayHomes*/, nameSettings]
+    let arrIcons = [iconProfile, iconFav/*iconShare,, iconCollection, iconMyday, iconHL, iconMyDesign, iconDH*/, iconSettings]
+    let arrNames = [nameMyDetails, nameFavourites/*nameShare,, nameMyCollection, nameMyday, nameHL, nameMyDesign, nameDisplayHomes*/, nameSettings]
     
     
     
@@ -84,8 +84,6 @@ class UserProfileVC: UIViewController {
     
     private var croppedRect = CGRect.zero
     private var croppedAngle = 0
-    
-    
     
     //Share Popup
     
@@ -190,7 +188,7 @@ class UserProfileVC: UIViewController {
         btnProfileImage.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
         
         
-        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [logoFontProfileSUBHEADING, logoFontProfile], alignmentCenter: false)
+        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [FONT_LABEL_BODY(size: FONT_30), FONT_LABEL_SUB_HEADING(size: FONT_30)], alignmentCenter: false)
         profileHeaderView.addSubview(logoLabelProfile)
         
         
@@ -328,6 +326,7 @@ class UserProfileVC: UIViewController {
         
         if let callback = completionHandlerProfile {
             callback ()
+        
         }
         
         CodeManager.sharedInstance.sendScreenName(burbank_profile_profilePic_button_touch)

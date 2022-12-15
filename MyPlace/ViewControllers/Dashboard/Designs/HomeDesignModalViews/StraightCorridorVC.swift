@@ -38,7 +38,7 @@ class StraightCorridorVC: HomeDesignModalHeaderVC {
         let str = "DO YOU PREFER A STRAIGHT CORRIDOR AT THE ENTRY?"
         straightCorridor_lbl.text = str
         
-        setAppearanceFor(view: straightCorridor_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY(size: FONT_19))
+        setAppearanceFor(view: straightCorridor_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_19))
         
         
         setAppearanceFor(view: straightCorridor_btnMust, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))

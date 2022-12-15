@@ -39,7 +39,7 @@ class BedroomsVC: HomeDesignModalHeaderVC {
     
     func bedroomViewSetUp () {
         
-        setAppearanceFor(view: bedrooms_lBbedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: bedrooms_lBbedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
     }
     

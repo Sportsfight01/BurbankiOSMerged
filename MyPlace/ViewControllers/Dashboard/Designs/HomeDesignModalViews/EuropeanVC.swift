@@ -37,7 +37,7 @@ class EuropeanVC: HomeDesignModalHeaderVC {
         let str = "DO YOU PREFER A EUROPEAN (CUPBOARD) LAUNDRY IN YOUR DESIGN?"
         europeanLaundry_lbl.text = str
         
-        setAppearanceFor(view: europeanLaundry_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: europeanLaundry_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         
         setAppearanceFor(view: europeanLaundry_btnMust, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))

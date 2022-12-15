@@ -729,16 +729,16 @@ extension DesignsDetailsVC {
         setAppearanceFor(view: btnEnquire, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_16))
         setAppearanceFor(view: btnSaveDesign, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_16))
 
-        lBMyPlace.text = "Interactive \nHome Tour"
-        lBHomeLand.text = "House & Land"
+//        lBMyPlace.text = "Interactive \nHome Tour"
+//        lBHomeLand.text = "House & Land"
         
-//        _ = setAttributetitleFor(view: lBMyPlace, title: "Interactive Home Tour", rangeStrings: ["Interactive", "\nHomeTour"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_HEADING(size: FONT_13), FONT_LABEL_HEADING(size: FONT_13)], alignmentCenter: false)
-//        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House&Land", ""], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [FONT_LABEL_HEADING(size: FONT_17), FONT_LABEL_HEADING(size: FONT_17)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_13), FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [COLOR_WHITE, COLOR_WHITE,COLOR_WHITE], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_17), FONT_LABEL_BODY(size: FONT_17),FONT_LABEL_SUB_HEADING(size: FONT_17)], alignmentCenter: false)
         
         
         
         lBLot.text = "LOT\nWIDTH"
-        
+    
         if let superview = lBLot.superview {
             
             superview.layer.cornerRadius = (superview.frame.size.height)/2

@@ -34,7 +34,7 @@ class SeperateLivingAreaVC: HomeDesignModalHeaderVC {
         let str = "WOULD YOU NEED A SEPARATE LIVING AREA?"
         separateLiving_lbl.text = str
         
-        setAppearanceFor(view: separateLiving_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: separateLiving_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         
         setAppearanceFor(view: separateLiving_btnMust, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))

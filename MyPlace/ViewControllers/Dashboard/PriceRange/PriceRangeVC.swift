@@ -61,7 +61,7 @@ class PriceRangeVC: UIViewController {
         
         setAppearanceFor(view: view, backgroundColor: COLOR_CLEAR)
         
-        setAppearanceFor(view: lBrange, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
+        setAppearanceFor(view: lBrange, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_18))
         
         barGraph.register(BarGraphCell.self, forCellWithReuseIdentifier: "BarGraphCell")
         
@@ -69,7 +69,7 @@ class PriceRangeVC: UIViewController {
         rangesliderView.addSubview(rangeslider)
         
         
-        rangeslider.trackHighlightTintColor = COLOR_ORANGE
+        rangeslider.trackHighlightTintColor = COLOR_LIGHT_GRAY
         rangeslider.trackTintColor = COLOR_APP_GRAY
         
         rangeslider.addTarget(self, action: #selector(handleValueChanged), for: .valueChanged)
@@ -120,7 +120,7 @@ class PriceRangeVC: UIViewController {
         rangeslider = RangeSlider(frame: frameee)
         rangesliderView.addSubview(rangeslider)
         
-        rangeslider.trackHighlightTintColor = COLOR_ORANGE
+        rangeslider.trackHighlightTintColor = COLOR_LIGHT_GRAY
         rangeslider.trackTintColor = COLOR_APP_GRAY
         
         rangeslider.addTarget(self, action: #selector(handleValueChanged), for: .valueChanged)

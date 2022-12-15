@@ -186,9 +186,9 @@ class SignInVC: UIViewController {
         
         setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: systemRegularFont(size: FONT_signin))
         setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
-        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: systemRegularFont(size: FONT_signin))
+        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
         
-        viewEmail.backgroundColor = COLOR_BLACK
+       
         
         
 //        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
@@ -216,6 +216,8 @@ class SignInVC: UIViewController {
         viewGoogle.cardView()
         viewFacebook.layer.cornerRadius = radius_5
         viewEmail.cardView()
+        viewEmail.backgroundColor = COLOR_BLACK
+        
         btnSkip.layer.cornerRadius = radius_5
 
         

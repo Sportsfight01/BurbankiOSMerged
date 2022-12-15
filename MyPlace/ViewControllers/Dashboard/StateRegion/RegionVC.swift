@@ -181,7 +181,7 @@ class RegionTableViewCell: UITableViewCell {
                 titleLabel.textColor = COLOR_BLACK
                 titleLabel.backgroundColor = COLOR_WHITE
                 if #available(iOS 13.0, *) {
-                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.3, shadowColor: UIColor.systemGray3.cgColor)
+                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.5, shadowColor: UIColor.systemGray2.cgColor)
                 } else {
                     // Fallback on earlier versions
                     titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.3)
@@ -198,7 +198,7 @@ class RegionTableViewCell: UITableViewCell {
         
         setAppearanceFor(view: titleLabel, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_14))
 ////
-//        titleLabel.layer.cornerRadius = radius_5
+        titleLabel.layer.cornerRadius = radius_5
 //
 //        setBorder(view: titleLabel, color: COLOR_ORANGE, width: 1.0)
 //

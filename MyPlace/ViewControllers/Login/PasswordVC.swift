@@ -79,7 +79,11 @@ class PasswordVC: UIViewController {
         
         if txtEmail.text!.count > 0 {
             self.viewEmailText.isUserInteractionEnabled = false
-            self.viewEmailText.backgroundColor = COLOR_LIGHT_GRAY
+            if #available(iOS 13.0, *) {
+                self.viewEmailText.backgroundColor = .systemGray5
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     

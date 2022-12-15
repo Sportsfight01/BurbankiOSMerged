@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,7 +25,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLS-Ug-KXZ">
                                         <rect key="frame" x="40" y="5" width="20" height="20"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="AppOrange"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NLS-Ug-KXZ" secondAttribute="height" multiplier="1:1" id="EJ1-1L-BFt"/>
                                             <constraint firstAttribute="height" constant="20" id="Vux-Vq-TfR"/>
@@ -77,8 +78,10 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHc-13-QN9">
                                 <rect key="frame" x="35" y="50" width="373" height="42.666666666666657"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="2 SAVED DESIGNS"/>
+                                <color key="backgroundColor" name="AppOrange"/>
+                                <state key="normal" title="2 SAVED DESIGNS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
@@ -124,7 +127,7 @@
                     <constraint firstItem="r0V-fg-e7E" firstAttribute="top" secondItem="xPk-NI-dwb" secondAttribute="top" id="woO-G4-qY4"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="backView" destination="r0V-fg-e7E" id="Hbk-wd-2h5"/>
@@ -141,5 +144,8 @@
     </objects>
     <resources>
         <image name="Ico-DownArrow" width="18.666666030883789" height="10.666666984558105"/>
+        <namedColor name="AppOrange">
+            <color red="0.9649999737739563" green="0.54500001668930054" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

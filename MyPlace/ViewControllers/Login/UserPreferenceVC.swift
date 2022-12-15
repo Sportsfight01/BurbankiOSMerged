@@ -113,6 +113,7 @@ class UserPreferenceVC: UIViewController {
         
         setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+//        setAppearanceFor(view: lb_myPlace_heading, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
       //  setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         

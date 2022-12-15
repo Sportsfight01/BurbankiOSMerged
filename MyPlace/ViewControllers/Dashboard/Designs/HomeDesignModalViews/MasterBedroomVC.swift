@@ -36,7 +36,7 @@ class MasterBedroomVC: HomeDesignModalHeaderVC {
     
     func bedroomFrontViewSetUp () {
         
-        setAppearanceFor(view: bedroomFront_lBBedroomFront, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: bedroomFront_lBBedroomFront, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         bedroomFront_btnMust.layer.cornerRadius = radius_5
         bedroomFront_btnDont.layer.cornerRadius = radius_5

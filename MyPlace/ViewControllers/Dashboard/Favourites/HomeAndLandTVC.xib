@@ -81,8 +81,10 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fc-4x-ubq">
                                         <rect key="frame" x="10" y="0.0" width="373" height="51"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="2 SAVED DESIGNS"/>
+                                        <color key="backgroundColor" name="AppOrange"/>
+                                        <state key="normal" title="2 SAVED DESIGNS">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -385,7 +387,7 @@
                     <constraint firstItem="TJ6-dH-gFz" firstAttribute="top" secondItem="2Fc-D9-CD4" secondAttribute="top" id="xLX-bH-N6T"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="backView" destination="TJ6-dH-gFz" id="VA7-Cr-lJr"/>
@@ -426,6 +428,9 @@
         <image name="Ico-DownArrow" width="18.666666030883789" height="10.666666984558105"/>
         <image name="Ico-Home" width="32.333332061767578" height="24.666666030883789"/>
         <image name="Ico-Search" width="43.666667938232422" height="43.666667938232422"/>
+        <namedColor name="AppOrange">
+            <color red="0.9649999737739563" green="0.54500001668930054" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="darkGray">
             <color red="0.3059999942779541" green="0.3059999942779541" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

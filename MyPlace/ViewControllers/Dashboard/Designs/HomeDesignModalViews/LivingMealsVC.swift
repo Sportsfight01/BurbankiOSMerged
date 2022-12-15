@@ -34,7 +34,7 @@ class LivingMealsVC: HomeDesignModalHeaderVC {
         let str = "DO YOU PREFER THE LIVING MEALS ACROSS THE ENTIRE REAR OF YOUR DESIGN?"
         livingMeals_lbl.text = str
         
-        setAppearanceFor(view: livingMeals_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY(size: FONT_19))
+        setAppearanceFor(view: livingMeals_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_19))
         
         
         livingMeals_btnMust.layer.cornerRadius = radius_5

@@ -39,7 +39,7 @@ class MinorBedroomsVC: HomeDesignModalHeaderVC {
         let str = "DO YOU NEED THE BEDROOMS GROUPED IN A \"WING\" IN YOUR DESIGN?"
         minorBedrooms_lbl.text = str
         
-        setAppearanceFor(view: minorBedrooms_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY(size: FONT_19))
+        setAppearanceFor(view: minorBedrooms_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_19))
         
         
         minorBedrooms_btnMust.layer.cornerRadius = radius_5

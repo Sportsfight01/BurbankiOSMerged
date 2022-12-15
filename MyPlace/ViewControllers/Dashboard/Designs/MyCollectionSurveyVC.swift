@@ -283,7 +283,7 @@ class MyCollectionSurveyVC: HeaderVC {
     if sender == btnNext {
       
       if arrVCs.count > 0 {
-        guard arrVCs[currentIndex].homeDesignFeature?.selectedAnswer != "" else {return}
+//        guard arrVCs[currentIndex].homeDesignFeature?.selectedAnswer != "" else {return}
         if arrVCs[currentIndex].homeDesignFeature?.selectedAnswer != "" || arrVCs[currentIndex].isKind(of: HomeDesignPriceVC.self) {
           
           if (designsCount ?? 0) > 0 {
@@ -713,13 +713,13 @@ class MyCollectionSurveyVC: HeaderVC {
       
       self.btnDesignsCount.setTitle("SKIP TO 1 DESIGN >", for: .normal)
       
-      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
       
     }else {
       
       self.btnDesignsCount.setTitle("SKIP TO \(self.designsCount ?? 0) DESIGNS >", for: .normal)
       
-      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
     }
     
   }

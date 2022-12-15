@@ -38,33 +38,34 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate, ASAuthorizat
   func signInWithAppleBtn() -> UIView{
     
     let view = UIView(frame: .zero)
-    view.backgroundColor = .black
+      view.backgroundColor = .lightGray.withAlphaComponent(0.6)
     view.layer.cornerRadius = 10.0
     
     //imgView
     let imgView = UIImageView(image: UIImage(named: "Ico-Apple"))
     imgView.contentMode = .scaleAspectFit
-    //imgView.backgroundColor = .red
+    imgView.tintColor = .white
+//    imgView.backgroundColor = .clear
     view.addSubview(imgView)
     imgView.translatesAutoresizingMaskIntoConstraints = false
     //addConstraints to imgView
     NSLayoutConstraint.activate([
-      NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0),
-      NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: imgView, attribute: .height, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: view.frame.size.height - 10),
+      NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: imgView, attribute: .height, multiplier: 1.0, constant: view.frame.size.height - 10),
       NSLayoutConstraint(item: imgView, attribute: .centerY, relatedBy: .equal, toItem: view , attribute: .centerY, multiplier: 1.0, constant: 0),
-      NSLayoutConstraint(item: imgView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 15)
+      NSLayoutConstraint(item: imgView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 30)
     ])
     //titleLabel
     let titleLabel = UILabel()
-    titleLabel.text = "Continue with Apple"
-    titleLabel.font = UIFont.systemFont(ofSize: FONT_signin , weight: .semibold)
-    titleLabel.textColor = .white
+    titleLabel.text = "Sign in with Apple"
+      titleLabel.font = UIFont.systemFont(ofSize: FONT_signin , weight: .regular)
+    titleLabel.textColor = .black
    
     view.addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     //add constraints to label
     NSLayoutConstraint.activate([
-      NSLayoutConstraint(item: titleLabel, attribute: .leading, relatedBy: .equal, toItem: imgView, attribute: .trailing, multiplier: 1.0, constant: 3.0),
+      NSLayoutConstraint(item: titleLabel, attribute: .leading, relatedBy: .equal, toItem: imgView, attribute: .trailing, multiplier: 1.0, constant: 15.0),
       NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0)
       
     ])

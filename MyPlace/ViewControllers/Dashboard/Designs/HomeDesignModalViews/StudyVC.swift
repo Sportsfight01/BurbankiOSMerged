@@ -38,7 +38,7 @@ class StudyVC: HomeDesignModalHeaderVC {
         let str = "DO YOU NEED A\nSTUDY IN YOUR DESIGN?"
         study_lBStudy.text = str
         
-        setAppearanceFor(view: study_lBStudy, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: study_lBStudy, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         
         setAppearanceFor(view: study_btnMust, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))

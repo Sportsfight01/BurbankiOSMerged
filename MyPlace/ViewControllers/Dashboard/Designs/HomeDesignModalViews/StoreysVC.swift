@@ -40,7 +40,7 @@ class StoreysVC: HomeDesignModalHeaderVC {
     
     func storeysViewSetUp () {
         
-        setAppearanceFor(view: storeys_lBstoreys, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: storeys_lBstoreys, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
                 
     }
     

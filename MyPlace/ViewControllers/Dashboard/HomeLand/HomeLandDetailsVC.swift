@@ -371,10 +371,10 @@ extension HomeLandDetailsVC {
     
     func pageUISetup () {
     
-        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
+        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
         
-        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_10))
-        setAppearanceFor(view: lBAddress, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_10))
+        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_10))
+        setAppearanceFor(view: lBAddress, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_10))
 
         
         setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
@@ -386,7 +386,7 @@ extension HomeLandDetailsVC {
         setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
         
         
-        setAppearanceFor(view: lBLandSize, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT (size: 7)) //(size: 6))
+        setAppearanceFor(view: lBLandSize, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: 10)) //(size: 6))
 //        setAppearanceFor(view: lBLandSize_size, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: 8))g
 //
 //        setAppearanceFor(view: lBLineSize, backgroundColor: COLOR_APP_GRAY, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_10))

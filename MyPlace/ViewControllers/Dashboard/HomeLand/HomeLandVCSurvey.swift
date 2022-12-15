@@ -270,7 +270,7 @@ class HomeLandVCSurvey: HeaderVC {
         btnDesignsCount.setTitle("SKIP >", for: .normal)
         setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
         
-        setAppearanceFor(view: btnNext, backgroundColor: AppColors.darkGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnNext, backgroundColor: AppColors.lightGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
         setAppearanceFor(view: btnPrevious, backgroundColor: AppColors.lightGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
         //        arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
@@ -298,14 +298,14 @@ class HomeLandVCSurvey: HeaderVC {
         let str = "WHAT REGION ARE YOU\nLOOKING FOR YOUR NEW HOME?"
         region_lBregion.text = str
         
-        setAppearanceFor(view: region_lBregion, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_18))
+        setAppearanceFor(view: region_lBregion, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_18))
         
     }
     
     
     func storeysViewSetUp () {
         
-        setAppearanceFor(view: storeys_lBstoreys, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: storeys_lBstoreys, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         storeys_iconSingle.image = UIImage(named: "Ico-Single")
         storeys_iconDouble.image = UIImage(named: "Ico-Double")
@@ -331,7 +331,7 @@ class HomeLandVCSurvey: HeaderVC {
     
     func priceViewSetUp () {
         
-        setAppearanceFor(view: price_lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: price_lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
 //        setAppearanceFor(view: price_btnContinue, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
 //        setAppearanceFor(view: price_btnSkip, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
@@ -343,7 +343,7 @@ class HomeLandVCSurvey: HeaderVC {
     
     func bedroomViewSetUp () {
         
-        setAppearanceFor(view: bedrooms_lBbedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: bedrooms_lBbedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         _ = setAttributetitleFor(view: bedrooms_btn3Bedrooms, title: "3\nBEDROOMS", rangeStrings: ["3","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
@@ -1010,13 +1010,19 @@ class HomeLandVCSurvey: HeaderVC {
     func showHideAllViews () {
         
         self.btnNext.superview!.alpha = viewTag > 104 ? 0.4 : 1.0
-                
         self.btnPrevious.superview!.alpha = viewTag == 101 ? 0.4 : 1.0
+        
+//        self.btnNext.backgroundColor = viewTag > 104 ? COLOR_LIGHT_GRAY : COLOR_ORANGE
+//        self.btnPrevious.backgroundColor = viewTag == 101 ? COLOR_LIGHT_GRAY : COLOR_ORANGE
+                
+       
         
         
         btnNext.isUserInteractionEnabled = self.btnNext.superview!.alpha == 1.0
         btnPrevious.isUserInteractionEnabled = self.btnPrevious.superview!.alpha == 1.0
         
+//        btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == COLOR_ORANGE
+//        btnPrevious.isUserInteractionEnabled = self.btnPrevious.backgroundColor == COLOR_ORANGE
         
         
         print("viewTag: \(viewTag)")

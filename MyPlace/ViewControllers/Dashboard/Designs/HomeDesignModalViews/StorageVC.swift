@@ -39,7 +39,7 @@ class StorageVC: HomeDesignModalHeaderVC {
         let str = "IS LOTS OF STORAGE IMPORTANT? (MORE THAN 1 PER BEDROOM)"
         storage_lBStorage.text = str
         
-        setAppearanceFor(view: storage_lBStorage, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: storage_lBStorage, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         
         setAppearanceFor(view: storage_btnMust, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))

@@ -110,15 +110,15 @@ class SortFilterVC: UIViewController {
     
     func pageUISetUp () {
         //        FONT_LABEL_LIGHT
-        setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
         
-        setAppearanceFor(view: lBStoreys, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_HEADING(size: FONT_14))
-        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_HEADING(size: FONT_14))
-        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_HEADING(size: FONT_14))
-        setAppearanceFor(view: lBCarSpaces, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBStoreys, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBCarSpaces, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
-        setAppearanceFor(view: lBSortBy, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBSortBy, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
         setAppearanceFor(view: lBSort, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
@@ -530,8 +530,8 @@ extension UISegmentedControl
         self.setDividerImage(devider, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
         //             //set label color
-        self.setTitleTextAttributes([.font : FONT_LABEL_HEADING(size: FONT_9), .foregroundColor: UIColor.hexCode("5C5E5E")], for: .normal)
-        self.setTitleTextAttributes([.font : FONT_LABEL_HEADING(size: FONT_9), .foregroundColor: UIColor.white], for: .selected)
+        self.setTitleTextAttributes([.font : FONT_LABEL_SUB_HEADING(size: FONT_9), .foregroundColor: UIColor.hexCode("5C5E5E")], for: .normal)
+        self.setTitleTextAttributes([.font : FONT_LABEL_SUB_HEADING(size: FONT_9), .foregroundColor: UIColor.white], for: .selected)
         //        }
         //        else
         //        {

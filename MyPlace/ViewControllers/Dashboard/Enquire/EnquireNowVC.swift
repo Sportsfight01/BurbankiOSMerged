@@ -1,3 +1,4 @@
+
 //
 //  EnquireNowVC.swift
 //  MyPlace
@@ -99,7 +100,9 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     func handleUISetup () {
         
-        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [logoFont, logoFont], alignmentCenter: false)
+//        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [logoFont, logoFont], alignmentCenter: false)
+        
+        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
         
         //cardView of viewElements
         [viewEmailText,viewFirstNameText,viewLastNameText,viewPhoneText,viewWhatToBuildText, viewMessage , viewWhereWouldYouliketolive].forEach { view in
@@ -155,7 +158,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         }else if let _ = homeDesignDetails{
             self.whatToBuildTF.text = "\(self.homeDesignDetails?.lsthouses?.houseName ?? "") \(self.homeDesignDetails?.lsthouses?.houseSize ?? 0)"
         }
-        setAppearanceFor(view: viewWhatToBuildText, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        
      self.whatToBuildTF.isUserInteractionEnabled = false
         if Int(kUserID)! > 0 {
             
@@ -166,18 +169,30 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             
            
             
-            setAppearanceFor(view: self.viewWhatToBuildText, backgroundColor: COLOR_LIGHT_GRAY)
-            setAppearanceFor(view: self.viewEmailText, backgroundColor: COLOR_LIGHT_GRAY)
-            setAppearanceFor(view: self.viewLastNameText, backgroundColor: COLOR_LIGHT_GRAY)
-            setAppearanceFor(view: self.viewFirstNameText, backgroundColor: COLOR_LIGHT_GRAY)
-            setAppearanceFor(view: self.frstNameTF, backgroundColor: COLOR_LIGHT_GRAY)
-            setAppearanceFor(view: self.lastNameTF, backgroundColor: COLOR_LIGHT_GRAY)
-            setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-            setAppearanceFor(view: frstNameTF, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            if #available(iOS 13.0, *) {
+                setAppearanceFor(view: viewWhatToBuildText, backgroundColor: .systemGray5, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+                setAppearanceFor(view: self.viewWhatToBuildText, backgroundColor: .systemGray5)
+            setAppearanceFor(view: self.viewEmailText, backgroundColor: .systemGray5)
+            setAppearanceFor(view: self.viewLastNameText, backgroundColor: .systemGray5)
+            setAppearanceFor(view: self.viewFirstNameText, backgroundColor: .systemGray5)
+            setAppearanceFor(view: self.frstNameTF, backgroundColor: .systemGray5)
+            setAppearanceFor(view: self.lastNameTF, backgroundColor: .systemGray5)
+            setAppearanceFor(view: lastNameTF, backgroundColor: .systemGray5, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: frstNameTF, backgroundColor: .systemGray5, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            
+            if self.frstNameTF.text != "" {
+             setAppearanceFor(view: frstNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+             setAppearanceFor(view: viewFirstNameText, backgroundColor: .systemGray5)
+             self.frstNameTF.isUserInteractionEnabled = false
+            }else{
+             self.frstNameTF.isUserInteractionEnabled = true
+             setAppearanceFor(view: frstNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+             setAppearanceFor(view: self.viewFirstNameText, backgroundColor: COLOR_WHITE)
+            }
             
            if self.lastNameTF.text != "" {
             setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-            setAppearanceFor(view: viewLastNameText, backgroundColor: COLOR_LIGHT_GRAY)
+            setAppearanceFor(view: viewLastNameText, backgroundColor: .systemGray5)
             self.lastNameTF.isUserInteractionEnabled = false
            }else{
             self.lastNameTF.isUserInteractionEnabled = true
@@ -185,10 +200,12 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             setAppearanceFor(view: self.viewLastNameText, backgroundColor: COLOR_WHITE)
            }
             
-            
+            } else {
+                // Fallback on earlier versions
+            }
             self.viewWhatToBuildText.isUserInteractionEnabled = false
             self.emailTF.isUserInteractionEnabled = false
-            self.frstNameTF.isUserInteractionEnabled = false
+//            self.frstNameTF.isUserInteractionEnabled = false
             
             if self.phoneTF.text == "" {
                 phoneNumberNotAvailable =  true
@@ -204,6 +221,10 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         pickerView.delegate = self
         pickerView.dataSource = self
         
+    }
+    
+    
+    @IBAction func didTappedOnHomeBTN(_ sender: UIButton) {
     }
     
     //MARK: - PickerViewDelegateDatasource

@@ -38,7 +38,7 @@ class HomeDesignPriceVC: HomeDesignModalHeaderVC {
     
     func priceViewSetUp () {
         
-        setAppearanceFor(view: price_lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: price_lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
         
 //        setAppearanceFor(view: price_btnContinue, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
 //        setAppearanceFor(view: price_btnSkip, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))

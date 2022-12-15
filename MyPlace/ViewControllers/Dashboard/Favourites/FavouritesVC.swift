@@ -17,7 +17,7 @@ class FavouritesVC: HeaderVC {
     @IBOutlet weak var profileHeaderView: UIView!
     
     @IBOutlet weak var tableViewFvrts: UITableView!
-    var selectedIndex = 0
+    var selectedIndex = -1
     var displayFavorites = [houseDetailsByHouseType]()
     var logoLabelProfile = UILabel()
     var btnProfileImage = UIButton()
@@ -39,7 +39,7 @@ class FavouritesVC: HeaderVC {
         
         btnProfileImage.layer.cornerRadius = btnProfileImage.frame.size.height/2
         btnProfileImage.clipsToBounds = true
-        
+        getDisplaysNotificationsCount()
         setHeightForViewBasedonRowsHeight()
         
         addHeaderViewOptions()
@@ -277,7 +277,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if selectedIndex == indexPath.row {
-            selectedIndex = 0
+            selectedIndex = -1
             selectedRowHeight = rowHeight
             
         }else {
@@ -287,7 +287,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             
              if name == nameHL {
                 
-                selectedIndex = 0
+                selectedIndex = -1
                 
                 ProfileDataManagement.shared.recentSearchData(SearchType.shared.homeLand, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
                     
@@ -313,7 +313,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }
             else if name == nameMyDesign {
                 
-                selectedIndex = 0
+                selectedIndex = -1
                 ProfileDataManagement.shared.recentSearchData(SearchType.shared.newHomes, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
                     
                     if let recent = recentSearchResult {
@@ -369,7 +369,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }
             else if name == nameDisplayHomes {
                 
-                selectedIndex = 0
+                selectedIndex = -1
                 _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
                     if let result: AnyObject = json {
                         let result = result as! NSDictionary
@@ -407,61 +407,9 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                     else { }
 
                 }, progress: nil)
-//                ProfileDataManagement.shared.recentSearchData(3, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
-//
-//                    if let recent = recentSearchResult {
-//
-//                        if let resultFeatures = recent.value(forKey: "SearchJson") as? NSArray {
-//
-//                            let count = (recent.value(forKey: "UserFavourites") as! NSNumber).intValue
-//
-//                            if count == 0 {
-//                                setDisplayHomesFavouritesCount (count: 0, state: kUserState)
-//
-//                                AlertManager.sharedInstance.alert("Favourites not available")
-//                            }else {
-//
-//                                var rece = [NSDictionary] ()
-//
-//                                for item in resultFeatures as! [NSDictionary] {
-//
-//                                    if String.checkNullValue(item.value(forKey: "feature") as Any).contains("resultsCount") {
-//
-//                                        setDisplayHomesFavouritesCount(count: (String.checkNullValue(item.value(forKey: "Answer") as Any) as NSString).integerValue, state: kUserState)
-//                                    }else {
-//
-//                                        rece.append(item)
-//                                    }
-//
-//                                    appDelegate.userData?.user?.userDetails?.collectionRecentSearch = rece as NSArray
-//                                }
-//
-//                                self.selectedIndex = indexPath.row
-//
-//                            }
-//                        } else {
-//
-//                        }
-//
-//                        setDisplayHomesFavouritesCount(count: (recent.value(forKey: "UserFavourites") as! NSNumber).intValue, state: kUserState)
-//
-//                        self.tableProfile.reloadData()
-//
-//                    }else {
-//
-//                        setDisplayHomesFavouritesCount(count: 0, state: kUserState)
-//
-//                        AlertManager.sharedInstance.alert("Favourites not available")
-//                    }
-//                })
-                
-
                 CodeManager.sharedInstance.sendScreenName(burbank_profile_homeDesigns_button_touch)
-                
             }
-        }
-        
-        
+        }        
         setHeightForViewBasedonRowsHeight()
         tableView.reloadData()
     }
@@ -497,4 +445,40 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
         return rowHeight
     }
     
+}
+
+extension FavouritesVC{
+    func getDisplaysNotificationsCount(){
+        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
+            if let result: AnyObject = json {
+                let result = result as! NSDictionary
+                if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+                    if let result: AnyObject = json {
+                        if (result.allKeys as! [String]).contains("userFavDisplays") {
+                            if (result.value(forKey: "userFavDisplays") as AnyObject).isKind(of: NSArray.self){
+                                let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
+                                self.displayFavorites = []
+                                for package: NSDictionary in packagesResult {
+                                    let suggestedData = houseDetailsByHouseType(package as! [String : Any])
+                                    self.displayFavorites.append(suggestedData)
+                                }
+                                DispatchQueue.main.async {
+                                    self.tableViewFvrts.reloadData()
+                                }
+                                
+                            }
+                        }else { print(log: "no favorates found") }
+                        
+                    }else {
+                        
+                    }
+                }
+            }
+        }, errorblock: { (error, isJSONerror) in
+            
+            if isJSONerror { }
+            else { }
+            
+        }, progress: nil)
+    }
 }
