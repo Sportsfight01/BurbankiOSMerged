@@ -18,6 +18,7 @@ class ProfileSettingsTVCell: UITableViewCell {
     @IBOutlet weak var lBTitle: UILabel!
     @IBOutlet weak var btnArrow: UIButton!
 
+    @IBOutlet weak var permissionsView: UIView!
     
     @IBOutlet weak var bottomView: UIView!
     

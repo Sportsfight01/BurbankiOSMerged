@@ -24,13 +24,13 @@ let iconFav = UIImage(named: "Ico-favorite-Black")
 let nameFavourites = "MyFavourites"
 
 let nameMyCollection = "MyCollection"
-let nameHL = "Home & Land"
+let nameHL = "House&Land"
 let nameMyday = "MyDay"
-let nameMyDesign = "Home Design"
-let nameMyDetails = "My Details"
-let nameShare = "Share Account"
-let nameSettings = "App Settings"
-let nameDisplayHomes = "Display Homes"
+let nameMyDesign = "HomeDesigns"
+let nameMyDetails = "MyDetails"
+let nameShare = "ShareAccount"
+let nameSettings = "AppSettings"
+let nameDisplayHomes = "Displays"
 
 
 let rowHeight: CGFloat = 50
@@ -52,6 +52,7 @@ let logoFontProfileSUBHEADING = FONT_LABEL_SUB_HEADING(size: FONT_30)
 
 class UserProfileVC: UIViewController {
     
+    @IBOutlet weak var tableViewHeightConstrait: NSLayoutConstraint!
     @IBOutlet weak var profileView: UIView!
     
     @IBOutlet weak var profileHeaderView: UIView!
@@ -134,7 +135,13 @@ class UserProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.profileView.backgroundColor = .clear
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        tableViewHeightConstrait.constant = tableProfile.contentSize.height + 20
     }
     func getDisplaysNotificationsCount(){
         _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
@@ -365,8 +372,8 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             
             if name == nameMyDetails {
-                cell.lBCount.isHidden = true
-                cell.lBCount.text = "0"
+              //  cell.lBCount.isHidden = true
+                cell.lBCount.text = ""
             }else if name == nameShare {
                 
                 cell.lBCount.text = "\(kShareCount)"
@@ -386,8 +393,8 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 cell.lBCount.text = "\(self.displayFavorites.count)"
             }
             else if name == nameSettings {
-                cell.lBCount.isHidden = true
-                cell.lBCount.text = "0"
+               // cell.lBCount.isHidden = true
+                cell.lBCount.text = ""
             }
             else if name == nameFavourites {
                let totalCount = kDesignFavoritesCount + kHomeLandFavoritesCount + self.displayFavorites.count
@@ -396,7 +403,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             
         }
-        
+        self.viewWillLayoutSubviews()
     }
     
     
@@ -664,7 +671,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             else if name == nameFavourites{
              let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
             cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-            cell.icon.tintColor = .black
+                cell.icon.tintColor = .gray
             cell.lBTitle.text = arrNames[indexPath.row]
             return cell
            }
@@ -674,8 +681,9 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
         
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        cell.icon.tintColor = .black
+        cell.icon.tintColor = .gray
         cell.lBTitle.text = arrNames[indexPath.row]
+        
         
         
         return cell
@@ -1445,7 +1453,7 @@ class ProfileTVCell: UITableViewCell {
         // Initialization code
         
         setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: FONT_12))
         
         
@@ -1455,6 +1463,10 @@ class ProfileTVCell: UITableViewCell {
         
         lBCount.text = "0"
         lBCount.textColor = .white
+        
+        icon.tintColor = COLOR_GRAY
+        lBCount.backgroundColor = COLOR_GRAY
+        
         
     }
     

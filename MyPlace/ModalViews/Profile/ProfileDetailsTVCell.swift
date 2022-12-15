@@ -88,7 +88,7 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         }
         
         
-        setAppearanceFor(view: btnUpdate, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnUpdate, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
         
         setBorder(view: btnUpdate, color: COLOR_WHITE, width: 0.5)
         
@@ -122,7 +122,11 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         
         
         txtEmail.isUserInteractionEnabled = false
-        txtEmail.backgroundColor = COLOR_LIGHT_GRAY
+        if #available(iOS 13.0, *) {
+            txtEmail.backgroundColor = .systemGray5
+        } else {
+            // Fallback on earlier versions
+        }
 
         
         txtPhone.delegate = self
@@ -139,9 +143,9 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
     
     func fillDetails () {
 
-        lBCount.isHidden = true
+        lBCount.isHidden = false
 
-        lBCount.text = "0"
+        lBCount.text = ""
 
         
         self.txtName.text = appDelegate.userData?.user?.userFirstName?.capitalized

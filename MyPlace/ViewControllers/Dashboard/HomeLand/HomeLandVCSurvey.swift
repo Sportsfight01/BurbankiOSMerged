@@ -550,7 +550,8 @@ class HomeLandVCSurvey: HeaderVC {
             return
         }
                 
-        
+        btnNext.backgroundColor = COLOR_ORANGE
+        btnPrevious.backgroundColor = COLOR_LIGHT_GRAY
         if btnBack.isHidden {
             showBackButton()
         }
@@ -591,17 +592,6 @@ class HomeLandVCSurvey: HeaderVC {
 
         }else if viewTag == 104 {
             
-//            myPlaceQuiz.priceRangeLow = ""
-//            myPlaceQuiz.priceRangeHigh = ""
-//            
-//            filter.defaultPriceRange.priceStart = 0
-//            filter.defaultPriceRange.priceEnd = 1
-//
-//            
-//            filter.priceRange.priceStart = 0
-//            filter.priceRange.priceEnd = 1
-
-            
             if sender == bedrooms_btn3Bedrooms {
                 
                 myPlaceQuiz.bedRoomCount = "3 BED"
@@ -638,25 +628,6 @@ class HomeLandVCSurvey: HeaderVC {
 
             filter.priceRange.priceStart = 0
             filter.priceRange.priceEnd = 1
-
-            
-//            if sender == price_btnContinue {
-//
-//                myPlaceQuiz.priceRangeLow = "$\(Int((priceRangeVC?.rangeslider.lowerValue)!))K"
-//                myPlaceQuiz.priceRangeHigh = "$\(Int((priceRangeVC?.rangeslider.upperValue)!))K"
-//
-//
-//                filter.priceRange.priceStart = priceRangeVC?.rangeslider.lowerValue ?? 0
-//                filter.priceRange.priceEnd = priceRangeVC?.rangeslider.upperValue ?? 1
-//
-//            }else if sender == price_btnSkip {
-//
-//                myPlaceQuiz.priceRangeLow = ""
-//                myPlaceQuiz.priceRangeHigh = ""
-//
-//                filter.priceRange.priceStart = priceRangeVC?.rangeslider.minimumValue ?? 0
-//                filter.priceRange.priceEnd = priceRangeVC?.rangeslider.maximumValue ?? 1
-//            }
             
         }
         
@@ -714,13 +685,15 @@ class HomeLandVCSurvey: HeaderVC {
         if sender == btnNext {
             
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_next_button_touch)
-            
+            btnPrevious.backgroundColor = COLOR_ORANGE
+            btnNext.backgroundColor = COLOR_LIGHT_GRAY
             if btnNext.isUserInteractionEnabled == true { }
             else { return }
         }else {
             
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_previous_button_touch)
-
+            btnNext.backgroundColor = COLOR_ORANGE
+            btnPrevious.backgroundColor = COLOR_LIGHT_GRAY
             if btnPrevious.isUserInteractionEnabled == true { }
             else { return }
         }
@@ -1231,12 +1204,16 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
         if arrRegions?[indexPath.row].isSelected == true{
             arrRegions?[indexPath.row].isSelected = false
             let index = filter.regionsArr.firstIndex(where: { $0.regionName == filter.region.regionName  })
-//            filter({ $0.regionName == filter.region.regionName  })
             print(index)
             filter.regionsArr.remove(at: index ?? 0)
+            if filter.regionsArr.isEmpty{
+                btnNext.backgroundColor = COLOR_LIGHT_GRAY
+            }
+            
         }  else{
             arrRegions?[indexPath.row].isSelected = true
             filter.regionsArr.append(filter.region)
+            btnNext.backgroundColor = COLOR_ORANGE
         }
         
         
@@ -1382,6 +1359,8 @@ extension HomeLandVCSurvey {
             self.priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
             
             self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
+            self.btnNext.backgroundColor = COLOR_ORANGE
+            self.btnPrevious.backgroundColor = COLOR_LIGHT_GRAY
         }
         
         if let task = datatask {

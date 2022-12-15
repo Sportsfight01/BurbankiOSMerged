@@ -115,8 +115,11 @@ class HeaderVC: UIViewController {
                 
             case "HomeDesigns":
                 _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Home" , "Designs"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+            case "MyFavourites":
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Favourites"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             case "MyProfile":
                 _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Profile"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+                
             case "Displays":
                 setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size : 30))
                 logoLabel.text = headerLogoText
