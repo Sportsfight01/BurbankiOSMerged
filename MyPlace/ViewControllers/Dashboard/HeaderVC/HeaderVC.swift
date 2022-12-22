@@ -54,7 +54,7 @@ var logoFontRegular: UIFont {
 
 
 class HeaderVC: UIViewController {
-    
+    let favCountLb = UILabel()
     weak var childVCDelegate: ChildVCDelegate?
     
     lazy var profileView: UserProfileVC = {
@@ -107,6 +107,7 @@ class HeaderVC: UIViewController {
         didSet {
             
             
+            //var rangeStrings : [String] = []
             
             switch headerLogoText {
                 
@@ -120,9 +121,8 @@ class HeaderVC: UIViewController {
             case "MyProfile":
                 _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Profile"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
                 
-            case "Displays":
-                setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size : 30))
-                logoLabel.text = headerLogoText
+            case "DisplayHomes":
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Display" , "Homes"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             
             default :
                 setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size : 30))
@@ -777,6 +777,26 @@ extension HeaderVC {
             optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)
         ])
         
+        let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
+        
+        //MyProfile favorites count label
+
+        self.favCountLb.text = "\(totalFavCount)"
+        favCountLb.backgroundColor = .gray
+        favCountLb.textColor = .white
+        favCountLb.font = FONT_LABEL_SUB_HEADING(size: 12.0)
+        favCountLb.layer.cornerRadius = 9
+        favCountLb.clipsToBounds = true
+        favCountLb.textAlignment = .center
+        btnMyProfile.addSubview(favCountLb)
+        
+        favCountLb.translatesAutoresizingMaskIntoConstraints = false
+        favCountLb.topAnchor.constraint(equalTo: btnMyProfile.topAnchor , constant: -9).isActive = true
+        favCountLb.trailingAnchor.constraint(equalTo: btnMyProfile.trailingAnchor, constant: 9).isActive = true
+        favCountLb.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        favCountLb.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        
+        
         
         btnSortFilter.translatesAutoresizingMaskIntoConstraints = false
         
@@ -832,6 +852,38 @@ extension HeaderVC {
         
         
     }
+    
+    //serviceCall of displayhomes fav
+//    func getDisplayHomesFavoriteCount()
+//    {
+//
+//        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { [weak self] (json, response) in
+//                if let result: AnyObject = json {
+//                    let result = result as! NSDictionary
+//                    if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+//                        if let result: AnyObject = json {
+//                            if (result.allKeys as! [String]).contains("userFavDisplays") {
+//                                let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
+//
+//
+//                                kDisplayHomesFavCount = packagesResult.count
+//
+//                            }else { print(log: "no SuggestedHomesData found") }
+//
+//                        }else {
+//
+//                        }
+//                    }
+//                }
+//            }, errorblock: { (error, isJSONerror) in
+//
+//                if isJSONerror { }
+//                else { }
+//
+//            }, progress: nil)
+//
+//
+//    }
     
     
     func addHowWorks () {
@@ -944,7 +996,8 @@ extension HeaderVC {
         if let str = btnMyProfile.title(for: .normal) {
             if str != "" {
                 
-                setBorder(view: btnMyProfile, color: COLOR_APP_BACKGROUND, width: 0.5)
+                //setBorder(view: btnMyProfile, color: COLOR_APP_BACKGROUND, width: 0.5)
+                btnMyProfile.backgroundColor = COLOR_ORANGE
                 btnMyProfile.layer.cornerRadius = 5.0
             }
         }

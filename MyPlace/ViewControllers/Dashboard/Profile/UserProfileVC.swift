@@ -12,15 +12,25 @@ import CropViewController
 import SDWebImage
 
 
-let iconCollection = UIImage(named: "Ico-MyCollectionRound")
-let iconHL = UIImage(named: "Ico-Home&LandRound")
+let iconCollection = UIImage(named: "Ico-HomeDesigns")
+let iconHL = UIImage(named: "Ico-H&L1")
 let iconMyday = UIImage(named: "Ico-MyDayRound")
 let iconMyDesign = UIImage(named: "Ico-HomeDesignRound")
 let iconShare = UIImage(named: "Ico-ShareRound")
 let iconProfile = UIImage(named: "Ico-ProfileRound")
-let iconSettings = UIImage(named: "Ico-SettingsRound")
-let iconDH = UIImage(named: "Ico-DisplayHomes-Profile")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-let iconFav = UIImage(named: "Ico-favorite-Black")
+let iconSettings = UIImage(named: "Ico-Settings")
+let iconDH = UIImage(named: "Ico-Displays-Bottomm")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+var iconFav : UIImage
+{
+    if #available(iOS 13.0, *)
+    {
+        return UIImage(systemName: "heart")!
+    }
+    else {
+        return UIImage(named: "Ico-favorite-Black")!
+    }
+}
+
 let nameFavourites = "MyFavourites"
 
 let nameMyCollection = "MyCollection"
@@ -419,7 +429,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileDetailsTVCell", for: indexPath) as! ProfileDetailsTVCell
                 cell.icon.image = arrIcons[indexPath.row]
                 cell.lBTitle.text = arrNames[indexPath.row]
-                
+                cell.txtName.text = "\(appDelegate.userData?.user?.userFirstName?.capitalized ?? "") \(appDelegate.userData?.user?.userLastName?.capitalized ?? "")"
                 cell.fillDetails()
                 
                 
@@ -681,7 +691,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
         
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        cell.icon.tintColor = .gray
+        cell.icon.tintColor = .black
         cell.lBTitle.text = arrNames[indexPath.row]
         
         
@@ -731,10 +741,23 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             }
             else if name == nameFavourites{
                 
-                let fvrtVC = kStoryboardMain.instantiateViewController(withIdentifier: "FavouritesVC") as! FavouritesVC
+//                let fvrtVC = kStoryboardMain.instantiateViewController(withIdentifier: "FavouritesVC") as! FavouritesVC
+//
+//                self.navigationController?.pushViewController(fvrtVC, animated: true)
+//                 tabBarController?.selectedIndex = 4
+                let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
                 
-                self.navigationController?.pushViewController(fvrtVC, animated: true)
-                 tabBarController?.selectedIndex = 4
+                (dash as UITabBarController).selectedIndex = 3
+                if ((self.parent?.parent?.parent?.isKind(of: DashboardVC.self)) != nil)
+                {
+                    if let vc = self.parent?.parent?.parent as? DashboardVC
+                    {
+                        vc.selectedIndex = 3
+                    }
+                    
+                }else {
+                    self.navigationController?.pushViewController(dash, animated: true)
+                }
                 
             }
             //            else if name == nameMyCollection { selectedRowHeight = rowHeightCollection }
@@ -981,7 +1004,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             let name = arrNames[selectedIndex]
             
-            if name == nameShare || name == nameHL || name == nameMyCollection || name == nameMyDesign || name == nameDisplayHomes{
+            if name == nameShare || name == nameHL || name == nameMyCollection || name == nameMyDesign || name == nameDisplayHomes || name == nameMyDetails{
                 
                 return UITableView.automaticDimension
             }
@@ -1455,7 +1478,11 @@ class ProfileTVCell: UITableViewCell {
         lBCount.textColor = .white
         
         icon.tintColor = COLOR_GRAY
-        lBCount.backgroundColor = COLOR_GRAY
+        lBCount.backgroundColor = AppColors.black
+        btnArrow.setImage(UIImage(named: "Ico-DownArrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btnArrow.tintColor = .lightGray
+        btnArrow.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+    
         
         
     }

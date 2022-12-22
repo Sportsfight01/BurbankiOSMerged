@@ -74,7 +74,8 @@ var kDisplayHomesFavoritesCount: Int {
     return ((kUserDefaults.value(forKey: key) as? NSDictionary)?.value(forKey: key_displayHomesFavouritesCount) as? Int) ?? 0
 //    return appDelegate.userData?.user?.userDetails?.searchHomeLandCount ?? 0
 }
-
+//only for count on profile button
+//var kDisplayHomesFavCount : Int = 0
 
 var kStatesMyPlace : [State]? {
 //    return kUserDefaults.value(forKey: "StatesMyPlace") as? NSArray

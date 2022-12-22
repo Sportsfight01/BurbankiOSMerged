@@ -28,7 +28,7 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.backgroundColor = AppColors.white
         
         
-        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.black, .font: FONT_LABEL_HEADING(size: FONT_9)], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.appOrange, .font: FONT_LABEL_HEADING(size: FONT_9)], for: .selected)
         
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.lightGray, .font: FONT_LABEL_BODY(size: FONT_9)], for: .normal)
                 

@@ -82,9 +82,9 @@ class HomeAndLandTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        btnArrow.tintColor = .lightGray
+        setAppearanceFor(view: lBCount, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_10))
 
         

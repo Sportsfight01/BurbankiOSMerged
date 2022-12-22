@@ -301,7 +301,6 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                 updateDefaults = true
                             }
                             
-                            
                             if self.isFavoritesService {
                                 
                                 var arr = self.arrFavouriteDisplays[indexPath.row]

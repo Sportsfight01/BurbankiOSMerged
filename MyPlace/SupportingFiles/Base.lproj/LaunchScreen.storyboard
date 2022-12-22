@@ -1,52 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Mark Simonson - Proxima Nova Semibold-webfont.ttf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+        <array key="proxima-nova-593a418f8182c.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="dVr-Ux-l3v">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bay-D4-S4f">
-                                <rect key="frame" x="0.0" y="219" width="320" height="130"/>
+                                <rect key="frame" x="0.0" y="381" width="393" height="130"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo-1" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-ag-9wW">
-                                        <rect key="frame" x="96" y="0.0" width="128" height="65"/>
+                                        <rect key="frame" x="118" y="0.0" width="157" height="40"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0CE-z7-IBP"/>
+                                        </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-Myplace-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="TMd-Nv-bu5">
-                                        <rect key="frame" x="80" y="52" width="160" height="78"/>
-                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUH-Ur-jQN">
+                                        <rect key="frame" x="136.66666666666666" y="40" width="119.66666666666666" height="39"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKy-h0-QFa">
+                                                <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="39"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="32"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBP-ew-HwW">
+                                                <rect key="frame" x="41.666666666666686" y="0.0" width="78" height="39"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="32"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="H2k-WX-RI0"/>
+                                    <constraint firstItem="RUH-Ur-jQN" firstAttribute="top" secondItem="Om0-ag-9wW" secondAttribute="bottom" id="HzR-08-pfr"/>
                                     <constraint firstItem="Om0-ag-9wW" firstAttribute="width" secondItem="bay-D4-S4f" secondAttribute="width" multiplier="0.4" id="UoF-0P-AOA"/>
                                     <constraint firstItem="Om0-ag-9wW" firstAttribute="centerX" secondItem="bay-D4-S4f" secondAttribute="centerX" id="VNj-0o-E6Z"/>
                                     <constraint firstItem="Om0-ag-9wW" firstAttribute="top" secondItem="bay-D4-S4f" secondAttribute="top" id="aNE-lz-mis"/>
-                                    <constraint firstItem="TMd-Nv-bu5" firstAttribute="centerX" secondItem="bay-D4-S4f" secondAttribute="centerX" id="d1t-ux-twL"/>
-                                    <constraint firstAttribute="bottom" secondItem="TMd-Nv-bu5" secondAttribute="bottom" id="dzS-dl-hD5"/>
-                                    <constraint firstItem="Om0-ag-9wW" firstAttribute="height" secondItem="bay-D4-S4f" secondAttribute="height" multiplier="0.5" id="fIO-9X-ws6"/>
-                                    <constraint firstItem="TMd-Nv-bu5" firstAttribute="height" secondItem="bay-D4-S4f" secondAttribute="height" multiplier="0.6" id="oqb-uj-SQw"/>
-                                    <constraint firstItem="TMd-Nv-bu5" firstAttribute="width" secondItem="bay-D4-S4f" secondAttribute="width" multiplier="0.5" id="xNc-Fy-GIJ"/>
+                                    <constraint firstItem="RUH-Ur-jQN" firstAttribute="centerX" secondItem="bay-D4-S4f" secondAttribute="centerX" id="mj3-aB-im2"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bay-D4-S4f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7hm-r2-20w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bay-D4-S4f" secondAttribute="trailing" id="Bns-pI-yrO"/>
+                            <constraint firstAttribute="trailing" secondItem="dVr-Ux-l3v" secondAttribute="trailing" id="Dnv-Hp-v8R"/>
+                            <constraint firstAttribute="bottom" secondItem="dVr-Ux-l3v" secondAttribute="bottom" id="VaL-Ai-SwW"/>
                             <constraint firstItem="bay-D4-S4f" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wbd-3R-cGs"/>
-                            <constraint firstItem="bay-D4-S4f" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dsM-ys-ZkU"/>
+                            <constraint firstItem="dVr-Ux-l3v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZWa-uR-xhh"/>
+                            <constraint firstItem="dVr-Ux-l3v" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Zhr-eB-Lva"/>
+                            <constraint firstItem="bay-D4-S4f" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="20" id="dsM-ys-ZkU"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -56,7 +86,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Img-BB-Logo-1" width="290" height="67"/>
-        <image name="Img-Myplace-Logo" width="376.5" height="85"/>
+        <image name="Img-BB-Logo-1" width="289.66665649414062" height="66.666664123535156"/>
+        <image name="Rectangle" width="1056" height="1881"/>
     </resources>
 </document>

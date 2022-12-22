@@ -314,11 +314,45 @@ class ProfileDataManagement: NSObject {
         
     }
     
+    func getDisplayHomesFavoriteCount(completion : @escaping((_ favouritetCount : Int?) -> Void))
+    {
+            
+        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
+                if let result: AnyObject = json {
+                    let result = result as! NSDictionary
+                    if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+                        if let result: AnyObject = json {
+                            if (result.allKeys as! [String]).contains("userFavDisplays") {
+                                let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
+                                
+                                setDisplayHomesFavouritesCount(count: packagesResult.count, state: kUserState)
+                                completion(packagesResult.count)
+                        
+                            }else { print(log: "no SuggestedHomesData found") }
+                            
+                        }else {
+                            
+                        }
+                    }
+                }
+            }, errorblock: { (error, isJSONerror) in
+
+                completion(nil)
+                if isJSONerror { }
+                else { }
+
+            }, progress: nil)
+
+        
+    }
+    
     
     //MARK: - Recent search count
     
-    func getProfileDetails () {
+    func getProfileDetails (completion : ((Bool)->())?) {
+        let dispatchGroup = DispatchGroup()
         
+        dispatchGroup.enter()
         self.recentSearchData(SearchType.shared.homeLand, Int(kUserState)!, kUserID) { (recentSearchResult) in
             
             if let recent = recentSearchResult {
@@ -331,8 +365,9 @@ class ProfileDataManagement: NSObject {
                 
                 setHomeLandFavouritesCount(count: 0, state: kUserState)
             }
+            dispatchGroup.leave()
         }
-        
+        dispatchGroup.enter()
         self.recentSearchData(SearchType.shared.newHomes, Int(kUserState)!, kUserID) { (recentSearchResult) in
             
             if let recent = recentSearchResult {
@@ -366,6 +401,18 @@ class ProfileDataManagement: NSObject {
                 setHomeDesignsFavouritesCount(count: 0, state: kUserState)
             }
             
+            dispatchGroup.leave()
+            
+        }
+        
+        dispatchGroup.enter()
+        self.getDisplayHomesFavoriteCount { favouritetCount in
+            dispatchGroup.leave()
+            
+        }
+        
+        dispatchGroup.notify(queue: .main){
+            completion?(true)
         }
         
     }

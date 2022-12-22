@@ -10,14 +10,18 @@ import UIKit
 
 class MyDesignsTVC: UITableViewCell {
     
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var lbRecentSearch: UILabel!
     
+    @IBOutlet weak var lbRecentSearchTitle: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var lBCount: UILabel!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var lBTitle: UILabel!
     @IBOutlet weak var btnArrow: UIButton!
     
+    @IBOutlet weak var btnSearch: UIButton!
     
     
     @IBOutlet weak var btnSavedDesigns: UIButton!
@@ -36,7 +40,7 @@ class MyDesignsTVC: UITableViewCell {
             
             homeDesignFeatures = features
             
-            fillTheData()
+            fillTheData(features: features)
         }
     }
 //    var searchResultSortFilter1: [NSDictionary]? {
@@ -57,13 +61,21 @@ class MyDesignsTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        btnArrow.tintColor = .lightGray
+        setAppearanceFor(view: lBCount, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
         setAppearanceFor(view: btnSavedDesigns, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        
+        setAppearanceFor(view: lbRecentSearchTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: lbRecentSearch, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
+        
+        
+        setAppearanceFor(view: btnSearch, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_10))
+
+        
         
         
         btnSavedDesigns.layer.cornerRadius = radius_5 //5.0
@@ -82,7 +94,7 @@ class MyDesignsTVC: UITableViewCell {
     
     
     
-    func fillTheData () {
+    func fillTheData(features : [HomeDesignFeature]) {
         
         
         let count = kDesignFavoritesCount
@@ -96,24 +108,28 @@ class MyDesignsTVC: UITableViewCell {
         
 //        lBCount.isHidden = kCollectionFavoritesCount == 0
         lBCount.text = "\(kDesignFavoritesCount)"
+        let displaytext = displayTextWithDesignFeatures(features).capitalized
+//        print(displaytext)
+        lbRecentSearch.numberOfLines = 0
+        lbRecentSearch.text = displaytext
 
     }
     
-    func fillTheData1 ( diplayFaoritesCount : Int ) {
-        
-        
-        let count = diplayFaoritesCount
-        let countText = count == 0 ? "NO" : "\(count)"
-        let designs = count == 1 ? "DISPLAYS" : "DISPLAYS"
-        
-        
-        btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
-        
-        
-//        lBCount.isHidden = kCollectionFavoritesCount == 0
-        lBCount.text = "\(diplayFaoritesCount)"
-
-    }
+//    func fillTheData1 ( diplayFaoritesCount : Int ) {
+//        
+//        
+//        let count = diplayFaoritesCount
+//        let countText = count == 0 ? "NO" : "\(count)"
+//        let designs = count == 1 ? "DISPLAYS" : "DISPLAYS"
+//        
+//        
+//        btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
+//        
+//        
+////        lBCount.isHidden = kCollectionFavoritesCount == 0
+//        lBCount.text = "\(diplayFaoritesCount)"
+//
+//    }
 
     func displayTextWithDesignFeatures (_ features: [HomeDesignFeature]) -> String {
         

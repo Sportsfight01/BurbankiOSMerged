@@ -62,7 +62,7 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
         layout.itemSize = CGSize(width: scaleFactor , height: 140)
         self.displaysCollectionView.collectionViewLayout = layout
         
-        headerLogoText = "Displays"
+        headerLogoText = "DisplayHomes"
         isFromProfile = false
         if btnBack.isHidden {
             showBackButton()

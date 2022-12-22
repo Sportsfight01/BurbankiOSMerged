@@ -55,7 +55,7 @@ class MyPlaceHomeVC: UIViewController {
     @IBOutlet weak var containerViewShare: UIView!
     
     @IBOutlet weak var stateView: UIView!
-    
+    let favCountLb = UILabel()
     
     var containerViewRegion: UIView?
     var regionVC: RegionVC = kStoryboardMain.instantiateViewController(withIdentifier: "RegionVC") as! RegionVC
@@ -125,6 +125,7 @@ class MyPlaceHomeVC: UIViewController {
         
         
         CodeManager.sharedInstance.sendScreenName(burbank_dashboard_screen_loading)
+    
         
     }
     
@@ -138,12 +139,19 @@ class MyPlaceHomeVC: UIViewController {
         //            addProfileImage(url)
         //        }
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
+        let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
+        
+        //MyProfile favorites count label
+
+        self.favCountLb.text = "\(totalFavCount)"
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
+       
         
     }
     
@@ -192,6 +200,7 @@ class MyPlaceHomeVC: UIViewController {
     func handleUISetup () {
         
         btnMyProfile.backgroundColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.7) : AppColors.appOrange
+        btnMyProfile.layer.cornerRadius = 5.0
         
         _ = setAttributetitleFor(view: lBMyPlace, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
         setAppearanceFor(view: view, backgroundColor: AppColors.white)
@@ -226,6 +235,26 @@ class MyPlaceHomeVC: UIViewController {
         
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
         self.btnIcon.clipsToBounds = true
+        
+        let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
+        
+        //MyProfile favorites count label
+        
+        favCountLb.text = "\(totalFavCount)"
+        
+        favCountLb.backgroundColor = .gray
+        favCountLb.textColor = .white
+        favCountLb.font = FONT_LABEL_SUB_HEADING(size: 12.0)
+        favCountLb.layer.cornerRadius = 9
+        favCountLb.clipsToBounds = true
+        favCountLb.textAlignment = .center
+        btnMyProfile.addSubview(favCountLb)
+        
+        favCountLb.translatesAutoresizingMaskIntoConstraints = false
+        favCountLb.topAnchor.constraint(equalTo: btnMyProfile.topAnchor , constant: -9).isActive = true
+        favCountLb.trailingAnchor.constraint(equalTo: btnMyProfile.trailingAnchor, constant: 9).isActive = true
+        favCountLb.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        favCountLb.widthAnchor.constraint(equalToConstant: 18).isActive = true
         
     }
     
@@ -424,8 +453,20 @@ class MyPlaceHomeVC: UIViewController {
             
         }else if sender == btnIcon {
             
-            //go to main screen
-            loadMainView()
+            //if user is logged in need to show the logoutpopUp
+            if kUserID != "0" // not a guest user
+            {
+                //show popup
+                BurbankApp.showAlert("Are you sure, want to Logout?", self, ["NO", "YES"]) { (str) in
+                    
+                    if str == "YES" {
+                        logoutUser()
+                    }
+                }
+            }else {
+                //go to main screen
+                loadMainView()
+            }
             
         }else if sender == btnState {
             
@@ -816,7 +857,7 @@ extension MyPlaceHomeVC: RegionVCDelegate, StateSelectionVCDelegate {
         
         hideStateSelectionView ()
         
-        
+        //getDisplayHomesFavoriteCount()
         if close {
             
             
@@ -863,7 +904,11 @@ extension MyPlaceHomeVC: RegionVCDelegate, StateSelectionVCDelegate {
             
         }
         
-        ProfileDataManagement.shared.getProfileDetails()
+        ProfileDataManagement.shared.getProfileDetails { [weak self] flag in
+            //count label
+            let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
+            self?.favCountLb.text = "\(totalFavCount)"
+        }
         
     }
     

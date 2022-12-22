@@ -78,7 +78,6 @@ class FavouritesVC: HeaderVC {
 }
 extension FavouritesVC{
     func addHeaderViewOptions () {
-
         headerLogoText = "MyFavourites"
         self.addBreadcrumb("View your saved favourites")
         showBackButton()
@@ -167,18 +166,33 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 if let recentSearch = appDelegate.userData?.user?.userDetails?.collectionRecentSearch {
                     
                     cell.searchResultSortFilter = recentSearch as? [NSDictionary]
-                    
+                    cell.bottomView.cardView(cornerRadius : 10.0)
+                    cell.btnSavedDesigns.cardView(cornerRadius : 10.0, backgroundColor : cell.btnSavedDesigns.backgroundColor ?? AppColors.appOrange)
                     
                     cell.actionHandler = { (button) in
                         
                         CodeManager.sharedInstance.sendScreenName(burbank_profile_homeDesigns_savedDesigns_button_touch)
                         
                         let designs = kStoryboardMain.instantiateViewController(withIdentifier: "DesignsVC") as! DesignsVC
-                        designs.isFromProfileFavorites = true
-                        
-                        designs.isFavorites = true
                         
                         
+                        
+                        if button == cell.btnSearch
+                        {
+                            designs.isFromProfileFavorites = false
+                            designs.isFavorites = false
+                            if let features = cell.homeDesignFeatures
+                            {
+                                designs.displayText = cell.displayTextWithDesignFeatures(features)
+                            }
+                        
+                           // designs.filter = SortFilter()
+                        }else {
+                            designs.isFromProfileFavorites = true
+                            
+                            designs.isFavorites = true
+                            designs.displayText = "Favourite Designs"
+                        }
                         designs.isFromCollection = true
                         designs.filter = SortFilter ()
                         
@@ -190,7 +204,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                         //                        if let features = cell.homeDesignFeatures {
                         //                            displayVC.displayText = features.count > 0 ? cell.displayTextWithDesignFeatures(features) : ""
                         //                        }else {
-                        designs.displayText = "Favourite Designs"
+                       
                         //                        }
                         
                     }
@@ -223,7 +237,8 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
                 cell.searchResultSortFilter = appDelegate.userData?.user?.userDetails?.homeLandSortFilter
-                
+                cell.bottomViewBottom.cardView(cornerRadius : 10.0)
+                cell.btnSavedDesigns.cardView(cornerRadius : 10.0, backgroundColor : cell.btnSavedDesigns.backgroundColor ?? AppColors.appOrange)
                 
                 cell.actionHandler = { (button) in
                     
@@ -266,10 +281,10 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouritesTVCell", for: indexPath) as! FavouritesTVCell
         
-        cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
         cell.icon.tintColor = .black
         cell.lBTitle.text = arrNames[indexPath.row]
-        cell.lBTitle.textColor = AppColors.black
+       // cell.lBTitle.textColor = AppColors.black
         return cell
 
     }
@@ -378,6 +393,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                 if (result.allKeys as! [String]).contains("userFavDisplays") {
                                     let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
                                     self.displayFavorites = []
+                            
                                     for package: NSDictionary in packagesResult {
                                         
                                         let suggestedData = houseDetailsByHouseType(package as! [String : Any])

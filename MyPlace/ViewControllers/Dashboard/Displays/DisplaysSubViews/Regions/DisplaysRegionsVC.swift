@@ -85,10 +85,14 @@ extension DisplaysRegionsVC: UITableViewDelegate, UITableViewDataSource {
         
         let region = arrRegions?[indexPath.row]
         cell.titleLabel.text = region?.uppercased()
-        
+        cell.titleLabel.layer.cornerRadius = 10.0
+        cell.titleLabel.borderWidth = 1.0
+        cell.titleLabel.borderColor = AppColors.appOrange
+       
         if selectedIndex == indexPath.row{
             cell.titleLabel.backgroundColor = .orange
             cell.titleLabel.textColor = .white
+            cell.layer.masksToBounds = true
         }else{
             cell.titleLabel.backgroundColor = .white
             cell.titleLabel.textColor = .black

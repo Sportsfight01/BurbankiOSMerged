@@ -172,7 +172,8 @@ class RegionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    var selectedRegion: Bool = false {
+    var selectedRegion: Bool = false
+    {
         didSet {
             if selectedRegion == true {
                 titleLabel.textColor = COLOR_WHITE
@@ -186,7 +187,7 @@ class RegionTableViewCell: UITableViewCell {
                     // Fallback on earlier versions
                     titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.3)
                 }
-                
+
             }
         }
     }

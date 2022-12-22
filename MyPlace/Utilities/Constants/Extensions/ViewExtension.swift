@@ -91,9 +91,9 @@ extension UIView {
     }
     
     
-    func cardView(cornerRadius : CGFloat = 5.0 , shadowRadius : CGFloat = 6.0 , shadowOpacity : Float = 0.7, shadowColor : CGColor = UIColor.lightGray.cgColor)
+    func cardView(cornerRadius : CGFloat = 5.0 , shadowRadius : CGFloat = 6.0 , shadowOpacity : Float = 0.7, shadowColor : CGColor = UIColor.lightGray.cgColor , backgroundColor : UIColor = .white)
     {
-        self.backgroundColor = .white
+        self.backgroundColor = backgroundColor
         
         self.layer.cornerRadius = cornerRadius
         

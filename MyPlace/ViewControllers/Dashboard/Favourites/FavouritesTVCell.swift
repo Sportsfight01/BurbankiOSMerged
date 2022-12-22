@@ -22,16 +22,19 @@ class FavouritesTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBCount, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_LIGHT(size: FONT_12))
-        
         
         lBCount.layer.cornerRadius = lBCount.frame.size.height/2
         
         lBCount.isHidden = true
         
         lBCount.text = "0"
+        btnArrow.setImage(UIImage(named: "Ico-DownArrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btnArrow.tintColor = .lightGray
+        btnArrow.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+        
         
     }
     

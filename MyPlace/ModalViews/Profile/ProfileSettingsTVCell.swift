@@ -54,7 +54,7 @@ class ProfileSettingsTVCell: UITableViewCell {
         setAppearanceFor(view: lBHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
         setAppearanceFor(view: lBNotifications, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLocationServices, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: btnLogout, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: btnLogout, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_14))
 
 
 //        btnLogoutIcon.setTitle("", for: .normal)
@@ -77,6 +77,8 @@ class ProfileSettingsTVCell: UITableViewCell {
         lBCount.isHidden = false
 
         lBCount.text = ""
+        btnArrow.tintColor = .gray
+        
         
     }
 
