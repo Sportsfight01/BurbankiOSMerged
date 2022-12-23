@@ -109,7 +109,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         showUserDetails()
       
       if isFromFavorites{
-        headerLogoText = "Displays"
+        headerLogoText = "DisplayHomes"
         backBtnView.isHidden = true
         isFromProfile = true
           navTopConstraint.constant = 120

@@ -71,7 +71,7 @@ class DirctionsVC: HeaderVC,GMSMapViewDelegate,MKMapViewDelegate {
     NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification1)
     
     if isFromFavorites{
-      headerLogoText = "Displays"
+      headerLogoText = "DisplayHomes"
         isFromProfile = true
     navTopConstraint.constant = 135
       backBtnView.isHidden = true

@@ -40,7 +40,7 @@ let nameMyDesign = "HomeDesigns"
 let nameMyDetails = "MyDetails"
 let nameShare = "ShareAccount"
 let nameSettings = "AppSettings"
-let nameDisplayHomes = "Displays"
+let nameDisplayHomes = "DisplayHomes"
 
 
 let rowHeight: CGFloat = 50

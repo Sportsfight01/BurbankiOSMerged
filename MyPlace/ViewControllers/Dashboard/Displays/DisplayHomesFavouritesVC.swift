@@ -28,7 +28,7 @@ class DisplayHomesFavouritesVC: HeaderVC {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.headerLogoText = "Displays"
+    self.headerLogoText = "DisplayHomes"
     isFromProfile = true
     // self.tabBarController?.tabBar.tintColor = .gray
     if btnBack.isHidden {

@@ -145,7 +145,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
       //---------Logic to Hide and show navigation bar(Navbar has to visible when comming from favorites)
       if isCameFromFavorites{
-        headerLogoText = "Displays"
+        headerLogoText = "DisplayHomes"
         headerConstraint.constant = 0
       navTopConstraint.constant = 135
         self.backBTN.isHidden = true
