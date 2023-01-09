@@ -104,11 +104,11 @@ class MyPlaceHomeVC: UIViewController {
             btnBackWidth.constant = 0
             btnStateLeading.constant = 0
             
-            //            ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
-            //                if let url = appDelegate.userData?.user?.userProfileImageURL {
-            //                    self.addProfileImage(url)
-            //                }
-            //            }
+                        ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
+//                            if let url = appDelegate.userData?.user?.userProfileImageURL {
+//                                self.addProfileImage(url)
+//                            }
+                        }
             
             ProfileDataManagement.shared.getSearchTypes {
                 
