@@ -117,12 +117,12 @@ class UserPreferenceVC: UIViewController {
       //  setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
-        setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: labelLookingDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_11))
+        setAppearanceFor(view: labelLookingDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: labelDepositedName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: labelDepositedName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_11))
+        setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
         setAppearanceFor(view: labelFinishedName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
@@ -158,6 +158,7 @@ class UserPreferenceVC: UIViewController {
     @IBAction func handleHowDoesItWork (_ sender: UIButton) {
         
 //        playVideoIn(self, URL(string: ServiceAPI.shared.videoURLBurBank)!)
+//        playVideoIn(self, URL(string: "https://player.vimeo.com/video/648885366"))
         
         if let url = AppConfigurations.shared.getHowDoesitWorkURL(), let _ = URL (string: url) {
             print(log: url)

@@ -788,13 +788,17 @@ extension HeaderVC {
         favCountLb.layer.cornerRadius = 9
         favCountLb.clipsToBounds = true
         favCountLb.textAlignment = .center
-        btnMyProfile.addSubview(favCountLb)
-        
-        favCountLb.translatesAutoresizingMaskIntoConstraints = false
-        favCountLb.topAnchor.constraint(equalTo: btnMyProfile.topAnchor , constant: -9).isActive = true
-        favCountLb.trailingAnchor.constraint(equalTo: btnMyProfile.trailingAnchor, constant: 9).isActive = true
-        favCountLb.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        favCountLb.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        let isFavAvailable = kUserID == "0" ? false : true
+        if isFavAvailable
+        {
+            btnMyProfile.addSubview(favCountLb)
+//            favCountLb.isHidden = false
+            favCountLb.translatesAutoresizingMaskIntoConstraints = false
+            favCountLb.topAnchor.constraint(equalTo: btnMyProfile.topAnchor , constant: -9).isActive = true
+            favCountLb.trailingAnchor.constraint(equalTo: btnMyProfile.trailingAnchor, constant: 9).isActive = true
+            favCountLb.heightAnchor.constraint(equalToConstant: 18).isActive = true
+            favCountLb.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        }
         
         
         
@@ -997,7 +1001,8 @@ extension HeaderVC {
             if str != "" {
                 
                 //setBorder(view: btnMyProfile, color: COLOR_APP_BACKGROUND, width: 0.5)
-                btnMyProfile.backgroundColor = COLOR_ORANGE
+                let MyProfilebckColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.6) : AppColors.appOrange
+                btnMyProfile.backgroundColor = MyProfilebckColor
                 btnMyProfile.layer.cornerRadius = 5.0
             }
         }
