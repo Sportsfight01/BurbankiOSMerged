@@ -33,41 +33,67 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7je-Bc-QGY">
-                                <rect key="frame" x="0.0" y="92" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Op3-Dh-6E7">
-                                        <rect key="frame" x="30" y="20" width="140" height="40"/>
+                                        <rect key="frame" x="30" y="20" width="140" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="EOp-Sj-yS8"/>
                                             <constraint firstAttribute="width" constant="140" id="OOA-dq-cpn"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVB-uw-Fnf">
-                                        <rect key="frame" x="354" y="20" width="40" height="40"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVB-uw-Fnf">
+                                        <rect key="frame" x="354" y="10" width="40" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="GjF-og-wWC"/>
                                             <constraint firstAttribute="height" secondItem="KVB-uw-Fnf" secondAttribute="width" multiplier="1:1" id="cgs-ho-Vj9"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="BurbankLogo"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xto-KD-hCn">
+                                        <rect key="frame" x="0.0" y="99" width="414" height="1"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="raM-18-cK0"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5A-mH-TkP">
+                                        <rect key="frame" x="318" y="66" width="88" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="VMu-T5-UHn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="   MY PROFILE   "/>
+                                        <connections>
+                                            <action selector="btnMyprofileClicked:" destination="c2u-DG-9SO" eventType="touchUpInside" id="1YG-SO-xn8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Op3-Dh-6E7" secondAttribute="bottom" constant="20" id="5mY-6J-5Pi"/>
+                                    <constraint firstItem="xto-KD-hCn" firstAttribute="leading" secondItem="7je-Bc-QGY" secondAttribute="leading" id="AhB-Fk-hfc"/>
+                                    <constraint firstItem="xto-KD-hCn" firstAttribute="top" secondItem="t5A-mH-TkP" secondAttribute="bottom" constant="8" id="IT3-xa-GQl"/>
                                     <constraint firstItem="Op3-Dh-6E7" firstAttribute="leading" secondItem="7je-Bc-QGY" secondAttribute="leading" constant="30" id="MlG-Ue-lgB"/>
-                                    <constraint firstAttribute="bottom" secondItem="KVB-uw-Fnf" secondAttribute="bottom" constant="20" id="eIe-MX-bMC"/>
-                                    <constraint firstItem="KVB-uw-Fnf" firstAttribute="top" secondItem="7je-Bc-QGY" secondAttribute="top" constant="20" id="eUN-Cf-mgn"/>
-                                    <constraint firstAttribute="height" constant="80" id="ei9-GP-teh"/>
+                                    <constraint firstAttribute="bottom" secondItem="xto-KD-hCn" secondAttribute="bottom" id="Rz6-iF-6Wh"/>
+                                    <constraint firstAttribute="trailing" secondItem="xto-KD-hCn" secondAttribute="trailing" id="d3B-JC-hnj"/>
+                                    <constraint firstItem="KVB-uw-Fnf" firstAttribute="top" secondItem="7je-Bc-QGY" secondAttribute="top" constant="10" id="eUN-Cf-mgn"/>
+                                    <constraint firstAttribute="height" constant="100" id="ei9-GP-teh"/>
                                     <constraint firstItem="Op3-Dh-6E7" firstAttribute="top" secondItem="7je-Bc-QGY" secondAttribute="top" constant="20" id="geF-cz-Rgh"/>
+                                    <constraint firstAttribute="trailing" secondItem="t5A-mH-TkP" secondAttribute="trailing" constant="8" id="o8d-Fj-4F6"/>
                                     <constraint firstAttribute="trailing" secondItem="KVB-uw-Fnf" secondAttribute="trailing" constant="20" id="yb0-S1-xnb"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-ZY-P4W">
-                                <rect key="frame" x="0.0" y="172" width="414" height="376.5"/>
+                                <rect key="frame" x="0.0" y="192" width="414" height="401.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAz-MN-8Vd">
-                                        <rect key="frame" x="40" y="35" width="75" height="30"/>
+                                        <rect key="frame" x="40" y="35" width="74.5" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Lpf-dA-9TB"/>
@@ -77,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-Ti-r60">
-                                        <rect key="frame" x="40" y="307" width="154" height="30"/>
+                                        <rect key="frame" x="40" y="332" width="162" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7WG-GG-cGP"/>
@@ -91,7 +117,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyPlace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5A-EQ-7UN">
-                                        <rect key="frame" x="40" y="73" width="222" height="60"/>
+                                        <rect key="frame" x="40" y="73" width="231.5" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="hcZ-6t-TEl"/>
                                         </constraints>
@@ -100,7 +126,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLq-Jr-W5C">
-                                        <rect key="frame" x="40" y="141" width="354" height="150"/>
+                                        <rect key="frame" x="40" y="141" width="354" height="175"/>
                                         <string key="text">Find your perfect home on Burbank Homes app. If you are looking to build your dream home or invest in home building in Australia, this property finder app will simplify your property search.
 
 Whether you’re looking at building or are already building with us, the MyPlace app will help you either find the best design for you or take you through your building journey with us.
@@ -125,42 +151,42 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-Un-YRH">
-                                <rect key="frame" x="0.0" y="548.5" width="414" height="313.5"/>
+                                <rect key="frame" x="0.0" y="593.5" width="414" height="268.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-JF-Oig">
-                                        <rect key="frame" x="19.5" y="44" width="375" height="165.5"/>
+                                        <rect key="frame" x="30" y="0.0" width="354" height="165.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-Wd-ydt">
-                                                <rect key="frame" x="0.0" y="0.0" width="182.5" height="165.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="172" height="165.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5S-fh-39H">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="165.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="165.5"/>
                                                         <connections>
                                                             <action selector="handleSelectionButtonWithSender:" destination="c2u-DG-9SO" eventType="touchUpInside" id="14x-XK-kJk"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Uncheckd" translatesAutoresizingMaskIntoConstraints="NO" id="zBM-hh-PLR">
-                                                        <rect key="frame" x="161" y="5" width="16.5" height="16.5"/>
+                                                        <rect key="frame" x="150.5" y="5" width="16.5" height="16.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="zBM-hh-PLR" secondAttribute="height" multiplier="1:1" id="0i8-9X-MuS"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Looking" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-5A-dEP">
-                                                        <rect key="frame" x="66.5" y="36" width="49.5" height="49.5"/>
+                                                        <rect key="frame" x="61" y="36" width="50" height="49.5"/>
                                                         <color key="tintColor" name="darkGray"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="rjJ-5A-dEP" secondAttribute="height" multiplier="1:1" id="fCC-XJ-KXj"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Just Looking" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-lg-NJL">
-                                                        <rect key="frame" x="5" y="95.5" width="172.5" height="12"/>
+                                                        <rect key="frame" x="5" y="95.5" width="162" height="14"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am shopping around." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-ea-G6L">
-                                                        <rect key="frame" x="5" y="109.5" width="172.5" height="12"/>
+                                                        <rect key="frame" x="5" y="111.5" width="162" height="14"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -195,35 +221,35 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="Iwx-fM-upu">
-                                                <rect key="frame" x="192.5" y="0.0" width="182.5" height="165.5"/>
+                                                <rect key="frame" x="182" y="0.0" width="172" height="165.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2h-t8-ZQx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="165.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="165.5"/>
                                                         <connections>
                                                             <action selector="handleSelectionButtonWithSender:" destination="c2u-DG-9SO" eventType="touchUpInside" id="wY8-Wa-42N"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Checked" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-OX-bgH">
-                                                        <rect key="frame" x="161" y="5" width="16.5" height="16.5"/>
+                                                        <rect key="frame" x="150.5" y="5" width="16.5" height="16.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="jPq-OX-bgH" secondAttribute="height" multiplier="1:1" id="I7Y-3I-6yR"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Deposited" translatesAutoresizingMaskIntoConstraints="NO" id="bcD-yR-SoS">
-                                                        <rect key="frame" x="66.5" y="36" width="49.5" height="49.5"/>
+                                                        <rect key="frame" x="61" y="36" width="50" height="49.5"/>
                                                         <color key="tintColor" name="darkGray"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="bcD-yR-SoS" secondAttribute="height" multiplier="1:1" id="PZI-cu-zk5"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Deposited" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-Hs-uqN">
-                                                        <rect key="frame" x="5" y="95.5" width="172.5" height="12"/>
+                                                        <rect key="frame" x="5" y="95.5" width="162" height="14"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am building with Burbank." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6u-rO-tQa">
-                                                        <rect key="frame" x="5" y="109.5" width="172.5" height="12"/>
+                                                        <rect key="frame" x="5" y="111.5" width="162" height="14"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -258,7 +284,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="iyy-0E-QDd">
-                                                <rect key="frame" x="375" y="0.0" width="10" height="165.5"/>
+                                                <rect key="frame" x="354" y="0.0" width="10" height="165.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8a-8b-6bB">
                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="165.5"/>
@@ -273,19 +299,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:Tlk-Ff-RTb:image" translatesAutoresizingMaskIntoConstraints="NO" id="Tlk-Ff-RTb">
-                                                        <rect key="frame" x="-32.5" y="23.5" width="74.5" height="74.5"/>
+                                                        <rect key="frame" x="-32.5" y="23.5" width="75" height="74.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Tlk-Ff-RTb" secondAttribute="height" multiplier="1:1" id="GFX-1Z-nAe"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Finished" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL0-xp-hdH">
-                                                        <rect key="frame" x="5" y="127.5" width="0.0" height="12"/>
+                                                        <rect key="frame" x="5" y="123.5" width="0.0" height="14"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Warranties &amp; Manuals    " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQd-QC-Qvv">
-                                                        <rect key="frame" x="5" y="141.5" width="0.0" height="12"/>
+                                                        <rect key="frame" x="5" y="139.5" width="0.0" height="14"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -313,12 +339,9 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="HS6-JF-Oig" secondAttribute="height" multiplier="3:1.4" constant="20" id="0fe-tS-kaN"/>
-                                        </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-k2-3yC">
-                                        <rect key="frame" x="15" y="241" width="384" height="47.5"/>
+                                        <rect key="frame" x="15" y="202.5" width="384" height="41"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.5450980392" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Extrabld" family="Proxima Nova" pointSize="17"/>
                                         <state key="normal" title="Continue">
@@ -332,12 +355,13 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstItem="Xmd-k2-3yC" firstAttribute="height" secondItem="4Yc-Un-YRH" secondAttribute="height" multiplier="0.152" id="2LS-f6-TYq"/>
-                                    <constraint firstItem="HS6-JF-Oig" firstAttribute="centerX" secondItem="4Yc-Un-YRH" secondAttribute="centerX" id="FsH-GS-VZ7"/>
+                                    <constraint firstItem="HS6-JF-Oig" firstAttribute="top" secondItem="4Yc-Un-YRH" secondAttribute="top" id="8Ct-7v-lAK"/>
+                                    <constraint firstItem="HS6-JF-Oig" firstAttribute="leading" secondItem="4Yc-Un-YRH" secondAttribute="leading" constant="30" id="HcT-IA-d6x"/>
                                     <constraint firstAttribute="trailing" secondItem="Xmd-k2-3yC" secondAttribute="trailing" constant="15" id="Jl1-um-h4Z"/>
                                     <constraint firstItem="HS6-JF-Oig" firstAttribute="height" secondItem="4Yc-Un-YRH" secondAttribute="width" multiplier="0.4" id="YgM-SK-p9D"/>
-                                    <constraint firstItem="HS6-JF-Oig" firstAttribute="centerY" secondItem="4Yc-Un-YRH" secondAttribute="centerY" constant="-30" id="gTi-bJ-kOL"/>
                                     <constraint firstItem="Xmd-k2-3yC" firstAttribute="leading" secondItem="4Yc-Un-YRH" secondAttribute="leading" constant="15" id="guw-xg-E0n"/>
                                     <constraint firstAttribute="bottom" secondItem="Xmd-k2-3yC" secondAttribute="bottom" constant="25" id="tO2-Ew-YfW"/>
+                                    <constraint firstAttribute="trailing" secondItem="HS6-JF-Oig" secondAttribute="trailing" constant="30" id="tQ0-jR-8TD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -363,6 +387,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <outlet property="btnFinishedSelection" destination="w8a-8b-6bB" id="7iD-lp-52b"/>
                         <outlet property="btnHowWorks" destination="bbG-Ti-r60" id="SOT-N5-JZp"/>
                         <outlet property="btnLookingSelection" destination="G5S-fh-39H" id="e4o-5T-Ssv"/>
+                        <outlet property="btnMyProfile" destination="t5A-mH-TkP" id="px3-qy-5gi"/>
                         <outlet property="icon" destination="KVB-uw-Fnf" id="wxZ-56-RS5"/>
                         <outlet property="imageDeposited" destination="bcD-yR-SoS" id="idz-hc-IlR"/>
                         <outlet property="imageDepositedSelection" destination="jPq-OX-bgH" id="BA5-bw-Hc1"/>
@@ -381,7 +406,6 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <outlet property="lbWelcomeDescription" destination="ZLq-Jr-W5C" id="GhM-p1-Ebc"/>
                         <outlet property="lb_myPlace_heading" destination="W5A-EQ-7UN" id="nIs-nS-ujJ"/>
                         <outlet property="stackView" destination="HS6-JF-Oig" id="U8W-6O-N20"/>
-                        <outlet property="stackViewWidth" destination="0fe-tS-kaN" id="QNc-ap-76Z"/>
                         <outlet property="topView" destination="7je-Bc-QGY" id="yIv-nI-VWm"/>
                         <outlet property="viewDepositedSelection" destination="Iwx-fM-upu" id="750-3f-pev"/>
                         <outlet property="viewFinishedSelection" destination="iyy-0E-QDd" id="dcj-Bn-swf"/>
@@ -501,6 +525,13 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                     <action selector="handleBackButtonAction:" destination="KaO-vB-Or6" eventType="touchUpInside" id="P5Y-9x-eUe"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="cj2-hb-fgH">
+                                <rect key="frame" x="50" y="67" width="140" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DzC-aV-s6V"/>
+                                    <constraint firstAttribute="width" constant="140" id="so5-nu-dHx"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyz-v8-04S">
                                 <rect key="frame" x="20" y="68" width="40" height="40"/>
                                 <constraints>
@@ -513,13 +544,13 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-FZ-fR5">
-                                <rect key="frame" x="40" y="264" width="48.5" height="25"/>
+                                <rect key="frame" x="40" y="284" width="48.5" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgE-BA-fmG">
-                                <rect key="frame" x="88.5" y="264" width="20" height="25"/>
+                                <rect key="frame" x="88.5" y="284" width="20" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -666,11 +697,12 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="qpW-M8-lLj" firstAttribute="trailing" secondItem="1Fb-LH-p76" secondAttribute="trailing" constant="20" id="1nP-HZ-5dL"/>
                             <constraint firstItem="1Fb-LH-p76" firstAttribute="top" secondItem="qpW-M8-lLj" secondAttribute="top" constant="20" id="5Wz-cO-g8z"/>
                             <constraint firstItem="WJi-38-sYU" firstAttribute="height" secondItem="otx-FD-Xv7" secondAttribute="height" multiplier="0.06" id="63k-3d-bd7"/>
-                            <constraint firstItem="16u-ep-CAq" firstAttribute="top" secondItem="j5a-FZ-fR5" secondAttribute="bottom" constant="30" id="6RK-fO-pbk"/>
+                            <constraint firstItem="16u-ep-CAq" firstAttribute="top" secondItem="j5a-FZ-fR5" secondAttribute="bottom" constant="10" id="6RK-fO-pbk"/>
                             <constraint firstItem="Vtq-al-xv1" firstAttribute="leading" secondItem="qpW-M8-lLj" secondAttribute="leading" id="7yN-gO-mzI"/>
                             <constraint firstItem="WJi-38-sYU" firstAttribute="leading" secondItem="qpW-M8-lLj" secondAttribute="leading" constant="20" id="AVQ-HW-ZUb"/>
                             <constraint firstItem="vgE-BA-fmG" firstAttribute="leading" secondItem="j5a-FZ-fR5" secondAttribute="trailing" id="B4a-dG-5Ye"/>
                             <constraint firstItem="cyz-v8-04S" firstAttribute="leading" secondItem="qpW-M8-lLj" secondAttribute="leading" constant="20" id="EaD-dE-qJC"/>
+                            <constraint firstItem="cj2-hb-fgH" firstAttribute="leading" secondItem="hgB-SP-I9U" secondAttribute="leading" constant="30" id="FNg-2m-QQO"/>
                             <constraint firstItem="qpW-M8-lLj" firstAttribute="trailing" secondItem="WJi-38-sYU" secondAttribute="trailing" constant="20" id="IFP-DN-sde"/>
                             <constraint firstItem="IEG-53-bZc" firstAttribute="leading" secondItem="qpW-M8-lLj" secondAttribute="leading" constant="30" id="Klb-03-fYb"/>
                             <constraint firstItem="hgB-SP-I9U" firstAttribute="leading" secondItem="qpW-M8-lLj" secondAttribute="leading" constant="20" id="Mhe-Sr-rOe"/>
@@ -685,6 +717,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="Vtq-al-xv1" firstAttribute="trailing" secondItem="qpW-M8-lLj" secondAttribute="trailing" id="mvY-iE-Nnr"/>
                             <constraint firstItem="IEG-53-bZc" firstAttribute="top" secondItem="16u-ep-CAq" secondAttribute="bottom" constant="30" id="n7R-CP-9z7"/>
                             <constraint firstItem="Vtq-al-xv1" firstAttribute="top" secondItem="otx-FD-Xv7" secondAttribute="top" id="nVT-YP-ANs"/>
+                            <constraint firstItem="cj2-hb-fgH" firstAttribute="centerY" secondItem="hgB-SP-I9U" secondAttribute="centerY" constant="-1" id="vMV-5U-835"/>
                             <constraint firstItem="qpW-M8-lLj" firstAttribute="trailing" secondItem="16u-ep-CAq" secondAttribute="trailing" constant="40" id="yxx-xp-fg0"/>
                         </constraints>
                     </view>
@@ -719,7 +752,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bha-uf-eee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2257.5" y="109.85915492957747"/>
+            <point key="canvasLocation" x="2256.521739130435" y="109.82142857142857"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="nza-69-sGL">
@@ -738,19 +771,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="Ico-BB-Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKC-os-uA7">
-                                <rect key="frame" x="60" y="229" width="50.5" height="25"/>
+                                <rect key="frame" x="60" y="217" width="50" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1G-2c-x4w">
-                                <rect key="frame" x="110.5" y="229" width="33" height="25"/>
+                                <rect key="frame" x="110" y="217" width="33" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out this form to save your progress." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAA-qv-0xh">
-                                <rect key="frame" x="60" y="259" width="314" height="14"/>
+                                <rect key="frame" x="60" y="256.5" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -873,13 +906,13 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSe-GM-bhs">
-                                <rect key="frame" x="98" y="737" width="158.5" height="14"/>
+                                <rect key="frame" x="96" y="734.5" width="162.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfy-aH-eJa">
-                                <rect key="frame" x="261.5" y="729.5" width="53" height="29"/>
+                                <rect key="frame" x="263.5" y="726.5" width="52" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -889,10 +922,10 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWs-ce-AyQ">
-                                <rect key="frame" x="20" y="75.5" width="15" height="25"/>
+                                <rect key="frame" x="20" y="79" width="10" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="3Dg-Ey-E4c"/>
-                                    <constraint firstAttribute="width" constant="15" id="GJW-vl-gzO"/>
+                                    <constraint firstAttribute="height" constant="18" id="3Dg-Ey-E4c"/>
+                                    <constraint firstAttribute="width" constant="10" id="GJW-vl-gzO"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
@@ -919,7 +952,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="TjX-8k-9WD" firstAttribute="leading" secondItem="ZVZ-8K-fav" secondAttribute="leading" constant="20" id="Al4-M5-T2B"/>
                             <constraint firstItem="dAA-qv-0xh" firstAttribute="bottom" secondItem="xXI-7S-hgx" secondAttribute="top" constant="-30" id="CGM-Qo-GnY"/>
                             <constraint firstItem="gfy-aH-eJa" firstAttribute="centerY" secondItem="OSe-GM-bhs" secondAttribute="centerY" id="Ir9-Bl-ZcC"/>
-                            <constraint firstItem="dAA-qv-0xh" firstAttribute="top" secondItem="uKC-os-uA7" secondAttribute="bottom" constant="5" id="Kgl-BL-FH1"/>
+                            <constraint firstItem="dAA-qv-0xh" firstAttribute="top" secondItem="uKC-os-uA7" secondAttribute="bottom" constant="10" id="Kgl-BL-FH1"/>
                             <constraint firstItem="iWs-ce-AyQ" firstAttribute="centerY" secondItem="4Qt-gt-V6l" secondAttribute="centerY" id="V2h-cd-sAv"/>
                             <constraint firstItem="gfy-aH-eJa" firstAttribute="leading" secondItem="OSe-GM-bhs" secondAttribute="trailing" constant="5" id="XZE-Lv-aeB"/>
                             <constraint firstItem="uKC-os-uA7" firstAttribute="leading" secondItem="xXI-7S-hgx" secondAttribute="leading" constant="20" id="YdO-h1-nkH"/>
@@ -974,19 +1007,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPl-9j-N1e">
-                                <rect key="frame" x="50" y="342.5" width="50" height="25"/>
+                                <rect key="frame" x="50" y="330.5" width="50" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-ii-Mb6">
-                                <rect key="frame" x="100" y="342.5" width="21.5" height="25"/>
+                                <rect key="frame" x="100" y="330.5" width="20.5" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email to login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yq-WX-Gx8">
-                                <rect key="frame" x="50" y="372.5" width="314" height="16"/>
+                                <rect key="frame" x="50" y="369.5" width="314" height="19"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1024,10 +1057,10 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQF-U1-5zZ">
-                                <rect key="frame" x="20" y="79" width="15" height="25"/>
+                                <rect key="frame" x="20" y="79" width="10" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="9fS-96-2HL"/>
-                                    <constraint firstAttribute="height" constant="25" id="q9u-rv-Y24"/>
+                                    <constraint firstAttribute="width" constant="10" id="9fS-96-2HL"/>
+                                    <constraint firstAttribute="height" constant="18" id="q9u-rv-Y24"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
@@ -1036,7 +1069,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-EK-Lr9">
-                                <rect key="frame" x="129" y="633" width="156" height="29"/>
+                                <rect key="frame" x="129.5" y="633" width="155" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Are you a new user?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1053,7 +1086,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAe-cz-yix">
-                                <rect key="frame" x="50" y="672" width="314" height="51"/>
+                                <rect key="frame" x="50" y="675" width="314" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Create Account">
@@ -1064,7 +1097,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-pR-y5M">
-                                <rect key="frame" x="147" y="177.5" width="120" height="120"/>
+                                <rect key="frame" x="147" y="169.5" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="dZk-Uj-Dar"/>
                                     <constraint firstAttribute="width" secondItem="dLn-pR-y5M" secondAttribute="height" multiplier="1:1" id="gIq-Tc-znf"/>
@@ -1086,7 +1119,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="EAe-cz-yix" firstAttribute="height" secondItem="eh6-Wl-wJV" secondAttribute="height" id="Ke7-tE-Dhm"/>
                             <constraint firstItem="ETO-cW-D8h" firstAttribute="trailing" secondItem="D7q-DR-40l" secondAttribute="trailing" constant="30" id="LQ2-Vd-dtF"/>
                             <constraint firstItem="KA4-ii-Mb6" firstAttribute="leading" secondItem="aPl-9j-N1e" secondAttribute="trailing" id="Mmf-zz-F2x"/>
-                            <constraint firstItem="8yq-WX-Gx8" firstAttribute="top" secondItem="aPl-9j-N1e" secondAttribute="bottom" constant="5" id="Ovd-xw-Sdt"/>
+                            <constraint firstItem="8yq-WX-Gx8" firstAttribute="top" secondItem="aPl-9j-N1e" secondAttribute="bottom" constant="10" id="Ovd-xw-Sdt"/>
                             <constraint firstItem="eh6-Wl-wJV" firstAttribute="leading" secondItem="D7q-DR-40l" secondAttribute="leading" constant="20" id="Q60-ab-W7N"/>
                             <constraint firstItem="9gt-vX-wih" firstAttribute="top" secondItem="ETO-cW-D8h" secondAttribute="top" constant="20" id="XZU-JW-iPp"/>
                             <constraint firstItem="qQF-U1-5zZ" firstAttribute="leading" secondItem="ETO-cW-D8h" secondAttribute="leading" constant="20" id="Xip-PQ-nUK"/>
@@ -1148,7 +1181,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7J-Wm-4Uy">
-                                <rect key="frame" x="157" y="171.5" width="100" height="100"/>
+                                <rect key="frame" x="157" y="171" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i7J-Wm-4Uy" secondAttribute="height" multiplier="1:1" id="cUX-bX-XRO"/>
                                     <constraint firstAttribute="width" constant="100" id="drO-3j-4JR"/>
@@ -1156,19 +1189,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="BurbankLogo"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEd-zg-iy4">
-                                <rect key="frame" x="50" y="316.5" width="75.5" height="25"/>
+                                <rect key="frame" x="50" y="312" width="73" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZa-Vg-nxl">
-                                <rect key="frame" x="125.5" y="316.5" width="110" height="25"/>
+                                <rect key="frame" x="123" y="312" width="111" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode will be sent to following Email to reset password" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jb-e1-5wo">
-                                <rect key="frame" x="50" y="356.5" width="314" height="32"/>
+                                <rect key="frame" x="50" y="351" width="314" height="37.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1214,10 +1247,10 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mN3-L4-Yat">
-                                <rect key="frame" x="20" y="79" width="15" height="25"/>
+                                <rect key="frame" x="20" y="79" width="10" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="jnh-Cl-6AD"/>
-                                    <constraint firstAttribute="height" constant="25" id="rrN-CB-6Mb"/>
+                                    <constraint firstAttribute="width" constant="10" id="jnh-Cl-6AD"/>
+                                    <constraint firstAttribute="height" constant="18" id="rrN-CB-6Mb"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
@@ -1252,7 +1285,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="SWt-T2-QsG" firstAttribute="height" secondItem="r1S-9h-5Cl" secondAttribute="height" multiplier="0.057" id="Y38-nZ-4JC"/>
                             <constraint firstItem="9S0-3c-dTG" firstAttribute="leading" secondItem="T1h-YC-ck9" secondAttribute="leading" constant="20" id="d7t-TV-Hh9"/>
                             <constraint firstItem="SWt-T2-QsG" firstAttribute="trailing" secondItem="oFx-V5-PEh" secondAttribute="trailing" constant="-20" id="dbJ-Bg-2jA"/>
-                            <constraint firstItem="0Jb-e1-5wo" firstAttribute="top" secondItem="UEd-zg-iy4" secondAttribute="bottom" constant="15" id="f7Q-bi-GdC"/>
+                            <constraint firstItem="0Jb-e1-5wo" firstAttribute="top" secondItem="UEd-zg-iy4" secondAttribute="bottom" constant="10" id="f7Q-bi-GdC"/>
                             <constraint firstItem="0Jb-e1-5wo" firstAttribute="leading" secondItem="oFx-V5-PEh" secondAttribute="leading" constant="20" id="mQO-T2-C3G"/>
                             <constraint firstItem="T1h-YC-ck9" firstAttribute="trailing" secondItem="oFx-V5-PEh" secondAttribute="trailing" constant="30" id="qHQ-1k-DOc"/>
                             <constraint firstItem="oFx-V5-PEh" firstAttribute="top" secondItem="0Jb-e1-5wo" secondAttribute="bottom" constant="39.5" id="tJj-cS-f7G"/>
@@ -1286,7 +1319,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lai-0I-ZWz">
-                                <rect key="frame" x="157" y="125" width="100" height="100"/>
+                                <rect key="frame" x="157" y="127.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lai-0I-ZWz" secondAttribute="height" multiplier="1:1" id="evf-o0-RBn"/>
                                     <constraint firstAttribute="width" constant="100" id="zXT-UT-IlQ"/>
@@ -1294,19 +1327,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="BurbankLogo"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3j-kI-ROc">
-                                <rect key="frame" x="60" y="270" width="63.5" height="25"/>
+                                <rect key="frame" x="60" y="268" width="64.5" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lw-u8-JyH">
-                                <rect key="frame" x="123.5" y="270" width="110" height="25"/>
+                                <rect key="frame" x="124.5" y="268" width="111" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset your password here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zu6-TH-eM1">
-                                <rect key="frame" x="60" y="310" width="314" height="14"/>
+                                <rect key="frame" x="60" y="307.5" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1412,10 +1445,10 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZW-Sc-GcP">
-                                <rect key="frame" x="20" y="79" width="15" height="25"/>
+                                <rect key="frame" x="20" y="79" width="10" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="LQ4-SJ-K3B"/>
-                                    <constraint firstAttribute="width" constant="15" id="seb-w9-4Mi"/>
+                                    <constraint firstAttribute="height" constant="18" id="LQ4-SJ-K3B"/>
+                                    <constraint firstAttribute="width" constant="10" id="seb-w9-4Mi"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
@@ -1424,7 +1457,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3i-fc-45h">
-                                <rect key="frame" x="139.5" y="683" width="135" height="29"/>
+                                <rect key="frame" x="138" y="683" width="138" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Resend Passcode">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1448,7 +1481,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="F7h-lj-NR1" firstAttribute="leading" secondItem="ruc-ba-lz5" secondAttribute="leading" id="2Oh-FY-QI0"/>
-                            <constraint firstItem="zu6-TH-eM1" firstAttribute="top" secondItem="B3j-kI-ROc" secondAttribute="bottom" constant="15" id="5gp-0Z-SFT"/>
+                            <constraint firstItem="zu6-TH-eM1" firstAttribute="top" secondItem="B3j-kI-ROc" secondAttribute="bottom" constant="10" id="5gp-0Z-SFT"/>
                             <constraint firstItem="F7h-lj-NR1" firstAttribute="top" secondItem="ruc-ba-lz5" secondAttribute="bottom" constant="40" id="83w-T8-GP3"/>
                             <constraint firstItem="eK4-NX-DED" firstAttribute="trailing" secondItem="ruc-ba-lz5" secondAttribute="trailing" constant="40" id="DXA-bR-wEo"/>
                             <constraint firstItem="ruc-ba-lz5" firstAttribute="leading" secondItem="eK4-NX-DED" secondAttribute="leading" constant="40" id="Fh4-i3-D8o"/>
@@ -1501,7 +1534,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbe-Ep-Bys">
-                                <rect key="frame" x="157" y="158.5" width="100" height="100"/>
+                                <rect key="frame" x="157" y="161" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5K3-87-ObZ"/>
                                     <constraint firstAttribute="width" secondItem="Dbe-Ep-Bys" secondAttribute="height" id="fZU-wm-L6d"/>
@@ -1509,19 +1542,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="BurbankLogo"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcH-bv-aKU">
-                                <rect key="frame" x="60" y="303.5" width="60.5" height="25"/>
+                                <rect key="frame" x="60" y="301.5" width="59" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7q-Kk-3zw">
-                                <rect key="frame" x="120.5" y="303.5" width="110" height="25"/>
+                                <rect key="frame" x="119" y="301.5" width="111" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password to login" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8t-TE-J3p">
-                                <rect key="frame" x="60" y="343.5" width="314" height="14"/>
+                                <rect key="frame" x="60" y="341" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1583,10 +1616,10 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSt-H7-0HJ">
-                                <rect key="frame" x="20" y="79" width="15" height="25"/>
+                                <rect key="frame" x="20" y="79" width="10" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="PFV-Pg-8AR"/>
-                                    <constraint firstAttribute="width" constant="15" id="VEv-Av-lWX"/>
+                                    <constraint firstAttribute="height" constant="18" id="PFV-Pg-8AR"/>
+                                    <constraint firstAttribute="width" constant="10" id="VEv-Av-lWX"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
@@ -1595,7 +1628,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T38-rK-Lla">
-                                <rect key="frame" x="141.5" y="649.5" width="131" height="29"/>
+                                <rect key="frame" x="142" y="649.5" width="130" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Forgot Password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1621,7 +1654,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="Dbe-Ep-Bys" firstAttribute="bottom" secondItem="A7q-Kk-3zw" secondAttribute="bottom" constant="-70" id="3IO-u8-dOA"/>
                             <constraint firstItem="Waf-AW-EzA" firstAttribute="trailing" secondItem="VxH-kt-62u" secondAttribute="trailing" id="6L7-2v-sda"/>
                             <constraint firstItem="g8t-TE-J3p" firstAttribute="leading" secondItem="VxH-kt-62u" secondAttribute="leading" constant="20" id="8lW-xD-txJ"/>
-                            <constraint firstItem="g8t-TE-J3p" firstAttribute="top" secondItem="wcH-bv-aKU" secondAttribute="bottom" constant="15" id="9gV-hB-w7L"/>
+                            <constraint firstItem="g8t-TE-J3p" firstAttribute="top" secondItem="wcH-bv-aKU" secondAttribute="bottom" constant="10" id="9gV-hB-w7L"/>
                             <constraint firstItem="dSt-H7-0HJ" firstAttribute="leading" secondItem="L3M-4Z-44a" secondAttribute="leading" constant="20" id="CAE-S1-ViG"/>
                             <constraint firstItem="g8t-TE-J3p" firstAttribute="bottom" secondItem="VxH-kt-62u" secondAttribute="top" constant="-30" id="Dgi-g1-LSB"/>
                             <constraint firstItem="T38-rK-Lla" firstAttribute="top" secondItem="Waf-AW-EzA" secondAttribute="bottom" constant="50" id="DyP-TP-sJP"/>
@@ -1678,13 +1711,13 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="Ico-BB-Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHb-Zj-IVt">
-                                <rect key="frame" x="50" y="316.5" width="75.5" height="25"/>
+                                <rect key="frame" x="50" y="321.5" width="75.5" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azQ-kU-eej">
-                                <rect key="frame" x="125.5" y="316.5" width="110" height="25"/>
+                                <rect key="frame" x="125.5" y="321.5" width="110" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" name="darkGray"/>
                                 <nil key="highlightedColor"/>
@@ -1728,10 +1761,10 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0r-3D-YAB">
-                                <rect key="frame" x="20" y="75.5" width="15" height="25"/>
+                                <rect key="frame" x="20" y="79" width="10" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="1sw-S9-OXb"/>
-                                    <constraint firstAttribute="height" constant="25" id="nGw-Ry-UeT"/>
+                                    <constraint firstAttribute="width" constant="10" id="1sw-S9-OXb"/>
+                                    <constraint firstAttribute="height" constant="18" id="nGw-Ry-UeT"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
@@ -1767,7 +1800,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="bBY-1S-Ky7" firstAttribute="centerY" secondItem="Ldb-2F-vic" secondAttribute="centerY" id="Lxn-hz-vvs"/>
                             <constraint firstItem="R0r-3D-YAB" firstAttribute="leading" secondItem="Ldb-2F-vic" secondAttribute="leading" constant="20" id="M3m-ck-dk9"/>
                             <constraint firstItem="bBY-1S-Ky7" firstAttribute="leading" secondItem="Ldb-2F-vic" secondAttribute="leading" constant="30" id="NEW-Ec-0Kr"/>
-                            <constraint firstItem="Cce-5I-QHa" firstAttribute="top" secondItem="VHb-Zj-IVt" secondAttribute="bottom" constant="15" id="O2o-NK-tq1"/>
+                            <constraint firstItem="Cce-5I-QHa" firstAttribute="top" secondItem="VHb-Zj-IVt" secondAttribute="bottom" constant="10" id="O2o-NK-tq1"/>
                             <constraint firstItem="Cce-5I-QHa" firstAttribute="leading" secondItem="bBY-1S-Ky7" secondAttribute="leading" constant="20" id="Qq8-Bf-Oux"/>
                             <constraint firstItem="VHb-Zj-IVt" firstAttribute="leading" secondItem="bBY-1S-Ky7" secondAttribute="leading" constant="20" id="UqA-4w-9fP"/>
                             <constraint firstItem="jdb-tE-DfZ" firstAttribute="leading" secondItem="Ldb-2F-vic" secondAttribute="leading" constant="20" id="aa3-t4-daw"/>
@@ -8976,6 +9009,9 @@ BosGAAaLEwAGixgABosgAAaLIwAGiygABoswAAAAAAAABAEAAAAAAAAAaAAAAAAAAAAAAAAAAAAGizM
         <namedColor name="darkGray">
             <color red="0.3059999942779541" green="0.3059999942779541" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

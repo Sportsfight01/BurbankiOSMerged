@@ -209,7 +209,7 @@ class SignInVC: UIViewController {
         labelNoteAlert.addCharacterSpacing(kernValue: -0.3)
         
         
-        setAppearanceFor(view: btnContinue, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: btnContinue, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
         setAppearanceFor(view: btnSignIn, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
 
         

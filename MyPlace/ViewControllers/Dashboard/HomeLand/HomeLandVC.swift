@@ -16,6 +16,7 @@ import GoogleMapsUtils
 class HomeLandVC: HeaderVC {
     
     
+    @IBOutlet weak var favoritesHeaderView: UIView!
     @IBOutlet weak var searchResultsView : UIView!
     @IBOutlet weak var homeMapView : UIView!
     
@@ -26,6 +27,7 @@ class HomeLandVC: HeaderVC {
     @IBOutlet weak var mapResultsTableHeight : NSLayoutConstraint!
 
     
+    @IBOutlet weak var favouritesHeaderHightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var mapViewGoogle : MyPlaceMap!
     
@@ -90,7 +92,7 @@ class HomeLandVC: HeaderVC {
         // Do any additional setup after loading the view.
         
         //        headerLogoImage = IMAGE_HOMELAND
-        headerLogoText = "House&Land"
+       
         isFromProfile = true
         
         pageUISetup ()
@@ -106,12 +108,18 @@ class HomeLandVC: HeaderVC {
         if isFromProfileFavorites {
 
 //                      addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, delegate: self)
+            
             if isFromHomeDesigns { }
             else {
                 loadPackages()
             }
-            
+            self.favouritesHeaderHightConstraint.constant = 50
+            headerLogoText = "MyFavourites"
+            favoritesHeaderView.isHidden = false
         }else {
+            self.favouritesHeaderHightConstraint.constant = 0
+            favoritesHeaderView.isHidden = true
+            headerLogoText = "House&Land"
             if isFromHomeDesigns {
                 
                 addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, delegate: self)

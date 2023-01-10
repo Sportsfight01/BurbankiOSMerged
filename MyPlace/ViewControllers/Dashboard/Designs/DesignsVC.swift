@@ -12,6 +12,8 @@ class DesignsVC: HeaderVC {
     
     var isFromCollection: Bool = false
     
+    @IBOutlet weak var favoriteHeaderView: UIView!
+    @IBOutlet weak var favoriteHeaderHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var searchResultsView : UIView!
     
@@ -62,7 +64,14 @@ class DesignsVC: HeaderVC {
         
         if isFromProfileFavorites {
             addHeaderOptions(sort: false, map: false, favourites: false, howWorks: false, delegate: self)
+            favoriteHeaderView.isHidden = false
+            favoriteHeaderHeightConstraint.constant = 50
+            headerLogoText = "MyFavourites"
+            addBreadcrumb("Home Designs")
         }else {
+            favoriteHeaderView.isHidden = true
+            favoriteHeaderHeightConstraint.constant = 0
+            
             addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, reset: true,totalCount: true,  delegate: self)
         }
         

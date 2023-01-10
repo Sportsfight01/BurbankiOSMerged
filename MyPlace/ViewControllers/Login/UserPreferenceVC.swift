@@ -14,6 +14,7 @@ import AVKit
 class UserPreferenceVC: UIViewController {
     
     
+    @IBOutlet weak var btnMyProfile: UIButton!
     @IBOutlet weak var lb_myPlace_heading: UILabel!
     @IBOutlet weak var lbWelcomeDescription: UILabel!
     @IBOutlet weak var topView: UIView!
@@ -80,9 +81,9 @@ class UserPreferenceVC: UIViewController {
         btnContinue.isHidden = true
         viewFinishedSelection.removeFromSuperview()
         
-        stackViewWidth.isActive = false
-        stackView.spacing = 20        
-        stackView.addConstraint(NSLayoutConstraint(item: stackView as Any, attribute: .width, relatedBy: .equal, toItem: stackView, attribute: .height, multiplier: 2, constant: 1*stackView.spacing))
+       // stackViewWidth.isActive = false
+        stackView.spacing = 10
+      //  stackView.addConstraint(NSLayoutConstraint(item: stackView as Any, attribute: .width, relatedBy: .equal, toItem: stackView, attribute: .height, multiplier: 2, constant: 1*stackView.spacing))
         
      //   textViewWelcomeDescription.text = "Find your perfect home on Burbank Homes app - The only property app you need for your home purchase or property needs in Australia. If you are looking to build your dream home, buy a brand new house or invest in home building in Australia, this property finder app will simplify your property search.\nBurbank is proudly an Australian home builder, building homes in Victoria, New South Wales, Queensland and South Australia. "
         
@@ -107,12 +108,13 @@ class UserPreferenceVC: UIViewController {
     //MARK: - View
 
     func pageUISetup () {
-        
+        btnMyProfile.layer.cornerRadius = 5.0
         setAppearanceFor(view: viewWelcome, backgroundColor: AppColors.lightGray.withAlphaComponent(0.2))
         setAppearanceFor(view: viewModuleSelection, backgroundColor: AppColors.lightGray.withAlphaComponent(0.2))
         
         setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        _ = setAttributetitleFor(view: lb_myPlace_heading, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
 //        setAppearanceFor(view: lb_myPlace_heading, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
       //  setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
@@ -138,8 +140,8 @@ class UserPreferenceVC: UIViewController {
         btnHowWorks.cardView()
         btnHowWorks.backgroundColor = AppColors.white
         
-        viewLookingSelection.layer.cornerRadius = 5.0
-        viewDepositedSelection.layer.cornerRadius = 5.0
+        viewLookingSelection.layer.cornerRadius = 10.0
+        viewDepositedSelection.layer.cornerRadius = 10.0
         viewFinishedSelection.layer.cornerRadius = 5.0
         
         
@@ -155,6 +157,13 @@ class UserPreferenceVC: UIViewController {
     
     //MARK: - Button Actions
     
+    @IBAction func btnMyprofileClicked(_ sender: UIButton) {
+        LoginDataManagement.shared.handleDefaultLoginforToken {
+            let signIn = kStoryboardLogin.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+            self.navigationController?.pushViewController(signIn, animated: true)
+        }
+        
+    }
     @IBAction func handleHowDoesItWork (_ sender: UIButton) {
         
 //        playVideoIn(self, URL(string: ServiceAPI.shared.videoURLBurBank)!)

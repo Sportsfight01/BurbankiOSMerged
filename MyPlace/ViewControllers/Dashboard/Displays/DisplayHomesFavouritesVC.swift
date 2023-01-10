@@ -28,7 +28,7 @@ class DisplayHomesFavouritesVC: HeaderVC {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.headerLogoText = "DisplayHomes"
+    self.headerLogoText = "MyFavourites"
     isFromProfile = true
     // self.tabBarController?.tabBar.tintColor = .gray
     if btnBack.isHidden {
@@ -43,7 +43,7 @@ class DisplayHomesFavouritesVC: HeaderVC {
     self.detailCardView.isHidden = true
       self.regionTableHeight.constant = 0
       self.detailsTableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
-    self.addBreadCrumb(from: "See one of our display homes")
+    self.addBreadCrumb(from: "Your favourite displays")
     
     _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
       if let result: AnyObject = json {
@@ -201,15 +201,19 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
     }
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if tableView == self.tableView
-        {
-        let view = UIView(frame: CGRect(x:0, y:0, width:tableView.frame.size.width, height:18))
-        let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width, height:18))
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.text = "MY DISPLAYS";
-            label.textColor = COLOR_ORANGE
-        view.addSubview(label);
-            view.backgroundColor = .clear
-        return view
+         {
+            let view = UIView(frame: CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
+            let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width, height:18))
+            label.font = UIFont.boldSystemFont(ofSize: 18)
+            label.text = "Favourites List (\(displayFavorites.count))";
+            label.textColor = .white
+            view.addSubview(label);
+            view.backgroundColor = .lightGray
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: 16).isActive = true
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            
+            return view
         }else{
             return UIView()
         }

@@ -209,7 +209,7 @@ class MyPlaceHomeVC: UIViewController {
         
         
         setAppearanceFor(view: lBWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBChooseMethod, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBChooseMethod, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
         
         
         setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))

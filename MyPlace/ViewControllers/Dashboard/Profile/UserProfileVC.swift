@@ -43,7 +43,7 @@ let nameSettings = "AppSettings"
 let nameDisplayHomes = "DisplayHomes"
 
 
-let rowHeight: CGFloat = 50
+let rowHeight: CGFloat = 60
 let rowHeightProfileDetails_noImage: CGFloat = SCREEN_WIDTH/1.1029 // 340 SE-290.14
 let rowHeightProfileDetails: CGFloat = SCREEN_WIDTH/0.96  //390 //1.1029 // 340 SE-290.14
 let rowHeightCollection: CGFloat = SCREEN_WIDTH/1.2295 // 305 SE-260.26
