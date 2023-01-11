@@ -776,9 +776,9 @@ extension HeaderVC {
             btnMyProfile.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
             optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)
         ])
-        
+        NotificationCenter.default.post(name: NSNotification.Name("FavouritesUpdated"), object: nil)
         let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(favoritesUpdated), name: NSNotification.Name("FavouritesUpdated"), object: nil)
         //MyProfile favorites count label
 
         self.favCountLb.text = "\(totalFavCount)"
@@ -855,6 +855,12 @@ extension HeaderVC {
         setFramesForOptionsViews()
         
         
+    }
+    
+    @objc func favoritesUpdated(notification : Notification)
+    {
+        let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
+        favCountLb.text = "\(totalFavCount)"
     }
     
     //serviceCall of displayhomes fav

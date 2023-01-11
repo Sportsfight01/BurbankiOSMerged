@@ -373,6 +373,7 @@ func setHomeDesignsFavouritesCount (count: Int, state: String) {
     dict!.setValue(count, forKey: key_homeDesignsFavoriteCount)
     kUserDefaults.setValue(dict! as Dictionary, forKey: key)
     kUserDefaults.synchronize()
+    NotificationCenter.default.post(name: NSNotification.Name("FavouritesUpdated"), object: nil)
 }
 
 
@@ -414,6 +415,7 @@ func setHomeLandFavouritesCount (count: Int, state: String) {
     dict!.setValue(count, forKey: key_homeLandFavouritesCount)
     kUserDefaults.setValue(dict! as Dictionary, forKey: key)
     kUserDefaults.synchronize()
+    NotificationCenter.default.post(name: NSNotification.Name("FavouritesUpdated"), object: nil)
 }
 
 func updateDisplayHomesFavouritesCount (_ increase: Bool) {
@@ -452,6 +454,7 @@ func setDisplayHomesFavouritesCount (count: Int, state: String) {
     dict!.setValue(count, forKey: key_displayHomesFavouritesCount)
     kUserDefaults.setValue(dict! as Dictionary, forKey: key)
     kUserDefaults.synchronize()
+    NotificationCenter.default.post(name: NSNotification.Name("FavouritesUpdated"), object: nil)
 }
 
 

@@ -197,7 +197,9 @@ func logoutUser () {
     
     LoginDataManagement.shared.logoutGoogle()
     LoginDataManagement.shared.logoutFacebook()
-    
+    let domain = Bundle.main.bundleIdentifier!
+    UserDefaults.standard.removePersistentDomain(forName: domain)
+    UserDefaults.standard.synchronize()
     
     loadLoginView()
 }

@@ -139,11 +139,11 @@ class DisplaysSuggestedCVCell: UICollectionViewCell, UICollectionViewDelegate, U
                             }
                         }
                         
-                        var updateDefaults = false
+                        var updateDefaults = true
                         
-                        if displayData.favouritedUser?.userID == kUserID {
-                            updateDefaults = true
-                        }
+//                        if displayData.favouritedUser?.userID == kUserID {
+//                            updateDefaults = true
+//                        }
                         
                         
                         if self.isFavoritesService {
