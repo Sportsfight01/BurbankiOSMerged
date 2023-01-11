@@ -66,7 +66,7 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         
         setAppearanceFor(view: lBName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
 //        setAppearanceFor(view: lbLastName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-//        setAppearanceFor(view: lBEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         setAppearanceFor(view: lBPhone, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         //setAppearanceFor(view: lBShare, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         

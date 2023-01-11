@@ -245,6 +245,8 @@ class HomeLandVCSurvey: HeaderVC {
 //                    self.getPriceValues(after: 1)
                     
                     self.selectBreadCrumb ()
+                    self.btnNext.backgroundColor = COLOR_ORANGE
+                    self.btnPrevious.backgroundColor = COLOR_ORANGE
                 }
             }
 
@@ -551,7 +553,7 @@ class HomeLandVCSurvey: HeaderVC {
         }
                 
         btnNext.backgroundColor = COLOR_ORANGE
-        btnPrevious.backgroundColor = COLOR_LIGHT_GRAY
+        btnPrevious.backgroundColor = COLOR_ORANGE
         if btnBack.isHidden {
             showBackButton()
         }
@@ -1360,7 +1362,7 @@ extension HomeLandVCSurvey {
             
             self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
             self.btnNext.backgroundColor = COLOR_ORANGE
-            self.btnPrevious.backgroundColor = COLOR_LIGHT_GRAY
+            self.btnPrevious.backgroundColor = COLOR_ORANGE
         }
         
         if let task = datatask {

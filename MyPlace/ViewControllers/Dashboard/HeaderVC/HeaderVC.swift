@@ -929,7 +929,7 @@ extension HeaderVC {
         optionsView.addSubview(btnTotalCollectionCount)
         
         btnTotalCollectionCount.setTitle("    TOTAL DESIGNS    ", for: .normal)
-        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: AppColors.appGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: AppColors.lightGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         //btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
 
