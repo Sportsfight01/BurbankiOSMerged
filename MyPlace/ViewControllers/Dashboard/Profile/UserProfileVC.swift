@@ -1167,7 +1167,7 @@ extension UserProfileVC {
         
         CodeManager.sharedInstance.sendScreenName(burbank_profile_appSettings_logout_button_touch)
         
-        BurbankApp.showAlert("Are you sure, want to Logout?", self, ["NO", "YES"]) { (str) in
+        BurbankApp.showAlert("Are you sure, you want to Logout?", self, ["NO", "YES"]) { (str) in
             
             if str == "YES" {
                 logoutUser()

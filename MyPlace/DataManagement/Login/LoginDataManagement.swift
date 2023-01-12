@@ -307,14 +307,14 @@ extension LoginDataManagement {
                         appDelegate.userData?.saveUserDetails()
                         loadMainView()
                         
-                        showToast("Logged in Successfully")
+                        showToast(result.value(forKey: "message") as? String ?? "")
                         
                     }else {
                         
                         if let succ = success {
                             succ ()
                         }
-                        showToast("Created account Successfully")
+                        showToast(result.value(forKey: "message") as? String ?? "")
                     }
                     
                 }else {

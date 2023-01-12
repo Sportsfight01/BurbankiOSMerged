@@ -210,7 +210,7 @@ class CoBurbankVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
         let deleteButton = sender as! UIButton
         let coBurbankUser = coBurbankList[deleteButton.tag]
       //  let message = String(format: "Are You sure want to delete %@", coBurbankUser.Email!)
-        let deleteAlert = UIAlertController(title: "Alert", message: "Are You sure want to delete", preferredStyle: .alert)
+        let deleteAlert = UIAlertController(title: "Alert", message: "Are You sure you want to delete", preferredStyle: .alert)
         deleteAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             self.deletCoBurbankUser(coBurbankUser)

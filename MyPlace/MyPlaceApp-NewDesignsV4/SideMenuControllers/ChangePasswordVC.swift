@@ -104,7 +104,7 @@ class ChangePasswordVC: UIViewController {
                         
                       //  _ = self.navigationController?.popToRootViewController(animated: true)
                         DispatchQueue.main.async {
-                            self.showAlert(message: "Password Changed Successfully, Please login again") { action in
+                            self.showAlert(message: jsonDic.object(forKey: "Message") as? String ?? somethingWentWrong) { action in
                                 let vc = UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateInitialViewController()
                                 self.appDelegate.window?.rootViewController = vc
                                 self.appDelegate.window?.makeKeyAndVisible()

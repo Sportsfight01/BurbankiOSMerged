@@ -159,7 +159,7 @@ class CreateAccountVC: UIViewController {
         
         if firstNameTF.text?.trim() == "" {
                         
-            BurbankApp.showAlert("Please enter your name", self)
+            BurbankApp.showAlert("Please enter first name", self)
         }else if lastNameTF.text?.trim() == "" {
             
             BurbankApp.showAlert("Please enter last name", self)
@@ -180,7 +180,7 @@ class CreateAccountVC: UIViewController {
             BurbankApp.showAlert("Please enter confirm password", self)
         }else if confirmPasswordTF.text?.trim() != newPasswordTF.text?.trim() {
             
-            BurbankApp.showAlert("New password & Confirm passwords are not matching", self)
+            BurbankApp.showAlert("New password and Confirm password should be same", self)
         }else {
             
             if let _ = user { }else {

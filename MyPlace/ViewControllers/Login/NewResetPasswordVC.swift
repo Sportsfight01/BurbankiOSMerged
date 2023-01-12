@@ -191,7 +191,7 @@ class NewResetPasswordVC: UIViewController {
                     
                     if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
                         
-                        BurbankApp.showAlert("Password Changed Successfully. Please Login Again.", self) { (str) in
+                        BurbankApp.showAlert(result.value(forKey: "message") as? String ?? "", self) { (str) in
                             
                             self.navigationController?.popToViewController((self.navigationController?.viewControllers[3])!, animated: true)
                         }
@@ -231,7 +231,8 @@ class NewResetPasswordVC: UIViewController {
                 
                 if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
                     // showToast((result.value(forKey: "message") ?? "") as! String, self)
-                    BurbankApp.showAlert("Please check your email for Passcode", self) { (str) in
+                    let info = result.value(forKey: "Info") as? NSDictionary
+                    BurbankApp.showAlert((info?.value(forKey: "message") ?? "") as! String, self) { (str) in
                         
                     }
                     

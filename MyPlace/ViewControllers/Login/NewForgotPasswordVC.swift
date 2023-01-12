@@ -112,9 +112,9 @@ extension NewForgotPasswordVC: UITextFieldDelegate {
                 let result = result as! NSDictionary
                 
                 if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
-
-                    BurbankApp.showAlert("Please check your email for Passcode", self) { (str) in
-                        
+                    let info = result.value(forKey: "Info") as? NSDictionary
+                
+                    BurbankApp.showAlert(info?.value(forKey: "Message") as? String ?? "", self) { (str) in
                         let resetVC = kStoryboardLogin.instantiateViewController(withIdentifier: "NewResetPasswordVC") as! NewResetPasswordVC
                         resetVC.user = self.userSignUp
                         self.navigationController?.pushViewController(resetVC, animated: true)

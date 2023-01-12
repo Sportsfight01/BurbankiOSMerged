@@ -174,7 +174,7 @@ extension PasswordVC {
                     appDelegate.userData?.saveUserDetails()
                     loadMainView()
                     
-                    showToast("Logged in Successfully")
+                    showToast(result.value(forKey: "message") as? String ?? "")
                 }else {
                     
                     if (result.value(forKey: "message") ?? "") as! String == "Email or Password is incorrect" {

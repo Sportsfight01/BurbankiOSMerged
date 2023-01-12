@@ -59,7 +59,7 @@ let kServerErrorMessage = "Loading. Please Wait...!"
 
 //let kuserNamePasswordNotMatched = "Email or Password is incorrect"
 
-let kuserNamePasswordNotMatched = "Email or Password not matched"
+let kuserNamePasswordNotMatched = "Email or Password is incorrect"
 
 
 //let googleApiKey = "AIzaSyDf3eyRvZoh1C4UYLtQOlcYKSMj3NtczGk"

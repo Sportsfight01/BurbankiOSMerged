@@ -464,7 +464,7 @@ class MyPlaceHomeVC: UIViewController {
             if kUserID != "0" // not a guest user
             {
                 //show popup
-                BurbankApp.showAlert("Are you sure, want to Logout?", self, ["NO", "YES"]) { (str) in
+                BurbankApp.showAlert("Are you sure, you want to Logout?", self, ["NO", "YES"]) { (str) in
                     
                     if str == "YES" {
                         logoutUser()

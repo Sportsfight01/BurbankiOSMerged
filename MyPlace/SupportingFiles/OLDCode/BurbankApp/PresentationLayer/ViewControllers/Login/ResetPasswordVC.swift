@@ -122,7 +122,7 @@ class ResetPasswordVC: BurbankAppVC {
 
                     loadLoginView()
 
-                    AlertManager.sharedInstance.alert("Password Changed Successfully, Please login again")
+                    AlertManager.sharedInstance.alert(jsonDic.object(forKey: "Message")! as! String)
                 }
                 else{
                     

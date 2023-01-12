@@ -334,7 +334,7 @@ class HeaderVC: UIViewController {
             containerView!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             containerView!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             containerView!.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            containerView!.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
+            containerView!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
         ])
         
         // add child view controller view to container

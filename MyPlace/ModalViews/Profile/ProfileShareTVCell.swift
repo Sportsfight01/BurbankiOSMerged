@@ -197,7 +197,7 @@ class ProfileShareTVCell: UITableViewCell, UITableViewDelegate, UITableViewDataS
         
         if let delete = deleteAction {
             
-            alert.showAlert("Delete", "Are you sure want to delete?", kWindow.rootViewController!, ["No", "Yes"]) { (str) in
+            alert.showAlert("Delete", "Are you sure, you want to delete?", kWindow.rootViewController!, ["No", "Yes"]) { (str) in
                 
                 if str == "Yes" {
                     

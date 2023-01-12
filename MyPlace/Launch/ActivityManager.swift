@@ -92,7 +92,7 @@ func appStartUpSetup () {
 
 func loadLoginView () {
         
-//    let login = kStoryboardMain.instantiateViewController(withIdentifier: "") as? SignInVC
+   // let login = kStoryboardLogin.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC
     let login = kStoryboardLogin.instantiateInitialViewController()
     currentWindow.rootViewController = login
     currentWindow.makeKeyAndVisible()
