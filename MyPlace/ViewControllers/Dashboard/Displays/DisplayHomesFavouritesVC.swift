@@ -8,7 +8,11 @@
 
 import UIKit
 
-class DisplayHomesFavouritesVC: HeaderVC {
+class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
+    func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset: Bool) {
+        print("")
+    }
+    
   
   @IBOutlet weak var detailCardHeaderView: UIView!
   @IBOutlet weak var tableView: UITableView!
@@ -30,6 +34,7 @@ class DisplayHomesFavouritesVC: HeaderVC {
     super.viewDidLoad()
     self.headerLogoText = "MyFavourites"
     isFromProfile = true
+      addHeaderOptions(delegate: self)
     // self.tabBarController?.tabBar.tintColor = .gray
     if btnBack.isHidden {
       showBackButton()

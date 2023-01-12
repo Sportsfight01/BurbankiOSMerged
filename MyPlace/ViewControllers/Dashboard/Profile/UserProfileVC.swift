@@ -71,6 +71,7 @@ class UserProfileVC: UIViewController {
     var logoLabelProfile = UILabel()
     var btnProfileImage = UIButton()
     var lBInfo = UILabel()
+    var backBtn = UIButton()
     
     var completionHandlerProfile: (() -> Void)?
     var completionHandlerProfilePicUpdate: (() -> Void)?
@@ -130,7 +131,7 @@ class UserProfileVC: UIViewController {
         //        lBInfo.isHidden = true
         
         
-        profileHeaderViewHeight.constant = profileHeaderHeight
+        profileHeaderViewHeight.constant = profileHeaderHeight - 20
         
         updateProfileImage ()
         
@@ -199,7 +200,7 @@ class UserProfileVC: UIViewController {
         
         labelLine.isHidden = true
         
-        
+        profileHeaderView.addSubview(backBtn)
         btnProfileImage.setBackgroundImage(Image_defaultDP, for: .normal)
         profileHeaderView.addSubview(btnProfileImage)
         btnProfileImage.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
@@ -215,7 +216,7 @@ class UserProfileVC: UIViewController {
         profileHeaderView.addSubview(lBInfo)
         
         let yPosPadding: CGFloat = 15.0//20.0
-        let xPosPadding: CGFloat = 20.0
+        let xPosPadding: CGFloat = 35.0
         
         var yPos: CGFloat = yPosPadding + statusBarHeight()
         let xPos: CGFloat = xPosPadding
@@ -224,30 +225,30 @@ class UserProfileVC: UIViewController {
         
         
         labelLine.frame = CGRect(x: 0, y: yPos - yPosPadding, width: SCREEN_WIDTH, height: 0.5)
-        
         btnProfileImage.frame = CGRect(x: SCREEN_WIDTH - profileImageHeight - 15, y: yPos, width: profileImageHeight, height: profileImageHeight)
         btnProfileImage.layer.cornerRadius = btnProfileImage.frame.size.height/2
         btnProfileImage.clipsToBounds = true
         
-        
-        
         logoLabelProfile.frame = CGRect(x: xPos, y: yPos-yPosPadding/2, width: btnProfileImage.frame.origin.x - xPos - 10, height: (profileHeaderHeight-statusBarHeight())*0.398)
-        //        logoLabelProfile.contentMode = .scaleAspectFit
         logoLabelProfile.frame.origin.y = yPos + (btnProfileImage.frame.size.height - logoLabelProfile.frame.size.height)/2
-        
-        print(log: logoImageHeight)
-        print(log: (profileHeaderHeight-statusBarHeight())*0.398)
-        
         
         yPos = yPos + logoLabelProfile.frame.size.height
         yPos = logoLabelProfile.frame.origin.y + logoLabelProfile.frame.size.height
         yPos = btnProfileImage.frame.origin.y + btnProfileImage.frame.size.height
         
         
-        lBInfo.frame = CGRect(x: xPos, y: yPos, width: SCREEN_WIDTH - leftPadding - xPos, height: 40)
+        lBInfo.frame = CGRect(x: xPos, y: logoLabelProfile.frame.midY + 10 , width: SCREEN_WIDTH - leftPadding - xPos, height: 40)
         lBInfo.numberOfLines = 2
         lBInfo.lineBreakMode = .byTruncatingTail
+        
+        backBtn.frame = CGRect(x: 0, y: logoLabelProfile.center.y, width: 30, height: 30)
+        backBtn.setImage(UIImage(named: "Ico-Back_Black"), for: .normal)
+        backBtn.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
+
+        
     }
+    
+    
     
     
     
@@ -748,16 +749,32 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
                 
                 (dash as UITabBarController).selectedIndex = 3
-                if ((self.parent?.parent?.parent?.isKind(of: DashboardVC.self)) != nil)
-                {
-                    if let vc = self.parent?.parent?.parent as? DashboardVC
-                    {
-                        vc.selectedIndex = 3
-                    }
-                    
-                }else {
-                    self.navigationController?.pushViewController(dash, animated: true)
-                }
+                
+//                if ((self.parent?.parent?.parent?.isKind(of: DashboardVC.self)) != nil)
+//                {
+//                    if let vc = self.parent?.parent?.parent as? DashboardVC
+//                    {
+//                        vc.selectedIndex = 3
+//                        vc.selectedViewController?.navigationController?.viewControllers.forEach({ subvc in
+//                            if subvc.isKind(of: FavouritesVC.self)
+//                            {
+//                                vc.selectedViewController?.navigationController?.popToViewController(subvc, animated: true)
+//                            }
+//                        })
+//
+//                    }
+//
+//                }else {
+//                    if self.navigationController == nil
+//                    {
+//                        kWindow.rootViewController = dash
+//                        kWindow.makeKeyAndVisible()
+//                    }else {
+//                        self.navigationController?.pushViewController(dash, animated: true)
+//                    }
+//                }
+                kWindow.rootViewController = dash
+                kWindow.makeKeyAndVisible()
                 
             }
             //            else if name == nameMyCollection { selectedRowHeight = rowHeightCollection }

@@ -75,7 +75,10 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
             }
         }else{ // I have land
             iHaveLandBTN.superview?.backgroundColor = COLOR_ORANGE
-            iHaveLandIMG.image = UIImage(named: "Ico-Rite")
+        
+                iHaveLandIMG.image = UIImage(named: "Ico-Rite")?.withRenderingMode(.alwaysTemplate)
+                iHaveLandIMG.tintColor = .white
+            
             iHaveLandLBL.textColor = COLOR_WHITE
             enterLotCard.isHidden = false
             if lotTF.text?.count == 0

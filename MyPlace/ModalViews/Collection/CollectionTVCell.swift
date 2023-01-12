@@ -56,7 +56,7 @@ class CollectionTVCell: UITableViewCell {
         
         setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_8))
         setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_8))
-        
+        self.backgroundColor = COLOR_LIGHT_GRAY
         
         if let superview = lBLot.superview {
             

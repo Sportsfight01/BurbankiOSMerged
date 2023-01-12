@@ -214,14 +214,14 @@ class MyPlaceHomeVC: UIViewController {
         
         
         setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.appGray , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
         setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.appGray , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.appGray , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         //make card vuew
         

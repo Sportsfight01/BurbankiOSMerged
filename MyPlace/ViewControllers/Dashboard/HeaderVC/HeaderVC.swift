@@ -579,24 +579,33 @@ class HeaderVC: UIViewController {
     //MARK: - Action
     
     @IBAction func handleHomeButtonAction (_ sender: UIButton) {
-        if headerLogoText == "Displays"
+        
+        if let vc = kStoryboardMain.instantiateInitialViewController()
         {
-            if let vc = kStoryboardMain.instantiateInitialViewController()
-            {
-                
-                kWindow.rootViewController = vc
-                
-                kWindow.makeKeyAndVisible()
-                
-            }
+            
+            kWindow.rootViewController = vc
+            
+            kWindow.makeKeyAndVisible()
             
         }
-        if let navi = self.tabBarController?.navigationController {
-            navi.popToRootViewController(animated: true)
-        }else {
-            
-            self.navigationController?.popToRootViewController(animated: true)
-        }
+//        if headerLogoText == "Displays"
+//        {
+//            if let vc = kStoryboardMain.instantiateInitialViewController()
+//            {
+//
+//                kWindow.rootViewController = vc
+//
+//                kWindow.makeKeyAndVisible()
+//
+//            }
+//
+//        }
+//        if let navi = self.tabBarController?.navigationController {
+//            navi.popToRootViewController(animated: true)
+//        }else {
+//
+//            self.navigationController?.popToRootViewController(animated: true)
+//        }
         
     }
     
@@ -762,6 +771,9 @@ extension HeaderVC {
         if !totalCount {
             btnTotalCollectionCount.isHidden = true
         }
+//        if !btnProfile {
+//            btnMyProfile.isHidden = true
+//        }
         
 //        if !favourites {
 //            btnFavorites.isHidden = true
@@ -929,7 +941,7 @@ extension HeaderVC {
         optionsView.addSubview(btnTotalCollectionCount)
         
         btnTotalCollectionCount.setTitle("    TOTAL DESIGNS    ", for: .normal)
-        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: AppColors.lightGray, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         //btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
 
@@ -1007,7 +1019,7 @@ extension HeaderVC {
             if str != "" {
                 
                 //setBorder(view: btnMyProfile, color: COLOR_APP_BACKGROUND, width: 0.5)
-                let MyProfilebckColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.6) : AppColors.appOrange
+                let MyProfilebckColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.6) : COLOR_ORANGE
                 btnMyProfile.backgroundColor = MyProfilebckColor
                 btnMyProfile.layer.cornerRadius = 5.0
             }

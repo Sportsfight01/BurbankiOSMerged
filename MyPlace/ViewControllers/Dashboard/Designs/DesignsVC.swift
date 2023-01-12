@@ -399,13 +399,13 @@ extension DesignsVC: ChildVCDelegate {
                 
                 if isFavorites {
                     
-                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
+                  //  setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
                     
                     getFavoriteDesigns()
                     
                 }else {
                     
-                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
+                   // setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
                         getCollectionDesigns (selectedFeatures ?? [])
                     self.searchResultsTable.isScrollEnabled = true
                 }

@@ -23,7 +23,6 @@ let COLOR_APP_BACKGROUND = UIColor.init(red: 246.0/255.0, green: 246.0/255.0, bl
 
 let COLOR_ORANGE = UIColor.init(red: 246.0/255.0, green: 133.0/255.0, blue: 33.0/255.0, alpha: 1.0) //#F68521
 let COLOR_ORANGE_LIGHT = UIColor.init(red: 248.0/255.0, green: 150.0/255.0, blue: 56.0/255.0, alpha: 1.0) //#F89638
-
 let COLOR_BLACK = UIColor.init(red: 35.0/255.0, green: 31.0/255.0, blue: 32.0/255.0, alpha: 1.0) //#231F20
 
 
@@ -31,9 +30,9 @@ let app_greenColor = UIColor(red: 91.0/255.0, green: 199.0/255.0, blue: 82.0/255
 
 
 
-let COLOR_GRAY = UIColor.gray
-let COLOR_DARK_GRAY = UIColor.darkGray
-let COLOR_LIGHT_GRAY = UIColor.lightGray
+let COLOR_GRAY = UIColor.hexCode("#414042")
+let COLOR_DARK_GRAY = UIColor.hexCode("#58595B")
+let COLOR_LIGHT_GRAY = UIColor.hexCode("#E6E7E8")
 
 let COLOR_APP_GRAY = UIColor.init(red: 225.0/255.0, green: 226.0/255.0, blue: 225.0/255.0, alpha: 1.0) //#E1E2E1
 let COLOR_CUSTOM_VIEWS_OVERLAY = UIColor.init(red: 98.0/255.0, green: 98.0/255.0, blue: 98.0/255.0, alpha: 0.8)

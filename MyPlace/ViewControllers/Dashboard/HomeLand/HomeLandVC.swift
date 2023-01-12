@@ -116,6 +116,7 @@ class HomeLandVC: HeaderVC {
             self.favouritesHeaderHightConstraint.constant = 50
             headerLogoText = "MyFavourites"
             favoritesHeaderView.isHidden = false
+            addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, delegate: self)
         }else {
             self.favouritesHeaderHightConstraint.constant = 0
             favoritesHeaderView.isHidden = true
@@ -181,7 +182,7 @@ class HomeLandVC: HeaderVC {
         }else {
             if isFavoritesService {
                 
-                setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
+              //  setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
                 
                 loadFavoritePackagesList ()
                 
@@ -475,7 +476,7 @@ extension HomeLandVC: ChildVCDelegate {
                 }
                 
                 if isFavoritesService {
-                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
+                   // setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
                     
                     loadFavoritePackagesList ()
                     
@@ -489,7 +490,7 @@ extension HomeLandVC: ChildVCDelegate {
                     btnSortFilter.isHidden = false
 
                     
-                    setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
+                  //  setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
                     
                     if isFromHomeDesigns {
                         
