@@ -104,6 +104,7 @@ extension UIImageView {
     func hideActivityIndicator () {
         if let activity = self.viewWithTag(1001) as? UIActivityIndicatorView {
             activity.stopAnimating()
+            activity.removeFromSuperview()
         }
     }
     

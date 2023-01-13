@@ -385,9 +385,9 @@ extension DisplaysNearByVC: UITableViewDelegate, UITableViewDataSource {
 
                             var updateDefaults = false
 
-                            if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+                            //if cell.displayHomeData!.favouritedUser?.userID == kUserID {
                                 updateDefaults = true
-                            }
+                            //}
 
 
                             if self.isFavoritesService {
@@ -414,6 +414,7 @@ extension DisplaysNearByVC: UITableViewDelegate, UITableViewDataSource {
                              cell.displayHomeData!.isFav = !(cell.displayHomeData!.isFav)
                              self.houseDetailsByHouseTypeArr[indexPath.row] =  cell.displayHomeData!
                                 self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
+                                updateDisplayHomesFavouritesCount(cell.displayHomeData!.isFav == true)
                             }
                         }
                     }

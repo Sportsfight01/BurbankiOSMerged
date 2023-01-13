@@ -404,9 +404,9 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
 
                                    var updateDefaults = false
 
-                                   if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+                                  // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
                                        updateDefaults = true
-                                   }
+                                   //}
 
 
                                    if self.isFavoritesService {
@@ -436,9 +436,9 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
 
                                        self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
 
-                                       //                            if updateDefaults {
-                                      // updateHomeLandFavouritesCount(cell.displayHomeData!.isFav == true)
-                                       //                            }
+                                                                   if updateDefaults {
+                                       updateDisplayHomesFavouritesCount(cell.displayHomeData!.isFav == true)
+                                                                   }
 
                                    }
                                }

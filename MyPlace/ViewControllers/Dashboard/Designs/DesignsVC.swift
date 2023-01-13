@@ -277,6 +277,7 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
             CodeManager.sharedInstance.sendScreenName (burbank_homeDesigns_favourite_homeDetail_tableCell_touch)
             
             designsDetailsVC.homeDesign = arrFavouriteHomeDesigns[indexPath.section][indexPath.row]
+            designsDetailsVC.arrHomeDesignsDetails = arrFavouriteHomeDesigns[indexPath.section]
         }else {
             
             CodeManager.sharedInstance.sendScreenName (burbank_homeDesigns_results_homeDetail_tableCell_touch)

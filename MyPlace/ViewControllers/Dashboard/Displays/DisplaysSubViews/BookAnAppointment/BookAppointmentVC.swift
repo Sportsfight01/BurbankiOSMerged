@@ -149,6 +149,8 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         whereWouldyouLikeToLiveTF.inputView = pickerView
         pickerView.delegate = self
         pickerView.dataSource = self
+        whereWouldyouLikeToLiveTF.attributedPlaceholder = NSAttributedString(string: "Where would you like to live?", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
+        
         self.whereWouldyouLikeToLiveTF.setupRightImage(imageName: "Ico-Downarrow-1")
 
     }
@@ -345,6 +347,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
             self.reqAppointmentCard.isHidden = true
             self.successCard.isHidden = true
             isSelectedDate = false
+            titleLBL.text = "CHOOSE YOUR DATE"
             //self.navigationController?.popViewController(animated: true)
         }else if isSelectedTime{
             self.datePicker?.isHidden = true
@@ -354,6 +357,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
             self.successCard.isHidden = true
             self.isSelectedTime = false
             isSelectedDate = true
+            titleLBL.text = "CHOOSE YOUR TIME"
         }else{
             self.navigationController?.popViewController(animated: true)
         }
@@ -363,15 +367,27 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         showDatePicker()
     }
     @IBAction func didTappedOnTimeBTNS(_ sender: UIButton) {
-        middleOftheBTN.backgroundColor = .white
-        mrngBTN.backgroundColor = .white
-        afternoonBTN.backgroundColor = .white
-        middleOftheBTN.setTitleColor(COLOR_ORANGE, for: .normal)
-        mrngBTN.setTitleColor(COLOR_ORANGE, for: .normal)
-        afternoonBTN.setTitleColor(COLOR_ORANGE, for: .normal)
+        let arrOfTimeBtns = [mrngBTN,middleOftheBTN,afternoonBTN]
+        
+        arrOfTimeBtns.forEach { btn in
+            if btn == sender
+            {
+                sender.backgroundColor = COLOR_ORANGE
+                sender.setTitleColor(.white, for: .normal)
+            }
+            else {
+                btn?.backgroundColor = .white
+                btn?.setTitleColor(.black, for: .normal)
+            }
+        }
+//        middleOftheBTN.backgroundColor = .white
+//        mrngBTN.backgroundColor = .white
+//        afternoonBTN.backgroundColor = .white
+//        middleOftheBTN.setTitleColor(COLOR_ORANGE, for: .normal)
+//        mrngBTN.setTitleColor(COLOR_ORANGE, for: .normal)
+//        afternoonBTN.setTitleColor(COLOR_ORANGE, for: .normal)
                 
-        sender.backgroundColor = COLOR_ORANGE
-        sender.setTitleColor(.white, for: .normal)
+        
         self.chooseDateAndTimeCard.isHidden = true
         self.dateCardView.isHidden = true
         self.reqAppointmentCard.isHidden = false
@@ -447,7 +463,11 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
                     let houseDetailsByHouseType1 = result["houseDetailsByHouseType"] as? String ?? ""
                     self.titleLBL.text = "REQUEST SUCCESSFUL"
                     self.backBTNCardWidthConstant.constant = 35
+                    
                     self.backBTN.setTitle("X", for: .normal)
+                    self.backBtnView.backgroundColor = .white
+                    self.backBtnView.layer.borderWidth = 1.0
+                    self.backBtnView.layer.borderColor = COLOR_ORANGE.cgColor
                     self.dateCardView.isHidden = true
                     self.chooseDateAndTimeCard.isHidden = true
                     self.reqAppointmentCard.isHidden = true

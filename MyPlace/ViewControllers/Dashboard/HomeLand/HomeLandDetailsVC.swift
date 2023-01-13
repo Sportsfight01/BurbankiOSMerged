@@ -470,9 +470,9 @@ extension HomeLandDetailsVC {
                     self.homeLand?.isFav = favorite
                     self.fillPackageData()
                                         
-                    if self.homeLand!.favouritedUser?.userID == kUserID {
+                  //  if self.homeLand!.favouritedUser?.userID == kUserID {
                         updateHomeLandFavouritesCount(self.homeLand!.isFav == true)
-                    }
+                    //}
 
                     
                 }else { print(log: String.init(format: "Couldn't %@ home", arguments: [favorite ? "Favorite" : "Unfavorite"])) }

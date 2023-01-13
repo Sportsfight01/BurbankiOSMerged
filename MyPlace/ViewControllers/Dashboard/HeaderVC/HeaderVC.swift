@@ -502,15 +502,15 @@ class HeaderVC: UIViewController {
         NSLayoutConstraint.activate([
             btnBack.leadingAnchor.constraint(equalTo: headerView_header.leadingAnchor, constant: 10),
             btnBack.centerYAnchor.constraint(equalTo: breadcrumbView.centerYAnchor, constant: 0),
-            btnBack.heightAnchor.constraint(equalToConstant: 18*1.25),
-            btnBack.widthAnchor.constraint(equalToConstant: 10*1.25)
+            btnBack.heightAnchor.constraint(equalToConstant: 18),
+            btnBack.widthAnchor.constraint(equalToConstant: 18)
         ])
         
         
         logoLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            logoLabel.leadingAnchor.constraint(equalTo: btnBack.trailingAnchor, constant: 15),
+            logoLabel.leadingAnchor.constraint(equalTo: btnBack.trailingAnchor, constant: 10),
             logoLabel.topAnchor.constraint(equalTo: headerView_header.topAnchor, constant: statusBarHeight() + 15),
             logoLabel.trailingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: -10),
             logoLabel.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor, constant: 0)
@@ -855,8 +855,6 @@ extension HeaderVC {
         
         
         btnHowWorks.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         NSLayoutConstraint.activate([
             btnHowWorks.leadingAnchor.constraint(equalTo: optionsView.leadingAnchor, constant: 0),
             //            btnFavorites.trailingAnchor.constraint(equalTo: optionsView.trailingAnchor, constant: 0),

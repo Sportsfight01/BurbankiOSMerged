@@ -144,20 +144,21 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         }
         NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
       //---------Logic to Hide and show navigation bar(Navbar has to visible when comming from favorites)
-      if isCameFromFavorites{
-        headerLogoText = "DisplayHomes"
-        headerConstraint.constant = 0
-      navTopConstraint.constant = 135
-        self.backBTN.isHidden = true
-      self.addBreadCrumb(from: "See one of our display homes")
-          self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.263)
-        if btnBack.isHidden {
-            showBackButton()
-            btnBack.addTarget(self, action: #selector(handleNavBackBtn), for: .touchUpInside)
-            btnBackFull.addTarget(self, action: #selector(handleNavBackBtn), for: .touchUpInside)
-        }
-     //  headerLogoText = "Favorites"
-      }else {
+        if isCameFromFavorites{
+            headerLogoText = "DisplayHomes"
+            headerConstraint.constant = 0
+            navTopConstraint.constant = 135
+          //  self.backBTN.isHidden = true
+            self.backBTN.superview?.superview?.isHidden = true
+            self.addBreadCrumb(from: "See one of our display homes")
+            self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.263)
+            if btnBack.isHidden {
+                showBackButton()
+                btnBack.addTarget(self, action: #selector(handleNavBackBtn), for: .touchUpInside)
+                btnBackFull.addTarget(self, action: #selector(handleNavBackBtn), for: .touchUpInside)
+            }
+            //  headerLogoText = "Favorites"
+        }else {
         headerConstraint.constant = 50
           self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.45)
         navTopConstraint.constant = 0
@@ -530,7 +531,7 @@ extension DisplayHomesDetailsVC{
                     
                     
 //                    if self.homeDesignDetails?.userID == kUserID {
-//                        updateDisplayHomesFavouritesCount(self.homeDesignDetails?.lsthouses?.isFav == true)
+                    updateDisplayHomesFavouritesCount(self.homeDesignDetails?.lsthouses?.isFav == true)
 //                    }
                 }
             }

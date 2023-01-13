@@ -306,9 +306,9 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                             
                             var updateDefaults = false
                             
-                            if displaydata.favouritedUser?.userID == kUserID {
+                          //  if displaydata.favouritedUser?.userID == kUserID {
                                 updateDefaults = true
-                            }
+                            //}
                             
                             if self.isFavoritesService {
                                 
@@ -421,9 +421,9 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                 
                                 var updateDefaults = false
                                 
-                                if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+                               // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
                                     updateDefaults = true
-                                }
+                               // }
                                 
                                 
                                 if self.isFavoritesService {

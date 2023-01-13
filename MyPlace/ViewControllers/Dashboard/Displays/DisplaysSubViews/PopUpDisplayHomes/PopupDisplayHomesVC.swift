@@ -144,9 +144,9 @@ extension PopupDisplayHomesVC  {
 
                                    var updateDefaults = false
 
-                                   if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+                                 //  if cell.displayHomeData!.favouritedUser?.userID == kUserID {
                                        updateDefaults = true
-                                   }
+                                   //}
 
 
                                    if self.isFavoritesService {
@@ -244,9 +244,9 @@ extension PopupDisplayHomesVC  {
 
                                var updateDefaults = false
 
-                               if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+                             //  if cell.displayHomeData!.favouritedUser?.userID == kUserID {
                                    updateDefaults = true
-                               }
+                               //}
 
 
                                if self.isFavoritesService {

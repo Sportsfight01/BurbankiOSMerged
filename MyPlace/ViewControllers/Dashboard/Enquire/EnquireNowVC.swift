@@ -145,7 +145,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
 //
 //        viewMessage.layer.cornerRadius = radius_5
         
-      
+        whereWouldYouLiveTF.attributedPlaceholder = NSAttributedString(string: "Where would you like to live?", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
         
         
         

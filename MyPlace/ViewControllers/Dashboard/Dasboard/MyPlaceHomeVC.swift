@@ -13,15 +13,12 @@ import SDWebImage
 
 class MyPlaceHomeVC: UIViewController {
     
-    
+    //MARK: - Properties
     @IBOutlet weak var btnMyProfile: UIButton!
     @IBOutlet weak var btnState: UIButton!
-    
     @IBOutlet weak var btnIcon: UIButton!
-    
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnBackWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var btnStateLeading: NSLayoutConstraint!
     
     
@@ -72,11 +69,8 @@ class MyPlaceHomeVC: UIViewController {
     private let fetchedPackgesApi = "fetchedPackgesApi"
     var firstTimeLoading = true
     
+    
     //MARK: - ViewLifeCycle
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,11 +98,11 @@ class MyPlaceHomeVC: UIViewController {
             btnBackWidth.constant = 0
             btnStateLeading.constant = 0
             
-                        ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
-//                            if let url = appDelegate.userData?.user?.userProfileImageURL {
-//                                self.addProfileImage(url)
-//                            }
-                        }
+            ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
+                //                            if let url = appDelegate.userData?.user?.userProfileImageURL {
+                //                                self.addProfileImage(url)
+                //                            }
+            }
             
             ProfileDataManagement.shared.getSearchTypes {
                 

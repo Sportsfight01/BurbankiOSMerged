@@ -60,8 +60,8 @@ class DesignsDetailsVC: HeaderVC {
     @IBOutlet weak var btnEnquire : UIButton!
     @IBOutlet weak var btnSaveDesign: UIButton!
     
-    @IBOutlet weak var previousDesignBTN: UIButton!
-    @IBOutlet weak var nextDesignBTN: UIButton!
+//    @IBOutlet weak var previousDesignBTN: UIButton!
+//    @IBOutlet weak var nextDesignBTN: UIButton!
     @IBOutlet weak var previousDesignBTN2: UIButton!
     @IBOutlet weak var nextDesignBTN2: UIButton!
     var selectedDesignCount = 0
@@ -150,17 +150,17 @@ class DesignsDetailsVC: HeaderVC {
         }
         
         if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
-            self.nextDesignBTN.isHidden = true
+           
             self.nextDesignBTN2.isHidden = true
         }else{
-            self.nextDesignBTN.isHidden = false
+           
             self.nextDesignBTN2.isHidden = true
         }
         if selectedDesignCount <= 0{
-            self.previousDesignBTN.isHidden = true
+           
             self.previousDesignBTN2.isHidden = true
         }else{
-            self.previousDesignBTN.isHidden = false
+           
             self.previousDesignBTN2.isHidden = false
         }
     }
@@ -304,23 +304,22 @@ class DesignsDetailsVC: HeaderVC {
           
           
         }
-        self.previousDesignBTN.tintColor = .darkGray
-        self.nextDesignBTN.tintColor = .darkGray
+     
         self.previousDesignBTN2.tintColor = .darkGray
         self.nextDesignBTN2.tintColor = .darkGray
         
         if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
-            self.nextDesignBTN.isHidden = true
+  
             self.nextDesignBTN2.isHidden = true
         }else{
-            self.nextDesignBTN.isHidden = false
+         
             self.nextDesignBTN2.isHidden = false
         }
         if selectedDesignCount <= 0{
-            self.previousDesignBTN.isHidden = true
+          
             self.previousDesignBTN2.isHidden = true
         }else{
-            self.previousDesignBTN.isHidden = false
+           
             self.previousDesignBTN2.isHidden = false
         }
     }
@@ -448,7 +447,7 @@ class DesignsDetailsVC: HeaderVC {
         
        
         if selectedDesignCount <= 0{
-            self.previousDesignBTN.isHidden = true
+            
             self.previousDesignBTN2.isHidden = true
         }else{
 //            self.previousDesignBTN.isHidden = false
@@ -466,7 +465,7 @@ class DesignsDetailsVC: HeaderVC {
         
        
         if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
-            self.nextDesignBTN.isHidden = true
+           
             self.nextDesignBTN2.isHidden = true
             
         }else{
@@ -553,9 +552,9 @@ class DesignsDetailsVC: HeaderVC {
                     self.btnSaveDesign.backgroundColor = (self.homeDesign?.isFav ?? false) == true ? COLOR_DARK_GRAY : COLOR_ORANGE
                     
                     
-                    if self.homeDesign!.favouritedUser?.userID == kUserID {
+                   // if self.homeDesign!.favouritedUser?.userID == kUserID {
                         updateHomeDesignsFavouritesCount(self.homeDesign!.isFav == true)
-                    }
+                    //}
                 }
             }
         }

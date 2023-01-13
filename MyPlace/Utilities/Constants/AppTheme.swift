@@ -38,7 +38,8 @@ let IMAGE_MYPROFILE = UIImage(named: "MyProfile")
 //let Image_defaultDP = UIImage(named: "Ico-BB-Black")
 let Image_defaultDP = UIImage(named: "BurbankLogo")
 
-let imageBack = UIImage(named: "Ico-Back1")
+//let imageBack = UIImage(named: "Ico-Back1")
+let imageBack = UIImage(named: "ico-Back")
 
 let imageHome = UIImage(named: "Ico-Home-1")//Ico-MenuIcon")
 
