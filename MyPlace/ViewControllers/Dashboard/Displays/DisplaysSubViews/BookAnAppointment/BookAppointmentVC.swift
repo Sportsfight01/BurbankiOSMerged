@@ -177,7 +177,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
     self.navigationController?.popViewController(animated: true)
   }
     func textViewDidBeginEditing(_ textView: UITextView) {
-        self.commentsTV.textColor = .darkText
+        self.commentsTV.textColor = APPCOLORS_3.GreyTextFont
         self.commentsTV.text = ""
     }
     func showUserDetails(){
@@ -187,25 +187,27 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.mobileNumberTF.text = appDelegate.userData?.user?.userPhone ?? ""
         
         if self.lastNameTF.text != "" {
-         setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
          self.lastNameTF.isUserInteractionEnabled = false
         }else{
          self.lastNameTF.isUserInteractionEnabled = true
          setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
+        
         if self.firstNameTF.text != "" {
-         setAppearanceFor(view: firstNameTF, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
          self.firstNameTF.isUserInteractionEnabled = false
         }else{
          self.firstNameTF.isUserInteractionEnabled = true
          setAppearanceFor(view: firstNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
+        
         if self.emailTF.text != "" {
-         setAppearanceFor(view: emailTF, backgroundColor: COLOR_LIGHT_GRAY, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: emailTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
          self.emailTF.isUserInteractionEnabled = false
         }else{
          self.emailTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: firstNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: emailTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
         
     }
@@ -222,7 +224,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         }
         let joinedStreetNames = streetNames.joined(separator: ", ")
         self.streetNameLBL.text = "\(displayHomeData?[0].street ?? ""), \n\(displayHomeData?[0].suburb ?? "")"
-        self.streetNameLBL.textColor = .darkText
+        self.streetNameLBL.textColor = APPCOLORS_3.GreyTextFont
         
         let font:UIFont? = FONT_LABEL_HEADING(size: FONT_11)
         let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_9)
@@ -244,7 +246,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         datePicker = UIDatePicker()
         datePicker?.date = Date()
         datePicker?.locale = .current
-        datePicker?.tintColor = .orange
+        datePicker?.tintColor = APPCOLORS_3.Orange_BG
         datePicker?.datePickerMode = .date
         datePicker?.minimumDate = Date()
         let dateFormater: DateFormatter = DateFormatter()
@@ -372,12 +374,12 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         arrOfTimeBtns.forEach { btn in
             if btn == sender
             {
-                sender.backgroundColor = COLOR_ORANGE
+                sender.backgroundColor = APPCOLORS_3.Orange_BG
                 sender.setTitleColor(.white, for: .normal)
             }
             else {
                 btn?.backgroundColor = .white
-                btn?.setTitleColor(.black, for: .normal)
+                btn?.setTitleColor(APPCOLORS_3.GreyTextFont, for: .normal)
             }
         }
 //        middleOftheBTN.backgroundColor = .white
@@ -465,9 +467,9 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
                     self.backBTNCardWidthConstant.constant = 35
                     
                     self.backBTN.setTitle("X", for: .normal)
-                    self.backBtnView.backgroundColor = .white
+                    self.backBtnView.backgroundColor = APPCOLORS_3.Body_BG
                     self.backBtnView.layer.borderWidth = 1.0
-                    self.backBtnView.layer.borderColor = COLOR_ORANGE.cgColor
+                    self.backBtnView.layer.borderColor = APPCOLORS_3.Orange_BG.cgColor
                     self.dateCardView.isHidden = true
                     self.chooseDateAndTimeCard.isHidden = true
                     self.reqAppointmentCard.isHidden = true
@@ -480,13 +482,14 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
                     self.successIMGWidth.constant = 30
                     self.backIconBtn.isHidden = true
                     
-                    self.backBTN.setTitleColor(.orange, for: .normal)
+                    self.backBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
                     self.tirlCardHeight.constant = 0
                     AlertManager.sharedInstance.showAlert(alertMessage: houseDetailsByHouseType1, title: "")
                     
                 }else {
                     self.titleLBL.text = "REQUEST DENIED"
                     self.backBTN.setTitle("X", for: .normal)
+                    self.backBTN.backgroundColor = APPCOLORS_3.Body_BG
                 }
             }
         }, errorblock: { (error, isJSONerror) in

@@ -152,11 +152,11 @@ extension DisplaysDesignsVC: UICollectionViewDelegate, UICollectionViewDataSourc
 //        cell.storeyBTN.setTitleColor(.orange, for: .normal)
         
         if selectedIndex == indexPath.item{
-            cell.storeyBTN.backgroundColor = .orange
+            cell.storeyBTN.backgroundColor = APPCOLORS_3.Orange_BG
             cell.storeyBTN.setTitleColor(.white, for: .normal)
         }else{
-            cell.storeyBTN.backgroundColor = .white
-            cell.storeyBTN.setTitleColor(.black, for: .normal)
+            cell.storeyBTN.backgroundColor = APPCOLORS_3.Body_BG
+            cell.storeyBTN.setTitleColor(APPCOLORS_3.GreyTextFont, for: .normal)
         }
         
         return cell

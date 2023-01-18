@@ -61,7 +61,7 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
         let scaleFactor = (self.displaysCollectionView.bounds.width - 8)/2
         layout.itemSize = CGSize(width: scaleFactor , height: 140)
         self.displaysCollectionView.collectionViewLayout = layout
-        
+        self.view.backgroundColor = APPCOLORS_3.Body_BG
         headerLogoText = "DisplayHomes"
         isFromProfile = false
         if btnBack.isHidden {
