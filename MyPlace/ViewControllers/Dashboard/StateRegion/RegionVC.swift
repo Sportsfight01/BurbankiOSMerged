@@ -102,7 +102,7 @@ class RegionVC: UIViewController {
         let str = "WHAT REGION ARE YOU\nLOOKING FOR YOUR NEW HOME?"
         region_lBregion.text = str
         
-        setAppearanceFor(view: region_lBregion, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_18))
+        setAppearanceFor(view: region_lBregion, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_18))
         
         
         regionView.layer.cornerRadius = radius_5
@@ -176,11 +176,11 @@ class RegionTableViewCell: UITableViewCell {
     {
         didSet {
             if selectedRegion == true {
-                titleLabel.textColor = COLOR_WHITE
-                titleLabel.backgroundColor = COLOR_ORANGE
+                titleLabel.textColor = APPCOLORS_3.HeaderFooter_white_BG
+                titleLabel.backgroundColor = APPCOLORS_3.Orange_BG
             }else {
-                titleLabel.textColor = COLOR_BLACK
-                titleLabel.backgroundColor = COLOR_WHITE
+                titleLabel.textColor = APPCOLORS_3.Black_BG
+                titleLabel.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
                 if #available(iOS 13.0, *) {
                     titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.5, shadowColor: UIColor.systemGray2.cgColor)
                 } else {
@@ -197,11 +197,11 @@ class RegionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_14))
+        setAppearanceFor(view: titleLabel, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_14))
 ////
         titleLabel.layer.cornerRadius = radius_5
 //
-//        setBorder(view: titleLabel, color: COLOR_ORANGE, width: 1.0)
+//        setBorder(view: titleLabel, color: APPCOLORS_3.Orange_BG, width: 1.0)
 //
 //        titleLabel.clipsToBounds = true
       

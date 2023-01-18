@@ -202,17 +202,17 @@ class ShareVC: UIViewController {
     
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: COLOR_ORANGE)
+        setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Orange_BG)
         
         
-        setAppearanceFor(view: sharePopupheaderLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
-        setAppearanceFor(view: sharePopupNameLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: sharePopupEmailLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont:  FONT_LABEL_BODY(size: FONT_14))
-        setAppearanceFor(view: sharePopuphelpLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont:  FONT_LABEL_BODY(size: FONT_14))
-        setAppearanceFor(view: sharePopupConfirmLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont:  FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: sharePopupheaderLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: sharePopupNameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: sharePopupEmailLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont:  FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: sharePopuphelpLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont:  FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: sharePopupConfirmLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont:  FONT_LABEL_BODY(size: FONT_14))
         
-        setAppearanceFor(view: sharePopupRejectBtn, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
-        setAppearanceFor(view: sharePopupAcceptBtn, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: sharePopupRejectBtn, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: sharePopupAcceptBtn, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
         
         sharePopupView.layer.cornerRadius = radius_10
         

@@ -40,7 +40,7 @@ class HeaderBreadCrump: UIView, UICollectionViewDelegate, UICollectionViewDataSo
         super.init(frame: frame)
         
         loadCollectionView ()
-        self.backgroundColor = COLOR_CLEAR //COLOR_WHITE
+        self.backgroundColor = COLOR_CLEAR //APPCOLORS_3.HeaderFooter_white_BG
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +58,7 @@ class HeaderBreadCrump: UIView, UICollectionViewDelegate, UICollectionViewDataSo
 //
 //        breadcrumbCollectionView.backgroundColor = COLOR_CLEAR
 //
-////        breadcrumbCollectionView.backgroundColor = COLOR_WHITE
+////        breadcrumbCollectionView.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
 //
 //        breadcrumbCollectionView.translatesAutoresizingMaskIntoConstraints = false
 //
@@ -369,7 +369,7 @@ class BreadCrumbCell: UICollectionViewCell {
 
         self.bringSubviewToFront(lableTitle)
 
-        setAppearanceFor(view: lableTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_11))
+        setAppearanceFor(view: lableTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_11))
         lableTitle.numberOfLines = 1
 
 
@@ -388,7 +388,7 @@ class BreadCrumbCell: UICollectionViewCell {
 //        self.addSubview(btnTitle)
 //        self.bringSubviewToFront(btnTitle)
 //
-//        setAppearanceFor(view: btnTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_11))
+//        setAppearanceFor(view: btnTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_11))
 //        btnTitle.titleLabel?.numberOfLines = 0
         
         
@@ -413,24 +413,24 @@ class BreadCrumbCell: UICollectionViewCell {
 //
 //        if selectedBreadCrumb == true {
 //
-//            btnTitle.setTitleColor(COLOR_ORANGE, for: .normal)
-//            btnTitle.backgroundColor = COLOR_WHITE
+//            btnTitle.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
+//            btnTitle.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
 //        }else {
 //
-//            btnTitle.setTitleColor(COLOR_WHITE, for: .normal)
-//            btnTitle.backgroundColor = COLOR_ORANGE
+//            btnTitle.setTitleColor(APPCOLORS_3.HeaderFooter_white_BG, for: .normal)
+//            btnTitle.backgroundColor = APPCOLORS_3.Orange_BG
 //        }
         
         lableTitle.text = breadCrumb ?? ""
 
         if selectedBreadCrumb == true {
 
-            lableTitle.textColor = COLOR_ORANGE
-            lableTitle.backgroundColor = COLOR_WHITE
+            lableTitle.textColor = APPCOLORS_3.Orange_BG
+            lableTitle.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
         }else {
 
-            lableTitle.textColor = COLOR_WHITE
-            lableTitle.backgroundColor = COLOR_ORANGE
+            lableTitle.textColor = APPCOLORS_3.HeaderFooter_white_BG
+            lableTitle.backgroundColor = APPCOLORS_3.Orange_BG
         }
     }
     

@@ -53,11 +53,11 @@ class MyPlaceFavPhotosVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDataSou
     
     func viewSetUp () {
         
-        _ = setAttributetitleFor(view: titleLabel, title: "FavouritePhotos", rangeStrings: ["Favourite", "Photos"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: titleLabel, title: "FavouritePhotos", rangeStrings: ["Favourite", "Photos"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: true)
         
-        setAppearanceFor(view: jobNumberTextFiled, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING (size: FONT_16))
+        setAppearanceFor(view: jobNumberTextFiled, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING (size: FONT_16))
         
-        setAppearanceFor(view: noPhotosLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_LABEL_HEADING (size: FONT_20))
+        setAppearanceFor(view: noPhotosLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_LABEL_HEADING (size: FONT_20))
 
     }
     

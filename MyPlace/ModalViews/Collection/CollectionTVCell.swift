@@ -61,7 +61,7 @@ class CollectionTVCell: UITableViewCell {
         if let superview = lBLot.superview {
             
             superview.layer.cornerRadius = (superview.frame.size.height)/2
-//            setShadow(view: superview, color: COLOR_LIGHT_GRAY, shadowRadius: 8)
+//            setShadow(view: superview, color: APPCOLORS_3.LightGreyDisabled_BG, shadowRadius: 8)
             setBorder(view: superview, color: APPCOLORS_3.LightGreyDisabled_BG, width: 0.5)
             
             setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: 6))

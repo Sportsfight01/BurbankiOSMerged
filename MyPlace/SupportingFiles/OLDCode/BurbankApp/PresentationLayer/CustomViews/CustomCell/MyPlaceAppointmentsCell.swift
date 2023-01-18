@@ -18,8 +18,8 @@ class MyPlaceAppointmentsCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: appointmentType, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: appointmentDate, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_13))
+        setAppearanceFor(view: appointmentType, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: appointmentDate, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_13))
 
         icon.superview?.layer.cornerRadius = icon.superview!.frame.size.height/2
         

@@ -56,8 +56,8 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         iDontHaveLandLBL.text = "I Don't Have \nLand Yet"
         enterLotCard.isHidden = true
         
-        setAppearanceFor(view: iDontHaveBTN.superview!, backgroundColor: COLOR_WHITE)
-        setAppearanceFor(view: iHaveLandBTN.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: iDontHaveBTN.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
+        setAppearanceFor(view: iHaveLandBTN.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
         lotTF.delegate = self
         lotTF.keyboardType = .decimalPad
         selectionAlertMessage = "Please select"
@@ -70,7 +70,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
       if sender.tag == 111{ //i don't have land
           iDontHaveBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             iDintHaveLandIMG.image = UIImage(named: "Ico-FaqWhite")
-            iDontHaveLandLBL.textColor = COLOR_WHITE
+            iDontHaveLandLBL.textColor = APPCOLORS_3.HeaderFooter_white_BG
             homeDesignFeature?.selectedAnswer = "NOT SURE"
             homeDesignFeature?.displayString = "NOT SURE"
             
@@ -83,7 +83,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
                 //iHaveLandIMG.image = UIImage(named: "Ico-Rite")?.withRenderingMode(.alwaysTemplate)
                 iHaveLandIMG.tintColor = .white
             
-            iHaveLandLBL.textColor = COLOR_WHITE
+            iHaveLandLBL.textColor = APPCOLORS_3.HeaderFooter_white_BG
             enterLotCard.isHidden = false
             if lotTF.text?.count == 0
             {

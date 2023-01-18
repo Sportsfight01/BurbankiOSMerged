@@ -44,7 +44,7 @@ enum namedColors : String {
 struct AppColors
 {
     static let appOrange : UIColor = UIColor(named: namedColors.orange.rawValue)!
-    static let appGray : UIColor = COLOR_GRAY
+    static let appGray : UIColor = APPCOLORS_3.GreyTextFont
     
     static let appPink : UIColor = UIColor.systemPink
     
@@ -58,7 +58,7 @@ struct AppColors
         
     }
     
-    static let darkGray = COLOR_DARK_GRAY
+    static let darkGray = APPCOLORS_3.GreyTextFont
     static let lightGray = APPCOLORS_3.GreyTextFont
     static let white = UIColor.white
     static let black = APPCOLORS_3.Black_BG

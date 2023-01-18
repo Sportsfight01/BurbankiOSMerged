@@ -37,8 +37,8 @@ class HomeDesignModalHeaderVC: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = COLOR_APP_BACKGROUND
-        contentView.backgroundColor = COLOR_APP_BACKGROUND
+        self.view.backgroundColor = APPCOLORS_3.Body_BG
+        contentView.backgroundColor = APPCOLORS_3.Body_BG
         print("++++++++",homeDesignFeature!.answerOptions[0].displayAnswer)
         
         if homeDesignFeature!.answerOptions.contains(where: { $0.displayAnswer == "I do not want this" })   {

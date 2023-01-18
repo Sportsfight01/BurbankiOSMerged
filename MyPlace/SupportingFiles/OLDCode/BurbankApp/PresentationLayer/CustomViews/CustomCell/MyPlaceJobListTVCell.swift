@@ -17,7 +17,7 @@ class MyPlaceJobListTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: self.jobNumberTextFiled, backgroundColor: .clear, textColor: COLOR_GRAY, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: self.jobNumberTextFiled, backgroundColor: .clear, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_14))
 
     }
 

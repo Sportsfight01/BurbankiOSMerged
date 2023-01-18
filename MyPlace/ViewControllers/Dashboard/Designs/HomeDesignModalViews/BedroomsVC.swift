@@ -39,7 +39,7 @@ class BedroomsVC: HomeDesignModalHeaderVC {
     
     func bedroomViewSetUp () {
         
-        setAppearanceFor(view: bedrooms_lBbedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: bedrooms_lBbedrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
         
     }
     
@@ -232,11 +232,11 @@ class BedRoomCell: UICollectionViewCell {
         if selectedBedroom == true {
             
             if bedroomCount == "NOT SURE"{
-                _ = setAttributetitleFor(view: buttonBedroom, title: "?\nNOT SURE", rangeStrings: ["?", "NOT SURE"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+                _ = setAttributetitleFor(view: buttonBedroom, title: "?\nNOT SURE", rangeStrings: ["?", "NOT SURE"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
                 
-                buttonBedroom.superview?.backgroundColor = COLOR_ORANGE
+                buttonBedroom.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             }else{
-            _ = setAttributetitleFor(view: buttonBedroom, title: "\(bedroomCount!)\nBEDROOMS", rangeStrings: [bedroomCount!, "BEDROOMS"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: buttonBedroom, title: "\(bedroomCount!)\nBEDROOMS", rangeStrings: [bedroomCount!, "BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
             
                 buttonBedroom.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             }
@@ -244,11 +244,11 @@ class BedRoomCell: UICollectionViewCell {
             if bedroomCount == "NOT SURE"{
                 _ = setAttributetitleFor(view: buttonBedroom, title: "?\nNOT SURE", rangeStrings: ["?", "NOT SURE"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
                 
-                buttonBedroom.superview?.backgroundColor = COLOR_WHITE
+                buttonBedroom.superview?.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
             }else{
             _ = setAttributetitleFor(view: buttonBedroom, title: "\(bedroomCount!)\nBEDROOMS", rangeStrings: [bedroomCount!, "BEDROOMS"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
             
-            buttonBedroom.superview?.backgroundColor = COLOR_WHITE
+            buttonBedroom.superview?.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
             }
         }
         

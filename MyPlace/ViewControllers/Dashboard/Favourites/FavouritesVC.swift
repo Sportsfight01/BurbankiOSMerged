@@ -30,7 +30,7 @@ class FavouritesVC: HeaderVC {
         super.viewDidLoad()
         self.tableViewFvrts.tableFooterView = UIView(frame: .zero)
         
-//        setShadowatBottom(view: profileViewBorder, color: COLOR_BLACK, shadowRadius: 5.0)
+//        setShadowatBottom(view: profileViewBorder, color: APPCOLORS_3.Black_BG, shadowRadius: 5.0)
         
         
         tableViewFvrts.backgroundColor = AppColors.white

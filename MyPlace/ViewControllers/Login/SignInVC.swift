@@ -182,20 +182,20 @@ class SignInVC: UIViewController {
         
         setAppearanceFor(view: labelChooseMethod, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
        
-        //setAppearanceFor(view: btnContinue, backgroundColor: COLOR_ORANGE, textColor: AppColors.white, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
+        //setAppearanceFor(view: btnContinue, backgroundColor: APPCOLORS_3.Orange_BG, textColor: AppColors.white, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: systemRegularFont(size: FONT_signin))
-        setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
-        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
+        setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
+        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
         
        
         
         
-//        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
-//        setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
-//        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+//        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+//        setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+//        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
-        setAppearanceFor(view: btnSkip, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnSkip, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
 
         
@@ -209,8 +209,8 @@ class SignInVC: UIViewController {
         labelNoteAlert.addCharacterSpacing(kernValue: -0.3)
         
         
-        setAppearanceFor(view: btnContinue, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
-        setAppearanceFor(view: btnSignIn, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: btnContinue, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: btnSignIn, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
 
         
         viewGoogle.cardView()

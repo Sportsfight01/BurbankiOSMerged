@@ -118,25 +118,25 @@ class MyPlaceDashBoardVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionViewDa
     
     func setUpUI () {
         
-        setAppearanceFor(view: welcome, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_24))
-        setAppearanceFor(view: welcomeUsername, backgroundColor: .clear, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_24))
+        setAppearanceFor(view: welcome, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_24))
+        setAppearanceFor(view: welcomeUsername, backgroundColor: .clear, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_24))
         
-        setAppearanceFor(view: jobNumberTextFiled, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: jobNumberTextFiled, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
 
         
         
-        setAppearanceFor(view: jobNoLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: jobNoLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
 
         
-        setAppearanceFor(view: btnEmail, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: btnCall, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnEmail, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnCall, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
         
-        setAppearanceFor(view: nameLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: emailLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_13))
-        setAppearanceFor(view: designationLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_13))
+        setAppearanceFor(view: nameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: emailLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_13))
+        setAppearanceFor(view: designationLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_13))
 
-        setAppearanceFor(view: mobileNoLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_13))
+        setAppearanceFor(view: mobileNoLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_13))
 
         
         
@@ -182,7 +182,7 @@ class MyPlaceMenuCVCell: BurbankAppCVCell
     override func awakeFromNib() {
         super.awakeFromNib()
                 
-        setAppearanceFor(view: self.menuNameLabel, backgroundColor: self.menuNameLabel.backgroundColor ?? .clear, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: self.menuNameLabel, backgroundColor: self.menuNameLabel.backgroundColor ?? .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
     }
     
 }

@@ -53,8 +53,8 @@ class MyPlaceMap: GMSMapView {
         btnZoomIn.setTitle("+", for: .normal)
         btnZoomOut.setTitle("-", for: .normal)
         
-        setAppearanceFor(view: btnZoomIn, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_BUTTON_HEADING(size: 20))
-        setAppearanceFor(view: btnZoomOut, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_BUTTON_HEADING(size: 20))
+        setAppearanceFor(view: btnZoomIn, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_HEADING(size: 20))
+        setAppearanceFor(view: btnZoomOut, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_HEADING(size: 20))
         
         
         btnZoomOut.addTarget(self, action: #selector(handleZoomButtons(_:)), for: .touchUpInside)

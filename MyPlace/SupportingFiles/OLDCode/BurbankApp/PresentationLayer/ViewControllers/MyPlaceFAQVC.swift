@@ -61,14 +61,14 @@ class MyPlaceFAQVC: BurbankAppVC, UITableViewDelegate,UITableViewDataSource {
                 
         titleLabel.text = "FAQ's" + " - \(selectedJobNumberRegionString)"
 
-        _ = setAttributetitleFor(view: titleLabel, title: titleLabel.text ?? "", rangeStrings: ["FAQ's -", "\(selectedJobNumberRegionString)"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: titleLabel.text ?? "", rangeStrings: ["FAQ's -", "\(selectedJobNumberRegionString)"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
         
-        setAppearanceFor(view: popUpQuestionLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: popUpQuestionLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
 
-        setAppearanceFor(view: nextBtn, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: previousBtn, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: nextBtn, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: previousBtn, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
 
-        setAppearanceFor(view: popUpAnswerTextView, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: popUpAnswerTextView, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
         
         
         nextBtn.layer.cornerRadius = radius_5
@@ -137,7 +137,7 @@ class MyPlaceFAQVC: BurbankAppVC, UITableViewDelegate,UITableViewDataSource {
         
         cell.questionLabel.text = String(format: "Q%d :  %@", indexPath.row+1, question!).replacingOccurrences(of: "&quot;", with: "\"")
         
-        _ = setAttributetitleFor(view: cell.questionLabel, title: cell.questionLabel.text ?? "", rangeStrings: [String(format:"Q%d :", indexPath.row+1)], colors: [COLOR_BLACK], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_14)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: cell.questionLabel, title: cell.questionLabel.text ?? "", rangeStrings: [String(format:"Q%d :", indexPath.row+1)], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_14)], alignmentCenter: false)
         
         
 //        let a = String(format: "%@", answer!).replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
@@ -158,8 +158,8 @@ class MyPlaceFAQVC: BurbankAppVC, UITableViewDelegate,UITableViewDataSource {
         if selectedIndex != indexPath.row {
             cell.answerLabel.isHidden = true
             cell.dropDownImageView.image = #imageLiteral(resourceName: "Ico-DownNew")
-            cell.backgroundColor = COLOR_ORANGE_LIGHT
-            cell.questionLabel.superview?.backgroundColor = COLOR_ORANGE_LIGHT
+            cell.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            cell.questionLabel.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             
             cell.answerLabelTop.constant = 0
             cell.answerLabelBottom.constant = 0
@@ -169,9 +169,9 @@ class MyPlaceFAQVC: BurbankAppVC, UITableViewDelegate,UITableViewDataSource {
         else {
             cell.answerLabel.isHidden = false
             cell.dropDownImageView.image = #imageLiteral(resourceName: "Ico-TopNew")
-            cell.backgroundColor = COLOR_APP_BACKGROUND
-            cell.questionLabel.superview?.backgroundColor = COLOR_WHITE.withAlphaComponent(0.8)
-            cell.answerLabel.superview?.backgroundColor = COLOR_WHITE.withAlphaComponent(0.6)
+            cell.backgroundColor = APPCOLORS_3.Body_BG
+            cell.questionLabel.superview?.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG.withAlphaComponent(0.8)
+            cell.answerLabel.superview?.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG.withAlphaComponent(0.6)
             
             cell.questionView.backgroundColor = UIColor.hexCode("F8A052")
 
@@ -226,7 +226,7 @@ class MyPlaceFAQVC: BurbankAppVC, UITableViewDelegate,UITableViewDataSource {
 
         popUpQuestionLabel.text = String(format: "Q%d:   %@", selectedIndex+1, question).replacingOccurrences(of: "&quot;", with: "\"")
         
-//        _ = setAttributetitleFor(view: popUpQuestionLabel, title: popUpQuestionLabel.text ?? "", rangeStrings: [String(format:"Q%d:", selectedIndex+1)], colors: [COLOR_ORANGE], fonts: [FONT_LABEL_HEADING(size: FONT_14)], alignmentCenter: false)
+//        _ = setAttributetitleFor(view: popUpQuestionLabel, title: popUpQuestionLabel.text ?? "", rangeStrings: [String(format:"Q%d:", selectedIndex+1)], colors: [APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_HEADING(size: FONT_14)], alignmentCenter: false)
 
         
         popUpAnswerTextView.text = String(format: "%@", answer).replacingOccurrences(of: "<br>", with: "\n", options: String.CompareOptions.regularExpression, range: nil).replacingOccurrences(of: "<li>", with: "\n \u{2022} ", options: String.CompareOptions.regularExpression, range: nil).replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil).replacingOccurrences(of: "&#8226;", with: "\n \u{2022}").replacingOccurrences(of: "&quot;", with: "\"").replacingOccurrences(of: "&#34", with: "!").replacingOccurrences(of: "Yu", with: "You")
@@ -510,9 +510,9 @@ class faqCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setAppearanceFor(view: questionLabel, backgroundColor: questionLabel.backgroundColor ?? COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_14))
+        setAppearanceFor(view: questionLabel, backgroundColor: questionLabel.backgroundColor ?? COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_14))
         
-        setAppearanceFor(view: answerLabel, backgroundColor: answerLabel.backgroundColor ?? COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_13))
+        setAppearanceFor(view: answerLabel, backgroundColor: answerLabel.backgroundColor ?? COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_13))
 
     }
     

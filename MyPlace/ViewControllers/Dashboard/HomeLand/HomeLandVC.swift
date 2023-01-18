@@ -182,7 +182,7 @@ class HomeLandVC: HeaderVC {
         }else {
             if isFavoritesService {
                 
-              //  setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
+              //  setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
                 
                 loadFavoritePackagesList ()
                 
@@ -417,7 +417,7 @@ extension HomeLandVC: ChildVCDelegate {
         
         if sort {
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_results_sortFilter_button_touch)
-            setAppearanceFor(view: btnSortFilter, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnSortFilter.titleLabel!.font)
+            setAppearanceFor(view: btnSortFilter, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnSortFilter.titleLabel!.font)
             homeMapView.isHidden = true
             btnMap.setTitle("     MAP     ", for: .normal)
             searchResultsView.isHidden = false
@@ -476,7 +476,7 @@ extension HomeLandVC: ChildVCDelegate {
                 }
                 
                 if isFavoritesService {
-                   // setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
+                   // setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
                     
                     loadFavoritePackagesList ()
                     
@@ -490,7 +490,7 @@ extension HomeLandVC: ChildVCDelegate {
                     btnSortFilter.isHidden = false
 
                     
-                  //  setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
+                  //  setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: btnMyProfile.titleLabel!.font)
                     
                     if isFromHomeDesigns {
                         
@@ -626,7 +626,7 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
                                     }
                                 }
                                 
-                                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                                 
                                 self.searchResultsTable.reloadData ()
                                 
@@ -663,19 +663,19 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
                 cell.btnFavorite.isHidden = true
             }
             
-            //            setShadow(view: cell.contentView, color: COLOR_APP_GRAY, shadowRadius: 10.0)
+            //            setShadow(view: cell.contentView, color: APPCOLORS_3.GreyTextFont, shadowRadius: 10.0)
             
-            setBorder(view: cell, color: COLOR_APP_GRAY, width: 0.5)
+            setBorder(view: cell, color: APPCOLORS_3.GreyTextFont, width: 0.5)
             
             cell.homeLand = arrHomeLandMapTable[indexPath.row]
             
             if indexPath.row == arrHomeLandMapTable.count - 1 {
                 
                 cell.layer.borderWidth = 0.0
-                cell.backgroundColor = COLOR_WHITE
+                cell.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
             }else {
                 
-                cell.backgroundColor = COLOR_APP_BACKGROUND
+                cell.backgroundColor = APPCOLORS_3.Body_BG
             }
             
             
@@ -806,9 +806,9 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
                 dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourites list " + "(\(packages.count))"
             }
             
-            setAppearanceFor(view: viewHeader, backgroundColor: COLOR_APP_GRAY)
+            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.GreyTextFont)
             
-            setAppearanceFor(view: dataLabel, backgroundColor: nil, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
+            setAppearanceFor(view: dataLabel, backgroundColor: nil, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
             
             dataLabel.numberOfLines = 3
             
@@ -1147,7 +1147,7 @@ extension HomeLandVC {
                     }
                 }
                 
-                self.arrHomeLand.count == 0 ? self.searchResultsTable.setEmptyMessage("No Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                self.arrHomeLand.count == 0 ? self.searchResultsTable.setEmptyMessage("No Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                 
             }
             
@@ -1237,7 +1237,7 @@ extension HomeLandVC {
 //                    }
 //                }
 //
-//                self.arrHomeLand.count == 0 ? self.searchResultsTable.setEmptyMessage("No Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+//                self.arrHomeLand.count == 0 ? self.searchResultsTable.setEmptyMessage("No Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
 //
 //            }
 //
@@ -1348,7 +1348,7 @@ extension HomeLandVC {
                 
             }
             
-            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
 
             self.searchResultsTable.reloadData()
             
@@ -1361,7 +1361,7 @@ extension HomeLandVC {
                 
             }
             
-            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
 
             self.searchResultsTable.reloadData()
 
@@ -1400,11 +1400,11 @@ extension HomeLandVC {
             
             if self.isFavoritesService {
                 
-                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
             }else {
                 if self.mapResultsTable.isHidden {
                     
-                    self.arrHomeLand.count == 0 ? self.searchResultsTable.setEmptyMessage("No Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                    self.arrHomeLand.count == 0 ? self.searchResultsTable.setEmptyMessage("No Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                 }else {
                     
                 }

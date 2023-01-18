@@ -32,7 +32,7 @@ class YoutubeVideoPlayerVC: UIViewController, WKYTPlayerViewDelegate {
 
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = COLOR_APPTHEME
+        self.view.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
         
         addPlayer()
     }

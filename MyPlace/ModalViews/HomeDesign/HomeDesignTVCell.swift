@@ -47,30 +47,30 @@ class HomeDesignTVCell: UITableViewCell {
         super.awakeFromNib()
         
         
-        setAppearanceFor(view: lBName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: FONT_14))
+        setAppearanceFor(view: lBName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
-        setAppearanceFor(view: lBEstateName, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_LIGHT(size: FONT_12))
-        setAppearanceFor(view: lBAddress, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: FONT_12))
+        setAppearanceFor(view: lBEstateName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_12))
+        setAppearanceFor(view: lBAddress, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_LIGHT(size: FONT_12))
 
-        setAppearanceFor(view: lBDirections, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_6))
-        setAppearanceFor(view: lBPlanMyDay, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_6))
-
-        
-        setAppearanceFor(view: lBDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_BODY(size: FONT_10))
-
-        setAppearanceFor(view: lBDisplayHomeName1, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_10))
-        setAppearanceFor(view: lBDisplayHomeName2, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_10))
-        
-        setAppearanceFor(view: lBDisplayFacadeName1, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_8))
-        setAppearanceFor(view: lBDisplayFacadeName2, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+        setAppearanceFor(view: lBDirections, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_6))
+        setAppearanceFor(view: lBPlanMyDay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_6))
 
         
-        setAppearanceFor(view: lBTimings1, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_8))
-        setAppearanceFor(view: lBTimings2, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_8))
-        setAppearanceFor(view: lBTimings3, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+        setAppearanceFor(view: lBDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
+
+        setAppearanceFor(view: lBDisplayHomeName1, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBDisplayHomeName2, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
+        
+        setAppearanceFor(view: lBDisplayFacadeName1, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+        setAppearanceFor(view: lBDisplayFacadeName2, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+
+        
+        setAppearanceFor(view: lBTimings1, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+        setAppearanceFor(view: lBTimings2, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+        setAppearanceFor(view: lBTimings3, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_8))
         
         
-        let _ = setAttributetitleFor(view: lBPlanMyDay, title: "Plan MyDay", rangeStrings: ["My"], colors: [COLOR_BLACK], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_6)], alignmentCenter: false)
+        let _ = setAttributetitleFor(view: lBPlanMyDay, title: "Plan MyDay", rangeStrings: ["My"], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_6)], alignmentCenter: false)
         
         
         // Initialization code

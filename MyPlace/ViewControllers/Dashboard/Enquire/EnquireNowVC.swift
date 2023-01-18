@@ -100,9 +100,9 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     func handleUISetup () {
         
-//        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [logoFont, logoFont], alignmentCenter: false)
+//        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [logoFont, logoFont], alignmentCenter: false)
         
-        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
         
         //cardView of viewElements
         [viewEmailText,viewFirstNameText,viewLastNameText,viewPhoneText,viewWhatToBuildText, viewMessage , viewWhereWouldYouliketolive].forEach { view in
@@ -114,26 +114,20 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             }
         }
         
-        if #available(iOS 13.0, *) {
-            setAppearanceFor(view: view, backgroundColor: UIColor.systemGray6)
-        } else {
-            // Fallback on earlier versions
-            setAppearanceFor(view: view, backgroundColor: UIColor.lightGray)
-        }
-        
-        setAppearanceFor(view: emailTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: frstNameTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: phoneTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: whatToBuildTF, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
+        setAppearanceFor(view: emailTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: frstNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: phoneTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: whatToBuildTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
-        setAppearanceFor(view: textViewMessage, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: textViewPlaceholder, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: textViewMessage, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: textViewPlaceholder, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
-        setAppearanceFor(view: btnAccept, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
-        setAppearanceFor(view: btnEnquire, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnAccept, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: btnEnquire, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
         
         
 //        viewEmailText.layer.cornerRadius = radius_5
@@ -170,34 +164,34 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
            
             
             if #available(iOS 13.0, *) {
-                setAppearanceFor(view: viewWhatToBuildText, backgroundColor: .systemGray5, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-                setAppearanceFor(view: self.viewWhatToBuildText, backgroundColor: .systemGray5)
-            setAppearanceFor(view: self.viewEmailText, backgroundColor: .systemGray5)
-            setAppearanceFor(view: self.viewLastNameText, backgroundColor: .systemGray5)
-            setAppearanceFor(view: self.viewFirstNameText, backgroundColor: .systemGray5)
-            setAppearanceFor(view: self.frstNameTF, backgroundColor: .systemGray5)
-            setAppearanceFor(view: self.lastNameTF, backgroundColor: .systemGray5)
-            setAppearanceFor(view: lastNameTF, backgroundColor: .systemGray5, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-            setAppearanceFor(view: frstNameTF, backgroundColor: .systemGray5, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+                setAppearanceFor(view: viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+                setAppearanceFor(view: self.viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+            setAppearanceFor(view: self.viewEmailText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+            setAppearanceFor(view: self.viewLastNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+            setAppearanceFor(view: self.viewFirstNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+            setAppearanceFor(view: self.frstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+            setAppearanceFor(view: self.lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+            setAppearanceFor(view: lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: frstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
             
             if self.frstNameTF.text != "" {
-             setAppearanceFor(view: frstNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-             setAppearanceFor(view: viewFirstNameText, backgroundColor: .systemGray5)
+             setAppearanceFor(view: frstNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+             setAppearanceFor(view: viewFirstNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
              self.frstNameTF.isUserInteractionEnabled = false
             }else{
              self.frstNameTF.isUserInteractionEnabled = true
-             setAppearanceFor(view: frstNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-             setAppearanceFor(view: self.viewFirstNameText, backgroundColor: COLOR_WHITE)
+             setAppearanceFor(view: frstNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+             setAppearanceFor(view: self.viewFirstNameText, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
             }
             
            if self.lastNameTF.text != "" {
-            setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-            setAppearanceFor(view: viewLastNameText, backgroundColor: .systemGray5)
+            setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: viewLastNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
             self.lastNameTF.isUserInteractionEnabled = false
            }else{
             self.lastNameTF.isUserInteractionEnabled = true
-            setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-            setAppearanceFor(view: self.viewLastNameText, backgroundColor: COLOR_WHITE)
+            setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: self.viewLastNameText, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
            }
             
             } else {

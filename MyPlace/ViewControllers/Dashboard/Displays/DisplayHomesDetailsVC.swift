@@ -229,7 +229,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         }
         
         self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-        self.btnSaveDesign.backgroundColor = isFave == true ? COLOR_DARK_GRAY : COLOR_ORANGE
+        self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
 
         enquireView.isHidden = arrOnDisplay.count == 0
         
@@ -527,7 +527,7 @@ extension DisplayHomesDetailsVC{
                     self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
                     
                     self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-                    self.btnSaveDesign.backgroundColor = (self.isFave ) == true ? COLOR_DARK_GRAY : COLOR_ORANGE
+                    self.btnSaveDesign.backgroundColor = (self.isFave ) == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
                     
                     
 //                    if self.homeDesignDetails?.userID == kUserID {
@@ -671,32 +671,32 @@ extension DisplayHomesDetailsVC {
     
     func pageUISetup () {
         
-        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         
         
-        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
 
         
-        setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
-        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
-        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
         
         
-        setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_6))
-        setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_6))
+        setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
         
         
-        setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_LIGHT(size: FONT_14))
+        setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
-        setAppearanceFor(view: btnEnquire, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_16))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_16))
+        setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_16))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_16))
 
 //        lBMyPlace.text = "Interactive \nHome Tour"
 //        lBHomeLand.text = "House & Land"
         
-        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_13), FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: false)
-        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [COLOR_WHITE, COLOR_WHITE,COLOR_WHITE], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_17), FONT_LABEL_BODY(size: FONT_17),FONT_LABEL_SUB_HEADING(size: FONT_17)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG,APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_16),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
         
         
         lBLot.text = "LOT\nWIDTH"
@@ -704,11 +704,11 @@ extension DisplayHomesDetailsVC {
         if let superview = lBLot.superview {
             
             superview.layer.cornerRadius = (superview.frame.size.height)/2
-            //            setShadow(view: superview, color: COLOR_LIGHT_GRAY, shadowRadius: 8)
-            setBorder(view: superview, color: COLOR_APP_GRAY, width: 0.5)
+            //            setShadow(view: superview, color: APPCOLORS_3.LightGreyDisabled_BG, shadowRadius: 8)
+            setBorder(view: superview, color: APPCOLORS_3.GreyTextFont, width: 0.5)
             
-            setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: 6))
-            setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: 10))
+            setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: 6))
+            setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: 10))
             
         }
         

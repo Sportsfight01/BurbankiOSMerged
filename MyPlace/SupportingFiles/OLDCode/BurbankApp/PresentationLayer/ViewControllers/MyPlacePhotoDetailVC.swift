@@ -35,10 +35,10 @@ class MyPlacePhotoDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDeleg
     {
         super.viewDidLoad()
         
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
 
-        setAppearanceFor(view: dateAndMonthLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
-        setAppearanceFor(view: yearLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
+        setAppearanceFor(view: dateAndMonthLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
+        setAppearanceFor(view: yearLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
 
         
         //print(photosInfo?.year,photosInfo?.myPlacePhotos[0].dateCreated)
@@ -407,8 +407,8 @@ class MyPlacePhotoDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDeleg
             
             addNotesButton.layer.cornerRadius = addNotesButton.frame.size.height/2
 
-            setAppearanceFor(view: addNotesButton, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-            setBorder(view: addNotesButton, color: COLOR_ORANGE, width: 1.0)
+            setAppearanceFor(view: addNotesButton, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+            setBorder(view: addNotesButton, color: APPCOLORS_3.Orange_BG, width: 1.0)
             
             favButton.setImage(UIImage.init(named: "Ico-favorite-Orange"), for: .normal)
             favButton.setImage(UIImage.init(named: "Ico-favorite-Select"), for: .selected)

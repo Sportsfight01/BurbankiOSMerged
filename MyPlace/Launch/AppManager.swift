@@ -202,7 +202,7 @@ func playVideoIn (_ VC: UIViewController, _ url: String) {
             let playerAV = AVPlayer(url: URLa)
             let playerViewController = AVPlayerViewController()
             playerViewController.player = playerAV
-            playerViewController.view.backgroundColor = COLOR_WHITE
+            playerViewController.view.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
             VC.present(playerViewController, animated: true) {
                 playerViewController.player!.play()
             }

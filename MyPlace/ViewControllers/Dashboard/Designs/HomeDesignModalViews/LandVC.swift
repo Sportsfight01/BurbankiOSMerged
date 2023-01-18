@@ -42,11 +42,11 @@ class LandVC: HomeDesignModalHeaderVC {
     
     func landViewSetUp () {
         
-        setAppearanceFor(view: land_lBAnswer, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_18))
-        setAppearanceFor(view: land_lBLand, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: land_lBAnswer, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_18))
+        setAppearanceFor(view: land_lBLand, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_19))
         
-        setAppearanceFor(view: land_lBYes, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
-        setAppearanceFor(view: land_lBNo, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: land_lBYes, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: land_lBNo, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
         
         land_lBYes.superview?.layer.cornerRadius = radius_5
         land_lBNo.superview?.layer.cornerRadius = radius_5

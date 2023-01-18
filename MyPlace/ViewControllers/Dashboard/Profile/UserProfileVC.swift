@@ -114,7 +114,7 @@ class UserProfileVC: UIViewController {
         self.tableProfile.tableFooterView = UIView(frame: .zero)
         
         
-        setShadowatBottom(view: profileViewBorder, color: COLOR_BLACK, shadowRadius: 5.0)
+        setShadowatBottom(view: profileViewBorder, color: APPCOLORS_3.Black_BG, shadowRadius: 5.0)
         
         
         tableProfile.backgroundColor = AppColors.white
@@ -195,7 +195,7 @@ class UserProfileVC: UIViewController {
         profileHeaderView.backgroundColor = AppColors.white
         
         
-        labelLine.backgroundColor = COLOR_APP_BACKGROUND
+        labelLine.backgroundColor = APPCOLORS_3.Body_BG
         profileHeaderView.addSubview(labelLine)
         
         labelLine.isHidden = true
@@ -206,7 +206,7 @@ class UserProfileVC: UIViewController {
         btnProfileImage.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
         
         
-        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [FONT_LABEL_BODY(size: FONT_30), FONT_LABEL_SUB_HEADING(size: FONT_30)], alignmentCenter: false)
+        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_30), FONT_LABEL_SUB_HEADING(size: FONT_30)], alignmentCenter: false)
         profileHeaderView.addSubview(logoLabelProfile)
         
         
@@ -584,7 +584,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHomeDesignTVCell", for: indexPath) as! ProfileHomeDesignTVCell
                 
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-                cell.icon.tintColor = .black
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
                 //                if displayFavorites.count
@@ -682,7 +682,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             else if name == nameFavourites{
              let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
             cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-                cell.icon.tintColor = .gray
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
             cell.lBTitle.text = arrNames[indexPath.row]
             return cell
            }
@@ -692,7 +692,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
         
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        cell.icon.tintColor = .black
+        cell.icon.tintColor = APPCOLORS_3.GreyTextFont
         cell.lBTitle.text = arrNames[indexPath.row]
         
         
@@ -1482,9 +1482,9 @@ class ProfileTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: FONT_12))
+        setAppearanceFor(view: lBCount, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBLine, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_LIGHT(size: FONT_12))
         
         
         lBCount.layer.cornerRadius = lBCount.frame.size.height/2
@@ -1494,10 +1494,10 @@ class ProfileTVCell: UITableViewCell {
         lBCount.text = "0"
         lBCount.textColor = .white
         
-        icon.tintColor = COLOR_GRAY
-        lBCount.backgroundColor = AppColors.black
+        icon.tintColor = APPCOLORS_3.GreyTextFont
+        lBCount.backgroundColor = APPCOLORS_3.GreyTextFont
         btnArrow.setImage(UIImage(named: "Ico-DownArrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        btnArrow.tintColor = .lightGray
+        btnArrow.tintColor = APPCOLORS_3.GreyTextFont
         btnArrow.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
     
         

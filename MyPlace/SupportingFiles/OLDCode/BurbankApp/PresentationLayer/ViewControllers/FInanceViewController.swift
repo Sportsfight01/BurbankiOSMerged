@@ -39,7 +39,7 @@ class FInanceViewController: BurbankAppVC/*MyPlaceWithTabBarVC*/, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = setAttributetitleFor(view: titleLabel, title: "Finance", rangeStrings: ["Finance"], colors: [COLOR_BLACK], fonts: [FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: "Finance", rangeStrings: ["Finance"], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
 
         
         appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -88,12 +88,12 @@ class FInanceViewController: BurbankAppVC/*MyPlaceWithTabBarVC*/, UITableViewDat
         }
         
         
-        setAppearanceFor(view: jobNumberLabelHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_13))
-        setAppearanceFor(view: jobNumberLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
+        setAppearanceFor(view: jobNumberLabelHeading, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_13))
+        setAppearanceFor(view: jobNumberLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
 
         
-        setAppearanceFor(view: priceLabelHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_13))
-        setAppearanceFor(view: priceLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
+        setAppearanceFor(view: priceLabelHeading, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_13))
+        setAppearanceFor(view: priceLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
         
     }
     

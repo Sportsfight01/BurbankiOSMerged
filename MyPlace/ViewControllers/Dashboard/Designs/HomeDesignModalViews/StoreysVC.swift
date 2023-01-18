@@ -248,14 +248,14 @@ class StoreysCell: UICollectionViewCell {
         }
         
         if selectedStorey == true {
-            labelStorey.textColor = COLOR_WHITE
+            labelStorey.textColor = APPCOLORS_3.HeaderFooter_white_BG
             labelStorey.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         }else {
             
                 iconStorey.image?.withRenderingMode(.alwaysTemplate)
                 iconStorey.tintColor = APPCOLORS_3.GreyTextFont
             labelStorey.textColor = APPCOLORS_3.GreyTextFont
-            labelStorey.superview?.backgroundColor = COLOR_WHITE
+            labelStorey.superview?.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
         }
         
     }

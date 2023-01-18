@@ -59,38 +59,38 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBCount, backgroundColor: APPCOLORS_3.GreyTextFont, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBLine, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: lBName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-//        setAppearanceFor(view: lbLastName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: lBEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: lBPhone, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        //setAppearanceFor(view: lBShare, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+//        setAppearanceFor(view: lbLastName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBPhone, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        //setAppearanceFor(view: lBShare, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         
         if let lbprofileImageee = lBProfileImage {
-            setAppearanceFor(view: lbprofileImageee, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+            setAppearanceFor(view: lbprofileImageee, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         }
         
-        setAppearanceFor(view: txtName, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
-//        setAppearanceFor(view: txtLastName, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
-        setAppearanceFor(view: txtEmail, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
-        setAppearanceFor(view: txtPhone, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
-       // setAppearanceFor(view: txtShare, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
+        setAppearanceFor(view: txtName, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
+//        setAppearanceFor(view: txtLastName, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
+        setAppearanceFor(view: txtEmail, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
+        setAppearanceFor(view: txtPhone, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
+       // setAppearanceFor(view: txtShare, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
 
         if let btnUploaddd = btnUpload {
-            setAppearanceFor(view: btnUploaddd, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
+            setAppearanceFor(view: btnUploaddd, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
         }
         if let btnSelecttt = btnSelect {
-            setAppearanceFor(view: btnSelecttt, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
+            setAppearanceFor(view: btnSelecttt, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
         }
         
         
-        setAppearanceFor(view: btnUpdate, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnUpdate, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
         
-        setBorder(view: btnUpdate, color: COLOR_WHITE, width: 0.5)
+        setBorder(view: btnUpdate, color: APPCOLORS_3.HeaderFooter_white_BG, width: 0.5)
         
         txtName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
 //        txtLastName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))

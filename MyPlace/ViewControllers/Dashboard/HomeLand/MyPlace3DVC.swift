@@ -63,7 +63,7 @@ class MyPlace3DVC: UIViewController,UINavigationControllerDelegate {
         
         //MARK: Changed text myPlace3D to HomeX
         
-        _ = setAttributetitleFor(view: titleLabel, title: "HomeX", rangeStrings: ["Home", "X"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [logoFont, logoFont], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: "HomeX", rangeStrings: ["Home", "X"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [logoFont, logoFont], alignmentCenter: false)
         
         labelPortrait.text = "ROTATE YOUR \nPHONE TO ENTER"
         setAppearanceFor(view: labelPortrait, backgroundColor: .clear, textColor: .white, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))

@@ -551,7 +551,7 @@ public struct ToastStyle {
      The background color. Default is `.black` at 80% opacity.
     */
     //public var backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.8)
-    public var backgroundColor: UIColor = UIColor.hexCode("231f20").withAlphaComponent(0.8) // COLOR_WHITE //COLOR_ORANGE
+    public var backgroundColor: UIColor = UIColor.hexCode("231f20").withAlphaComponent(0.8) // APPCOLORS_3.HeaderFooter_white_BG //APPCOLORS_3.Orange_BG
 
     /**
      The title color. Default is `UIColor.whiteColor()`.

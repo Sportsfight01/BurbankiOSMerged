@@ -36,21 +36,21 @@ class MasterBedroomVC: HomeDesignModalHeaderVC {
     
     func bedroomFrontViewSetUp () {
         
-        setAppearanceFor(view: bedroomFront_lBBedroomFront, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: bedroomFront_lBBedroomFront, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         bedroomFront_btnMust.layer.cornerRadius = radius_5
         bedroomFront_btnDont.layer.cornerRadius = radius_5
         bedroomFront_btnDont_want_this.layer.cornerRadius = radius_5
         
-        setAppearanceFor(view: bedroomFront_btnMust, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: bedroomFront_btnDont_want_this, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: bedroomFront_btnDont, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: bedroomFront_btnMust, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: bedroomFront_btnDont_want_this, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: bedroomFront_btnDont, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
         
-//        setBorder(view: bedroomFront_btnMust, color: COLOR_ORANGE, width: 1.0)
-//        setBorder(view: bedroomFront_btnDont, color: COLOR_ORANGE, width: 1.0)
-//        setBorder(view: bedroomFront_btnDont_want_this, color: COLOR_ORANGE, width: 1.0)
+//        setBorder(view: bedroomFront_btnMust, color: APPCOLORS_3.Orange_BG, width: 1.0)
+//        setBorder(view: bedroomFront_btnDont, color: APPCOLORS_3.Orange_BG, width: 1.0)
+//        setBorder(view: bedroomFront_btnDont_want_this, color: APPCOLORS_3.Orange_BG, width: 1.0)
         
         if isDo_not_want_this_ENABLED{
             bedroomFront_btnDont_want_this.isHidden = false
@@ -70,15 +70,15 @@ class MasterBedroomVC: HomeDesignModalHeaderVC {
         
         if homeDesignFeature?.selectedAnswer == DesignAnswer.must.rawValue {
             
-            setAppearanceFor(view: bedroomFront_btnMust, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: bedroomFront_btnMust, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         else if homeDesignFeature?.selectedAnswer == DesignAnswer.donotwantthis.rawValue {
 
-            setAppearanceFor(view: bedroomFront_btnDont_want_this, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: bedroomFront_btnDont_want_this, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         else {
             
-            setAppearanceFor(view: bedroomFront_btnDont, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: bedroomFront_btnDont, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         
     }

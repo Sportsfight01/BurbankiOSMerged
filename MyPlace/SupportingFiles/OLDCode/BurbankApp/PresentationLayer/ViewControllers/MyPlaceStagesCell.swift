@@ -18,7 +18,7 @@ class MyPlaceStagesCell: BurbankAppCVCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setAppearanceFor(view: nameLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_13))
+        setAppearanceFor(view: nameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_13))
         
         
 //        stagesProgressView.valueFontSize = 32
@@ -28,7 +28,7 @@ class MyPlaceStagesCell: BurbankAppCVCell {
         stagesProgressView.unitFontName = FONT_LABEL_HEADING().fontName
         
         
-        setAppearanceFor(view: breakDown, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_11))
+        setAppearanceFor(view: breakDown, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_11))
         
     }
     
@@ -44,8 +44,8 @@ class MainProgressCell: UICollectionViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setAppearanceFor(view: newHome, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: onItsWay, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: newHome, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: onItsWay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_11))
         
         
 //        mainProgressView.valueFontSize = 55

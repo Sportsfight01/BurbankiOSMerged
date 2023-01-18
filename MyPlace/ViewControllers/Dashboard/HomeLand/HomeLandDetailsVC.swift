@@ -206,7 +206,7 @@ class HomeLandDetailsVC: HeaderVC {
         }
         
         self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-        self.btnSaveDesign.backgroundColor = self.homeLand?.isFav == true ? COLOR_DARK_GRAY : COLOR_ORANGE
+        self.btnSaveDesign.backgroundColor = self.homeLand?.isFav == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
         
                     
         self.lBEstateFacadeName.text = self.homeLand?.estateName ?? ""
@@ -371,33 +371,34 @@ extension HomeLandDetailsVC {
     
     func pageUISetup () {
     
-        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
+        self.view.backgroundColor = APPCOLORS_3.Body_BG
+        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
         
-        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_10))
-        setAppearanceFor(view: lBAddress, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_10))
+        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_10))
+        setAppearanceFor(view: lBAddress, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_10))
 
         
-        setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
-       setAppearanceFor(view: lBLinePrice, backgroundColor: COLOR_ORANGE, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_10))
+        setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
+       setAppearanceFor(view: lBLinePrice, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_10))
 
         
-        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
-        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
-        setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
         
         
-        setAppearanceFor(view: lBLandSize, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: 10)) //(size: 6))
-//        setAppearanceFor(view: lBLandSize_size, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: 8))g
+        setAppearanceFor(view: lBLandSize, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: 10)) //(size: 6))
+//        setAppearanceFor(view: lBLandSize_size, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_LIGHT(size: 8))g
 //
-//        setAppearanceFor(view: lBLineSize, backgroundColor: COLOR_APP_GRAY, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_10))
+//        setAppearanceFor(view: lBLineSize, backgroundColor: APPCOLORS_3.GreyTextFont, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_10))
 
 
-        setAppearanceFor(view: lBEstateFacadeName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: FONT_8))
-        setAppearanceFor(view: lBEstateAddress, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+        setAppearanceFor(view: lBEstateFacadeName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_LIGHT(size: FONT_8))
+        setAppearanceFor(view: lBEstateAddress, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_LIGHT(size: FONT_8))
 
 
-        setAppearanceFor(view: btnEnquire, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY (size: FONT_14))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY (size: FONT_14))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
     }
     

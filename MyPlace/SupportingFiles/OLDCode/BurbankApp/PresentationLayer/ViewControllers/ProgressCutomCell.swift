@@ -21,10 +21,10 @@ class ProgressCutomCell: BurbankTVCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
+        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
 
-        setAppearanceFor(view: dateLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_10))
-        setAppearanceFor(view: statusLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_BODY(size: FONT_8))
+        setAppearanceFor(view: dateLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: statusLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_8))
 
         
     }
@@ -82,7 +82,7 @@ class DetailProgressValueCell: BurbankTVCell
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: completedLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_16))
+        setAppearanceFor(view: completedLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_16))
         
     }
     

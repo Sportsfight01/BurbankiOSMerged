@@ -46,12 +46,12 @@ class MyPhotosNotesVC: UIViewController {
     
     func viewSetUp () {
         
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
 
-        setAppearanceFor(view: noteTextView, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_BUTTON_BODY(size: FONT_13))
+        setAppearanceFor(view: noteTextView, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_BODY(size: FONT_13))
 
-        setAppearanceFor(view: btnCancel, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: btnAdd, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnCancel, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnAdd, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
     }
     

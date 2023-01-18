@@ -294,7 +294,7 @@ extension DisplaysRegionsMapDetailVC: UITableViewDelegate, UITableViewDataSource
                                        }
                                    }
 
-//                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+//                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
 //
 //                                   self.searchResultsTable.reloadData ()
 

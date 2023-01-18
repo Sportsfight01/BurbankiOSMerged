@@ -336,7 +336,7 @@ class MyPlaceHomeVC: UIViewController {
         btnState.setTitle(region, for: .normal)
         
         //        btnState.superview?.layer.cornerRadius = (btnState.superview?.frame.size.height)!/2 //radius_3
-        //        setBorder(view: btnState.superview!, color: COLOR_WHITE, width: 1)
+        //        setBorder(view: btnState.superview!, color: APPCOLORS_3.HeaderFooter_white_BG, width: 1)
     }
     
     

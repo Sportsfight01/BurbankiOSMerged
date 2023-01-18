@@ -112,7 +112,7 @@ extension UIViewController {
         
     }
     
-    func addGradientLayer(colors : [CGColor]? = [AppColors.appGray.cgColor , COLOR_WHITE.cgColor])
+    func addGradientLayer(colors : [CGColor]? = [AppColors.appGray.cgColor , APPCOLORS_3.HeaderFooter_white_BG.cgColor])
     {
         
         let gradientLayer = CAGradientLayer()

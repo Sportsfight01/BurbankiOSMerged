@@ -187,27 +187,27 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.mobileNumberTF.text = appDelegate.userData?.user?.userPhone ?? ""
         
         if self.lastNameTF.text != "" {
-         setAppearanceFor(view: lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
          self.lastNameTF.isUserInteractionEnabled = false
         }else{
          self.lastNameTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
         
         if self.firstNameTF.text != "" {
-            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
          self.firstNameTF.isUserInteractionEnabled = false
         }else{
          self.firstNameTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: firstNameTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: firstNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
         
         if self.emailTF.text != "" {
-         setAppearanceFor(view: emailTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: emailTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
          self.emailTF.isUserInteractionEnabled = false
         }else{
          self.emailTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: emailTF, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: emailTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
         
     }
@@ -385,9 +385,9 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
 //        middleOftheBTN.backgroundColor = .white
 //        mrngBTN.backgroundColor = .white
 //        afternoonBTN.backgroundColor = .white
-//        middleOftheBTN.setTitleColor(COLOR_ORANGE, for: .normal)
-//        mrngBTN.setTitleColor(COLOR_ORANGE, for: .normal)
-//        afternoonBTN.setTitleColor(COLOR_ORANGE, for: .normal)
+//        middleOftheBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
+//        mrngBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
+//        afternoonBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
                 
         
         self.chooseDateAndTimeCard.isHidden = true

@@ -29,7 +29,7 @@ class MyPlaceDocumentVC: BurbankAppVC/*MyPlaceWithTabBarVC*/, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
 
         
         let user = appDelegate.currentUser

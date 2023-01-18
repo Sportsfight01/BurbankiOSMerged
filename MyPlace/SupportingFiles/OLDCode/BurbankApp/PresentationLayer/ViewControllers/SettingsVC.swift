@@ -69,15 +69,15 @@ class SettingsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UII
     //MARK: - View
     func viewSetUp () {
      
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
 
-        setAppearanceFor(view: btnSave, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: btnSave, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
         
-        setAppearanceFor(view: profileHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_HEADING(size: FONT_14))
+        setAppearanceFor(view: profileHeading, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_HEADING(size: FONT_14))
 
-        setAppearanceFor(view: usernameLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
-        setAppearanceFor(view: emailLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
-        setAppearanceFor(view: resetPasswordLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: usernameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: emailLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: resetPasswordLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_12))
         
     }
     
@@ -222,7 +222,7 @@ class SettingsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UII
             }
             cell.nextButton.setImage(nil, for: .normal)
             //cell.nextButton.setTitleColor(UIColor.lightGray, for: .normal)
-            setAppearanceFor(view: cell.nextButton, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+            setAppearanceFor(view: cell.nextButton, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
 
         }
         
@@ -251,14 +251,14 @@ class SettingsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UII
             cell.nameLabel.textAlignment = .center
             cell.nextButton.isHidden = true
             
-            setAppearanceFor(view: cell.nameLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_HEADING(size: FONT_15))
+            setAppearanceFor(view: cell.nameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_HEADING(size: FONT_15))
 
         }else {
             
             cell.nameLabel.textAlignment = .left
             cell.nextButton.isHidden = false
             
-            setAppearanceFor(view: cell.nameLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
+            setAppearanceFor(view: cell.nameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_12))
         }
         
 
@@ -384,7 +384,7 @@ class SettingsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UII
         }
         
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
-        header.backgroundColor = COLOR_ORANGE
+        header.backgroundColor = APPCOLORS_3.Orange_BG
 
         let headersub = UIView(frame: CGRect(x: 0, y: 10, width: tableView.frame.size.width, height: header.frame.size.height-10))
         header.addSubview(headersub)
@@ -393,12 +393,12 @@ class SettingsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UII
         headersub.addSubview(label)
         label.text = "\(self.sectionTitles[section])"
 
-        setAppearanceFor(view: label, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_HEADING(size: FONT_15))
+        setAppearanceFor(view: label, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_HEADING(size: FONT_15))
         
         if section == 2 {
             headersub.backgroundColor = COLOR_CLEAR
         }else {
-            headersub.backgroundColor = COLOR_WHITE
+            headersub.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
         }
 
         let shape = CAShapeLayer()

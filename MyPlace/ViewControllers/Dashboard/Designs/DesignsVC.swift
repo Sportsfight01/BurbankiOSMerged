@@ -112,7 +112,7 @@ class DesignsVC: HeaderVC {
         }
         
         if isFavorites {
-//            setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
+//            setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
             getFavoriteDesigns()
         }
         
@@ -235,7 +235,7 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
                                 
                             }
                             
-                            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Designs found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Designs found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                             
                             
                             self.searchResultsTable.reloadData ()
@@ -331,9 +331,9 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
                 dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourites list " + "(\(packages.count))"
             }
             
-            setAppearanceFor(view: viewHeader, backgroundColor: COLOR_APP_GRAY)
+            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.GreyTextFont)
             
-            setAppearanceFor(view: dataLabel, backgroundColor: nil, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
+            setAppearanceFor(view: dataLabel, backgroundColor: nil, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
             
             dataLabel.numberOfLines = 3
             
@@ -352,8 +352,8 @@ extension DesignsVC: ChildVCDelegate {
     func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset : Bool) {
         
         if sort {
-            btnSortFilter.backgroundColor = COLOR_WHITE
-            btnSortFilter.setTitleColor(COLOR_ORANGE, for: .normal)
+            btnSortFilter.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
+            btnSortFilter.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
         }
         
         if map {
@@ -400,13 +400,13 @@ extension DesignsVC: ChildVCDelegate {
                 
                 if isFavorites {
                     
-                  //  setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: btnMyProfile.titleLabel!.font)
+                  //  setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
                     
                     getFavoriteDesigns()
                     
                 }else {
                     
-                   // setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: btnMyProfile.titleLabel!.font)
+                   // setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: btnMyProfile.titleLabel!.font)
                         getCollectionDesigns (selectedFeatures ?? [])
                     self.searchResultsTable.isScrollEnabled = true
                 }
@@ -503,7 +503,7 @@ extension DesignsVC {
                 
             }
             
-            self.arrHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Designs found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Designs found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
             
             self.searchResultsTable.reloadData()
             
@@ -512,7 +512,7 @@ extension DesignsVC {
             if isJsonError { }
             else { }
             
-            self.arrHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Designs found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Designs found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
             
             self.searchResultsTable.reloadData()
             
@@ -645,7 +645,7 @@ extension DesignsVC {
                 
             }
             
-            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Designs found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Designs found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
             
             self.searchResultsTable.reloadData()
             self.searchResultsTable.isScrollEnabled = true

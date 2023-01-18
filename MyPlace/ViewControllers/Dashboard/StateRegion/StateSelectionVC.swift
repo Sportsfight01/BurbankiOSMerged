@@ -129,8 +129,8 @@ extension StateSelectionVC: UITableViewDelegate, UITableViewDataSource {
         
         if stateSelected.stateId == state.stateId {
             
-            cell.viewS.backgroundColor = COLOR_ORANGE
-            cell.lBTitle.textColor = COLOR_WHITE
+            cell.viewS.backgroundColor = APPCOLORS_3.Orange_BG
+            cell.lBTitle.textColor = APPCOLORS_3.HeaderFooter_white_BG
         }else {
             cell.viewS.backgroundColor = COLOR_CLEAR
             cell.lBTitle.textColor = APPCOLORS_3.Black_BG
@@ -180,12 +180,12 @@ class StateSelection: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         
 //        viewS.layer.cornerRadius = radius_3
       //  viewS.clipsToBounds = true
        
-       // setBorder(view: viewS, color: COLOR_ORANGE, width: 1.0)
+       // setBorder(view: viewS, color: APPCOLORS_3.Orange_BG, width: 1.0)
         
     }
     

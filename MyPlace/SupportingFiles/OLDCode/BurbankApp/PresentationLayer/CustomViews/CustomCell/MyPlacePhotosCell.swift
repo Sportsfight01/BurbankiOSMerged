@@ -41,8 +41,8 @@ class MyPlacePhotosCVCell: UICollectionViewCell,UICollectionViewDataSource,UICol
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setAppearanceFor(view: dateLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_32))
-        setAppearanceFor(view: monthAndYearLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: dateLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_32))
+        setAppearanceFor(view: monthAndYearLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
     }
     
     

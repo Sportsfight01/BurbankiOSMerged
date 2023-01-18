@@ -133,23 +133,23 @@ class HeaderVC: UIViewController {
             
             
 //            if self.headerLogoText!.contains("My") {
-//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["My"], colors: [COLOR_BLACK], fonts: [logoFont], alignmentCenter: false)
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["My"], colors: [APPCOLORS_3.Black_BG], fonts: [logoFont], alignmentCenter: false)
 //            } else if  self.headerLogoText!.contains("Displays") {
-//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Displays"], colors: [COLOR_BLACK], fonts: [logoFont], alignmentCenter: false)
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Displays"], colors: [APPCOLORS_3.Black_BG], fonts: [logoFont], alignmentCenter: false)
 //            }
 //            else if  self.headerLogoText!.contains("Home") {
-//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Home"], colors: [COLOR_BLACK], fonts: [logoFontRegular], alignmentCenter: false)
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Home"], colors: [APPCOLORS_3.Black_BG], fonts: [logoFontRegular], alignmentCenter: false)
 //            }
 //            else if  self.headerLogoText!.contains("Designs") {
-//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Designs"], colors: [COLOR_BLACK], fonts: [logoFontSubHedding], alignmentCenter: false)
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: ["Designs"], colors: [APPCOLORS_3.Black_BG], fonts: [logoFontSubHedding], alignmentCenter: false)
 //            }
 //            else{
-//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: COLOR_WHITE, textFont: logoFont)
-//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: [""], colors: [COLOR_WHITE], fonts: [logoFont], alignmentCenter: false)
+//                setAppearanceFor(view: logoLabel, backgroundColor: logoLabel.backgroundColor!, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: logoFont)
+//                let _ = setAttributetitleFor(view: logoLabel, title: self.headerLogoText!, rangeStrings: [""], colors: [APPCOLORS_3.HeaderFooter_white_BG], fonts: [logoFont], alignmentCenter: false)
 //            }
         }
     }
@@ -302,7 +302,7 @@ class HeaderVC: UIViewController {
      func addHeaderView () {
         
          headerView_header.backgroundColor = AppColors.white
-        //headerView_header.tintColor = COLOR_ORANGE
+        //headerView_header.tintColor = APPCOLORS_3.Orange_BG
         
         headerView_header.translatesAutoresizingMaskIntoConstraints = false
         
@@ -417,7 +417,7 @@ class HeaderVC: UIViewController {
     
     private func addHeaderViewOptions () {
         
-        labelLine.backgroundColor = COLOR_APP_BACKGROUND
+        labelLine.backgroundColor = APPCOLORS_3.Body_BG
         headerView_header.addSubview(labelLine)
         
         
@@ -724,7 +724,7 @@ extension HeaderVC {
                 
             } else {
                 
-                setAppearanceFor(view: btnSortFilter, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_12))
+                setAppearanceFor(view: btnSortFilter, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_12))
                 containerViewSortFilter!.isHidden = true
             }
         }
@@ -911,7 +911,7 @@ extension HeaderVC {
         optionsView.addSubview(btnHowWorks)
         
         btnHowWorks.setTitle("  HOW DOES IT WORK  ", for: .normal)
-        setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnHowWorks.addTarget(self, action: #selector(handleHowWorksAction), for: .touchUpInside)
     }
     
@@ -921,7 +921,7 @@ extension HeaderVC {
         optionsView.addSubview(btnSortFilter)
         
         btnSortFilter.setTitle("  SORT / FILTER  ", for: .normal)
-        setAppearanceFor(view: btnSortFilter, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnSortFilter, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
     
@@ -930,7 +930,7 @@ extension HeaderVC {
         optionsView.addSubview(btnReset)
         
         btnReset.setTitle("    RESET    ", for: .normal)
-        setAppearanceFor(view: btnReset, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnReset, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnReset.addTarget(self, action: #selector(handleResetAction), for: .touchUpInside)
     }
     
@@ -939,7 +939,7 @@ extension HeaderVC {
         optionsView.addSubview(btnTotalCollectionCount)
         
         btnTotalCollectionCount.setTitle("    TOTAL DESIGNS    ", for: .normal)
-        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: APPCOLORS_3.DarkGrey_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: APPCOLORS_3.DarkGrey_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         //btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
 
@@ -950,7 +950,7 @@ extension HeaderVC {
         optionsView.addSubview(btnMap)
         
         btnMap.setTitle("     MAP     ", for: .normal)
-        setAppearanceFor(view: btnMap, backgroundColor: AppColors.appOrange, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnMap, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnMap.addTarget(self, action: #selector(handleMapAction), for: .touchUpInside)
     }
     
@@ -962,7 +962,7 @@ extension HeaderVC {
         //userID == 0 means guest user so we are disabling myprofile button and chaging background color
         let MyProfilebckColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.6) : AppColors.appOrange
       //  btnMyProfile.isUserInteractionEnabled = kUserID == "0" ? false : true
-        setAppearanceFor(view: btnMyProfile, backgroundColor: MyProfilebckColor, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_11))
+        setAppearanceFor(view: btnMyProfile, backgroundColor: MyProfilebckColor, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_11))
         btnMyProfile.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
     }
     
@@ -971,7 +971,7 @@ extension HeaderVC {
         if let str = btnHowWorks.title(for: .normal) {
             if str != "" {
 
-                setBorder(view: btnHowWorks, color: COLOR_APP_BACKGROUND, width: 0.5)
+                setBorder(view: btnHowWorks, color: APPCOLORS_3.Body_BG, width: 0.5)
                 btnHowWorks.layer.cornerRadius = 5.0
                 btnHowWorks.clipsToBounds = true
             }
@@ -981,7 +981,7 @@ extension HeaderVC {
         if let str = btnSortFilter.title(for: .normal) {
             if str != "" {
 
-                setBorder(view: btnSortFilter, color: COLOR_APP_BACKGROUND, width: 0.5)
+                setBorder(view: btnSortFilter, color: APPCOLORS_3.Body_BG, width: 0.5)
                 btnSortFilter.layer.cornerRadius = 5.0
             }
         }
@@ -994,21 +994,21 @@ extension HeaderVC {
                     
                 }
                                 
-                setBorder(view: btnMap, color: COLOR_APP_BACKGROUND, width: 0.5)
+                setBorder(view: btnMap, color: APPCOLORS_3.Body_BG, width: 0.5)
                 btnMap.layer.cornerRadius = 5.0
             }
         }
         if let str = btnReset.title(for: .normal) {
             if str != "" {
 
-                setBorder(view: btnReset, color: COLOR_APP_BACKGROUND, width: 0.5)
+                setBorder(view: btnReset, color: APPCOLORS_3.Body_BG, width: 0.5)
                 btnReset.layer.cornerRadius = 5.0
             }
         }
         if let str = btnTotalCollectionCount.title(for: .normal) {
             if str != "" {
 
-                setBorder(view: btnTotalCollectionCount, color: COLOR_APP_BACKGROUND, width: 0.5)
+                setBorder(view: btnTotalCollectionCount, color: APPCOLORS_3.Body_BG, width: 0.5)
                 btnTotalCollectionCount.layer.cornerRadius = 5.0
             }
         }
@@ -1016,7 +1016,7 @@ extension HeaderVC {
         if let str = btnMyProfile.title(for: .normal) {
             if str != "" {
                 
-                //setBorder(view: btnMyProfile, color: COLOR_APP_BACKGROUND, width: 0.5)
+                //setBorder(view: btnMyProfile, color: APPCOLORS_3.Body_BG, width: 0.5)
                 let MyProfilebckColor = kUserID == "0" ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
                 btnMyProfile.backgroundColor = MyProfilebckColor
                 btnMyProfile.layer.cornerRadius = 5.0
@@ -1058,7 +1058,7 @@ extension HeaderVC {
 
             showSortFilterView()
             
-            setAppearanceFor(view: btnSortFilter, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_BODY(size: FONT_12))
+            setAppearanceFor(view: btnSortFilter, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_BODY(size: FONT_12))
         }else {
             
             hideSortFilterView()

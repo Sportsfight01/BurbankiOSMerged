@@ -22,7 +22,7 @@ class AboutBurbankVC: BurbankAppVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setAppearanceFor(view: headerLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: headerLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
 
         
         privacyPolicyWebview.isHidden = true
@@ -71,7 +71,7 @@ class AboutBurbankVC: BurbankAppVC {
             let attr = NSMutableAttributedString(string: str as String)
 
             attr.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.white, .font: FONT_LABEL_SUB_HEADING(size: FONT_14)], range: str.range(of: rangeStr))
-            attr.addAttributes([NSAttributedString.Key.foregroundColor: COLOR_BLACK, .font: FONT_LABEL_BODY (size: FONT_12)], range: str.range(of: rangeStr2))
+            attr.addAttributes([NSAttributedString.Key.foregroundColor: APPCOLORS_3.Black_BG, .font: FONT_LABEL_BODY (size: FONT_12)], range: str.range(of: rangeStr2))
 
             textView.attributedText = attr
             

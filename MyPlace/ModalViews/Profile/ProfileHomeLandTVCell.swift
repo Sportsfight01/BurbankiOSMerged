@@ -83,36 +83,36 @@ class ProfileHomeLandTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBCount, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBLine, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
 
         
-        setAppearanceFor(view: btnSavedDesigns, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: btnSavedDesigns, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
-        setAppearanceFor(view: lBRecentSearch, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: lBRegion, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
-        setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
-        
-        
-        setAppearanceFor(view: lBNameHouse, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: lBNameBedRoom, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: lBNameParking, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: lBNameBathroom, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBRecentSearch, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: lBRegion, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
+        setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
         
         
-        setAppearanceFor(view: btnSearch, backgroundColor: COLOR_ORANGE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBNameHouse, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBNameBedRoom, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBNameParking, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lBNameBathroom, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        
+        
+        setAppearanceFor(view: btnSearch, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_HEADING(size: FONT_10))
         
 
         let price1 = "$0K"
         let price2 = "$1K"
 
-        _ = setAttributetitleFor(view: lBPriceRange, title: "Price Range \(price1) to \(price2)", rangeStrings: ["Price Range", "\(price1) to \(price2)"], colors: [COLOR_ORANGE, COLOR_DARK_GRAY], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_12), FONT_LABEL_SUB_HEADING (size: FONT_12)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBPriceRange, title: "Price Range \(price1) to \(price2)", rangeStrings: ["Price Range", "\(price1) to \(price2)"], colors: [APPCOLORS_3.Orange_BG, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_12), FONT_LABEL_SUB_HEADING (size: FONT_12)], alignmentCenter: false)
 
         
         let region = "North"
         
-        _ = setAttributetitleFor(view: lBRegion, title: "Region \(region)", rangeStrings: ["Region", "\(region)"], colors: [COLOR_ORANGE, COLOR_DARK_GRAY], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_12), FONT_LABEL_SUB_HEADING (size: FONT_12)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBRegion, title: "Region \(region)", rangeStrings: ["Region", "\(region)"], colors: [APPCOLORS_3.Orange_BG, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_12), FONT_LABEL_SUB_HEADING (size: FONT_12)], alignmentCenter: false)
 
         
         btnSavedDesigns.layer.cornerRadius = radius_5 //5.0
@@ -167,7 +167,7 @@ class ProfileHomeLandTVCell: UITableViewCell {
             region = ""
         }
             
-        _ = setAttributetitleFor(view: lBRegion, title: "Region \(region)", rangeStrings: ["Region"], colors: [COLOR_ORANGE], fonts: [regularFontWith(size: FONT_12)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBRegion, title: "Region \(region)", rangeStrings: ["Region"], colors: [APPCOLORS_3.Orange_BG], fonts: [regularFontWith(size: FONT_12)], alignmentCenter: false)
         
         
 //        if region.count > 0 {
@@ -176,9 +176,9 @@ class ProfileHomeLandTVCell: UITableViewCell {
         let price2 = String.init(format: "$\(filter.priceRange.priceEndStringValue)K")
             
             
-            _ = setAttributetitleFor(view: lBPriceRange, title: "Price Range \(price1) to \(price2)", rangeStrings: ["Price Range"], colors: [ COLOR_ORANGE], fonts: [regularFontWith(size: FONT_12)], alignmentCenter: false)
+            _ = setAttributetitleFor(view: lBPriceRange, title: "Price Range \(price1) to \(price2)", rangeStrings: ["Price Range"], colors: [ APPCOLORS_3.Orange_BG], fonts: [regularFontWith(size: FONT_12)], alignmentCenter: false)
 //        }else {
-//            _ = setAttributetitleFor(view: lBPriceRange, title: "Price Range", rangeStrings: ["Price Range"], colors: [ COLOR_ORANGE], fonts: [regularFontWith(size: FONT_12)], alignmentCenter: false)
+//            _ = setAttributetitleFor(view: lBPriceRange, title: "Price Range", rangeStrings: ["Price Range"], colors: [ APPCOLORS_3.Orange_BG], fonts: [regularFontWith(size: FONT_12)], alignmentCenter: false)
 //        }
         
         

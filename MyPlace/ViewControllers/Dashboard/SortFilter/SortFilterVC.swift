@@ -80,7 +80,7 @@ class SortFilterVC: UIViewController {
         filter.priceSorting = .lowtoHigh
         
         
-        segmentStoreys.setOldLayout(tintColor: .white, selectedColor: COLOR_APP_GRAY)
+        segmentStoreys.setOldLayout(tintColor: .white, selectedColor: APPCOLORS_3.GreyTextFont)
         segmentBedrooms.setOldLayout(tintColor: .white)
         segmentCarSpaces.setOldLayout(tintColor: .white)
         segmentBathrooms.setOldLayout(tintColor: .white)
@@ -110,17 +110,17 @@ class SortFilterVC: UIViewController {
     
     func pageUISetUp () {
         //        FONT_LABEL_LIGHT
-        setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
         
-        setAppearanceFor(view: lBStoreys, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
-        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
-        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
-        setAppearanceFor(view: lBCarSpaces, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBStoreys, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBCarSpaces, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
-        setAppearanceFor(view: lBSortBy, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBSortBy, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
-        setAppearanceFor(view: lBSort, backgroundColor: COLOR_CLEAR, textColor: UIColor.hexCode("5C5E5E"), textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: lBSort, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
     }
     
@@ -509,14 +509,14 @@ extension SortFilterVC: UIPickerViewDataSource, UIPickerViewDelegate {
 
 extension UISegmentedControl
 {
-    func setOldLayout(tintColor: UIColor, selectedColor: UIColor = COLOR_APP_GRAY)
+    func setOldLayout(tintColor: UIColor, selectedColor: UIColor = APPCOLORS_3.GreyTextFont)
     {
         //        if #available(iOS 13, *)
         //        {
         let bg = UIImage(color: .clear, size: CGSize(width: 1, height: self.frame.size.height))
         let devider = UIImage(color: selectedColor, size: CGSize(width: 1, height: self.frame.size.height))
         
-        let deviderSelected = UIImage(color: COLOR_DARK_GRAY, size: CGSize(width: 1, height: self.frame.size.height))
+        let deviderSelected = UIImage(color: APPCOLORS_3.GreyTextFont, size: CGSize(width: 1, height: self.frame.size.height))
         
         //set background images
         self.setBackgroundImage(bg, for: .normal, barMetrics: .default)

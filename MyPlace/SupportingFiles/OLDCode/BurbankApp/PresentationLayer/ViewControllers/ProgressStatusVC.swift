@@ -46,7 +46,7 @@ class ProgressStatusVC: BurbankAppVC/*MyPlaceWithTabBarVC*/, UICollectionViewDat
         // Do any additional setup after loading the view.
         
         
-        _ = setAttributetitleFor(view: titleLabel, title: "MyHomeProgress", rangeStrings: ["MyHome", "Progress"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: "MyHomeProgress", rangeStrings: ["MyHome", "Progress"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
 
         
         appDelegate=UIApplication.shared.delegate as? AppDelegate

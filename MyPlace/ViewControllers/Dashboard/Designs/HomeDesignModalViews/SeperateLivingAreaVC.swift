@@ -34,17 +34,17 @@ class SeperateLivingAreaVC: HomeDesignModalHeaderVC {
         let str = "WOULD YOU NEED A SEPARATE LIVING AREA?"
         separateLiving_lbl.text = str
         
-        setAppearanceFor(view: separateLiving_lbl, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: separateLiving_lbl, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         
-        setAppearanceFor(view: separateLiving_btnMust, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: separateLiving_btnDont, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: separateLiving_btnDont_want_this, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: separateLiving_btnMust, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: separateLiving_btnDont, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: separateLiving_btnDont_want_this, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
-//        setBorder(view: separateLiving_btnMust, color: COLOR_ORANGE, width: 1.0)
-//        setBorder(view: separateLiving_btnDont, color: COLOR_ORANGE, width: 1.0)
-//        setBorder(view: separateLiving_btnDont_want_this, color: COLOR_ORANGE, width: 1.0)
+//        setBorder(view: separateLiving_btnMust, color: APPCOLORS_3.Orange_BG, width: 1.0)
+//        setBorder(view: separateLiving_btnDont, color: APPCOLORS_3.Orange_BG, width: 1.0)
+//        setBorder(view: separateLiving_btnDont_want_this, color: APPCOLORS_3.Orange_BG, width: 1.0)
         
         
         separateLiving_btnMust.layer.cornerRadius = radius_5
@@ -72,14 +72,14 @@ class SeperateLivingAreaVC: HomeDesignModalHeaderVC {
         
         if homeDesignFeature?.selectedAnswer == DesignAnswer.must.rawValue {
             
-            setAppearanceFor(view: separateLiving_btnMust, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: separateLiving_btnMust, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         else if homeDesignFeature?.selectedAnswer == DesignAnswer.donotwantthis.rawValue  {
             
-            setAppearanceFor(view: separateLiving_btnDont_want_this, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: separateLiving_btnDont_want_this, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }else {
             
-            setAppearanceFor(view: separateLiving_btnDont, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: separateLiving_btnDont, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         
     }

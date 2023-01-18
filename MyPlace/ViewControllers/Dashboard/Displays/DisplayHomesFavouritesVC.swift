@@ -209,9 +209,9 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width, height:18))
             label.font = UIFont.boldSystemFont(ofSize: 18)
             label.text = "Favourites List (\(displayFavorites.count))";
-            label.textColor = .white
+            label.textColor = APPCOLORS_3.HeaderFooter_white_BG
             view.addSubview(label);
-            view.backgroundColor = .lightGray
+            view.backgroundColor = APPCOLORS_3.GreyTextFont
             label.translatesAutoresizingMaskIntoConstraints = false
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: 16).isActive = true
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -328,7 +328,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                     }
                                 }
                                 
-                                //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                                //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                                 //
                                 //                                   self.searchResultsTable.reloadData ()
                                 
@@ -444,7 +444,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                         }
                                     }
                                     
-                                    //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: COLOR_APP_BACKGROUND) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                                    //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                                     //
                                     //                                   self.searchResultsTable.reloadData ()
                                     

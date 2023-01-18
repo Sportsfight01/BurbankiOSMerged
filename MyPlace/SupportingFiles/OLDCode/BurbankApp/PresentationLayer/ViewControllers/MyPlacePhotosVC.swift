@@ -45,7 +45,7 @@ class MyPlacePhotosVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionViewDataS
     {
         super.viewDidLoad()
         
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
         
         
 //        let cellWidth : CGFloat = SCREEN_WIDTH - 2.0 //photosGridView.frame.size.width
@@ -75,9 +75,9 @@ class MyPlacePhotosVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionViewDataS
         getPresentMonthPhotosList()
         self.updateNextPreviousButtonsAlpha()
         
-        setAppearanceFor(view: noPhotosLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: noPhotosLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
         
-        setAppearanceFor(view: monthLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING (size: FONT_16))
+        setAppearanceFor(view: monthLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING (size: FONT_16))
         
         noPhotosLabel.isHidden = true
 

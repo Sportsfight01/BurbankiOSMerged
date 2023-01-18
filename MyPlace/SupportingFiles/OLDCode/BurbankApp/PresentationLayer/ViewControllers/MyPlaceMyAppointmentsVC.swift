@@ -36,7 +36,7 @@ class MyPlaceMyAppointmentsVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = setAttributetitleFor(view: titleLabel, title: "MyAppointments", rangeStrings: ["My","Appointments"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: "MyAppointments", rangeStrings: ["My","Appointments"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
         
         
         

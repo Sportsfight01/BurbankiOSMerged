@@ -56,18 +56,18 @@ class CoBurbankListVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
     
     func viewSetUp () {
         
-     setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+     setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
 
-     setAppearanceFor(view: inviteButton, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+     setAppearanceFor(view: inviteButton, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
 
         
         
-        setAppearanceFor(view: inviteHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_HEADING(size: FONT_14))
-        setAppearanceFor(view: inviteFriendEmailTextField, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_BODY (size: FONT_13))
+        setAppearanceFor(view: inviteHeading, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_HEADING(size: FONT_14))
+        setAppearanceFor(view: inviteFriendEmailTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY (size: FONT_13))
         
         
-        setAppearanceFor(view: inviteButtonSubmit, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: inviteButtonCancel, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: inviteButtonSubmit, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: inviteButtonCancel, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
     }
     
@@ -635,7 +635,7 @@ class CoBurbankTVHeaderCell: UITableViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setAppearanceFor(view: jobNumberTextFiled, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_HEADING (size: FONT_16))
+        setAppearanceFor(view: jobNumberTextFiled, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING (size: FONT_16))
     }
     
 }

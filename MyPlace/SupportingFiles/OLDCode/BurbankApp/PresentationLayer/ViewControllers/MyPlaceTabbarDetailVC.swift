@@ -117,7 +117,7 @@ class MyPlaceTabbarDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionVie
         setUpCustomLabel()
         surveyImageView.alpha = 0
         
-        setAppearanceFor(view: headerNameLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: headerNameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
     }
     
     
@@ -533,8 +533,8 @@ class MyPlaceTabbarDetailCVCell: BurbankAppCVCell
     override class func awakeFromNib() {
         super.awakeFromNib()
         
-//        setAppearanceFor(view: appointmentType, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
-//        setAppearanceFor(view: appointmentDate, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_13))
+//        setAppearanceFor(view: appointmentType, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
+//        setAppearanceFor(view: appointmentDate, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_13))
 
     }
     

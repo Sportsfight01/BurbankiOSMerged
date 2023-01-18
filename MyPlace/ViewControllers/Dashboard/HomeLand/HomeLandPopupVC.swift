@@ -70,14 +70,14 @@ class HomeLandPopupVC: UIViewController {
         else{
             if arrHomeLandPackages.count == 1 {
                 
-                _ = setAttributetitleFor(view: labelHeading, title: "SELECTED HOUSE", rangeStrings: ["SELECTED HOUSE"], colors: [COLOR_BLACK], fonts: [FONT_LABEL_HEADING (size: FONT_16)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: labelHeading, title: "SELECTED HOUSE", rangeStrings: ["SELECTED HOUSE"], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_HEADING (size: FONT_16)], alignmentCenter: false)
 
             }else {
                 
                 let str = "HOUSES IN GROUP"
                 let count = "\(arrHomeLandPackages.count) Houses"
                 
-                _ = setAttributetitleFor(view: labelHeading, title: str + "\n" + count, rangeStrings: [str, count], colors: [COLOR_BLACK, COLOR_BLACK], fonts: [FONT_LABEL_HEADING (size: FONT_16), FONT_LABEL_LIGHT (size: FONT_12)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: labelHeading, title: str + "\n" + count, rangeStrings: [str, count], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_HEADING (size: FONT_16), FONT_LABEL_LIGHT (size: FONT_12)], alignmentCenter: false)
             }
         }
        
@@ -140,7 +140,7 @@ extension HomeLandPopupVC: UITableViewDelegate, UITableViewDataSource {
             cell.btnFavorite.isHidden = true
         }
                 
-        setBorder(view: cell, color: COLOR_APP_GRAY, width: 0.5)
+        setBorder(view: cell, color: APPCOLORS_3.GreyTextFont, width: 0.5)
         
         if isDisplayHome ?? false{
             cell.displayHomeData = arrDisplayHomes[indexPath.row]

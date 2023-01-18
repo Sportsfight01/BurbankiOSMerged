@@ -22,12 +22,12 @@ class FinanceCustomCell: BurbankTVCell
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: headerTitleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: boldFontWith(size: FONT_13))
+        setAppearanceFor(view: headerTitleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: boldFontWith(size: FONT_13))
         
-        setAppearanceFor(view: approcedStaticPriceLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: boldFontWith(size: FONT_13))
-        setAppearanceFor(view: contractStaticPriceLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: boldFontWith(size: FONT_13))
-        setAppearanceFor(view: approcedVariationPriceLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: boldFontWith(size: FONT_13))
-        setAppearanceFor(view: contractValuePriceLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: boldFontWith(size: FONT_13))
+        setAppearanceFor(view: approcedStaticPriceLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: boldFontWith(size: FONT_13))
+        setAppearanceFor(view: contractStaticPriceLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: boldFontWith(size: FONT_13))
+        setAppearanceFor(view: approcedVariationPriceLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: boldFontWith(size: FONT_13))
+        setAppearanceFor(view: contractValuePriceLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: boldFontWith(size: FONT_13))
 
     }
 

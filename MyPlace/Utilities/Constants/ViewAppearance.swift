@@ -12,7 +12,7 @@
 //
 ////MARK: - Layer
 //
-//func setAppearanceFor(view: UIView, backgroundColor: UIColor?, textColor: UIColor = COLOR_APPTHEME, textFont: UIFont = UIFont.systemFont(ofSize: 14)) {
+//func setAppearanceFor(view: UIView, backgroundColor: UIColor?, textColor: UIColor = APPCOLORS_3.HeaderFooter_white_BG, textFont: UIFont = UIFont.systemFont(ofSize: 14)) {
 //    
 //    if let color = backgroundColor {
 //        view.backgroundColor = color

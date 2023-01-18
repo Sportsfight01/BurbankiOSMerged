@@ -90,7 +90,7 @@ class HomeLandVCSurvey: HeaderVC {
             if packagesCount == 0 {
                 
                 self.btnDesignsCount.setTitle("NO PACKAGES", for: .normal)
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
                 self.btnDesignsCount.isUserInteractionEnabled = false
                 
                 self.btnNext.superview!.alpha = 0.4
@@ -273,14 +273,14 @@ class HomeLandVCSurvey: HeaderVC {
         btnDesignsCount.setTitle("SKIP >", for: .normal)
         setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
         
-        setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: btnPrevious, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: btnPrevious, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
         //        arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
-        //        arrButtons.forEach({$0.setTitleColor(COLOR_DARK_GRAY, for: .normal)})
+        //        arrButtons.forEach({$0.setTitleColor(APPCOLORS_3.GreyTextFont, for: .normal)})
         //
-        //        region_btnNorth.backgroundColor = COLOR_ORANGE
-        //        region_btnNorth.setTitleColor(COLOR_WHITE, for: .normal)
+        //        region_btnNorth.backgroundColor = APPCOLORS_3.Orange_BG
+        //        region_btnNorth.setTitleColor(APPCOLORS_3.HeaderFooter_white_BG, for: .normal)
         
         
         showHideAllViews ()
@@ -326,9 +326,9 @@ class HomeLandVCSurvey: HeaderVC {
         
         
         
-        setAppearanceFor(view: storeys_btnSingle.superview!, backgroundColor: COLOR_WHITE)
-        setAppearanceFor(view: storeys_btnDouble.superview!, backgroundColor: COLOR_WHITE)
-        setAppearanceFor(view: storeys_btnNotSure.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: storeys_btnSingle.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
+        setAppearanceFor(view: storeys_btnDouble.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
+        setAppearanceFor(view: storeys_btnNotSure.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
         
     }
     
@@ -337,8 +337,8 @@ class HomeLandVCSurvey: HeaderVC {
         
         setAppearanceFor(view: price_lBPrice, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
         
-//        setAppearanceFor(view: price_btnContinue, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
-//        setAppearanceFor(view: price_btnSkip, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+//        setAppearanceFor(view: price_btnContinue, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
+//        setAppearanceFor(view: price_btnSkip, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 //
 //        price_btnSkip.layer.cornerRadius = radius_5
 //        price_btnContinue.layer.cornerRadius = radius_5
@@ -362,10 +362,10 @@ class HomeLandVCSurvey: HeaderVC {
         bedrooms_btnNotSure.superview?.layer.cornerRadius = radius_5
 
 
-        setAppearanceFor(view: bedrooms_btn3Bedrooms.superview!, backgroundColor: COLOR_WHITE)
-        setAppearanceFor(view: bedrooms_btn4Bedrooms.superview!, backgroundColor: COLOR_WHITE)
-        setAppearanceFor(view: bedrooms_btn5Bedrooms.superview!, backgroundColor: COLOR_WHITE)
-        setAppearanceFor(view: bedrooms_btnNotSure.superview!, backgroundColor: COLOR_WHITE)
+        setAppearanceFor(view: bedrooms_btn3Bedrooms.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
+        setAppearanceFor(view: bedrooms_btn4Bedrooms.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
+        setAppearanceFor(view: bedrooms_btn5Bedrooms.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
+        setAppearanceFor(view: bedrooms_btnNotSure.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
 
     }
     
@@ -401,7 +401,7 @@ class HomeLandVCSurvey: HeaderVC {
             } else {
                 
                 btnDesignsCount.setTitle("SKIP >", for: .normal)
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
 
                 
                 myPlaceQuiz.region = nil
@@ -475,10 +475,10 @@ class HomeLandVCSurvey: HeaderVC {
 
         }else {
             //            arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
-            //            arrButtons.forEach({$0.setTitleColor(COLOR_DARK_GRAY, for: .normal)})
+            //            arrButtons.forEach({$0.setTitleColor(APPCOLORS_3.GreyTextFont, for: .normal)})
             //
-            //            region_btnNorth.backgroundColor = COLOR_ORANGE
-            //            region_btnNorth.setTitleColor(COLOR_WHITE, for: .normal)
+            //            region_btnNorth.backgroundColor = APPCOLORS_3.Orange_BG
+            //            region_btnNorth.setTitleColor(APPCOLORS_3.HeaderFooter_white_BG, for: .normal)
             
         }
         
@@ -497,10 +497,10 @@ class HomeLandVCSurvey: HeaderVC {
     //    @IBAction func regionBtnClicked(_ sender: UIButton) {
     //
     //        arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
-    //        arrButtons.forEach({$0.setTitleColor(COLOR_DARK_GRAY, for: .normal)})
+    //        arrButtons.forEach({$0.setTitleColor(APPCOLORS_3.GreyTextFont, for: .normal)})
     //
-    //        sender.backgroundColor = COLOR_ORANGE
-    //        sender.setTitleColor(COLOR_WHITE, for: .normal)
+    //        sender.backgroundColor = APPCOLORS_3.Orange_BG
+    //        sender.setTitleColor(APPCOLORS_3.HeaderFooter_white_BG, for: .normal)
     //
     //        viewTag = minViewTag
     //
@@ -942,20 +942,20 @@ class HomeLandVCSurvey: HeaderVC {
             
             storeys_btnSingle.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
            /// storeys_iconSingle.image = UIImage(named: "Ico-SingeWhite")
-            storeys_iconSingle.tintColor = COLOR_WHITE
-            storeys_lBSingle.textColor = COLOR_WHITE
+            storeys_iconSingle.tintColor = APPCOLORS_3.HeaderFooter_white_BG
+            storeys_lBSingle.textColor = APPCOLORS_3.HeaderFooter_white_BG
         }else if self.filter.storeysCount == .two {
             
             storeys_btnDouble.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             //storeys_iconDouble.image = UIImage(named: "Ico-DoubleWhite")
-            storeys_iconDouble.tintColor = COLOR_WHITE
-            storeys_lBDouble.textColor = COLOR_WHITE
+            storeys_iconDouble.tintColor = APPCOLORS_3.HeaderFooter_white_BG
+            storeys_lBDouble.textColor = APPCOLORS_3.HeaderFooter_white_BG
         }else if self.filter.storeysCount == .ALL {
 
             storeys_btnNotSure.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             //storeys_iconNotSure.image = UIImage(named: "Ico-FaqWhite")
-            storeys_iconNotSure.tintColor = COLOR_WHITE
-            storeys_lBNotSure.textColor = COLOR_WHITE
+            storeys_iconNotSure.tintColor = APPCOLORS_3.HeaderFooter_white_BG
+            storeys_lBNotSure.textColor = APPCOLORS_3.HeaderFooter_white_BG
         }
 
     }
@@ -967,20 +967,20 @@ class HomeLandVCSurvey: HeaderVC {
         if self.filter.bedRoomsCount == .three {
             
             bedrooms_btn3Bedrooms.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            _ = setAttributetitleFor(view: bedrooms_btn3Bedrooms, title: "3\nBEDROOMS", rangeStrings: ["3","BEDROOMS"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: bedrooms_btn3Bedrooms, title: "3\nBEDROOMS", rangeStrings: ["3","BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
             
         }else if self.filter.bedRoomsCount == .four {
             
             bedrooms_btn4Bedrooms.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
 
         }else if self.filter.bedRoomsCount == .five {
             
             bedrooms_btn5Bedrooms.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         }else if self.filter.bedRoomsCount == .ALL{
             bedrooms_btnNotSure.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         }
 
     }
@@ -991,14 +991,14 @@ class HomeLandVCSurvey: HeaderVC {
 //        self.btnNext.superview!.alpha = viewTag > 104 ? 0.4 : 1.0
 //        self.btnPrevious.superview!.alpha = viewTag == 101 ? 0.4 : 1.0
 //
-//        self.btnNext.backgroundColor = viewTag > 104 ? COLOR_LIGHT_GRAY : COLOR_ORANGE
-//        self.btnPrevious.backgroundColor = viewTag == 101 ? COLOR_LIGHT_GRAY : COLOR_ORANGE
+//        self.btnNext.backgroundColor = viewTag > 104 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+//        self.btnPrevious.backgroundColor = viewTag == 101 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
         
         btnNext.isUserInteractionEnabled = viewTag > 104 ? false : true
         btnPrevious.isUserInteractionEnabled = viewTag == 101 ? false : true
         
-//        btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == COLOR_ORANGE
-//        btnPrevious.isUserInteractionEnabled = self.btnPrevious.backgroundColor == COLOR_ORANGE
+//        btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == APPCOLORS_3.Orange_BG
+//        btnPrevious.isUserInteractionEnabled = self.btnPrevious.backgroundColor == APPCOLORS_3.Orange_BG
         
         
         print("viewTag: \(viewTag)")
@@ -1178,19 +1178,19 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
        // cell.selectedRegion = filter.region.regionId == region.regionId
         
       /*  if filter.region.regionName == region.regionName{
-            cell.titleLabel.textColor = COLOR_WHITE
-            cell.titleLabel.backgroundColor = COLOR_ORANGE
+            cell.titleLabel.textColor = APPCOLORS_3.HeaderFooter_white_BG
+            cell.titleLabel.backgroundColor = APPCOLORS_3.Orange_BG
         }else{
-            cell.titleLabel.textColor = COLOR_BLACK
-            cell.titleLabel.backgroundColor = COLOR_WHITE
+            cell.titleLabel.textColor = APPCOLORS_3.Black_BG
+            cell.titleLabel.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
         }*/
         
         if region.isSelected{
-            cell.titleLabel.textColor = COLOR_WHITE
+            cell.titleLabel.textColor = APPCOLORS_3.HeaderFooter_white_BG
             cell.titleLabel.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         }else{
             cell.titleLabel.textColor = APPCOLORS_3.GreyTextFont
-            cell.titleLabel.backgroundColor = COLOR_WHITE
+            cell.titleLabel.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
 
         }
         
@@ -1210,7 +1210,7 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
             print(index)
             filter.regionsArr.remove(at: index ?? 0)
             if filter.regionsArr.isEmpty{
-                btnNext.backgroundColor = COLOR_LIGHT_GRAY
+                btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
             }
             
         }  else{

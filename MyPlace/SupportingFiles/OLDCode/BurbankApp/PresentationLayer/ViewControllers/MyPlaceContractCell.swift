@@ -17,8 +17,8 @@ class MyPlaceContractCell: BurbankTVCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: nameLabel, backgroundColor: .clear, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
-        setAppearanceFor(view: valueLabel, backgroundColor: .clear, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: nameLabel, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: valueLabel, backgroundColor: .clear, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

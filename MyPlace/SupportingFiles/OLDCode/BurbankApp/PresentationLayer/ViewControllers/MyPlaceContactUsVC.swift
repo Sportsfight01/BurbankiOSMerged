@@ -40,9 +40,9 @@ class MyPlaceContactUsVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_18))
+        setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
         
-        _ = setAttributetitleFor(view: titleLabel, title: "HistoryLog", rangeStrings: ["History", "Log"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: "HistoryLog", rangeStrings: ["History", "Log"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
         
         
 //        menuTabBar.selectedItem = menuTabBar.items?[2]

@@ -31,7 +31,7 @@ class MyPlaceMoreOptionsVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDeleg
         super.viewDidLoad()
         
         
-        _ = setAttributetitleFor(view: titleLabel, title: "MoreFeatures", rangeStrings: ["More", "Features"], colors: [COLOR_BLACK, COLOR_ORANGE], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: titleLabel, title: "MoreFeatures", rangeStrings: ["More", "Features"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_HEADING(size: FONT_18), FONT_LABEL_HEADING(size: FONT_18)], alignmentCenter: false)
 
         
         moreOptionsTable.dataSource = self

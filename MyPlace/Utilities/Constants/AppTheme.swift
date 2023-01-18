@@ -45,8 +45,6 @@ let imageHome = UIImage(named: "Ico-Home-1")//Ico-MenuIcon")
 
 
 
-//let imageUNFavorite = UIImage(named: "Ico-LikeUnfill")
-//let imageFavorite = UIImage(named: "Ico-LikeFill")
 
 let imageUNFavorite = UIImage(named: "Ico-HeartFill")
 let imageFavorite = UIImage(named: "Ico-LikeFill")

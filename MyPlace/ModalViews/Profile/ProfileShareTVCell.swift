@@ -85,14 +85,14 @@ class ProfileShareTVCell: UITableViewCell, UITableViewDelegate, UITableViewDataS
 //                //                topViewMaxHeight.constant = 0
 //
 //                txtShareEmail.isUserInteractionEnabled = false
-//                txtShareEmail.backgroundColor = COLOR_LIGHT_GRAY
+//                txtShareEmail.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
 //
 //                btnShare.isEnabled = false
 //                btnShare.alpha = 0.4
 //            }else {
                 
                 txtShareEmail.isUserInteractionEnabled = true
-                txtShareEmail.backgroundColor = COLOR_WHITE
+                txtShareEmail.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
                 
                 btnShare.isEnabled = true
                 btnShare.alpha = 1.0
@@ -108,19 +108,19 @@ class ProfileShareTVCell: UITableViewCell, UITableViewDelegate, UITableViewDataS
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
-        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: lBLine, backgroundColor: COLOR_ORANGE_LIGHT, textColor: COLOR_WHITE, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBCount, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBLine, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: labelShareHeading, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
+        setAppearanceFor(view: labelShareHeading, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
         
-        setAppearanceFor(view: txtShareEmail, backgroundColor: COLOR_WHITE, textColor: COLOR_BLACK, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
+        setAppearanceFor(view: txtShareEmail, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_HEADING(size: FONT_12))
         
-        setAppearanceFor(view: btnShare, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnShare, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
         
         
-        setBorder(view: txtShareEmail, color: COLOR_LIGHT_GRAY, width: 1.0)
+        setBorder(view: txtShareEmail, color: APPCOLORS_3.LightGreyDisabled_BG, width: 1.0)
         txtShareEmail.layer.cornerRadius = radius_5 //5.0
         
         txtShareEmail.leftView = UIView.init(frame: CGRect (x: 0, y: 0, width: 10, height: txtShareEmail.frame.size.height))
@@ -355,8 +355,8 @@ class ProfileShareTVCell: UITableViewCell, UITableViewDelegate, UITableViewDataS
 let pendingIcon = UIImage (named: "Ico-Waiting")
 
 let deleteIcon = UIImage (named: "Ico-delete")
-let unfavoriteIcon = UIImage (named: "Ico-heartGrey")
-let favoriteIcon = UIImage (named: "Ico-heartOrange")
+let unfavoriteIcon = UIImage (named: "Ico-HeartFill")
+let favoriteIcon = UIImage (named: "Ico-LikeFill")
 
 
 class ShareUserCell: UITableViewCell {
@@ -380,7 +380,7 @@ class ShareUserCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setAppearanceFor(view: labelUserEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
+        setAppearanceFor(view: labelUserEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_12))
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -397,7 +397,7 @@ class ShareUserCell: UITableViewCell {
         
         labelUserEmail.text = str
         
-        _ = setAttributetitleFor(view: labelUserEmail, title: str, rangeStrings: [(user?.userEmail ?? ""), (user?.userFirstName ?? "") + " ", status], colors: [COLOR_BLACK, COLOR_BLACK, COLOR_BLACK], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_12), FONT_LABEL_BODY (size: FONT_9), FONT_LABEL_LIGHT (size: FONT_9)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: labelUserEmail, title: str, rangeStrings: [(user?.userEmail ?? ""), (user?.userFirstName ?? "") + " ", status], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_12), FONT_LABEL_BODY (size: FONT_9), FONT_LABEL_LIGHT (size: FONT_9)], alignmentCenter: false)
         
         
         btnDelete.setImage(deleteIcon, for: .normal)

@@ -61,7 +61,7 @@ class PriceRangeVC: UIViewController {
         
         setAppearanceFor(view: view, backgroundColor: COLOR_CLEAR)
         
-        setAppearanceFor(view: lBrange, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_18))
+        setAppearanceFor(view: lBrange, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
         
         barGraph.register(BarGraphCell.self, forCellWithReuseIdentifier: "BarGraphCell")
         
@@ -69,8 +69,9 @@ class PriceRangeVC: UIViewController {
         rangesliderView.addSubview(rangeslider)
         
         
-        rangeslider.trackHighlightTintColor = COLOR_LIGHT_GRAY
-        rangeslider.trackTintColor = COLOR_APP_GRAY
+        rangeslider.trackHighlightTintColor = APPCOLORS_3.GreyTextFont
+        
+        rangeslider.trackTintColor = APPCOLORS_3.LightGreyDisabled_BG
         
         rangeslider.addTarget(self, action: #selector(handleValueChanged), for: .valueChanged)
         
@@ -120,8 +121,8 @@ class PriceRangeVC: UIViewController {
         rangeslider = RangeSlider(frame: frameee)
         rangesliderView.addSubview(rangeslider)
         
-        rangeslider.trackHighlightTintColor = COLOR_LIGHT_GRAY
-        rangeslider.trackTintColor = COLOR_APP_GRAY
+        rangeslider.trackHighlightTintColor = APPCOLORS_3.GreyTextFont
+        rangeslider.trackTintColor = APPCOLORS_3.LightGreyDisabled_BG
         
         rangeslider.addTarget(self, action: #selector(handleValueChanged), for: .valueChanged)
         
@@ -190,7 +191,7 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         cell.backgroundColor = COLOR_CLEAR
         cell.contentView.backgroundColor = COLOR_CLEAR
-        cell.lBBG.backgroundColor = COLOR_ORANGE.withAlphaComponent(CGFloat(bars_alpha[indexPath.row]))
+        cell.lBBG.backgroundColor = APPCOLORS_3.Orange_BG.withAlphaComponent(CGFloat(bars_alpha[indexPath.row]))
         
         
         cell.lBBG.layer.cornerRadius = radius_3
@@ -202,7 +203,7 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! BarGraphCell
-        cell.lBBG.backgroundColor = COLOR_ORANGE.withAlphaComponent(CGFloat(bars_alpha[indexPath.row]))
+        cell.lBBG.backgroundColor = APPCOLORS_3.Orange_BG.withAlphaComponent(CGFloat(bars_alpha[indexPath.row]))
         print(indexPath.row)
 //        Double(exactly: (dict.value(forKey: "MinPrice") ?? 0) as! NSNumber)!
         if Int(exactly: self.priceListArr[indexPath.item].value(forKey: "Price") as! NSNumber)  == bars[indexPath.row]{
@@ -305,7 +306,7 @@ class BarGraphCell: UICollectionViewCell {
         lBCount.backgroundColor = COLOR_CLEAR
         lBCount.textAlignment = NSTextAlignment.center
         
-        setAppearanceFor(view: lBCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_LABEL_SUB_HEADING (size: FONT_10))
+        setAppearanceFor(view: lBCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_10))
     }
     
 }
