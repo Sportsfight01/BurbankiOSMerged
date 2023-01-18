@@ -50,9 +50,9 @@ class StateSelectionVC: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        setAppearanceFor(view: lBSelection, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBSelection, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         
-        
+        viewSelection.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
         viewSelection.layer.cornerRadius = radius_5
         
         CodeManager.sharedInstance.sendScreenName(burbank_selectState_screen_loading)
@@ -124,7 +124,7 @@ extension StateSelectionVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StateSelection
         
         let state = arrStates![indexPath.row]
-        
+       // cell.viewS.cardView(cornerRadius: radius_5, shadowRadius : 10.0, shadowColor: UIColor.gray.cgColor)
         cell.lBTitle.text = state.stateName.uppercased()
         
         if stateSelected.stateId == state.stateId {
@@ -133,9 +133,9 @@ extension StateSelectionVC: UITableViewDelegate, UITableViewDataSource {
             cell.lBTitle.textColor = COLOR_WHITE
         }else {
             cell.viewS.backgroundColor = COLOR_CLEAR
-            cell.lBTitle.textColor = COLOR_DARK_GRAY
+            cell.lBTitle.textColor = APPCOLORS_3.Black_BG
             if #available(iOS 13.0, *) {
-                cell.viewS.cardView(cornerRadius: radius_5, shadowOpacity: 0.3, shadowColor: UIColor.systemGray3.cgColor)
+                cell.viewS.cardView(cornerRadius: radius_5,shadowOpacity: 0.3, shadowColor: UIColor.gray.cgColor)
             } else {
                 // Fallback on earlier versions
                 cell.viewS.cardView(cornerRadius: radius_5, shadowOpacity: 0.3)
@@ -184,7 +184,7 @@ class StateSelection: UITableViewCell {
         
 //        viewS.layer.cornerRadius = radius_3
       //  viewS.clipsToBounds = true
-        viewS.cardView(cornerRadius: radius_5)
+       
        // setBorder(view: viewS, color: COLOR_ORANGE, width: 1.0)
         
     }

@@ -553,7 +553,8 @@ class DesignsDetailsVC: HeaderVC {
                     
                     
                    // if self.homeDesign!.favouritedUser?.userID == kUserID {
-                        updateHomeDesignsFavouritesCount(self.homeDesign!.isFav == true)
+
+                    updateHomeDesignsFavouritesCount(self.homeDesign!.isFav == true)
                     //}
                 }
             }
@@ -721,20 +722,21 @@ extension DesignsDetailsVC {
     
     func pageUISetup () {
         
-        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        self.view.backgroundColor = APPCOLORS_3.Body_BG
+        setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
         setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         
         
         setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_12))
 
         
-        setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
-        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
-        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
         
         
-        setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_LIGHT(size: FONT_6))
-        setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_6))
+        setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
         
         
         setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_LIGHT(size: FONT_14))
@@ -745,8 +747,12 @@ extension DesignsDetailsVC {
 //        lBMyPlace.text = "Interactive \nHome Tour"
 //        lBHomeLand.text = "House & Land"
         
-        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_13), FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: false)
-        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [COLOR_WHITE, COLOR_WHITE,COLOR_WHITE], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_13), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: false)
+        setAppearanceFor(view: btnMyPlace, backgroundColor: APPCOLORS_3.DarkGrey_BG)
+        setAppearanceFor(view: btnHomeLand, backgroundColor: APPCOLORS_3.DarkGrey_BG)
+        
+        
+        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [COLOR_WHITE, COLOR_WHITE,COLOR_WHITE], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
         
         
         

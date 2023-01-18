@@ -194,7 +194,7 @@ class MyPlaceHomeVC: UIViewController {
     
     func handleUISetup () {
         
-        btnMyProfile.backgroundColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.7) : AppColors.appOrange
+        btnMyProfile.backgroundColor = kUserID == "0" ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
         btnMyProfile.layer.cornerRadius = 5.0
         
         _ = setAttributetitleFor(view: lBMyPlace, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
@@ -203,19 +203,19 @@ class MyPlaceHomeVC: UIViewController {
         setAppearanceFor(view: btnState, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray , textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         
         
-        setAppearanceFor(view: lBWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBChooseMethod, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBWelcome, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBChooseMethod, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
         
         
-        setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.appGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.appGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
-        setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_HEADING(size: FONT_11))
-        setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.appGray , textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         //make card vuew
         
@@ -226,7 +226,7 @@ class MyPlaceHomeVC: UIViewController {
         stateView.layer.cornerRadius = stateView.frame.height/2
         //stateView.clipsToBounds = true
         stateView.layer.borderWidth = 1.0
-        stateView.layer.borderColor = AppColors.lightGray.cgColor
+        stateView.layer.borderColor = APPCOLORS_3.Black_BG.cgColor
         
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
         self.btnIcon.clipsToBounds = true
@@ -380,7 +380,7 @@ class MyPlaceHomeVC: UIViewController {
             stateSelectionVC.view.bottomAnchor.constraint(equalTo: containerViewStateSelection!.bottomAnchor, constant: 0)
         ])
         
-        stateSelectionVC.view.backgroundColor = COLOR_CUSTOM_VIEWS_OVERLAY
+       // stateSelectionVC.view.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
         stateSelectionVC.view.backgroundColor = COLOR_CLEAR
         
         

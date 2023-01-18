@@ -44,7 +44,7 @@ class LotVC: HomeDesignModalHeaderVC {
     
     func lotViewSetUp () {
         
-        setAppearanceFor(view: lot_lBLot, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: lot_lBLot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_19))
     }
     
     

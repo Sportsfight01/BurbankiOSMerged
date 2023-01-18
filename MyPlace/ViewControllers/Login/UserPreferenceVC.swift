@@ -108,25 +108,30 @@ class UserPreferenceVC: UIViewController {
     //MARK: - View
 
     func pageUISetup () {
-        btnMyProfile.layer.cornerRadius = 5.0
-        setAppearanceFor(view: viewWelcome, backgroundColor: AppColors.lightGray.withAlphaComponent(0.2))
-        setAppearanceFor(view: viewModuleSelection, backgroundColor: AppColors.lightGray.withAlphaComponent(0.2))
         
-        setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
-        setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        _ = setAttributetitleFor(view: lb_myPlace_heading, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
+        setAppearanceFor(view: viewWelcome, backgroundColor: APPCOLORS_3.Body_BG)
+        setAppearanceFor(view: viewModuleSelection, backgroundColor: APPCOLORS_3.Body_BG)
+        
+        setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        _ = setAttributetitleFor(view: lb_myPlace_heading, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
 //        setAppearanceFor(view: lb_myPlace_heading, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
       //  setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
-        setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_11))
-        setAppearanceFor(view: labelLookingDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_11))
+        setAppearanceFor(view: labelLookingDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: labelDepositedName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_11))
-        setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_GRAY, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: labelDepositedName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_11))
+        setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
+        setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_BODY (size: FONT_12))
+        btnMyProfile.layer.cornerRadius = 5.0
+        
+        
+        //FINISHED
         setAppearanceFor(view: labelFinishedName, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_HEADING(size: FONT_11))
         setAppearanceFor(view: labelFinishedDescription, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY(size: FONT_10))
         

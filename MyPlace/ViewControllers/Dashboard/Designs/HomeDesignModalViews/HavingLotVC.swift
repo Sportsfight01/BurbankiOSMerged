@@ -36,14 +36,17 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
   }
     func lotViewSetUp () {
         
-        setAppearanceFor(view: lotHeaderLBL, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: lotHeaderLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: lotHeaderLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         iDintHaveLandIMG.image = UIImage(named: "Ico-Question")
         iHaveLandIMG.image = UIImage(named: "Ico-Rite")
 
         
-        setAppearanceFor(view: iDontHaveLandLBL, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
-        setAppearanceFor(view: iHaveLandLBL, backgroundColor: COLOR_CLEAR, textColor: COLOR_ORANGE, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
+        setAppearanceFor(view: iDontHaveLandLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
+        setAppearanceFor(view: iHaveLandLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
+        
+        setAppearanceFor(view: lotTF, backgroundColor: .white, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_14))
       
         
         iDontHaveBTN.superview?.layer.cornerRadius = radius_5
@@ -64,7 +67,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         lotViewSetUp()
       lotTF.text?.removeAll()
       if sender.tag == 111{ //i don't have land
-            iDontHaveBTN.superview?.backgroundColor = COLOR_ORANGE
+          iDontHaveBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             iDintHaveLandIMG.image = UIImage(named: "Ico-FaqWhite")
             iDontHaveLandLBL.textColor = COLOR_WHITE
             homeDesignFeature?.selectedAnswer = "NOT SURE"
@@ -74,7 +77,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
                 selection (self)
             }
         }else{ // I have land
-            iHaveLandBTN.superview?.backgroundColor = COLOR_ORANGE
+            iHaveLandBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         
                 iHaveLandIMG.image = UIImage(named: "Ico-Rite")?.withRenderingMode(.alwaysTemplate)
                 iHaveLandIMG.tintColor = .white

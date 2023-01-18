@@ -232,21 +232,21 @@ class BedRoomCell: UICollectionViewCell {
         if selectedBedroom == true {
             
             if bedroomCount == "NOT SURE"{
-                _ = setAttributetitleFor(view: buttonBedroom, title: "?\nNOT SURE", rangeStrings: ["?", "NOT SURE"], colors: [COLOR_DARK_GRAY, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+                _ = setAttributetitleFor(view: buttonBedroom, title: "?\nNOT SURE", rangeStrings: ["?", "NOT SURE"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
                 
                 buttonBedroom.superview?.backgroundColor = COLOR_ORANGE
             }else{
-            _ = setAttributetitleFor(view: buttonBedroom, title: "\(bedroomCount!)\nBEDROOMS", rangeStrings: [bedroomCount!, "BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: buttonBedroom, title: "\(bedroomCount!)\nBEDROOMS", rangeStrings: [bedroomCount!, "BEDROOMS"], colors: [COLOR_WHITE, COLOR_WHITE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
             
-            buttonBedroom.superview?.backgroundColor = COLOR_ORANGE
+                buttonBedroom.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             }
         }else {
             if bedroomCount == "NOT SURE"{
-                _ = setAttributetitleFor(view: buttonBedroom, title: "?\nNOT SURE", rangeStrings: ["?", "NOT SURE"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+                _ = setAttributetitleFor(view: buttonBedroom, title: "?\nNOT SURE", rangeStrings: ["?", "NOT SURE"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
                 
                 buttonBedroom.superview?.backgroundColor = COLOR_WHITE
             }else{
-            _ = setAttributetitleFor(view: buttonBedroom, title: "\(bedroomCount!)\nBEDROOMS", rangeStrings: [bedroomCount!, "BEDROOMS"], colors: [COLOR_DARK_GRAY, COLOR_ORANGE], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: buttonBedroom, title: "\(bedroomCount!)\nBEDROOMS", rangeStrings: [bedroomCount!, "BEDROOMS"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
             
             buttonBedroom.superview?.backgroundColor = COLOR_WHITE
             }

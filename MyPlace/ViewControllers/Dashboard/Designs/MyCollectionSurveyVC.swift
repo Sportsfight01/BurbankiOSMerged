@@ -125,10 +125,10 @@ class MyCollectionSurveyVC: HeaderVC {
   
   func pageUISetup () {
     
-    setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
     
-    setAppearanceFor(view: btnNext, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-    setAppearanceFor(view: btnPrevious, backgroundColor: COLOR_BLACK, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+      setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+      setAppearanceFor(view: btnPrevious, backgroundColor: APPCOLORS_3.Black_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
     
     
     //        let swipeRight = UISwipeGestureRecognizer (target: self, action: #selector(respondToSwipeGesture(gesture:)))
@@ -707,19 +707,19 @@ class MyCollectionSurveyVC: HeaderVC {
     if (self.designsCount ?? 0) == 0 {
       
       self.btnDesignsCount.setTitle("NO DESIGNS", for: .normal)
-      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_LIGHT_GRAY, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
       
     }else if (self.designsCount ?? 0) == 1 {
       
       self.btnDesignsCount.setTitle("SKIP TO 1 DESIGN >", for: .normal)
       
-      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
       
     }else {
       
       self.btnDesignsCount.setTitle("SKIP TO \(self.designsCount ?? 0) DESIGNS >", for: .normal)
       
-      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: COLOR_DARK_GRAY, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
     }
     
   }

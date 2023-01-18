@@ -48,14 +48,14 @@ class MinorBedroomsVC: HomeDesignModalHeaderVC {
         
         
         
-        setAppearanceFor(view: minorBedrooms_btnMust, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: minorBedrooms_btnDont, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
-        setAppearanceFor(view: minorBedrooms_btnDont_want_this, backgroundColor: COLOR_WHITE, textColor: COLOR_ORANGE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: minorBedrooms_btnMust, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: minorBedrooms_btnDont, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: minorBedrooms_btnDont_want_this, backgroundColor: COLOR_WHITE, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
-        setBorder(view: minorBedrooms_btnMust, color: COLOR_ORANGE, width: 1.0)
-        setBorder(view: minorBedrooms_btnDont, color: COLOR_ORANGE, width: 1.0)
-        setBorder(view: minorBedrooms_btnDont_want_this, color: COLOR_ORANGE, width: 1.0)
+//        setBorder(view: minorBedrooms_btnMust, color: COLOR_ORANGE, width: 1.0)
+//        setBorder(view: minorBedrooms_btnDont, color: COLOR_ORANGE, width: 1.0)
+//        setBorder(view: minorBedrooms_btnDont_want_this, color: COLOR_ORANGE, width: 1.0)
         
         
         minorBedrooms_btnMust.layer.cornerRadius = radius_5
@@ -82,15 +82,15 @@ class MinorBedroomsVC: HomeDesignModalHeaderVC {
         
         if homeDesignFeature?.selectedAnswer == DesignAnswer.must.rawValue {
             
-            setAppearanceFor(view: minorBedrooms_btnMust, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: minorBedrooms_btnMust, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         else if homeDesignFeature?.selectedAnswer == DesignAnswer.donotwantthis.rawValue {
             
-            setAppearanceFor(view: minorBedrooms_btnDont_want_this, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: minorBedrooms_btnDont_want_this, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         else {
             
-            setAppearanceFor(view: minorBedrooms_btnDont, backgroundColor: COLOR_ORANGE, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: minorBedrooms_btnDont, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         
     }

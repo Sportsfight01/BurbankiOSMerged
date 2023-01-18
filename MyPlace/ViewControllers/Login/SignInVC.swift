@@ -174,17 +174,17 @@ class SignInVC: UIViewController {
 
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: AppColors.white)
+        setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
         
         
-        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
         
-        setAppearanceFor(view: labelChooseMethod, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: labelChooseMethod, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
        
         //setAppearanceFor(view: btnContinue, backgroundColor: COLOR_ORANGE, textColor: AppColors.white, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
         
-        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: systemRegularFont(size: FONT_signin))
+        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: systemRegularFont(size: FONT_signin))
         setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
         setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: COLOR_WHITE, textFont: systemRegularFont(size: FONT_signin))
         
@@ -216,7 +216,7 @@ class SignInVC: UIViewController {
         viewGoogle.cardView()
         viewFacebook.layer.cornerRadius = radius_5
         viewEmail.cardView()
-        viewEmail.backgroundColor = COLOR_BLACK
+        viewEmail.backgroundColor = APPCOLORS_3.Black_BG
         
         btnSkip.layer.cornerRadius = radius_5
 

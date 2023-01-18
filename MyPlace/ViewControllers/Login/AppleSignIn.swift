@@ -38,7 +38,7 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate, ASAuthorizat
   func signInWithAppleBtn() -> UIView{
     
     let view = UIView(frame: .zero)
-      view.backgroundColor = .lightGray.withAlphaComponent(0.6)
+      view.backgroundColor = APPCOLORS_3.DisabledFooterIconGrey
     view.layer.cornerRadius = 10.0
     
     //imgView
@@ -59,7 +59,7 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate, ASAuthorizat
     let titleLabel = UILabel()
     titleLabel.text = "Sign in with Apple"
       titleLabel.font = UIFont.systemFont(ofSize: FONT_signin , weight: .regular)
-    titleLabel.textColor = .black
+      titleLabel.textColor = APPCOLORS_3.Black_BG
    
     view.addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false

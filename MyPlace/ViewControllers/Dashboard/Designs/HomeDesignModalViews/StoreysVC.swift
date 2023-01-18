@@ -40,7 +40,7 @@ class StoreysVC: HomeDesignModalHeaderVC {
     
     func storeysViewSetUp () {
         
-        setAppearanceFor(view: storeys_lBstoreys, backgroundColor: COLOR_CLEAR, textColor: COLOR_BLACK, textFont: FONT_LABEL_BODY (size: FONT_19))
+        setAppearanceFor(view: storeys_lBstoreys, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
                 
     }
     
@@ -234,6 +234,7 @@ class StoreysCell: UICollectionViewCell {
 
         if (storey?.lowercased().contains("1") ?? false) == true {
             iconStorey.image = UIImage(named: selectedStorey == false ? "Ico-Single" : "Ico-SingeWhite")
+            
             labelStorey.text = "SINGLE".capitalized
         }else if (storey?.lowercased().contains("2") ?? false) == true {
             iconStorey.image = UIImage(named: selectedStorey == false ? "Ico-Double" : "Ico-DoubleWhite")
@@ -247,12 +248,13 @@ class StoreysCell: UICollectionViewCell {
         }
         
         if selectedStorey == true {
-            
             labelStorey.textColor = COLOR_WHITE
-            labelStorey.superview?.backgroundColor = COLOR_ORANGE
+            labelStorey.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         }else {
             
-            labelStorey.textColor = COLOR_ORANGE
+                iconStorey.image?.withRenderingMode(.alwaysTemplate)
+                iconStorey.tintColor = APPCOLORS_3.GreyTextFont
+            labelStorey.textColor = APPCOLORS_3.GreyTextFont
             labelStorey.superview?.backgroundColor = COLOR_WHITE
         }
         

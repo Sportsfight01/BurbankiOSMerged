@@ -163,7 +163,7 @@ class HeaderBreadCrump: UIView, UICollectionViewDelegate, UICollectionViewDataSo
                 //(frame: CGRect (x: xPos, y: yPos, width: 0, height: height))
                 btnTitle.tag = 100 + i
                 btnTitle.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
-                setAppearanceFor(view: btnTitle, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: font)
+                setAppearanceFor(view: btnTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: font)
                 btnTitle.setTitle(text, for: .normal)
                 
                 if let _ = self.delegate {

@@ -115,7 +115,7 @@ func loadMainView () {
     
 }
 
-func setStatusBarColor (color: UIColor? = COLOR_ORANGE) {
+func setStatusBarColor (color: UIColor? = APPCOLORS_3.Orange_BG) {
     
     UIApplication.shared.statusBarView?.backgroundColor = color
 }

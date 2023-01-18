@@ -112,20 +112,20 @@ class HeaderVC: UIViewController {
             switch headerLogoText {
                 
             case "House&Land":
-                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["House&" , "Land"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["House&" , "Land"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
                 
             case "HomeDesigns":
-                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Home" , "Designs"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Home" , "Designs"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             case "MyFavourites":
-                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Favourites"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Favourites"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             case "MyProfile":
-                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Profile"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["My" , "Profile"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
                 
             case "DisplayHomes":
-                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Display" , "Homes"], colors: [AppColors.black , AppColors.black], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Display" , "Homes"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             
             default :
-                setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: AppColors.black, textFont: FONT_LABEL_HEADING(size : 30))
+                setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_HEADING(size : 30))
                 logoLabel.text = headerLogoText
             }
             
@@ -939,7 +939,7 @@ extension HeaderVC {
         optionsView.addSubview(btnTotalCollectionCount)
         
         btnTotalCollectionCount.setTitle("    TOTAL DESIGNS    ", for: .normal)
-        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: COLOR_GRAY, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: APPCOLORS_3.DarkGrey_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         //btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
 
@@ -1017,7 +1017,7 @@ extension HeaderVC {
             if str != "" {
                 
                 //setBorder(view: btnMyProfile, color: COLOR_APP_BACKGROUND, width: 0.5)
-                let MyProfilebckColor = kUserID == "0" ? AppColors.lightGray.withAlphaComponent(0.6) : COLOR_ORANGE
+                let MyProfilebckColor = kUserID == "0" ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
                 btnMyProfile.backgroundColor = MyProfilebckColor
                 btnMyProfile.layer.cornerRadius = 5.0
             }

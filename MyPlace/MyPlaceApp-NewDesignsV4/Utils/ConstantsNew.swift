@@ -59,9 +59,9 @@ struct AppColors
     }
     
     static let darkGray = COLOR_DARK_GRAY
-    static let lightGray = COLOR_LIGHT_GRAY
+    static let lightGray = APPCOLORS_3.GreyTextFont
     static let white = UIColor.white
-    static let black = UIColor.black
+    static let black = APPCOLORS_3.Black_BG
     @available(iOS 13.0, *)
     static let systemGray2  = UIColor.systemGray2
     
