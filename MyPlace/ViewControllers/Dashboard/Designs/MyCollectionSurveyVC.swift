@@ -127,8 +127,8 @@ class MyCollectionSurveyVC: HeaderVC {
     
       setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
     
-      setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-      setAppearanceFor(view: btnPrevious, backgroundColor: APPCOLORS_3.Black_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+      setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+      setAppearanceFor(view: btnPrevious, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: COLOR_WHITE, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
     
     
     //        let swipeRight = UISwipeGestureRecognizer (target: self, action: #selector(respondToSwipeGesture(gesture:)))
@@ -269,6 +269,7 @@ class MyCollectionSurveyVC: HeaderVC {
   @IBAction func handlePreviousNextButtonsAction (_ sender: UIButton) {
     
     if sender == btnNext {
+        btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
       print("btnNext Tapped")
       CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_next_button_touch)
       if btnNext.isUserInteractionEnabled == true { }
@@ -397,6 +398,15 @@ class MyCollectionSurveyVC: HeaderVC {
   
   func addVC (with homeDesignFeature: HomeDesignFeature) {
     
+      if arrVCs.count == 1
+      {
+          btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+          btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+      }
+      else if arrVCs.count > 1{
+          btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+          btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+      }
     if self.arrVCs.count > 0 {
       
       var isFeatureExisted = false
@@ -415,8 +425,8 @@ class MyCollectionSurveyVC: HeaderVC {
       }
       
     }else {
-      
       self.addView(with: homeDesignFeature)
+     
     }
   }
   
@@ -561,8 +571,9 @@ class MyCollectionSurveyVC: HeaderVC {
     }
     
     if index == 0 {
-      self.btnPrevious.alpha = 0.4
+      //self.btnPrevious.alpha = 0.4
       self.btnPrevious.isUserInteractionEnabled = false
+        
     }else {
       self.btnPrevious.alpha = 1.0
       self.btnPrevious.isUserInteractionEnabled = true
@@ -1061,6 +1072,9 @@ extension MyCollectionSurveyVC {
   
   @objc func getDesignsCount () {
     
+     
+      
+      
     let params = NSMutableDictionary ()
     params.setValue(kUserID, forKey: "UserId")
     params.setValue(kUserState, forKey: "StateId")
@@ -1152,8 +1166,11 @@ extension MyCollectionSurveyVC {
     
     
     
-    let datatask = Networking.shared.POST_request(url: ServiceAPI.shared.URL_HomeDesignDesignCount, parameters: params, userInfo: nil, success: { (json, response) in
-      
+    let datatask = Networking.shared.POST_request(url: ServiceAPI.shared.URL_HomeDesignDesignCount, parameters: params, userInfo: nil, success: {[weak self] (json, response) in
+        guard let self = self else {return}
+        // previous and next button color changes based on question changes
+    
+
       if let result: AnyObject = json {
         
         let result = result as! NSDictionary
@@ -1181,7 +1198,7 @@ extension MyCollectionSurveyVC {
               //                            }
               
               let nextFeature = HomeDesignFeature (nextFeature: nextFeature)
-              
+                //nextFeature.
               self.addVC(with: nextFeature)
               
               //                            self.arrVCs.last?.reloadView()

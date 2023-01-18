@@ -41,6 +41,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         
         iDintHaveLandIMG.image = UIImage(named: "Ico-Question")
         iHaveLandIMG.image = UIImage(named: "Ico-Rite")
+        iHaveLandIMG.tintColor = APPCOLORS_3.GreyTextFont
 
         
         setAppearanceFor(view: iDontHaveLandLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
@@ -79,7 +80,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         }else{ // I have land
             iHaveLandBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         
-                iHaveLandIMG.image = UIImage(named: "Ico-Rite")?.withRenderingMode(.alwaysTemplate)
+                //iHaveLandIMG.image = UIImage(named: "Ico-Rite")?.withRenderingMode(.alwaysTemplate)
                 iHaveLandIMG.tintColor = .white
             
             iHaveLandLBL.textColor = COLOR_WHITE
