@@ -41,15 +41,15 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2E-JW-Y22">
-                                        <rect key="frame" x="75" y="5" width="20" height="20"/>
+                                        <rect key="frame" x="75" y="2.6666666666666661" width="25" height="25"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="0VG-IY-Wos"/>
+                                            <constraint firstAttribute="height" constant="25" id="0VG-IY-Wos"/>
                                             <constraint firstAttribute="width" secondItem="c2E-JW-Y22" secondAttribute="height" multiplier="1:1" id="Uew-o7-dbC"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnK-SR-jww">
-                                        <rect key="frame" x="120" y="5" width="541" height="20.333333333333332"/>
+                                        <rect key="frame" x="125" y="5" width="536" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

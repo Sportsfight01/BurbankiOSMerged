@@ -133,23 +133,24 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
       self.navigationController?.popViewController(animated: true)
   }
   
-  func layoutTable () {
-      self.detailCardView.isHidden = false
-    self.detailsTableView.reloadData()
-    
-    self.detailsTableView.isScrollEnabled = true
-      if  houseDetailsByHouseTypeArr.count >= 0 {
-      self.tableViewContentHeight = Int(self.detailsTableView.contentSize.height)
-        print("----===--------==---------==",self.tableViewContentHeight)
-      regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
-//      self.detailsTableView.reloadData()
-  }else {
-      regionTableHeight.constant = 0
+    func layoutTable () {
+        self.detailCardView.isHidden = false
+        self.detailsTableView.reloadData()
+        
+        self.detailsTableView.isScrollEnabled = true
+        if  houseDetailsByHouseTypeArr.count >= 0 {
+            self.tableViewContentHeight = Int(self.detailsTableView.contentSize.height)
+            print("----===--------==---------==",self.tableViewContentHeight)
+            regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+            //      self.detailsTableView.reloadData()
+        }else {
+            regionTableHeight.constant = 0
+        }
+        self.detailsTableView.layoutIfNeeded()
+        self.detailsTableView.setNeedsLayout()
+        self.detailsTableView.updateConstraints()
+//        super.updateTopConstraint()
     }
-      self.detailsTableView.layoutIfNeeded()
-      self.detailsTableView.setNeedsLayout()
-      self.detailsTableView.updateConstraints()
-  }
   
   func gethouseDetailsByHouseType (estateName : String?) {
     _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_HouseDetailsByEstate(Int(kUserState) ?? 0, estateName ?? ""), userInfo: nil, success: { (json, response) in
@@ -200,10 +201,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             return houseDetailsByHouseTypeArr.count + 1
         }
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        self.regionTableHeight.constant = 0
-        self.viewWillLayoutSubviews()
-    }
+    
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if tableView == self.tableView
          {
@@ -217,17 +215,17 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             label.translatesAutoresizingMaskIntoConstraints = false
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: 16).isActive = true
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-            
+
             return view
         }else{
-            return UIView()
+            return nil
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == self.tableView
         {
             return 40
-            
+
         }else{
             return 0
         }
@@ -239,7 +237,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             return tableView.estimatedRowHeight
 
         }else{
-            return tableView.estimatedRowHeight
+            return self.tableView.estimatedRowHeight
         }
     }
     
@@ -473,37 +471,43 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        
         if tableView == self.tableView
         {
             self.regionTableHeight.constant = 0
-        let displaydata = displayFavorites[indexPath.row]
-        
-        gethouseDetailsByHouseType(estateName: displaydata.displayEstateName)
-//        self.estateNameLBL.text = displaydata.displayEstateName
-        
-        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
-        let fontSuper:UIFont? = FONT_LABEL_BODY(size: FONT_9)
-        let boldFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: font]
-        let normalFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: fontSuper]
+            let displaydata = displayFavorites[indexPath.row]
+            
+            gethouseDetailsByHouseType(estateName: displaydata.displayEstateName)
+            //        self.estateNameLBL.text = displaydata.displayEstateName
+            
+            let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
+            let fontSuper:UIFont? = FONT_LABEL_BODY(size: FONT_9)
+            let boldFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: font]
+            let normalFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: fontSuper]
             let partOne = NSMutableAttributedString(string: displaydata.displayEstateName.uppercased() , attributes: boldFontAttributes as [NSAttributedString.Key : Any])
             let partTwo = NSMutableAttributedString(string: "\n\(displaydata.street),\(displaydata.suburb)", attributes: normalFontAttributes as [NSAttributedString.Key : Any])
-        let combination = NSMutableAttributedString()
-        combination.append(partOne)
-        combination.append(partTwo)
-        self.estateNameLBL.attributedText = partOne
-        self.streetNameLBL.text = "\(displaydata.street),\n\(displaydata.suburb)"
+            let combination = NSMutableAttributedString()
+            combination.append(partOne)
+            combination.append(partTwo)
+            self.detailCardHeaderView.isHidden = false
+            self.estateNameLBL.attributedText = partOne
+            self.streetNameLBL.text = "\(displaydata.street),\n\(displaydata.suburb)"
             self.addBreadCrumb(from: "\(displaydata.displayEstateName.uppercased()), \(displaydata.street)")
         }else{
             let data = houseDetailsByHouseTypeArr[indexPath.row]
             let homeDetailView = self.storyboard?.instantiateViewController(withIdentifier: "DisplayHomesDetailsVC") as! DisplayHomesDetailsVC
             homeDetailView.displayHomes = data
             homeDetailView.isFromDisplayHomes = true
-          homeDetailView.isCameFromFavorites = true
+            homeDetailView.isCameFromFavorites = true
             self.navigationController?.pushViewController(homeDetailView, animated: true)
         }
     }
   
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.regionTableHeight.constant = 0
+        self.detailCardView.isHidden = true
+        self.detailCardHeaderView.isHidden = true
+    }
 func makeDisplayHomeFavorite (_ favorite: Bool, _ design: houseDetailsByHouseType, callBack: @escaping ((_ successss: Bool) -> Void)) {
 
     let params = NSMutableDictionary()

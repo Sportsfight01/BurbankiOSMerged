@@ -59,7 +59,7 @@ class FavouritesVC: HeaderVC {
     @IBAction func handleBackButton (_ sender: UIButton) {
         
         if navigationController?.viewControllers.count == 1 {
-            self.tabBarController?.navigationController?.popViewController(animated: true)
+            self.handleHomeButtonAction(sender)
         }else {
             self.navigationController?.popViewController(animated: true)
         }
@@ -441,9 +441,9 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 
                 return UITableView.automaticDimension
             }
-            return selectedRowHeight
+            return selectedRowHeight + 20
         }
-        return rowHeight
+        return rowHeight + 20
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -456,9 +456,9 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 
                 return UITableView.automaticDimension
             }
-            return selectedRowHeight
+            return selectedRowHeight + 20
         }
-        return rowHeight
+        return rowHeight + 20
     }
     
 }

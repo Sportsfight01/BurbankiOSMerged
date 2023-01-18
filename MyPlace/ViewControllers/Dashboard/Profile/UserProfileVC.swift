@@ -1077,7 +1077,7 @@ extension UserProfileVC {
                 // string contains non-whitespace characters
             }else{
                 print(cell.txtName.text?.trimmingCharacters(in: .whitespaces) ?? "")
-                showToast("First Name should be minimum of 3 letters", self)
+                showToast("Name should be minimum of 3 letters", self)
                 return
             }
             
@@ -1092,13 +1092,13 @@ extension UserProfileVC {
             
             if let existedPhone = appDelegate.userData?.user?.userPhoneNumber {
                 if existedPhone.count > 0, cell.txtPhone.text?.trim().count == 0 {
-                    ActivityManager.showToast("Please enter Phone number", self)
+                    ActivityManager.showToast("Please enter phone number", self)
                     return
                 }
             }
             
             if !(cell.txtPhone.text?.trim().isPhoneNumber)! {
-                ActivityManager.showToast("Please enter valid Phone number", self)
+                ActivityManager.showToast("Please enter valid phone number", self)
                 return
             }
             

@@ -36,14 +36,14 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="70Z-xB-vjl">
-                                <rect key="frame" x="75" y="5" width="20" height="20"/>
+                                <rect key="frame" x="75" y="2.6666666666666661" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="H7k-0y-9oE"/>
+                                    <constraint firstAttribute="height" constant="25" id="H7k-0y-9oE"/>
                                     <constraint firstAttribute="width" secondItem="70Z-xB-vjl" secondAttribute="height" multiplier="1:1" id="rO9-hw-Jf0"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZw-GW-N73">
-                                <rect key="frame" x="120" y="5" width="260" height="20.333333333333332"/>
+                                <rect key="frame" x="125" y="5" width="255" height="20.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

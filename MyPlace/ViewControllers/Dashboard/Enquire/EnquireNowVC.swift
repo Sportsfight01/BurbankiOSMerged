@@ -225,6 +225,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     
     @IBAction func didTappedOnHomeBTN(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     //MARK: - PickerViewDelegateDatasource
@@ -291,10 +292,10 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             }
             if frstNameTF.text?.trim() == "" {
                 
-                BurbankApp.showAlert("Please enter First name", self)
+                BurbankApp.showAlert("Please enter first name", self)
             }else if lastNameTF.text?.trim() == "" {
                 
-                BurbankApp.showAlert("Please enter Last name", self)
+                BurbankApp.showAlert("Please enter last name", self)
             }else if emailTF.text?.trim() == "" {
                 
                 BurbankApp.showAlert("Please enter email", self)
@@ -303,13 +304,13 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
                 BurbankApp.showAlert("Please enter valid email id", self)
             }else if phoneTF.text?.trim() == "" {
                 
-                BurbankApp.showAlert("Please enter Phone number", self)
+                BurbankApp.showAlert("Please enter phone number", self)
             }else if whereWouldYouLiveTF.text?.trim() == "" {
                 
-                BurbankApp.showAlert("Please select Where would you live?", self)
+                BurbankApp.showAlert("Please select where would you live?", self)
             }else if !(phoneTF.text?.trim().isPhoneNumber)! {
                 
-                BurbankApp.showAlert("Please enter valid Phone number", self)
+                BurbankApp.showAlert("Please enter valid phone number", self)
             }else if (phoneTF.text?.trim().count ?? 0) > 14 {
                 BurbankApp.showAlert("Phone number should be a maximum of 14 characters length", self)
             }else if acceptedTerms == false {

@@ -402,16 +402,16 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
     @IBAction func didTappedONRequestBTN(_ sender: UIButton) {
         if firstNameTF.text?.trim() == "" {
         
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter First name")
+            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter first name")
         }else if lastNameTF.text?.trim() == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter Last name")
+            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter last name")
         }else if mobileNumberTF.text?.trim() == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter Phone number")
+            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter phone number")
         }else if !(mobileNumberTF.text?.trim().isPhoneNumber)! {
             
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter valid Phone number")
+            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter valid phone number")
         }else if (mobileNumberTF.text?.trim().count ?? 0) > 14 {
             AlertManager.sharedInstance.showAlert(alertMessage: "Phone number should be a maximum of 14 characters length")
         }else if emailTF.text?.trim() == "" {
