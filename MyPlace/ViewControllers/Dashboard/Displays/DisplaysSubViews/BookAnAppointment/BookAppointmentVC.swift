@@ -100,7 +100,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         print(displayHomeData)
         fillAllDisplayHomeDetails ()
         self.commentsTV.delegate = self
-        self.commentsTV.textColor = .gray
+        self.commentsTV.textColor = APPCOLORS_3.Black_BG
         self.commentsTV.text = "Comments"
         self.successIMGWidth.constant = 0
         HeaderVC().addBreadCrumb(from: "Book an appointment")
@@ -152,9 +152,20 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         whereWouldyouLikeToLiveTF.attributedPlaceholder = NSAttributedString(string: "Where would you like to live?", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
         
         self.whereWouldyouLikeToLiveTF.setupRightImage(imageName: "Ico-Downarrow-1")
-
+       
     }
- 
+//   func handleUISetup()
+//    {
+//        //cardView of viewElements
+//        [firstNameTF,lastNameTF,mobileNumberTF,emailTF,whereWouldyouLikeToLiveTF, commentsTV].forEach { view in
+//            if #available(iOS 13.0, *) {
+//                view?.cardView(cornerRadius: radius_5 , shadowOpacity: 0.3 , shadowColor: UIColor.systemGray3.cgColor)
+//            } else {
+//                // Fallback on earlier versions
+//                view?.cardView(cornerRadius: radius_5 , shadowOpacity: 0.3)
+//            }
+//        }
+//    }
     @IBAction func btnAcceptTermsAction(_ sender: UIButton) {
         
         if acceptedTerms {
@@ -177,7 +188,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
     self.navigationController?.popViewController(animated: true)
   }
     func textViewDidBeginEditing(_ textView: UITextView) {
-        self.commentsTV.textColor = APPCOLORS_3.GreyTextFont
+       // self.commentsTV.textColor = APPCOLORS_3.Black_BG
         self.commentsTV.text = ""
     }
     func showUserDetails(){
@@ -374,7 +385,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         arrOfTimeBtns.forEach { btn in
             if btn == sender
             {
-                sender.backgroundColor = APPCOLORS_3.Orange_BG
+                sender.backgroundColor = APPCOLORS_3.EnabledOrange_BG
                 sender.setTitleColor(.white, for: .normal)
             }
             else {
@@ -422,7 +433,12 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         }else if emailTF.text?.trim().isValidEmail() == false {
             
             AlertManager.sharedInstance.showAlert(alertMessage: "Please enter valid email id")
-        }else if !self.acceptedTerms{
+        }
+        else if whereWouldyouLikeToLiveTF.text?.trim() == "" {
+            
+            AlertManager.sharedInstance.showAlert(alertMessage: "Please select where would you like to live?")
+        }
+        else if !self.acceptedTerms{
             AlertManager.sharedInstance.showAlert(alertMessage: "Please accept Burbank's privacy policy", title: "")
         }else{
             self.enquireDisplayHomes { successss in

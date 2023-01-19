@@ -19,7 +19,7 @@ let iconMyDesign = UIImage(named: "Ico-HomeDesignRound")
 let iconShare = UIImage(named: "Ico-ShareRound")
 let iconProfile = UIImage(named: "Ico-ProfileRound")
 let iconSettings = UIImage(named: "Ico-Settings")
-let iconDH = UIImage(named: "Ico-Displays-Bottomm")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+let iconDH = UIImage(named: "ico-DisplayHomeFooter")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
 var iconFav : UIImage
 {
     if #available(iOS 13.0, *)

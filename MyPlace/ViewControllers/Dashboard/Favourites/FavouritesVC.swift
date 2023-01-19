@@ -160,6 +160,8 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             if name == nameMyDesign {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MyDesignsTVC", for: indexPath) as! MyDesignsTVC
+              //  cell.icon.backgroundColor = .red
+                cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
@@ -215,7 +217,8 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }else if name == nameDisplayHomes {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayHomesTVC", for: indexPath) as! DisplayHomesTVC
-                
+//                cell.icon.backgroundColor = .red
+                cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 cell.icon.tintColor = .black
                 cell.lBTitle.text = arrNames[indexPath.row]
@@ -233,6 +236,8 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }else if name == nameHL {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeAndLandTVC", for: indexPath) as! HomeAndLandTVC
+//                cell.icon.backgroundColor = .red
+                cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
@@ -280,7 +285,11 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouritesTVCell", for: indexPath) as! FavouritesTVCell
-        
+
+        cell.iconWidthConstraint.constant = indexPath.row == 0 ? 25 : 32
+        //cell.icon.contentMode = indexPath.row == 0 ? .scaleAspectFit : .scaleToFill
+        cell.icon.contentMode = .scaleToFill
+       // cell.icon.backgroundColor = .red
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
         cell.icon.tintColor = .black
         cell.lBTitle.text = arrNames[indexPath.row]

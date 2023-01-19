@@ -178,10 +178,10 @@ class HomeLandDetailsVC: HeaderVC {
         //        self.lBLotWidth.text =
         let tex = "LAND SIZE " + (self.homeLand?.landSizeSqm ?? "0") + "m2"
         
-        let font:UIFont? = FONT_LABEL_LIGHT(size: 7)
-        let fontSuper:UIFont? = FONT_LABEL_LIGHT(size: 6)
+        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: 10)
+        let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: 10)
         let attString:NSMutableAttributedString = NSMutableAttributedString(string: tex, attributes: [.font:font!])
-        attString.setAttributes([.font:fontSuper!,.baselineOffset:2], range: NSRange(location:tex.count-1,length:1))
+        attString.setAttributes([.font:fontSuper!,.baselineOffset:2], range: NSRange(location:tex.count-1,length:1))//attribute to make m^2
         lBLandSize.attributedText = attString
 
         
@@ -387,7 +387,7 @@ extension HomeLandDetailsVC {
         setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
         
         
-        setAppearanceFor(view: lBLandSize, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: 10)) //(size: 6))
+        setAppearanceFor(view: lBLandSize, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: 10)) //(size: 6))
 //        setAppearanceFor(view: lBLandSize_size, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_LIGHT(size: 8))g
 //
 //        setAppearanceFor(view: lBLineSize, backgroundColor: APPCOLORS_3.GreyTextFont, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_10))

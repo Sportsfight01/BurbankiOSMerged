@@ -353,7 +353,7 @@ class HomeLandVCSurvey: HeaderVC {
         _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         
         _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
-      _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+      _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_LIGHT(size: FONT_40), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
 
         
         bedrooms_btn3Bedrooms.superview?.layer.cornerRadius = radius_5
@@ -685,11 +685,12 @@ class HomeLandVCSurvey: HeaderVC {
     }
     
     @IBAction func handlePreviousNextButtonsAction (_ sender: UIButton) {
-        
+        print(log: viewTag)
+      
         if sender == btnNext {
-            
+            print(viewTag)
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_next_button_touch)
-            btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+           // btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
             if btnNext.isUserInteractionEnabled == true { }
             else { return }
@@ -697,7 +698,7 @@ class HomeLandVCSurvey: HeaderVC {
             
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_previous_button_touch)
             btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+           // btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             if btnPrevious.isUserInteractionEnabled == true { }
             else { return }
         }
@@ -827,6 +828,7 @@ class HomeLandVCSurvey: HeaderVC {
             
             showHideAllViews ()
         }
+        btnPrevious.backgroundColor = viewTag > 101 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
     }
     
     
@@ -980,7 +982,7 @@ class HomeLandVCSurvey: HeaderVC {
             _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         }else if self.filter.bedRoomsCount == .ALL{
             bedrooms_btnNotSure.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_LIGHT(size: FONT_40), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         }
 
     }

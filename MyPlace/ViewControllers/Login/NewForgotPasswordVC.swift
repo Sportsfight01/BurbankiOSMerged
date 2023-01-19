@@ -44,7 +44,7 @@ class NewForgotPasswordVC: UIViewController {
         
         setAppearanceFor(view: labelForgot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
         setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_13))
+        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: txtEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
@@ -61,7 +61,7 @@ class NewForgotPasswordVC: UIViewController {
         btnNext.layer.cornerRadius = radius_5
         
         
-        labelHint.text = "Passcode will be sent to following \n Email to reset password"
+        labelHint.text = "A Passcode will be sent to the following email."
     }
     
     

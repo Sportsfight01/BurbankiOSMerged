@@ -47,7 +47,7 @@ class DisplaysMapDetailCell: UITableViewCell {
         
         self.houseIMG?.image = imageEmpty
 //        activity.startAnimating()
-        
+        pageUISetup()
         
         if let imageurl = displayHomeData?.facadePermanentUrl {
             
@@ -85,6 +85,13 @@ class DisplaysMapDetailCell: UITableViewCell {
         }
         self.favoriteBTN.addTarget(self, action: #selector(didTappedOnFavourites(_:)), for: .touchUpInside)
         
+    }
+    
+    func pageUISetup()
+    {
+        [bedRoomCountLBL,bathRoomCountLBL,carSpaceCountLBL].forEach { lbl in
+            setAppearanceFor(view: lbl, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
+        }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

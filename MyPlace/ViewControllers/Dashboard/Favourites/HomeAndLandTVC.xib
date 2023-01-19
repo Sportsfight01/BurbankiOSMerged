@@ -40,15 +40,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-37-w5A">
-                                        <rect key="frame" x="75" y="2.6666666666666661" width="25" height="25"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-37-w5A">
+                                        <rect key="frame" x="75" y="2.6666666666666661" width="32" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="724-lu-C5k"/>
-                                            <constraint firstAttribute="width" secondItem="cVb-37-w5A" secondAttribute="height" multiplier="1:1" id="rfk-UH-vzz"/>
+                                            <constraint firstAttribute="width" constant="32" id="lgV-Az-6JZ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home &amp; Land" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZd-MZ-GRS">
-                                        <rect key="frame" x="125" y="5" width="255" height="20.333333333333332"/>
+                                        <rect key="frame" x="132" y="5" width="248" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

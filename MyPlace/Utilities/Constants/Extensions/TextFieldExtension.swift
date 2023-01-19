@@ -102,13 +102,19 @@ extension UITextField {
     //MARK:- Set Image on the right of text fields
 
   func setupRightImage(imageName:String){
-    let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 15))
+    let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 20, height: 12))
     imageView.image = UIImage(named: imageName)
-    let imageContainerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 55, height: 40))
-    imageContainerView.addSubview(imageView)
-    rightView = imageContainerView
-    rightViewMode = .always
-    self.tintColor = .lightGray
+   // let imageContainerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 55, height: 40))
+    self.addSubview(imageView)
+      imageView.translatesAutoresizingMaskIntoConstraints = false
+      imageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
+      imageView.heightAnchor.constraint(equalToConstant: 10).isActive = true
+      imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
+      imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//    rightView = imageContainerView
+//    rightViewMode = .always
+      self.tintColor = .lightGray
+      self.addSubview(imageView)
 }
 
  //MARK:- Set Image on left of text fields

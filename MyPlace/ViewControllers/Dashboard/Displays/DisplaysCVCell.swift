@@ -342,7 +342,7 @@ class DisplaysCVCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let mapImg = UIImage(named: "Ico-Displays-Bottomm")
+        let mapImg = UIImage(named: "ico-DisplayHomeFooter")
         
         locationsBTN.setImage(mapImg?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
         locationsBTN.tintColor = .white

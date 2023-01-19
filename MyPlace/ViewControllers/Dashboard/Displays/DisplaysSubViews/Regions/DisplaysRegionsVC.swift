@@ -92,7 +92,7 @@ extension DisplaysRegionsVC: UITableViewDelegate, UITableViewDataSource {
 //        cell.titleLabel.borderColor = APPCOLORS_3.
        
         if selectedIndex == indexPath.row{
-            cell.titleLabel.backgroundColor = APPCOLORS_3.Orange_BG
+            cell.titleLabel.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             cell.titleLabel.textColor = .white
             cell.layer.masksToBounds = true
         }else{

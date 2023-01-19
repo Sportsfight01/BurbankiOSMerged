@@ -54,7 +54,7 @@ let FONT_33 = SCREEN_WIDTH/9.69 //height/22.7
 let FONT_34 = SCREEN_WIDTH/9.41 //height/22.7
 let FONT_35 = SCREEN_WIDTH/9.14 //height/22.7
 
-
+let FONT_40 = SCREEN_WIDTH/8.0
 
 let FONT_50 = SCREEN_WIDTH/6.4
 let FONT_55 = SCREEN_WIDTH/5.8 //height/22.7
