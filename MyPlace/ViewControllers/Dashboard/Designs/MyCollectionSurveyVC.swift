@@ -276,6 +276,9 @@ class MyCollectionSurveyVC: HeaderVC {
       else { return }
     }else {
       CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_previous_button_touch)
+        
+        btnPrevious.backgroundColor = currentIndex > 1 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+        btnNext.backgroundColor = currentIndex > 1 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
       if btnPrevious.isUserInteractionEnabled == true { }
       else { return }
     }
@@ -398,15 +401,16 @@ class MyCollectionSurveyVC: HeaderVC {
   
   func addVC (with homeDesignFeature: HomeDesignFeature) {
     
-      if arrVCs.count == 1
-      {
-          btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
-          btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
-      }
-      else if arrVCs.count > 1{
-          btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-          btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-      }
+//      if arrVCs.count == 1
+//      {
+//          btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+//          btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+//      }
+//     if arrVCs.count > 1{
+//          btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+//          btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+//      }
+//
     if self.arrVCs.count > 0 {
       
       var isFeatureExisted = false
@@ -627,6 +631,13 @@ class MyCollectionSurveyVC: HeaderVC {
         self.getPriceValues(after: 1)
       }else {
         self.getDesignsCount()
+          if selectedVC.isKind(of: HavingLotVC.self)//First question
+          {
+              self.btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+          }else {
+              self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+          }
+          self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
       }
       
     }
