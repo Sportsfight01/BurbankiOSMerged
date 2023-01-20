@@ -883,7 +883,7 @@ extension DesignsDetailsVC {
                             homeLand.filter = SortFilter ()
                             
                             homeLand.isFromHomeDesigns = true
-                            homeLand.isFromProfileFavorites = true
+                            homeLand.isFromProfileFavorites = false
                             
                             homeLand.design = self.homeDesign
                             

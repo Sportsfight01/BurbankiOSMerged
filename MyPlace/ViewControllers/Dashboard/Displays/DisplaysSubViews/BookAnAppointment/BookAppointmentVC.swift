@@ -153,6 +153,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         
         self.whereWouldyouLikeToLiveTF.setupRightImage(imageName: "Ico-Downarrow-1")
        
+        iconAcceptTerms.layer.cornerRadius = 5.0
     }
 //   func handleUISetup()
 //    {
@@ -250,7 +251,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         combination.append(partTwo)
         
         self.titleNameLBL.attributedText = combination
-        self.estateNameLBL.text = displayHomeData?[0].displayEstateName
+        self.estateNameLBL.text = displayHomeData?[0].displayEstateName.capitalized
         
     }
     func showDatePicker() {

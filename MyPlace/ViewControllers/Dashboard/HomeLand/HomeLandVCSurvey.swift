@@ -376,7 +376,9 @@ class HomeLandVCSurvey: HeaderVC {
     @IBAction func handleBackButton (_ sender: UIButton) {
         
         CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_back_button_touch)
-        btnPrevious.backgroundColor = viewTag > 101 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+       
+      //  btnNext.backgroundColor = viewTag >
+        
         if viewTag == 101 {
             
             if (btnDesignsCount.title(for: .normal) == "SKIP >") {
@@ -489,6 +491,8 @@ class HomeLandVCSurvey: HeaderVC {
         
         
         showHideAllViews ()
+        btnPrevious.backgroundColor = viewTag > 101 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+        btnNext.backgroundColor = viewTag < 105 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
         
     }
     

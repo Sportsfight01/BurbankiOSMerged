@@ -37,7 +37,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
     func lotViewSetUp () {
         
         setAppearanceFor(view: lotHeaderLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
-        setAppearanceFor(view: lotHeaderLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
+       // setAppearanceFor(view: lotHeaderLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_19))
         
         iDintHaveLandIMG.image = UIImage(named: "Ico-Question")
         iHaveLandIMG.image = UIImage(named: "Ico-Rite")

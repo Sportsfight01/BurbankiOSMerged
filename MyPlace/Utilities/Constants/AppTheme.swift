@@ -22,6 +22,8 @@ let imageUnChecked = UIImage(named: "Ico-Uncheckd")
 
 let imageCheckedEnquiry = UIImage(named: "Ico-Checked-1")
 let imageUnCheckedEnquiry = UIImage(named: "Ico-Unchecked")
+//@available(iOS 13.0, *)
+//let imageUnCheckedEnquiry = UIImage(systemName: "square.fill")
 
 
 

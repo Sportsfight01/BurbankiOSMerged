@@ -70,14 +70,14 @@ class HomeLandPopupVC: UIViewController {
         else{
             if arrHomeLandPackages.count == 1 {
                 
-                _ = setAttributetitleFor(view: labelHeading, title: "SELECTED HOUSE", rangeStrings: ["SELECTED HOUSE"], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_HEADING (size: FONT_16)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: labelHeading, title: "SELECTED HOUSE", rangeStrings: ["SELECTED HOUSE"], colors: [APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_16)], alignmentCenter: false)
 
             }else {
                 
                 let str = "HOUSES IN GROUP"
                 let count = "\(arrHomeLandPackages.count) Houses"
                 
-                _ = setAttributetitleFor(view: labelHeading, title: str + "\n" + count, rangeStrings: [str, count], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_HEADING (size: FONT_16), FONT_LABEL_LIGHT (size: FONT_12)], alignmentCenter: false)
+                _ = setAttributetitleFor(view: labelHeading, title: str + "\n" + count, rangeStrings: [str, count], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_16), FONT_LABEL_LIGHT (size: FONT_12)], alignmentCenter: false)
             }
         }
        

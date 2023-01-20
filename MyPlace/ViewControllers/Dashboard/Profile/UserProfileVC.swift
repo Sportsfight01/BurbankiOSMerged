@@ -13,7 +13,7 @@ import SDWebImage
 
 
 let iconCollection = UIImage(named: "Ico-HomeDesigns")
-let iconHL = UIImage(named: "Ico-H&L1")
+let iconHL = UIImage(named: "Ico-Home&Land-Bottomm")
 let iconMyday = UIImage(named: "Ico-MyDayRound")
 let iconMyDesign = UIImage(named: "Ico-HomeDesignRound")
 let iconShare = UIImage(named: "Ico-ShareRound")
@@ -428,7 +428,9 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             if name == nameMyDetails {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileDetailsTVCell", for: indexPath) as! ProfileDetailsTVCell
-                cell.icon.image = arrIcons[indexPath.row]
+
+                cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
                 cell.lBTitle.text = arrNames[indexPath.row]
                 cell.txtName.text = "\(appDelegate.userData?.user?.userFirstName?.capitalized ?? "") \(appDelegate.userData?.user?.userLastName?.capitalized ?? "")"
                 cell.fillDetails()
@@ -659,7 +661,9 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             }else if name == nameSettings {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSettingsTVCell", for: indexPath) as! ProfileSettingsTVCell
-                cell.icon.image = arrIcons[indexPath.row]
+        
+                cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
                 cell.switchLocation.isOn = LocationServices.shared.isLocationServicesEnabled ()
@@ -691,7 +695,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTVCell", for: indexPath) as! ProfileTVCell
         
-        cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
         cell.icon.tintColor = APPCOLORS_3.GreyTextFont
         cell.lBTitle.text = arrNames[indexPath.row]
         

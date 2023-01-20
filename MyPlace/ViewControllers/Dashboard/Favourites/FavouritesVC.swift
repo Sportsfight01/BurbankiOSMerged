@@ -162,7 +162,8 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MyDesignsTVC", for: indexPath) as! MyDesignsTVC
               //  cell.icon.backgroundColor = .red
                 cell.icon.contentMode = .scaleToFill
-                cell.icon.image = arrIcons[indexPath.row]
+                cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
                 if let recentSearch = appDelegate.userData?.user?.userDetails?.collectionRecentSearch {
@@ -220,7 +221,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
 //                cell.icon.backgroundColor = .red
                 cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-                cell.icon.tintColor = .black
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
                 //                if displayFavorites.count
@@ -236,9 +237,11 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }else if name == nameHL {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeAndLandTVC", for: indexPath) as! HomeAndLandTVC
-//                cell.icon.backgroundColor = .red
+                //                cell.icon.backgroundColor = .red
                 cell.icon.contentMode = .scaleToFill
-                cell.icon.image = arrIcons[indexPath.row]
+                cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
+                
                 cell.lBTitle.text = arrNames[indexPath.row]
                 
                 cell.searchResultSortFilter = appDelegate.userData?.user?.userDetails?.homeLandSortFilter
@@ -285,13 +288,11 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouritesTVCell", for: indexPath) as! FavouritesTVCell
-
-        cell.iconWidthConstraint.constant = indexPath.row == 0 ? 25 : 32
-        //cell.icon.contentMode = indexPath.row == 0 ? .scaleAspectFit : .scaleToFill
-        cell.icon.contentMode = .scaleToFill
-       // cell.icon.backgroundColor = .red
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
-        cell.icon.tintColor = .black
+        cell.icon.tintColor = APPCOLORS_3.GreyTextFont
+        cell.iconWidthConstraint.constant = indexPath.row == 0 ? 25 : 32
+        
+        cell.icon.contentMode = .scaleToFill
         cell.lBTitle.text = arrNames[indexPath.row]
        // cell.lBTitle.textColor = AppColors.black
         return cell

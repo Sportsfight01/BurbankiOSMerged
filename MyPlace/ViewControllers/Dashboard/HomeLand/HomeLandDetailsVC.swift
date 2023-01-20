@@ -248,7 +248,7 @@ class HomeLandDetailsVC: HeaderVC {
                     self.imageDesign.hideActivityIndicator()
 
                     if success, let img = image {
-                        self.imageDesign.image = img
+                        self.imageDesign.image = processPixels(in: img)
                         
                         let scrollView = self.imageDesign.superview as! UIScrollView
                         scrollView.delegate = self
