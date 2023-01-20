@@ -266,7 +266,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
                     self.imageHouseDesign.hideActivityIndicator()
 
                     if success, let img = image {
-                        self.imageHouseDesign.image = img
+                        self.imageHouseDesign.image = processPixels(in: img)
 
                         let scrollView = self.scrollViewHouseDesign
                         scrollView?.delegate = self

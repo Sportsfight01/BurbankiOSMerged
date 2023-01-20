@@ -226,7 +226,7 @@ class HomeLandDetailsVC: HeaderVC {
                 self.imageHouse.contentMode = .scaleToFill
                 
                 if let img = image {
-                    self.imageHouse.image = img
+                    self.imageHouse.image = processPixels(in: img)
                 }else {
                     self.imageHouse.image = UIImage (named: "BG-Half")
                 }

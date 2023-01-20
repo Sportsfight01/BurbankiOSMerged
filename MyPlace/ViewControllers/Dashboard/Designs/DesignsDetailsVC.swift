@@ -269,8 +269,8 @@ class DesignsDetailsVC: HeaderVC {
                     self.imageHouseDesign.hideActivityIndicator()
                     
                     if success, let img = image {
-                        self.imageHouseDesign.image = img
-                        
+                        // processpixels method used to change image colors --> black to white
+                        self.imageHouseDesign.image = processPixels(in: img)
                         let scrollView = self.scrollViewHouseDesign
                         scrollView?.delegate = self
                         scrollView?.minimumZoomScale = 1.0
@@ -922,4 +922,5 @@ extension DesignsDetailsVC {
     
     
 }
+
 

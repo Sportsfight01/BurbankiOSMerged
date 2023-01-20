@@ -116,10 +116,10 @@ func getMyPlaceURL(isContactUs : Bool = false) -> String
 //MARK: - infoCentre Url
 
 func getInfoCentreDetails() -> String{
-    return "http://10.6.45.14:8085/api/api/myplace/infocentre"
+    return BaseURL + "/myplace/infocentre"
 }
 
 //MARK: - FAQ'S Url
 func getFaq() -> String{
-    return "http://10.6.45.14:8085/api/api/myplace/faq"
+    return BaseURL + "/myplace/faq"
 }

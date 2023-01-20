@@ -159,7 +159,7 @@ extension InfoCentreVC : UICollectionViewDelegate , UICollectionViewDataSource
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfoCVC", for: indexPath) as! InfoCVC
             cell.infoTextLBL.text = self.infoCentreDataArr[indexPath.row].heading
             let url = infoCentreDataArr[indexPath.row].image.replacingOccurrences(of: "~", with: "")
-            let documentURL = "\(clickHomeBaseImageURLForTesting)\(url ?? "")"
+            let documentURL = "\(clickHomeBaseImageURL)\(url ?? "")"
             print(documentURL)
             cell.imageView.sd_setImage(with: URL(string: documentURL), placeholderImage: UIImage(named: "placeholder"))
             return cell
