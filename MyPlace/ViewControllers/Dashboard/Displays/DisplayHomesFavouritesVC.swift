@@ -210,8 +210,9 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             label.font = UIFont.boldSystemFont(ofSize: 18)
             label.text = "Favourites List (\(displayFavorites.count))";
             label.textColor = APPCOLORS_3.HeaderFooter_white_BG
-            view.addSubview(label);
-            view.backgroundColor = APPCOLORS_3.GreyTextFont
+            view.addSubview(label)
+            view.backgroundColor = APPCOLORS_3.DarkGrey_BG
+            setAppearanceFor(view: label, backgroundColor: nil, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
             label.translatesAutoresizingMaskIntoConstraints = false
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: 16).isActive = true
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true

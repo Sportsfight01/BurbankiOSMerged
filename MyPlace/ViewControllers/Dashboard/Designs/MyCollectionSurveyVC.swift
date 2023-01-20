@@ -180,17 +180,19 @@ class MyCollectionSurveyVC: HeaderVC {
         }else {
           
           //  self.btnDesignsCount.setTitle("", for: .normal)
-          
+           // btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
           removeValues(from: currentIndex, removeView: false)
           
           showViewAt(index: currentIndex)
           getDesignsCount ()
         }
       }else {
-        
+          if currentIndex == 1 {
+              btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+          }
         removeValues(from: currentIndex)
         showViewAt(index: currentIndex-1)
-        
+          btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         getDesignsCount ()
       }
     }
@@ -268,17 +270,17 @@ class MyCollectionSurveyVC: HeaderVC {
   
   @IBAction func handlePreviousNextButtonsAction (_ sender: UIButton) {
     
-    if sender == btnNext {
+    if sender == btnNext { // Next btn
         btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
       print("btnNext Tapped")
       CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_next_button_touch)
       if btnNext.isUserInteractionEnabled == true { }
       else { return }
-    }else {
+    }else { // previous btn
       CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_newQuiz_previous_button_touch)
         
-        btnPrevious.backgroundColor = currentIndex > 1 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
-        btnNext.backgroundColor = currentIndex > 1 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+       // btnPrevious.backgroundColor = currentIndex > 1 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+   
       if btnPrevious.isUserInteractionEnabled == true { }
       else { return }
     }
@@ -359,8 +361,13 @@ class MyCollectionSurveyVC: HeaderVC {
         currentIndex = currentIndex - 1
         
         showViewAt(index: currentIndex)
+      
       }
+        
     }
+      
+      btnPrevious.backgroundColor = currentIndex > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+     
   }
   
   @IBAction func handlePopupHintButtonAction (_ sender: UIButton) {
@@ -571,6 +578,8 @@ class MyCollectionSurveyVC: HeaderVC {
     if arrVCs.count > 0 {
       
     }else {
+        btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+        btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
       return
     }
     
@@ -584,11 +593,8 @@ class MyCollectionSurveyVC: HeaderVC {
     }
     
     hideAllViews ()
-    
-    
+      
     currentIndex = index
-    print(currentIndex)
-    print(arrVCs)
     
     let vc = arrVCs[index]
     
@@ -631,6 +637,7 @@ class MyCollectionSurveyVC: HeaderVC {
         self.getPriceValues(after: 1)
       }else {
         self.getDesignsCount()
+          //Previous Next Button Color Changes
           if selectedVC.isKind(of: HavingLotVC.self)//First question
           {
               self.btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG

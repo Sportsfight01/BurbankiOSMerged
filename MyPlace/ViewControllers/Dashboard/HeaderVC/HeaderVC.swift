@@ -836,7 +836,7 @@ extension HeaderVC {
         btnReset.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            btnReset.leadingAnchor.constraint(equalTo: optionsView.leadingAnchor, constant: 0),
+            btnReset.leadingAnchor.constraint(equalTo: optionsView.leadingAnchor, constant: -20),
             //            btnFavorites.trailingAnchor.constraint(equalTo: optionsView.trailingAnchor, constant: 0),
             btnReset.topAnchor.constraint(equalTo: optionsView.topAnchor, constant: 0),
             optionsView.bottomAnchor.constraint(equalTo: btnMyProfile.bottomAnchor, constant: 0)

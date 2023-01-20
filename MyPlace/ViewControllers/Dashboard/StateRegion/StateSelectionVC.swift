@@ -133,7 +133,7 @@ extension StateSelectionVC: UITableViewDelegate, UITableViewDataSource {
             cell.lBTitle.textColor = APPCOLORS_3.HeaderFooter_white_BG
         }else {
             cell.viewS.backgroundColor = COLOR_CLEAR
-            cell.lBTitle.textColor = APPCOLORS_3.Black_BG
+            cell.lBTitle.textColor = APPCOLORS_3.GreyTextFont
             if #available(iOS 13.0, *) {
                 cell.viewS.cardView(cornerRadius: radius_5,shadowOpacity: 0.3, shadowColor: UIColor.gray.cgColor)
             } else {

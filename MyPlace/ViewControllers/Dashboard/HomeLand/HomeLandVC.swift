@@ -777,13 +777,13 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if isFavoritesService == true { return 60 }
+        if isFavoritesService == true { return 40 }
         return 0
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         
-        if isFavoritesService == true { return 60 }
+        if isFavoritesService == true { return 40 }
         return 0
     }
     
@@ -795,9 +795,12 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
             
             let viewHeader = UIView (frame: CGRect (x: 0, y: 0, width: tableView.frame.size.width, height: 60))
             
-            let dataLabel = UILabel (frame: CGRect (x: 10, y: 10, width: viewHeader.frame.size.width - 20, height: viewHeader.frame.size.height-10))
-            
+            let dataLabel = UILabel (frame: .zero)
             viewHeader.addSubview(dataLabel)
+            //dataLabel Constraint
+            dataLabel.translatesAutoresizingMaskIntoConstraints = false
+            dataLabel.leadingAnchor.constraint(equalTo: viewHeader.leadingAnchor, constant: 16).isActive = true
+            dataLabel.centerYAnchor.constraint(equalTo: viewHeader.centerYAnchor).isActive = true
             
             if packages[0].favouritedUser?.userID == kUserID {
                 dataLabel.text = "My Favourites list " + "(\(packages.count))"
@@ -806,7 +809,7 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
                 dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourites list " + "(\(packages.count))"
             }
             
-            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.GreyTextFont)
+            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.DarkGrey_BG)
             
             setAppearanceFor(view: dataLabel, backgroundColor: nil, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
             

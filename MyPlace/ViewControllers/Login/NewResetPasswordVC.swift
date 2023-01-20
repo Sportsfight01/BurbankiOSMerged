@@ -67,7 +67,7 @@ class NewResetPasswordVC: UIViewController {
         
         
         setAppearanceFor(view: btnNext, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: btnResend, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: btnResend, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         
         
 //        viewOTPText.layer.cornerRadius = radius_5

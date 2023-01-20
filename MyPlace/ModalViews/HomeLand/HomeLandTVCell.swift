@@ -54,7 +54,7 @@ class HomeLandTVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        setAppearanceFor(view: contentView, backgroundColor: APPCOLORS_3.Body_BG)
         setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
         
         setAppearanceFor(view: lBName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))

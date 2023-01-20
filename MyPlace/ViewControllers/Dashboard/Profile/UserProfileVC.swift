@@ -206,7 +206,7 @@ class UserProfileVC: UIViewController {
         btnProfileImage.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
         
         
-        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_30), FONT_LABEL_SUB_HEADING(size: FONT_30)], alignmentCenter: false)
+        let _ = setAttributetitleFor(view: logoLabelProfile, title: "MyProfile", rangeStrings: ["My", "Profile"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_30), FONT_LABEL_SUB_HEADING(size: FONT_30)], alignmentCenter: false)
         profileHeaderView.addSubview(logoLabelProfile)
         
         
