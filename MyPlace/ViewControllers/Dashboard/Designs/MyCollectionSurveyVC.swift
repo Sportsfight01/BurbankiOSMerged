@@ -8,19 +8,16 @@
 
 import UIKit
 
+//HomeDesignQuiz
 class MyCollectionSurveyVC: HeaderVC {
   
+  //MARK : - Properties
+    
   @IBOutlet weak var mainView : UIView!
-  
   @IBOutlet weak var btnDesignsCount: UIButton!
-  
-  
   @IBOutlet weak var btnNext: UIButton!
   @IBOutlet weak var btnPrevious: UIButton!
-  
-  
   @IBOutlet weak var viewRecentSearch: UIView!
-  
   @IBOutlet weak var viewHintPopUp: UIView!
   @IBOutlet weak var lBHintPopUp: UILabel!
   @IBOutlet weak var btnHintPopUp: UIButton!
@@ -338,6 +335,8 @@ class MyCollectionSurveyVC: HeaderVC {
               currentIndex = currentIndex + 1
               
               showViewAt(index: currentIndex)
+          
+              
             }
           }else {
             
@@ -365,6 +364,13 @@ class MyCollectionSurveyVC: HeaderVC {
       }
         
     }
+      
+      if arrVCs[currentIndex].homeDesignFeature?.selectedAnswer != "" // answer selected
+        {
+          btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+      }else {
+          btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+      }
       
       btnPrevious.backgroundColor = currentIndex > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
      

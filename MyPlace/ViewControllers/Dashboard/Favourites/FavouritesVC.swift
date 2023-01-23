@@ -10,7 +10,7 @@ import UIKit
 
 class FavouritesVC: HeaderVC {
 
-   
+    //MARK: - Properties
     let arrIcons = [iconCollection, iconHL, iconDH]
     let arrNames = [nameMyDesign, nameHL, nameDisplayHomes]
 
@@ -26,6 +26,7 @@ class FavouritesVC: HeaderVC {
     var completionHandlerProfilePicUpdate: (() -> Void)?
     
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableViewFvrts.tableFooterView = UIView(frame: .zero)
@@ -39,7 +40,7 @@ class FavouritesVC: HeaderVC {
         
         btnProfileImage.layer.cornerRadius = btnProfileImage.frame.size.height/2
         btnProfileImage.clipsToBounds = true
-        getDisplaysNotificationsCount()
+       
         setHeightForViewBasedonRowsHeight()
         
         addHeaderViewOptions()
@@ -54,6 +55,10 @@ class FavouritesVC: HeaderVC {
             btnBackFull.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
         
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getDisplaysNotificationsCount()
     }
     
     @IBAction func handleBackButton (_ sender: UIButton) {
@@ -170,7 +175,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                     
                     cell.searchResultSortFilter = recentSearch as? [NSDictionary]
                     cell.bottomView.cardView(cornerRadius : 10.0)
-                    cell.btnSavedDesigns.cardView(cornerRadius : 10.0, backgroundColor : cell.btnSavedDesigns.backgroundColor ?? AppColors.appOrange)
+              
                     
                     cell.actionHandler = { (button) in
                         
@@ -246,7 +251,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 
                 cell.searchResultSortFilter = appDelegate.userData?.user?.userDetails?.homeLandSortFilter
                 cell.bottomViewBottom.cardView(cornerRadius : 10.0)
-                cell.btnSavedDesigns.cardView(cornerRadius : 10.0, backgroundColor : cell.btnSavedDesigns.backgroundColor ?? AppColors.appOrange)
+//                cell.btnSavedDesigns.cardView(cornerRadius : 10.0, backgroundColor : APPCOLORS_3.EnabledOrange_BG)
                 
                 cell.actionHandler = { (button) in
                     
@@ -262,7 +267,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                         
                         CodeManager.sharedInstance.sendScreenName(burbank_profile_homeAndLand_designs_button_touch)
                         
-                    }else {
+                    }else { // btnSavedDesign
                         
                         CodeManager.sharedInstance.sendScreenName(burbank_profile_homeAndLand_recentSearch_button_touch)
                         
@@ -307,14 +312,15 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             
         }else {
             
-            selectedIndex = indexPath.row
-            let name = arrNames[selectedIndex]
             
-             if name == nameHL {
+
+            let name = arrNames[indexPath.row]
+            
+             if name == nameHL { // HouseAndLand
                 
                 selectedIndex = -1
                 
-                ProfileDataManagement.shared.recentSearchData(SearchType.shared.homeLand, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
+                ProfileDataManagement.shared.recentSearchData(SearchType.shared.homeLand, Int(kUserState)!, kUserID, succe: { [weak self](recentSearchResult) in
                     
                     if let recent = recentSearchResult {
                                                 
@@ -322,14 +328,14 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                                 
                         setHomeLandFavouritesCount(count: (recent.value(forKey: "UserFavourites") as! NSNumber).intValue, state: kUserState)
                         
-                        self.selectedIndex = indexPath.row
-                        
-                    //    self.setHeightForViewBasedonRowsHeight()
-                        self.tableViewFvrts.reloadData()
+                     
+                     
                     }
                     else {
-                        AlertManager.sharedInstance.alert("Recent Searches not available")
+                       // AlertManager.sharedInstance.alert("Recent Searches not available")
                     }
+                    self?.selectedIndex = indexPath.row
+                    self?.tableViewFvrts.reloadData()
                 })
                 
                 
@@ -339,7 +345,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             else if name == nameMyDesign {
                 
                 selectedIndex = -1
-                ProfileDataManagement.shared.recentSearchData(SearchType.shared.newHomes, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
+                ProfileDataManagement.shared.recentSearchData(SearchType.shared.newHomes, Int(kUserState)!, kUserID, succe: { [weak self] (recentSearchResult) in
                     
                     if let recent = recentSearchResult {
 
@@ -349,8 +355,8 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
 
                             if count == 0 {
                                 setHomeDesignsFavouritesCount(count: 0, state: kUserState)
-
-                                AlertManager.sharedInstance.alert("Favourites not available")
+                                
+                               // AlertManager.sharedInstance.alert("Favourites not available")
                             }else {
 
                                 var rece = [NSDictionary] ()
@@ -369,7 +375,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
 
                                 }
 
-                                self.selectedIndex = indexPath.row
+                               // self.selectedIndex = indexPath.row
 
                             }
                         } else {
@@ -378,14 +384,16 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
 
                         setHomeDesignsFavouritesCount(count: (recent.value(forKey: "UserFavourites") as! NSNumber).intValue, state: kUserState)
                         
-                        self.tableViewFvrts.reloadData()
+                    
 
                     }else {
 
                         setHomeDesignsFavouritesCount(count: 0, state: kUserState)
 
-                        AlertManager.sharedInstance.alert("Favourites not available")
+                       // AlertManager.sharedInstance.alert("Favourites not available")
                     }
+                    self?.selectedIndex = indexPath.row
+                    self?.tableViewFvrts.reloadData()
                 })
                 
 
@@ -413,11 +421,10 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                         
                                         if self.displayFavorites.count == 0 {
                                             setDisplayHomesFavouritesCount(count: 0, state: kUserState)
-                                            AlertManager.sharedInstance.alert("Favourites not available")
+                                            //AlertManager.sharedInstance.alert("Favourites not available")
                                         }else {
                                             
-                                            self.selectedIndex = indexPath.row
-                                            self.tableViewFvrts.reloadData()
+                                       
                                         }
                                     }
                                 }else { print(log: "no SuggestedHomesData found") }
@@ -427,6 +434,12 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                             }
                         }
                     }
+                    DispatchQueue.main.async {
+                        self.selectedIndex = indexPath.row
+                        self.tableViewFvrts.reloadData()
+                    }
+                
+                    
                 }, errorblock: { (error, isJSONerror) in
 
                     if isJSONerror { }

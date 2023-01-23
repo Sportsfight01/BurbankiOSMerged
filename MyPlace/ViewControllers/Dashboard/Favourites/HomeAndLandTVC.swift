@@ -127,6 +127,21 @@ class HomeAndLandTVC: UITableViewCell {
         btnSearch.addTarget(self, action: #selector(handleButtonActions(_:)), for: .touchUpInside)
         btnSavedDesigns.addTarget(self, action: #selector(handleButtonActions(_:)), for: .touchUpInside)
         
+        
+        let count = kHomeLandFavoritesCount
+        
+        let countText = count == 0 ? "NO" : "\(count)"
+        let designs = count == 1 ? "PACKAGE" : "PACKAGES"
+        
+        
+        btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
+        btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+        btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
+
+//         lBCount.isHidden = kHomeLandFavoritesCount == 0
+
+         lBCount.text = "\(kHomeLandFavoritesCount)"
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -138,19 +153,7 @@ class HomeAndLandTVC: UITableViewCell {
     
     
     func fillTheData (_ filter: SortFilter) {
-        
-        let count = kHomeLandFavoritesCount
-        
-        let countText = count == 0 ? "NO" : "\(count)"
-        let designs = count == 1 ? "PACKAGE" : "PACKAGES"
-        
-        
-        btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
-        
 
-//         lBCount.isHidden = kHomeLandFavoritesCount == 0
-
-         lBCount.text = "\(kHomeLandFavoritesCount)"
         
         
         

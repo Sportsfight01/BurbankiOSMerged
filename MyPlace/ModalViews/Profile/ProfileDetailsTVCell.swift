@@ -128,6 +128,7 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         
 //        txtEmail.isUserInteractionEnabled = false
 //        txtName.isUserInteractionEnabled = false
+        
         [txtName, txtEmail].forEach { txtField in
             txtField?.isUserInteractionEnabled = false
             txtField?.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG

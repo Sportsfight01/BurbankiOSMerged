@@ -1008,19 +1008,29 @@ class HomeLandVCSurvey: HeaderVC {
         
         
         print("viewTag: \(viewTag)")
-        
-        regionView.isHidden = true
-        storeysView.isHidden = true
-        bedroomsView.isHidden = true
-        priceView.isHidden = true
+        [regionView,storeysView,bedroomsView,priceView].forEach({$0?.isHidden = true})//hide all
         
         view.viewWithTag(viewTag)?.isHidden = false
-         view.bringSubviewToFront(view.viewWithTag(viewTag)!)
+        view.bringSubviewToFront(view.viewWithTag(viewTag)!) // bring next question on screen
         
         self.addBreadCrumb(from: myPlaceQuiz.filterStringDisplayHomes())
 //        self.labelInfo.text = myPlaceQuiz.filterStringDisplayHomes()
-                
-        //        showHideHeaderOptions()
+
+        switch viewTag
+        {
+        case 101 : // region
+            
+            btnNext.backgroundColor = myPlaceQuiz.region?.count ?? 0 > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+            
+        case 102: // price
+            btnNext.backgroundColor = myPlaceQuiz.priceRangeLow?.count ?? 0 > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+        case 103: // storey
+            btnNext.backgroundColor = myPlaceQuiz.storeysCount?.count ?? 0 > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+        case 104: // bedroom
+            btnNext.backgroundColor = myPlaceQuiz.bedRoomCount?.count ?? 0 > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+        default:
+            print(log: "result page")
+        }
         selectBreadCrumb ()
     }
     

@@ -1115,7 +1115,7 @@ extension UserProfileVC {
             
             let user = UserBean.init()
             
-            user.userFirstName = cell.txtName.text
+            user.userFirstName = appDelegate.userData?.user?.userFirstName
             user.userLastName = appDelegate.userData?.user?.userLastName
             user.userEmail = appDelegate.userData?.user?.userEmail
             user.userPhoneNumber = cell.txtPhone.text

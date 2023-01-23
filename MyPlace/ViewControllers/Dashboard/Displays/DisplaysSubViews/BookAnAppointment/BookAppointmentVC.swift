@@ -251,7 +251,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         combination.append(partTwo)
         
         self.titleNameLBL.attributedText = combination
-        self.estateNameLBL.text = displayHomeData?[0].displayEstateName.capitalized
+        self.estateNameLBL.text = displayHomeData?[0].displayEstateName.uppercased()
         
     }
     func showDatePicker() {

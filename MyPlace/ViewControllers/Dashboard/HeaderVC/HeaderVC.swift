@@ -801,6 +801,7 @@ extension HeaderVC {
         favCountLb.clipsToBounds = true
         favCountLb.textAlignment = .center
         let isFavAvailable = kUserID == "0" ? false : true
+        favCountLb.isHidden = totalFavCount > 0 ? false : true
         if isFavAvailable
         {
             btnMyProfile.addSubview(favCountLb)
@@ -871,6 +872,7 @@ extension HeaderVC {
     {
         let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
         favCountLb.text = "\(totalFavCount)"
+        favCountLb.isHidden = totalFavCount > 0 ? false : true
     }
     
     //serviceCall of displayhomes fav

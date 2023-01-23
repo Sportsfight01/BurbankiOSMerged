@@ -181,6 +181,22 @@ class DesignsDetailsVC: HeaderVC {
             switch swipeGesture.direction {
             case .right:
                 print("Swiped right")
+                
+                if selectedDesignCount <= 0{
+                    self.previousDesignBTN2.isHidden = true
+                }else{
+                    homeDesign = arrHomeDesignsDetails[selectedDesignCount - 1]
+                    selectedDesignCount = selectedDesignCount - 1
+                    if let design = homeDesign {
+                        fillAllDetails ()
+                        getDesignDetails(design)
+                    }
+                }
+                
+               
+
+            case .left:
+                print("Swiped left")
                 if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
                     self.nextDesignBTN2.isHidden = true
                 }else{
@@ -191,20 +207,6 @@ class DesignsDetailsVC: HeaderVC {
                         getDesignDetails(design)
                     }
                     
-                }
-               
-
-            case .left:
-                print("Swiped left")
-                if selectedDesignCount <= 0{
-                    self.previousDesignBTN2.isHidden = true
-                }else{
-                    homeDesign = arrHomeDesignsDetails[selectedDesignCount - 1]
-                    selectedDesignCount = selectedDesignCount - 1
-                    if let design = homeDesign {
-                        fillAllDetails ()
-                        getDesignDetails(design)
-                    }
                 }
 
             default:
@@ -272,11 +274,11 @@ class DesignsDetailsVC: HeaderVC {
         
         if Int(kUserID)! > 0 {
             
-            if self.homeDesign?.isFav == true {
-                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
-            }else {
-                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
-            }
+//            if self.homeDesign?.isFav == true {
+//                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
+//            }else {
+//                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
+//            }
             
             if isFromFavorites == true {
                 btnFavorite.isHidden = homeDesign?.favouritedUser?.userID != kUserID

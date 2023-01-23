@@ -100,8 +100,10 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     func handleUISetup () {
         
+        iconAccept.layer.cornerRadius = 5.0
 //        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [logoFont, logoFont], alignmentCenter: false)
-        
+        btnback.setImage(UIImage(named: "Ico-LeftArrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btnback.tintColor = APPCOLORS_3.GreyTextFont
         _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
         
         //cardView of viewElements

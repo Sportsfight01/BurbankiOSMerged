@@ -108,7 +108,8 @@ class DisplayHomesTVC: UITableViewCell {
         
         
         btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
-        
+        btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+        btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
         
 //        lBCount.isHidden = kCollectionFavoritesCount == 0
         lBCount.text = "\(diplayFaoritesCount)"

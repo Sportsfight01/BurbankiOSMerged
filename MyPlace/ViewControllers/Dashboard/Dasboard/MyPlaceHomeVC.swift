@@ -138,6 +138,7 @@ class MyPlaceHomeVC: UIViewController {
         //MyProfile favorites count label
 
         self.favCountLb.text = "\(totalFavCount)"
+        favCountLb.isHidden = totalFavCount > 0 ? false : true
       
     }
     
@@ -244,8 +245,8 @@ class MyPlaceHomeVC: UIViewController {
         favCountLb.clipsToBounds = true
         favCountLb.textAlignment = .center
         let isFavAvailable = kUserID == "0" ? false : true
-        if isFavAvailable
-        {
+        favCountLb.isHidden = totalFavCount > 0 ? false : true
+        if isFavAvailable{
 //            favCountLb.isHidden = false
             btnMyProfile.addSubview(favCountLb)
             favCountLb.translatesAutoresizingMaskIntoConstraints = false
