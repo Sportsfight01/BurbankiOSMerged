@@ -163,8 +163,55 @@ class DesignsDetailsVC: HeaderVC {
            
             self.previousDesignBTN2.isHidden = false
         }
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+            swipeRight.direction = .right
+            self.view.addGestureRecognizer(swipeRight)
+
+            let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+            swipeDown.direction = .left
+            self.view.addGestureRecognizer(swipeDown)
+        
     }
     
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+
+            switch swipeGesture.direction {
+            case .right:
+                print("Swiped right")
+                if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
+                    self.nextDesignBTN2.isHidden = true
+                }else{
+                    homeDesign = arrHomeDesignsDetails[selectedDesignCount + 1]
+                    selectedDesignCount = selectedDesignCount + 1
+                    if let design = homeDesign {
+                        fillAllDetails ()
+                        getDesignDetails(design)
+                    }
+                    
+                }
+               
+
+            case .left:
+                print("Swiped left")
+                if selectedDesignCount <= 0{
+                    self.previousDesignBTN2.isHidden = true
+                }else{
+                    homeDesign = arrHomeDesignsDetails[selectedDesignCount - 1]
+                    selectedDesignCount = selectedDesignCount - 1
+                    if let design = homeDesign {
+                        fillAllDetails ()
+                        getDesignDetails(design)
+                    }
+                }
+
+            default:
+                break
+            }
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -443,9 +490,6 @@ class DesignsDetailsVC: HeaderVC {
     }
     
     @IBAction func handlePreviousDesignButton (_ sender: UIButton) {
-        
-        
-       
         if selectedDesignCount <= 0{
             
             self.previousDesignBTN2.isHidden = true
