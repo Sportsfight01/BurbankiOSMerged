@@ -92,24 +92,29 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         
         setBorder(view: btnUpdate, color: APPCOLORS_3.HeaderFooter_white_BG, width: 0.5)
         
-        txtName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
+        [txtName,txtEmail,txtPhone].forEach { txtField in
+            txtField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtField.frame.size.height))
+            txtField.leftViewMode = .always
+            txtField.layer.cornerRadius = 5.0
+        }
+       
 //        txtLastName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
-        txtEmail.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
-        txtPhone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtPhone.frame.size.height))
-      //  txtShare.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtShare.frame.size.height))
-
-        txtName.leftViewMode = .always
-//        txtLastName.leftViewMode = .always
-        txtEmail.leftViewMode = .always
-        txtPhone.leftViewMode = .always
-      //  txtShare.leftViewMode = .always
-
-        
-        txtName.layer.cornerRadius = 5.0
-//        txtLastName.layer.cornerRadius = 5.0
-        txtEmail.layer.cornerRadius = 5.0
-        txtPhone.layer.cornerRadius = 5.0
-       // txtShare.layer.cornerRadius = 5.0
+//        txtEmail.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtName.frame.size.height))
+//        txtPhone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtPhone.frame.size.height))
+//      //  txtShare.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: txtShare.frame.size.height))
+//
+//
+////        txtLastName.leftViewMode = .always
+//        txtEmail.leftViewMode = .always
+//        txtPhone.leftViewMode = .always
+//      //  txtShare.leftViewMode = .always
+//
+//
+//
+//
+//        txtEmail.layer.cornerRadius = 5.0
+//        txtPhone.layer.cornerRadius = 5.0
+       
         
         btnUpdate.layer.cornerRadius = radius_5 //5.0
         
@@ -121,11 +126,11 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         }
         
         
-        txtEmail.isUserInteractionEnabled = false
-        if #available(iOS 13.0, *) {
-            txtEmail.backgroundColor = .systemGray5
-        } else {
-            // Fallback on earlier versions
+//        txtEmail.isUserInteractionEnabled = false
+//        txtName.isUserInteractionEnabled = false
+        [txtName, txtEmail].forEach { txtField in
+            txtField?.isUserInteractionEnabled = false
+            txtField?.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
         }
 
         
@@ -142,11 +147,10 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
     
     
     func fillDetails () {
+        self.txtName.isUserInteractionEnabled = false
         lBCount.isHidden = false
         lBCount.text = ""
         self.txtName.text = "\(appDelegate.userData?.user?.userFirstName?.capitalized ?? "") \(appDelegate.userData?.user?.userLastName?.capitalized ?? "")"
-//        self.txtLastName.text =
-        
         self.txtEmail.text = appDelegate.userData?.user?.userEmail
         self.txtPhone.text = appDelegate.userData?.user?.userPhone
 
@@ -160,10 +164,6 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
                 }
             }
         }
-        
-//        if emails.count > 0 {
-//            self.txtShare.text = emails.joined(separator: ",")
-//        }
 
     }
     

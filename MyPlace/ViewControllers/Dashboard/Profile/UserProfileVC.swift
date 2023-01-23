@@ -242,7 +242,8 @@ class UserProfileVC: UIViewController {
         lBInfo.lineBreakMode = .byTruncatingTail
         
         backBtn.frame = CGRect(x: 0, y: logoLabelProfile.center.y, width: 30, height: 30)
-        backBtn.setImage(UIImage(named: "Ico-Back_Black"), for: .normal)
+        backBtn.setImage(UIImage(named: "Ico-Back_Black")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backBtn.tintColor = APPCOLORS_3.GreyTextFont
         backBtn.addTarget(self, action: #selector(handleProfileImageAction), for: .touchUpInside)
 
         
@@ -1076,11 +1077,11 @@ extension UserProfileVC {
             //
             //                }
             //            }
-            if !(cell.txtName.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? false) {
-                print(cell.txtName.text?.trimmingCharacters(in: .whitespaces) ?? "")
+            if !(cell.txtName.text?.trim().isEmpty ?? false) {
+                print(cell.txtName.text?.trim() ?? "")
                 // string contains non-whitespace characters
             }else{
-                print(cell.txtName.text?.trimmingCharacters(in: .whitespaces) ?? "")
+                print(cell.txtName.text?.trim() ?? "")
                 showToast("Name should be minimum of 3 letters", self)
                 return
             }
