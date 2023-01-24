@@ -203,7 +203,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
          self.lastNameTF.isUserInteractionEnabled = false
         }else{
          self.lastNameTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: lastNameTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
         
         if self.firstNameTF.text != "" {
@@ -211,7 +211,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
          self.firstNameTF.isUserInteractionEnabled = false
         }else{
          self.firstNameTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: firstNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
         
         if self.emailTF.text != "" {
@@ -219,7 +219,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
          self.emailTF.isUserInteractionEnabled = false
         }else{
          self.emailTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: emailTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         setAppearanceFor(view: emailTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
         
     }
