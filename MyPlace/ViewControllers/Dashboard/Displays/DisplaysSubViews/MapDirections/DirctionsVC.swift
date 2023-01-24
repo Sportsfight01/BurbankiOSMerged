@@ -92,6 +92,14 @@ class DirctionsVC: HeaderVC,GMSMapViewDelegate,MKMapViewDelegate {
     }
     
   }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        displayDetailsCard.isHidden = true
+    }
+    
+    
+    
+    
   @objc func handleNavBackBtn()
   {
     self.navigationController?.popViewController(animated: true)

@@ -145,12 +145,13 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
       //---------Logic to Hide and show navigation bar(Navbar has to visible when comming from favorites)
         if isCameFromFavorites{
-            headerLogoText = "DisplayHomes"
+            // headerLogoText = "DisplayHomes"
+             headerLogoText = "MyFavourites"
             headerConstraint.constant = 0
             navTopConstraint.constant = 135
           //  self.backBTN.isHidden = true
             self.backBTN.superview?.superview?.isHidden = true
-            self.addBreadCrumb(from: "See one of our display homes")
+            self.addBreadCrumb(from: displayHomes?.houseName ?? "See one of our display homes")
             self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.263)
             if btnBack.isHidden {
                 showBackButton()
@@ -214,11 +215,11 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         
         if Int(kUserID)! > 0 {
             
-            if self.isFave == true {
-                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
-            }else {
-                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
-            }
+//            if self.isFave == true {
+//                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
+//            }else {
+//                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
+//            }
             
             if isFromFavorites == true {
                 btnFavorite.isHidden = displayHomes?.favouritedUser?.userID != kUserID
@@ -531,7 +532,7 @@ extension DisplayHomesDetailsVC{
                     
                     
 //                    if self.homeDesignDetails?.userID == kUserID {
-                    updateDisplayHomesFavouritesCount(self.homeDesignDetails?.lsthouses?.isFav == true)
+                    updateDisplayHomesFavouritesCount(self.isFave == true)
 //                    }
                 }
             }

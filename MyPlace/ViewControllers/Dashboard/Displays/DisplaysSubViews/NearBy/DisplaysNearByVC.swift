@@ -45,6 +45,14 @@ class DisplaysNearByVC: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("tappedOnNearBy"), object: nil, queue: nil, using:updatedNotification)
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        displayDetailsCard.isHidden = true
+    }
+    
+    
+    
     func updatedNotificationForLocartion(notification:Notification) -> Void  {
         guard let location = notification.userInfo!["loc"] else { return }
         let locValue = location as! CLLocationCoordinate2D
@@ -342,18 +350,20 @@ extension DisplaysNearByVC: UITableViewDelegate, UITableViewDataSource {
             cell.addGestureRecognizer(tap)
             cell.tag = indexPath.row
             cell.isUserInteractionEnabled = true
-            if isFavoritesService == true {
+         //   if isFavoritesService == true {
    //             let displayData = DisplayHomeDataArr[indexPath.item]
     //            let package = arrFavouritePackages[indexPath.section][indexPath.row]
              cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
              
 
-             cell.favoriteBTN.isHidden = cell.displayHomeData?.favouritedUser?.userID != kUserID
-               
-
-            }else {
-   //             let displayData = DisplayHomeDataArr[indexPath.item]
-             cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]               }
+          //   cell.favoriteBTN.isHidden = cell.displayHomeData?.favouritedUser?.userID != kUserID
+//
+//
+//            }else {
+//   //             let displayData = DisplayHomeDataArr[indexPath.item]
+//             cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
+//
+            //}
 
             /*
             if Int(kUserID)! > 0 { print(log: kUserID) }

@@ -49,37 +49,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
       self.regionTableHeight.constant = 0
       self.detailsTableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
     self.addBreadCrumb(from: "Your favourite displays")
-    
-    _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
-      if let result: AnyObject = json {
-        let result = result as! NSDictionary
-        if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
-          if let result: AnyObject = json {
-            if (result.allKeys as! [String]).contains("userFavDisplays") {
-              let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
-              //                            self.houseDetailsByHouseTypeArr = []
-              for package: NSDictionary in packagesResult {
-                let suggestedData = houseDetailsByHouseType(package as! [String : Any])
-                self.displayFavorites.append(suggestedData)
-              }
-              DispatchQueue.main.async {
-                self.tableView.reloadData()
-              }
-              
-              print(self.houseDetailsByHouseTypeArr)
-            }else { print(log: "no SuggestedHomesData found") }
-            
-          }else {
-            
-          }
-        }
-      }
-    }, errorblock: { (error, isJSONerror) in
-      
-      if isJSONerror { }
-      else { }
-      
-    }, progress: nil)
+ 
     
       
 //      self.detailsTableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
@@ -94,15 +64,57 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
         print("-----p=p====-=--=-",detailsTableView.contentSize.height)
     }
    
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        detailsTableView.layer.removeAllAnimations()
-//        regionTableHeight.constant = detailsTableView.contentSize.height
-//        UIView.animate(withDuration: 0.5) {
-//            self.updateViewConstraints()
-//        }
-//
-//    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getDisplayHomesFavourites()
+        self.detailCardView.isHidden = true
+    }
+    func getDisplayHomesFavourites()
+    {
+        
+        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
+          if let result: AnyObject = json {
+            let result = result as! NSDictionary
+            if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+              if let result: AnyObject = json {
+                if (result.allKeys as! [String]).contains("userFavDisplays") {
+                  let packagesResult = result.value(forKey: "userFavDisplays") as! [NSDictionary]
+                  //                            self.houseDetailsByHouseTypeArr = []
+                    self.displayFavorites.removeAll()
+                  for package: NSDictionary in packagesResult {
+                    let suggestedData = houseDetailsByHouseType(package as! [String : Any])
+                    self.displayFavorites.append(suggestedData)
+                  }
+                    setDisplayHomesFavouritesCount(count: self.displayFavorites.count, state: kUserState)
+                  DispatchQueue.main.async {
+                      if self.displayFavorites.count == 0
+                      {
+                          self.tableView.setEmptyMessage("No Favourite Displays found", bgColor: APPCOLORS_3.Body_BG)
+                      }else {
+                          self.tableView.restore()
+                   
+                      }
+                      self.tableView.reloadData()
+                     
+                
+                      
+                  }
+                  
+                  print(self.houseDetailsByHouseTypeArr)
+                }else { print(log: "no SuggestedHomesData found") }
+                
+              }else {
+                
+              }
+            }
+          }
+        }, errorblock: { (error, isJSONerror) in
+          
+          if isJSONerror { }
+          else { }
+          
+        }, progress: nil)
+    }
   
   @objc func handleTap(_ sender: UITapGestureRecognizer) {
     let index = sender.view?.tag
@@ -225,7 +237,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == self.tableView
         {
-            return 40
+            return displayFavorites.count == 0 ? 0 : 40
 
         }else{
             return 0
@@ -249,8 +261,8 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             let displaydata = displayFavorites[indexPath.row]
             
             cell.designCountLBL.text =  displaydata.displayDesignCount?.count == 1 ? "\(displaydata.displayDesignCount?.count ?? 0 )  DESIGN"  :  "\(displaydata.displayDesignCount?.count ?? 0 )  DESIGNS"
-//            cell.designCountLBL.text = "\(displaydata.displayDesignCount?.count ?? 0) DESIGNS"
-          cell.estateNameLBL.text = "\(displaydata.displayEstateName.trim()), \(displaydata.houseName)"
+            //            cell.designCountLBL.text = "\(displaydata.displayDesignCount?.count ?? 0) DESIGNS"
+            cell.estateNameLBL.text = "\(displaydata.displayEstateName.trim()), \(displaydata.houseName)"
             cell.favouriteBTN.tag = indexPath.row
           
             if let imageurl : String? = displaydata.facadePermanentUrl {
@@ -271,15 +283,15 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 cell.favouriteBTN.setBackgroundImage(imageUNFavorite, for: .normal)
             }
             
-            if isFavoritesService == true {
-                let displayData = displayFavorites[indexPath.item]
-               
-                cell.favouriteBTN.isHidden = displayData.favouritedUser?.userID != kUserID
+         //   if isFavoritesService == true {
+                //let displayData = displayFavorites[indexPath.item]
                 
-            }else {
-                let displayData = displayFavorites[indexPath.item]
-            }
-
+             //   cell.favouriteBTN.isHidden = displayData.favouritedUser?.userID != kUserID
+                
+//            }else {
+//                let displayData = displayFavorites[indexPath.item]
+//            }
+            
             cell.favoriteAction = {
                 if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
                     
@@ -300,50 +312,54 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                 DispatchQueue.main.async(execute: {
                                     ActivityManager.showToast("Item removed from favourites", self)
                                 })
-
-                             }
-                            
-                            var updateDefaults = false
-                            
-                          //  if displaydata.favouritedUser?.userID == kUserID {
-                                updateDefaults = true
-                            //}
-                            
-                            if self.isFavoritesService {
-                                
-                                var arr = self.arrFavouriteDisplays[indexPath.row]
-                                arr.remove(at: indexPath.row)
-                                
-                                if arr.count == 0 {
-                                    self.arrFavouriteDisplays.remove(at: indexPath.row)
-                                    
-                                    if updateDefaults {
-                                        setDisplayHomesFavouritesCount(count: 0, state: kUserState)
-                                    }
-                                    
-                                }else {
-                                    self.arrFavouriteDisplays[indexPath.row] = arr
-                                    
-                                    if updateDefaults {
-                                        setDisplayHomesFavouritesCount(count: arr.count, state: kUserState)
-                                    }
-                                }
-                                
-                                //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
-                                //
-                                //                                   self.searchResultsTable.reloadData ()
-                                
-                            }else {
-                                
-                                displaydata.isFav = !(displaydata.isFav)
-                                self.displayFavorites[indexPath.item] =  displaydata
-                                self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
-                                
-                                //                            if updateDefaults {
-                                updateDisplayHomesFavouritesCount(displaydata.isFav == true)
-                                //                            }
                                 
                             }
+              
+                          //
+                          //                                self.tableView.reloadData ()
+                            
+                           // var updateDefaults = false
+                            
+                            //  if displaydata.favouritedUser?.userID == kUserID {
+                            //updateDefaults = true
+                            //}
+                            
+//                            if self.isFavoritesService {
+//
+//                                var arr = self.arrFavouriteDisplays[indexPath.row]
+//                                arr.remove(at: indexPath.row)
+//
+//                                if arr.count == 0 {
+//                                    self.arrFavouriteDisplays.remove(at: indexPath.row)
+//
+//                                    if updateDefaults {
+//                                        setDisplayHomesFavouritesCount(count: 0, state: kUserState)
+//                                    }
+//
+//                                }else {
+//                                    self.arrFavouriteDisplays[indexPath.row] = arr
+//
+//                                    if updateDefaults {
+//                                        setDisplayHomesFavouritesCount(count: arr.count, state: kUserState)
+//                                    }
+//                                }
+//
+//                                self.arrFavouriteDisplays.count == 0 ? self.tableView.setEmptyMessage("No Favourite Displays found", bgColor: APPCOLORS_3.Body_BG) : self.tableView.setEmptyMessage("", bgColor: COLOR_CLEAR)
+//
+//                                self.tableView.reloadData ()
+//
+//                            }else {
+                          
+//                                displaydata.isFav = !(displaydata.isFav)
+//                                self.displayFavorites[indexPath.item] =  displaydata
+//                                //self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
+//
+//                                //                            if updateDefaults {
+//                                updateDisplayHomesFavouritesCount(displaydata.isFav == true)
+                                //                            }
+                            self.getDisplayHomesFavourites()
+                                
+                            //}
                         }
                     }
                 }
@@ -355,7 +371,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
         else{
             let lastRow: Int = self.detailsTableView.numberOfRows(inSection: 0) - 1
             
-            if indexPath.row ==  lastRow{
+            if indexPath.row ==  lastRow {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TimingsAndDirectionTVC", for: indexPath) as! TimingsAndDirectionTVC
 //                cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
                 cell.getDirectionBTN.tag = indexPath.row
@@ -373,22 +389,20 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DisplaysMapDetailCell", for: indexPath) as! DisplaysMapDetailCell
                 
-                
-                
                 cell.selectionStyle = .none
                 
-                if isFavoritesService == true {
+               // if isFavoritesService == true {
                     //             let displayData = DisplayHomeDataArr[indexPath.item]
                     //            let package = arrFavouritePackages[indexPath.section][indexPath.row]
                     cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
                     
                     
-                    cell.favoriteBTN.isHidden = cell.displayHomeData?.favouritedUser?.userID != kUserID
+                  //  cell.favoriteBTN.isHidden = cell.displayHomeData?.favouritedUser?.userID != kUserID
                     
-                }else {
-                    //             let displayData = DisplayHomeDataArr[indexPath.item]
-                    cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
-                }
+//                }else {
+//                    //             let displayData = DisplayHomeDataArr[indexPath.item]
+//                    cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
+//                }
                 
                 /*
                  if Int(kUserID)! > 0 { print(log: kUserID) }
@@ -418,38 +432,38 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
 
                                  }
                                 
-                                var updateDefaults = false
+//                                var updateDefaults = false
+//
+//                               // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+//                                    updateDefaults = true
+//                               // }
                                 
-                               // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
-                                    updateDefaults = true
-                               // }
                                 
-                                
-                                if self.isFavoritesService {
-                                    
-                                    var arr = self.arrFavouriteDisplays[indexPath.row]
-                                    arr.remove(at: indexPath.row)
-                                    
-                                    if arr.count == 0 {
-                                        self.arrFavouriteDisplays.remove(at: indexPath.row)
-                                        
-                                        if updateDefaults {
-                                            setDisplayHomesFavouritesCount(count: 0, state: kUserState)
-                                        }
-                                        
-                                    }else {
-                                        self.arrFavouriteDisplays[indexPath.row] = arr
-                                        
-                                        if updateDefaults {
-                                            setDisplayHomesFavouritesCount(count: arr.count, state: kUserState)
-                                        }
-                                    }
-                                    
-                                    //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
-                                    //
-                                    //                                   self.searchResultsTable.reloadData ()
-                                    
-                                }else {
+//                                if self.isFavoritesService {
+//
+//                                    var arr = self.arrFavouriteDisplays[indexPath.row]
+//                                    arr.remove(at: indexPath.row)
+//
+//                                    if arr.count == 0 {
+//                                        self.arrFavouriteDisplays.remove(at: indexPath.row)
+//
+//                                        if updateDefaults {
+//                                            setDisplayHomesFavouritesCount(count: 0, state: kUserState)
+//                                        }
+//
+//                                    }else {
+//                                        self.arrFavouriteDisplays[indexPath.row] = arr
+//
+//                                        if updateDefaults {
+//                                            setDisplayHomesFavouritesCount(count: arr.count, state: kUserState)
+//                                        }
+//                                    }
+//
+//                                    //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+//                                    //
+//                                    //                                   self.searchResultsTable.reloadData ()
+//
+//                                }else {
                                     
                                     cell.displayHomeData!.isFav = !( cell.displayHomeData!.isFav)
                                     self.houseDetailsByHouseTypeArr[indexPath.row] =  cell.displayHomeData!
@@ -457,8 +471,8 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                     self.detailsTableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
                                     
                                     updateDisplayHomesFavouritesCount(cell.displayHomeData!.isFav == true)
-                                    
-                                }
+                                self.getDisplayHomesFavourites()
+                               // }
                             }
                         }
                     }

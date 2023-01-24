@@ -50,6 +50,10 @@ class DisplaysMapVC: UIViewController {
         mapView.isMyLocationEnabled = true
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        displayDetailsCard.isHidden = true
+    }
     
     func updatedNotification(notification:Notification) -> Void  {
         

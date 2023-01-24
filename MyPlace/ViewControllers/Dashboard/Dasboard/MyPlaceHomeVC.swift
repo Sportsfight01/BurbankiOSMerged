@@ -135,10 +135,13 @@ class MyPlaceHomeVC: UIViewController {
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
         let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
         
-        //MyProfile favorites count label
+      
 
         self.favCountLb.text = "\(totalFavCount)"
         favCountLb.isHidden = totalFavCount > 0 ? false : true
+        ProfileDataManagement.shared.getDisplayHomesFavoriteCount { favouritetCount in
+            print(log: "DisplayHomes Favourite COunt \(String(describing: favouritetCount))")
+        }
       
     }
     

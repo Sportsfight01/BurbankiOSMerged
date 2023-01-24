@@ -73,16 +73,17 @@ class DisplaysMapDetailCell: UITableViewCell {
         self.bedRoomCountLBL.text = self.displayHomeData!.bedRooms
         self.bathRoomCountLBL.text = self.displayHomeData!.bathRooms
         self.carSpaceCountLBL.text = self.displayHomeData!.carSpace
-        if self.displayHomeData?.isFav == true {
-//            self.favoriteBTN.setBackgroundImage(imageFavorite, for: .normal)
-            if (Int(kUserID) ?? 0) > 0 {
-                self.favoriteBTN.setBackgroundImage(imageFavorite, for: .normal)
-            }else{
-                self.favoriteBTN.setBackgroundImage(imageUNFavorite, for: .normal)
-            }
-        }else {
-            self.favoriteBTN.setBackgroundImage(imageUNFavorite, for: .normal)
-        }
+        self.favoriteBTN.setImage(displayHomeData?.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+//        if self.displayHomeData?.isFav == true {
+////            self.favoriteBTN.setBackgroundImage(imageFavorite, for: .normal)
+//            if (Int(kUserID) ?? 0) > 0 {
+//                self.favoriteBTN.setBackgroundImage(imageFavorite, for: .normal)
+//            }else{
+//                self.favoriteBTN.setBackgroundImage(imageUNFavorite, for: .normal)
+//            }
+//        }else {
+//            self.favoriteBTN.setBackgroundImage(imageUNFavorite, for: .normal)
+//        }
         self.favoriteBTN.addTarget(self, action: #selector(didTappedOnFavourites(_:)), for: .touchUpInside)
         
     }

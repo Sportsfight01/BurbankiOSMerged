@@ -291,6 +291,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 cell.actionHandler = { (button) in
                     CodeManager.sharedInstance.sendScreenName(burbank_profile_displayHomes_savedDesigns_button_touch)
                     let designs = kStoryboardMain.instantiateViewController(withIdentifier: "DisplayHomesFavouritesVC") as! DisplayHomesFavouritesVC
+                   // designs.isFavoritesService = true
                     self.navigationController?.pushViewController(designs, animated: true)
                 }
                 
@@ -473,6 +474,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                         let suggestedData = houseDetailsByHouseType(package as! [String : Any])
                                             self.displayFavorites.append(suggestedData)
                                     }
+                                    setDisplayHomesFavouritesCount(count: self.displayFavorites.count, state: kUserState)
                                     DispatchQueue.main.async {
                                         
                                         if self.displayFavorites.count == 0 {
