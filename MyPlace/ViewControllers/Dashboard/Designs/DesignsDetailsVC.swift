@@ -730,7 +730,6 @@ extension DesignsDetailsVC: ChildVCDelegate, RegionVCDelegate
             if navigationController?.viewControllers.count == 1 {
                 self.tabBarController?.navigationController?.popViewController(animated: true)
             }else {
-
                 for controller in self.navigationController!.viewControllers as Array {
                     if controller.isKind(of: MyCollectionSurveyVC.self) {
                         self.navigationController!.popToViewController(controller, animated: true)
