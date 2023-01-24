@@ -726,7 +726,7 @@ extension DesignsDetailsVC: ChildVCDelegate, RegionVCDelegate
     func handleActionFor(sort: Bool, map: Bool, favourites: Bool, howWorks: Bool, reset: Bool) {
         if reset{
             print("------- Reset myCollection Data")
-//            self.arrHomeDesigns.removeAll()
+            NotificationCenter.default.post(name: NSNotification.Name("handleResetDesignsBTN"), object: nil, userInfo: nil)
             if navigationController?.viewControllers.count == 1 {
                 self.tabBarController?.navigationController?.popViewController(animated: true)
             }else {

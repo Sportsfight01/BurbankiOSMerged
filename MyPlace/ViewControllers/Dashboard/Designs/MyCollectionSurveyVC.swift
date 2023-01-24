@@ -93,6 +93,7 @@ class MyCollectionSurveyVC: HeaderVC {
       
     //        self.mainView.backgroundColor = .yellow
     
+      NotificationCenter.default.addObserver(forName: NSNotification.Name("handleResetDesignsBTN"), object: nil, queue: nil, using:updatedResetDesignsData)
   }
   
     override func viewDidAppear(_ animated: Bool) {
@@ -100,15 +101,21 @@ class MyCollectionSurveyVC: HeaderVC {
         
         self.btnDesignsCount.layoutIfNeeded()
         
+       
+        
+    }
+  
+    func updatedResetDesignsData(notification:Notification) -> Void  {
         if self.arrHomeDesigns.count > 0 {
             self.loadVCs()
             getDesignsCount()
             checkForRecentSearchData ()
             viewRecentSearch.isHidden = true
+            btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+            btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
         }
-        
     }
-  
+    
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     

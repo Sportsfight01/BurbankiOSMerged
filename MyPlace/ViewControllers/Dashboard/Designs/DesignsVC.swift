@@ -364,7 +364,7 @@ extension DesignsVC: ChildVCDelegate {
         }
         if reset{
             print("------- Reset myCollection Data")
-            self.arrHomeDesigns.removeAll()
+            NotificationCenter.default.post(name: NSNotification.Name("handleResetDesignsBTN"), object: nil, userInfo: nil)
             if navigationController?.viewControllers.count == 1 {
                 self.tabBarController?.navigationController?.popViewController(animated: true)
             }else {

@@ -134,9 +134,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        
-        
+
         if cell.isKind(of: FavouritesTVCell.self) {
             let cell = cell as! FavouritesTVCell
             cell.icon.image = arrIcons[indexPath.row]
@@ -153,6 +151,64 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }
            
         }
+        else if cell.isKind(of: MyDesignsTVC.self)
+        {
+            if let cell = cell as? MyDesignsTVC
+            {
+                let count = kDesignFavoritesCount
+                cell.lBCount.text = "\(count)"
+               
+                
+                let countText = count == 0 ? "NO" : "\(count)"
+                let designs = count == 1 ? "DESIGN" : "DESIGNS"
+                
+                
+                cell.btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
+                cell.btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+                cell.btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
+                
+            }
+        }
+        else if cell.isKind(of: HomeAndLandTVC.self)
+        {
+            if let cell = cell as? HomeAndLandTVC
+            {
+                cell.lBCount.text = "\(kHomeLandFavoritesCount)"
+                
+                
+                let count = kHomeLandFavoritesCount
+                
+                let countText = count == 0 ? "NO" : "\(count)"
+                let designs = count == 1 ? "PACKAGE" : "PACKAGES"
+                
+                
+                cell.btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
+                cell.btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+                cell.btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
+                
+                
+            }
+        }else if cell.isKind(of: DisplayHomesTVC.self)
+        {
+            if let cell = cell as? DisplayHomesTVC
+            {
+                let count = self.displayFavorites.count
+                
+                cell.lBCount.text = "\(count)"
+  
+                let countText = count == 0 ? "NO" : "\(count)"
+                let designs = count == 1 ? "DISPLAY" : "DISPLAYS"
+                
+                
+                cell.btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
+                cell.btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+                cell.btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
+                
+                
+            }
+        }
+        
+        
     }
     
     

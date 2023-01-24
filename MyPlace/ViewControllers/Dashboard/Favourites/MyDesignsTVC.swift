@@ -84,15 +84,15 @@ class MyDesignsTVC: UITableViewCell {
         icon.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         icon.tintColor = .black
         
-        let count = kDesignFavoritesCount
-        
-        let countText = count == 0 ? "NO" : "\(count)"
-        let designs = count == 1 ? "DESIGN" : "DESIGNS"
-        
-        
-        btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
-        btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
-        btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
+//        let count = kDesignFavoritesCount
+//        
+//        let countText = count == 0 ? "NO" : "\(count)"
+//        let designs = count == 1 ? "DESIGN" : "DESIGNS"
+//        
+//        
+//        btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
+//        btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+//        btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
         
         
     }

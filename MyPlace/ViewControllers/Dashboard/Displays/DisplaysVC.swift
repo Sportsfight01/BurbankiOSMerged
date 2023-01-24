@@ -227,7 +227,7 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
             NotificationCenter.default.post(name: NSNotification.Name("tappedOnSuggestedHomes"), object: nil, userInfo: ["Key":false])
             CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_TappedOn_Display_Maps)
         }
-        NotificationCenter.default.post(name: NSNotification.Name("handleBackBtnNaviogation"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("handleResetDesignsBTN"), object: nil, userInfo: nil)
     }
     
 }
