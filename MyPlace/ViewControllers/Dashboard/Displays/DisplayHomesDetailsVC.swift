@@ -212,22 +212,26 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         
         
         self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
-        
-        if Int(kUserID)! > 0 {
-            
-//            if self.isFave == true {
-//                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
-//            }else {
-//                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
-//            }
-            
-            if isFromFavorites == true {
-                btnFavorite.isHidden = displayHomes?.favouritedUser?.userID != kUserID
-            }
-        }else {
-            
-//            self.btnFavorite.isHidden = true
+        if Int(kUserID)! == 0 // Guest User
+        {
+            self.btnFavorite.setImage(imageUNFavorite, for: .normal)
         }
+        
+//        if Int(kUserID)! > 0 {
+//
+////            if self.isFave == true {
+////                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
+////            }else {
+////                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
+////            }
+//
+//            if isFromFavorites == true {
+//                btnFavorite.isHidden = displayHomes?.favouritedUser?.userID != kUserID
+//            }
+//        }else {
+//
+//            self.btnFavorite.isHidden = true
+//        }
         
         self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
         self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG

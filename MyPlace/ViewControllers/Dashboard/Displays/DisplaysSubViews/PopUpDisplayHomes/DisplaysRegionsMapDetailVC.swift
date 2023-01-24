@@ -220,101 +220,101 @@ extension DisplaysRegionsMapDetailVC: UITableViewDelegate, UITableViewDataSource
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DisplaysMapDetailCell", for: indexPath) as! DisplaysMapDetailCell
-         
+            
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             cell.addGestureRecognizer(tap)
             cell.tag = indexPath.row
             cell.isUserInteractionEnabled = true
-       
-        cell.selectionStyle = .none
-               
-               if isFavoritesService == true {
-      //             let displayData = DisplayHomeDataArr[indexPath.item]
-       //            let package = arrFavouritePackages[indexPath.section][indexPath.row]
+            
+            cell.selectionStyle = .none
+            
+            if isFavoritesService == true {
+                //             let displayData = DisplayHomeDataArr[indexPath.item]
+                //            let package = arrFavouritePackages[indexPath.section][indexPath.row]
                 cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
                 
-
+                
                 cell.favoriteBTN.isHidden = cell.displayHomeData?.favouritedUser?.userID != kUserID
-
-               }else {
-      //             let displayData = DisplayHomeDataArr[indexPath.item]
+                
+            }else {
+                //             let displayData = DisplayHomeDataArr[indexPath.item]
                 cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
-               }
-
-               /*
-               if Int(kUserID)! > 0 { print(log: kUserID) }
-               else {
-                   cell.btnFavorite.isHidden = true
-               }*/
+            }
+            
+            /*
+             if Int(kUserID)! > 0 { print(log: kUserID) }
+             else {
+             cell.btnFavorite.isHidden = true
+             }*/
             cell.favoriteAction = {
-                  if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
-
-                       if self.isFavoritesService {
-                           CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_favourite_makeFavourite_button_touch)
-                       }else {
-                           CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_results_makeFavourite_button_touch)
-                       }
-
+                if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
+                    
+                    if self.isFavoritesService {
+                        CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_favourite_makeFavourite_button_touch)
+                    }else {
+                        CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_results_makeFavourite_button_touch)
+                    }
+                    
                     self.makeDisplayHomeFavorite((!(cell.displayHomeData!.isFav)), cell.displayHomeData!) { (success) in
-                           if success {
-
+                        if success {
+                            
                             if (!(cell.displayHomeData!.isFav) == true) {
-                                   DispatchQueue.main.async(execute: {
-                                       ActivityManager.showToast("Added to your favourites", self)
-                                   })
-                               }else{
+                                DispatchQueue.main.async(execute: {
+                                    ActivityManager.showToast("Added to your favourites", self)
+                                })
+                            }else{
                                 DispatchQueue.main.async(execute: {
                                     ActivityManager.showToast("Item removed from favourites", self)
                                 })
-
-                             }
-
-                               var updateDefaults = false
-
-                              // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
-                                   updateDefaults = true
-                               //}
-
-
-                               if self.isFavoritesService {
-
-                                   var arr = self.arrFavouriteDisplays[indexPath.row]
-                                   arr.remove(at: indexPath.row)
-
-                                   if arr.count == 0 {
-                                       self.arrFavouriteDisplays.remove(at: indexPath.row)
-
-                                       if updateDefaults {
+                                
+                            }
+                            
+                            var updateDefaults = false
+                            
+                            // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+                            updateDefaults = true
+                            //}
+                            
+                            
+                            if self.isFavoritesService {
+                                
+                                var arr = self.arrFavouriteDisplays[indexPath.row]
+                                arr.remove(at: indexPath.row)
+                                
+                                if arr.count == 0 {
+                                    self.arrFavouriteDisplays.remove(at: indexPath.row)
+                                    
+                                    if updateDefaults {
                                         setDisplayHomesFavouritesCount(count: 0, state: kUserState)
-                                       }
-
-                                   }else {
-                                       self.arrFavouriteDisplays[indexPath.row] = arr
-
-                                       if updateDefaults {
+                                    }
+                                    
+                                }else {
+                                    self.arrFavouriteDisplays[indexPath.row] = arr
+                                    
+                                    if updateDefaults {
                                         setDisplayHomesFavouritesCount(count: arr.count, state: kUserState)
-                                       }
-                                   }
-
-//                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
-//
-//                                   self.searchResultsTable.reloadData ()
-
-                               }else {
-
+                                    }
+                                }
+                                
+                                //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                                //
+                                //                                   self.searchResultsTable.reloadData ()
+                                
+                            }else {
+                                
                                 cell.displayHomeData!.isFav = !(cell.displayHomeData!.isFav)
                                 self.houseDetailsByHouseTypeArr[indexPath.row] =  cell.displayHomeData!
-
-                                   self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
-
+                                
+                                self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
+                                
                                 updateDisplayHomesFavouritesCount(cell.displayHomeData!.isFav == true)
-
-                               }
-                           }
-                       }
-                   }
-               }
-               print(log: "indexpath \(indexPath.row), arraycount \(houseDetailsByHouseTypeArr.count)")
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            print(log: "indexpath \(indexPath.row), arraycount \(houseDetailsByHouseTypeArr.count)")
             return cell
         }
     }
