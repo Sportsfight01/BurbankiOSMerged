@@ -31,7 +31,7 @@ class DisplaysRegionsMapDetailVC: UIViewController {
 //    var arrDisplayHomes = [DisplayHomeModel]()
 
     var arrDisplayHomes = [DisplayHomeModel]()
-    var selectedDisplayHomes = DisplayHomeModel()
+    var selectedDisplayHomes : DisplayHomeModel?
     
     var markerInfoVC: MarkerInfoVC?
     var selectedMarker : NearByPlaceMarkers?
@@ -53,6 +53,7 @@ class DisplaysRegionsMapDetailVC: UIViewController {
         
         if screenFromHomeDesigns{
             fillDetailsFromDesignScreen()
+            self.titleNameLBL.text = "POPULAR HOME DESIGNS"
         }else{
             self.titleNameLBL.text = selectedRegionForMaps.uppercased()
             NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"Choose a display from the \(selectedRegionForMaps)."])
@@ -77,11 +78,9 @@ class DisplaysRegionsMapDetailVC: UIViewController {
                                  bounds = bounds.includingCoordinate(marker.position)
                              }
                          self.mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 50.0 , left: 50.0 ,bottom: 50.0 ,right: 50.0)))
-//                        self.generateClusterItems ()
                     }
                 }
             }
-//            setUpClustering ()
         }
        
         
@@ -103,14 +102,16 @@ class DisplaysRegionsMapDetailVC: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displayDetailsCard.isHidden = true
+//        displayDetailsCard.isHidden = true
+        fillDetailsFromDesignScreen()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
+        
     }
     func fillDetailsFromDesignScreen(){
-        self.titleNameLBL.text = "POPULAR HOME DESIGNS"
+        
 //        self.displayDetailsCard.isHidden = false
         let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
         let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_12)

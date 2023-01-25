@@ -36,10 +36,11 @@ class DisplaysMapVC: UIViewController {
     var houseDetailsByHouseTypeArr = [houseDetailsByHouseType]()
     var selectedSuggestedDisplay = ""
     var screenFromSuggestedDisplays : Bool = false
-    var selectedDisplayHomes = DisplayHomeModel()
+    var selectedDisplayHomes : DisplayHomeModel?
     var tableViewContentHeight = 0
     var isFavoritesService: Bool = false
     var arrFavouriteDisplays = [[houseDetailsByHouseType]]()
+    
     
     // MARK: - ViewLifecycle
     override func viewDidLoad() {
@@ -52,7 +53,18 @@ class DisplaysMapVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displayDetailsCard.isHidden = true
+        if self.titleNameLBL.text == "NEW HOME DESIGNS" {
+            if selectedDisplayHomes != nil{
+                fillDetailsFromDesignScreen(suggestedHome: selectedDisplayHomes!)
+            }
+           
+        }else{
+            if selectedMarker != nil{
+                let package = (selectedMarker!).displayHomesPlaces!
+                getHouseDetailsData(package: package)
+            }
+        }
+        
     }
     
     func updatedNotification(notification:Notification) -> Void  {
@@ -62,7 +74,7 @@ class DisplaysMapVC: UIViewController {
         print("-------\(isTappedonPopularHomeDesigns)")
         if isTappedonPopularHomeDesigns as! Bool {
             guard let suggestedHomeData = notification.userInfo!["suggestedHome"] else { return }
-            //            self.selectedSuggestedDisplay = estatename as? String ?? ""
+            selectedDisplayHomes = suggestedHomeData as! DisplayHomeModel
             fillDetailsFromDesignScreen(suggestedHome: suggestedHomeData as! DisplayHomeModel)
         }
         else{
@@ -139,16 +151,6 @@ extension DisplaysMapVC: GMSMapViewDelegate, UIPopoverPresentationControllerDele
         renderer.delegate = self
         
         clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm, renderer: renderer)
-        
-        
-        // Generate and add random items to the cluster manager.
-        //        generateClusterItems ()
-        
-        // Call cluster() after items have been added to perform the clustering
-        // and rendering on map.
-        //        clusterManager.cluster()
-        
-        
         clusterManager.setDelegate(self, mapDelegate: self)
     }
     
@@ -226,38 +228,7 @@ extension DisplaysMapVC: GMSMapViewDelegate, UIPopoverPresentationControllerDele
             selectedMarker = marker as? NearByPlaceMarkers
             selectedMarker?.selected = true
             let package = (marker as! NearByPlaceMarkers).displayHomesPlaces!
-            //                gethouseDetailsByHouseType(estateName: package.estateName)
-            self.estateNameLBL.text = "\(package.estateName ?? "")".uppercased()
-            self.streetNameLBL.text = "\(package.lotStreet1 ?? ""),\n\(package.lotSuburb ?? "")"
-            backBTNCard.isHidden = false
-            let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
-            let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_12)
-            
-            let boldFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: font]
-            let normalFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: fontSuper]
-            let partOne = NSMutableAttributedString(string: "\(package.estateName ?? "")".uppercased(), attributes: boldFontAttributes as [NSAttributedString.Key : Any])
-            let partTwo = NSMutableAttributedString(string: "\n\(package.lotStreet1 ?? ""),\(package.lotSuburb ?? "")", attributes: normalFontAttributes as [NSAttributedString.Key : Any])
-            
-            let combination = NSMutableAttributedString()
-            
-            combination.append(partOne)
-            combination.append(partTwo)
-            
-            // self.estateNameLBL.attributedText = combination
-            NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(package.estateName?.uppercased() ?? ""), \(package.lotStreet1 ?? "")"])
-            
-            DashboardDataManagement.shared.getestateDetailsData(stateId: kUserState, estateName: package.estateName ?? "", showActivity: true, { estateDetails in
-                self.houseDetailsByHouseTypeArr = []
-                if let estate = estateDetails {
-                    self.houseDetailsByHouseTypeArr = estate
-                }
-                DispatchQueue.main.async {
-                    self.displayDetailsCard.isHidden = false
-                    self.regionTableHeight.constant = 100
-                    self.layoutTable ()
-                }
-                
-            })
+            getHouseDetailsData(package: package)
             
         }else if let cluster = marker.userData as? GMUStaticCluster {
             
@@ -280,7 +251,39 @@ extension DisplaysMapVC: GMSMapViewDelegate, UIPopoverPresentationControllerDele
         //        let update = GMSCameraUpdate.setCamera(newCamera)
         //        mapView.moveCamera(update)
     }
-    
+    func getHouseDetailsData(package : DisplayHomeModel){
+        self.estateNameLBL.text = "\(package.estateName ?? "")".uppercased()
+        self.streetNameLBL.text = "\(package.lotStreet1 ?? ""),\n\(package.lotSuburb ?? "")"
+        backBTNCard.isHidden = false
+        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
+        let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_12)
+        
+        let boldFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: font]
+        let normalFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: fontSuper]
+        let partOne = NSMutableAttributedString(string: "\(package.estateName ?? "")".uppercased(), attributes: boldFontAttributes as [NSAttributedString.Key : Any])
+        let partTwo = NSMutableAttributedString(string: "\n\(package.lotStreet1 ?? ""),\(package.lotSuburb ?? "")", attributes: normalFontAttributes as [NSAttributedString.Key : Any])
+        
+        let combination = NSMutableAttributedString()
+        
+        combination.append(partOne)
+        combination.append(partTwo)
+        
+        // self.estateNameLBL.attributedText = combination
+        NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(package.estateName?.uppercased() ?? ""), \(package.lotStreet1 ?? "")"])
+        
+        DashboardDataManagement.shared.getestateDetailsData(stateId: kUserState, estateName: package.estateName ?? "", showActivity: true, { estateDetails in
+            self.houseDetailsByHouseTypeArr = []
+            if let estate = estateDetails {
+                self.houseDetailsByHouseTypeArr = estate
+            }
+            DispatchQueue.main.async {
+                self.displayDetailsCard.isHidden = false
+                self.regionTableHeight.constant = 100
+                self.layoutTable ()
+            }
+            
+        })
+    }
     
     
     func makeAllMarkersasUnSelected () {
