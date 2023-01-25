@@ -48,7 +48,14 @@ class DisplaysNearByVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displayDetailsCard.isHidden = true
+      //  displayDetailsCard.isHidden = true
+        
+        if selectedMarker != nil{
+            let package = (selectedMarker!).displayHomesPlaces!
+            getStateData(package: package)
+        }
+        
+        
     }
     
     
@@ -196,17 +203,6 @@ extension DisplaysNearByVC: GMSMapViewDelegate, UIPopoverPresentationControllerD
     
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
-//        if marker.isKind(of: NearByPlaceMarkers.self){
-//            print(log: "zoomLevel \((mapView as! MyPlaceMap).zoomLevel)")
-//
-//            makeAllMarkersasUnSelected ()
-//            selectedMarker = marker as? NearByPlaceMarkers
-//            selectedMarker?.selected = true
-//            let package = (marker as! NearByPlaceMarkers).displayHomesPlaces!
-//        }
-        
-        
         if marker.isKind(of: NearByPlaceMarkers.self) {
             
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_map_markers_button_touch)
@@ -218,36 +214,7 @@ extension DisplaysNearByVC: GMSMapViewDelegate, UIPopoverPresentationControllerD
             selectedMarker = marker as? NearByPlaceMarkers
             selectedMarker?.selected = true
             let package = (marker as! NearByPlaceMarkers).displayHomesPlaces!
-            //            gethouseDetailsByHouseType(estateName: package.estateName)
-            
-            let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
-            let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_12)
-            
-            let boldFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: font]
-            let normalFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: fontSuper]
-            let partOne = NSMutableAttributedString(string: package.estateName?.uppercased() ?? "", attributes: boldFontAttributes as [NSAttributedString.Key : Any])
-            let partTwo = NSMutableAttributedString(string: "\n\(package.lotStreet1 ?? ""), \(package.lotSuburb ?? "")", attributes: normalFontAttributes as [NSAttributedString.Key : Any])
-            
-            let combination = NSMutableAttributedString()
-            
-            combination.append(partOne)
-            combination.append(partTwo)
-            
-            self.estateNameLBL.attributedText = combination
-            NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(package.estateName?.uppercased() ?? ""), \(package.lotStreet1 ?? "")"])
-            
-          //  DisplaysVC().addBreadcrumb("\(package.estateName ?? ""), \(package.lotStreet1 ?? "")")
-            DashboardDataManagement.shared.getestateDetailsData(stateId: kUserState, estateName: package.estateName ?? "", showActivity: true, { estateDetails in
-                self.houseDetailsByHouseTypeArr = []
-                if let estate = estateDetails {
-                     self.houseDetailsByHouseTypeArr = estate
-                }
-                DispatchQueue.main.async {
-                    self.displayDetailsCard.isHidden = false
-                    self.layoutTable ()
-                }
-                
-            })
+            getStateData(package: package)
             
         }else if let cluster = marker.userData as? GMUStaticCluster {
             
@@ -262,6 +229,34 @@ extension DisplaysNearByVC: GMSMapViewDelegate, UIPopoverPresentationControllerD
     }
     
 
+    func getStateData(package : DisplayHomeModel){
+        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
+        let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_12)
+        
+        let boldFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: font]
+        let normalFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: fontSuper]
+        let partOne = NSMutableAttributedString(string: package.estateName?.uppercased() ?? "", attributes: boldFontAttributes as [NSAttributedString.Key : Any])
+        let partTwo = NSMutableAttributedString(string: "\n\(package.lotStreet1 ?? ""), \(package.lotSuburb ?? "")", attributes: normalFontAttributes as [NSAttributedString.Key : Any])
+        
+        let combination = NSMutableAttributedString()
+        
+        combination.append(partOne)
+        combination.append(partTwo)
+        
+        self.estateNameLBL.attributedText = combination
+        NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(package.estateName?.uppercased() ?? ""), \(package.lotStreet1 ?? "")"])
+        DashboardDataManagement.shared.getestateDetailsData(stateId: kUserState, estateName: package.estateName ?? "", showActivity: true, { estateDetails in
+            self.houseDetailsByHouseTypeArr = []
+            if let estate = estateDetails {
+                 self.houseDetailsByHouseTypeArr = estate
+            }
+            DispatchQueue.main.async {
+                self.displayDetailsCard.isHidden = false
+                self.layoutTable ()
+            }
+            
+        })
+    }
     private func clusterManager(clusterManager: GMUClusterManager, didTapCluster cluster: GMUCluster) {
         
         print("cluster tap")

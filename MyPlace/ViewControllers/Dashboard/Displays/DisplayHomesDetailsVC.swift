@@ -170,6 +170,8 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
       }
         
     }
+    
+    
   @objc func handleNavBackBtn()
   {
     self.navigationController?.popViewController(animated: true)
@@ -177,6 +179,9 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
     func updatedNotification(notification:Notification) -> Void  {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    
     func fillPackageData () {
         //CodeManager.sharedInstance.sendScreenName("BB_DisplayHomes_NameAndSize_\(self.homeDesignDetails?.lsthouses?.houseName ?? "")_design,\(self.homeDesignDetails?.lsthouses?.houseSize ?? 0)")
         Analytics.logEvent("BB_DisplayHomes_NameAndSize_", parameters: ["name" : self.homeDesignDetails?.lsthouses?.houseName ?? "","size" : self.homeDesignDetails?.lsthouses?.houseSize ?? ""])
@@ -336,6 +341,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
     @IBAction func handleBackButton (_ sender: UIButton) {
 
         self.navigationController?.popViewController(animated: true)
+
     }
 
     /*

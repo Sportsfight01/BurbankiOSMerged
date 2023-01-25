@@ -85,10 +85,14 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
             
             iHaveLandLBL.textColor = APPCOLORS_3.HeaderFooter_white_BG
             enterLotCard.isHidden = false
+            
+            let lotWidth = Int(lotTF.text ?? "") ?? 0
             if lotTF.text?.count == 0
             {
               homeDesignFeature?.selectedAnswer = ""
               selectionAlertMessage = "Please enter lot width"
+            }else if  1 ... 100 ~= lotWidth {
+                showToast("Please enter value between 1 to 100m")
             }
           
         }
@@ -151,7 +155,8 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
     guard lotTF.text!.count > 0 else {showToast("Please enter lot width");return}
     let value = Double(lotTF.text!)! * 100
     let finalLotWidth = value/100
-    //  print(finalLotWidth.round)
+    guard 0 ... 100 ~= finalLotWidth else{showToast("Please enter value between 1 to 100m");return}
+       
     let displayStr = lotTF.text ?? ""
     homeDesignFeature?.selectedAnswer = String(format: "%.3f",finalLotWidth)
    // homeDesignFeature?.selectedAnswer = lotTF.text ?? ""
