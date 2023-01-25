@@ -82,19 +82,14 @@ class DesignsDetailsVC: HeaderVC {
     var myPlaceQuiz: MyPlaceQuiz?
     
     
-    var homeDesign: HomeDesigns? {
-        didSet {
-            
-        }
-    }
-    
+    var homeDesign: HomeDesigns?   
     var homeDesignDetails: HomeDesignDetails?
     var arrHomeDesignsDetails = [HomeDesigns] ()
     
     var arrScrollImageUrls = [String] ()
     var arrOnDisplay = [Any] ()
     
-    var isFromFavorites: Bool?
+    var isFromFavorites: Bool = false
     
     
     var displayText: String? {
@@ -143,7 +138,7 @@ class DesignsDetailsVC: HeaderVC {
             getDesignDetails(design)
         }
         
-        if isFromFavorites ?? true {
+        if isFromFavorites {
             addHeaderOptions(sort: false, map: false, favourites: false, howWorks: false, delegate: self)
         }else {
             addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, reset: true,totalCount: true,  delegate: self)
@@ -216,7 +211,7 @@ class DesignsDetailsVC: HeaderVC {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if let filter = displayText {
             if filter.count > 0 {
                 self.addBreadCrumb(from: filter)
@@ -226,6 +221,12 @@ class DesignsDetailsVC: HeaderVC {
             }
         }
         
+        
+        if isFromFavorites
+        {
+            headerLogoText = "MyFavourites"
+          
+        }
 //        if let design = homeDesign {
 //            self.addBreadCrumb (from: (design.houseName ?? "") + " " + (design.houseSize ?? ""))
 //        }
@@ -270,26 +271,20 @@ class DesignsDetailsVC: HeaderVC {
         
         
         
-        self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
         
-        if Int(kUserID)! > 0 {
+        if Int(kUserID)! > 0 { //
+            self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+            self.btnSaveDesign.backgroundColor = self.homeDesign?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
             
-//            if self.homeDesign?.isFav == true {
-//                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
-//            }else {
-//                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
-//            }
-            
-            if isFromFavorites == true {
-                btnFavorite.isHidden = homeDesign?.favouritedUser?.userID != kUserID
-            }
-        }else {
-            
-//            self.btnFavorite.isHidden = true
+        }else { // Guest User
+        
+            self.btnFavorite.setImage(imageUNFavorite, for: .normal)
+            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Orange_BG
         }
         
-        self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-        self.btnSaveDesign.backgroundColor = self.homeDesign?.isFav == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
+       // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
+        
+     
 
         enquireView.isHidden = arrOnDisplay.count == 0
         
@@ -370,6 +365,11 @@ class DesignsDetailsVC: HeaderVC {
         }else{
            
             self.previousDesignBTN2.isHidden = false
+        }
+        
+        if isFromFavorites
+        {
+            self.addBreadCrumb(from: (homeDesignDetails?.lsthouses?.houseName ?? "") + " " + "\(homeDesignDetails?.lsthouses?.houseSize ?? 0)")
         }
     }
     

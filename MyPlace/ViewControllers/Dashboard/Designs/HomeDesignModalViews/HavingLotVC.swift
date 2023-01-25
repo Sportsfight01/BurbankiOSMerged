@@ -53,7 +53,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         iDontHaveBTN.superview?.layer.cornerRadius = radius_5
         iHaveLandBTN.superview?.layer.cornerRadius = radius_5
         enterLotCard.layer.cornerRadius = radius_5
-        iDontHaveLandLBL.text = "I Don't Have \nLand Yet"
+        iDontHaveLandLBL.text = "I Don't Have \nLand Yet".uppercased()
         enterLotCard.isHidden = true
         
         setAppearanceFor(view: iDontHaveBTN.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
@@ -122,24 +122,24 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         let cs = NSCharacterSet(charactersIn: ACCEPTABLE_CHARACTERS).inverted
         let filtered = string.components(separatedBy: cs).joined(separator: "")
         
-      //MaxCharacter
-     
-      //restricting 2 successive dots
-      let dotsCount = textField.text!.components(separatedBy: ".").count - 1
-      if dotsCount > 0 && (string == "." || string == ",") {
-          return false
-      }
-
-      if string == "," {
-          textField.text! += "."
-          return false
-      }
-//        if string == filtered {
+        //MaxCharacter
         
-            return string == filtered && range.location < 8
-//        }
-//      return range.location < 8
-         
+        //restricting 2 successive dots
+        let dotsCount = textField.text!.components(separatedBy: ".").count - 1
+        if dotsCount > 0 && (string == "." || string == ",") {
+            return false
+        }
+        
+        if string == "," {
+            textField.text! += "."
+            return false
+        }
+        //        if string == filtered {
+        
+        return string == filtered && range.location < 5
+        //        }
+        //      return range.location < 8
+        
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -151,11 +151,13 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
     guard lotTF.text!.count > 0 else {showToast("Please enter lot width");return}
     let value = Double(lotTF.text!)! * 100
     let finalLotWidth = value/100
+    guard 0..<100 ~= finalLotWidth else{showToast("Please enter value between 1 to 100m");return}
     //  print(finalLotWidth.round)
     let displayStr = lotTF.text ?? ""
     homeDesignFeature?.selectedAnswer = String(format: "%.3f",finalLotWidth)
    // homeDesignFeature?.selectedAnswer = lotTF.text ?? ""
     homeDesignFeature?.displayString = "\(displayStr) M"
+        
     
     
     if let selection = selectionUpdates {

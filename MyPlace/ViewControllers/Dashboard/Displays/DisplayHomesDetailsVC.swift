@@ -211,10 +211,16 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         
         
         
-        self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
+        
         if Int(kUserID)! == 0 // Guest User
         {
             self.btnFavorite.setImage(imageUNFavorite, for: .normal)
+           
+            
+        }else { // User logged In
+            self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
+            self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+            
         }
         
 //        if Int(kUserID)! > 0 {
@@ -233,7 +239,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
 //            self.btnFavorite.isHidden = true
 //        }
         
-        self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
+       // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
         self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
 
         enquireView.isHidden = arrOnDisplay.count == 0
@@ -510,7 +516,7 @@ extension DisplayHomesDetailsVC{
             
             CodeManager.sharedInstance.sendScreenName (burbank_DisplayHomes_detailView_makeFavourite_button_touch)
             
-            self.makeDisplayHomeFavorite(!(isFave ), desplayID, self.popularHomedesplayID) { (success) in
+            self.makeDisplayHomeFavorite(!(isFave), desplayID, self.popularHomedesplayID) { (success) in
                 if success {
                     
                     if (!(self.isFave) == true) {
@@ -531,8 +537,8 @@ extension DisplayHomesDetailsVC{
                     
                     self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
                     
-                    self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-                    self.btnSaveDesign.backgroundColor = (self.isFave ) == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
+                   // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
+                    self.btnSaveDesign.backgroundColor = (self.isFave ) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
                     
                     
 //                    if self.homeDesignDetails?.userID == kUserID {
@@ -546,7 +552,7 @@ extension DisplayHomesDetailsVC{
     @IBAction func handleSaveDesignButton (_ sender: UIButton) {
         if let _ = self.displayHomes {
             if (self.isFave == true) {
-                ActivityManager.showToast("Design saved in favourites", self)
+                ActivityManager.showToast("Design already saved in favourites", self)
             }else {
                 self.handleFavoriteButtonAction(btnFavorite)
             }

@@ -235,16 +235,16 @@ class StoreysCell: UICollectionViewCell {
         if (storey?.lowercased().contains("1") ?? false) == true {
             iconStorey.image = UIImage(named: selectedStorey == false ? "Ico-Single" : "Ico-SingeWhite")
             
-            labelStorey.text = "SINGLE".capitalized
+            labelStorey.text = "SINGLE".uppercased()
         }else if (storey?.lowercased().contains("2") ?? false) == true {
             iconStorey.image = UIImage(named: selectedStorey == false ? "Ico-Double" : "Ico-DoubleWhite")
-            labelStorey.text = "DOUBLE".capitalized
+            labelStorey.text = "DOUBLE".uppercased()
         }else if (storey?.lowercased().contains("3") ?? false) == true {
             iconStorey.image = UIImage(named: selectedStorey == false ? "Ico-TrippleStory" : "Ico-TripplestoryWhite")
-            labelStorey.text = "TRIPLE".capitalized
+            labelStorey.text = "TRIPLE".uppercased()
         }else {
             iconStorey.image = UIImage(named: selectedStorey == false ? "Ico-Question" : "Ico-FaqWhite")
-            labelStorey.text = "NOT SURE".capitalized
+            labelStorey.text = "NOT SURE".uppercased()
         }
         
         if selectedStorey == true {

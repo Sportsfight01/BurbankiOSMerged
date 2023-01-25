@@ -59,7 +59,7 @@ class HomeLandDetailsVC: HeaderVC {
     @IBOutlet weak var btnEnquire : UIButton!
     @IBOutlet weak var btnSaveDesign: UIButton!
 
-    var isFromFavorites: Bool?
+    var isFromFavorites: Bool = false
     
     var isFromHomeDesigns: Bool = false
     var design: HomeDesigns?
@@ -123,6 +123,9 @@ class HomeLandDetailsVC: HeaderVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if isFromFavorites {
+            headerLogoText = "MyFavourites"
+        }
                                
         if let homeLand = homeLand {
             
@@ -188,25 +191,20 @@ class HomeLandDetailsVC: HeaderVC {
         self.addBreadCrumb(from: (self.homeLand?.houseName ?? "") + " " + (self.homeLand?.houseSize ?? ""))
 
         
-        if Int(kUserID)! > 0 {
-            
-            if self.homeLand?.isFav == true {
-                self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
-            }else {
-                self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
-            }
-            
-            if isFromFavorites == true {
-                btnFavorite.isHidden = homeLand?.favouritedUser?.userID != kUserID
-            }
+        if Int(kUserID)! > 0 {// Current User
+            self.btnFavorite.setBackgroundImage(self.homeLand?.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+            self.btnSaveDesign.backgroundColor = self.homeLand?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+//            if isFromFavorites == true {
+//                btnFavorite.isHidden = homeLand?.favouritedUser?.userID != kUserID
+//            }
 
-        }else {
+        }else { // Guest User
             
-//            self.btnFavorite.isHidden = true
+            self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
         }
         
-        self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-        self.btnSaveDesign.backgroundColor = self.homeLand?.isFav == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
+       // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
+       
         
                     
         self.lBEstateFacadeName.text = self.homeLand?.estateName ?? ""

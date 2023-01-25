@@ -714,7 +714,7 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
             
             let homeDetailView = self.storyboard?.instantiateViewController(withIdentifier: "HomeLandDetailsVC") as! HomeLandDetailsVC
             homeDetailView.myPlaceQuiz = myPlaceQuiz
-            homeDetailView.isFromFavorites = isFavoritesService
+            homeDetailView.isFromFavorites = isFromProfileFavorites
             homeDetailView.isFromProfile = isFromProfile
             homeDetailView.isFromHomeDesigns = isFromHomeDesigns
             homeDetailView.design = self.design

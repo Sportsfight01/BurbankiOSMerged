@@ -134,22 +134,19 @@ class MyPlaceHomeVC: UIViewController {
         //        }
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
         let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
-        
-      
-
         self.favCountLb.text = "\(totalFavCount)"
-        favCountLb.isHidden = totalFavCount > 0 ? false : true
+      //  favCountLb.isHidden = totalFavCount > 0 ? false : true
         ProfileDataManagement.shared.getDisplayHomesFavoriteCount { favouritetCount in
             print(log: "DisplayHomes Favourite COunt \(String(describing: favouritetCount))")
         }
       
     }
-    
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+     
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
+       // favCountLb.isHidden = totalFavCount > 0 ? false : true
        
         
     }
@@ -248,7 +245,7 @@ class MyPlaceHomeVC: UIViewController {
         favCountLb.clipsToBounds = true
         favCountLb.textAlignment = .center
         let isFavAvailable = kUserID == "0" ? false : true
-        favCountLb.isHidden = totalFavCount > 0 ? false : true
+       
         if isFavAvailable{
 //            favCountLb.isHidden = false
             btnMyProfile.addSubview(favCountLb)
@@ -497,7 +494,7 @@ class MyPlaceHomeVC: UIViewController {
           //                handleButtonActions(btnHomeDesign)
           //            }
           }*/
-        else if sender == btnHomeDesign {
+        else if sender == btnHomeDesign { // HomeDesign
             
             CodeManager.sharedInstance.sendScreenName (burbank_dashboard_homeDesigns_button_touch)
             //MARK: - HomeDesigns
@@ -507,7 +504,7 @@ class MyPlaceHomeVC: UIViewController {
             (dash as UITabBarController).selectedIndex = 0
             self.navigationController?.pushViewController(dash, animated: true)
             
-        }else if sender == btnHomeLand {
+        }else if sender == btnHomeLand { // HouseAndLand
             
             CodeManager.sharedInstance.sendScreenName (burbank_dashboard_homeAndLand_button_touch)
             //MARK: - Home & land
@@ -524,16 +521,16 @@ class MyPlaceHomeVC: UIViewController {
             
             
         }
-        else if sender == btnHomeDisplay {
+        else if sender == btnHomeDisplay { // DisplayHomes
             CodeManager.sharedInstance.sendScreenName (burbank_dashboard_displayHomes_button_touch)
-            //MARK: - Display Homes
+        
             let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
             (dash as UITabBarController).selectedIndex = 2
             self.navigationController?.pushViewController(dash, animated: true)
-        }else{
+        }else{ // Favourite Tapped
             
             CodeManager.sharedInstance.sendScreenName (burbank_dashboard_displayHomes_button_touch)
-            //MARK: - Display Homes
+      
             let dash = kStoryboardMain.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
             (dash as UITabBarController).selectedIndex = 3
             self.navigationController?.pushViewController(dash, animated: true)
@@ -908,11 +905,12 @@ extension MyPlaceHomeVC: RegionVCDelegate, StateSelectionVCDelegate {
         DashboardDataManagement.shared.getRegions(stateId: kUserState, showActivity: false) { (regions) in
             
         }
-        
+        //MARK: - To Get favourite count of all modules
         ProfileDataManagement.shared.getProfileDetails { [weak self] flag in
             //count label
             let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
             self?.favCountLb.text = "\(totalFavCount)"
+            self?.favCountLb.isHidden = totalFavCount == 0 ? true : false
         }
         
     }

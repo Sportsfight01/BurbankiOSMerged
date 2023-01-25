@@ -125,7 +125,7 @@ class HeaderVC: UIViewController {
                 _ = setAttributetitleFor(view: logoLabel, title: headerLogoText!, rangeStrings: ["Display" , "Homes"], colors: [APPCOLORS_3.GreyTextFont , APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: 30) , FONT_LABEL_SUB_HEADING(size : 30)], alignmentCenter: false)
             
             default :
-                setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_HEADING(size : 30))
+                setAppearanceFor(view: logoLabel, backgroundColor: .clear, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size : 30))
                 logoLabel.text = headerLogoText
             }
             

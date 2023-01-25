@@ -353,7 +353,7 @@ class HomeLandVCSurvey: HeaderVC {
         _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         
         _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
-      _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_LIGHT(size: FONT_40), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNOT SURE", rangeStrings: ["?","NOT SURE"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_LIGHT(size: FONT_40), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
 
         
         bedrooms_btn3Bedrooms.superview?.layer.cornerRadius = radius_5
@@ -994,19 +994,9 @@ class HomeLandVCSurvey: HeaderVC {
     
     func showHideAllViews () {
         
-//        self.btnNext.superview!.alpha = viewTag > 104 ? 0.4 : 1.0
-//        self.btnPrevious.superview!.alpha = viewTag == 101 ? 0.4 : 1.0
-//
-//        self.btnNext.backgroundColor = viewTag > 104 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
-//        self.btnPrevious.backgroundColor = viewTag == 101 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
-        
         btnNext.isUserInteractionEnabled = viewTag > 104 ? false : true
         btnPrevious.isUserInteractionEnabled = viewTag == 101 ? false : true
-        
-//        btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == APPCOLORS_3.Orange_BG
-//        btnPrevious.isUserInteractionEnabled = self.btnPrevious.backgroundColor == APPCOLORS_3.Orange_BG
-        
-        
+     
         print("viewTag: \(viewTag)")
         [regionView,storeysView,bedroomsView,priceView].forEach({$0?.isHidden = true})//hide all
         
@@ -1016,6 +1006,7 @@ class HomeLandVCSurvey: HeaderVC {
         self.addBreadCrumb(from: myPlaceQuiz.filterStringDisplayHomes())
 //        self.labelInfo.text = myPlaceQuiz.filterStringDisplayHomes()
 
+        //IF CURRENT VIEW HAS ANSWER SELECTED CHANGE NEXT BUTTON BACKGROUND COLOR
         switch viewTag
         {
         case 101 : // region
@@ -1025,9 +1016,10 @@ class HomeLandVCSurvey: HeaderVC {
         case 102: // price
             btnNext.backgroundColor = myPlaceQuiz.priceRangeLow?.count ?? 0 > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
         case 103: // storey
-            btnNext.backgroundColor = myPlaceQuiz.storeysCount?.count ?? 0 > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+           // print(myPlaceQuiz.storeysCount)
+            btnNext.backgroundColor = myPlaceQuiz.storeysCount?.count ?? 0 > 0 || self.filter.storeysCount == .ALL ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
         case 104: // bedroom
-            btnNext.backgroundColor = myPlaceQuiz.bedRoomCount?.count ?? 0 > 0 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+            btnNext.backgroundColor = myPlaceQuiz.bedRoomCount?.count ?? 0 > 0 || self.filter.bedRoomsCount == .ALL ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
         default:
             print(log: "result page")
         }
