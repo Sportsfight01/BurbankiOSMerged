@@ -658,6 +658,7 @@ class MyCollectionSurveyVC: HeaderVC {
               self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
           }
           self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+          self.btnNext.isUserInteractionEnabled = true
       }
       
     }

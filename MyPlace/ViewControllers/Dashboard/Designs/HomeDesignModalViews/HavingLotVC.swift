@@ -66,9 +66,9 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
     
     @IBAction func anyButtonTapped(_ sender: UIButton) {
         lotViewSetUp()
-      lotTF.text?.removeAll()
-      if sender.tag == 111{ //i don't have land
-          iDontHaveBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+        lotTF.text?.removeAll()
+        if sender.tag == 111{ //i don't have land
+            iDontHaveBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             iDintHaveLandIMG.image = UIImage(named: "Ico-FaqWhite")
             iDontHaveLandLBL.textColor = APPCOLORS_3.HeaderFooter_white_BG
             homeDesignFeature?.selectedAnswer = "NOT SURE"
@@ -79,18 +79,23 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
             }
         }else{ // I have land
             iHaveLandBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-        
-                //iHaveLandIMG.image = UIImage(named: "Ico-Rite")?.withRenderingMode(.alwaysTemplate)
-                iHaveLandIMG.tintColor = .white
+            print(self.parent)
+            if let parent = self.parent as? MyCollectionSurveyVC
+            {
+                parent.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+                parent.btnNext.isUserInteractionEnabled = false
+            }
+            //iHaveLandIMG.image = UIImage(named: "Ico-Rite")?.withRenderingMode(.alwaysTemplate)
+            iHaveLandIMG.tintColor = .white
             
             iHaveLandLBL.textColor = APPCOLORS_3.HeaderFooter_white_BG
             enterLotCard.isHidden = false
             if lotTF.text?.count == 0
             {
-              homeDesignFeature?.selectedAnswer = ""
-              selectionAlertMessage = "Please enter lot width"
+                homeDesignFeature?.selectedAnswer = ""
+                selectionAlertMessage = "Please enter lot width"
             }
-          
+            
         }
         
         
@@ -151,7 +156,14 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
     guard lotTF.text!.count > 0 else {showToast("Please enter lot width");return}
     let value = Double(lotTF.text!)! * 100
     let finalLotWidth = value/100
-    guard 0..<100 ~= finalLotWidth else{showToast("Please enter value between 1 to 100m");return}
+    guard 0..<100 ~= finalLotWidth else{
+        
+        if let parent = self.parent as? MyCollectionSurveyVC
+        {
+            parent.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+            parent.btnNext.isUserInteractionEnabled = false
+        }
+        showToast("Please enter value between 1 to 100m");return}
     //  print(finalLotWidth.round)
     let displayStr = lotTF.text ?? ""
     homeDesignFeature?.selectedAnswer = String(format: "%.3f",finalLotWidth)

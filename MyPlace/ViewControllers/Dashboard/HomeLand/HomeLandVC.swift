@@ -803,7 +803,7 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
             dataLabel.centerYAnchor.constraint(equalTo: viewHeader.centerYAnchor).isActive = true
             
             if packages[0].favouritedUser?.userID == kUserID {
-                dataLabel.text = "My Favourites list " + "(\(packages.count))"
+                dataLabel.text = "Favourites list " + "(\(packages.count))"
             }else {
 
                 dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourites list " + "(\(packages.count))"

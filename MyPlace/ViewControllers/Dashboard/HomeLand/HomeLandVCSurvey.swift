@@ -104,8 +104,8 @@ class HomeLandVCSurvey: HeaderVC {
                 setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
                 
               //  self.btnNext.superview!.alpha = 1.0
-                self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-                btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == APPCOLORS_3.EnabledOrange_BG
+              //  self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+                btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == APPCOLORS_3.EnabledOrange_BG ? true : false
 
                 self.btnDesignsCount.isUserInteractionEnabled = true
                 
@@ -528,6 +528,7 @@ class HomeLandVCSurvey: HeaderVC {
     //    }
     
     
+    //below method called any one of answer is selected stpreys and bedrooms
     @IBAction func anyButtonTapped(sender: UIButton) {
         
         
@@ -582,14 +583,14 @@ class HomeLandVCSurvey: HeaderVC {
         
         CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_selectedAnswer_button_touch)
         
-        if viewTag == 101 {
+        if viewTag == 101 { // Region
             
             myPlaceQuiz.region = sender.title(for: .normal)?.capitalized
             filter.region = RegionMyPlace()
             
 //            btnDesignsCount.setTitle("0 PACKAGES >", for: .normal)
 
-        }else if viewTag == 103 {
+        }else if viewTag == 103 { // Storeys
             
             
             
@@ -716,7 +717,7 @@ class HomeLandVCSurvey: HeaderVC {
         }else {
             
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_previous_button_touch)
-            btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            //btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
            // btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             if btnPrevious.isUserInteractionEnabled == true { }
             else { return }
@@ -1021,7 +1022,7 @@ class HomeLandVCSurvey: HeaderVC {
         self.addBreadCrumb(from: myPlaceQuiz.filterStringDisplayHomes())
 //        self.labelInfo.text = myPlaceQuiz.filterStringDisplayHomes()
 
-        //IF CURRENT VIEW HAS ANSWER SELECTED CHANGE NEXT BUTTON BACKGROUND COLOR
+        //IF CURRENT VIEW HAS ANSWER SELECTED, CHANGE "NEXT BUTTON" BACKGROUND COLOR
         switch viewTag
         {
         case 101 : // region
@@ -1386,7 +1387,7 @@ extension HomeLandVCSurvey {
             
             self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
             self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            //self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         }
         
         if let task = datatask {
