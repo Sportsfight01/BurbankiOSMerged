@@ -219,8 +219,8 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             if priceMAX > 1000 {
                 priceMAX = Double(Int(priceMAX/1000))
             }
-            print(priceMAX)
-            print(priceMIN)
+         //   print(priceMAX)
+//            print(priceMIN)
             rangeslider.upperValue = priceMAX
             print(rangeslider.upperValue)
             rangeslider.lowerValue = priceMIN

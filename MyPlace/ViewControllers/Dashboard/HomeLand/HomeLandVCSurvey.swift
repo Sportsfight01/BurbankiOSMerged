@@ -93,9 +93,9 @@ class HomeLandVCSurvey: HeaderVC {
                 setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
                 self.btnDesignsCount.isUserInteractionEnabled = false
                 
-                self.btnNext.superview!.alpha = 0.4
+                self.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
                 
-                btnNext.isUserInteractionEnabled = self.btnNext.superview!.alpha == 1.0
+                btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == APPCOLORS_3.EnabledOrange_BG
                 
             }else {
                 
@@ -103,8 +103,9 @@ class HomeLandVCSurvey: HeaderVC {
 
                 setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
                 
-                self.btnNext.superview!.alpha = 1.0
-                btnNext.isUserInteractionEnabled = self.btnNext.superview!.alpha == 1.0
+              //  self.btnNext.superview!.alpha = 1.0
+                self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+                btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == APPCOLORS_3.EnabledOrange_BG
 
                 self.btnDesignsCount.isUserInteractionEnabled = true
                 
@@ -227,8 +228,9 @@ class HomeLandVCSurvey: HeaderVC {
                     self.selectBreadCrumb ()
                 }
             }
+            //Below Closure called when price range selected
             priceRangeVC?.tapedOnBarPriceRangeValues = {
-                
+            
                 if self.viewTag == 102 {
 
                     self.filter.priceRange.priceStart = (self.priceRangeVC?.rangeslider.lowerValue)!
@@ -238,16 +240,29 @@ class HomeLandVCSurvey: HeaderVC {
                     self.myPlaceQuiz.priceRangeHigh = "$\(self.filter.priceRange.priceEndStringValue)K"
                     
 //                    self.labelInfo.text = self.myPlaceQuiz.filterStringDisplayHomes()
-                    
-                    self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", self.priceRangeVC?.selectedBarValue as! CVarArg, self.priceRangeVC?.selectedBarValue == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
+                    self.btnDesignsCount.isUserInteractionEnabled = self.priceRangeVC?.selectedBarValue == 0 ? false : true
+                    self.btnNext.isUserInteractionEnabled = self.btnDesignsCount.isUserInteractionEnabled
+                    self.btnNext.backgroundColor = self.priceRangeVC?.selectedBarValue == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+                    if self.priceRangeVC?.selectedBarValue == 0
+                    {
+                        self.btnDesignsCount.setTitle("NO PACKAGES", for: .normal)
+                        
+//                        self.btnNext.isUserInteractionEnabled = false
+//                        self.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+                    }
+                    else {
+                        
+                        self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", self.priceRangeVC?.selectedBarValue ?? 0, self.priceRangeVC?.selectedBarValue == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
+                    }
+
 
                     self.addBreadCrumb(from: self.myPlaceQuiz.filterStringDisplayHomes())
                     
 //                    self.getPriceValues(after: 1)
                     
                     self.selectBreadCrumb ()
-                    self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-                    self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+                    //self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+                    //self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
                 }
             }
 
@@ -271,7 +286,7 @@ class HomeLandVCSurvey: HeaderVC {
         
         
         btnDesignsCount.setTitle("SKIP >", for: .normal)
-        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
         
         setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
         setAppearanceFor(view: btnPrevious, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
@@ -403,7 +418,7 @@ class HomeLandVCSurvey: HeaderVC {
             } else {
                 
                 btnDesignsCount.setTitle("SKIP >", for: .normal)
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
 
                 
                 myPlaceQuiz.region = nil
@@ -804,7 +819,7 @@ class HomeLandVCSurvey: HeaderVC {
                 } else {
                     
                     btnDesignsCount.setTitle("SKIP >", for: .normal)
-                    setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+                    setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
                     myPlaceQuiz.region = nil
                     filter.region = RegionMyPlace()
@@ -1215,7 +1230,7 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
         if arrRegions?[indexPath.row].isSelected == true{
             arrRegions?[indexPath.row].isSelected = false
             let index = filter.regionsArr.firstIndex(where: { $0.regionName == filter.region.regionName  })
-            print(index)
+          //  print(index)
             filter.regionsArr.remove(at: index ?? 0)
             if filter.regionsArr.isEmpty{
                 btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
@@ -1234,7 +1249,7 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
         
         let regionsArr =  filter.regionsArr.map{ $0.regionName }
         print("----1-1-1-1-1,",regionsArr)
-        let regions = regionsArr.joined(separator: ",")
+        let regions = regionsArr.joined(separator: ", ")
         print("----1-1-1-1-1,",regions)
         if filter.regionsArr.count == arrRegions?.count{
             myPlaceQuiz.region = "All regions"
