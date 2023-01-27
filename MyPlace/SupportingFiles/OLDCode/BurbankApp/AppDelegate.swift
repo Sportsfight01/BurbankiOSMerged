@@ -151,14 +151,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
                    return onError(true)
                 }
-                if let result = (json["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String {
-                    print("version in app store", appStoreVersion," current Version ",curentVersion);
-                    let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
-                    if versionCompare == .orderedSame {
-                        onSuccess(false)
-                    } else if versionCompare == .orderedAscending {
-                        onSuccess(true)
-                        // 2.0.0 to 3.0.0 is ascending order, so ask user to update
+                if let result = (json["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String{
+                    DispatchQueue.main.async {
+                        
+                        print("version in app store", appStoreVersion," current Version ",curentVersion);
+                        let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
+                        
+                        if versionCompare == .orderedSame {
+                            onSuccess(false)
+                        } else if versionCompare == .orderedAscending {
+                            onSuccess(true)
+                            // 2.0.0 to 3.0.0 is ascending order, so ask user to update
+                        }
+                        
                     }
                 }
             } catch {

@@ -238,6 +238,7 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             if let sendUpdates = tapedOnBarPriceRangeValues {
                 sendUpdates ()
             }
+            
         }
         
         

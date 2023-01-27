@@ -116,6 +116,7 @@ class HomeDesignPriceVC: HomeDesignModalHeaderVC {
         priceRangeVC?.setSliderValues (priceRange)
         
         priceRangeVC?.bars = countDistribution
+//        priceRangeVC?.priceListArr = price
         priceRangeVC?.barGraph.reloadData()
 
     }

@@ -178,6 +178,8 @@ class HomeLandVCSurvey: HeaderVC {
         
         priceRangeVC?.searchType = SearchType.shared.homeLand
         priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
+        print(self.filter.priceRange.priceRangeList)
+        print(priceRangeVC?.priceListArr)
         priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
         
         priceRangeVC?.updateRangeSlider()
@@ -875,6 +877,10 @@ class HomeLandVCSurvey: HeaderVC {
             self.priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
             self.priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
             
+            print(self.filter.priceRange.priceRangeList)
+            print(self.priceRangeVC?.priceListArr)
+            
+            
             self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
             
         }
@@ -1383,9 +1389,12 @@ extension HomeLandVCSurvey {
             
             
             self.priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
-            self.priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
+            self.priceRangeVC?.priceListArr =  filterNew.priceRange.priceRangeList
+
+            print(self.filter.priceRange.priceRangeList)
+            print(self.priceRangeVC?.priceListArr)
             
-            self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
+            self.priceRangeVC?.updateRangeSliderValues(with: filterNew)
             self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             //self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         }

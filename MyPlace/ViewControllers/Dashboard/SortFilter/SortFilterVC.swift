@@ -329,6 +329,7 @@ class SortFilterVC: UIViewController {
                 
                 
                 self.priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
+                self.priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
                 
                 
                 self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
