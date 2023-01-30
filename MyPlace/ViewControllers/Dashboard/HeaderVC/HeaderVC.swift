@@ -232,7 +232,7 @@ class HeaderVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        breadcrumbView.reloadViewItems()
+       // breadcrumbView.reloadViewItems()
     }
     
     func addProfileImage (_ url: String?) {
@@ -545,22 +545,22 @@ class HeaderVC: UIViewController {
 
 
 //        heightCollection = breadcrumbView.heightAnchor.constraint(greaterThanOrEqualToConstant: 18)
-        heightCollection = breadcrumbView.heightAnchor.constraint(equalToConstant: 40)
+        //heightCollection = breadcrumbView.heightAnchor.constraint(equalToConstant: 40)
 
         NSLayoutConstraint.activate([
             breadcrumbView.leadingAnchor.constraint(equalTo: logoLabel.leadingAnchor, constant: 0),
             breadcrumbView.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 2),
             breadcrumbView.trailingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 0),
-            heightCollection!
+            breadcrumbView.heightAnchor.constraint(equalToConstant: 35)
         ])
         
-        breadcrumbView.updateFrame = {
-//            self.breadcrumbView.backgroundColor = .yellow
-            self.heightCollection!.constant = self.breadcrumbView.heightBreadCrum
-            
-            self.breadcrumbView.layoutIfNeeded()
-            self.breadcrumbView.updateConstraints()
-        }
+//        breadcrumbView.updateFrame = {
+////            self.breadcrumbView.backgroundColor = .yellow
+//            self.heightCollection!.constant = self.breadcrumbView.heightBreadCrum
+//
+//            self.breadcrumbView.layoutIfNeeded()
+//            self.breadcrumbView.updateConstraints()
+//        }
         
 
 
