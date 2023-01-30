@@ -67,7 +67,7 @@ class LoginVCNew: BurbankAppVC {
         touchIDImageButton.isHidden = true
         viewOR.isHidden = true
         
-        updateLoginFields()
+        updateLoginFields() 
         setAsNonEditColour()
         
         handleUISetup()

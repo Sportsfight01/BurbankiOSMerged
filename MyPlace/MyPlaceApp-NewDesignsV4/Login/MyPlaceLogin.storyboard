@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GK-WG-vxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4739.130434782609" y="-3128.5714285714284"/>
+            <point key="canvasLocation" x="4835" y="-3443"/>
         </scene>
         <!--Set Central PasswordVC New-->
         <scene sceneID="DPS-F1-qLP">
@@ -187,19 +187,19 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YiS-FG-OFr">
-                                <rect key="frame" x="60" y="244.5" width="83" height="25"/>
+                                <rect key="frame" x="60" y="237.5" width="81" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjP-xy-G5r">
-                                <rect key="frame" x="143" y="244.5" width="110" height="25"/>
+                                <rect key="frame" x="141" y="237.5" width="111" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Password after Passcode Verification" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghb-KY-48A">
-                                <rect key="frame" x="60" y="299.5" width="314" height="14"/>
+                                <rect key="frame" x="60" y="297" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -845,7 +845,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TMn-sY-M2f"/>
+        <segue reference="ST5-gH-Vnt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ico-Back-1" width="8" height="14"/>
