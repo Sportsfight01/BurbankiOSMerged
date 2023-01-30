@@ -100,8 +100,9 @@ func loadLoginView () {
 
 func loadSignInView()
 {
-    let login = kStoryboardLogin.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC   
-    currentWindow.rootViewController = login
+    let login = kStoryboardLogin.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC
+    let nav = UINavigationController(rootViewController: login!)
+    currentWindow.rootViewController = nav
     currentWindow.makeKeyAndVisible()
 }
 func loadMainView () {

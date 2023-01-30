@@ -1068,7 +1068,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                     <action selector="handleBackButtonAction:" destination="7S7-gz-k6K" eventType="touchUpInside" id="333-2t-n8n"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-EK-Lr9">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-EK-Lr9">
                                 <rect key="frame" x="129" y="633" width="156" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Are you a new user?">
