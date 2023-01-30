@@ -135,10 +135,12 @@ extension HomeLandPopupVC: UITableViewDelegate, UITableViewDataSource {
         // Configure the cell...
         cell.selectionStyle = .none
         
-        if Int(kUserID)! > 0 { }
-        else {
-            cell.btnFavorite.isHidden = true
-        }
+//        if Int(kUserID)! > 0 {
+//
+//        }
+//        else {
+//            cell.btnFavorite.isHidden = true
+//        }
                 
        // setBorder(view: cell, color: APPCOLORS_3.GreyTextFont, width: 0.5)
         
@@ -153,17 +155,21 @@ extension HomeLandPopupVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.favoriteAction = {
             
-            CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_map_cluster_makeFavourite_button_touch)
             
-            self.makeHomeLandFavorite(!(cell.homeLand!.isFav), cell.homeLand!) { (success) in
-                if success {
-                    cell.homeLand!.isFav = !(cell.homeLand!.isFav)
-                    self.arrHomeLandPackages[indexPath.row] = cell.homeLand!
+                if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
+                    CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_map_cluster_makeFavourite_button_touch)
                     
-                    self.tableViewHomeLandPopup.reloadRows(at: [indexPath], with: .none)
+                    self.makeHomeLandFavorite(!(cell.homeLand!.isFav), cell.homeLand!) { (success) in
+                        if success {
+                            cell.homeLand!.isFav = !(cell.homeLand!.isFav)
+                            self.arrHomeLandPackages[indexPath.row] = cell.homeLand!
+                            
+                            self.tableViewHomeLandPopup.reloadRows(at: [indexPath], with: .none)
+                        }
+                    }
                 }
             }
-        }
+          
         
         
         return cell

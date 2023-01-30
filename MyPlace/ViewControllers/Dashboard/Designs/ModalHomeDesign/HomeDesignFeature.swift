@@ -287,7 +287,7 @@ class Answer: NSObject {
     
     
     func addM () -> String {
-        return displayAnswer + "M"
+        return displayAnswer+"M"
     }
     
 }

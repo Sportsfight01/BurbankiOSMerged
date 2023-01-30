@@ -106,7 +106,6 @@ class HomeLandVCSurvey: HeaderVC {
               //  self.btnNext.superview!.alpha = 1.0
               //  self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
                 btnNext.isUserInteractionEnabled = self.btnNext.backgroundColor == APPCOLORS_3.EnabledOrange_BG ? true : false
-
                 self.btnDesignsCount.isUserInteractionEnabled = true
                 
             }
@@ -190,7 +189,7 @@ class HomeLandVCSurvey: HeaderVC {
         
         
         self.filter.searchType = SearchType.shared.homeLand
-
+        self.showHideAllViews()
 //        self.searchType = SearchType.shared.homeLand
         
     }

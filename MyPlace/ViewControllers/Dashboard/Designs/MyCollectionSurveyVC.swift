@@ -84,6 +84,7 @@ class MyCollectionSurveyVC: HeaderVC {
     checkForRecentSearchData ()
     
     viewRecentSearch.isHidden = true
+      
     
     
     breadcrumbView.delegate = self
