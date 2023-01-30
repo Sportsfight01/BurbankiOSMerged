@@ -420,7 +420,7 @@ class HomeLandVCSurvey: HeaderVC {
                 
                 btnDesignsCount.setTitle("SKIP >", for: .normal)
                 setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
-
+                self.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
                 
                 myPlaceQuiz.region = nil
                 filter.region = RegionMyPlace()
@@ -489,9 +489,10 @@ class HomeLandVCSurvey: HeaderVC {
         if viewTag > 101 {
             viewTag = viewTag - 1
             
-            updateDesignsCount()
+           // updateDesignsCount()
 
         }else {
+           
             //            arrButtons.forEach({$0.backgroundColor = COLOR_CLEAR})
             //            arrButtons.forEach({$0.setTitleColor(APPCOLORS_3.GreyTextFont, for: .normal)})
             //
@@ -508,7 +509,9 @@ class HomeLandVCSurvey: HeaderVC {
         
         showHideAllViews ()
         btnPrevious.backgroundColor = viewTag > 101 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
-        btnNext.backgroundColor = viewTag < 105 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+//        btnNext.backgroundColor = viewTag < 105 ? APPCOLORS_3.EnabledOrange_BG : APPCOLORS_3.LightGreyDisabled_BG
+        
+        
         
     }
     
@@ -1395,6 +1398,8 @@ extension HomeLandVCSurvey {
             
             self.priceRangeVC?.updateRangeSliderValues(with: filterNew)
             self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            self.btnNext.isUserInteractionEnabled =  true
+            
             //self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         }
         

@@ -266,8 +266,8 @@ class SignInVC: UIViewController {
     }
     
     @IBAction func handleBackButtonAction (_ sender: UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
+        loadLoginView()
+       // self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func handleSkipButton (sender: UIButton) {

@@ -46,9 +46,11 @@
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ipM-VJ-weB">
                                         <rect key="frame" x="103.5" y="24" width="207" height="32"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ipM-VJ-weB" firstAttribute="width" secondItem="FWn-kH-sK3" secondAttribute="width" multiplier="0.5" id="1SY-aj-eQD"/>
                                     <constraint firstItem="8Jl-lh-Ofv" firstAttribute="leading" secondItem="FWn-kH-sK3" secondAttribute="leading" constant="20" id="5dY-0t-DD0"/>
@@ -237,7 +239,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGl-eN-hf3">
-                                                <rect key="frame" x="291" y="3" width="45" height="30"/>
+                                                <rect key="frame" x="290" y="3" width="45" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                 <connections>
                                                     <action selector="passcodeButtonTappedWithSender:" destination="uXM-e8-E8Y" eventType="touchUpInside" id="YbF-xU-ZVE"/>
@@ -342,9 +344,11 @@
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5C-IN-lDm">
                                         <rect key="frame" x="103.5" y="24" width="207" height="32"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="x5C-IN-lDm" firstAttribute="centerX" secondItem="kN9-gZ-jLj" secondAttribute="centerX" id="3Rg-ye-Z4K"/>
                                     <constraint firstAttribute="height" constant="80" id="68x-Og-BW5"/>
@@ -554,9 +558,11 @@
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rL2-Bc-LOb">
                                         <rect key="frame" x="103.5" y="24" width="207" height="32"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="rL2-Bc-LOb" firstAttribute="centerY" secondItem="Ynh-Gl-vLp" secondAttribute="centerY" id="47j-Jf-bZg"/>
                                     <constraint firstItem="rL2-Bc-LOb" firstAttribute="centerX" secondItem="gJY-33-MEN" secondAttribute="centerX" id="A0n-dx-0yy"/>
@@ -716,9 +722,11 @@
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LjA-Fe-NPo">
                                         <rect key="frame" x="103.5" y="24" width="207" height="32"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="LjA-Fe-NPo" firstAttribute="height" secondItem="2yz-d5-U3G" secondAttribute="height" multiplier="0.4" id="242-wV-O2e"/>
                                     <constraint firstItem="UDp-AU-aDQ" firstAttribute="leading" secondItem="2yz-d5-U3G" secondAttribute="leading" constant="20" id="FKA-Jw-Uqw"/>
