@@ -326,8 +326,11 @@ class HomeLandDetailsVC: HeaderVC {
     
     @IBAction func handleSaveDesignButton (_ sender: UIButton) {
         if let _ = self.homeLand {
-            if (self.homeLand?.isFav == true) {
-                ActivityManager.showToast("Design saved in favourites", self)
+            if Int(kUserID) ?? 0 > 0 { // user loggedIn
+                if (self.homeLand?.isFav == true) {
+                    
+                    ActivityManager.showToast("Design saved in favourites", self)
+                }
             }else {
                 self.handleFavoriteButtonAction(btnFavorite)
             }

@@ -220,7 +220,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         if Int(kUserID)! == 0 // Guest User
         {
             self.btnFavorite.setImage(imageUNFavorite, for: .normal)
-           
+            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Orange_BG
             
         }else { // User logged In
             self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
@@ -245,7 +245,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
 //        }
         
        // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-        self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
+//        self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
 
         enquireView.isHidden = arrOnDisplay.count == 0
         
@@ -557,8 +557,11 @@ extension DisplayHomesDetailsVC{
     
     @IBAction func handleSaveDesignButton (_ sender: UIButton) {
         if let _ = self.displayHomes {
-            if (self.isFave == true) {
-                ActivityManager.showToast("Design already saved in favourites", self)
+            if Int(kUserID) ?? 0 > 0 { // User logged In
+                if (self.isFave == true) {
+                    
+                    ActivityManager.showToast("Design already saved in favourites", self)
+                }
             }else {
                 self.handleFavoriteButtonAction(btnFavorite)
             }
@@ -707,7 +710,7 @@ extension DisplayHomesDetailsVC {
         setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
         setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_16))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_16))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
 //        lBMyPlace.text = "Interactive \nHome Tour"
 //        lBHomeLand.text = "House & Land"

@@ -11,6 +11,7 @@ import UIKit
 
 class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , UIPickerViewDataSource {
     
+    
     //MARK: - Properties
     
     @IBOutlet weak var viewWhereWouldYouliketolive: UIView!
@@ -100,6 +101,8 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     func handleUISetup () {
         
+       setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
+        
         iconAccept.layer.cornerRadius = 5.0
 //        _ = setAttributetitleFor(view: titleLabel, title: "EnquireNow", rangeStrings: ["Enquire", "Now"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [logoFont, logoFont], alignmentCenter: false)
         btnback.setImage(UIImage(named: "Ico-LeftArrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -115,16 +118,17 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
                 view?.cardView(cornerRadius: radius_5 , shadowOpacity: 0.3)
             }
         }
-        
-            setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
-        setAppearanceFor(view: emailTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: frstNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: phoneTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        setAppearanceFor(view: whatToBuildTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        
-        
-        setAppearanceFor(view: textViewMessage, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        [frstNameTF,lastNameTF,emailTF,phoneTF,whatToBuildTF,textViewMessage,whereWouldYouLiveTF].forEach { textField in
+            setAppearanceFor(view: textField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        }
+//        setAppearanceFor(view: emailTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        setAppearanceFor(view: frstNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        setAppearanceFor(view: phoneTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        setAppearanceFor(view: whatToBuildTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//
+//
+//        setAppearanceFor(view: textViewMessage, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: textViewPlaceholder, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
@@ -155,7 +159,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             self.whatToBuildTF.text = "\(self.homeDesignDetails?.lsthouses?.houseName ?? "") \(self.homeDesignDetails?.lsthouses?.houseSize ?? 0)"
         }
         
-     self.whatToBuildTF.isUserInteractionEnabled = false
+    
         if Int(kUserID)! > 0 {
             
             self.frstNameTF.text = appDelegate.userData?.user?.userFirstName?.capitalized
@@ -166,8 +170,8 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
            
             
             if #available(iOS 13.0, *) {
-                setAppearanceFor(view: viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-                setAppearanceFor(view: self.viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+//                setAppearanceFor(view: viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//                setAppearanceFor(view: self.viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
             setAppearanceFor(view: self.viewEmailText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
             setAppearanceFor(view: self.viewLastNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
             setAppearanceFor(view: self.viewFirstNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
@@ -199,7 +203,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             } else {
                 // Fallback on earlier versions
             }
-            self.viewWhatToBuildText.isUserInteractionEnabled = false
+     
             self.emailTF.isUserInteractionEnabled = false
 //            self.frstNameTF.isUserInteractionEnabled = false
             
@@ -208,7 +212,11 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             }
             
         }
-        
+        self.whatToBuildTF.isUserInteractionEnabled = false // HouseName is not editable
+        viewWhatToBuildText.backgroundColor = whatToBuildTF.isUserInteractionEnabled == false ? APPCOLORS_3.LightGreyDisabled_BG : .clear
+        if whatToBuildTF.text?.count == 0 {
+            viewWhatToBuildText.backgroundColor = .clear
+        }
         
         phoneTF.delegate = self
         
@@ -301,12 +309,13 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             }else if phoneTF.text?.trim() == "" {
                 
                 BurbankApp.showAlert("Please enter phone number", self)
-            }else if whereWouldYouLiveTF.text?.trim() == "" {
-                
-                BurbankApp.showAlert("Please select where would you live?", self)
             }else if !(phoneTF.text?.trim().isPhoneNumber)! {
                 
                 BurbankApp.showAlert("Please enter valid phone number", self)
+            }
+            else if whereWouldYouLiveTF.text?.trim() == "" {
+                
+                BurbankApp.showAlert("Please select where would you live?", self)
             }else if (phoneTF.text?.trim().count ?? 0) > 14 {
                 BurbankApp.showAlert("Phone number should be a maximum of 14 characters length", self)
             }else if acceptedTerms == false {

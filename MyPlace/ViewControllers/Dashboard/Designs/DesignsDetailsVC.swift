@@ -272,7 +272,7 @@ class DesignsDetailsVC: HeaderVC {
         
         
         
-        if Int(kUserID)! > 0 { //
+        if Int(kUserID)! > 0 { // LoggedInUser
             self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
             self.btnSaveDesign.backgroundColor = self.homeDesign?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
             
@@ -595,7 +595,7 @@ class DesignsDetailsVC: HeaderVC {
                     self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
                     
                     self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-                    self.btnSaveDesign.backgroundColor = (self.homeDesign?.isFav ?? false) == true ? APPCOLORS_3.GreyTextFont : APPCOLORS_3.Orange_BG
+                    self.btnSaveDesign.backgroundColor = (self.homeDesign?.isFav ?? false) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
                     
                     
                    // if self.homeDesign!.favouritedUser?.userID == kUserID {
@@ -609,8 +609,12 @@ class DesignsDetailsVC: HeaderVC {
     
     @IBAction func handleSaveDesignButton (_ sender: UIButton) {
         if let _ = self.homeDesign {
-            if (self.homeDesign?.isFav == true) {
-                ActivityManager.showToast("Design saved in favourites", self)
+            if Int(kUserID) ?? 0 > 0 { // if user loggedIn
+                if (self.homeDesign?.isFav == true) {
+                    
+                    ActivityManager.showToast("Design saved in favourites", self)
+                    
+                }
             }else {
                 self.handleFavoriteButtonAction(btnFavorite)
             }
@@ -787,7 +791,7 @@ extension DesignsDetailsVC {
         setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
         setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_16))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_16))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
 //        lBMyPlace.text = "Interactive \nHome Tour"
 //        lBHomeLand.text = "House & Land"

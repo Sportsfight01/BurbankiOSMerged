@@ -221,6 +221,13 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
          self.emailTF.isUserInteractionEnabled = true
          setAppearanceFor(view: emailTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
+        if self.mobileNumberTF.text != "" {
+         setAppearanceFor(view: mobileNumberTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+         self.mobileNumberTF.isUserInteractionEnabled = false
+        }else{
+         self.mobileNumberTF.isUserInteractionEnabled = true
+         setAppearanceFor(view: mobileNumberTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        }
         
     }
     
