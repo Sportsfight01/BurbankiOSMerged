@@ -261,6 +261,11 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         datePicker?.tintColor = APPCOLORS_3.Orange_BG
         datePicker?.datePickerMode = .date
         datePicker?.minimumDate = Date()
+        var futureDateComp = DateComponents()
+        futureDateComp.month = 3
+        let maxDate = Calendar.current.date(byAdding: futureDateComp, to: Date())
+    
+        datePicker?.maximumDate = maxDate //3months from now
         let dateFormater: DateFormatter = DateFormatter()
         dateFormater.dateFormat = "MM/dd/yyyy"
         let stringFromDate: String = dateFormater.string(from: datePicker!.date) as String
@@ -268,6 +273,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
             datePicker?.preferredDatePickerStyle = .inline
         } else {
             // Fallback on earlier versions
+            datePicker?.backgroundColor = APPCOLORS_3.Body_BG
         }
         //        datePicker?.preferredDatePickerStyle = .compact
         //        datePicker?.preferredDatePickerStyle = .inline
@@ -282,7 +288,15 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
             updateDatePickerConstraints()
         } else {
             // Fallback on earlier versions
+            NSLayoutConstraint.activate([
+                datePicker.leadingAnchor.constraint(equalTo: self.datePickerView.leadingAnchor),
+                datePicker.trailingAnchor.constraint(equalTo: self.datePickerView.trailingAnchor),
+                datePicker.topAnchor.constraint(equalTo: self.datePickerView.topAnchor),
+                datePicker.bottomAnchor.constraint(equalTo: self.datePickerView.bottomAnchor)
+                
+            ])
         }
+      
     }
     
     @available(iOS 14.0, *)
@@ -324,6 +338,12 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.dateInSuccesCardLBL.text = stringFromDate
         self.dateLBLInChooseDateCard.text = stringFromDate
         isSelectedDate = true
+        
+        
+        if let scrollView = datePickerView.superview?.superview as? UIScrollView
+        {
+            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.frame.height), animated: true)
+        }
         
         
     }
