@@ -39,8 +39,8 @@ class ValidateEmailVC: UIViewController {
         setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
         setAppearanceFor(view: labelForgot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_13))
+        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: AppColors.white, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: AppColors.white, textFont: FONT_LABEL_BODY(size: FONT_13))
         
         setAppearanceFor(view: txtEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
@@ -49,7 +49,7 @@ class ValidateEmailVC: UIViewController {
         viewText.layer.cornerRadius = radius_5
         btnNext.layer.cornerRadius = radius_5
         labelHint.text = "Enter registered email assigned to the job number \(jobId)"
-//        fillEmail()
+        fillEmail()
         
     }
     
@@ -63,7 +63,7 @@ class ValidateEmailVC: UIViewController {
             
         }else if segue.identifier == "showSetCentralPasswordVC"
         {
-            let destination = segue.destination as! SetCentralPasswordVCNew
+            let destination = segue.destination as! SetCentralPasswordVC
             if forgotMessage != "" {
                 destination.alertMessage = forgotMessage
                 destination.kPassCode = appDelegate.passcodeStr
