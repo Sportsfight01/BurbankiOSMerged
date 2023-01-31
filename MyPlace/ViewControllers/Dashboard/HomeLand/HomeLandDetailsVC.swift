@@ -331,6 +331,9 @@ class HomeLandDetailsVC: HeaderVC {
                     
                     ActivityManager.showToast("Design saved in favourites", self)
                 }
+                else {
+                    self.handleFavoriteButtonAction(btnFavorite)
+                }
             }else {
                 self.handleFavoriteButtonAction(btnFavorite)
             }

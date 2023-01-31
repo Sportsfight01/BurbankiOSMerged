@@ -75,6 +75,7 @@ class SignInVC: UIViewController {
         addGestures()
         
         CodeManager.sharedInstance.sendScreenName(burbank_signIn_screen_loading)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     //MARK: - View

@@ -562,6 +562,9 @@ extension DisplayHomesDetailsVC{
                     
                     ActivityManager.showToast("Design already saved in favourites", self)
                 }
+                else {
+                    self.handleFavoriteButtonAction(btnFavorite)
+                }
             }else {
                 self.handleFavoriteButtonAction(btnFavorite)
             }
@@ -709,7 +712,7 @@ extension DisplayHomesDetailsVC {
         
         setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
-        setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_16))
+        setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
         setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
 //        lBMyPlace.text = "Interactive \nHome Tour"

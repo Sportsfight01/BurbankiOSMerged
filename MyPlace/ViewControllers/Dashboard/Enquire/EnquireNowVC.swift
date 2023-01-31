@@ -133,7 +133,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         
         
         setAppearanceFor(view: btnAccept, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
-        setAppearanceFor(view: btnEnquire, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnEnquire, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
         
         
 //        viewEmailText.layer.cornerRadius = radius_5
