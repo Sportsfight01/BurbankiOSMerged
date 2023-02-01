@@ -39,7 +39,7 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate, ASAuthorizat
     
     let view = UIView(frame: .zero)
       view.backgroundColor = APPCOLORS_3.DisabledFooterIconGrey
-    view.layer.cornerRadius = 10.0
+    view.layer.cornerRadius = 5.0
     
     //imgView
     let imgView = UIImageView(image: UIImage(named: "Ico-Apple"))

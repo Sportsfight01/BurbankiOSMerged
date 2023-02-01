@@ -90,7 +90,7 @@ class HomeLandVCSurvey: HeaderVC {
             if packagesCount == 0 {
                 
                 self.btnDesignsCount.setTitle("NO PACKAGES", for: .normal)
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
                 self.btnDesignsCount.isUserInteractionEnabled = false
                 
                 self.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
@@ -101,7 +101,7 @@ class HomeLandVCSurvey: HeaderVC {
                 
                 self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", packagesCount!, packagesCount! == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
 
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: AppColors.lightGray, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
                 
               //  self.btnNext.superview!.alpha = 1.0
               //  self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG

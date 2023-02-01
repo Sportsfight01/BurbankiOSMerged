@@ -175,7 +175,7 @@ class HomeLandDetailsVC: HeaderVC {
         
         
         if ((self.lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
-            self.lBFacadeName.text = (self.lBFacadeName.text ?? "") + " facade"
+            self.lBFacadeName.text = (self.lBFacadeName.text ?? "") + " Facade"
         }
         
         //        self.lBLotWidth.text =
@@ -247,7 +247,6 @@ class HomeLandDetailsVC: HeaderVC {
 
                     if success, let img = image {
                         self.imageDesign.image = processPixels(in: img)
-                        
                         let scrollView = self.imageDesign.superview as! UIScrollView
                         scrollView.delegate = self
                         scrollView.minimumZoomScale = 1.0
@@ -268,7 +267,28 @@ class HomeLandDetailsVC: HeaderVC {
        
     }
     
-    
+//    func findColors(_ image: UIImage) -> [UIColor] {
+//        let pixelsWide = Int(image.size.width)
+//        let pixelsHigh = Int(image.size.height)
+//
+//        guard let pixelData = image.cgImage?.dataProvider?.data else { return [] }
+//        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+//
+//        var imageColors: [String] = []
+//        for x in 0..<pixelsWide {
+//            for y in 0..<pixelsHigh {
+//                let point = CGPoint(x: x, y: y)
+//                let pixelInfo: Int = ((pixelsWide * Int(point.y)) + Int(point.x)) * 4
+//                let color = UIColor(red: CGFloat(data[pixelInfo]) / 255.0,
+//                                    green: CGFloat(data[pixelInfo + 1]) / 255.0,
+//                                    blue: CGFloat(data[pixelInfo + 2]) / 255.0,
+//                                    alpha: CGFloat(data[pixelInfo + 3]) / 255.0)
+//                imageColors.append(color.accessibilityName)
+//            }
+//        }
+//        print("=-------------------------------",imageColors)
+//        return imageColors
+//    }
     //MARK: - Button Actions
     
     @IBAction func handleBackButton (_ sender: UIButton) {

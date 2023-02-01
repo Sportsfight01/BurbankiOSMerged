@@ -61,7 +61,7 @@ class NewForgotPasswordVC: UIViewController {
         btnNext.layer.cornerRadius = radius_5
         
         
-        labelHint.text = "A Passcode will be sent to the following email."
+        labelHint.text = "Passcode will be sent to following Email to reset password"
     }
     
     

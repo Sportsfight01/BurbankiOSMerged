@@ -43,7 +43,7 @@ class NewResetPasswordVC: UIViewController {
         if isChangePassword {
             labelReset.text = "Change"
             txtOTP.placeholder = "Enter Old Password"
-            labelHint.text = "Change your password here"
+            labelHint.text = "Reset your password here"
             btnResend.isHidden = true
         }
         
@@ -232,14 +232,14 @@ class NewResetPasswordVC: UIViewController {
                 if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
                     // showToast((result.value(forKey: "message") ?? "") as! String, self)
                     let info = result.value(forKey: "Info") as? NSDictionary
-                    BurbankApp.showAlert((info?.value(forKey: "message") ?? "") as! String, self) { (str) in
+                    BurbankApp.showAlert((info?.value(forKey: "Message") ?? "") as! String, self) { (str) in
                         
                     }
                     
                 }else {
                     
-                    if let Info = result.value(forKey: "message") as? NSDictionary {
-                        showToast((Info.value(forKey: "message") ?? "") as! String, self)
+                    if let Info = result.value(forKey: "Message") as? NSDictionary {
+                        showToast((Info.value(forKey: "Message") ?? "") as! String, self)
                     }
                     
                 }

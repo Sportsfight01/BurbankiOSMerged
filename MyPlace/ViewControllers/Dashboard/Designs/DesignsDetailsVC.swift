@@ -255,22 +255,13 @@ class DesignsDetailsVC: HeaderVC {
         self.lBBathrooms.text = self.homeDesign!.bathRooms
         self.lBParking.text = self.homeDesign!.carSpace
         
-//        self.addBreadCrumb (from: (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? ""))
+//        if displayText == "Take a quick survey to find your perfect design"{
+            self.addBreadCrumb (from: (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? ""))
+//        }
         
         
         self.lBLotWidth.text = (self.homeDesign?.minLotWidth ?? "0") + "m"
-//        let tex = (self.homeDesign!.minLotWidth ?? "0") + "m2"
-        
-//        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_8)
-//        let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_6)
-//        let attString:NSMutableAttributedString = NSMutableAttributedString(string: tex, attributes: [.font:font!])
-//        attString.setAttributes([.font:fontSuper!,.baselineOffset:4], range: NSRange(location:tex.count-1,length:1))
-//        lBLotWidth.attributedText = attString
 
-        
-        
-        
-        
         
         if Int(kUserID)! > 0 { // LoggedInUser
             self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
@@ -344,7 +335,7 @@ class DesignsDetailsVC: HeaderVC {
         
         if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
 //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
-            lBFacadeName.text = (self.validFacadeNamesArray.first ?? "") + " facade"
+            lBFacadeName.text = (self.validFacadeNamesArray.first ?? "") + " Facade"
           
           
         }
@@ -492,6 +483,12 @@ class DesignsDetailsVC: HeaderVC {
     }
     
     @IBAction func handlePreviousDesignButton (_ sender: UIButton) {
+        UIView.transition(with: sender,
+                          duration: 1.0,
+                          options: .transitionCrossDissolve,
+                          animations: { sender.isHighlighted = true },
+                          completion: nil)
+        
         if selectedDesignCount <= 0{
             
             self.previousDesignBTN2.isHidden = true
@@ -508,7 +505,11 @@ class DesignsDetailsVC: HeaderVC {
     }
     
     @IBAction func handleNextDesignButton (_ sender: UIButton) {
-        
+        UIView.transition(with: sender,
+                          duration: 1.0,
+                          options: .transitionCrossDissolve,
+                          animations: { sender.isHighlighted = true },
+                          completion: nil)
        
         if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
            
@@ -660,7 +661,7 @@ extension DesignsDetailsVC: UITableViewDelegate, UITableViewDataSource {
                 
                 if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
         //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
-                  lBFacadeName.text = (self.lBFacadeName.text ?? "") + " facade"
+                  lBFacadeName.text = (self.lBFacadeName.text ?? "") + " Facade"
                   
                   
                 }

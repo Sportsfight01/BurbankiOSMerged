@@ -184,6 +184,7 @@ extension UIImage {
         for row in 0 ..< Int(height) {
             for column in 0 ..< Int(width) {
                 let offset = row * width + column
+//                print(pixelBuffer[offset])
                 if pixelBuffer[offset] == .white {
                     pixelBuffer[offset] = .gray
                 }
@@ -219,13 +220,17 @@ extension UIImage {
             let blue  = UInt32(blue)
             let alpha = UInt32(alpha)
             color = (red << 24) | (green << 16) | (blue << 8) | (alpha << 0)
+            
         }
+        
         static let white   = RGBA32(red: 255, green: 255, blue: 255, alpha: 255)
         static let gray    = RGBA32(red: 246, green: 246, blue: 246, alpha: 255) /* #f6f6f6 */
 
         static let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
 
         static func ==(lhs: RGBA32, rhs: RGBA32) -> Bool {
+//            print(lhs.color)
+//            print(rhs.color)
             return lhs.color == rhs.color
         }
     }

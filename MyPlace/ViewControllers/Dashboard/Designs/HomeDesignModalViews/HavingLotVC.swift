@@ -168,7 +168,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
     let displayStr = lotTF.text ?? ""
     homeDesignFeature?.selectedAnswer = String(format: "%.3f",finalLotWidth)
    // homeDesignFeature?.selectedAnswer = lotTF.text ?? ""
-    homeDesignFeature?.displayString = "\(displayStr) M"
+    homeDesignFeature?.displayString = "\(displayStr)M"
         
     
     

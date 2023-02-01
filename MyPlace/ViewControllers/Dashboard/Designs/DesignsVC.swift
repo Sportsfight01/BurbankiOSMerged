@@ -50,10 +50,10 @@ class DesignsVC: HeaderVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        searchResultsTable.tableFooterView = UIView()
         headerLogoText = "HomeDesigns"
         isFromProfile = true
-        
+
         //        if isFromCollection {
         if btnBack.isHidden {
             showBackButton()

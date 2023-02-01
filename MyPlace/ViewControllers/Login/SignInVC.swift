@@ -215,7 +215,8 @@ class SignInVC: UIViewController {
 
         
         viewGoogle.cardView()
-        viewFacebook.layer.cornerRadius = radius_5
+        viewFacebook.layer.cornerRadius = 5.0
+//        viewFacebook.cardView()
         viewEmail.cardView()
         viewEmail.backgroundColor = APPCOLORS_3.Black_BG
         

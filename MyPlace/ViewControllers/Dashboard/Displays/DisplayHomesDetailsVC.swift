@@ -267,7 +267,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
                 print(validFacadeNamesArray)
                 lBFacadeName.text = self.validFacadeNamesArray.first
                 if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
-                  lBFacadeName.text = (self.validFacadeNamesArray.first ?? "") + " facade"
+                  lBFacadeName.text = (self.validFacadeNamesArray.first ?? "") + " Facade"
                   
                   
                 }
@@ -629,7 +629,7 @@ extension DisplayHomesDetailsVC: UITableViewDelegate, UITableViewDataSource{
           
           if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
   //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
-            lBFacadeName.text = (lBFacadeName.text ?? "") + " facade"
+            lBFacadeName.text = (lBFacadeName.text ?? "") + " Facade"
             
             
           }

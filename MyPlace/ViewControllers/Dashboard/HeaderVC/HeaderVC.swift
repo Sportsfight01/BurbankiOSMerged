@@ -923,7 +923,7 @@ extension HeaderVC {
         optionsView.addSubview(btnSortFilter)
         
         btnSortFilter.setTitle("  SORT / FILTER  ", for: .normal)
-        setAppearanceFor(view: btnSortFilter, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnSortFilter, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
     
@@ -932,7 +932,7 @@ extension HeaderVC {
         optionsView.addSubview(btnReset)
         
         btnReset.setTitle("    RESET    ", for: .normal)
-        setAppearanceFor(view: btnReset, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnReset, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnReset.addTarget(self, action: #selector(handleResetAction), for: .touchUpInside)
     }
     
@@ -952,7 +952,7 @@ extension HeaderVC {
         optionsView.addSubview(btnMap)
         
         btnMap.setTitle("     MAP     ", for: .normal)
-        setAppearanceFor(view: btnMap, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnMap, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         btnMap.addTarget(self, action: #selector(handleMapAction), for: .touchUpInside)
     }
     
