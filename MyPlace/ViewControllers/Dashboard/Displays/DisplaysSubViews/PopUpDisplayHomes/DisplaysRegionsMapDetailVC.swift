@@ -553,7 +553,7 @@ extension DisplaysRegionsMapDetailVC: GMSMapViewDelegate, UIPopoverPresentationC
             selectedMarker?.selected = true
             let package = (marker as! NearByPlaceMarkers).displayHomesPlaces!
             gethouseDetailsByHouseType(estateName: package.estateName)
-//            self.estateNameLBL.text = package.estateName
+            self.estateNameLBL.text = package.estateName
             self.streetNameLBL.text = "\(package.lotStreet1 ?? ""),\n\(package.lotSuburb ?? "")"
             NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(package.estateName ?? "")"])
             let font:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_15)
@@ -588,7 +588,7 @@ extension DisplaysRegionsMapDetailVC: GMSMapViewDelegate, UIPopoverPresentationC
 //                    transition.type = CATransitionType.moveIn
 //                    transition.subtype = CATransitionSubtype.fromTop
 //                        navigationController?.view.layer.add(transition, forKey: nil)
-//                        navigationController?.pushViewController(vc, animated: false)
+//                        navigationController?.present(vc, animated: false)
 ////                    self.displayDetailsCard.isHidden = false
 ////                    self.regionTableHeight.constant = 100
 ////                    self.layoutTable ()

@@ -13,7 +13,6 @@ class PopupDisplayHomesVC: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var estateNameLBL: UILabel!
     @IBOutlet weak var suburbNameLBL: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var baseView: UIView!
     
     var houseDetailsByHouseTypeArr = [houseDetailsByHouseType]()
     var isFavoritesService: Bool = false
@@ -34,9 +33,15 @@ class PopupDisplayHomesVC: UIViewController,UITableViewDelegate,UITableViewDataS
         self.view.backgroundColor = .clear
         loadData()
         // Do any additional setup after loading the view.
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOnPupupDisplay(_:)))
+        view.addGestureRecognizer(tap)
     }
     
+    @objc func handleTapOnPupupDisplay(_ sender: UITapGestureRecognizer) {
+        self.dismiss(animated: true)
+        // handling code
+    }
+
     func loadData(){
         self.estateNameLBL.text = estateName
         self.suburbNameLBL.text = suburbAddress
@@ -54,7 +59,7 @@ extension PopupDisplayHomesVC  {
     func layoutTable () {
         DispatchQueue.main.async {
             self.tableView.rowHeight = UITableView.automaticDimension;
-            self.tableView.estimatedRowHeight =  165
+            self.tableView.estimatedRowHeight =  90
         self.tableView.reloadData()
         self.tableView.layoutIfNeeded()
             let height = self.tableView.contentSize.height+self.tableView.contentInset.bottom+self.tableView.contentInset.top
@@ -87,7 +92,6 @@ extension PopupDisplayHomesVC  {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
         
         if indexPath.row ==  lastRow{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DisplaysMapDetailExpandedCell", for: indexPath) as! DisplaysMapDetailExpandedCell
@@ -192,6 +196,7 @@ extension PopupDisplayHomesVC  {
                    print(log: "indexpath \(indexPath.row), arraycount \(houseDetailsByHouseTypeArr.count)")
             return cell
         }else {
+        
             let cell = tableView.dequeueReusableCell(withIdentifier: "DisplaysMapDetailCell", for: indexPath) as! DisplaysMapDetailCell
          
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -289,7 +294,7 @@ extension PopupDisplayHomesVC  {
                }
                print(log: "indexpath \(indexPath.row), arraycount \(houseDetailsByHouseTypeArr.count)")
             return cell
-        }
+       
     }
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
          print(sender.view?.tag)
