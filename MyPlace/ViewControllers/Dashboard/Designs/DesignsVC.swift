@@ -235,7 +235,7 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
                                 
                             }
                             
-                            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Designs found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("NO SAVED DESIGNS", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                             
                             
                             self.searchResultsTable.reloadData ()
@@ -648,7 +648,7 @@ extension DesignsVC {
                 
             }
             
-            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Designs found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrFavouriteHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("NO SAVED DESIGNS", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
             
             self.searchResultsTable.reloadData()
             self.searchResultsTable.isScrollEnabled = true

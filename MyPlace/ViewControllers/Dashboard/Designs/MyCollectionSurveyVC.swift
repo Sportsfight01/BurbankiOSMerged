@@ -186,6 +186,12 @@ class MyCollectionSurveyVC: HeaderVC {
           
           //  self.btnDesignsCount.setTitle("", for: .normal)
            // btnPrevious.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+            if let havingLotVc = arrVCs.first as? HavingLotVC
+            {
+                havingLotVc.lotTF.text?.removeAll()
+                btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+                btnNext.isUserInteractionEnabled = false
+            }
           removeValues(from: currentIndex, removeView: false)
           
           showViewAt(index: currentIndex)
@@ -1210,10 +1216,14 @@ extension MyCollectionSurveyVC {
         
         if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
           if let message = result.value(forKey: "message") as? String
-          {
-            self.btnDesignsCount.isHidden = true
-            let userInfo = ["message" : message]
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewHomesNextFeatureResponse"), object: nil, userInfo: userInfo)
+            {
+              self.btnDesignsCount.isHidden = true
+              self.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+              self.btnNext.isUserInteractionEnabled = false
+              let userInfo = ["message" : message]
+              NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NewHomesNextFeatureResponse"), object: nil, userInfo: userInfo)
+              self.removeAllBreadCrumbs()
+              self.addBreadcrumb(self.displayText())
           }else {
             self.btnDesignsCount.isHidden = false
           }

@@ -308,15 +308,25 @@ class HeaderBreadCrump: UIView {
         selectedBreadCrumbText = str
         
         makeDefaultThemesForBreadCrumbButtons ()
-        
         guard stackView.arrangedSubviews.count > 0 else {return}
         let btnArray = stackView.arrangedSubviews
-        for btn in btnArray where btn.isKind(of: UIButton.self)
-        {
-            if (btn as! UIButton).title(for: .normal) == str || (btn as! UIButton).title(for: .normal)?.replacingOccurrences(of: "  |", with: "") == str {
-                (btn as! UIButton).titleLabel?.font = FONT_LABEL_HEADING (size: FONT_11)
+        
+        let selectedIndex = arrBreadCrumbs.firstIndex(where: {$0.breadCrumb == str && $0.breadCrumb != infoStaicText}) ?? -1
+        if selectedIndex >= 0 {
+            if let button = btnArray[selectedIndex] as? UIButton
+            {
+                button.titleLabel?.font = FONT_LABEL_HEADING (size: FONT_11)
+              
             }
         }
+//        for crump in arrBreadCrumbs
+//        {
+//
+//
+//            if (btn as! UIButton).title(for: .normal) == str || (btn as! UIButton).title(for: .normal)?.replacingOccurrences(of: "  |", with: "") == str {
+//                (btn as! UIButton).titleLabel?.font = FONT_LABEL_HEADING (size: FONT_11)
+//            }
+//        }
         
 //        for item in self.subviews {
 //            if item.isKind(of: UIButton.self) {

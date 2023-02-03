@@ -626,7 +626,7 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
                                     }
                                 }
                                 
-                                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("NO SAVED PACKAGES", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
                                 
                                 self.searchResultsTable.reloadData ()
                                 
@@ -1351,7 +1351,7 @@ extension HomeLandVC {
                 
             }
             
-            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("NO SAVED PACKAGES", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
 
             self.searchResultsTable.reloadData()
             
@@ -1364,7 +1364,7 @@ extension HomeLandVC {
                 
             }
             
-            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+            self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("NO SAVED PACKAGES", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
 
             self.searchResultsTable.reloadData()
 
@@ -1403,7 +1403,7 @@ extension HomeLandVC {
             
             if self.isFavoritesService {
                 
-                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+                self.arrFavouritePackages.count == 0 ? self.searchResultsTable.setEmptyMessage("NO SAVED PACKAGES", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
             }else {
                 if self.mapResultsTable.isHidden {
                     

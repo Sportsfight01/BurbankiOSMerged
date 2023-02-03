@@ -79,7 +79,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
             }
         }else{ // I have land
             iHaveLandBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            print(self.parent)
+            //print(self.parent)
             if let parent = self.parent as? MyCollectionSurveyVC
             {
                 parent.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
@@ -107,8 +107,13 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
     {
       if let message = dict.value(forKey: "message") as? String
       {
-        showToast(message)
+        showToast(message) // When Some Error comes
        // homeDesignFeature?.selectedAnswer = ""
+          lotTF.text?.removeAll()
+          homeDesignFeature?.selectedAnswer = ""
+         // homeDesignFeature?.selectedAnswer = lotTF.text ?? ""
+          homeDesignFeature?.displayString = ""
+          
         
       }
      
@@ -152,11 +157,22 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         selectionAlertMessage = "Please enter lot width"
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-    print("keyboard hiden")
-    guard lotTF.text!.count > 0 else {showToast("Please enter lot width");return}
+        guard lotTF.text!.count > 0 else {showToast("Please enter lot width");
+            
+            if let parent = self.parent as? MyCollectionSurveyVC
+            {
+                parent.btnNext.isUserInteractionEnabled = false
+                parent.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+                parent.removeAllBreadCrumbs()
+                parent.addBreadcrumb(infoStaicText)
+            }
+            
+            
+            
+            ;return}
     let value = Double(lotTF.text!)! * 100
     let finalLotWidth = value/100
-    guard 0..<100 ~= finalLotWidth else{
+    guard 0..<100 ~= finalLotWidth else{   // ' ~= ' --> is pattern matchin symbol
         
         if let parent = self.parent as? MyCollectionSurveyVC
         {

@@ -89,7 +89,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
                   DispatchQueue.main.async {
                       if self.displayFavorites.count == 0
                       {
-                          self.tableView.setEmptyMessage("No Favourite Displays found", bgColor: APPCOLORS_3.Body_BG)
+                          self.tableView.setEmptyMessage("NO SAVED DISPLAYS", bgColor: APPCOLORS_3.Body_BG)
                       }else {
                           self.tableView.restore()
                    
@@ -459,7 +459,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
 //                                        }
 //                                    }
 //
-//                                    //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("No Favourite Packages found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
+//                                    //                                   self.arrFavouriteDisplays.count == 0 ? self.searchResultsTable.setEmptyMessage("NO SAVED PACKAGES", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
 //                                    //
 //                                    //                                   self.searchResultsTable.reloadData ()
 //
