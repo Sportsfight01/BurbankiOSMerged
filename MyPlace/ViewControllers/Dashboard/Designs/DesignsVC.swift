@@ -596,7 +596,6 @@ extension DesignsVC {
                             if let HouseListData = result.value(forKey: "HouseListData") as? [NSDictionary] {
                                 
                                 for package in HouseListData {
-                                    
                                     if let searchJson = package.value(forKey: "fetchJsonRecentSearches") as? NSDictionary {
                                         let userId = (searchJson.value(forKey: "UserId") as? NSNumber ?? 0).stringValue
                                         if userId == kUserID{
