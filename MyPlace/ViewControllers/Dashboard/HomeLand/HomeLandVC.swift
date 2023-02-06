@@ -1293,35 +1293,40 @@ extension HomeLandVC {
                             
                             for package: NSDictionary in result.value(forKey: "HouseListData") as! [NSDictionary] {
                                 
+                                
                                 let searchJson = package.value(forKey: "fetchJsonRecentSearches") as! NSDictionary
+                                 
                                 
-                                let useremail = String.checkNullValue (searchJson.value(forKey: "EmailId") as Any)
                                 let userId = (searchJson.value(forKey: "UserId") as? NSNumber ?? 0).stringValue
-                                let userName = String.checkNullValue (searchJson.value(forKey: "FullName") as Any)
-                                
-                                
-                                var favPackagesUser = [HomeLandPackage] ()
-                                
-                                for dict in searchJson.value(forKey: "homeAndLandDTOs") as! [NSDictionary] {
+                                if userId == kUserID{
+                                    let useremail = String.checkNullValue (searchJson.value(forKey: "EmailId") as Any)
+                                    let userName = String.checkNullValue (searchJson.value(forKey: "FullName") as Any)
                                     
-                                    let homeLandPackage = HomeLandPackage(dict as! [String : Any])
-                                    homeLandPackage.isFav = true
                                     
-                                    homeLandPackage.favouritedUser = UserBean ()
-                                    homeLandPackage.favouritedUser?.userID = userId
-                                    homeLandPackage.favouritedUser?.userEmail = useremail
-                                    homeLandPackage.favouritedUser?.userFirstName = userName
+                                    var favPackagesUser = [HomeLandPackage] ()
+                                    
+                                    for dict in searchJson.value(forKey: "homeAndLandDTOs") as! [NSDictionary] {
+                                        
+                                        let homeLandPackage = HomeLandPackage(dict as! [String : Any])
+                                        homeLandPackage.isFav = true
+                                        
+                                        homeLandPackage.favouritedUser = UserBean ()
+                                        homeLandPackage.favouritedUser?.userID = userId
+                                        homeLandPackage.favouritedUser?.userEmail = useremail
+                                        homeLandPackage.favouritedUser?.userFirstName = userName
 
-                                    
-                                    if let _ = homeLandPackage.region {
+                                        
+                                        if let _ = homeLandPackage.region {
 
-                                        favPackagesUser.append(homeLandPackage)
+                                            favPackagesUser.append(homeLandPackage)
+                                        }
+                                    }
+                                    
+                                    if favPackagesUser.count > 0 {
+                                        homeLandPackages.append(favPackagesUser)
                                     }
                                 }
                                 
-                                if favPackagesUser.count > 0 {
-                                    homeLandPackages.append(favPackagesUser)
-                                }
                             }
                             
                             

@@ -598,34 +598,36 @@ extension DesignsVC {
                                 for package in HouseListData {
                                     
                                     if let searchJson = package.value(forKey: "fetchJsonRecentSearches") as? NSDictionary {
-                                        
-                                        let useremail = String.checkNullValue (searchJson.value(forKey: "EmailId") as Any)
                                         let userId = (searchJson.value(forKey: "UserId") as? NSNumber ?? 0).stringValue
-                                        let userName = String.checkNullValue (searchJson.value(forKey: "FullName") as Any)
-                                        
-                                        
-                                        var favPackagesUser = [HomeDesigns] ()
-                                        
-                                        if let newHomesDTOs = searchJson.value(forKey: "newHomesDTOs") as? [NSDictionary] {
-                                            for dict in newHomesDTOs {
-                                                
-                                                let homeLandPackage = HomeDesigns (dict as! [String : Any])
-                                                homeLandPackage.isFav = true
-                                                
-                                                homeLandPackage.favouritedUser = UserBean ()
-                                                homeLandPackage.favouritedUser?.userID = userId
-                                                homeLandPackage.favouritedUser?.userEmail = useremail
-                                                homeLandPackage.favouritedUser?.userFirstName = userName
-                                                
-                                                
-                                                if let _ = homeLandPackage.region {
-                                                    
-                                                    favPackagesUser.append(homeLandPackage)
-                                                }
-                                            }
+                                        if userId == kUserID{
+                                            let useremail = String.checkNullValue (searchJson.value(forKey: "EmailId") as Any)
                                             
-                                            if favPackagesUser.count > 0 {
-                                                homeLandPackages.append(favPackagesUser)
+                                            let userName = String.checkNullValue (searchJson.value(forKey: "FullName") as Any)
+                                            
+                                            
+                                            var favPackagesUser = [HomeDesigns] ()
+                                            
+                                            if let newHomesDTOs = searchJson.value(forKey: "newHomesDTOs") as? [NSDictionary] {
+                                                for dict in newHomesDTOs {
+                                                    
+                                                    let homeLandPackage = HomeDesigns (dict as! [String : Any])
+                                                    homeLandPackage.isFav = true
+                                                    
+                                                    homeLandPackage.favouritedUser = UserBean ()
+                                                    homeLandPackage.favouritedUser?.userID = userId
+                                                    homeLandPackage.favouritedUser?.userEmail = useremail
+                                                    homeLandPackage.favouritedUser?.userFirstName = userName
+                                                    
+                                                    
+                                                    if let _ = homeLandPackage.region {
+                                                        
+                                                        favPackagesUser.append(homeLandPackage)
+                                                    }
+                                                }
+                                                
+                                                if favPackagesUser.count > 0 {
+                                                    homeLandPackages.append(favPackagesUser)
+                                                }
                                             }
                                         }
                                     }
