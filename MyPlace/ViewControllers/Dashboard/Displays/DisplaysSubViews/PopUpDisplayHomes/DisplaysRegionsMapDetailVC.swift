@@ -102,15 +102,15 @@ class DisplaysRegionsMapDetailVC: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        displayDetailsCard.isHidden = true
+        displayDetailsCard.isHidden = true
         //fillDetailsFromDesignScreen()
-        if selectedRegionForMaps.count > 0
-        {
-            if let displays = self.parent?.parent as? DisplaysVC
-            {
-                displays.addBreadCrumb(from: "Choose a display from the \(selectedRegionForMaps)")
-            }
-        }
+//        if selectedRegionForMaps.count > 0
+//        {
+//            if let displays = self.parent?.parent as? DisplaysVC
+//            {
+//                displays.addBreadCrumb(from: "Choose a display from the \(selectedRegionForMaps)")
+//            }
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -134,7 +134,7 @@ class DisplaysRegionsMapDetailVC: UIViewController {
         
         self.estateNameLBL.attributedText = combination
         
-        NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(self.popularHomeDesignData.eststeName ?? "")"])
+        NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(self.popularHomeDesignData.eststeName?.uppercased() ?? "")"])
         self.streetNameLBL.text = "\(popularHomeDesignData.lotStreet1 ?? ""),\n\(popularHomeDesignData.lotSuburb ?? "")"
         self.mapView.delegate = self
         self.mapView.setMapPosition(with: self.popularHomeDesignData, zoomlevel: 12.0)

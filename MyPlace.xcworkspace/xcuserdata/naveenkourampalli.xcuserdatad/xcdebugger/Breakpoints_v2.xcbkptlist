@@ -1744,8 +1744,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "419"
             endingLineNumber = "419"
-            landmarkName = "DisplaysRegionsMapDetailVC"
-            landmarkType = "21">
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2030,8 +2030,8 @@
             filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplaysSubViews/Maps/DisplaysMapVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "generateClusterItems()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2046,8 +2046,8 @@
             filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplaysSubViews/Maps/DisplaysMapVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "setUpClustering()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2062,8 +2062,8 @@
             filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplaysSubViews/Maps/DisplaysMapVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -2657,7 +2657,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9D46C94C-2C18-4DA2-9AE7-27A9ADF3DBA1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplaysSubViews/NearBy/DisplaysNearByVC.swift"
@@ -2697,40 +2697,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
             endingLineNumber = "118"
-            landmarkName = "fillDetailsFromDesignScreen()"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C226492D-1CFF-4D16-A6BF-78C30188EF92 - 141af3bcd8c17e51"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DisplaysRegionsMapDetailVC.fillDetailsFromDesignScreen() -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Displays/DisplaysSubViews/PopUpDisplayHomes/DisplaysRegionsMapDetailVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "300">
-               </Location>
-               <Location
-                  uuid = "C226492D-1CFF-4D16-A6BF-78C30188EF92 - 141af3bcd8c17e51"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DisplaysRegionsMapDetailVC.fillDetailsFromDesignScreen() -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Displays/DisplaysSubViews/PopUpDisplayHomes/DisplaysRegionsMapDetailVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "563">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3145,7 +3113,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
                   endingLineNumber = "298"
-                  offsetFromSymbolStart = "10941">
+                  offsetFromSymbolStart = "11090">
                </Location>
                <Location
                   uuid = "E7C517F5-517D-4E4E-8C3E-2CCA3FE2E3EF - 60272093fb1a1e70"
@@ -3160,7 +3128,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "298"
                   endingLineNumber = "298"
-                  offsetFromSymbolStart = "11244">
+                  offsetFromSymbolStart = "11393">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3178,6 +3146,22 @@
             startingLineNumber = "308"
             endingLineNumber = "308"
             landmarkName = "fillAllDetails()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA169C43-174B-4F08-8FFD-89BA54B99ADE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplaysSubViews/Maps/DisplaysMapVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "fillDetailsFromDesignScreen(suggestedHome:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

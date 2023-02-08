@@ -307,6 +307,8 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                             if (!(displaydata.isFav) == true) {
                                 DispatchQueue.main.async(execute: {
                                     ActivityManager.showToast("Added to your favourites", self)
+                                    self.detailCardView.isHidden = true
+                                    self.detailCardHeaderView.isHidden =  true
                                 })
                             }else{
                                 DispatchQueue.main.async(execute: {
@@ -424,6 +426,8 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                                 if (!(cell.displayHomeData!.isFav) == true) {
                                     DispatchQueue.main.async(execute: {
                                         ActivityManager.showToast("Added to your favourites", self)
+                                        self.detailCardView.isHidden = true
+                                        self.detailCardHeaderView.isHidden =  true
                                     })
                                 }else{
                                     DispatchQueue.main.async(execute: {

@@ -260,7 +260,7 @@ class DesignsDetailsVC: HeaderVC {
 //        }
         
         
-        self.lBLotWidth.text = (self.homeDesign?.minLotWidth ?? "0") + "m"
+        self.lBLotWidth.text = (self.homeDesign?.minLotWidth?.trim() ?? "0") + "m"
 
         
         if Int(kUserID)! > 0 { // LoggedInUser
