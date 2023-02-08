@@ -90,6 +90,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
                       if self.displayFavorites.count == 0
                       {
                           self.tableView.setEmptyMessage("NO SAVED DISPLAYS", bgColor: APPCOLORS_3.Body_BG)
+                          self.addBreadCrumb(from: "Your favourite displays")
                       }else {
                           self.tableView.restore()
                    
