@@ -137,9 +137,9 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
             setImages()
             childVCsView.isHidden = true
             displaysCollectionView.isHidden = false
-            self.removeAllBreadCrumbs()
-            self.addBreadCrumb(from: "See one of our display homes")
             NotificationCenter.default.post(name: NSNotification.Name("handleBackBtnNaviogation"), object: nil, userInfo: nil)
+            self.removeAllBreadCrumbs()
+            
             self.getDisplayHomes()
         }else{
             if navigationController?.viewControllers.count == 1 {
@@ -575,7 +575,10 @@ extension DisplaysVC{
                             DispatchQueue.main.async {
                                 self.displaysCollectionView.reloadData()
                             }
-                        }}
+                        }
+                        self.addBreadCrumb(from: "See one of our display homes")
+                    }
+                    
                     else {
                     }
                 }

@@ -452,9 +452,9 @@ class HomeLandVCSurvey: HeaderVC {
 //            myPlaceQuiz.priceRangeLow = nil
 //            myPlaceQuiz.priceRangeHigh = nil
             
-            filter.priceRange = PriceRange()
-            
-            filter.defaultPriceRange = PriceRange ()
+//            filter.priceRange = PriceRange()
+//
+//            filter.defaultPriceRange = PriceRange ()
 
         }else if viewTag == 104 {
             
@@ -464,9 +464,9 @@ class HomeLandVCSurvey: HeaderVC {
 //            myPlaceQuiz.priceRangeLow = nil
 //            myPlaceQuiz.priceRangeHigh = nil
             
-            filter.priceRange = PriceRange()
-            
-            filter.defaultPriceRange = PriceRange ()
+//            filter.priceRange = PriceRange()
+//            
+//            filter.defaultPriceRange = PriceRange ()
 
         }else if viewTag == 102 {
             myPlaceQuiz.storeysCount = nil
@@ -489,7 +489,7 @@ class HomeLandVCSurvey: HeaderVC {
         if viewTag > 101 {
             viewTag = viewTag - 1
             
-           // updateDesignsCount()
+           updateDesignsCount()
 
         }else {
            

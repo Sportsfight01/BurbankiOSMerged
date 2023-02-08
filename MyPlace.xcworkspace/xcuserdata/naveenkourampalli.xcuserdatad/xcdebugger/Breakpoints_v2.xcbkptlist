@@ -1856,7 +1856,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1062"
             endingLineNumber = "1062"
-            landmarkName = "getCollectionQuiz()"
+            landmarkName = "checkForRecentSearchData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2177,22 +2177,6 @@
             startingLineNumber = "294"
             endingLineNumber = "294"
             landmarkName = "isCentralLoginUser()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02EDAD43-664B-4667-85EE-55C523983BDD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyPlace/ViewControllers/Dashboard/HomeLand/HomeLandVCSurvey.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
-            landmarkName = "handleBackButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2849,7 +2833,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BBF50911-D490-429E-9F82-8B38B981AE92"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPlace/ViewControllers/Dashboard/HomeLand/HomeLandVCSurvey.swift"
@@ -2897,7 +2881,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BA8B6CA0-8D3A-4E37-8EF6-2A25970A6DC4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPlace/ViewControllers/Dashboard/HomeLand/HomeLandVCSurvey.swift"
@@ -2913,7 +2897,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "164F0A0E-6630-423B-8ECC-786EFC76C298"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPlace/ViewControllers/Dashboard/HomeLand/HomeLandVCSurvey.swift"
@@ -2987,54 +2971,6 @@
             endingLineNumber = "400"
             landmarkName = "handleBackButton(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "23CA73C8-2208-4739-8648-E2CE80D4AA88"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "fillPackageData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "23CA73C8-2208-4739-8648-E2CE80D4AA88 - c9bd63742a3f11ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DisplayHomesDetailsVC.fillPackageData() -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "276"
-                  endingLineNumber = "276"
-                  offsetFromSymbolStart = "12832">
-               </Location>
-               <Location
-                  uuid = "23CA73C8-2208-4739-8648-E2CE80D4AA88 - c9bd63742a3f11ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DisplayHomesDetailsVC.fillPackageData() -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "276"
-                  endingLineNumber = "276"
-                  offsetFromSymbolStart = "13195">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3162,6 +3098,86 @@
             startingLineNumber = "119"
             endingLineNumber = "119"
             landmarkName = "fillDetailsFromDesignScreen(suggestedHome:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF4D8E0B-B8A0-4C78-95EB-D19F756FEFC4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplaysVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "handleBackButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB276AE3-FB44-4717-832B-9B1062122BAB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/ViewControllers/Dashboard/Displays/DisplaysVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "handleBackButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E08F809A-822A-42F8-A943-B1E2B8F73ED1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/ViewControllers/Dashboard/HomeLand/HomeLandVCSurvey.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
+            landmarkName = "handleBackButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9700C3D2-87D0-4579-94AF-45DB8EBA4CC6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/DataManagement/Dashboard/DashboardDataManagement.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "getHomeLandFilterValues(with:succe:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C57F563-253D-49C7-9C52-40D599E88F41"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/Models/SortFilterPlaces/SortFilterMyPlace.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "newPriceRange()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

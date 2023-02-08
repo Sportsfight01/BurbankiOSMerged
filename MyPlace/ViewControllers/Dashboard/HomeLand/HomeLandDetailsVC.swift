@@ -105,7 +105,7 @@ class HomeLandDetailsVC: HeaderVC {
             btnBackFull.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
         }
 
-
+        self.addHeaderOptions(favourites: true, delegate: self)
         if let package = homeLand {
             fillPackageData()
             
