@@ -215,7 +215,7 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
             CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_TappedOn_Display_Design)
         }else if sender.tag == 13 {
             regionsVCContainerView.isHidden = false
-            self.addBreadCrumb(from: "Choose the region you're interested in")
+            addBreadCrumb(from: "Choose the region you're interested in")
             regionIcon.tintColor = .orange
             regionBTN.setTitleColor(.orange, for: .normal)
             CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_TappedOn_Display_Regions)

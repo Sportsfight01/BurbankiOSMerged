@@ -47,7 +47,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         setAppearanceFor(view: iDontHaveLandLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
         setAppearanceFor(view: iHaveLandLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_9))
         
-        setAppearanceFor(view: lotTF, backgroundColor: .white, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: lotTF, backgroundColor: .white, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
       
         
         iDontHaveBTN.superview?.layer.cornerRadius = radius_5

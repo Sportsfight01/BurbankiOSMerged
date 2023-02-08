@@ -107,7 +107,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
     var validFacadeNamesArray = [String] ()
     
     var selected_EstateName = ""
-    
+   // var favouriteButtonCompletion : ((Bool) -> Void)? // Closure
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -536,7 +536,7 @@ extension DisplayHomesDetailsVC{
                            })
                         self.isFave = false
                     }
-                    
+                  //  self.favouriteButtonCompletion?(self.isFave)
 //                    self.homeDesignDetails?.lsthouses?.isFav = !((self.homeDesignDetails?.lsthouses?.isFav)!)
                         
 //                        = !((self.homeDesignDetails?.lsthouses?.isFav!)!)
@@ -824,7 +824,7 @@ extension DisplayHomesDetailsVC {
     func getPackagesWithDesign (_ design: houseDetailsByHouseType) {
         
         
-        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_HomeLandPackagesWithDesign(kUserState, design.houseName ?? ""), userInfo: nil, success: { (json, response) in
+        _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_HomeLandPackagesWithDesign(kUserState, design.houseName ), userInfo: nil, success: { (json, response) in
             
             if let result: AnyObject = json {
                 
@@ -847,7 +847,7 @@ extension DisplayHomesDetailsVC {
                             let homeLand = kStoryboardMain.instantiateViewController(withIdentifier: "HomeLandVC") as! HomeLandVC
                             
                             homeLand.filter = SortFilter ()
-                            
+                            homeLand.addBreadCrumb(from: design.houseName)
                             homeLand.isFromHomeDesigns = true
                             homeLand.isFromProfileFavorites = false
                             

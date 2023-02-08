@@ -103,7 +103,14 @@ class DisplaysRegionsMapDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        displayDetailsCard.isHidden = true
-        fillDetailsFromDesignScreen()
+        //fillDetailsFromDesignScreen()
+        if selectedRegionForMaps.count > 0
+        {
+            if let displays = self.parent?.parent as? DisplaysVC
+            {
+                displays.addBreadCrumb(from: "Choose a display from the \(selectedRegionForMaps)")
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -334,6 +341,9 @@ extension DisplaysRegionsMapDetailVC: UITableViewDelegate, UITableViewDataSource
         let data = houseDetailsByHouseTypeArr[indexPath.row]
         let homeDetailView = self.storyboard?.instantiateViewController(withIdentifier: "DisplayHomesDetailsVC") as! DisplayHomesDetailsVC
         homeDetailView.displayHomes = data
+//        homeDetailView.favouriteButtonCompletion = { isFav in
+//            print(isFav)
+//        }
         homeDetailView.isFromDisplayHomes = true
         self.navigationController?.pushViewController(homeDetailView, animated: true)
     }

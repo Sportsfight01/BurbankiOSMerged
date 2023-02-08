@@ -37,7 +37,13 @@ class DisplaysRegionsVC: UIViewController {
         super.viewDidLayoutSubviews()
         layoutTable ()
     }
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        if let displaysVC = self.parent?.parent as? DisplaysVC
+//        {
+//            displaysVC.addBreadCrumb(from: "Choose the region you're interested in")
+//        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

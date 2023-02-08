@@ -254,7 +254,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let preText = textField.text as NSString?,
-            preText.replacingCharacters(in: range, with: string).count <= 13 else {
+            preText.replacingCharacters(in: range, with: string).count <= 14 else {
                 return false
         }
         return true

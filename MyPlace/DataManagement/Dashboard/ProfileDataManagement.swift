@@ -316,7 +316,7 @@ class ProfileDataManagement: NSObject {
     
     func getDisplayHomesFavoriteCount(completion : @escaping((_ favouritetCount : Int?) -> Void))
     {
-            
+        guard (Int(kUserID) ?? 0) > 0, (Int(kUserState) ?? 0) > 0 else {return}
         _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_FavoriteDisplayHomes(Int(kUserID) ?? 0,Int(kUserState) ?? 0 ), userInfo: nil, success: { (json, response) in
                 if let result: AnyObject = json {
                     let result = result as! NSDictionary
