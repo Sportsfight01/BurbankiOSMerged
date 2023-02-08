@@ -959,7 +959,7 @@ extension MyCollectionSurveyVC: ChildVCDelegate, HeaderBreadCrumpDelegate/*, UIC
 extension MyCollectionSurveyVC {
   
   func checkForRecentSearchData () {
-    
+      guard Int(kUserState) ?? 0 > 0 else {return}
     ProfileDataManagement.shared.recentSearchData(SearchType.shared.newHomes, Int(kUserState)!, kUserID, succe: { (recentSearchResult) in
       
       if let recent = recentSearchResult {

@@ -1383,7 +1383,8 @@ extension HomeLandVCSurvey {
             self.filter.priceRange.totalCount = filterNew.priceRange.totalCount
             
             self.packagesCount = filterNew.priceRange.totalCount
-            
+            self.btnNext.backgroundColor = self.packagesCount == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
+            self.btnNext.isUserInteractionEnabled = self.packagesCount == 0 ? false : true
             
             if self.filter.priceRange.totalCount !=  self.filter.priceRange.priceRangeCounts.reduce (0, +) {
                 self.filter.priceRange.priceRangeCounts[0] = self.filter.priceRange.priceRangeCounts[0] + 1
@@ -1397,8 +1398,8 @@ extension HomeLandVCSurvey {
             print(self.priceRangeVC?.priceListArr)
             
             self.priceRangeVC?.updateRangeSliderValues(with: filterNew)
-            self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
-            self.btnNext.isUserInteractionEnabled =  true
+           // self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            //self.btnNext.isUserInteractionEnabled =  true
             
             //self.btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
         }
