@@ -60,7 +60,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         setAppearanceFor(view: iHaveLandBTN.superview!, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
         lotTF.delegate = self
         lotTF.keyboardType = .decimalPad
-        selectionAlertMessage = "Please select"
+        selectionAlertMessage = "Please select one option"
     }
 
     
