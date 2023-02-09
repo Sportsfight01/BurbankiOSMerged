@@ -181,11 +181,19 @@ class HomeLandDetailsVC: HeaderVC {
         //        self.lBLotWidth.text =
         let tex = "LAND SIZE " + (self.homeLand?.landSizeSqm ?? "0") + "m2"
         
-        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: 10)
-        let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: 10)
-        let attString:NSMutableAttributedString = NSMutableAttributedString(string: tex, attributes: [.font:font!])
-        attString.setAttributes([.font:fontSuper!,.baselineOffset:2], range: NSRange(location:tex.count-1,length:1))//attribute to make m^2
-        lBLandSize.attributedText = attString
+        let mainStr = NSMutableAttributedString(string: "LAND SIZE ", attributes: [.font : FONT_LABEL_SUB_HEADING(size: 10)])
+        let landSizeStr = NSAttributedString(string: "\(self.homeLand?.landSizeSqm ?? "0")m", attributes: [.font : FONT_LABEL_HEADING(size: 12)])
+        let metreStr = NSAttributedString(string: "2", attributes: [.font : FONT_LABEL_HEADING(size: 12), .baselineOffset : 2])
+        
+        mainStr.append(landSizeStr)
+        mainStr.append(metreStr)
+        lBLandSize.attributedText = mainStr
+        
+//        let font:UIFont? = FONT_LABEL_SUB_HEADING(size: 10)
+//        let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: 10)
+//        let attString:NSMutableAttributedString = NSMutableAttributedString(string: tex, attributes: [.font:font!])
+//        attString.setAttributes([.font:fontSuper!,.baselineOffset:2], range: NSRange(location:tex.count-1,length:1))//attribute to make m^2
+//        lBLandSize.attributedText = attString
 
         
         self.addBreadCrumb(from: (self.homeLand?.houseName ?? "") + " " + (self.homeLand?.houseSize ?? ""))
@@ -398,7 +406,7 @@ extension HomeLandDetailsVC {
         self.view.backgroundColor = APPCOLORS_3.Body_BG
         setAppearanceFor(view: lBHouseName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
         
-        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_10))
+        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_HEADING (size: FONT_12))
         setAppearanceFor(view: lBAddress, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_10))
 
         
