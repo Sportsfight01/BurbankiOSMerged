@@ -37,6 +37,7 @@ class DisplaysDesignsTVCell: UITableViewCell, UITableViewDelegate, UITableViewDa
     override func awakeFromNib() {
         super.awakeFromNib()
         subTableView.tableFooterView = UIView()
+        subTableView.separatorColor = .clear
         
     }
     override func prepareForReuse() {
@@ -113,6 +114,7 @@ class DisplaysDesignsTVCell: UITableViewCell, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "DisplaysDesignsSubTVCell", for: indexPath) as! DisplaysDesignsSubTVCell
         let name = "\(self.displayHomeModelLocations?.locations[indexPath.row].lotSuburb ?? "") - \(self.displayHomeModelLocations?.locations[indexPath.row].eststeName ?? "")"
         cell.propertyNameLBL.text = name
+        cell.contentView.addUnderlineView(.bottom)
         
         return cell
     }
@@ -126,7 +128,7 @@ class DisplaysDesignsTVCell: UITableViewCell, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("=====",indexPath.row)
+      //  print("=====",indexPath.row)
         
         
         delegate?.didTappedOnestateName(index : indexPath.row)
@@ -144,6 +146,7 @@ class DisplaysDesignsSubTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -151,4 +154,32 @@ class DisplaysDesignsSubTVCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+enum Sides
+{
+    case top,left,right,bottom
+}
+
+extension UIView
+{
+    func addUnderlineView(_ to : Sides)
+    {
+        switch to
+        {
+        case .bottom:
+            let underLineView = UIView(frame: CGRect(x: 0, y: self.frame.height-1, width: self.frame.width, height: 1.0))
+            underLineView.backgroundColor = APPCOLORS_3.GreyTextFont
+            self.addSubview(underLineView)
+            underLineView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                underLineView.heightAnchor.constraint(equalToConstant: 0.5),
+                underLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                underLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                underLineView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            
+            ])
+        default:
+                print(log: "not implemented yet")
+        }
+    }
 }

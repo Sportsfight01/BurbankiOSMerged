@@ -35,6 +35,12 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
     @IBOutlet weak var firstNameTF: UITextField!
     @IBOutlet weak var lastNameTF: UITextField!
     @IBOutlet weak var mobileNumberTF: UITextField!
+    {
+        didSet{
+            mobileNumberTF.keyboardType = .phonePad
+            mobileNumberTF.delegate = self
+        }
+    }
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var whereWouldyouLikeToLiveTF: UITextField!
     
@@ -345,7 +351,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         isSelectedDate = true
         
         
-        if let scrollView = datePickerView.superview?.superview as? UIScrollView
+        if let scrollView = datePickerView.superview?.superview as? UIScrollView, scrollView.contentSize.height > scrollView.frame.height
         {
             scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.frame.height), animated: true)
         }
@@ -561,7 +567,18 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
     
 }
 
-extension BookAppointmentVC{
+extension BookAppointmentVC : UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 14
+        let currentString = (textField.text ?? "") as NSString
+        let newString = currentString.replacingCharacters(in: range, with: string)
+
+        return newString.count <= maxLength
+    }
+    
+    
+    
     func enquireDisplayHomes( callBack: @escaping ((_ successss: Bool) -> Void)) {
         
         let params = NSMutableDictionary.init()

@@ -10454,25 +10454,25 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                     <outlet property="delegate" destination="u2T-Cv-Gp6" id="GRa-x1-kvi"/>
                                 </connections>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jBj-gU-LX9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jBj-gU-LX9">
                                 <rect key="frame" x="0.0" y="111" width="428" height="480"/>
                                 <color key="backgroundColor" name="Body_BG_3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DisplaysDesignsTVCell" id="lmK-Ux-Lca" customClass="DisplaysDesignsTVCell" customModule="BurbankApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="428" height="105.33333587646484"/>
+                                        <rect key="frame" x="0.0" y="50" width="428" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lmK-Ux-Lca" id="dBm-Rj-seI">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="105.33333587646484"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lt5-ja-BtS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="428" height="70.333333333333329"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="428" height="70"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="8w5-Go-XqG">
-                                                            <rect key="frame" x="9.9999999999999929" y="10" width="111.33333333333331" height="50"/>
+                                                            <rect key="frame" x="9.9999999999999929" y="9.9999999999999964" width="111.33333333333331" height="49.666666666666657"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LVD-QJ-mXh">
-                                                            <rect key="frame" x="328" y="25.333333333333329" width="90" height="20"/>
+                                                            <rect key="frame" x="328" y="25" width="90" height="20"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nw-2V-2oQ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="26.666666666666668" height="20"/>
@@ -10568,7 +10568,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                             </constraints>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uY9-RP-cTh">
-                                                            <rect key="frame" x="0.0" y="69.333333333333329" width="428" height="0.6666666666666714"/>
+                                                            <rect key="frame" x="0.0" y="69" width="428" height="0.6666666666666714"/>
                                                             <color key="backgroundColor" name="Orange_BG_3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="0.5" id="GzG-pU-eZf"/>
@@ -10578,13 +10578,13 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmb-gk-8zP">
-                                                            <rect key="frame" x="129.33333333333337" y="21" width="193.66666666666663" height="14"/>
+                                                            <rect key="frame" x="129.33333333333337" y="20.666666666666668" width="193.66666666666663" height="14.000000000000004"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="14"/>
                                                             <color key="textColor" name="GreyTextFont_3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="6 locations" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jp-hU-CF9">
-                                                            <rect key="frame" x="129.33333333333337" y="38" width="193.66666666666663" height="12"/>
+                                                            <rect key="frame" x="129.33333333333337" y="37.666666666666664" width="193.66666666666663" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" name="Orange_BG_3"/>
                                                             <nil key="highlightedColor"/>
@@ -10612,8 +10612,8 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                         <constraint firstItem="Jmb-gk-8zP" firstAttribute="bottom" secondItem="8w5-Go-XqG" secondAttribute="centerY" id="yFu-xm-sBG"/>
                                                     </constraints>
                                                 </view>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="0gb-rF-QbX">
-                                                    <rect key="frame" x="0.0" y="70.333333333333329" width="428" height="35"/>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="0gb-rF-QbX">
+                                                    <rect key="frame" x="0.0" y="70" width="428" height="35"/>
                                                     <color key="backgroundColor" name="Body_BG_3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="gE4-tw-0Xa"/>
@@ -10621,14 +10621,14 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                     <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DisplaysDesignsSubTVCell" id="Kb4-Wq-YGh" customClass="DisplaysDesignsSubTVCell" customModule="BurbankApp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="50" width="428" height="14.666666984558105"/>
+                                                            <rect key="frame" x="0.0" y="50" width="428" height="15.333333015441895"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kb4-Wq-YGh" id="UJd-cV-oYp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="428" height="14.666666984558105"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="428" height="15.333333015441895"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Diggers Rest - Bloomdale Estate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HU8-va-qia">
-                                                                        <rect key="frame" x="10" y="0.0" width="408" height="14.666666666666666"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="408" height="14.333333333333334"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                         <color key="textColor" name="GreyTextFont_3"/>
@@ -10636,7 +10636,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                                     </label>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="HU8-va-qia" secondAttribute="bottom" id="QLZ-ak-los"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="HU8-va-qia" secondAttribute="bottom" constant="1" id="QLZ-ak-los"/>
                                                                     <constraint firstAttribute="trailing" secondItem="HU8-va-qia" secondAttribute="trailing" constant="10" id="XHG-re-1we"/>
                                                                     <constraint firstItem="HU8-va-qia" firstAttribute="top" secondItem="UJd-cV-oYp" secondAttribute="top" id="h9L-we-Fja"/>
                                                                     <constraint firstItem="HU8-va-qia" firstAttribute="leading" secondItem="UJd-cV-oYp" secondAttribute="leading" constant="10" id="zR9-IE-31A"/>
