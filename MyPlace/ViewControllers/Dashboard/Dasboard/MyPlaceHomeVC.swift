@@ -623,7 +623,7 @@ class MyPlaceHomeVC: UIViewController {
     
     func getHomeLandRecentSearchData (_ dashbo: DashboardVC) {
         
-        
+        guard Int(kUserID) ?? 0 > 0 else {return} // hit service only for logged In users
         ProfileDataManagement.shared.recentSearchData(SearchType.shared.homeLand, Int(kUserState)!, kUserID, succe: { (recentSearchJson) in
             
             if let recent = recentSearchJson {

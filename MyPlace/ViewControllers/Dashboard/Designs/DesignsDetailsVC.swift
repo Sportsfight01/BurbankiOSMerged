@@ -335,7 +335,7 @@ class DesignsDetailsVC: HeaderVC {
         
         if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
 //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
-            lBFacadeName.text = (self.validFacadeNamesArray.first ?? "") + " Facade"
+            lBFacadeName.text = (self.validFacadeNamesArray.first ?? "").capitalized + " Facade"
           
           
         }
@@ -661,7 +661,7 @@ extension DesignsDetailsVC: UITableViewDelegate, UITableViewDataSource {
                 
                 if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
         //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
-                  lBFacadeName.text = (self.lBFacadeName.text ?? "") + " Facade"
+                    lBFacadeName.text = (self.lBFacadeName.text ?? "").capitalized + " Facade"
                   
                   
                 }

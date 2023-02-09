@@ -295,12 +295,23 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
 
         }
         
-        if let subViews3D = self.btnMyPlace.superview?.subviews {
-            for vi in subViews3D {
-                vi.isHidden = !(self.homeDesignDetails?.lsthouses?.visualisation ?? false)
-            }
-        }
+//        if let subViews3D = self.btnMyPlace.superview?.subviews {
+//            for vi in subViews3D {
+//                vi.isHidden = !(self.homeDesignDetails?.lsthouses?.visualisation ?? false)
+//            }
+//        }
+       
+        if self.homeDesignDetails?.lsthouses?.visualisation == false
+        {
+            btnMyPlace.backgroundColor = .clear
+            btnMyPlace.superview?.backgroundColor = .clear
+            lBMyPlace.textColor = .clear
+            btnMyPlace.isUserInteractionEnabled = false
         
+        }else
+        {
+            btnMyPlace.isUserInteractionEnabled = true
+        }
         if (enquireView.isHidden) {
             facadeTop1.isActive = true
             facadeTop2.isActive = false
