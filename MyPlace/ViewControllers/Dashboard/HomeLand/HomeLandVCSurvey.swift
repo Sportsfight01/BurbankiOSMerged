@@ -425,7 +425,8 @@ class HomeLandVCSurvey: HeaderVC {
                 myPlaceQuiz.region = nil
                 filter.region = RegionMyPlace()
                 filter.regionsArr = []
-
+                myPlaceQuiz.priceRangeLow = ""
+                myPlaceQuiz.priceRangeHigh = ""
                 
                 if let _ = self.arrRegions {
 //                    self.filter.region = regions[0]
@@ -558,6 +559,7 @@ class HomeLandVCSurvey: HeaderVC {
                 updateDesignsCount()
                 
                 showHideAllViews ()
+                btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             
                 return
             }
