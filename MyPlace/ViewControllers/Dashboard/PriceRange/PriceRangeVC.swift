@@ -206,6 +206,7 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.lBBG.backgroundColor = APPCOLORS_3.Orange_BG.withAlphaComponent(CGFloat(bars_alpha[indexPath.row]))
         print(indexPath.row)
 //        Double(exactly: (dict.value(forKey: "MinPrice") ?? 0) as! NSNumber)!
+        guard indexPath.row < priceListArr.count else {return}
         if Int(exactly: self.priceListArr[indexPath.item].value(forKey: "Price") as! NSNumber)  == bars[indexPath.row]{
         var priceMIN: Double = 0
         var priceMAX: Double = 1
