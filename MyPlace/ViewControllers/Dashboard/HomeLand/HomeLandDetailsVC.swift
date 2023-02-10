@@ -411,7 +411,7 @@ extension HomeLandDetailsVC {
 
         
         setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_18))
-       setAppearanceFor(view: lBLinePrice, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_10))
+       setAppearanceFor(view: lBLinePrice, backgroundColor: APPCOLORS_3.GreyTextFont, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_10))
 
         
         setAppearanceFor(view: lBBedrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))

@@ -255,9 +255,12 @@ class DesignsDetailsVC: HeaderVC {
         self.lBBathrooms.text = self.homeDesign!.bathRooms
         self.lBParking.text = self.homeDesign!.carSpace
         
-//        if displayText == "Take a quick survey to find your perfect design"{
+        if displayText == "Take a quick survey to find your perfect design"{
+//        if Int(kUserID)! == 0{
             self.addBreadCrumb (from: (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? ""))
+
 //        }
+        }
         
         
         self.lBLotWidth.text = (self.homeDesign?.minLotWidth?.trim() ?? "0") + "m"
