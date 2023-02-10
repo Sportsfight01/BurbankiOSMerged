@@ -216,7 +216,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         
         
         
-        
+        self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
         if Int(kUserID)! == 0 // Guest User
         {
             self.btnFavorite.setImage(imageUNFavorite, for: .normal)

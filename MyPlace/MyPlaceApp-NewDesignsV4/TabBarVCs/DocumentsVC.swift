@@ -42,8 +42,7 @@ class DocumentsVC: UIViewController {
     {
         didSet{
             tableView.tableFooterView = UIView()
-            tableView.delegate = self
-            tableView.dataSource = self
+
             tableView.separatorStyle = .none
             tableView.separatorColor = .clear
         }
@@ -65,10 +64,10 @@ class DocumentsVC: UIViewController {
     var currentFilePath : String!
     ///Diffable Datasource
     ///iOS 13.0 *
-    @available(iOS 13.0, *)
-    typealias DataSource = UITableViewDiffableDataSource<DifSection ,DocumentsDetailsStruct>
-    @available(iOS 13.0, *)
-    typealias SnapShot = NSDiffableDataSourceSnapshot<DifSection ,DocumentsDetailsStruct>
+//    @available(iOS 13.0, *)
+//    typealias DataSource = UITableViewDiffableDataSource<DifSection ,DocumentsDetailsStruct>
+//    @available(iOS 13.0, *)
+//    typealias SnapShot = NSDiffableDataSourceSnapshot<DifSection ,DocumentsDetailsStruct>
 
     //    public var dataSource : DataSource?
     //MARK: - Life Cycle
@@ -79,6 +78,8 @@ class DocumentsVC: UIViewController {
         setupProfile()
         sideMenuSetup()
         searchBar.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
       
         // Do any additional setup after loading the view.
     }
@@ -152,25 +153,25 @@ class DocumentsVC: UIViewController {
     }
     
     //MARK: - Helper Methods
-    
-    @available(iOS 13.0, *)
-    func makeDataSource() -> DataSource
-    {
-        let datasource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, model in
-//            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentsTBCell.identifier) as! DocumentsTBCell
-//            cell.pdfNameLb.numberOfLines = 1
-//            cell.pdfNameLb.font = UIFont.systemFont(ofSize: 16.0,weight: .bold)
-//            cell.pdfNameLb.text = "\(self?.tableDataSource?[indexPath.row].title ?? " ").\(self?.tableDataSource?[indexPath.row].type ?? "pdf")"
-//            let date = self?.tableDataSource?[indexPath.row].docdate?.displayDateFormateString() ?? "-"
-//            let time = self?.tableDataSource?[indexPath.row].docdate?.displayInTimeFormat() ?? "-"
-//            cell.uploadedOnDateLb.text = "Uploaded on: \(date), \(time)"
-//            cell.uploadedOnDateLb.numberOfLines = 1
-//            return cell
-            return self?.getTableCell(indexPath: indexPath)
-            
-        }
-        return datasource
-    }
+//
+//    @available(iOS 13.0, *)
+//    func makeDataSource() -> DataSource
+//    {
+//        let datasource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, model in
+////            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentsTBCell.identifier) as! DocumentsTBCell
+////            cell.pdfNameLb.numberOfLines = 1
+////            cell.pdfNameLb.font = UIFont.systemFont(ofSize: 16.0,weight: .bold)
+////            cell.pdfNameLb.text = "\(self?.tableDataSource?[indexPath.row].title ?? " ").\(self?.tableDataSource?[indexPath.row].type ?? "pdf")"
+////            let date = self?.tableDataSource?[indexPath.row].docdate?.displayDateFormateString() ?? "-"
+////            let time = self?.tableDataSource?[indexPath.row].docdate?.displayInTimeFormat() ?? "-"
+////            cell.uploadedOnDateLb.text = "Uploaded on: \(date), \(time)"
+////            cell.uploadedOnDateLb.numberOfLines = 1
+////            return cell
+//            return self?.getTableCell(indexPath: indexPath)
+//
+//        }
+//        return datasource
+//    }
     
     func getTableCell(indexPath : IndexPath) -> UITableViewCell
     {
@@ -193,15 +194,15 @@ class DocumentsVC: UIViewController {
         cell.uploadedOnDateLb.numberOfLines = 1
         return cell
     }
-    
-    @available(iOS 13.0, *)
-    func applySnapShot(array : [DocumentsDetailsStruct])
-    {
-        var snapShot = SnapShot()
-        snapShot.appendSections([.first])
-        snapShot.appendItems(array)
-        makeDataSource().apply(snapShot, animatingDifferences: true)
-    }
+//
+//    @available(iOS 13.0, *)
+//    func applySnapShot(array : [DocumentsDetailsStruct], animate : Bool = false)
+//    {
+//        var snapShot = SnapShot()
+//        snapShot.appendSections([.first])
+//        snapShot.appendItems(array)
+//        makeDataSource().apply(snapShot, animatingDifferences: animate)
+//    }
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         
         present(menu, animated: true, completion: nil)
@@ -239,13 +240,13 @@ class DocumentsVC: UIViewController {
                 DispatchQueue.main.async {
                     self?.tableDataSource = self?.documentList
                     
-                    if #available(iOS 13.0, *)
-                    {
-                        self?.applySnapShot(array: self?.tableDataSource ?? [])
-                    }
-                    else {
+//                    if #available(iOS 13.0, *)
+//                    {
+//                        self?.applySnapShot(array: self?.tableDataSource ?? [])
+//                    }
+//                    else {
                         self?.tableView.reloadData()
-                    }
+                   // }
                 }
                 
             case.failure(let err):
@@ -313,7 +314,7 @@ class DocumentsVC: UIViewController {
     
 }
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 extension DocumentsVC : UITableViewDelegate , UITableViewDataSource , UISearchBarDelegate , QLPreviewControllerDataSource
 {
     //MARK: - Quicklook delegates
@@ -343,12 +344,12 @@ extension DocumentsVC : UITableViewDelegate , UITableViewDataSource , UISearchBa
             })
             
         }
-        if #available(iOS 13.0, *) {
-            self.applySnapShot(array: tableDataSource ?? [])
-        } else {
+//        if #available(iOS 13.0, *) {
+//            self.applySnapShot(array: tableDataSource ?? [])
+//        } else {
             // Fallback on earlier versions
             tableView.reloadData()
-        }
+       // }
         
         
     }

@@ -84,6 +84,7 @@ class DisplaysMapDetailExpandedCell: UITableViewCell {
         self.estateNameLBL.text = self.displayHomeData!.displayEstateName
         self.streetNameLBL.text = self.displayHomeData!.suburb
         self.facadeNameLBL.text = "\(self.displayHomeData?.facade ?? "") Facade"
+        self.favoriteBTN.tintColor = APPCOLORS_3.GreyTextFont
         if self.displayHomeData?.isFav == true {
             self.favoriteBTN.setBackgroundImage(imageFavorite, for: .normal)
             if (Int(kUserID) ?? 0) > 0 {

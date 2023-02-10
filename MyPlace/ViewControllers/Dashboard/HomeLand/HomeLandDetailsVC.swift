@@ -199,6 +199,7 @@ class HomeLandDetailsVC: HeaderVC {
         self.addBreadCrumb(from: (self.homeLand?.houseName ?? "") + " " + (self.homeLand?.houseSize ?? ""))
 
         
+        self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
         if Int(kUserID)! > 0 {// Current User
             self.btnFavorite.setBackgroundImage(self.homeLand?.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
             self.btnSaveDesign.backgroundColor = self.homeLand?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG

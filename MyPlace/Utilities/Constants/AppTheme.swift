@@ -48,7 +48,19 @@ let imageHome = UIImage(named: "Ico-Home-1")//Ico-MenuIcon")
 
 
 
-let imageUNFavorite = UIImage(named: "Ico-HeartFill")
+var imageUNFavorite : UIImage
+{
+    
+    return UIImage(named: "Ico-HeartFill")!.withRenderingMode(.alwaysTemplate)
+//    if #available(iOS 13.0, *)
+//    {
+//        return UIImage(systemName: "heart")!.withRenderingMode(.alwaysTemplate).withTintColor(APPCOLORS_3.GreyTextFont)
+//    }
+//    else {
+//        return UIImage(named: "Ico-HeartFill")!
+//    }
+//
+}
 let imageFavorite = UIImage(named: "Ico-LikeFill")
 
 

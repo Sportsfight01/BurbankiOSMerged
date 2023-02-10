@@ -74,6 +74,7 @@ class DisplaysMapDetailCell: UITableViewCell {
         self.bathRoomCountLBL.text = self.displayHomeData!.bathRooms
         self.carSpaceCountLBL.text = self.displayHomeData!.carSpace
        // self.favoriteBTN.setImage(displayHomeData?.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+        self.favoriteBTN.tintColor = APPCOLORS_3.GreyTextFont
         if self.displayHomeData?.isFav == true {
 //            self.favoriteBTN.setBackgroundImage(imageFavorite, for: .normal)
             if (Int(kUserID) ?? 0) > 0 { // not guest user

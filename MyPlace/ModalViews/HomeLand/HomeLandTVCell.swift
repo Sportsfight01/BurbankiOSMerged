@@ -112,11 +112,14 @@ class HomeLandTVCell: UITableViewCell {
         self.lBBathroom.text = self.homeLand!.bathRooms ?? ""
         self.lBParking.text = self.homeLand!.carSpace ?? ""
         
-        if self.homeLand?.isFav == true {
-            self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
-        }else {
-            self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
-        }
+        self.btnFavorite.setImage(self.homeLand?.isFav == true ? imageFavorite : imageUNFavorite , for: .normal)
+        self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
+       // self.btnFavorite.backgroundColor = .red
+//        if self.homeLand?.isFav == true {
+//            self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
+//        }else {
+//            self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
+//        }
         
     }
     
@@ -155,12 +158,14 @@ class HomeLandTVCell: UITableViewCell {
         self.lBBathroom.text = self.displayHomeData!.bathRooms ?? ""
         self.lBParking.text = self.displayHomeData!.carSpace ?? ""
         
-        if self.homeLand?.isFav == true {
-            self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
-        }else {
-            self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
-        }
-        
+        self.btnFavorite.setImage(self.homeLand?.isFav == true ? imageFavorite : imageUNFavorite , for: .normal)
+        self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
+//        if self.homeLand?.isFav == true {
+//            self.btnFavorite.setBackgroundImage(imageFavorite, for: .normal)
+//        }else {
+//            self.btnFavorite.setBackgroundImage(imageUNFavorite, for: .normal)
+//        }
+//        
     }
     
     

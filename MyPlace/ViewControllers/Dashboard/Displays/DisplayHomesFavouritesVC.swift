@@ -278,7 +278,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 }) { (progress) in
                 }
             }
-            
+            cell.favouriteBTN.tintColor = APPCOLORS_3.GreyTextFont
             if displaydata.isFav == true {
                 cell.favouriteBTN.setBackgroundImage(imageFavorite, for: .normal)
             }else {

@@ -122,12 +122,15 @@ class CollectionTVCell: UITableViewCell {
         
         self.lBLotWidth.text = (self.homeDesign!.minLotWidth ?? "0") + "m"
         
+//        self.btnFavorite.setImage(self.homeDesign?.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+        self.btnFavourite.setImage(self.homeDesign?.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+        self.btnFavourite.tintColor = APPCOLORS_3.GreyTextFont
         
-        if self.homeDesign?.isFav == true {
-            self.btnFavourite.setBackgroundImage(imageFavorite, for: .normal)
-        }else {
-            self.btnFavourite.setBackgroundImage(imageUNFavorite, for: .normal)
-        }
+//        if self.homeDesign?.isFav == true {
+//            self.btnFavourite.setBackgroundImage(imageFavorite, for: .normal)
+//        }else {
+//            self.btnFavourite.setBackgroundImage(imageUNFavorite, for: .normal)
+//        }
 
         
     }

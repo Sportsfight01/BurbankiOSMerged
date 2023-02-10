@@ -107,6 +107,7 @@ class DisplaysSuggestedCVCell: UICollectionViewCell, UICollectionViewDelegate, U
             let displayHomeData = DisplayHomeDataArr[indexPath.item]
             
         }
+        cell.likeBTN.tintColor = APPCOLORS_3.GreyTextFont
         if displayData.isFav == true {
             if (Int(kUserID) ?? 0) > 0 {
                 cell.likeBTN.setBackgroundImage(imageFavorite, for: .normal)

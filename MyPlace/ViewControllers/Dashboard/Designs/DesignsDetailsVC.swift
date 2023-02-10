@@ -266,6 +266,7 @@ class DesignsDetailsVC: HeaderVC {
         self.lBLotWidth.text = (self.homeDesign?.minLotWidth?.trim() ?? "0") + "m"
 
         
+        self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
         if Int(kUserID)! > 0 { // LoggedInUser
             self.btnFavorite.setImage(self.homeDesign!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
             self.btnSaveDesign.backgroundColor = self.homeDesign?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG

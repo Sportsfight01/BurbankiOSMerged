@@ -448,6 +448,7 @@ class HeaderVC: UIViewController {
         
         headerView_header.addSubview(btnBackFull)
         btnBackFull.isHidden = true
+       // btnBackFull.backgroundColor = .red
         
         
         btnBackProfile.setBackgroundImage(imageBack, for: .normal)
@@ -620,6 +621,7 @@ extension HeaderVC {
     func showBackButton () {
         
         btnBack.isHidden = false
+        btnBackFull.isHidden = false
         setFramesForviews()
         
         setFramesForOptionsViews()
