@@ -154,6 +154,7 @@ class DocumentsVC: UIViewController {
     
     //MARK: - Helper Methods
 //
+
 //    @available(iOS 13.0, *)
 //    func makeDataSource() -> DataSource
 //    {
@@ -194,14 +195,18 @@ class DocumentsVC: UIViewController {
         cell.uploadedOnDateLb.numberOfLines = 1
         return cell
     }
-//
+
 //    @available(iOS 13.0, *)
 //    func applySnapShot(array : [DocumentsDetailsStruct], animate : Bool = false)
+    
+//    @available(iOS 13.0, *)
+//    func applySnapShot(array : [DocumentsDetailsStruct])
 //    {
 //        var snapShot = SnapShot()
 //        snapShot.appendSections([.first])
 //        snapShot.appendItems(array)
 //        makeDataSource().apply(snapShot, animatingDifferences: animate)
+//        makeDataSource().apply(snapShot, animatingDifferences: false)
 //    }
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         
@@ -348,6 +353,7 @@ extension DocumentsVC : UITableViewDelegate , UITableViewDataSource , UISearchBa
 //            self.applySnapShot(array: tableDataSource ?? [])
 //        } else {
             // Fallback on earlier versions
+//            // Fallback on earlier versions
             tableView.reloadData()
        // }
         
