@@ -117,6 +117,7 @@ let burbank_signIn_email_button_touch = "BB_signIn_email"
 let burbank_signIn_skip_button_touch = "BB_signIn_skip"
 let burbank_signIn_next_button_touch = "BB_signIn_next"
 let burbank_signIn_sign_button_touch = "BB_signIn_sign"
+let burbank_signIn_Apple_button_touch = "BB_signIn_apple"
 
 
 let burbank_signIn_password_screen_loading = "BB_signIn_password_screen_loading"
