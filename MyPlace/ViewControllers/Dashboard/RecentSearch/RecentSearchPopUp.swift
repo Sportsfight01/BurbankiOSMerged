@@ -53,8 +53,7 @@ class RecentSearchPopUp: UIViewController {
         view.addGestureRecognizer(tap)
 
     }
-    
-    
+
     func setupUI () {
         
         setAppearanceFor(view: recentSearchHeading, backgroundColor: nil, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))

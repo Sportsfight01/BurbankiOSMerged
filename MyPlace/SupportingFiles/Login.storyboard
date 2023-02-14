@@ -544,43 +544,43 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-FZ-fR5">
-                                <rect key="frame" x="40" y="284" width="48.5" height="25"/>
+                                <rect key="frame" x="40" y="309" width="48.5" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgE-BA-fmG">
-                                <rect key="frame" x="88.5" y="284" width="20" height="25"/>
+                                <rect key="frame" x="88.5" y="309" width="20" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your method of sign in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16u-ep-CAq">
-                                <rect key="frame" x="40" y="319" width="334" height="16"/>
+                                <rect key="frame" x="40" y="344" width="334" height="16"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IEG-53-bZc">
-                                <rect key="frame" x="30" y="365" width="354" height="180"/>
+                                <rect key="frame" x="30" y="390" width="354" height="130"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kew-Jb-QLQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="53.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOP-rj-Y8h">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="53.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
                                                 <connections>
                                                     <action selector="handleSigInButtonsActionsWithSender:" destination="KaO-vB-Or6" eventType="touchUpInside" id="5C5-pi-yQY"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Google" translatesAutoresizingMaskIntoConstraints="NO" id="Vu3-Kq-Ud5">
-                                                <rect key="frame" x="30" y="13.5" width="26.5" height="26.5"/>
+                                                <rect key="frame" x="30" y="15" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Vu3-Kq-Ud5" secondAttribute="height" multiplier="1:1" id="aNw-Me-1kE"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF8-TE-Jlt">
-                                                <rect key="frame" x="71.5" y="19.5" width="211" height="14"/>
+                                                <rect key="frame" x="75" y="23" width="204" height="14"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -597,27 +597,28 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aF8-TE-Jlt" secondAttribute="trailing" constant="5" id="jRu-Kd-m5t"/>
                                             <constraint firstItem="qOP-rj-Y8h" firstAttribute="leading" secondItem="kew-Jb-QLQ" secondAttribute="leading" id="n2I-gJ-fKp"/>
                                             <constraint firstItem="Vu3-Kq-Ud5" firstAttribute="leading" secondItem="kew-Jb-QLQ" secondAttribute="leading" constant="30" id="nG8-8V-CuG"/>
+                                            <constraint firstAttribute="height" constant="60" id="oDb-vp-BJN"/>
                                             <constraint firstAttribute="trailing" secondItem="qOP-rj-Y8h" secondAttribute="trailing" id="rv5-i4-HK8"/>
                                             <constraint firstItem="aF8-TE-Jlt" firstAttribute="centerX" secondItem="kew-Jb-QLQ" secondAttribute="centerX" id="sbm-Yi-Av3"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13n-n9-XXi">
-                                        <rect key="frame" x="0.0" y="63.5" width="354" height="53"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13n-n9-XXi">
+                                        <rect key="frame" x="0.0" y="65" width="354" height="0.0"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTf-05-itr">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="53"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="0.0"/>
                                                 <connections>
                                                     <action selector="handleSigInButtonsActionsWithSender:" destination="KaO-vB-Or6" eventType="touchUpInside" id="Fcf-CA-BWO"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Facebook" translatesAutoresizingMaskIntoConstraints="NO" id="7Il-as-apy">
-                                                <rect key="frame" x="30" y="13" width="26.5" height="27"/>
+                                                <rect key="frame" x="30" y="0.0" width="0.0" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="7Il-as-apy" secondAttribute="height" multiplier="1:1" id="JS6-HN-6xX"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSe-xl-9lI">
-                                                <rect key="frame" x="71.5" y="19.5" width="211" height="14"/>
+                                                <rect key="frame" x="45" y="-7" width="264" height="14"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -639,22 +640,22 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubM-4g-a94">
-                                        <rect key="frame" x="0.0" y="126.5" width="354" height="53.5"/>
+                                        <rect key="frame" x="0.0" y="70" width="354" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6J-73-8ew">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="53.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
                                                 <connections>
                                                     <action selector="handleSigInButtonsActionsWithSender:" destination="KaO-vB-Or6" eventType="touchUpInside" id="dTO-HD-PiX"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Mail" translatesAutoresizingMaskIntoConstraints="NO" id="gB3-61-cFJ">
-                                                <rect key="frame" x="30" y="13.5" width="26.5" height="26.5"/>
+                                                <rect key="frame" x="30" y="15" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gB3-61-cFJ" secondAttribute="height" multiplier="1:1" id="mtJ-zf-aaL"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIM-SD-a6A">
-                                                <rect key="frame" x="71.5" y="20" width="211" height="14"/>
+                                                <rect key="frame" x="75" y="23" width="204" height="14"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -711,7 +712,6 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="16u-ep-CAq" firstAttribute="leading" secondItem="j5a-FZ-fR5" secondAttribute="leading" id="UcS-bL-MBM"/>
                             <constraint firstItem="hgB-SP-I9U" firstAttribute="centerY" secondItem="1Fb-LH-p76" secondAttribute="centerY" id="Z29-uN-TCB"/>
                             <constraint firstItem="qpW-M8-lLj" firstAttribute="bottom" secondItem="WJi-38-sYU" secondAttribute="bottom" constant="50" id="f7T-Di-8u7"/>
-                            <constraint firstItem="IEG-53-bZc" firstAttribute="height" secondItem="otx-FD-Xv7" secondAttribute="height" multiplier="0.201" id="g5D-pf-Ghj"/>
                             <constraint firstItem="qpW-M8-lLj" firstAttribute="trailing" secondItem="IEG-53-bZc" secondAttribute="trailing" constant="30" id="jOv-Td-oc5"/>
                             <constraint firstItem="Vtq-al-xv1" firstAttribute="bottom" secondItem="otx-FD-Xv7" secondAttribute="bottom" id="mCh-mz-b9c"/>
                             <constraint firstItem="Vtq-al-xv1" firstAttribute="trailing" secondItem="qpW-M8-lLj" secondAttribute="trailing" id="mvY-iE-Nnr"/>
@@ -742,7 +742,6 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <outlet property="labelNoteAlert" destination="P6J-rm-zbZ" id="T6H-kt-IpB"/>
                         <outlet property="labelNoteHeading" destination="GM5-rB-bnU" id="KTd-yn-3O4"/>
                         <outlet property="labelSign" destination="j5a-FZ-fR5" id="JEc-O3-pxJ"/>
-                        <outlet property="stackviewRatio" destination="g5D-pf-Ghj" id="Tcw-LD-bg5"/>
                         <outlet property="viewEmail" destination="ubM-4g-a94" id="Rmt-nm-qhz"/>
                         <outlet property="viewFacebook" destination="13n-n9-XXi" id="e9J-OB-chk"/>
                         <outlet property="viewGoogle" destination="kew-Jb-QLQ" id="Uk0-c3-eL5"/>
@@ -771,19 +770,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="Ico-BB-Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKC-os-uA7">
-                                <rect key="frame" x="60" y="224" width="50.5" height="25"/>
+                                <rect key="frame" x="60" y="217" width="50" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1G-2c-x4w">
-                                <rect key="frame" x="110.5" y="224" width="33" height="25"/>
+                                <rect key="frame" x="110" y="217" width="33" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out this form to save your progress." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAA-qv-0xh">
-                                <rect key="frame" x="60" y="259" width="314" height="14"/>
+                                <rect key="frame" x="60" y="256.5" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -906,13 +905,13 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSe-GM-bhs">
-                                <rect key="frame" x="98" y="737" width="158.5" height="14"/>
+                                <rect key="frame" x="96" y="734.5" width="162.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfy-aH-eJa">
-                                <rect key="frame" x="261.5" y="729.5" width="53" height="29"/>
+                                <rect key="frame" x="263.5" y="726.5" width="52" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1007,19 +1006,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPl-9j-N1e">
-                                <rect key="frame" x="50" y="337.5" width="50" height="25"/>
+                                <rect key="frame" x="50" y="330.5" width="50" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-ii-Mb6">
-                                <rect key="frame" x="100" y="337.5" width="21.5" height="25"/>
+                                <rect key="frame" x="100" y="330.5" width="20.5" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email to login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yq-WX-Gx8">
-                                <rect key="frame" x="50" y="372.5" width="314" height="16"/>
+                                <rect key="frame" x="50" y="369.5" width="314" height="19"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1069,7 +1068,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-EK-Lr9">
-                                <rect key="frame" x="129" y="633" width="156" height="29"/>
+                                <rect key="frame" x="129.5" y="633" width="155" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Are you a new user?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1086,7 +1085,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAe-cz-yix">
-                                <rect key="frame" x="50" y="672" width="314" height="51"/>
+                                <rect key="frame" x="50" y="675" width="314" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Create Account">
@@ -1097,7 +1096,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-pR-y5M">
-                                <rect key="frame" x="147" y="172.5" width="120" height="120"/>
+                                <rect key="frame" x="147" y="169.5" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="dZk-Uj-Dar"/>
                                     <constraint firstAttribute="width" secondItem="dLn-pR-y5M" secondAttribute="height" multiplier="1:1" id="gIq-Tc-znf"/>
@@ -1181,7 +1180,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7J-Wm-4Uy">
-                                <rect key="frame" x="157" y="176.5" width="100" height="100"/>
+                                <rect key="frame" x="157" y="171" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i7J-Wm-4Uy" secondAttribute="height" multiplier="1:1" id="cUX-bX-XRO"/>
                                     <constraint firstAttribute="width" constant="100" id="drO-3j-4JR"/>
@@ -1189,19 +1188,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEd-zg-iy4">
-                                <rect key="frame" x="50" y="321.5" width="75.5" height="25"/>
+                                <rect key="frame" x="50" y="312" width="73" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZa-Vg-nxl">
-                                <rect key="frame" x="125.5" y="321.5" width="110" height="25"/>
+                                <rect key="frame" x="123" y="312" width="111" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode will be sent to following Email to reset password" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jb-e1-5wo">
-                                <rect key="frame" x="50" y="356.5" width="314" height="32"/>
+                                <rect key="frame" x="50" y="351" width="314" height="37.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1319,7 +1318,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lai-0I-ZWz">
-                                <rect key="frame" x="157" y="130" width="100" height="100"/>
+                                <rect key="frame" x="157" y="127.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lai-0I-ZWz" secondAttribute="height" multiplier="1:1" id="evf-o0-RBn"/>
                                     <constraint firstAttribute="width" constant="100" id="zXT-UT-IlQ"/>
@@ -1327,19 +1326,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3j-kI-ROc">
-                                <rect key="frame" x="60" y="275" width="63.5" height="25"/>
+                                <rect key="frame" x="60" y="268" width="64.5" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lw-u8-JyH">
-                                <rect key="frame" x="123.5" y="275" width="110" height="25"/>
+                                <rect key="frame" x="124.5" y="268" width="111" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset your password here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zu6-TH-eM1">
-                                <rect key="frame" x="60" y="310" width="314" height="14"/>
+                                <rect key="frame" x="60" y="307.5" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1457,7 +1456,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3i-fc-45h">
-                                <rect key="frame" x="139.5" y="683" width="135" height="29"/>
+                                <rect key="frame" x="138" y="683" width="138" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Resend Passcode">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1534,7 +1533,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbe-Ep-Bys">
-                                <rect key="frame" x="157" y="163.5" width="100" height="100"/>
+                                <rect key="frame" x="157" y="161" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5K3-87-ObZ"/>
                                     <constraint firstAttribute="width" secondItem="Dbe-Ep-Bys" secondAttribute="height" id="fZU-wm-L6d"/>
@@ -1542,19 +1541,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcH-bv-aKU">
-                                <rect key="frame" x="60" y="308.5" width="60.5" height="25"/>
+                                <rect key="frame" x="60" y="301.5" width="59" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7q-Kk-3zw">
-                                <rect key="frame" x="120.5" y="308.5" width="110" height="25"/>
+                                <rect key="frame" x="119" y="301.5" width="111" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password to login" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8t-TE-J3p">
-                                <rect key="frame" x="60" y="343.5" width="314" height="14"/>
+                                <rect key="frame" x="60" y="341" width="314" height="16.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1628,7 +1627,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T38-rK-Lla">
-                                <rect key="frame" x="141.5" y="649.5" width="131" height="29"/>
+                                <rect key="frame" x="142" y="649.5" width="130" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="Forgot Password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

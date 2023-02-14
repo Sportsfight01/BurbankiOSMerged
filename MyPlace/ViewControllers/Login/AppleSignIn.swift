@@ -50,10 +50,10 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate, ASAuthorizat
     imgView.translatesAutoresizingMaskIntoConstraints = false
     //addConstraints to imgView
     NSLayoutConstraint.activate([
-        NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: view.frame.size.height - 10),
-      NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: imgView, attribute: .height, multiplier: 1.0, constant: view.frame.size.height - 10),
+        NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: view.frame.size.height - 13),
+      NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: imgView, attribute: .height, multiplier: 1.0, constant: view.frame.size.height - 13),
       NSLayoutConstraint(item: imgView, attribute: .centerY, relatedBy: .equal, toItem: view , attribute: .centerY, multiplier: 1.0, constant: 0),
-      NSLayoutConstraint(item: imgView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 30)
+      NSLayoutConstraint(item: imgView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 25)
     ])
     //titleLabel
     let titleLabel = UILabel()

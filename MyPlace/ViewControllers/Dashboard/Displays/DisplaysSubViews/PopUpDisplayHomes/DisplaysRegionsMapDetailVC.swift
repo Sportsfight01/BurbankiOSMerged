@@ -102,7 +102,9 @@ class DisplaysRegionsMapDetailVC: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displayDetailsCard.isHidden = true
+        
+        
+//        displayDetailsCard.isHidden = true
         //fillDetailsFromDesignScreen()
 //        if selectedRegionForMaps.count > 0
 //        {

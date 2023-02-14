@@ -42,8 +42,7 @@ class SignInVC: UIViewController {
     var stackviewRatio2: NSLayoutConstraint?
 
     
-    
-    
+  
     @IBOutlet weak var btnSkip: UIButton!
 
     
@@ -89,17 +88,17 @@ class SignInVC: UIViewController {
             if let stackView = viewGoogle.superview, let appleButton = btnAppleSignIn {
                                 
                 (stackView as! UIStackView).insertArrangedSubview(appleButton, at: 0)
-                stackviewRatio.isActive = false //0.201
-                
-                if let _ = stackviewRatio2 {
-                    
-                }else {
-                    stackviewRatio2 = stackView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.273)
-                    
-                    NSLayoutConstraint.activate([
-                        stackviewRatio2!
-                    ])
-                }
+//                stackviewRatio.isActive = false //0.201
+//
+//                if let _ = stackviewRatio2 {
+//
+//                }else {
+//                    stackviewRatio2 = stackView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.273)
+//
+//                    NSLayoutConstraint.activate([
+//                        stackviewRatio2!
+//                    ])
+//                }
                 
                 
                 
@@ -188,6 +187,8 @@ class SignInVC: UIViewController {
         setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: systemRegularFont(size: FONT_signin))
         setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
         setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
+        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
+//        setAppearanceFor(view: labelApple, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: systemRegularFont(size: FONT_signin))
         
        
         
@@ -216,9 +217,13 @@ class SignInVC: UIViewController {
         
         viewGoogle.cardView()
         viewFacebook.layer.cornerRadius = 5.0
+        viewFacebook.isHidden = true
 //        viewFacebook.cardView()
         viewEmail.cardView()
         viewEmail.backgroundColor = APPCOLORS_3.Black_BG
+        
+//        viewApple.cardView()
+//        viewApple.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
         
         btnSkip.layer.cornerRadius = radius_5
 
