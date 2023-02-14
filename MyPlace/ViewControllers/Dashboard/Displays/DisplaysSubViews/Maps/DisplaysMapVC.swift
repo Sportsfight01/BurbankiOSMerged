@@ -122,7 +122,7 @@ class DisplaysMapVC: UIViewController {
         self.estateNameLBL.text = "\(suggestedHome.estateName ?? "")".uppercased()
         self.streetNameLBL.text = "\(suggestedHome.lotStreet1 ?? ""),\n\(suggestedHome.lotSuburb ?? "")"
         self.mapView.delegate = self
-        NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(suggestedHome.estateName ?? "")".uppercased()])
+        NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(suggestedHome.estateName ?? "")".uppercased() + "\(suggestedHome.lotStreet1 ?? "")"])
         self.mapView.setMapPosition(with: suggestedHome, zoomlevel : 15.0)
         _ = self.mapView.addMarkersTONearByPlaces(nearByPlaces: [suggestedHome])
         

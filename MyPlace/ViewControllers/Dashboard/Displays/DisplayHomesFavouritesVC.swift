@@ -48,7 +48,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
     self.detailCardView.isHidden = true
       self.regionTableHeight.constant = 0
       self.detailsTableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
-    self.addBreadCrumb(from: "Your favourite displays")
+    
  
     
       
@@ -67,6 +67,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getDisplayHomesFavourites()
+        self.addBreadCrumb(from: "Your favourite displays")
         self.detailCardView.isHidden = true
     }
     func getDisplayHomesFavourites()
@@ -222,7 +223,7 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
             let view = UIView(frame: CGRect(x:0, y:0, width:tableView.frame.size.width, height:40))
             let label = UILabel(frame: CGRect(x:10, y:5, width:tableView.frame.size.width, height:18))
             label.font = UIFont.boldSystemFont(ofSize: 18)
-            label.text = "Favourites List (\(displayFavorites.count))";
+            label.text = "Favourite Displays (\(displayFavorites.count))";
             label.textColor = APPCOLORS_3.HeaderFooter_white_BG
             view.addSubview(label)
             view.backgroundColor = APPCOLORS_3.DarkGrey_BG

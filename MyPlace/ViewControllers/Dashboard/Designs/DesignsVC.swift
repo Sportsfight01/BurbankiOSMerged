@@ -328,10 +328,10 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
             dataLabel.centerYAnchor.constraint(equalTo: viewHeader.centerYAnchor).isActive = true
             
             if packages[0].favouritedUser?.userID == kUserID {
-                dataLabel.text = "Favourites List " + "(\(packages.count))"
+                dataLabel.text = "Favourite Designs " + "(\(packages.count))"
             }else {
                 
-                dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourites List " + "(\(packages.count))"
+                dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourite Designs " + "(\(packages.count))"
             }
             
             setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.DarkGrey_BG)

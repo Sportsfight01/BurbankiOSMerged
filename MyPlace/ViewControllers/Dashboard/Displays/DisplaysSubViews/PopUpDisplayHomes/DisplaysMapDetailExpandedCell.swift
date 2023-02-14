@@ -49,7 +49,7 @@ class DisplaysMapDetailExpandedCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+                
     }
     func fillAllDisplayHomeDetails () {
         
@@ -97,6 +97,9 @@ class DisplaysMapDetailExpandedCell: UITableViewCell {
         }
        
         self.favoriteBTN.addTarget(self, action: #selector(didTappedOnFavourites(_:)), for: .touchUpInside)
+        
+        setAppearanceFor(view: tradingHoursLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
+
     }
     
     
