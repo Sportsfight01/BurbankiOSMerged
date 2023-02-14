@@ -151,7 +151,8 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
             navTopConstraint.constant = 135
           //  self.backBTN.isHidden = true
             self.backBTN.superview?.superview?.isHidden = true
-            self.addBreadCrumb(from: displayHomes?.houseName ?? "See one of our display homes")
+            let displyBrdStr = "\(displayHomes?.houseName ?? "") \(displayHomes?.houseSize ?? "")"
+            self.addBreadCrumb(from: displyBrdStr)
             self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.263)
             if btnBack.isHidden {
                 showBackButton()
@@ -709,7 +710,7 @@ extension DisplayHomesDetailsVC {
         setAppearanceFor(view: lBPrice, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         
         
-        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: lBFacadeName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_12))
 
         
         setAppearanceFor(view: lBParking, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))

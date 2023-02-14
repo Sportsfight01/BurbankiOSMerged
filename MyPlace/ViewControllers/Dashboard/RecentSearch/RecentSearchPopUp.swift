@@ -26,7 +26,7 @@ class RecentSearchPopUp: UIViewController {
             
             let str = "RECENT SEARCH" + "\n" + "(\(recentSearchFrom!))"
                         
-            _ = setAttributetitleFor(view: recentSearchHeading, title: str, rangeStrings: ["RECENT SEARCH", "(\(recentSearchFrom!))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_18), FONT_LABEL_LIGHT (size: FONT_14)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: recentSearchHeading, title: str, rangeStrings: ["RECENT SEARCH", "(\(recentSearchFrom!))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_18), FONT_LABEL_LIGHT (size: FONT_14)], alignmentCenter: true)
         }
     }
     
@@ -59,7 +59,7 @@ class RecentSearchPopUp: UIViewController {
         
         setAppearanceFor(view: recentSearchHeading, backgroundColor: nil, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_18))
         
-        setAppearanceFor(view: recentSearch, backgroundColor: nil, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_14))
+        setAppearanceFor(view: recentSearch, backgroundColor: nil, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_14))
 
         setAppearanceFor(view: btnStart, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_16))
 
