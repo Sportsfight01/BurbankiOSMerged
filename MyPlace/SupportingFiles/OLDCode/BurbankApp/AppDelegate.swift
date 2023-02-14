@@ -60,6 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var jobContacts: JobContacts? //for displaying contacts in menu bar
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        IQKeyboardManager.shared.toolbarTintColor = APPCOLORS_3.Orange_BG
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = APPCOLORS_3.Orange_BG
       ApplicationDelegate.shared.application(
                 application,
                 didFinishLaunchingWithOptions: launchOptions
