@@ -39,7 +39,7 @@ class SetCentralPasswordVCNew: BurbankAppVC {
     {
         super.viewDidLoad()
         if alertMessage != "" {
-            AlertManager.sharedInstance.showAlert(alertMessage: alertMessage, title: "")
+            BurbankApp.showAlert(alertMessage)
         }
 //        if infoMessage != "" {
 //            infoTextLabel.text = infoMessage
@@ -87,32 +87,32 @@ class SetCentralPasswordVCNew: BurbankAppVC {
         
         if emailOrJobTextField.text == ""
         {
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter email id ", title: "")
+            BurbankApp.showAlert("Please enter email id ")
             emailOrJobTextField.becomeFirstResponder()
             return
         }else if emailOrJobTextField.text?.trim().isValidEmail() == false
         {
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter valid email id", title: "")
+            BurbankApp.showAlert("Please enter valid email id")
             emailOrJobTextField.becomeFirstResponder()
             return
         }else if passCodeTextField.text == ""
         {
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter passcode", title: "")
+            BurbankApp.showAlert("Please enter passcode")
             passCodeTextField.becomeFirstResponder()
             return
         }else if passwordTextField.text == ""
         {
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter password", title: "")
+            BurbankApp.showAlert("Please enter password")
             passCodeTextField.becomeFirstResponder()
             return
         }else if confirmPasswordTextField.text == ""
         {
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter confirm password", title: "")
+            BurbankApp.showAlert("Please enter confirm password")
             confirmPasswordTextField.becomeFirstResponder()
             return
         }else if passwordTextField.text != confirmPasswordTextField.text
         {
-            AlertManager.sharedInstance.showAlert(alertMessage: "Password and Confirm Password are not same", title: "")
+            BurbankApp.showAlert("Password and Confirm Password are not same")
             confirmPasswordTextField.becomeFirstResponder()
             return
         }
@@ -227,7 +227,7 @@ class SetCentralPasswordVCNew: BurbankAppVC {
                         else {
                             if let message = jsonDic.object(forKey: "Message") as? String
                             {
-                            AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                                BurbankApp.showAlert(message)
                             return
                         }
                         }
@@ -236,7 +236,7 @@ class SetCentralPasswordVCNew: BurbankAppVC {
                 {
                     if let message = jsonDic.object(forKey: "Message") as? String
                     {
-                        AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                        BurbankApp.showAlert(message)
                     }
                 }
             }
@@ -274,7 +274,7 @@ class SetCentralPasswordVCNew: BurbankAppVC {
                     
                 }
                 else{
-                    AlertManager.sharedInstance.alert(jsonDic.object(forKey: "Message")! as! String)
+                    BurbankApp.showAlert(jsonDic.object(forKey: "Message")! as! String)
                 }
             }
         })
@@ -306,13 +306,13 @@ class SetCentralPasswordVCNew: BurbankAppVC {
                         {
                             let user = User(dic: userDic)
                             self.kPassCode = user.passCode ?? ""
-                            AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                            BurbankApp.showAlert(message)
                             return
 
                         }
                         else
                         {
-                                AlertManager.sharedInstance.showAlert(alertMessage: userDic["Message"] as! String, title: "")
+                            BurbankApp.showAlert(userDic["Message"] as? String ?? somethingWentWrong)
                                 return
                         }
                         

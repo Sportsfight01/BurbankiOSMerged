@@ -39,9 +39,9 @@ struct Alert {
                     han(str)
                 }
             })
-
-                action.setValue(index == 0 ? APPCOLORS_3.Black_BG : APPCOLORS_3.Orange_BG, forKey: "titleTextColor")
-
+            
+            action.setValue( buttons.count > 1 ? (index == 0 ? APPCOLORS_3.Black_BG : APPCOLORS_3.Orange_BG) : APPCOLORS_3.Orange_BG, forKey: "titleTextColor")
+            
             alert.addAction(action)
         }
         

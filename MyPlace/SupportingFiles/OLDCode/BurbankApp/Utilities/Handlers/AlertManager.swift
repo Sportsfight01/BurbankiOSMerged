@@ -27,10 +27,12 @@ class AlertManager: NSObject {
     }
     func showAlert(alertMessage: String,title: String = "Burbank")
     {
-        let alertVC = UIAlertController(title: title, message: alertMessage, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        kWindow.rootViewController?.present(alertVC, animated: true, completion: nil)
+        
+        BurbankApp.showAlert(alertMessage)
+//        let alertVC = UIAlertController(title: title, message: alertMessage, preferredStyle: .alert)
+//        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+////        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        kWindow.rootViewController?.present(alertVC, animated: true, completion: nil)
     }
    
 }

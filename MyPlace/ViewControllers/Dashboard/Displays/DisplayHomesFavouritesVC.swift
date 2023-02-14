@@ -67,7 +67,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getDisplayHomesFavourites()
-        self.addBreadCrumb(from: "Your favourite displays")
+        self.addBreadCrumb(from: "Favourite Displays")
         self.detailCardView.isHidden = true
     }
     func getDisplayHomesFavourites()

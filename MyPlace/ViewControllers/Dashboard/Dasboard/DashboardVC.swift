@@ -14,7 +14,7 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
     var previousSelection = 0
     var afterLoad: (() -> Void)?
     
-    
+    fileprivate var defaultTabBarHeight : CGFloat { tabBar.frame.size.height }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,11 +32,12 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.lightGray, .font: FONT_LABEL_BODY(size: FONT_9)], for: .normal)
                 
-        
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+        //UITabBarItem.appearance().imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         if let items = self.tabBar.items {
-            
+
             for item: UITabBarItem in items {
-                
+
                 item.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
             }
         }
@@ -44,7 +45,14 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         
         
     }
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if defaultTabBarHeight < 60 {
+            let newTabBarHeight = CGFloat(60)
+            tabBar.frame.size.height = newTabBarHeight
+            tabBar.frame.origin.y = self.view.frame.size.height - newTabBarHeight
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -52,7 +60,10 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
             afterLoad ()
         }
     }
-    
+//    override func viewWillLayoutSubviews() {
+//          super.viewWillLayoutSubviews()
+//
+//      }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

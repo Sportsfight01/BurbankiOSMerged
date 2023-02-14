@@ -102,7 +102,7 @@ class PasswordVC: UIViewController {
         
         if txtPassword.text?.trim() == "" {
             
-            AlertManager.sharedInstance.showAlert(alertMessage: "Please enter password")
+            BurbankApp.showAlert("Please enter password")
             return
         }
         
