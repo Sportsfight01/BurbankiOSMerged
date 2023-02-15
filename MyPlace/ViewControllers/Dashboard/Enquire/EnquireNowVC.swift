@@ -315,7 +315,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             }
             else if whereWouldYouLiveTF.text?.trim() == "" {
                 
-                BurbankApp.showAlert("Please select where would you live?", self)
+                BurbankApp.showAlert("Please select where would you like to live?", self)
             }else if (phoneTF.text?.trim().count ?? 0) > 14 {
                 BurbankApp.showAlert("Phone number should be a maximum of 14 characters length", self)
             }else if acceptedTerms == false {

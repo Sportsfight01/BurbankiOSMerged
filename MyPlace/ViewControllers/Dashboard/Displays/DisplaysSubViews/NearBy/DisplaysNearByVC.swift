@@ -44,7 +44,11 @@ class DisplaysNearByVC: UIViewController {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("tappedOnNearBy"), object: nil, queue: nil, using:updatedNotification)
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
+       
+        
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -121,7 +125,18 @@ class DisplaysNearByVC: UIViewController {
         
     }
     @objc func handleGestureRecognizer (recognizer: UIGestureRecognizer) {
-        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+        if self.regionTableHeight.constant == 0{
+          self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+        }else{
+          //self.tableViewContentHeight = 0
+            self.tableView.contentSize.height = 0
+          self.regionTableHeight.constant = 0
+            
+          
+        }
+
+        
+//        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
     }
     
     @IBAction func didTappedOnBackButton(_ sender: UIButton) {

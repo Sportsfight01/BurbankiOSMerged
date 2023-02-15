@@ -50,14 +50,18 @@ class DisplaysMapVC: UIViewController {
         mapView.addZoomLevelButtons ()
         mapView.isMyLocationEnabled = true
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
+        
+        
+        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if self.titleNameLBL.text == "NEW HOME DESIGNS" {
             if selectedDisplayHomes != nil{
                 fillDetailsFromDesignScreen(suggestedHome: selectedDisplayHomes!)
             }
-           
+            
         }else{
             if selectedMarker != nil{
                 let package = (selectedMarker!).displayHomesPlaces!
@@ -102,7 +106,7 @@ class DisplaysMapVC: UIViewController {
                             bounds = bounds.includingCoordinate(marker.position)
                         }
                         self.mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 50.0 , left: 50.0 ,bottom: 50.0 ,right: 50.0)))
-                        }
+                    }
                     
                 }
                 
@@ -112,7 +116,18 @@ class DisplaysMapVC: UIViewController {
         displayDetailsCard.addGestureRecognizer(tap)
     }
     @objc func handleGestureRecognizer (recognizer: UIGestureRecognizer) {
-        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+        if self.regionTableHeight.constant == 0{
+            self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+        }else{
+            //self.tableViewContentHeight = 0
+            self.tableView.contentSize.height = 0
+            self.regionTableHeight.constant = 0
+            
+            
+        }
+        
+        
+        //        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
     }
     
     func fillDetailsFromDesignScreen(suggestedHome : DisplayHomeModel){
@@ -311,18 +326,18 @@ extension DisplaysMapVC: GMSMapViewDelegate, UIPopoverPresentationControllerDele
 // MARK: - TableView Delegate Methods
 extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
     func layoutTable () {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
             self.tableView.rowHeight = UITableView.automaticDimension;
             self.tableView.estimatedRowHeight = 90
-
+            
             self.tableView.reloadData()
             self.tableView.layoutIfNeeded()
-
-
+            
+            
             self.tableView.isScrollEnabled = true
-
+            
             self.regionTableHeight.constant = self.tableView.contentSize.height
-
+            
             if  self.houseDetailsByHouseTypeArr.count > 1 {
                 if self.tableViewContentHeight > Int(self.tableView.contentSize.height){
                     self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
@@ -348,7 +363,7 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row ==  lastRow{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimingsAndDirectionTVC", for: indexPath) as! TimingsAndDirectionTVC
-//                cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
+            //                cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
             cell.getDirectionBTN.tag = indexPath.row
             cell.bookAnAppointmentBTN.tag = indexPath.row
             cell.getDirectionBTN.addTarget(self, action: #selector(didTappedOnGetDirections(_:)), for: .touchUpInside)
@@ -369,92 +384,92 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
             cell.addGestureRecognizer(tap)
             cell.tag = indexPath.row
             cell.isUserInteractionEnabled = true
-           
-                   if isFavoritesService == true {
-          //             let displayData = DisplayHomeDataArr[indexPath.item]
-           //            let package = arrFavouritePackages[indexPath.section][indexPath.row]
-                    cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
+            
+            if isFavoritesService == true {
+                //             let displayData = DisplayHomeDataArr[indexPath.item]
+                //            let package = arrFavouritePackages[indexPath.section][indexPath.row]
+                cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]
+                
+                
+                cell.favoriteBTN.isHidden = cell.displayHomeData?.favouritedUser?.userID != kUserID
+                
+            }else {
+                //             let displayData = DisplayHomeDataArr[indexPath.item]
+                cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]               }
+            
+            /*
+             if Int(kUserID)! > 0 { print(log: kUserID) }
+             else {
+             cell.btnFavorite.isHidden = true
+             }*/
+            cell.favoriteAction = {
+                if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
                     
-
-                    cell.favoriteBTN.isHidden = cell.displayHomeData?.favouritedUser?.userID != kUserID
-
-                   }else {
-          //             let displayData = DisplayHomeDataArr[indexPath.item]
-                    cell.displayHomeData = houseDetailsByHouseTypeArr[indexPath.row]               }
-
-                   /*
-                   if Int(kUserID)! > 0 { print(log: kUserID) }
-                   else {
-                       cell.btnFavorite.isHidden = true
-                   }*/
-                cell.favoriteAction = {
-                      if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
-
-                           if self.isFavoritesService {
-                               CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_favourite_makeFavourite_button_touch)
-                           }else {
-                               CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_results_makeFavourite_button_touch)
-                           }
-
-                        self.makeDisplayHomeFavorite(!(cell.displayHomeData!.isFav), cell.displayHomeData!) { (success) in
-                               if success {
-
-                                if (!(cell.displayHomeData!.isFav) == true) {
-                                       DispatchQueue.main.async(execute: {
-                                           ActivityManager.showToast("Added to your favourites", self)
-                                       })
-                                   }else{
-                                    DispatchQueue.main.async(execute: {
-                                        ActivityManager.showToast("Item removed from favourites", self)
-                                    })
-
-                                 }
-
-                                   var updateDefaults = false
-
-                                  // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
-                                       updateDefaults = true
-                                   //}
-
-
-                                   if self.isFavoritesService {
-
-                                       var arr = self.arrFavouriteDisplays[indexPath.row]
-                                       arr.remove(at: indexPath.row)
-
-                                       if arr.count == 0 {
-                                           self.arrFavouriteDisplays.remove(at: indexPath.row)
-
-                                           if updateDefaults {
-                                            setDisplayHomesFavouritesCount(count: 0, state: kUserState)
-                                           }
-
-                                       }else {
-                                           self.arrFavouriteDisplays[indexPath.row] = arr
-
-                                           if updateDefaults {
-                                            setDisplayHomesFavouritesCount(count: arr.count, state: kUserState)
-                                           }
-                                       }
-                                       
-                                   }else {
-
-                                    cell.displayHomeData!.isFav = !(cell.displayHomeData!.isFav)
-                                    self.houseDetailsByHouseTypeArr[indexPath.row] =  cell.displayHomeData!
-
-                                       self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
-
-                                                                   if updateDefaults {
-                                       updateDisplayHomesFavouritesCount(cell.displayHomeData!.isFav == true)
-                                                                   }
-
-                                   }
-                               }
-                           }
-                       }
-                   }
-                   print(log: "indexpath \(indexPath.row), arraycount \(houseDetailsByHouseTypeArr.count)")
-          
+                    if self.isFavoritesService {
+                        CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_favourite_makeFavourite_button_touch)
+                    }else {
+                        CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_results_makeFavourite_button_touch)
+                    }
+                    
+                    self.makeDisplayHomeFavorite(!(cell.displayHomeData!.isFav), cell.displayHomeData!) { (success) in
+                        if success {
+                            
+                            if (!(cell.displayHomeData!.isFav) == true) {
+                                DispatchQueue.main.async(execute: {
+                                    ActivityManager.showToast("Added to your favourites", self)
+                                })
+                            }else{
+                                DispatchQueue.main.async(execute: {
+                                    ActivityManager.showToast("Item removed from favourites", self)
+                                })
+                                
+                            }
+                            
+                            var updateDefaults = false
+                            
+                            // if cell.displayHomeData!.favouritedUser?.userID == kUserID {
+                            updateDefaults = true
+                            //}
+                            
+                            
+                            if self.isFavoritesService {
+                                
+                                var arr = self.arrFavouriteDisplays[indexPath.row]
+                                arr.remove(at: indexPath.row)
+                                
+                                if arr.count == 0 {
+                                    self.arrFavouriteDisplays.remove(at: indexPath.row)
+                                    
+                                    if updateDefaults {
+                                        setDisplayHomesFavouritesCount(count: 0, state: kUserState)
+                                    }
+                                    
+                                }else {
+                                    self.arrFavouriteDisplays[indexPath.row] = arr
+                                    
+                                    if updateDefaults {
+                                        setDisplayHomesFavouritesCount(count: arr.count, state: kUserState)
+                                    }
+                                }
+                                
+                            }else {
+                                
+                                cell.displayHomeData!.isFav = !(cell.displayHomeData!.isFav)
+                                self.houseDetailsByHouseTypeArr[indexPath.row] =  cell.displayHomeData!
+                                
+                                self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: .none)
+                                
+                                if updateDefaults {
+                                    updateDisplayHomesFavouritesCount(cell.displayHomeData!.isFav == true)
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            print(log: "indexpath \(indexPath.row), arraycount \(houseDetailsByHouseTypeArr.count)")
+            
             return cell
         }
     }
@@ -465,14 +480,14 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
         homeDetailView.isFromDisplayHomes = true
         self.navigationController?.pushViewController(homeDetailView, animated: true)
     }
-  
+    
 }
 
 // MARK: - Handling Button Actions and Segues
 extension DisplaysMapVC{
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-         print(sender.view?.tag)
+        print(sender.view?.tag)
         let index = sender.view?.tag ?? 0
         let data = houseDetailsByHouseTypeArr[index]
         let homeDetailView = self.storyboard?.instantiateViewController(withIdentifier: "DisplayHomesDetailsVC") as! DisplayHomesDetailsVC
@@ -480,7 +495,7 @@ extension DisplaysMapVC{
         homeDetailView.isFromDisplayHomes = true
         self.navigationController?.pushViewController(homeDetailView, animated: true)
         
-      }
+    }
     
     @IBAction func didTappedOnGetDirections (_ sender: UIButton) {
         let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
@@ -496,7 +511,7 @@ extension DisplaysMapVC{
         
         if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://")! as URL)) {
             let url = "https://maps.google.com/maps?saddr&daddr=\(latLong)"
-                    UIApplication.shared.open(URL(string:url)!)
+            UIApplication.shared.open(URL(string:url)!)
         }else{
             let url = "https://maps.apple.com/maps?saddr&daddr=\(latLong)"
             UIApplication.shared.open(URL(string:url)!)
@@ -510,7 +525,7 @@ extension DisplaysMapVC{
         self.performSegue(withIdentifier: "BookAppointmentVC", sender: nil)
         
     }
- @IBAction func didTappedOnBackButton(_ sender: UIButton) {
+    @IBAction func didTappedOnBackButton(_ sender: UIButton) {
         self.backBTNCard.isHidden = true
         self.displayDetailsCard.isHidden = true
         self.regionTableHeight.constant = 100
@@ -532,7 +547,7 @@ extension DisplaysMapVC{
 // MARK: - API's
 extension DisplaysMapVC{
     func makeDisplayHomeFavorite (_ favorite: Bool, _ design: houseDetailsByHouseType, callBack: @escaping ((_ successss: Bool) -> Void)) {
-
+        
         let params = NSMutableDictionary()
         params.setValue(3, forKey: "TypeId")
         params.setValue(appDelegate.userData?.user?.userID, forKey: "UserId")
@@ -540,37 +555,37 @@ extension DisplaysMapVC{
         
         params.setValue(kUserState, forKey: "StateId")
         params.setValue(favorite, forKey: "isfavourite")
-
-
-
+        
+        
+        
         _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_Favorite, parameters: params, userInfo: nil, success: { (json, response) in
-
+            
             if let result: AnyObject = json {
-
+                
                 let result = result as! NSDictionary
-
+                
                 if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
-
+                    
                     callBack (true)
-
+                    
                 }else { print(log: String.init(format: "Couldn't %@ home", arguments: [favorite ? "Favourite" : "Unfavourite"])) }
-
+                
             }else {
-
+                
                 showToast(kServerErrorMessage)
             }
-
+            
         }, errorblock: { (error, isJSONerror) in
-
+            
             if isJSONerror {
                 showToast(String.init(format: "Couldn't %@ home", arguments: [favorite ? "Favourite" : "Unfavourite"]))
             }else {
                 print(log: error?.localizedDescription as Any)
                 showToast(String.init(format: "Couldn't %@ home", arguments: [favorite ? "Favourite" : "Unfavourite"]))
             }
-
+            
         }, progress: nil)
-
+        
     }
-
+    
 }
