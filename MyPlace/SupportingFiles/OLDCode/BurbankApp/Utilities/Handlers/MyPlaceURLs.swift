@@ -35,6 +35,9 @@ var selectedJobNumberRegion: Region
 var selectedJobNumberRegionString = ""//we are setting this variable in MyPlaceDasBoard when ever user clicking on new job
 let clickHomeBaseImageURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/"
 let clickHomeBaseImageURLForTesting = "http://10.6.45.14:8085/getattachment/"
+let clickHomeBaseImageURLForLive = "https://www.burbank.com.au/getattachment/"
+
+
 
 let clickHomeBaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/ClickHome.myhome/v2/"
 let myPlaceVICBaseURL = "https://www.burbank.com.au/victoria/myplace/api/"
@@ -116,10 +119,10 @@ func getMyPlaceURL(isContactUs : Bool = false) -> String
 //MARK: - infoCentre Url
 
 func getInfoCentreDetails() -> String{
-    return BaseURL + "/myplace/infocentre"
+    return BaseURL + "myplace/infocentre"
 }
 
 //MARK: - FAQ'S Url
 func getFaq() -> String{
-    return BaseURL + "/myplace/faq"
+    return BaseURL + "myplace/faq"
 }

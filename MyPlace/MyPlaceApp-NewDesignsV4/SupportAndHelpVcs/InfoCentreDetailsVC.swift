@@ -27,7 +27,12 @@ class InfoCentreDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        addVideo()
+        if infoCentreDetails?.videoURL.trim() == ""
+        {
+            addImageView()
+        }else {
+            addVideo()
+        }
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +91,27 @@ class InfoCentreDetailsVC: UIViewController {
 //        self.videoContainerView.layer.addSublayer(playerLayer)
 //        player.play()
 //        player.isMuted = true
+    }
+    
+    func addImageView()
+    {
+        let imageView = UIImageView(frame: .zero)
+        imageView.contentMode = .scaleToFill
+       
+       // imageView.ima
+        videoContainerView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leadingAnchor.constraint(equalTo: videoContainerView.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: videoContainerView.trailingAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: videoContainerView.topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: videoContainerView.bottomAnchor).isActive = true
+        
+        let url = infoCentreDetails?.image.replacingOccurrences(of: "~", with: "")
+        let documentURL = "\(clickHomeBaseImageURLForLive)\(url ?? "")"
+        //print(documentURL)
+        imageView.sd_setImage(with: URL(string: documentURL), placeholderImage: UIImage(named: "BurbankLogo"))
+  
+        
     }
     
     @IBAction func didTappedOnBackBTN(_ sender: UIButton) {

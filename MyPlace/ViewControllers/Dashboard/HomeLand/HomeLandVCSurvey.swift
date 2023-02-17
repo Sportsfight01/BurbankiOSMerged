@@ -425,6 +425,12 @@ class HomeLandVCSurvey: HeaderVC {
                 myPlaceQuiz.region = nil
                 filter.region = RegionMyPlace()
                 filter.regionsArr = []
+                myPlaceQuiz.storeysCount = nil
+                filter.storeysCount = .none
+                            
+                myPlaceQuiz.bedRoomCount = nil
+                filter.bedRoomsCount = .none
+                
                 myPlaceQuiz.priceRangeLow = ""
                 myPlaceQuiz.priceRangeHigh = ""
                 
@@ -826,8 +832,9 @@ class HomeLandVCSurvey: HeaderVC {
                 } else {
                     
                     btnDesignsCount.setTitle("SKIP >", for: .normal)
+                    btnDesignsCount.isUserInteractionEnabled = true
                     setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_BODY(size: FONT_14))
-
+                    
                     myPlaceQuiz.region = nil
                     filter.region = RegionMyPlace()
                     

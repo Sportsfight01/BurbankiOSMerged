@@ -25,6 +25,11 @@ class PopupDisplayHomesVC: UIViewController,UITableViewDelegate,UITableViewDataS
 
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var tradinghoursView: UIView!
+    
+    @IBOutlet weak var tradingHrsLBL: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
