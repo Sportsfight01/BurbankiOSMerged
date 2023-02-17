@@ -64,6 +64,8 @@ class DisplaysRegionsMapVC: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
         
     }
+    
+    
     func updatedNotification(notification:Notification) -> Void  {
         self.navigationController?.popViewController(animated: true)
     }

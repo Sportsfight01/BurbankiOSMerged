@@ -2014,7 +2014,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Home Designs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gC1-JM-AIB">
-                                                <rect key="frame" x="30.333333333333329" y="107.33333333333331" width="72.000000000000014" height="13.333333333333329"/>
+                                                <rect key="frame" x="30.333333333333329" y="107.33333333333331" width="72" height="13.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="11"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -3650,7 +3650,7 @@
                                                     <rect key="frame" x="10" y="5" width="171.33333333333334" height="90"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWX-Id-2PN">
-                                                    <rect key="frame" x="395.33333333333331" y="5" width="22.666666666666686" height="20.666666666666668"/>
+                                                    <rect key="frame" x="395.33333333333331" y="5" width="22.666666666666686" height="20.666666666666664"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vWX-Id-2PN" secondAttribute="height" multiplier="20:18" id="2Cw-S4-nGM"/>
                                                     </constraints>
@@ -5221,7 +5221,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="Mwh-ck-uNE"/>
                                         </constraints>
-                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeLandTVCell" id="5gY-Cb-DfB" customClass="HomeLandTVCell" customModule="BurbankApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="428" height="97"/>
@@ -5386,12 +5386,12 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymz-rL-Vt2">
                                                             <rect key="frame" x="0.0" y="96.666666666666671" width="428" height="0.3333333333333286"/>
-                                                            <color key="backgroundColor" name="GreyTextFont_3"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="0.5" id="NSh-07-H37"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
-                                                            <color key="textColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Mo1-vB-ApY">
@@ -7231,7 +7231,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tww-WE-OCg">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="659"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeLandTVCell" id="TrR-84-uOv" customClass="HomeLandTVCell" customModule="BurbankApp" customModuleProvider="target">
@@ -9720,12 +9720,12 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
         <scene sceneID="o1h-hc-s5j">
             <objects>
                 <viewController storyboardIdentifier="PopupDisplayHomesVC" id="odN-DS-Q5K" customClass="PopupDisplayHomesVC" customModule="BurbankApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="sXF-2O-y5Y">
+                    <view key="view" contentMode="scaleToFill" id="sXF-2O-y5Y">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kIm-N7-Iwr" userLabel="View1">
-                                <rect key="frame" x="0.0" y="442" width="428" height="450"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIm-N7-Iwr" userLabel="View1">
+                                <rect key="frame" x="0.0" y="391" width="428" height="501"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9r-Su-rgt" userLabel="View2">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="50"/>
@@ -9763,11 +9763,8 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="OwG-t4-FRT">
-                                        <rect key="frame" x="0.0" y="50" width="428" height="400"/>
+                                        <rect key="frame" x="0.0" y="50" width="428" height="451"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="400" id="Tt4-nT-dZL"/>
-                                        </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DisplaysMapDetailCell" id="OyZ-Lg-mQP" customClass="DisplaysMapDetailCell" customModule="BurbankApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="428" height="90.333335876464844"/>
@@ -9927,7 +9924,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                                     </subviews>
                                                                 </stackView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UX5-uC-mLj">
-                                                                    <rect key="frame" x="388" y="35" width="20" height="20"/>
+                                                                    <rect key="frame" x="388" y="35" width="20" height="20.000000000000007"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="20" id="GEJ-pK-sec"/>
                                                                         <constraint firstAttribute="height" constant="20" id="yed-zu-VhU"/>
@@ -9995,7 +9992,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                                     <rect key="frame" x="9.9999999999999929" y="10" width="111.33333333333331" height="74.666666666666671"/>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GxV-AN-mxp">
-                                                                    <rect key="frame" x="328" y="64.666666666666671" width="90" height="20"/>
+                                                                    <rect key="frame" x="328" y="64.666666666666671" width="90" height="19.999999999999986"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLn-ll-jx6">
                                                                             <rect key="frame" x="0.0" y="0.0" width="26.666666666666668" height="20"/>
@@ -10288,15 +10285,100 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                             <outlet property="delegate" destination="scJ-pP-pp8" id="Brr-Vb-baz"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ak-Bc-ajW" userLabel="View1">
+                                        <rect key="frame" x="0.0" y="501" width="428" height="0.0"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g25-kz-jZQ">
+                                                <rect key="frame" x="10" y="9.9999999999999964" width="408" height="63.666666666666657"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvj-v1-wuz">
+                                                        <rect key="frame" x="10" y="10" width="388" height="43.666666666666664"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="43.5" id="05I-US-7S8"/>
+                                                        </constraints>
+                                                        <string key="text">TRADING HOURS
+Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" name="GreyTextFont_3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <constraints>
+                                                    <constraint firstItem="rvj-v1-wuz" firstAttribute="top" secondItem="g25-kz-jZQ" secondAttribute="top" constant="10" id="DkJ-ie-g53"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rvj-v1-wuz" secondAttribute="bottom" constant="10" id="Tn1-R4-KXd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rvj-v1-wuz" secondAttribute="trailing" constant="10" id="WT1-4D-xax"/>
+                                                    <constraint firstItem="rvj-v1-wuz" firstAttribute="leading" secondItem="g25-kz-jZQ" secondAttribute="leading" constant="10" id="oTV-fr-A4y"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cwG-0P-KJr">
+                                                <rect key="frame" x="20" y="83.666666666666629" width="388" height="35"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAs-1x-1b0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="116" height="35"/>
+                                                        <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="116" id="Jtz-Gd-9S8"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                                        <state key="normal" title="   GET DIRECTIONS   ">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4l-Ou-n9B">
+                                                        <rect key="frame" x="126" y="0.0" width="262" height="35"/>
+                                                        <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                                        <state key="normal" title="BOOK AN APPOINTMENT">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="MGh-FD-XXT"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="cwG-0P-KJr" firstAttribute="leading" secondItem="7ak-Bc-ajW" secondAttribute="leading" constant="20" id="BXW-Xd-zbw"/>
+                                            <constraint firstItem="cwG-0P-KJr" firstAttribute="top" secondItem="g25-kz-jZQ" secondAttribute="bottom" constant="10" id="C6Y-ja-2hz"/>
+                                            <constraint firstItem="g25-kz-jZQ" firstAttribute="top" secondItem="7ak-Bc-ajW" secondAttribute="top" constant="10" id="HIN-jM-wS7"/>
+                                            <constraint firstAttribute="bottom" secondItem="cwG-0P-KJr" secondAttribute="bottom" constant="10" id="Im3-M9-7c1"/>
+                                            <constraint firstItem="g25-kz-jZQ" firstAttribute="leading" secondItem="7ak-Bc-ajW" secondAttribute="leading" constant="10" id="MzW-BE-Vdb"/>
+                                            <constraint firstAttribute="trailing" secondItem="cwG-0P-KJr" secondAttribute="trailing" constant="20" id="SAw-KZ-hfq"/>
+                                            <constraint firstAttribute="trailing" secondItem="g25-kz-jZQ" secondAttribute="trailing" constant="10" id="UmR-7T-229"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="OwG-t4-FRT" secondAttribute="bottom" id="2ic-ir-AfS"/>
+                                    <constraint firstItem="7ak-Bc-ajW" firstAttribute="leading" secondItem="OwG-t4-FRT" secondAttribute="leading" id="E3V-r3-HAq"/>
                                     <constraint firstItem="t9r-Su-rgt" firstAttribute="leading" secondItem="kIm-N7-Iwr" secondAttribute="leading" id="FmP-EK-NIX"/>
                                     <constraint firstItem="OwG-t4-FRT" firstAttribute="leading" secondItem="kIm-N7-Iwr" secondAttribute="leading" id="Pfr-ld-MhX"/>
+                                    <constraint firstItem="7ak-Bc-ajW" firstAttribute="top" secondItem="OwG-t4-FRT" secondAttribute="bottom" id="YGG-82-zfn"/>
                                     <constraint firstAttribute="trailing" secondItem="t9r-Su-rgt" secondAttribute="trailing" id="YTg-vW-5jq"/>
                                     <constraint firstItem="t9r-Su-rgt" firstAttribute="bottom" secondItem="OwG-t4-FRT" secondAttribute="top" id="ikN-Mh-CHH"/>
+                                    <constraint firstAttribute="bottom" secondItem="7ak-Bc-ajW" secondAttribute="bottom" id="kAi-bV-QuB"/>
                                     <constraint firstAttribute="top" secondItem="t9r-Su-rgt" secondAttribute="top" id="lXj-Wh-DCb"/>
+                                    <constraint firstItem="7ak-Bc-ajW" firstAttribute="trailing" secondItem="OwG-t4-FRT" secondAttribute="trailing" id="m3s-sJ-2nJ"/>
                                     <constraint firstAttribute="trailing" secondItem="OwG-t4-FRT" secondAttribute="trailing" id="tEV-Ol-DvD"/>
                                 </constraints>
                             </view>
@@ -10304,10 +10386,10 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                         <viewLayoutGuide key="safeArea" id="onC-Cx-5Vq"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kIm-N7-Iwr" firstAttribute="height" secondItem="sXF-2O-y5Y" secondAttribute="height" multiplier="0.485961" id="Dvp-lc-Es3"/>
                             <constraint firstItem="onC-Cx-5Vq" firstAttribute="bottom" secondItem="kIm-N7-Iwr" secondAttribute="bottom" id="Xcp-bi-5FV"/>
                             <constraint firstItem="kIm-N7-Iwr" firstAttribute="trailing" secondItem="onC-Cx-5Vq" secondAttribute="trailing" id="bLU-y9-A9S"/>
                             <constraint firstItem="kIm-N7-Iwr" firstAttribute="leading" secondItem="onC-Cx-5Vq" secondAttribute="leading" id="bp8-wl-ihd"/>
+                            <constraint firstItem="kIm-N7-Iwr" firstAttribute="top" secondItem="onC-Cx-5Vq" secondAttribute="top" constant="344" id="vas-EJ-uTT"/>
                         </constraints>
                     </view>
                     <connections>
@@ -10315,7 +10397,6 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                         <outlet property="estateNameLBL" destination="gWG-GA-o52" id="S22-fh-PpO"/>
                         <outlet property="suburbNameLBL" destination="d8T-FH-ShY" id="3b2-8F-kxZ"/>
                         <outlet property="tableView" destination="OwG-t4-FRT" id="vW2-9R-Yq4"/>
-                        <outlet property="tableViewHeight" destination="Tt4-nT-dZL" id="mND-aM-VGN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWO-2E-8QH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

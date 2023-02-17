@@ -51,6 +51,57 @@ class DisplaysRegionsMapDetailVC: UIViewController {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
         
+//        if screenFromHomeDesigns{
+//            fillDetailsFromDesignScreen()
+//            self.titleNameLBL.text = "POPULAR HOME DESIGNS"
+//        }else{
+//            self.titleNameLBL.text = selectedRegionForMaps.uppercased()
+//            NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"Choose a display from the \(selectedRegionForMaps)."])
+//            self.displayDetailsCard.isHidden = true
+//            print(selectedRegionForMaps)
+//            DashboardDataManagement.shared.getDisplaysForRegionAndMap(stateId: kUserState, regionName: selectedRegionForMaps, popularFlag: true, userId: kUserID, showActivity: true) { (nearbyPlaces) in
+//                print(nearbyPlaces!)
+//                for package : NSDictionary  in nearbyPlaces! {
+//
+//                    let suggestedData = DisplayHomeModel(package as! [String : Any])
+//                    if let region = suggestedData.regionName {
+//                        print(log: region.lowercased())
+//                        self.arrDisplayHomes.append(suggestedData)
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.mapView.delegate = self
+//                        self.mapView.setMapPosition(with: suggestedData, zoomlevel: 10.0)
+//                        let markars = self.mapView.addMarkersTONearByPlaces (nearByPlaces: self.arrDisplayHomes)
+//
+//                         var bounds = GMSCoordinateBounds()
+//                             for marker in markars {
+//                                 bounds = bounds.includingCoordinate(marker.position)
+//                             }
+//                         self.mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 50.0 , left: 50.0 ,bottom: 50.0 ,right: 50.0)))
+//                    }
+//                }
+//            }
+//        }
+       
+        
+        mapView.addZoomLevelButtons ()
+        mapView.isMyLocationEnabled = true
+
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
+        displayDetailsCard.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
+        
+    }
+    func updatedNotification(notification:Notification) -> Void  {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @objc func handleGestureRecognizer (recognizer: UIGestureRecognizer) {
+        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+    }
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if screenFromHomeDesigns{
             fillDetailsFromDesignScreen()
             self.titleNameLBL.text = "POPULAR HOME DESIGNS"
@@ -82,37 +133,7 @@ class DisplaysRegionsMapDetailVC: UIViewController {
                 }
             }
         }
-       
         
-        mapView.addZoomLevelButtons ()
-        mapView.isMyLocationEnabled = true
-
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
-        displayDetailsCard.addGestureRecognizer(tap)
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
-        
-    }
-    func updatedNotification(notification:Notification) -> Void  {
-        self.navigationController?.popViewController(animated: true)
-    }
-    @objc func handleGestureRecognizer (recognizer: UIGestureRecognizer) {
-        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
-    }
-  
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-//        displayDetailsCard.isHidden = true
-        //fillDetailsFromDesignScreen()
-//        if selectedRegionForMaps.count > 0
-//        {
-//            if let displays = self.parent?.parent as? DisplaysVC
-//            {
-//                displays.addBreadCrumb(from: "Choose a display from the \(selectedRegionForMaps)")
-//            }
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

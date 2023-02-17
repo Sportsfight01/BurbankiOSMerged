@@ -48,6 +48,10 @@ class DisplaysDesignsVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"Are you looking for a specific design?"])
+    }
     // MARK: - Handiling notification Centre
     func updatedNotificationForLocartion(notification:Notification) -> Void  {
         guard let location = notification.userInfo!["loc"] else { return }

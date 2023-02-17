@@ -204,9 +204,9 @@ class SignInVC: UIViewController {
         
         setAppearanceFor(view: labelNoteHeading, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_SUB_HEADING(size: 30))
 
-        setAppearanceFor(view: labelNote, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: labelNote, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_14))
 
-        setAppearanceFor(view: labelNoteAlert, backgroundColor: COLOR_CLEAR, textColor: AppColors.black, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: labelNoteAlert, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_14))
 
         labelNoteAlert.addCharacterSpacing(kernValue: -0.3)
         

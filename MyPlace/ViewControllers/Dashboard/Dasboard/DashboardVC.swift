@@ -32,7 +32,7 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.lightGray, .font: FONT_LABEL_BODY(size: FONT_9)], for: .normal)
                 
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
         //UITabBarItem.appearance().imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         if let items = self.tabBar.items {
 
