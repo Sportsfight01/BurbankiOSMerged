@@ -31,14 +31,28 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.appOrange, .font: FONT_LABEL_HEADING(size: FONT_9)], for: .selected)
         
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.lightGray, .font: FONT_LABEL_BODY(size: FONT_9)], for: .normal)
+      //  print(hasTopNotch)
+    
                 
-//        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//        if UIDevice.current.hasNotch == false {
+//            UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//        }
         //UITabBarItem.appearance().imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         if let items = self.tabBar.items {
 
             for item: UITabBarItem in items {
-
-                item.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+                if item.title?.lowercased() == "favourites"
+                {
+                    if #available(iOS 13.0, *) {
+                        item.image = UIImage(systemName: "heart")?.withBaselineOffset(fromBottom: 5)
+                    } else {
+                        // Fallback on earlier versions
+                        item.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+                    }
+                    
+                }else {
+                    item.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+                }
             }
         }
         
@@ -47,11 +61,11 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if defaultTabBarHeight < 60 {
-            let newTabBarHeight = CGFloat(60)
-            tabBar.frame.size.height = newTabBarHeight
-            tabBar.frame.origin.y = self.view.frame.size.height - newTabBarHeight
-        }
+//        if UIDevice.current.hasNotch == false {
+//            let newTabBarHeight = CGFloat(60)
+//            tabBar.frame.size.height = newTabBarHeight
+//            tabBar.frame.origin.y = self.view.frame.size.height - newTabBarHeight
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -117,3 +131,14 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
     
 }
 
+extension UIDevice {
+    /// Returns `true` if the device has a notch
+    var hasNotch: Bool {
+        guard #available(iOS 11.0, *), let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
+        if UIDevice.current.orientation.isPortrait {
+            return window.safeAreaInsets.top >= 44
+        } else {
+            return window.safeAreaInsets.left > 0 || window.safeAreaInsets.right > 0
+        }
+    }
+}
