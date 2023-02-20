@@ -116,7 +116,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
       
       if isFromFavorites{
         headerLogoText = "DisplayHomes"
-        backBtnView.isHidden = true
+        //backBtnView.isHidden = true
         isFromProfile = true
           navTopConstraint.constant = 120
       self.addBreadCrumb(from: "Book an appointment")
