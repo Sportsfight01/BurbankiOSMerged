@@ -81,6 +81,8 @@ class HomeLandVCSurvey: HeaderVC {
     var arrRegions: [RegionMyPlace]?
     
     
+    var totalMaxPrice = 1.0
+    var totalMinPrice = 0.0
 //    var selectedRegion: RegionMyPlace = RegionMyPlace.init()
 //    var previousRegion: RegionMyPlace?
     
@@ -857,6 +859,7 @@ class HomeLandVCSurvey: HeaderVC {
             
             if viewTag > 101 {
                 viewTag = viewTag - 1
+                
             }else {
                 
             }
@@ -879,6 +882,11 @@ class HomeLandVCSurvey: HeaderVC {
                 self.filter.priceRange = filterNew.priceRange
             }
 
+            if self.totalMaxPrice <= 1.0{
+                self.totalMaxPrice  = self.filter.priceRange.priceEnd
+                self.totalMinPrice = self.filter.priceRange.priceStart
+            }
+            
             self.packagesCount = filterNew.priceRange.totalCount
             
             if self.filter.priceRange.totalCount !=  self.filter.priceRange.priceRangeCounts.reduce (0, +) {
@@ -889,7 +897,8 @@ class HomeLandVCSurvey: HeaderVC {
             
             self.priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
             self.priceRangeVC?.priceListArr = self.filter.priceRange.priceRangeList
-            
+            self.priceRangeVC?.totMaxValue  = self.totalMaxPrice
+            self.priceRangeVC?.totMinValue = self.totalMinPrice
             print(self.filter.priceRange.priceRangeList)
             print(self.priceRangeVC?.priceListArr)
             

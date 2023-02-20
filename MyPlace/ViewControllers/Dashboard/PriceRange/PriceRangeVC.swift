@@ -16,7 +16,9 @@ class PriceRangeVC: UIViewController {
     @IBOutlet weak var lBrange: UILabel!
     @IBOutlet weak var barGraph: UICollectionView!
     
+    @IBOutlet weak var totalminValueLBL: UILabel!
     
+    @IBOutlet weak var totalMaxvalueLBL: UILabel!
     var rangeslider = RangeSlider()
     
     
@@ -29,6 +31,9 @@ class PriceRangeVC: UIViewController {
     
     var Spacing: CGFloat = 5.0
     var selectedBarValue = 0
+    
+    var totMinValue = 0.0
+    var totMaxValue = 1.0
     
     var selectedMinValue = 0.0
     var selectedMaxValue = 0.0
@@ -80,11 +85,23 @@ class PriceRangeVC: UIViewController {
         
         rangeslider.addTarget(self, action: #selector(handleValueChanged), for: .valueChanged)
         
+        
+        print(log: self.rangeslider.lowerValue)
+        print(log: self.rangeslider.upperValue)
+        print(log: self.rangeslider.maximumValue)
+        print(log: self.rangeslider.minimumValue)
+        
     }
     
     func updateRangeSlider () {
         
         rangeslider.frame = rangesliderView.bounds
+        print(log: self.rangeslider.lowerValue)
+        print(log: self.rangeslider.upperValue)
+        print(log: self.rangeslider.maximumValue)
+        print(log: self.rangeslider.minimumValue)
+        
+        
         barGraph.reloadData()
         
     }
@@ -92,18 +109,22 @@ class PriceRangeVC: UIViewController {
     
     
     //MARK: - RangeSlider Action
-    
+
     @objc func handleValueChanged () {
         
         let upperValue = "\(rangeslider.upperValue)"
         let lowerValue = "\(rangeslider.lowerValue)"
-        
         let upValue = (rangeslider.upperValue*1000).kmFormatted
         let lowValue = (rangeslider.lowerValue*1000).kmFormatted
         print("$\(lowValue ?? "") to $\(upValue ?? "")")
         
         lBrange.text = "$\(lowValue ?? "") to $\(upValue ?? "")"
         
+        
+        print(log: self.rangeslider.lowerValue)
+        print(log: self.rangeslider.upperValue)
+        print(log: self.rangeslider.maximumValue)
+        print(log: self.rangeslider.minimumValue)
         
         if let sendUpdates = updatedPriceRangeValues {
             sendUpdates ()
@@ -142,9 +163,12 @@ class PriceRangeVC: UIViewController {
     }
     
     func setDefaultSliderValues (_ priceRange: PriceRange) {
+            rangeslider.maximumValue = totMaxValue
+            rangeslider.minimumValue = totMinValue
+        self.totalMaxvalueLBL.text = "$\((totMaxValue * 1000).kmFormatted)"
+        self.totalminValueLBL.text = "$\((totMinValue * 1000).kmFormatted)"
         
-        rangeslider.maximumValue = priceRange.priceEnd
-        rangeslider.minimumValue = priceRange.priceStart
+        
         
     }
     
@@ -152,7 +176,6 @@ class PriceRangeVC: UIViewController {
         
         rangeslider.upperValue = priceRange.priceEnd
         rangeslider.lowerValue = priceRange.priceStart
-        
         let upValue = (priceRange.priceEnd*1000).kmFormatted
         let lowValue = (priceRange.priceStart*1000).kmFormatted
         print("$\(lowValue ) to $\(upValue )")
@@ -211,7 +234,7 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.lBBG.backgroundColor = APPCOLORS_3.Orange_BG.withAlphaComponent(CGFloat(bars_alpha[indexPath.row]))
         print(indexPath.row)
         //        Double(exactly: (dict.value(forKey: "MinPrice") ?? 0) as! NSNumber)!
-//                guard indexPath.row < priceListArr.count else {return}
+                guard indexPath.row < priceListArr.count else {return}
 //                if Int(exactly: self.priceListArr[indexPath.item].value(forKey: "Price") as! NSNumber)  == bars[indexPath.row]{
 //                var priceMIN: Double = 0
 //                var priceMAX: Double = 1
@@ -257,9 +280,9 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if priceMAX > 1000 {
             priceMAX = Double(Int(priceMAX/1000))
         }
-//        rangeslider.upperValue = priceMAX
-//        //            print(rangeslider.upperValue)
-//                    rangeslider.lowerValue = priceMIN
+        rangeslider.upperValue = priceMAX
+        print(rangeslider.upperValue)
+                    rangeslider.lowerValue = priceMIN
          let lowValue = (priceMIN*1000).kmFormatted
          let maxValue = (priceMAX*1000).kmFormatted
         

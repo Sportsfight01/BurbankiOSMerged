@@ -709,10 +709,13 @@ extension HeaderVC {
             self.sortFilterView.updatePriceRangeView ()
             
         }) { (completed) in
-            
+            self.sortFilterView.priceRangeVC?.totMaxValue = self.filter.priceRange.priceEnd
+            self.sortFilterView.priceRangeVC?.totMinValue = self.filter.priceRange.priceStart
             self.sortFilterView.updatePriceRangeView ()
             
             self.sortFilterView.priceRangeVC?.updateRangeSliderValues(with: self.filter)
+           
+            
             
             self.sortFilterView.updateFilterValues ()
         }
