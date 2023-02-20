@@ -55,9 +55,6 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
                 }
             }
         }
-        
-        
-        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

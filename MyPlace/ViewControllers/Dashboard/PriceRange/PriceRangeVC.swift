@@ -30,6 +30,9 @@ class PriceRangeVC: UIViewController {
     var Spacing: CGFloat = 5.0
     var selectedBarValue = 0
     
+    var selectedMinValue = 0.0
+    var selectedMaxValue = 0.0
+    
     lazy var width_cell: CGFloat = {
         return (self.barGraph.frame.size.width - (CGFloat(bars.count) - 1)*Spacing)/CGFloat(bars.count)
     }()
@@ -72,6 +75,8 @@ class PriceRangeVC: UIViewController {
         rangeslider.trackHighlightTintColor = APPCOLORS_3.GreyTextFont
         
         rangeslider.trackTintColor = APPCOLORS_3.LightGreyDisabled_BG
+//        rangeslider.upperValue = 20000.0
+//        rangeslider.lowerValue = 10.0
         
         rangeslider.addTarget(self, action: #selector(handleValueChanged), for: .valueChanged)
         
@@ -205,45 +210,69 @@ extension PriceRangeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         let cell = collectionView.cellForItem(at: indexPath) as! BarGraphCell
         cell.lBBG.backgroundColor = APPCOLORS_3.Orange_BG.withAlphaComponent(CGFloat(bars_alpha[indexPath.row]))
         print(indexPath.row)
-//        Double(exactly: (dict.value(forKey: "MinPrice") ?? 0) as! NSNumber)!
-        guard indexPath.row < priceListArr.count else {return}
-        if Int(exactly: self.priceListArr[indexPath.item].value(forKey: "Price") as! NSNumber)  == bars[indexPath.row]{
+        //        Double(exactly: (dict.value(forKey: "MinPrice") ?? 0) as! NSNumber)!
+//                guard indexPath.row < priceListArr.count else {return}
+//                if Int(exactly: self.priceListArr[indexPath.item].value(forKey: "Price") as! NSNumber)  == bars[indexPath.row]{
+//                var priceMIN: Double = 0
+//                var priceMAX: Double = 1
+//                priceMIN =  Double(exactly: (self.priceListArr[indexPath.item].value(forKey: "MinPrice") ?? 0) as! NSNumber)!
+//        //            Double(self.priceListArr[indexPath.item].value(forKey: "MinPrice") as! String) ?? 0.0
+//                priceMAX = Double(exactly: (self.priceListArr[indexPath.item].value(forKey: "MaxPrice") ?? 0) as! NSNumber)!
+//                 //   priceMAX = priceMAX  + 1000
+//                    if priceMIN > 1000 {
+//                        priceMIN = Double(Int(priceMIN/1000))
+//                    }
+//                    if priceMAX > 1000 {
+//                        priceMAX = Double(Int(priceMAX/1000))
+//                    }
+//                 //   print(priceMAX)
+//        //            print(priceMIN)
+//                    rangeslider.upperValue = priceMAX
+//                    print(rangeslider.upperValue)
+//                    rangeslider.lowerValue = priceMIN
+//
+//                    let upperValue = "\(rangeslider.upperValue)"
+//                    let lowerValue = "\(rangeslider.lowerValue)"
+//
+//                    let upValue = (rangeslider.upperValue*1000).kmFormatted
+//                    let lowValue = (rangeslider.lowerValue*1000).kmFormatted
+//                    print("$\(lowValue ?? "") to $\(upValue ?? "")")
+//
+//
+//                    lBrange.text = "$\(lowValue ?? "") to $\(upValue ?? "")"
+//                    self.selectedBarValue = bars[indexPath.row]
+//                    if let sendUpdates = tapedOnBarPriceRangeValues {
+//                        sendUpdates ()
+//                    }
+//
+//                }
+        
         var priceMIN: Double = 0
         var priceMAX: Double = 1
         priceMIN =  Double(exactly: (self.priceListArr[indexPath.item].value(forKey: "MinPrice") ?? 0) as! NSNumber)!
-//            Double(self.priceListArr[indexPath.item].value(forKey: "MinPrice") as! String) ?? 0.0
         priceMAX = Double(exactly: (self.priceListArr[indexPath.item].value(forKey: "MaxPrice") ?? 0) as! NSNumber)!
-         //   priceMAX = priceMAX  + 1000
-            if priceMIN > 1000 {
-                priceMIN = Double(Int(priceMIN/1000))
-            }
-            if priceMAX > 1000 {
-                priceMAX = Double(Int(priceMAX/1000))
-            }
-         //   print(priceMAX)
-//            print(priceMIN)
-            rangeslider.upperValue = priceMAX
-            print(rangeslider.upperValue)
-            rangeslider.lowerValue = priceMIN
-            
-            let upperValue = "\(rangeslider.upperValue)"
-            let lowerValue = "\(rangeslider.lowerValue)"
-            
-            let upValue = (rangeslider.upperValue*1000).kmFormatted
-            let lowValue = (rangeslider.lowerValue*1000).kmFormatted
-            print("$\(lowValue ?? "") to $\(upValue ?? "")")
-            
-            
-            lBrange.text = "$\(lowValue ?? "") to $\(upValue ?? "")"
-            self.selectedBarValue = bars[indexPath.row]
-            if let sendUpdates = tapedOnBarPriceRangeValues {
-                sendUpdates ()
-            }
-            
+        if priceMIN > 1000 {
+            priceMIN = Double(Int(priceMIN/1000))
         }
+        if priceMAX > 1000 {
+            priceMAX = Double(Int(priceMAX/1000))
+        }
+//        rangeslider.upperValue = priceMAX
+//        //            print(rangeslider.upperValue)
+//                    rangeslider.lowerValue = priceMIN
+         let lowValue = (priceMIN*1000).kmFormatted
+         let maxValue = (priceMAX*1000).kmFormatted
         
+        selectedMinValue = priceMIN
+        selectedMaxValue = priceMAX
         
+        //            print("$\(lowValue ?? "") to $\(upValue ?? "")")
+        lBrange.text = "$\(lowValue) to $\(maxValue)"
         
+        self.selectedBarValue = bars[indexPath.row]
+        if let sendUpdates = tapedOnBarPriceRangeValues {
+            sendUpdates ()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

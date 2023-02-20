@@ -234,8 +234,8 @@ class HomeLandVCSurvey: HeaderVC {
             
                 if self.viewTag == 102 {
 
-                    self.filter.priceRange.priceStart = (self.priceRangeVC?.rangeslider.lowerValue)!
-                    self.filter.priceRange.priceEnd = (self.priceRangeVC?.rangeslider.upperValue)!
+                    self.filter.priceRange.priceStart = (self.priceRangeVC?.selectedMinValue)!
+                    self.filter.priceRange.priceEnd = (self.priceRangeVC?.selectedMaxValue)!
                     
                     self.myPlaceQuiz.priceRangeLow = "$\(self.filter.priceRange.priceStartStringValue)K"
                     self.myPlaceQuiz.priceRangeHigh = "$\(self.filter.priceRange.priceEndStringValue)K"
@@ -725,14 +725,16 @@ class HomeLandVCSurvey: HeaderVC {
            // btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
             if btnNext.isUserInteractionEnabled == true { }
-            else { return }
+            else { //return
+            }
         }else {
             
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_newQuiz_previous_button_touch)
             //btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
            // btnPrevious.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             if btnPrevious.isUserInteractionEnabled == true { }
-            else { return }
+            else { //return
+            }
         }
         
         
@@ -1390,6 +1392,7 @@ extension HomeLandVCSurvey {
             
             self.filter.priceRange.priceRangeCounts = filterNew.priceRange.priceRangeCounts
             self.filter.priceRange.totalCount = filterNew.priceRange.totalCount
+            self.filter.priceRange.priceRangeList = filterNew.priceRange.priceRangeList
             
             self.packagesCount = filterNew.priceRange.totalCount
             self.btnNext.backgroundColor = self.packagesCount == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
@@ -1401,12 +1404,12 @@ extension HomeLandVCSurvey {
             
             
             self.priceRangeVC?.bars = self.filter.priceRange.priceRangeCounts
-            self.priceRangeVC?.priceListArr =  filterNew.priceRange.priceRangeList
+            self.priceRangeVC?.priceListArr =  self.filter.priceRange.priceRangeList
 
             print(self.filter.priceRange.priceRangeList)
             print(self.priceRangeVC?.priceListArr)
             
-            self.priceRangeVC?.updateRangeSliderValues(with: filterNew)
+            self.priceRangeVC?.updateRangeSliderValues(with: self.filter)
            // self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
             //self.btnNext.isUserInteractionEnabled =  true
             
