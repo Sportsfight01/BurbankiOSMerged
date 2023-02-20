@@ -68,7 +68,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
         lotViewSetUp()
         lotTF.text?.removeAll()
         if sender.tag == 111{ //i don't have land
-            iDontHaveBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            iDontHaveBTN.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             iDintHaveLandIMG.image = UIImage(named: "Ico-FaqWhite")
             iDontHaveLandLBL.textColor = APPCOLORS_3.HeaderFooter_white_BG
             homeDesignFeature?.selectedAnswer = "NOT SURE"
@@ -78,7 +78,7 @@ class HavingLotVC: HomeDesignModalHeaderVC,UITextFieldDelegate {
                 selection (self)
             }
         }else{ // I have land
-            iHaveLandBTN.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            iHaveLandBTN.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             //print(self.parent)
             if let parent = self.parent as? MyCollectionSurveyVC
             {

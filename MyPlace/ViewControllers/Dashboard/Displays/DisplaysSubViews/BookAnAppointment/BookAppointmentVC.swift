@@ -417,7 +417,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         arrOfTimeBtns.forEach { btn in
             if btn == sender
             {
-                sender.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+                sender.backgroundColor = APPCOLORS_3.Orange_BG
                 sender.setTitleColor(.white, for: .normal)
             }
             else {

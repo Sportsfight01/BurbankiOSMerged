@@ -70,15 +70,15 @@ class MasterBedroomVC: HomeDesignModalHeaderVC {
         
         if homeDesignFeature?.selectedAnswer == DesignAnswer.must.rawValue {
             
-            setAppearanceFor(view: bedroomFront_btnMust, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: bedroomFront_btnMust, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         else if homeDesignFeature?.selectedAnswer == DesignAnswer.donotwantthis.rawValue {
 
-            setAppearanceFor(view: bedroomFront_btnDont_want_this, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: bedroomFront_btnDont_want_this, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         else {
             
-            setAppearanceFor(view: bedroomFront_btnDont, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+            setAppearanceFor(view: bedroomFront_btnDont, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         }
         
     }

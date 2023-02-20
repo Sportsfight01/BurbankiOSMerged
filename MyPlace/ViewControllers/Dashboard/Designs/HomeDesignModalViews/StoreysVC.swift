@@ -249,7 +249,7 @@ class StoreysCell: UICollectionViewCell {
         
         if selectedStorey == true {
             labelStorey.textColor = APPCOLORS_3.HeaderFooter_white_BG
-            labelStorey.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            labelStorey.superview?.backgroundColor = APPCOLORS_3.Orange_BG
         }else {
             
                 iconStorey.image?.withRenderingMode(.alwaysTemplate)

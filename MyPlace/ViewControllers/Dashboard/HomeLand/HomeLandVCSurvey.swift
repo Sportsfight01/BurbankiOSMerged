@@ -979,19 +979,19 @@ class HomeLandVCSurvey: HeaderVC {
         
         if self.filter.storeysCount == .one {
             
-            storeys_btnSingle.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            storeys_btnSingle.superview?.backgroundColor = APPCOLORS_3.Orange_BG
            /// storeys_iconSingle.image = UIImage(named: "Ico-SingeWhite")
             storeys_iconSingle.tintColor = APPCOLORS_3.HeaderFooter_white_BG
             storeys_lBSingle.textColor = APPCOLORS_3.HeaderFooter_white_BG
         }else if self.filter.storeysCount == .two {
             
-            storeys_btnDouble.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            storeys_btnDouble.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             //storeys_iconDouble.image = UIImage(named: "Ico-DoubleWhite")
             storeys_iconDouble.tintColor = APPCOLORS_3.HeaderFooter_white_BG
             storeys_lBDouble.textColor = APPCOLORS_3.HeaderFooter_white_BG
         }else if self.filter.storeysCount == .ALL {
 
-            storeys_btnNotSure.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            storeys_btnNotSure.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             //storeys_iconNotSure.image = UIImage(named: "Ico-FaqWhite")
             storeys_iconNotSure.tintColor = APPCOLORS_3.HeaderFooter_white_BG
             storeys_lBNotSure.textColor = APPCOLORS_3.HeaderFooter_white_BG
@@ -1005,20 +1005,20 @@ class HomeLandVCSurvey: HeaderVC {
         
         if self.filter.bedRoomsCount == .three {
             
-            bedrooms_btn3Bedrooms.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            bedrooms_btn3Bedrooms.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             _ = setAttributetitleFor(view: bedrooms_btn3Bedrooms, title: "3\nBEDROOMS", rangeStrings: ["3","BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
             
         }else if self.filter.bedRoomsCount == .four {
             
-            bedrooms_btn4Bedrooms.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            bedrooms_btn4Bedrooms.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             _ = setAttributetitleFor(view: bedrooms_btn4Bedrooms, title: "4\nBEDROOMS", rangeStrings: ["4","BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
 
         }else if self.filter.bedRoomsCount == .five {
             
-            bedrooms_btn5Bedrooms.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            bedrooms_btn5Bedrooms.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             _ = setAttributetitleFor(view: bedrooms_btn5Bedrooms, title: "5+\nBEDROOMS", rangeStrings: ["5+","BEDROOMS"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_23), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         }else if self.filter.bedRoomsCount == .ALL{
-            bedrooms_btnNotSure.superview?.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            bedrooms_btnNotSure.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             _ = setAttributetitleFor(view: bedrooms_btnNotSure, title: "?\nNot Sure", rangeStrings: ["?","Not Sure"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_LIGHT(size: FONT_40), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
         }
 
@@ -1228,7 +1228,7 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
         
         if region.isSelected{
             cell.titleLabel.textColor = APPCOLORS_3.HeaderFooter_white_BG
-            cell.titleLabel.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+            cell.titleLabel.backgroundColor = APPCOLORS_3.Orange_BG
         }else{
             cell.titleLabel.textColor = APPCOLORS_3.GreyTextFont
             cell.titleLabel.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
