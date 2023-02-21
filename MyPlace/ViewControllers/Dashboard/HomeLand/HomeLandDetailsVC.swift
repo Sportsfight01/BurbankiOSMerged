@@ -230,10 +230,10 @@ class HomeLandDetailsVC: HeaderVC {
             ImageDownloader.downloadImage(withUrl: ServiceAPI.shared.URL_imageUrl(imageURL), withFilePath: nil, with: { (image, success, error) in
                 
                 self.activity.stopAnimating()
-                self.imageHouse.contentMode = .scaleToFill
+                self.imageHouse.contentMode = .scaleAspectFill
                 
                 if let img = image {
-                    self.imageHouse.image = processPixels(in: img)
+                    self.imageHouse.image = img
                 }else {
                     self.imageHouse.image = UIImage (named: "BG-Half")
                 }

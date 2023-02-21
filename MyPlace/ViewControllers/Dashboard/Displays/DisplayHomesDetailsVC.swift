@@ -13,7 +13,9 @@ import GoogleMaps
 class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
   @IBOutlet weak var navTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var headerConstraint: NSLayoutConstraint!
-  var isCameFromFavorites : Bool = false
+    
+    @IBOutlet weak var facadeViewHeightConstraint: NSLayoutConstraint!
+    var isCameFromFavorites : Bool = false
     @IBOutlet weak var backBTN: UIButton!
     @IBOutlet weak var backIconBtn: UIButton!
     
@@ -60,7 +62,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
     @IBOutlet weak var lBFacadeName : UILabel!
 //    @IBOutlet weak var btnSaveDesign : UIButton!
 
-    @IBOutlet weak var facadeIMGHeight: NSLayoutConstraint!
+   // @IBOutlet weak var facadeIMGHeight: NSLayoutConstraint!
     
     @IBOutlet weak var lBOnDisplay : UILabel!
     
@@ -153,7 +155,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
             self.backBTN.superview?.superview?.isHidden = true
             let displyBrdStr = "\(displayHomes?.houseName ?? "") \(displayHomes?.houseSize ?? "")"
             self.addBreadCrumb(from: displyBrdStr)
-            self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.263)
+           // self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.263)
             if btnBack.isHidden {
                 showBackButton()
                 btnBack.addTarget(self, action: #selector(handleNavBackBtn), for: .touchUpInside)
@@ -162,7 +164,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
             //  headerLogoText = "Favorites"
         }else {
         headerConstraint.constant = 50
-          self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.45)
+         // self.facadeIMGHeight = facadeIMGHeight.changeMultiplier(facadeIMGHeight, multiplier: 0.45)
         navTopConstraint.constant = 0
         containerView?.isHidden = true
         headerView_header.isHidden = true
@@ -409,6 +411,8 @@ extension DisplayHomesDetailsVC{
                 }else {
                     imgOne.image = UIImage (named: "BG-Half")
                 }
+                let imageHeight = (image?.size.height)!/3
+                self.facadeViewHeightConstraint.constant = imageHeight
                 
             }) { (progress) in
                 

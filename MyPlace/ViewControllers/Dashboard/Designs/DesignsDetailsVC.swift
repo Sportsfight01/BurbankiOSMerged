@@ -10,6 +10,7 @@ import UIKit
 
 class DesignsDetailsVC: HeaderVC {
     
+    @IBOutlet weak var facadeViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var homeDetailView : UIView!
     @IBOutlet weak var plotView : UIView!
     @IBOutlet weak var enquireView : UIView!
@@ -391,20 +392,29 @@ class DesignsDetailsVC: HeaderVC {
             let imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: scrollViewWidth, height: scrollViewHeight))
             self.imageScrollView.addSubview(imgOne)
             
+//            imgOne.translatesAutoresizingMaskIntoConstraints = false
+//            imgOne.heightAnchor.constraint(equalTo: self.imageScrollView.heightAnchor).isActive = true
+//            imgOne.leadingAnchor.constraint(equalTo: imageScrollView.leadingAnchor, constant: xPos).isActive = true
+//            imgOne.widthAnchor.constraint(equalToConstant: scrollViewWidth).isActive = true
+//            imgOne.topAnchor.constraint(equalTo: imageScrollView.topAnchor).isActive = true
+//            imgOne.bottomAnchor.constraint(equalTo: imageScrollView.bottomAnchor).isActive = true
+
             imgOne.showActivityIndicator()
             
             ImageDownloader.downloadImage(withUrl: ServiceAPI.shared.URL_imageUrl(imageUrl), withFilePath: nil, with: { (image, success, error) in
                 
                 imgOne.hideActivityIndicator()
                 
-                imgOne.contentMode = .scaleToFill
-                
+                imgOne.contentMode = .scaleAspectFit
+              //  print("imageViewheight :- \(imgOne.bounds.height), imageHeight : \((image?.size.height)!/3)")
+               
                 if let img = image {
                     imgOne.image = img
                 }else {
                     imgOne.image = UIImage (named: "BG-Half")
                 }
-                
+                let imageHeight = (image?.size.height)!/3
+                self.facadeViewHeightConstraint.constant = imageHeight
             }) { (progress) in
                 
             }
@@ -413,6 +423,7 @@ class DesignsDetailsVC: HeaderVC {
             xPos = xPos + scrollViewWidth
             
         }
+
         
         
         self.imageScrollView.contentSize = CGSize(width: scrollViewWidth * CGFloat (arrImageUrls.count), height: scrollViewHeight)
