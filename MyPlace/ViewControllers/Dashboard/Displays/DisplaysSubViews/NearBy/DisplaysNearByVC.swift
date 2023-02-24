@@ -472,14 +472,26 @@ extension DisplaysNearByVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     @IBAction func didTappedOnBookAppointments (_ sender: UIButton) {
-        let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
-        let bookAppintmentV = BookAppointmentVC()
-        bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
-        bookAppintmentV.estateName = self.estateNameLBL.text ??  ""
-        self.performSegue(withIdentifier: "BookAppointmentVC", sender: self)
+        if houseDetailsByHouseTypeArr.count > 0{
+            let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
+            let bookAppintmentV = BookAppointmentVC()
+            bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
+            bookAppintmentV.estateName = self.estateNameLBL.text ??  ""
+            self.performSegue(withIdentifier: "BookAppointmentVC", sender: self)
+            
+        }else{
+            showAlert(message: "Something went terribly wrong. Please come back later.")
+        }
+        
+       
     }
     
     @IBAction func didTappedOnGetDirections (_ sender: UIButton) {
+        guard houseDetailsByHouseTypeArr.count >= 0 else {
+           showAlert(message: "Something went terribly wrong. Please come back later.")
+           return
+         }
+        
         let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
         let bookAppintmentV = DirctionsVC()
         bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr

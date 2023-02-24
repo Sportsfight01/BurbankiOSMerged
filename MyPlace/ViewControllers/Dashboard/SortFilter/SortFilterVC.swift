@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 
 protocol SortFilterDelegate: NSObject {
@@ -104,11 +105,16 @@ class SortFilterVC: UIViewController {
             self.getPriceValues (after: 1)
         }
         
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
     }
     
     //MARK: - View
     
     func pageUISetUp () {
+        IQKeyboardManager.shared.toolbarTintColor = APPCOLORS_3.Orange_BG
+        
         //        FONT_LABEL_LIGHT
         setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         
@@ -492,6 +498,7 @@ extension SortFilterVC: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return self.titles[row]
     }
     

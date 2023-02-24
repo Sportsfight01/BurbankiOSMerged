@@ -404,15 +404,19 @@ extension DisplayHomesDetailsVC{
                 
                 imgOne.hideActivityIndicator()
                 
-                imgOne.contentMode = .scaleToFill
+                var imageHeight = (image?.size.height)!/3
+                if imageHeight > imgOne.frame.height{
+                    imgOne.contentMode = .scaleToFill
+                }else{
+                    imgOne.contentMode = .scaleAspectFit
+                }
                 
                 if let img = image {
                     imgOne.image = img
                 }else {
                     imgOne.image = UIImage (named: "BG-Half")
                 }
-                let imageHeight = (image?.size.height)!/3
-                self.facadeViewHeightConstraint.constant = imageHeight
+//                self.facadeViewHeightConstraint.constant = imageHeight
                 
             }) { (progress) in
                 

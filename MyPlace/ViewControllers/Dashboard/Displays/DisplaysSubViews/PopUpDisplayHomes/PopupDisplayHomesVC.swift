@@ -254,6 +254,11 @@ extension PopupDisplayHomesVC  {
     }
     
     @IBAction func didTappedOnGetDirections (_ sender: UIButton) {
+        guard houseDetailsByHouseTypeArr.count >= 0 else {
+           showAlert(message: "Something went terribly wrong. Please come back later.")
+           return
+         }
+        
         let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag]
         let bookAppintmentV = DirctionsVC()
         bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
@@ -275,10 +280,13 @@ extension PopupDisplayHomesVC  {
     }
 
     @IBAction func didTappedOnBookAppointments (_ sender: UIButton) {
-        let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag]
-        let bookAppintmentV = BookAppointmentVC()
-        bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
-        self.performSegue(withIdentifier: "BookAppointmentVC", sender: self)
+        if houseDetailsByHouseTypeArr.count > 0{
+            let bookAppintmentV = BookAppointmentVC()
+            bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
+            self.performSegue(withIdentifier: "BookAppointmentVC", sender: self)
+        }else{
+            showAlert(message: "Something went terribly wrong. Please come back later.")
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {

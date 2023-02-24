@@ -49,7 +49,7 @@ class DesignsDetailsVC: HeaderVC {
     
     
     @IBOutlet weak var facadeTop1: NSLayoutConstraint!
-    @IBOutlet weak var facadeTop2: NSLayoutConstraint!
+//    @IBOutlet weak var facadeTop2: NSLayoutConstraint!
     
     @IBOutlet weak var lBFacadeName : UILabel!
 //    @IBOutlet weak var btnSaveDesign : UIButton!
@@ -330,10 +330,10 @@ class DesignsDetailsVC: HeaderVC {
         
         if (enquireView.isHidden) {
             facadeTop1.isActive = true
-            facadeTop2.isActive = false
+//            facadeTop2.isActive = false
         }else {
             facadeTop1.isActive = false
-            facadeTop2.isActive = true
+//            facadeTop2.isActive = true
         }
         
         lBFacadeName.text = self.validFacadeNamesArray.first
@@ -369,8 +369,7 @@ class DesignsDetailsVC: HeaderVC {
         }
     }
     
-    
-    
+
     func bannerImageScroll(_ arrImageUrls: [String]) {
         
         self.imageScrollView.frame = CGRect(x:0, y:0, width:self.plotView.frame.width, height:self.plotView.frame.height)
@@ -391,7 +390,6 @@ class DesignsDetailsVC: HeaderVC {
             
             let imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: scrollViewWidth, height: scrollViewHeight))
             self.imageScrollView.addSubview(imgOne)
-            
 //            imgOne.translatesAutoresizingMaskIntoConstraints = false
 //            imgOne.heightAnchor.constraint(equalTo: self.imageScrollView.heightAnchor).isActive = true
 //            imgOne.leadingAnchor.constraint(equalTo: imageScrollView.leadingAnchor, constant: xPos).isActive = true
@@ -405,16 +403,19 @@ class DesignsDetailsVC: HeaderVC {
                 
                 imgOne.hideActivityIndicator()
                 
-                imgOne.contentMode = .scaleAspectFit
-              //  print("imageViewheight :- \(imgOne.bounds.height), imageHeight : \((image?.size.height)!/3)")
-               
+                var imageHeight = (image?.size.height)!/3
+                if imageHeight > imgOne.frame.height{
+                    imgOne.contentMode = .scaleToFill
+                }else{
+                    imgOne.contentMode = .scaleAspectFit
+                }
                 if let img = image {
                     imgOne.image = img
                 }else {
                     imgOne.image = UIImage (named: "BG-Half")
                 }
-                let imageHeight = (image?.size.height)!/3
-                self.facadeViewHeightConstraint.constant = imageHeight
+                
+//                self.facadeViewHeightConstraint.constant = imageHeight
             }) { (progress) in
                 
             }
@@ -435,7 +436,7 @@ class DesignsDetailsVC: HeaderVC {
             self.pageControl.currentPage = 0
         }
         
-        //Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
     }
     
     

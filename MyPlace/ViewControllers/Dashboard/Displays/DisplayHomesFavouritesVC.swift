@@ -570,6 +570,12 @@ func makeDisplayHomeFavorite (_ favorite: Bool, _ design: houseDetailsByHouseTyp
 }
 
 @IBAction func didTappedOnGetDirections (_ sender: UIButton) {
+    guard houseDetailsByHouseTypeArr.count >= 0 else {
+       showAlert(message: "Something went terribly wrong. Please come back later.")
+       return
+     }
+    
+    
     let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
 
     var latLong = "\(selectedDisplayHomeData.latitude)\(selectedDisplayHomeData.longitude)".whiteSpacesRemoved()
@@ -590,16 +596,16 @@ func makeDisplayHomeFavorite (_ favorite: Bool, _ design: houseDetailsByHouseTyp
 }
 
 @IBAction func didTappedOnBookAppointments (_ sender: UIButton) {
-//    let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag]
-//    let bookAppintmentV = BookAppointmentVC()
-//    bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
-//    self.performSegue(withIdentifier: "BookAppointmentVC", sender: self)
-    
-    let homeDetailView = self.storyboard?.instantiateViewController(withIdentifier: "BookAppointmentVC") as! BookAppointmentVC
-  homeDetailView.isFromFavorites = true
-    homeDetailView.displayHomeData = houseDetailsByHouseTypeArr
-//    homeDetailView.isFromDisplayHomes = true
-    self.navigationController?.pushViewController(homeDetailView, animated: true)
+    if houseDetailsByHouseTypeArr.count > 0{
+        let homeDetailView = self.storyboard?.instantiateViewController(withIdentifier: "BookAppointmentVC") as! BookAppointmentVC
+      homeDetailView.isFromFavorites = true
+        homeDetailView.displayHomeData = houseDetailsByHouseTypeArr
+    //    homeDetailView.isFromDisplayHomes = true
+        self.navigationController?.pushViewController(homeDetailView, animated: true)
+    }else{
+        showAlert(message: "Something went terribly wrong. Please come back later.")
+    }
+   
     
 }
 override func prepare(for segue: UIStoryboardSegue, sender: Any?)

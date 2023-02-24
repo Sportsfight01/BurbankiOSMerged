@@ -193,6 +193,13 @@ extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
         cell.dateLb.text = date
         cell.checkMarkImage.tintColor = progressColor
         cell.checkMarkImage.image = progressData?.progressDetails?[indexPath.row].status == "Completed" ? UIImage(named: "icon_Check")?.withRenderingMode(.alwaysTemplate) : UIImage(named: "icon_UnCheck")
+        if progressData?.progressDetails?[indexPath.row].status == "Completed"{
+            cell.checkMarkImage.image = UIImage(named: "icon_Check")?.withRenderingMode(.alwaysTemplate)
+            cell.dateLb.text = date
+        }else{
+            cell.checkMarkImage.image = UIImage(named: "icon_UnCheck")
+            cell.dateLb.text = "--"
+        }
         
         return cell
     }

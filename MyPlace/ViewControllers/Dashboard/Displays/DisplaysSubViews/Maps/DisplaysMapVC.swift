@@ -498,32 +498,39 @@ extension DisplaysMapVC{
     }
     
     @IBAction func didTappedOnGetDirections (_ sender: UIButton) {
+        guard houseDetailsByHouseTypeArr.count >= 0 else {
+           showAlert(message: "Something went terribly wrong. Please come back later.")
+           return
+         }
+        
         let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
-        let bookAppintmentV = DirctionsVC()
-        bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
-        var latLong = "\(selectedDisplayHomeData.latitude)\(selectedDisplayHomeData.longitude)".whiteSpacesRemoved()
-        if latLong.contains(","){
-            print("latlong has coma",latLong)
-        }else{
-            latLong = "\(selectedDisplayHomeData.latitude),\(selectedDisplayHomeData.longitude)"
-            print("latlong did not have coma",latLong)
-        }
-        
-        if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://")! as URL)) {
-            let url = "https://maps.google.com/maps?saddr&daddr=\(latLong)"
-            UIApplication.shared.open(URL(string:url)!)
-        }else{
-            let url = "https://maps.apple.com/maps?saddr&daddr=\(latLong)"
-            UIApplication.shared.open(URL(string:url)!)
-        }
-        
+            let bookAppintmentV = DirctionsVC()
+            bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
+            var latLong = "\(selectedDisplayHomeData.latitude)\(selectedDisplayHomeData.longitude)".whiteSpacesRemoved()
+            if latLong.contains(","){
+                print("latlong has coma",latLong)
+            }else{
+                latLong = "\(selectedDisplayHomeData.latitude),\(selectedDisplayHomeData.longitude)"
+                print("latlong did not have coma",latLong)
+            }
+            
+            if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://")! as URL)) {
+                let url = "https://maps.google.com/maps?saddr&daddr=\(latLong)"
+                UIApplication.shared.open(URL(string:url)!)
+            }else{
+                let url = "https://maps.apple.com/maps?saddr&daddr=\(latLong)"
+                UIApplication.shared.open(URL(string:url)!)
+            }
     }
     @IBAction func didTappedOnBookAppointments (_ sender: UIButton) {
-        let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
-        let bookAppintmentV = BookAppointmentVC()
-        bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
-        self.performSegue(withIdentifier: "BookAppointmentVC", sender: nil)
-        
+        if houseDetailsByHouseTypeArr.count > 0{
+            let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
+            let bookAppintmentV = BookAppointmentVC()
+            bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
+            self.performSegue(withIdentifier: "BookAppointmentVC", sender: nil)
+        }else{
+            showAlert(message: "Something went terribly wrong. Please come back later.")
+        }
     }
     @IBAction func didTappedOnBackButton(_ sender: UIButton) {
         self.backBTNCard.isHidden = true
