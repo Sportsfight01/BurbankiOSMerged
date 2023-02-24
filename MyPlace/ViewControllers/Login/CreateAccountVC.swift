@@ -193,12 +193,56 @@ class CreateAccountVC: UIViewController {
             user.userEmail = emailTF.text?.trim()
             
             
-            LoginDataManagement.shared.createAccount(user) {
+            createAccountMethod(user) {
                 if let created = self.createAccountReturn {
                     created (self.user)
                 }
             }
         }
+    }
+    
+    
+    func createAccountMethod(_ userNew: UserBean, success: (() -> Void)?){
+        
+        var params = [String: Any]()
+        params["FirstName"] = firstNameTF.text
+        params["LastName"] = lastNameTF.text
+        params["Email"] = emailTF.text
+        params["Password"] = newPasswordTF.text
+        params["PhoneNumber"] = " "
+        params["LoginType"] = "email"
+        params["ImageContent"] = ""
+        let _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_registration, parameters: params as NSDictionary, userInfo: nil, success: { (json, response) in
+            if let result: AnyObject = json {
+                let result = result as! NSDictionary
+                if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+                    userNew.userID = String.checkNumberNull(result.value(forKey: "Userinfo") as Any)// as? String
+                    //                    userNew.userFullName = (userNew.userFirstName ?? "") + (userNew.userLastName ?? "")
+                        
+                        if let succ = success {
+                            succ ()
+                        }
+                        showToast(result.value(forKey: "message") as? String ?? "")
+                    
+                }else {
+                    
+                    showToast((result.value(forKey: "message") ?? "") as! String)
+                }
+            }else {
+                
+            }
+            
+        }, errorblock: { (error, isJSONerror)  in
+            
+            if isJSONerror {
+                
+            }else {
+                
+                alert.showAlert("Error", error?.localizedDescription ?? knoResponseMessage)
+            }
+            
+        }, progress: nil)
+        
     }
 }
     

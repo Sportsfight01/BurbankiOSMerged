@@ -265,6 +265,18 @@ extension DisplaysNearByVC: GMSMapViewDelegate, UIPopoverPresentationControllerD
             if let estate = estateDetails {
                  self.houseDetailsByHouseTypeArr = estate
             }
+            
+//            DispatchQueue.main.asyncAfter(deadline: .now()) {
+//                let vc = self.storyboard!.instantiateViewController(withIdentifier: "PopupDisplayHomesVC") as! PopupDisplayHomesVC
+//                vc.estateName = combination.string
+//                vc.suburbAddress = ""
+//                vc.houseDetailsByHouseTypeArr = self.houseDetailsByHouseTypeArr
+//                let navigationController = self.navigationController
+//                vc.modalPresentationStyle = .overCurrentContext
+//                navigationController?.present(vc, animated: false)
+//            }
+
+            // Handling one popup class for all screen so changing this method
             DispatchQueue.main.async {
                 self.displayDetailsCard.isHidden = false
                 self.layoutTable ()

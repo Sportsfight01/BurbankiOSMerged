@@ -10,6 +10,7 @@ import UIKit
 
 class InfoCentreDetailsVC: UIViewController {
     
+    @IBOutlet weak var webViewDescription: WKWebView!
     @IBOutlet weak var titleLBL: UILabel!
     var infoCentreDetails : LstInfo?
     @IBOutlet weak var videoContainerView: UIView!
@@ -38,13 +39,26 @@ class InfoCentreDetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setupNavigationBarButtons()
+        self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
     }
     //MARK: - Helper Funcs
     func setupUI()
     {
-        titleLBL.text = infoCentreDetails?.heading
-        textLBL.text = infoCentreDetails?.lstFAQDescription.replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "")
+        
+        titleLBL.text = infoCentreDetails?.heading.htmlToString
+        let descriptiontext = infoCentreDetails?.lstFAQDescription.htmlAttributed()
+//        let descriptiontext = infoCentreDetails?.lstFAQDescription
+//        let htmlCSSString = "<style>" +
+//        "html *" +
+//        "{" +
+//        "font-size: \(14.0)pt !important;" +
+////                  "font-family: \(family ?? "Helvetica"), Helvetica !important;" +
+//        "}</style> \(descriptiontext ?? "<b> Hello world </b>")"
+//
+//        webViewDescription.loadHTMLString(descriptiontext!, baseURL: nil)
+       // textLBL.attr
+         textLBL.attributedText = descriptiontext
+        
     }
     func addVideo()
     {
@@ -62,6 +76,9 @@ class InfoCentreDetailsVC: UIViewController {
                 webView.bottomAnchor.constraint(equalTo: videoContainerView.bottomAnchor)
 
             ])
+        
+
+        
         if let urlR = URL(string: infoCentreDetails?.videoURL ?? ""){
                 webView.load(URLRequest(url: urlR))
 
@@ -71,7 +88,7 @@ class InfoCentreDetailsVC: UIViewController {
         
         
 //        //http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
-//        
+//
 //        let playerView = VideoPlayerView(videoURL: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" , frame: videoContainerView.frame)
 //        self.videoContainerView.addSubview(playerView)
 //        playerView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +109,6 @@ class InfoCentreDetailsVC: UIViewController {
 //        player.play()
 //        player.isMuted = true
     }
-    
     func addImageView()
     {
         let imageView = UIImageView(frame: .zero)
@@ -113,7 +129,6 @@ class InfoCentreDetailsVC: UIViewController {
   
         
     }
-    
     @IBAction func didTappedOnBackBTN(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
         
@@ -124,3 +139,4 @@ class InfoCentreDetailsVC: UIViewController {
     
     
 }
+

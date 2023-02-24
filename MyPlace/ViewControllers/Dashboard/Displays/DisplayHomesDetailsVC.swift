@@ -57,7 +57,6 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
     
     
     @IBOutlet weak var facadeTop1: NSLayoutConstraint!
-    @IBOutlet weak var facadeTop2: NSLayoutConstraint!
     
     @IBOutlet weak var lBFacadeName : UILabel!
 //    @IBOutlet weak var btnSaveDesign : UIButton!
@@ -317,10 +316,8 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         }
         if (enquireView.isHidden) {
             facadeTop1.isActive = true
-            facadeTop2.isActive = false
         }else {
             facadeTop1.isActive = false
-            facadeTop2.isActive = true
         }
     
         

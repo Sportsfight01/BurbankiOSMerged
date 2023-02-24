@@ -50,44 +50,8 @@ class DisplaysRegionsMapDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
-        
-//        if screenFromHomeDesigns{
-//            fillDetailsFromDesignScreen()
-//            self.titleNameLBL.text = "POPULAR HOME DESIGNS"
-//        }else{
-//            self.titleNameLBL.text = selectedRegionForMaps.uppercased()
-//            NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"Choose a display from the \(selectedRegionForMaps)."])
-//            self.displayDetailsCard.isHidden = true
-//            print(selectedRegionForMaps)
-//            DashboardDataManagement.shared.getDisplaysForRegionAndMap(stateId: kUserState, regionName: selectedRegionForMaps, popularFlag: true, userId: kUserID, showActivity: true) { (nearbyPlaces) in
-//                print(nearbyPlaces!)
-//                for package : NSDictionary  in nearbyPlaces! {
-//
-//                    let suggestedData = DisplayHomeModel(package as! [String : Any])
-//                    if let region = suggestedData.regionName {
-//                        print(log: region.lowercased())
-//                        self.arrDisplayHomes.append(suggestedData)
-//                    }
-//                    DispatchQueue.main.async {
-//                        self.mapView.delegate = self
-//                        self.mapView.setMapPosition(with: suggestedData, zoomlevel: 10.0)
-//                        let markars = self.mapView.addMarkersTONearByPlaces (nearByPlaces: self.arrDisplayHomes)
-//
-//                         var bounds = GMSCoordinateBounds()
-//                             for marker in markars {
-//                                 bounds = bounds.includingCoordinate(marker.position)
-//                             }
-//                         self.mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 50.0 , left: 50.0 ,bottom: 50.0 ,right: 50.0)))
-//                    }
-//                }
-//            }
-//        }
-       
-        
         mapView.addZoomLevelButtons ()
         mapView.isMyLocationEnabled = true
-
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
         displayDetailsCard.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
@@ -624,16 +588,8 @@ extension DisplaysRegionsMapDetailVC: GMSMapViewDelegate, UIPopoverPresentationC
 //                    vc.suburbAddress = ""
 //                    vc.houseDetailsByHouseTypeArr = self.houseDetailsByHouseTypeArr
 //                        let navigationController = self.navigationController
-//                        let transition = CATransition()
-//                        transition.duration = 0.5
-//                    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//                    transition.type = CATransitionType.moveIn
-//                    transition.subtype = CATransitionSubtype.fromTop
-//                        navigationController?.view.layer.add(transition, forKey: nil)
+//                        vc.modalPresentationStyle = .overCurrentContext
 //                        navigationController?.present(vc, animated: false)
-////                    self.displayDetailsCard.isHidden = false
-////                    self.regionTableHeight.constant = 100
-////                    self.layoutTable ()
 //                }
                 
             })

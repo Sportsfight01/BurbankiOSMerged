@@ -429,26 +429,27 @@ class HomeLandVCSurvey: HeaderVC {
                 filter.regionsArr = []
                 myPlaceQuiz.storeysCount = nil
                 filter.storeysCount = .none
-                            
+                
                 myPlaceQuiz.bedRoomCount = nil
                 filter.bedRoomsCount = .none
                 
                 myPlaceQuiz.priceRangeLow = ""
                 myPlaceQuiz.priceRangeHigh = ""
+                filter.defaultPriceRange.priceStart = 0
+                filter.defaultPriceRange.priceEnd = 1
+                
+                
+                filter.priceRange.priceStart = 0
+                filter.priceRange.priceEnd = 1
+                
                 
                 if let _ = self.arrRegions {
-//                    self.filter.region = regions[0]
-//                    myPlaceQuiz.region = self.filter.region.regionName
-//                    self.filter.regionsArr =
                     arrRegions?.forEach { $0.isSelected =  true ? false: $0.isSelected  }
                     self.regionsTable.reloadData()
                 }
-
                 self.addBreadCrumb(from: myPlaceQuiz.filterStringDisplayHomes())
-//                self.labelInfo.text = myPlaceQuiz.filterStringDisplayHomes()
-                
                 selectBreadCrumb ()
-
+                
             }
         }else if viewTag == 103 {
             
@@ -1289,23 +1290,23 @@ extension HomeLandVCSurvey: UITableViewDelegate, UITableViewDataSource, ChildVCD
 //        filter.region = selectedRegion
         
         
-        myPlaceQuiz.storeysCount = ""
-        filter.storeysCount = .none
-
-        
-        myPlaceQuiz.bedRoomCount = ""
-        filter.bedRoomsCount = .none
-
-        
-        myPlaceQuiz.priceRangeLow = ""
-        myPlaceQuiz.priceRangeHigh = ""
-
-        filter.defaultPriceRange.priceStart = 0
-        filter.defaultPriceRange.priceEnd = 1
-
-        
-        filter.priceRange.priceStart = 0
-        filter.priceRange.priceEnd = 1
+//        myPlaceQuiz.storeysCount = ""
+//        filter.storeysCount = .none
+//
+//
+//        myPlaceQuiz.bedRoomCount = ""
+//        filter.bedRoomsCount = .none
+//
+//
+//        myPlaceQuiz.priceRangeLow = ""
+//        myPlaceQuiz.priceRangeHigh = ""
+//
+//        filter.defaultPriceRange.priceStart = 0
+//        filter.defaultPriceRange.priceEnd = 1
+//
+//
+//        filter.priceRange.priceStart = 0
+//        filter.priceRange.priceEnd = 1
 
         
         selectStoreys ()

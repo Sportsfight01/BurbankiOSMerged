@@ -60,6 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var jobContacts: JobContacts? //for displaying contacts in menu bar
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+       // Thread.sleep(forTimeInterval: 5.0)
+        
         IQKeyboardManager.shared.toolbarTintColor = APPCOLORS_3.Orange_BG
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = APPCOLORS_3.Orange_BG
       ApplicationDelegate.shared.application(
@@ -83,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window = UIWindow(frame: UIScreen.main.bounds)
         
         GMSServices.provideAPIKey(googleAPIKey)
-
+        
         
         
         // $(MARKETING_VERSION)

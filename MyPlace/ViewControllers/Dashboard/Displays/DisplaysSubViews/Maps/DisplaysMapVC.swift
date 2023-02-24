@@ -292,11 +292,24 @@ extension DisplaysMapVC: GMSMapViewDelegate, UIPopoverPresentationControllerDele
             if let estate = estateDetails {
                 self.houseDetailsByHouseTypeArr = estate
             }
+            
+            //Commented for taking global popup class bellow
             DispatchQueue.main.async {
                 self.displayDetailsCard.isHidden = false
                 self.regionTableHeight.constant = 100
                 self.layoutTable ()
             }
+            
+//            DispatchQueue.main.async {
+//                let vc = self.storyboard!.instantiateViewController(withIdentifier: "PopupDisplayHomesVC") as! PopupDisplayHomesVC
+//                vc.estateName = combination.string
+//                vc.suburbAddress = ""
+//                vc.houseDetailsByHouseTypeArr = self.houseDetailsByHouseTypeArr
+//                    let navigationController = self.navigationController
+//                    vc.modalPresentationStyle = .overCurrentContext
+//                    navigationController?.present(vc, animated: false)
+//            }
+
             
         })
     }

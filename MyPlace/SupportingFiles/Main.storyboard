@@ -5964,10 +5964,10 @@
             <objects>
                 <viewController storyboardIdentifier="TopViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7J9-f6-6Yx" customClass="PriceRangeVC" customModule="BurbankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8h1-aW-eLY">
-                        <rect key="frame" x="0.0" y="0.0" width="378" height="246.33333333333334"/>
+                        <rect key="frame" x="0.0" y="0.0" width="378" height="245.33333333333334"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbw-if-Wzo">
-                                <rect key="frame" x="0.0" y="0.0" width="378" height="246.33333333333334"/>
+                                <rect key="frame" x="0.0" y="0.0" width="378" height="245.33333333333334"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7a-la-ioE">
                                         <rect key="frame" x="0.0" y="5" width="378" height="30"/>
@@ -5977,13 +5977,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price range" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMa-O8-vdP">
-                                        <rect key="frame" x="10" y="45" width="358" height="51"/>
+                                        <rect key="frame" x="10" y="45" width="358" height="50.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0DY-7P-fRh">
-                                        <rect key="frame" x="5" y="106.00000000000001" width="368" height="140.33333333333337"/>
+                                        <rect key="frame" x="5" y="105.66666666666667" width="368" height="139.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fT2-sf-00I">
                                             <size key="itemSize" width="50" height="50"/>
@@ -13930,8 +13930,17 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
                                                     <constraint firstAttribute="height" constant="278" id="xgm-rP-7qI"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRYSDALE FACADE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM6-sc-pvo">
+                                                <rect key="frame" x="10" y="1111.3333333333333" width="408" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="4NH-9L-q9d"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-eR-l6A">
-                                                <rect key="frame" x="0.0" y="1111.3333333333333" width="428" height="82"/>
+                                                <rect key="frame" x="0.0" y="1141.3333333333333" width="428" height="82"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ON DISPLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aan-2K-mAk">
                                                         <rect key="frame" x="15" y="15" width="398" height="25"/>
@@ -14271,15 +14280,6 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
                                                     <constraint firstItem="DTS-9d-Fts" firstAttribute="top" secondItem="oJh-td-Bgm" secondAttribute="bottom" constant="1" id="yFA-e4-aUi"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRYSDALE FACADE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM6-sc-pvo">
-                                                <rect key="frame" x="10" y="1111.3333333333333" width="408" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="4NH-9L-q9d"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rnT-PO-T6j">
                                                 <rect key="frame" x="20" y="1161.3333333333333" width="388" height="95"/>
                                                 <subviews>
@@ -14339,7 +14339,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
                                             <constraint firstItem="xt8-rh-JeG" firstAttribute="leading" secondItem="QPI-aj-iks" secondAttribute="leading" id="rQ6-7H-x1l"/>
                                             <constraint firstItem="rnT-PO-T6j" firstAttribute="leading" secondItem="QPI-aj-iks" secondAttribute="leading" constant="20" id="srB-un-mNS"/>
                                             <constraint firstItem="yUr-eR-l6A" firstAttribute="trailing" secondItem="QPI-aj-iks" secondAttribute="trailing" id="w5a-Sx-vIj"/>
-                                            <constraint firstItem="yUr-eR-l6A" firstAttribute="top" secondItem="xt8-rh-JeG" secondAttribute="bottom" id="wMM-gM-goN"/>
+                                            <constraint firstItem="yUr-eR-l6A" firstAttribute="top" secondItem="xt8-rh-JeG" secondAttribute="bottom" constant="30" id="wMM-gM-goN"/>
                                             <constraint firstItem="bLC-bA-oSz" firstAttribute="centerX" secondItem="QPI-aj-iks" secondAttribute="centerX" id="wZP-lR-4xV"/>
                                             <constraint firstAttribute="trailing" secondItem="YM6-sc-pvo" secondAttribute="trailing" constant="10" id="yzU-tD-bGO"/>
                                         </constraints>
@@ -14540,8 +14540,8 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XYD-gi-wgH"/>
-        <segue reference="oK4-nA-jN8"/>
+        <segue reference="Kcg-4A-8pR"/>
+        <segue reference="GL8-Rz-ZUX"/>
         <segue reference="5hr-w0-YnI"/>
         <segue reference="XLK-Lu-xSd"/>
         <segue reference="mUn-gE-koJ"/>

@@ -251,7 +251,7 @@ extension LoginDataManagement {
         
         var params = [String: Any]()
         params["FirstName"] = userNew.userFirstName
-        params["LastName"] = userNew.userLastName ?? ""
+        params["LastName"] = userNew.userLastName
         params["Email"] = userNew.userEmail
         params["Password"] = userNew.userPassword
         params["PhoneNumber"] = userNew.userPhoneNumber
