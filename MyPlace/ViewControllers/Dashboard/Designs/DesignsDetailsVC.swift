@@ -239,10 +239,10 @@ class DesignsDetailsVC: HeaderVC {
     func fillAllDetails () {
 //      validFacadeNamesArray = homeDesignDetails?.lsthouses?.validFacades?.components(separatedBy: "|")
         if let imageurl = homeDesign?.facadePermanentUrl {
-            
+
             arrScrollImageUrls.removeAll()
-            arrScrollImageUrls.append(ServiceAPI.shared.URL_imageUrl(imageurl))
-            
+           arrScrollImageUrls.append(ServiceAPI.shared.URL_imageUrl(imageurl))
+
             bannerImageScroll (arrScrollImageUrls)
         }
         
@@ -381,33 +381,33 @@ class DesignsDetailsVC: HeaderVC {
             imageview.removeFromSuperview()
         }
         
-        self.imageScrollView.contentSize = CGSize(width: 0, height: 0)
+//        self.imageScrollView.contentSize = CGSize(width: 0, height: 0)
         
         var xPos: CGFloat = 0
         
         
         for imageUrl in arrImageUrls {
             
-            let imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: scrollViewWidth, height: scrollViewHeight))
+            var imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: self.plotView.frame.width, height: self.plotView.frame.height))
             self.imageScrollView.addSubview(imgOne)
-//            imgOne.translatesAutoresizingMaskIntoConstraints = false
-//            imgOne.heightAnchor.constraint(equalTo: self.imageScrollView.heightAnchor).isActive = true
-//            imgOne.leadingAnchor.constraint(equalTo: imageScrollView.leadingAnchor, constant: xPos).isActive = true
-//            imgOne.widthAnchor.constraint(equalToConstant: scrollViewWidth).isActive = true
-//            imgOne.topAnchor.constraint(equalTo: imageScrollView.topAnchor).isActive = true
-//            imgOne.bottomAnchor.constraint(equalTo: imageScrollView.bottomAnchor).isActive = true
-
             imgOne.showActivityIndicator()
             
             ImageDownloader.downloadImage(withUrl: ServiceAPI.shared.URL_imageUrl(imageUrl), withFilePath: nil, with: { (image, success, error) in
                 
                 imgOne.hideActivityIndicator()
-                
-                var imageHeight = (image?.size.height)!/3
-                if imageHeight > imgOne.frame.height{
-                    imgOne.contentMode = .scaleToFill
-                }else{
+                var imageHeight = (image?.size.height)!
+                var imageWidth = (image?.size.width)!
+                var plotViewWidth = self.plotView.frame.width
+                var plotViewHeight = self.plotView.frame.height
+                var imageRatio = imageWidth/imageHeight
+                var platViewRatio = plotViewWidth/plotViewHeight
+                let heightRatio = imageRatio/platViewRatio
+//                self.facadeViewHeightConstraint.constant = heightRatio
+//                    imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: self.plotView.frame.width, height: heightRatio))
+                if heightRatio > 0.9{
                     imgOne.contentMode = .scaleAspectFit
+                }else{
+                    imgOne.contentMode = .scaleToFill
                 }
                 if let img = image {
                     imgOne.image = img
@@ -419,9 +419,10 @@ class DesignsDetailsVC: HeaderVC {
             }) { (progress) in
                 
             }
+            print("\(scrollViewWidth)---- \(self.plotView.frame.width),\(self.view.frame.width)")
             
-            
-            xPos = xPos + scrollViewWidth
+            xPos = xPos + self.plotView.frame.width
+            print(xPos)
             
         }
 
@@ -436,7 +437,7 @@ class DesignsDetailsVC: HeaderVC {
             self.pageControl.currentPage = 0
         }
         
-//        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
     }
     
     
@@ -663,6 +664,10 @@ extension DesignsDetailsVC: UITableViewDelegate, UITableViewDataSource {
         let currentPage:CGFloat = floor((imageScrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
         // Change the indicator
         self.pageControl.currentPage = Int(currentPage);
+        lBFacadeName.text = self.validFacadeNamesArray[Int(currentPage)]
+        if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
+            lBFacadeName.text = (self.lBFacadeName.text ?? "").capitalized + " Facade"
+        }
     }
     
     //ScrollViewDelegate Methods

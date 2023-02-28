@@ -392,7 +392,7 @@ extension DisplayHomesDetailsVC{
         
         for imageUrl in arrImageUrls {
             
-            let imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: scrollViewWidth, height: scrollViewHeight))
+            let imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: scrollViewWidth, height: self.plotView.frame.height))
             self.imageScrollView.addSubview(imgOne)
             
             imgOne.showActivityIndicator()
@@ -401,13 +401,20 @@ extension DisplayHomesDetailsVC{
                 
                 imgOne.hideActivityIndicator()
                 
-                var imageHeight = (image?.size.height)!/3
-                if imageHeight > imgOne.frame.height{
-                    imgOne.contentMode = .scaleToFill
-                }else{
+                var imageHeight = (image?.size.height)!
+                var imageWidth = (image?.size.width)!
+                var plotViewWidth = self.plotView.frame.width
+                var plotViewHeight = self.plotView.frame.height
+                var imageRatio = imageWidth/imageHeight
+                var platViewRatio = plotViewWidth/plotViewHeight
+                let heightRatio = imageRatio/platViewRatio
+//                self.facadeViewHeightConstraint.constant = heightRatio
+//                    imgOne = UIImageView(frame: CGRect(x: xPos, y: 0, width: self.plotView.frame.width, height: heightRatio))
+                if heightRatio > 0.9{
                     imgOne.contentMode = .scaleAspectFit
+                }else{
+                    imgOne.contentMode = .scaleToFill
                 }
-                
                 if let img = image {
                     imgOne.image = img
                 }else {
@@ -434,7 +441,7 @@ extension DisplayHomesDetailsVC{
             self.pageControl.currentPage = 0
         }
         
-        //Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
     }
     
     
@@ -631,6 +638,12 @@ extension DisplayHomesDetailsVC: UITableViewDelegate, UITableViewDataSource{
         let currentPage:CGFloat = floor((imageScrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
         // Change the indicator
         self.pageControl.currentPage = Int(currentPage);
+        self.lBFacadeName.text = self.validFacadeNamesArray[Int(currentPage)]
+        if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
+          lBFacadeName.text = (lBFacadeName.text ?? "") + " Facade"
+          
+          
+        }
     }
     
     //ScrollViewDelegate Methods
