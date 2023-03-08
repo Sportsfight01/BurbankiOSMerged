@@ -10,6 +10,7 @@ import UIKit
 import SideMenu
 
 import QuickLook
+import SafariServices
 
 enum DifSection{
     case first
@@ -234,7 +235,7 @@ class DocumentsVC: UIViewController {
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
         let valueStr = "Basic \(encodeString)"
-        let contractNo = currenUserJobDetails?.jobNumber ?? ""
+        let contractNo = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
         
         
         NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
@@ -266,9 +267,11 @@ class DocumentsVC: UIViewController {
     
         let documentURL = "\(clickHomeBaseImageURL)\(url)"
         //let jobNumber = appDelegate.myPlaceStatusDetails?.jobNumber ?? ""
+      
+        
         var filePath = ""
         let user = appDelegate.currentUser
-        if let jobNumber = user?.userDetailsArray?[0].myPlaceDetailsArray[0].jobNumber
+        if let jobNumber = user?.jobNumber
         {
             filePath = "\(documentsPath)/\(jobNumber)_\(urlId).\(type)"
         }
@@ -309,10 +312,15 @@ class DocumentsVC: UIViewController {
         let tempPath = path.replacingOccurrences(of: "file://", with: "")
         print("currentfilePath :- \(tempPath)")
         self.currentFilePath = tempPath
-
+        
+//
         let previewController = QLPreviewController()
         previewController.dataSource = self
         self.present(previewController, animated: true)
+
+//            let safariVC = SFSafariViewController(url: URL(fileURLWithPath: tempPath))
+// 
+//        present(safariVC, animated: true)
         
     }
     

@@ -16,22 +16,7 @@ class InfoCentreVC: UIViewController {
     @IBOutlet weak var categoriesCollection: UICollectionView!
     
     @IBOutlet weak var resultCollection: UICollectionView!
-//    var colors = [
-//        UIColor(red: 0.7373, green: 1, blue: 0.9882, alpha: 1.0) /* #bcfffc */,
-//        UIColor(red: 0.9725, green: 0.7294, blue: 0.9882, alpha: 1.0) /* #f8bafc */,
-//        UIColor(red: 0.7373, green: 1, blue: 0.9882, alpha: 1.0) /* #bcfffc */,
-//        UIColor(red: 1, green: 0.9922, blue: 0.7373, alpha: 1.0) /* #fffdbc */,
-//        UIColor(red: 0.7569, green: 0.9882, blue: 0.7294, alpha: 1.0) /* #c1fcba */,
-//        UIColor(red: 0.7451, green: 0.7373, blue: 1, alpha: 1.0) /* #bebcff */,
-//        UIColor(red: 0.949, green: 0.7373, blue: 1, alpha: 1.0) /* #f2bcff */,
-//        UIColor(red: 1, green: 0.7373, blue: 0.7412, alpha: 1.0) /* #ffbcbd */,
-//        UIColor(red: 0.7373, green: 0.9922, blue: 1, alpha: 1.0) /* #bcfdff */]
-//
-//    var borderColors = [#colorLiteral(red: 0, green: 0.9077788919, blue: 0.9912686944, alpha: 1),#colorLiteral(red: 0.9871214032, green: 0, blue: 0.9912000299, alpha: 1),#colorLiteral(red: 0, green: 0.7988556338, blue: 0.9912686944, alpha: 1),#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1),#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1),#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),#colorLiteral(red: 0.8404042343, green: 0, blue: 0.6789172535, alpha: 1),#colorLiteral(red: 1, green: 0.5731489273, blue: 0.5818556252, alpha: 1),#colorLiteral(red: 0.4831717577, green: 0.7491303682, blue: 1, alpha: 1)]
-    
-    
-   // var typeOfInfo = ["What is a PCI and what can you do?","Using the MyPlace App.","Sorting out your Finance","What is a PCI and what can you do?","Using the MyPlace App.","Sorting out your Finance","What is a PCI and what can you do?"]
-    //var imagesInfo = [UIImage(named: "1"),UIImage(named: "2"),UIImage(named: "1"),UIImage(named: "2"),UIImage(named: "1"),UIImage(named: "2"),UIImage(named: "2")]
+
     var isSearchSelected = false
     var infoCentreDataArr = [LstInfo]()
     var infoCentreDataFilterArr = [LstInfo]()

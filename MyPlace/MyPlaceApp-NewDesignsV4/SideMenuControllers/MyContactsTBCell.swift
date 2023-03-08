@@ -51,7 +51,7 @@ class MyContactsTBCell: UITableViewCell , MFMailComposeViewControllerDelegate {
         let mail = configureMailComposer()
         if MFMailComposeViewController.canSendMail()
         {
-        appDelegate.window?.rootViewController?.present(composeVC, animated: true, completion: nil)
+        kWindow.rootViewController?.present(mail, animated: true, completion: nil)
         }else {
             debugPrint("Current device can not send email")
         }

@@ -296,7 +296,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             }
             if frstNameTF.text?.trim() == "" {
                 
-                Alert().showAlert("Please enter first name", "")
+                BurbankApp.showAlert("Please enter first name", self)
             }else if lastNameTF.text?.trim() == "" {
                 
                 BurbankApp.showAlert("Please enter last name", self)

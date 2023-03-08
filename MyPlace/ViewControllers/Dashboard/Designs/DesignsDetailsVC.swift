@@ -437,7 +437,7 @@ class DesignsDetailsVC: HeaderVC {
             self.pageControl.currentPage = 0
         }
         
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
     }
     
     

@@ -92,7 +92,7 @@ class ContactUsNewMsgPopupVC: UIViewController {
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
         let valueStr = "Basic \(encodeString)"
-        let contractNo = currenUserJobDetails?.jobNumber ?? ""
+        let contractNo = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
 
         var parameters : [String : Any] = [:]
 

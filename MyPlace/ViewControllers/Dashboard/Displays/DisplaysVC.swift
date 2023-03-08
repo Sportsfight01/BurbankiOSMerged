@@ -449,8 +449,6 @@ extension DisplaysVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         nearbyVCContainerView.isHidden = true
         designsVCContainerView.isHidden = true
         regionsVCContainerView.isHidden = true
-        mapVCContainerView.isHidden = true
-        
         mapVCContainerView.isHidden = false
         NotificationCenter.default.post(name: NSNotification.Name("tappedOnSuggestedHomes"), object: nil, userInfo: ["Key":true,"suggestedHome" : self.selectedDesign! ])
     }

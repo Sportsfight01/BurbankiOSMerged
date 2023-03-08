@@ -97,12 +97,12 @@ class MyProgressVC: UIViewController {
         collectionView.collectionViewLayout = layout
         
         
-        if #available(iOS 13.0, *)
-        {
-            collectionView.collectionViewLayout = compositionalLayout()
-        }else {
+//        if #available(iOS 13.0, *)
+//        {
+//            collectionView.collectionViewLayout = compositionalLayout()
+//        }else {
             collectionView.collectionViewLayout = layout
-        }
+     //   }
         collectionView.delegate = self
         collectionView.dataSource = self
       //  collectionView.isPagingEnabled = true
@@ -295,12 +295,14 @@ class MyProgressVC: UIViewController {
         }
         
         //Calculating whole home progress
-        let totalHomeProgress = clItems.compactMap({$0.progress}).reduce(0.0, +) / 6
-        let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: totalHomeProgress, progressDetails: nil)
+        var totalHomeProgress = Double(clItems.compactMap({$0.progress}).reduce(0.0, +)) / 6.0
+        
+        let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100).rounded(.toNearestOrAwayFromZero))
+        let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: CGFloat(Double(totalHomeProgressPercentage)/100.0), progressDetails: nil)
         clItems.insert(newClItem, at: 0)
         progressBar.progress = Float(totalHomeProgress)
         let attrStr = NSMutableAttributedString(string: "Your home is currently ")
-        let percentageAttrStr = NSAttributedString(string: "\(Int(totalHomeProgress * 100))%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.black])
+        let percentageAttrStr = NSAttributedString(string: "\(totalHomeProgressPercentage)%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.black])
         let cmpletedStr = NSAttributedString(string: " completed. Swipe to see your stages.")
         attrStr.append(percentageAttrStr)
         attrStr.append(cmpletedStr)
@@ -309,7 +311,7 @@ class MyProgressVC: UIViewController {
         //  print(clItems.count)
         collectionView.reloadData()
         collectionView.contentSize.width = collectionView.contentSize.width + 50 // to make last item of collectionView visible properly
-        CurrentUservars.currentHomeBuildProgress = "\(Int(totalHomeProgress * 100))%"
+        CurrentUservars.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"
         
     }
     func setupProfile()
@@ -340,7 +342,7 @@ class MyProgressVC: UIViewController {
         //jobnumber to currentuservars
         var currenUserJobDetails : MyPlaceDetails?
         currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        CurrentUservars.jobNumber = currenUserJobDetails?.jobNumber ?? ""
+        CurrentUservars.jobNumber = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
         
         
         
@@ -365,7 +367,7 @@ class MyProgressVC: UIViewController {
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
         let valueStr = "Basic \(encodeString)"
-        let contractNo = currenUserJobDetails?.jobNumber ?? ""
+        let contractNo = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
         
         
         NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in

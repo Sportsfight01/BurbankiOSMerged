@@ -10,6 +10,7 @@ import UIKit
 
 class FavouritesTVCell: UITableViewCell {
 
+    @IBOutlet weak var titleLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var iconWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var lBCount: UILabel!

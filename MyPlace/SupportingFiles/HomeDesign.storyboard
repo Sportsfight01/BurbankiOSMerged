@@ -128,16 +128,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-9L-Dch">
-                                <rect key="frame" x="10" y="264" width="373" height="349"/>
+                                <rect key="frame" x="10" y="258" width="373" height="361"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW WIDE IS YOUR LOT?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bV-e8-F4Z">
-                                        <rect key="frame" x="20" y="68" width="333" height="20"/>
+                                        <rect key="frame" x="20" y="80" width="333" height="20"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1P-IE-Vob">
-                                        <rect key="frame" x="123" y="236" width="127" height="90"/>
+                                        <rect key="frame" x="123" y="248" width="127" height="90"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E.g: 12.5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8d-th-9Cu">
                                                 <rect key="frame" x="8.6666666666666572" y="8" width="110" height="35"/>
@@ -180,13 +180,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer a few questions to get you closer to your perfect design." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbG-9Y-le5">
-                                        <rect key="frame" x="25" y="8" width="323" height="40"/>
+                                        <rect key="frame" x="25" y="20" width="323" height="40"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uf9-K6-bnl">
-                                        <rect key="frame" x="71.666666666666686" y="105.66666666666669" width="230" height="110"/>
+                                        <rect key="frame" x="71.666666666666686" y="117.66666666666669" width="230" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37e-0T-QsA">
                                                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
@@ -278,7 +278,7 @@
                                     <constraint firstItem="Uf9-K6-bnl" firstAttribute="centerX" secondItem="ICK-9L-Dch" secondAttribute="centerX" id="MLc-3A-I55"/>
                                     <constraint firstItem="h1P-IE-Vob" firstAttribute="top" secondItem="Uf9-K6-bnl" secondAttribute="bottom" constant="20.5" id="QVY-DR-3HF"/>
                                     <constraint firstAttribute="trailing" secondItem="UbG-9Y-le5" secondAttribute="trailing" constant="25" id="SA8-dH-DBI"/>
-                                    <constraint firstItem="UbG-9Y-le5" firstAttribute="top" secondItem="ICK-9L-Dch" secondAttribute="top" constant="8" id="YNR-I7-sv5"/>
+                                    <constraint firstItem="UbG-9Y-le5" firstAttribute="top" secondItem="ICK-9L-Dch" secondAttribute="top" constant="20" id="YNR-I7-sv5"/>
                                     <constraint firstItem="h1P-IE-Vob" firstAttribute="centerX" secondItem="Uf9-K6-bnl" secondAttribute="centerX" id="gxg-Je-nJA"/>
                                     <constraint firstItem="UbG-9Y-le5" firstAttribute="leading" secondItem="ICK-9L-Dch" secondAttribute="leading" constant="25" id="nge-7P-37B"/>
                                     <constraint firstAttribute="trailing" secondItem="8bV-e8-F4Z" secondAttribute="trailing" constant="20" id="tGY-jB-ACM"/>

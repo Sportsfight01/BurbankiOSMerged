@@ -28,6 +28,7 @@ class DisplaysNearByVC: UIViewController {
     @IBOutlet weak var estateNameLBL: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var subarbStreetLBL: UILabel!
     var houseDetailsByHouseTypeArr = [houseDetailsByHouseType]()
     var tableViewContentHeight = 0
     var isFavoritesService: Bool = false
@@ -259,6 +260,7 @@ extension DisplaysNearByVC: GMSMapViewDelegate, UIPopoverPresentationControllerD
         combination.append(partTwo)
         
         self.estateNameLBL.attributedText = combination
+        self.subarbStreetLBL.text = "\(package.lotStreet1 ?? ""),\n\(package.lotSuburb ?? "")"
         NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"\(package.estateName?.uppercased() ?? ""), \(package.lotStreet1 ?? "")"])
         DashboardDataManagement.shared.getestateDetailsData(stateId: kUserState, estateName: package.estateName ?? "", showActivity: true, { estateDetails in
             self.houseDetailsByHouseTypeArr = []

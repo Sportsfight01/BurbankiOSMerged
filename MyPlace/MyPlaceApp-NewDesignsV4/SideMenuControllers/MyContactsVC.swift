@@ -72,7 +72,7 @@ class MyContactsVC: UIViewController {
      {
          guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
          let region = myPlaceDetails.region ?? ""
-         let jobNumber = myPlaceDetails.jobNumber ?? ""
+         let jobNumber = self.appDelegate.currentUser?.jobNumber ?? ""
          let password = myPlaceDetails.password ?? ""
          let userName = myPlaceDetails.userName ?? ""
          // ServiceSessionMyPlace.sharedInstance.serviceConnection("POST", url: url, postBodyDictionary: ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password], serviceModule:"PropertyStatusService")
@@ -117,7 +117,7 @@ class MyContactsVC: UIViewController {
    func getContacts()
    {
      guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
-     let jobNumber = myPlaceDetails.jobNumber ?? ""
+       let jobNumber = self.appDelegate.currentUser?.jobNumber ?? ""
      NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: jobNumber)) {[weak self] (result) in
        switch result
        {

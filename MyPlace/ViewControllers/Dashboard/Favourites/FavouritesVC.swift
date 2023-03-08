@@ -352,7 +352,8 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouritesTVCell", for: indexPath) as! FavouritesTVCell
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
         cell.icon.tintColor = APPCOLORS_3.GreyTextFont
-        cell.iconWidthConstraint.constant = indexPath.row == 0 ? 25 : 32
+        cell.iconWidthConstraint.constant = indexPath.row == 0 ? 25 : 32 // to look first image properly
+        cell.titleLeadingConstraint.constant = indexPath.row == 0 ? 32 : 25 //
         
         cell.icon.contentMode = .scaleToFill
         cell.lBTitle.text = arrNames[indexPath.row]

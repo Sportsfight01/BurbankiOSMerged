@@ -157,8 +157,7 @@ class FinanceVC: UIViewController {
     }
     func getFinanceData()
     {
-        guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
-        let jobNumber = myPlaceDetails.jobNumber ?? ""
+        guard  let jobNumber = self.appDelegate.currentUser?.jobNumber else {return }
         NetworkRequest.makeRequest(type: FinanceDetailsStruct.self, urlRequest: Router.getFinanceDetails(jobNumber: jobNumber)) {[weak self] (result) in
             switch result
             {
