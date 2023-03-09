@@ -11,6 +11,7 @@ import UIKit
 class TimingsAndDirectionTVC: UITableViewCell {
 
     
+    @IBOutlet weak var downArrowImage: UIImageView!
     @IBOutlet weak var cardViewTwo: UIView!
     @IBOutlet weak var tradingHoursLBL: UILabel!
     

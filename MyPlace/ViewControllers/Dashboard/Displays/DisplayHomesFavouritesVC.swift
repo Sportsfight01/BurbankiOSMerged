@@ -29,7 +29,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
   var displayFavorites = [houseDetailsByHouseType]()
   var isFavoritesService: Bool = false
   var arrFavouriteDisplays = [[houseDetailsByHouseType]]()
-  
+    var isTradingViewExpanded : Bool = false
   override func viewDidLoad() {
     super.viewDidLoad()
     self.headerLogoText = "MyFavourites"
@@ -64,6 +64,18 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
         print("-----p=p====-=--=-",detailsTableView.contentSize.height)
     }
    
+    
+    @objc func handleTapOnTradingView(recognizer : UITapGestureRecognizer)
+    {
+        isTradingViewExpanded.toggle()
+        detailsTableView.reloadData()
+        detailsTableView.layoutIfNeeded()
+        regionTableHeight.constant = detailsTableView.contentSize.height
+        UIView.animate(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getDisplayHomesFavourites()
@@ -131,9 +143,12 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
       //self.tableViewContentHeight = 0
         self.detailsTableView.contentSize.height = 0
       self.regionTableHeight.constant = 0
-        
       
     }
+      
+      UIView.animate(withDuration: 0.3, delay: 0) {
+          self.view.layoutIfNeeded()
+      }
   }
   
   
@@ -270,7 +285,19 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
           
             if let imageurl : String? = displaydata.facadePermanentUrl {
                 ImageDownloader.downloadImage(withUrl: ServiceAPI.shared.URL_imageUrl(imageurl ?? ""), withFilePath: nil, with: { (image, success, error) in
-                    cell.homeIMG.contentMode = .scaleToFill
+                    var imageHeight = (image?.size.height)!
+                    var imageWidth = (image?.size.width)!
+                    var plotViewWidth = cell.homeIMG.frame.width
+                    var plotViewHeight = cell.homeIMG.frame.height
+                    var imageRatio = imageWidth/imageHeight
+                    var platViewRatio = plotViewWidth/plotViewHeight
+                    let heightRatio = imageRatio/platViewRatio
+                    if heightRatio > 0.9{
+                        cell.homeIMG.contentMode = .scaleAspectFit
+                    }else{
+                        cell.homeIMG.contentMode = .scaleToFill
+                    }
+                    
                     if let img = image {
                         cell.homeIMG.image = img
                     }else {
@@ -386,9 +413,27 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 
                 cell.selectionStyle = .none
                 if self.houseDetailsByHouseTypeArr.count > 0{
-                    let tradingHoursSepr = self.houseDetailsByHouseTypeArr[0].openTimes.components(separatedBy: ",")
-                    let tradingHrs = tradingHoursSepr.joined(separator: " " + "|" + " ")
-                    cell.tradingHoursLBL.text = "TRADING HOURS \n\(tradingHrs)"
+                    let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnTradingView))
+                    cell.cardViewTwo.addGestureRecognizer(tapGuesture)
+                    var openTimesArray = (self.houseDetailsByHouseTypeArr[0].openTimes.components(separatedBy: ","));
+                    let dataFormatter = DateFormatter()
+                    dataFormatter.dateFormat = "dd/MM"
+                    let strDate = dataFormatter.string(from: Date())
+                    // replace today's day with 'TODAY' (ex if today is Wed replacing that as TODAY)
+                    let openTimesStr = openTimesArray.map { str in
+                        if str.contains(strDate)
+                        {
+                            return str.replace_fromStart(str: str, endIndex: 3, With: "Today")
+                        }
+                        return str
+                    }.joined(separator: " \n")
+                    //   openTimes = openTimes.replace_fromStart(str: openTimes, endIndex: 2, With: "TODAY")
+                    let tradingHoursString = "TRADING HOURS  \n\(openTimesStr)"
+                    setAttributetitleFor(view: cell.tradingHoursLBL, title: tradingHoursString, rangeStrings: ["TRADING HOURS", openTimesStr], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING(size: 14), FONT_LABEL_BODY(size: 12)], alignmentCenter: false)
+                    
+                    cell.tradingHoursLBL.textAlignment = .left
+                    cell.tradingHoursLBL.numberOfLines = isTradingViewExpanded ? 0 : 2
+                    cell.downArrowImage.transform = isTradingViewExpanded ? .init(rotationAngle: .pi) : .identity
                 }
                 return cell
             }else {

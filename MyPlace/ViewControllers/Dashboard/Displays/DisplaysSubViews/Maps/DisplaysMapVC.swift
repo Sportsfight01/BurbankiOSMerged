@@ -40,7 +40,7 @@ class DisplaysMapVC: UIViewController {
     var tableViewContentHeight = 0
     var isFavoritesService: Bool = false
     var arrFavouriteDisplays = [[houseDetailsByHouseType]]()
-    
+    var isTradingViewExpanded : Bool = false
     
     // MARK: - ViewLifecycle
     override func viewDidLoad() {
@@ -71,6 +71,25 @@ class DisplaysMapVC: UIViewController {
         
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        regionTableHeight.constant = tableView.contentSize.height
+    }
+    
+   
+    
+    @objc func handleTapOnTradingView(recognizer : UITapGestureRecognizer)
+    {
+        isTradingViewExpanded.toggle()
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        regionTableHeight.constant = tableView.contentSize.height
+        UIView.animate(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func updatedNotification(notification:Notification) -> Void  {
         
         guard let isTappedonPopularHomeDesigns = notification.userInfo!["Key"] else { return }
@@ -83,6 +102,7 @@ class DisplaysMapVC: UIViewController {
         }
         else{
             self.titleNameLBL.text = "CHOOSE A DISPLAY"
+            self.navigationController?.popViewController(animated: true)
             self.displayDetailsCard.isHidden = true
             self.backBTNCard.isHidden = true
             self.regionTableHeight.constant = 100
@@ -122,8 +142,11 @@ class DisplaysMapVC: UIViewController {
             //self.tableViewContentHeight = 0
             self.tableView.contentSize.height = 0
             self.regionTableHeight.constant = 0
-            
-            
+  
+        }
+        
+        UIView.animate(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
         }
         
         
@@ -328,28 +351,37 @@ extension DisplaysMapVC: GMSMapViewDelegate, UIPopoverPresentationControllerDele
         print("Tapped On Map")
         if self.regionTableHeight.constant > 100{
             self.regionTableHeight.constant = 0
+            self.tableView.contentSize.height = 0
             print("height zero")
         }else{
             
         }
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
     }
-    
+//    if self.regionTableHeight.constant == 0{
+//        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+//    }else{
+//        //self.tableViewContentHeight = 0
+//        self.tableView.contentSize.height = 0
+//        self.regionTableHeight.constant = 0
+//
+//
+//    }
 }
 // MARK: - TableView Delegate Methods
 extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
+    
     func layoutTable () {
         DispatchQueue.main.async {
             self.tableView.rowHeight = UITableView.automaticDimension;
             self.tableView.estimatedRowHeight = 90
-            
             self.tableView.reloadData()
             self.tableView.layoutIfNeeded()
             
-            
-            self.tableView.isScrollEnabled = true
-            
             self.regionTableHeight.constant = self.tableView.contentSize.height
+            self.tableViewContentHeight = Int(self.tableView.contentSize.height)
+
+            self.tableView.isScrollEnabled = true
             
             if  self.houseDetailsByHouseTypeArr.count > 1 {
                 if self.tableViewContentHeight > Int(self.tableView.contentSize.height){
@@ -366,6 +398,7 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
                 self.regionTableHeight.constant = 0
             }
         }
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return houseDetailsByHouseTypeArr.count + 1
@@ -384,10 +417,29 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.selectionStyle = .none
             if self.houseDetailsByHouseTypeArr.count > 0{
-                let tradingHoursSepr = self.houseDetailsByHouseTypeArr[0].openTimes.components(separatedBy: ",")
-                let tradingHrs = tradingHoursSepr.joined(separator: " " + "|" + " ")
-                cell.tradingHoursLBL.text = "TRADING HOURS \n\(tradingHrs)"
+                let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnTradingView))
+                cell.cardViewTwo.addGestureRecognizer(tapGuesture)
+                var openTimesArray = (self.houseDetailsByHouseTypeArr[0].openTimes.components(separatedBy: ","));
+                let dataFormatter = DateFormatter()
+                dataFormatter.dateFormat = "dd/MM"
+                let strDate = dataFormatter.string(from: Date())
+                // replace today's day with 'TODAY' (ex if today is Wed replacing that as TODAY)
+                let openTimesStr = openTimesArray.map { str in
+                    if str.contains(strDate)
+                    {
+                        return str.replace_fromStart(str: str, endIndex: 3, With: "Today")
+                    }
+                    return str
+                }.joined(separator: " \n")
+                //   openTimes = openTimes.replace_fromStart(str: openTimes, endIndex: 2, With: "TODAY")
+                let tradingHoursString = "TRADING HOURS  \n\(openTimesStr)"
+                setAttributetitleFor(view: cell.tradingHoursLBL, title: tradingHoursString, rangeStrings: ["TRADING HOURS", openTimesStr], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING(size: 14), FONT_LABEL_BODY(size: 12)], alignmentCenter: false)
+                
+                cell.tradingHoursLBL.textAlignment = .left
+                cell.tradingHoursLBL.numberOfLines = isTradingViewExpanded ? 0 : 2
+                cell.downArrowImage.transform = isTradingViewExpanded ? .init(rotationAngle: .pi) : .identity
             }
+
             return cell
         }  else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DisplaysMapDetailCell", for: indexPath) as! DisplaysMapDetailCell

@@ -81,8 +81,8 @@ class ChangePasswordVC: UIViewController {
 
         /// posting data to server for resetting password.
         func postDataToServerForResetPassword() {
-            
-            let urlString = String(format: "login/updatepassword/")
+            updatePasswordURL
+            let urlString = String(format: "login/UpdatePassword")
             
             ServiceSession.shared.callToPostDataToServer(appendUrlString: urlString, postBodyDictionary: ["Email":emailTextField.text!, "CentralLoginPassword":newPasswordTextField.text!], completionHandler: {(json) in
                 
@@ -106,8 +106,8 @@ class ChangePasswordVC: UIViewController {
                         DispatchQueue.main.async {
                             self.showAlert(message: jsonDic.object(forKey: "Message") as? String ?? somethingWentWrong) { action in
                                 let vc = UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateInitialViewController()
-                                self.appDelegate.window?.rootViewController = vc
-                                self.appDelegate.window?.makeKeyAndVisible()
+                                kWindow.rootViewController = vc
+                                kWindow.makeKeyAndVisible()
                             }
                         }
                         

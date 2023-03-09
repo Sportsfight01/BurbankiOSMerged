@@ -14,18 +14,18 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="129" id="KGk-i7-Jjw" customClass="TimingsAndDirectionTVC" customModule="BurbankApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6i-5G-Sot" userLabel="View1">
-                        <rect key="frame" x="0.0" y="0.0" width="429" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-Hp-n85">
-                                <rect key="frame" x="10" y="5" width="409" height="45"/>
+                                <rect key="frame" x="10" y="5" width="409" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epm-uK-2hI">
-                                        <rect key="frame" x="10" y="5" width="389" height="35"/>
+                                        <rect key="frame" x="10" y="5" width="389" height="74"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">TRADING HOURS
 Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
@@ -33,12 +33,21 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Downarrow-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vig-v4-YYn">
+                                        <rect key="frame" x="387" y="10" width="12" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="CFJ-Cl-8Zm"/>
+                                            <constraint firstAttribute="width" constant="12" id="Iia-Ja-uqj"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="epm-uK-2hI" secondAttribute="bottom" constant="5" id="49B-Iy-T4P"/>
                                     <constraint firstItem="epm-uK-2hI" firstAttribute="leading" secondItem="8mC-Hp-n85" secondAttribute="leading" constant="10" id="5Y8-1A-PYo"/>
+                                    <constraint firstItem="Vig-v4-YYn" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="top" constant="10" id="Qdi-fl-Y4T"/>
                                     <constraint firstAttribute="trailing" secondItem="epm-uK-2hI" secondAttribute="trailing" constant="10" id="iuW-aC-4uM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vig-v4-YYn" secondAttribute="trailing" constant="10" id="lFY-F6-sPC"/>
                                     <constraint firstItem="epm-uK-2hI" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="top" constant="5" id="nMa-cn-Aft"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -48,7 +57,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q4P-sF-qbB">
-                                <rect key="frame" x="20" y="55" width="389" height="30"/>
+                                <rect key="frame" x="20" y="94" width="389" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pZ-4M-4fq">
                                         <rect key="frame" x="0.0" y="0.0" width="116" height="30"/>
@@ -91,7 +100,6 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                             <constraint firstAttribute="bottom" secondItem="Q4P-sF-qbB" secondAttribute="bottom" constant="5" id="9nv-Ya-bNF"/>
                             <constraint firstItem="8mC-Hp-n85" firstAttribute="top" secondItem="o6i-5G-Sot" secondAttribute="top" constant="5" id="JjR-kN-ZE6"/>
                             <constraint firstAttribute="trailing" secondItem="8mC-Hp-n85" secondAttribute="trailing" constant="10" id="SkI-zL-nue"/>
-                            <constraint firstAttribute="height" constant="90" id="dtE-hx-gyo"/>
                             <constraint firstItem="Q4P-sF-qbB" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="bottom" constant="5" id="gQv-la-I1I"/>
                             <constraint firstAttribute="trailing" secondItem="Q4P-sF-qbB" secondAttribute="trailing" constant="20" id="hQ2-5Y-0VT"/>
                             <constraint firstItem="8mC-Hp-n85" firstAttribute="leading" secondItem="o6i-5G-Sot" secondAttribute="leading" constant="10" id="xmd-Zp-B7F"/>
@@ -109,13 +117,15 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
             <connections>
                 <outlet property="bookAnAppointmentBTN" destination="zLB-uM-4oE" id="zBJ-B3-kWj"/>
                 <outlet property="cardViewTwo" destination="8mC-Hp-n85" id="1q0-gq-ofP"/>
+                <outlet property="downArrowImage" destination="Vig-v4-YYn" id="0YT-C2-78G"/>
                 <outlet property="getDirectionBTN" destination="0pZ-4M-4fq" id="SEB-z6-2sz"/>
                 <outlet property="tradingHoursLBL" destination="epm-uK-2hI" id="D8J-23-TnD"/>
             </connections>
-            <point key="canvasLocation" x="250" y="-26"/>
+            <point key="canvasLocation" x="250" y="-26.658767772511847"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Ico-Downarrow-1" width="20" height="11.333333015441895"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

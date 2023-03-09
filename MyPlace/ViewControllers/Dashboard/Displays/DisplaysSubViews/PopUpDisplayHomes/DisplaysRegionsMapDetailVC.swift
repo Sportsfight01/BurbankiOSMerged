@@ -46,7 +46,7 @@ class DisplaysRegionsMapDetailVC: UIViewController {
     var arrFavouriteDisplays = [[houseDetailsByHouseType]]()
     var tableViewContentHeight = 0
     var popularHomeDesignData = designLocations()
-    
+    var isTradingViewExpanded : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
@@ -57,11 +57,41 @@ class DisplaysRegionsMapDetailVC: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("handleBackBtnNaviogation"), object: nil, queue: nil, using:updatedNotification)
         
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        regionTableHeight.constant = tableView.contentSize.height
+    }
+    
+    
+    
     func updatedNotification(notification:Notification) -> Void  {
         self.navigationController?.popViewController(animated: true)
     }
     @objc func handleGestureRecognizer (recognizer: UIGestureRecognizer) {
-        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+        if self.regionTableHeight.constant == 0{
+          self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+        }else{
+          //self.tableViewContentHeight = 0
+            self.tableView.contentSize.height = 0
+          self.regionTableHeight.constant = 0
+
+        }
+        
+        UIView.animate(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func handleTapOnTradingView(recognizer : UITapGestureRecognizer)
+    {
+        isTradingViewExpanded.toggle()
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        regionTableHeight.constant = tableView.contentSize.height
+        UIView.animate(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
     }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -143,26 +173,26 @@ class DisplaysRegionsMapDetailVC: UIViewController {
         DispatchQueue.main.async {
             self.tableView.rowHeight = UITableView.automaticDimension;
             self.tableView.estimatedRowHeight = 90
-        self.tableView.reloadData()
-        self.tableView.layoutIfNeeded()
-        
-        
-        self.tableView.isScrollEnabled = true
-                
-        if  self.houseDetailsByHouseTypeArr.count > 1 {
-            if self.tableViewContentHeight > Int(self.tableView.contentSize.height){
-                self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
-            }else{
-                self.tableViewContentHeight = Int(self.tableView.contentSize.height)
-                self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
-            }
-
-        }else if self.houseDetailsByHouseTypeArr.count == 1 {
-            self.tableViewContentHeight = Int(self.tableView.contentSize.height)
-            self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
-        }else{
-            self.regionTableHeight.constant = 0
-        }
+            self.tableView.reloadData()
+            self.tableView.layoutIfNeeded()
+            
+            self.regionTableHeight.constant = self.tableView.contentSize.height
+            self.tableView.isScrollEnabled = true
+            
+                    if  self.houseDetailsByHouseTypeArr.count > 1 {
+                        if self.tableViewContentHeight > Int(self.tableView.contentSize.height){
+                            self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+                        }else{
+                            self.tableViewContentHeight = Int(self.tableView.contentSize.height)
+                            self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+                        }
+            
+                    }else if self.houseDetailsByHouseTypeArr.count == 1 {
+                        self.tableViewContentHeight = Int(self.tableView.contentSize.height)
+                        self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
+                    }else{
+                        self.regionTableHeight.constant = 0
+                    }
         }
         
     }
@@ -208,9 +238,30 @@ extension DisplaysRegionsMapDetailVC: UITableViewDelegate, UITableViewDataSource
             
             cell.selectionStyle = .none
             if self.houseDetailsByHouseTypeArr.count > 0{
-                let tradingHoursSepr = self.houseDetailsByHouseTypeArr[0].openTimes.components(separatedBy: ",")
-                let tradingHrs = tradingHoursSepr.joined(separator: " " + "|" + " ")
-                cell.tradingHoursLBL.text = "TRADING HOURS \n\(tradingHrs)"
+                let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnTradingView))
+                cell.cardViewTwo.addGestureRecognizer(tapGuesture)
+//                let tradingHoursSepr = self.houseDetailsByHouseTypeArr[0].openTimes.components(separatedBy: ",")
+//                let tradingHrs = tradingHoursSepr.joined(separator: " " + "|" + " ")
+                
+                var openTimesArray = (self.houseDetailsByHouseTypeArr[0].openTimes.components(separatedBy: ","));
+                let dataFormatter = DateFormatter()
+                dataFormatter.dateFormat = "dd/MM"
+                let strDate = dataFormatter.string(from: Date())
+                // replace today's day with 'TODAY' (ex if today is Wed replacing that as TODAY)
+                let openTimesStr = openTimesArray.map { str in
+                    if str.contains(strDate)
+                    {
+                        return str.replace_fromStart(str: str, endIndex: 3, With: "Today")
+                    }
+                    return str
+                }.joined(separator: " \n")
+                //   openTimes = openTimes.replace_fromStart(str: openTimes, endIndex: 2, With: "TODAY")
+                let tradingHoursString = "TRADING HOURS  \n\(openTimesStr)"
+                setAttributetitleFor(view: cell.tradingHoursLBL, title: tradingHoursString, rangeStrings: ["TRADING HOURS", openTimesStr], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_SUB_HEADING(size: 14), FONT_LABEL_BODY(size: 12)], alignmentCenter: false)
+                
+                cell.tradingHoursLBL.textAlignment = .left
+                cell.tradingHoursLBL.numberOfLines = isTradingViewExpanded ? 0 : 2
+                cell.downArrowImage.transform = isTradingViewExpanded ? .init(rotationAngle: .pi) : .identity
             }
             return cell
         }else {
@@ -622,6 +673,7 @@ extension DisplaysRegionsMapDetailVC: GMSMapViewDelegate, UIPopoverPresentationC
         print("Tapped On Map")
         if self.regionTableHeight.constant > 100{
             self.regionTableHeight.constant = 0
+            self.tableView.contentSize.height = 0
             print("height zero")
         }else{
 
@@ -654,3 +706,13 @@ extension DisplaysRegionsMapDetailVC: GMSMapViewDelegate, UIPopoverPresentationC
     
 
 
+extension String
+{
+    func replace_fromStart(str:String , endIndex:Int , With:String) -> String {
+        var strReplaced = str ;
+        let start = str.startIndex;
+        let end = str.index(str.startIndex, offsetBy: endIndex);
+        strReplaced = str.replacingCharacters(in: start..<end, with: With) ;
+        return strReplaced;
+    }
+}
