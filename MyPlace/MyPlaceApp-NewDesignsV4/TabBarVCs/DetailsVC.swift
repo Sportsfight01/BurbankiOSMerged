@@ -10,45 +10,45 @@ import UIKit
 import SideMenu
 
 class DetailsVC: UIViewController {
-
+    
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     //ProfileDetails
-  @IBOutlet weak var emailLb: UILabel!
- // @IBOutlet weak var workLb: UILabel!
-  //@IBOutlet weak var mobileLb: UILabel!
-  @IBOutlet weak var phoneLb: UILabel!
-  @IBOutlet weak var nameLb: UILabel!
-  //My Build Details
-  @IBOutlet weak var jobNumberLb: UILabel!
-  @IBOutlet weak var fullJobAddressLb: UILabel!
- // @IBOutlet weak var lotAddressLb: UILabel!
-  @IBOutlet weak var homeDesignLb: UILabel!
-  @IBOutlet weak var facadeNameLb: UILabel!
-  //My Contract Details
-  //@IBOutlet weak var contractStatusLb: UILabel!
-  @IBOutlet weak var contractValueLb: UILabel!
-  @IBOutlet weak var superVisorLb: UILabel!
-  @IBOutlet weak var newHomeConsultant: UILabel!
-  //@IBOutlet weak var siteStartDateLb: UILabel!
-  
-    var menu : SideMenuNavigationController!
-  
+    @IBOutlet weak var emailLb: UILabel!
+    // @IBOutlet weak var workLb: UILabel!
+    //@IBOutlet weak var mobileLb: UILabel!
+    @IBOutlet weak var phoneLb: UILabel!
+    @IBOutlet weak var nameLb: UILabel!
+    //My Build Details
+    @IBOutlet weak var jobNumberLb: UILabel!
+    @IBOutlet weak var fullJobAddressLb: UILabel!
+    // @IBOutlet weak var lotAddressLb: UILabel!
+    @IBOutlet weak var homeDesignLb: UILabel!
+    @IBOutlet weak var facadeNameLb: UILabel!
+    //My Contract Details
+    //@IBOutlet weak var contractStatusLb: UILabel!
+    @IBOutlet weak var contractValueLb: UILabel!
+    @IBOutlet weak var superVisorLb: UILabel!
+    @IBOutlet weak var newHomeConsultant: UILabel!
+    //@IBOutlet weak var siteStartDateLb: UILabel!
     
-  override func viewDidLoad() {
+    var menu : SideMenuNavigationController!
+    
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-      
-      setupProfile()
-      sideMenuSetup()
-      getContractDetails()
-      
-      
+        
+        setupProfile()
+        sideMenuSetup()
+        getContractDetails()
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         setupProfile()
-       
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -62,13 +62,13 @@ class DetailsVC: UIViewController {
         menu.leftSide = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
         menu.presentationStyle = .menuSlideIn
-     
+        
         menu.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         
         
     }
- 
+    
     
     func setupProfile()
     {
@@ -76,17 +76,17 @@ class DetailsVC: UIViewController {
         print("profile bounds",profileImgView.bounds.height , profileImgView.bounds.width)
         profileImgView.layer.cornerRadius = 30
         self.profileImgView.layoutIfNeeded()
-       if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUservars.profilePicUrl
         {
-           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
+            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
         }
-//        profileImgView.addBadge(number: appDelegate.notificationCount)
+        //        profileImgView.addBadge(number: appDelegate.notificationCount)
         nameLb.text = CurrentUservars.userName
         let emailFirstStr = NSMutableAttributedString(string: "Email ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
         let emailAttrStr = NSAttributedString(string: "\(CurrentUservars.email ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         emailFirstStr.append(emailAttrStr)
-       // emailLb.lineBreakMode = .byWordWrapping
+        // emailLb.lineBreakMode = .byWordWrapping
         emailLb.attributedText = emailFirstStr
         
         let phoneFirstStr = NSMutableAttributedString(string: "Phone ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
@@ -105,62 +105,62 @@ class DetailsVC: UIViewController {
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
         self.navigationController?.pushViewController(vc, animated: true)
-
+        
     }
-  //MARK:- Helper Methods
-  func setupData(data : ContractDetailsStruct)
+    //MARK:- Helper Methods
+    func setupData(data : ContractDetailsStruct)
     {
-      
+        
         
         //My Build Details
-        jobNumberLb.text = "\(data.job ?? "")"
-      //  print(data.lotaddress)
+        jobNumberLb.text = "\(data.job ?? "--")"
+        //  print(data.lotaddress)
         fullJobAddressLb.text = data.lotaddress?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: " ")
-        homeDesignLb.text = "\(data.housetype ?? "")"
-        facadeNameLb.text = "\(data.facade ?? "")"
+        homeDesignLb.text = "\(data.housetype ?? "--")"
+        facadeNameLb.text = "\(data.facade ?? "--")"
         contractValueLb.text = dollarCurrencyFormatter(value: Double(data.contractvalue ?? 0))
-        superVisorLb.text = data.supervisor
-        // newHomeConsultant.text = data.con
-//        siteStartDateLb.text = data.sitestartdate
+        superVisorLb.text = data.supervisor ?? "--"
+        newHomeConsultant.text = data.clientliaison ?? "--"
+        //        siteStartDateLb.text = data.sitestartdate
     }
     
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         
-       present(menu, animated: true, completion: nil)
+        present(menu, animated: true, completion: nil)
     }
     @IBAction func supportBtnTapped(_ sender: UIButton) {
         guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-  //MARK:- Service Calls
-  func getContractDetails()
-  {
-    var currenUserJobDetails : MyPlaceDetails?
-      currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-      if selectedJobNumberRegionString == ""
-      {
-        let jobRegion = currenUserJobDetails?.region
-        selectedJobNumberRegionString = jobRegion!
-       // print("jobregion :- \(jobRegion)")
-      }
+    //MARK:- Service Calls
+    func getContractDetails()
+    {
+        var currenUserJobDetails : MyPlaceDetails?
+        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
+        if selectedJobNumberRegionString == ""
+        {
+            let jobRegion = currenUserJobDetails?.region
+            selectedJobNumberRegionString = jobRegion!
+            // print("jobregion :- \(jobRegion)")
+        }
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
         let valueStr = "Basic \(encodeString)"
         let contractNo = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
-    NetworkRequest.makeRequest(type: ContractDetailsStruct.self, urlRequest: Router.contractDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
-      switch result{
-      case .success(let data):
-          print(data)
-        
-        self?.setupData(data: data)
-      case .failure(let err):
-        print(err.localizedDescription)
-      }
+        NetworkRequest.makeRequest(type: ContractDetailsStruct.self, urlRequest: Router.contractDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
+            switch result{
+            case .success(let data):
+                
+                
+                self?.setupData(data: data)
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
     }
-  }
-  
-
+    
+    
 }
 
 

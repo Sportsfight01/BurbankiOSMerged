@@ -22,10 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-Hp-n85">
-                                <rect key="frame" x="10" y="5" width="409" height="84"/>
+                                <rect key="frame" x="10" y="5" width="409" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epm-uK-2hI">
-                                        <rect key="frame" x="10" y="5" width="389" height="74"/>
+                                        <rect key="frame" x="10" y="5" width="389" height="64"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">TRADING HOURS
 Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
@@ -56,16 +56,13 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q4P-sF-qbB">
-                                <rect key="frame" x="20" y="94" width="389" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q4P-sF-qbB">
+                                <rect key="frame" x="53" y="84" width="323" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pZ-4M-4fq">
-                                        <rect key="frame" x="0.0" y="0.0" width="116" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="40"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="116" id="RHt-Uu-blE"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <state key="normal" title="   GET DIRECTIONS   ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -76,10 +73,10 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-uM-4oE">
-                                        <rect key="frame" x="126" y="0.0" width="263" height="30"/>
+                                        <rect key="frame" x="141" y="0.0" width="182" height="40"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                        <state key="normal" title="BOOK AN APPOINTMENT">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <state key="normal" title="   BOOK AN APPOINTMENT   ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -90,18 +87,17 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6hz-aH-poU"/>
+                                    <constraint firstAttribute="height" constant="40" id="6hz-aH-poU"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Q4P-sF-qbB" firstAttribute="leading" secondItem="o6i-5G-Sot" secondAttribute="leading" constant="20" id="2LD-hz-sHA"/>
                             <constraint firstAttribute="bottom" secondItem="Q4P-sF-qbB" secondAttribute="bottom" constant="5" id="9nv-Ya-bNF"/>
                             <constraint firstItem="8mC-Hp-n85" firstAttribute="top" secondItem="o6i-5G-Sot" secondAttribute="top" constant="5" id="JjR-kN-ZE6"/>
                             <constraint firstAttribute="trailing" secondItem="8mC-Hp-n85" secondAttribute="trailing" constant="10" id="SkI-zL-nue"/>
                             <constraint firstItem="Q4P-sF-qbB" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="bottom" constant="5" id="gQv-la-I1I"/>
-                            <constraint firstAttribute="trailing" secondItem="Q4P-sF-qbB" secondAttribute="trailing" constant="20" id="hQ2-5Y-0VT"/>
+                            <constraint firstItem="Q4P-sF-qbB" firstAttribute="centerX" secondItem="o6i-5G-Sot" secondAttribute="centerX" id="iz3-Px-jmu"/>
                             <constraint firstItem="8mC-Hp-n85" firstAttribute="leading" secondItem="o6i-5G-Sot" secondAttribute="leading" constant="10" id="xmd-Zp-B7F"/>
                         </constraints>
                     </view>

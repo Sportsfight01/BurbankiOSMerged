@@ -93,3 +93,10 @@ func setAttributetitleFor (view: UIView?, title: String, rangeStrings: [String],
     }
     
 }
+extension String
+{
+    func toInt() -> Int
+    {
+        return Int(self) ?? 0
+    }
+}

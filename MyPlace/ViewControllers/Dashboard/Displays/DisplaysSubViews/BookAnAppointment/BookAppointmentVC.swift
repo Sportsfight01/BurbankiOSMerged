@@ -160,6 +160,39 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.whereWouldyouLikeToLiveTF.setupRightImage(imageName: "Ico-Downarrow-1")
        
         iconAcceptTerms.layer.cornerRadius = 5.0
+        
+//        if kUserID.toInt() > 0 && reqAppointmentCard.isHidden == false
+//        {
+//           handleEmailTfUI()
+//        }
+        
+        
+    }
+    
+    func handleEmailTfUI()
+    {
+        let scrollView = UIScrollView(frame: emailTF.frame)
+        scrollView.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+        scrollView.cornerRadius = 5.0
+        if let stackView = emailTF.superview as? UIStackView
+        {
+            stackView.addArrangedSubview(scrollView)
+          
+        }
+        let label = UILabel(frame: .zero)
+        label.text = "  \(emailTF.text ?? "--")"
+        label.font = UIFont.systemFont(ofSize: 14.0)
+        scrollView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        //label constraints
+        label.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        label.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -8).isActive = true
+        label.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        label.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+        emailTF.removeFromSuperview()
+      
+        // }
     }
 //   func handleUISetup()
 //    {
@@ -222,7 +255,6 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         
         if self.emailTF.text != "" {
          setAppearanceFor(view: emailTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-         self.emailTF.isUserInteractionEnabled = false
         }else{
          self.emailTF.isUserInteractionEnabled = true
          setAppearanceFor(view: emailTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
@@ -442,6 +474,9 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.titleLBL.text = "CHOOSE YOUR TIME"
         self.isSelectedDate = false
         self.isSelectedTime = true
+        if kUserID.toInt() > 0 {
+            handleEmailTfUI()
+        }
     }
     
     @IBAction func didTappedONRequestBTN(_ sender: UIButton) {
@@ -496,7 +531,8 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         params1.setValue(self.firstNameTF.text ?? "", forKey: "FirstName")
         params1.setValue(self.lastNameTF.text ?? "", forKey: "LastName")
         params1.setValue(self.mobileNumberTF.text ?? "", forKey: "Phone")
-        params1.setValue(self.emailTF.text ?? "", forKey: "Email")
+        var emailTxt = kUserID.toInt() > 0 ? appDelegate.userData?.user?.userEmail ?? "" : self.emailTF.text ?? ""
+        params1.setValue(emailTxt, forKey: "Email")
         params1.setValue(self.whereWouldyouLikeToLiveTF.text ?? "", forKey: "Where would you like to live")
         params1.setValue(self.whereWouldyouLikeToLiveTF.text ?? "", forKey: "Build")
         params1.setValue(self.acceptedTerms, forKey: "IsPrivacyConsent")

@@ -20,7 +20,7 @@ class MyAppointmentsVC: UIViewController {
         super.viewDidLoad()
       //  self.view.backgroundColor = .blue
         // Do any additional setup after loading the view.
-        self.setupNavigationBarButtons(notificationIcon: false)
+    
         tableView.delegate = self
         tableView.dataSource = self
         getAppointments()
@@ -28,7 +28,9 @@ class MyAppointmentsVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.setupNavigationBarButtons(notificationIcon: false)
         setupProfile()
+        
     }
     func setupProfile()
     {

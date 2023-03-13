@@ -202,6 +202,7 @@ class MyProgressVC: UIViewController {
     func setupProgressDetails(progressData : [ProgressStruct])
     {
         var stagesDictionary : [StageName : [ProgressStruct]] = [:]
+      
         
         for item in progressData
         {

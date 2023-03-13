@@ -42,7 +42,7 @@ class NetworkRequest
 //        DispatchQueue.main.async {
 //            self.showLoading(text: "Loading")
 //        }
-        AF.request(urlRequest).responseJSON { (response) in
+        AF.request(urlRequest).responseData { (response) in
             
           DispatchQueue.main.async {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -64,7 +64,7 @@ class NetworkRequest
             
             if let JSONString = String(data: data, encoding: String.Encoding.utf8)
             {
-                print(JSONString)
+                print("response:p- ", JSONString)
             }
         
            
