@@ -72,11 +72,19 @@ class MyContactsVC: UIViewController {
      {
          guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
          let region = myPlaceDetails.region ?? ""
-         let jobNumber = self.appDelegate.currentUser?.jobNumber ?? ""
+         var contractNo : String = ""
+     
+             if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
+             {
+                 contractNo = jobNum
+             }
+             else {
+                 contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
+             }
          let password = myPlaceDetails.password ?? ""
          let userName = myPlaceDetails.userName ?? ""
          // ServiceSessionMyPlace.sharedInstance.serviceConnection("POST", url: url, postBodyDictionary: ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password], serviceModule:"PropertyStatusService")
-         let postDic =  ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password]
+         let postDic =  ["Region": region, "JobNumber":contractNo, "UserName":userName, "Password":password]
          //callMyPlaceLoginServie(myPlaceDetails)
          let url = URL(string: checkUserLogin())
          var urlRequest = URLRequest(url: url!)
@@ -116,9 +124,16 @@ class MyContactsVC: UIViewController {
      }
    func getContacts()
    {
-     guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
-       let jobNumber = self.appDelegate.currentUser?.jobNumber ?? ""
-     NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: jobNumber)) {[weak self] (result) in
+       var contractNo : String = ""
+   
+           if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
+           {
+               contractNo = jobNum
+           }
+           else {
+               contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
+           }
+     NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: contractNo)) {[weak self] (result) in
        switch result
        {
        case .success(let data):

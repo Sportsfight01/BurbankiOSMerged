@@ -296,7 +296,7 @@ class MyProgressVC: UIViewController {
         }
         
         //Calculating whole home progress
-        var totalHomeProgress = Double(clItems.compactMap({$0.progress}).reduce(0.0, +)) / 6.0
+        let totalHomeProgress = Double(clItems.compactMap({$0.progress}).reduce(0.0, +)) / 6.0
         
         let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100).rounded(.toNearestOrAwayFromZero))
         let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: CGFloat(Double(totalHomeProgressPercentage)/100.0), progressDetails: nil)
@@ -343,8 +343,16 @@ class MyProgressVC: UIViewController {
         //jobnumber to currentuservars
         var currenUserJobDetails : MyPlaceDetails?
         currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        CurrentUservars.jobNumber = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
-        
+        var contractNo : String = ""
+    
+            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
+            {
+                contractNo = jobNum
+            }
+            else {
+                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
+            }
+        CurrentUservars.jobNumber = contractNo
         
         
     }
@@ -368,7 +376,21 @@ class MyProgressVC: UIViewController {
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
         let valueStr = "Basic \(encodeString)"
-        let contractNo = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
+        
+        
+//        let contractNo = appDelegate.currentUser?.jobNumber?.trim().isEmpty || appDelegate.currentUser?.jobNumber == nil ? appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? "" : ""
+        
+        var contractNo : String = ""
+    
+            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
+            {
+                contractNo = jobNum
+            }
+            else {
+                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
+            }
+        
+            
         
         
         NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in

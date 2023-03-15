@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct PhotoItem
+{
+    let title : String
+    let rowData : [DocumentsDetailsStruct]
+}
+
+
 class PhotosListVC: UIViewController {
     
     //MARK: - Properties
@@ -27,6 +34,8 @@ class PhotosListVC: UIViewController {
     var yearMonthNumber = 0
     var isFromNotifications = false
     var selectedImgViewIndex = 0
+    
+    var collectionDataSource : [PhotoItem] = []
   @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: - LifeCycle
@@ -35,15 +44,18 @@ class PhotosListVC: UIViewController {
     collectionView.delegate = self
     collectionView.dataSource = self
     let layout = UICollectionViewFlowLayout()
-    let width = collectionView.bounds.width / 5
+    let width = (collectionView.bounds.width - 24) / 5
     layout.itemSize = CGSize(width: width, height: width)
     layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
     layout.minimumLineSpacing = 0
     layout.minimumInteritemSpacing = 0
-    
     collectionView.collectionViewLayout = layout
+    
       let photoCount = groupedPhotos?.values.flatMap({$0}).count
-      print("photoscount :- \(photoCount)")
+      
+      
+      
+   //   print("photoscount :- \(photoCount)")
       self.countPhotosLb.text = "\(photoCount ?? 0) photos"
         // Do any additional setup after loading the view.
     }
@@ -81,7 +93,24 @@ class PhotosListVC: UIViewController {
               newCountLb.text = "\(photosCount) New"
           }
       }
+      groupedPhotos?.forEach({ key, value in
+          collectionDataSource.append(PhotoItem(title: key, rowData: value))
+      })
       
+      self.collectionDataSource.forEach({print(log: $0.rowData.first?.docdate as Any)})
+      
+      self.collectionDataSource = collectionDataSource.sorted(by: {$0.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate()?.compare(($1.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate())!) == .orderedDescending})
+      
+//      let sorted = collectionDataSource.sorted { item1, item2 in
+//          if let date1 = item1.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate(), let date2 = item2.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate()
+//          {
+//
+//              return date1.compare(date2) == .orderedDescending
+//          }
+//          return false
+//
+//      }
+
     self.collectionView.reloadData()
     
     
@@ -110,29 +139,31 @@ class PhotosListVC: UIViewController {
   }
   
 }
-
+//MARK: - CollectionView Delegate & Datasource
 extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout
 {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
    // return  selectedIndexForQLDSA
-      return groupedPhotos?.keys.count ?? 0
+     // return groupedPhotos?.keys.count ?? 0
+      return collectionDataSource.count
   }
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //    return yearMonthPhotoListArray[selectedIndexForQLDSA].list.count
-      let arr = Array(groupedPhotos!.keys)
-      let key = arr[section]
-      return groupedPhotos?[key]?.count ?? 0
+//      let arr = Array(groupedPhotos!.keys)
+//      let key = arr[section]
+//      return groupedPhotos?[key]?.count ?? 0
+      return collectionDataSource[section].rowData.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosListCVCell.identifier, for: indexPath) as! PhotosListCVCell
-      
-      let sectionArray = Array(groupedPhotos!.keys)
-     let sectionTitle = sectionArray[indexPath.section]
+//
+//      let sectionArray = Array(groupedPhotos!.keys)
+//     let sectionTitle = sectionArray[indexPath.section]
       //cell.sectionNameLb.text = sectionTitle
-      let arr = groupedPhotos?[sectionTitle]
-      
-      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr![indexPath.row],cell.imView)
+   //   let arr = groupedPhotos?[sectionTitle]
+      let arr = collectionDataSource[indexPath.section].rowData
+      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
    
     return cell
   }
@@ -140,13 +171,14 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
       //let item = collectionView.cellForItem(at: indexPath) as? PhotosListCVCell
       //vc.imgView.image = item?.imView.image
-      
-      let sectionArray = Array(groupedPhotos!.keys)
-     let sectionTitle = sectionArray[indexPath.section]
-      //cell.sectionNameLb.text = sectionTitle
-      let arr = groupedPhotos?[sectionTitle]
-      vc.imgData = arr![indexPath.row]
-      let date = dateFormatter(dateStr: groupedPhotos?[sectionTitle]?[indexPath.row].docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
+//
+//      let sectionArray = Array(groupedPhotos!.keys)
+//     let sectionTitle = sectionArray[indexPath.section]
+//      //cell.sectionNameLb.text = sectionTitle
+//      let arr = groupedPhotos?[sectionTitle]
+      let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
+      vc.imgData = item
+      let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
       vc.docDate = date
     
     self.navigationController?.pushViewController(vc, animated: true)
@@ -154,13 +186,14 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let section = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionSectionHeaderView.identifier, for: indexPath) as! CollectionSectionHeaderView
       
-      let sectionArray = Array(groupedPhotos!.keys)
-    //  print(sectionArray)
-     let sectionTitle = sectionArray[indexPath.section]
+//      let sectionArray = Array(groupedPhotos!.keys)
+//    //  print(sectionArray)
+//     let sectionTitle = sectionArray[indexPath.section]
       //print(sectionArray[indexPath.section])
-      section.sectionTitleLb.text = sectionTitle
+//      section.sectionTitleLb.text = groupedPhotos?[sectionTitle]?.first?.title
+      section.sectionTitleLb.text = collectionDataSource[indexPath.section].rowData.first?.title
       
-      let date = dateFormatter(dateStr: groupedPhotos?[sectionTitle]?[0].docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy")
+      let date = dateFormatter(dateStr: collectionDataSource[indexPath.section].rowData.first?.docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy")
       //print(date)
       //print(groupedPhotos?[sectionTitle]?[0].docdate ?? "")
 

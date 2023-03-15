@@ -235,7 +235,16 @@ class DocumentsVC: UIViewController {
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
         let valueStr = "Basic \(encodeString)"
-        let contractNo = (UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? ""
+        var contractNo : String = ""
+    
+            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
+            {
+                contractNo = jobNum
+            }
+            else {
+                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
+            }
+        
         
         
         NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
