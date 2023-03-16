@@ -197,10 +197,17 @@ extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
     
         let sectionArray = Array(groupedDict!.keys)
         let sectionTitle = sectionArray[indexPath.row]
-        cell.sectionNameLb.text = sectionTitle
+        cell.sectionNameLb.text = groupedDict?[sectionTitle]?.first?.title?.capitalized
         cell.photosCountLb.text = "\(groupedDict?[sectionTitle]?.count ?? 0)"
         let photoInfo = groupedDict?[sectionTitle]?.last
-        CodeManager.sharedInstance.downloadandShowImageForNewFlow(photoInfo!,cell.imageView) 
+//        CodeManager.sharedInstance.downloadandShowImageForNewFlow(photoInfo!,cell.imageView)
+        cell.imageView.tintColor = .lightGray
+        if #available(iOS 13.0, *) {
+            cell.imageView.sd_setImage(with: URL(string: "\(clickHomeBaseImageURL)/\(photoInfo?.url ?? "")"), placeholderImage: UIImage(systemName: "photo"))
+        } else {
+            // Fallback on earlier versions
+                  cell.imageView.downloadImage(url: "\(clickHomeBaseImageURL)/\(photoInfo?.url ?? "")")
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -224,4 +231,26 @@ extension PhotosVC : UICollectionViewDelegateFlowLayout
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return cellSpacing
   }
+}
+
+extension UIImageView {
+    
+    func downloadImage(url : String)
+    {
+        if #available(iOS 13.0, *) {
+            image = UIImage(systemName: "photo")
+        } else {
+            // Fallback on earlier versions
+            image = nil
+        }
+        guard let url = URL(string: url) else {return}
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, error == nil
+            {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
+                }
+            }
+        }.resume()
+    }
 }

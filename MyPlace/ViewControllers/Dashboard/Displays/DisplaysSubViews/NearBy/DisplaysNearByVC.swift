@@ -276,7 +276,7 @@ extension DisplaysNearByVC: GMSMapViewDelegate, UIPopoverPresentationControllerD
         let combination = NSMutableAttributedString()
         
         combination.append(partOne)
-        combination.append(partTwo)
+//        combination.append(partTwo)
         
         self.estateNameLBL.attributedText = combination
         self.subarbStreetLBL.text = "\(package.lotStreet1 ?? ""),\n\(package.lotSuburb ?? "")"

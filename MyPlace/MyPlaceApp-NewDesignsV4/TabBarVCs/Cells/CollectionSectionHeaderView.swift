@@ -14,5 +14,5 @@ class CollectionSectionHeaderView: UICollectionReusableView {
   @IBOutlet weak var dotView: UIView!
   @IBOutlet weak var sectionTitleLb: UILabel!
   
-  
+    
 }

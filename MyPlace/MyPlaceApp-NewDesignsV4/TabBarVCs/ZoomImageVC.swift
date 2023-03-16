@@ -19,6 +19,7 @@ class ZoomImageVC: UIViewController {
         
         CodeManager.sharedInstance.downloadandShowImageForNewFlow(imgData,imgView)
         // Do any additional setup after loading the view.
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

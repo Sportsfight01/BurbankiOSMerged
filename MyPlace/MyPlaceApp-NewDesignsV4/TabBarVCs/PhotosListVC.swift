@@ -93,6 +93,7 @@ class PhotosListVC: UIViewController {
               newCountLb.text = "\(photosCount) New"
           }
       }
+      collectionDataSource.removeAll()
       groupedPhotos?.forEach({ key, value in
           collectionDataSource.append(PhotoItem(title: key, rowData: value))
       })
@@ -163,7 +164,15 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
       //cell.sectionNameLb.text = sectionTitle
    //   let arr = groupedPhotos?[sectionTitle]
       let arr = collectionDataSource[indexPath.section].rowData
-      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
+//      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
+      cell.imView.tintColor = .lightGray
+      if #available(iOS 13.0, *) {
+          cell.imView.sd_setImage(with: URL(string: "\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")"), placeholderImage: UIImage(systemName: "photo"))
+      } else {
+          // Fallback on earlier versions
+                cell.imView.downloadImage(url: "\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")")
+      }
+
    
     return cell
   }
@@ -191,12 +200,13 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
 //     let sectionTitle = sectionArray[indexPath.section]
       //print(sectionArray[indexPath.section])
 //      section.sectionTitleLb.text = groupedPhotos?[sectionTitle]?.first?.title
-      section.sectionTitleLb.text = collectionDataSource[indexPath.section].rowData.first?.title
+      let title = collectionDataSource[indexPath.section].rowData.first?.title?.capitalized
+      section.sectionTitleLb.text = title
+      section.sectionTitleLb.font = ProximaNovaRegular(size: 15.0)
+    
       
       let date = dateFormatter(dateStr: collectionDataSource[indexPath.section].rowData.first?.docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy")
-      //print(date)
-      //print(groupedPhotos?[sectionTitle]?[0].docdate ?? "")
-
+      section.dateLb.font = ProximaNovaRegular(size: 14.0)
       section.dateLb.text = date
       
     

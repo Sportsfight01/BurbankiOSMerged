@@ -40,8 +40,19 @@ class MyPlaceServiceSession
                 let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
                 let encodeString = authorizationString.base64String
                 let valueStr = "Basic \(encodeString)"
+                
+                var contractNo : String = ""
+            
+                    if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
+                    {
+                        contractNo = jobNum
+                    }
+                    else {
+                        contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
+                    }
+                
                 urlRequest.addValue(valueStr, forHTTPHeaderField: "Authorization")
-                urlRequest.addValue((UIApplication.shared.delegate as! AppDelegate).currentUser?.jobNumber ?? "", forHTTPHeaderField: "ContractNumber")
+                urlRequest.addValue(contractNo, forHTTPHeaderField: "ContractNumber")
             }
             session.dataTask(with: urlRequest, completionHandler: {(data, response, error) in
                 
