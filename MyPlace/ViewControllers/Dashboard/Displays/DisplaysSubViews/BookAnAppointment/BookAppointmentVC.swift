@@ -190,7 +190,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         label.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         label.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-        emailTF.removeFromSuperview()
+        emailTF.isHidden = true
       
         // }
     }
@@ -494,7 +494,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
             AlertManager.sharedInstance.showAlert(alertMessage: "Please enter valid phone number")
         }else if (mobileNumberTF.text?.trim().count ?? 0) > 14 {
             AlertManager.sharedInstance.showAlert(alertMessage: "Phone number should be a maximum of 14 characters length")
-        }else if emailTF.text?.trim() == "" {
+        }else if emailTF.text == "" {
             
             AlertManager.sharedInstance.showAlert(alertMessage: "Please enter email")
         }else if emailTF.text?.trim().isValidEmail() == false {

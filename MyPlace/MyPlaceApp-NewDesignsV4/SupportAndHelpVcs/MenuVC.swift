@@ -131,7 +131,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     fileprivate func fillJobNumber()
     {
-        jobNumberTextField.text = currentJobNumber
+        jobNumberTextField.text = appDelegate.currentUser?.jobNumber
     }
     override func viewDidDisappear(_ animated: Bool) {
 //        self.revealViewController().frontViewController.view.isUserInteractionEnabled=true
