@@ -16,8 +16,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var yourhomecurrentbuildLb: UILabel!
     @IBOutlet weak var usernameLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var imageIcons : [String] = ["icon_MyAppointment","icon_MyHistory","icon_MyContacts","icon_MySupport","Ico-Notification", "icon_AppSetting"]
-    var tableDataSource : [String] = ["MyAppointments","MyHistory","MyContacts","MySupport","MyNotifications","MySettings"]
+    var imageIcons : [String] = ["icon_MyAppointment",/*"icon_MyHistory",*/"icon_MyContacts","icon_MySupport","Ico-Notification", "icon_AppSetting"]
+    var tableDataSource : [String] = ["MyAppointments",/*"MyHistory",*/"MyContacts","MySupport","MyNotifications","MySettings"]
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -108,15 +108,15 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource
         {
         case 0://MyAppointments
             vc = storyboard.instantiateViewController(withIdentifier: "MyAppointmentsVC") as! MyAppointmentsVC
-        case 1://MyHistory
-            vc = storyboard.instantiateViewController(withIdentifier: "MyHistoryVC") as! MyHistoryVC
-        case 2://MyContacts
+       /* case 1://MyHistory
+            vc = storyboard.instantiateViewController(withIdentifier: "MyHistoryVC") as! MyHistoryVC*/
+        case 1://MyContacts
             vc = storyboard.instantiateViewController(withIdentifier: "MyContactsVC") as! MyContactsVC
-        case 3://MySupport
+        case 2://MySupport
             vc = UIStoryboard(name: "NewDesignsV5", bundle: nil).instantiateViewController(withIdentifier: "SupportVC") as! SupportVC
-        case 4://MyNotifications
+        case 3://MyNotifications
             vc = storyboard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        case 5://MySetting
+        case 4://MySetting
             vc = storyboard.instantiateViewController(withIdentifier: "MySettingsVC") as! MySettingsVC
         default:
             break;

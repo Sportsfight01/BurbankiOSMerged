@@ -39,7 +39,7 @@ class FAQsVc: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarButtons()
+        setupNavigationBarButtons(notificationIcon: false)
         // setupNavigationBar()
     }
     

@@ -9,32 +9,36 @@
 import UIKit
 
 class SupportVC: UIViewController {
-
+    
     let gradientLayer = CAGradientLayer()
     
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var wholeView: UIView!
-  @IBOutlet weak var tableView: UITableView!
-    var titleText = ["Info Centre","FAQs","Contact Us"]
-    var subjectText = ["Helpful videos and information to explain some of the stages in your build and what you need to know.","Find answers to our most Frequently Asked Questions.","Or simply get in touch here so we can help you directly."]
+    @IBOutlet weak var tableView: UITableView!
+    
+    var titleText = ["Info Centre","FAQs"/*,"Contact Us"*/]
+
+    var subjectText = ["Helpful videos and information to explain some of the stages in your build and what you need to know.","Find answers to our most Frequently Asked Questions."/*,"Or simply get in touch here so we can help you directly."*/]
+ 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-       // tableView.allowsSelection = false
-       // navigationController?.setNavigationBarHidden(true, animated: true)
+        // tableView.allowsSelection = false
+        // navigationController?.setNavigationBarHidden(true, animated: true)
         addGradientLayer()
-       // setupProfile()
+        // setupProfile()
     }
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
-      setupProfile()
-     
-  }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
+        setupProfile()
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.navigationBar.shouldRemoveShadow(true)
@@ -44,19 +48,19 @@ class SupportVC: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-//        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-//        {
-//           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-//            profileImgView.downloaded(from: url)
-//        }
+        //        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
+        //        {
+        //           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
+        //            profileImgView.downloaded(from: url)
+        //        }
         
         if let imgURlStr = CurrentUservars.profilePicUrl
         {
-           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
+            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
         }
         
-//        profileImgView.addBadge(number: appDelegate.notificationCount)
+        //        profileImgView.addBadge(number: appDelegate.notificationCount)
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
@@ -72,29 +76,29 @@ class SupportVC: UIViewController {
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
         self.navigationController?.pushViewController(vc, animated: true)
-
+        
     }
-  
+    
     func addGradientLayer()
     {
-      
-      gradientLayer.locations = [0.5,1]
-      gradientLayer.colors = [AppColors.appGray.cgColor ,APPCOLORS_3.HeaderFooter_white_BG.cgColor]
-      //      gradientLayer.colors = [AppColors.appOrange.cgColor , UIColor(red: 230/255, green: 177/255, blue: 79/255, alpha: 1.0).cgColor]
-      gradientLayer.frame = wholeView.bounds
-      self.wholeView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        gradientLayer.locations = [0.5,1]
+        gradientLayer.colors = [AppColors.appGray.cgColor ,APPCOLORS_3.HeaderFooter_white_BG.cgColor]
+        //      gradientLayer.colors = [AppColors.appOrange.cgColor , UIColor(red: 230/255, green: 177/255, blue: 79/255, alpha: 1.0).cgColor]
+        gradientLayer.frame = wholeView.bounds
+        self.wholeView.layer.insertSublayer(gradientLayer, at: 0)
     }
     @IBAction func didTappedOnBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func didTappedOnSupport(_ sender: UIButton) {
     }
-
+    
 }
 extension SupportVC : UITableViewDelegate , UITableViewDataSource
 {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3 
+      return titleText.count
     
   }
   

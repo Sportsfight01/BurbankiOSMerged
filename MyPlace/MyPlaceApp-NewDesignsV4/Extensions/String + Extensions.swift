@@ -53,7 +53,7 @@ import Foundation
 //
 //}
 
-
+@discardableResult
 func setAttributetitleFor (view: UIView?, title: String, rangeStrings: [String], colors: [UIColor], fonts: [UIFont], alignmentCenter: Bool) -> NSMutableAttributedString {
     
     if rangeStrings.count != colors.count || rangeStrings.count != fonts.count {
