@@ -21,42 +21,42 @@ class PhotosListVC: UIViewController {
     @IBOutlet weak var newCountView: UIView!
     @IBOutlet weak var countPhotosLb: UILabel!    
     @IBOutlet weak var newCountLb: UILabel!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     // var photoList : [DocumentsDetailsStruct]!
-    var yearMonthPhotoListArray = [YearMonthListNewFlow]()
+   // var yearMonthPhotoListArray = [YearMonthListNewFlow]()
     var selectedIndexForQLDSA = 0
-    var groupedPhotos : [String : [DocumentsDetailsStruct]]?
+
   
-    var dayWisePhotoList : DayWisePhotoList<MyPlaceDocuments>!//for QLDSA
+  //  var dayWisePhotoList : DayWisePhotoList<MyPlaceDocuments>!//for QLDSA
     var selectedDayIndex = 0//for QLS SA
-    var monthWisePhotoList : YearMonthList!//for QLDSA for next and previous
-    var yearMonthNumber = 0
-    var isFromNotifications = false
+  //  var monthWisePhotoList : YearMonthList!//for QLDSA for next and previous
+   // var yearMonthNumber = 0
+//    var isFromNotifications = false
     var selectedImgViewIndex = 0
     
     var collectionDataSource : [PhotoItem] = []
-  @IBOutlet weak var collectionView: UICollectionView!
+    var photosCount : Int = 0
     
     //MARK: - LifeCycle
-  override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-    collectionView.delegate = self
-    collectionView.dataSource = self
-    let layout = UICollectionViewFlowLayout()
-    let width = (collectionView.bounds.width - 24) / 5
-    layout.itemSize = CGSize(width: width, height: width)
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
-    layout.minimumLineSpacing = 0
-    layout.minimumInteritemSpacing = 0
-    collectionView.collectionViewLayout = layout
-    
-      let photoCount = groupedPhotos?.values.flatMap({$0}).count
-      
-      
-      
-   //   print("photoscount :- \(photoCount)")
-      self.countPhotosLb.text = "\(photoCount ?? 0) photos"
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        let layout = UICollectionViewFlowLayout()
+        let width = (collectionView.bounds.width - 24) / 5
+        layout.itemSize = CGSize(width: width, height: width)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        collectionView.collectionViewLayout = layout
+        
+        self.photosCount = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).count
+        
+        
+        
+        //   print("photoscount :- \(photoCount)")
+        self.countPhotosLb.text = "\(photosCount) photo".appending(photosCount > 1 ? "s" : "")
         // Do any additional setup after loading the view.
     }
   override func viewWillAppear(_ animated: Bool) {
@@ -67,50 +67,33 @@ class PhotosListVC: UIViewController {
 
     self.navigationController?.setNavigationBarHidden(true, animated: false)
       
-      if let photosCount = groupedPhotos?.values.flatMap({$0}).count , photosCount > 0
+       if photosCount > 0
       {
-          if let newPhotosCount = UserDefaults.standard.value(forKey: "NewPhotosCount") as? Int
-          {
-              //when photos are updated need to show increased photos count
-              if newPhotosCount < photosCount
-              {
-                  let newCount = photosCount - newPhotosCount
-                  newCountLb.text = "\(newCount) New"
-                  UserDefaults.standard.setValue(photosCount, forKey: "NewPhotosCount")
-                  newCountLb.isHidden = false
-                  newCountView.isHidden = false
-              }
-              //when we don't have new photos hide the label
-              else {
-                  newCountLb.isHidden = true
-                  newCountView.isHidden = true
-              }
-          }
-          else {
-              newCountLb.isHidden = false
-              newCountView.isHidden = false
-              UserDefaults.standard.setValue(photosCount, forKey: "NewPhotosCount")
-              newCountLb.text = "\(photosCount) New"
-          }
-      }
-      collectionDataSource.removeAll()
-      groupedPhotos?.forEach({ key, value in
-          collectionDataSource.append(PhotoItem(title: key, rowData: value))
-      })
-      
-      self.collectionDataSource.forEach({print(log: $0.rowData.first?.docdate as Any)})
-      
-      self.collectionDataSource = collectionDataSource.sorted(by: {$0.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate()?.compare(($1.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate())!) == .orderedDescending})
-      
-//      let sorted = collectionDataSource.sorted { item1, item2 in
-//          if let date1 = item1.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate(), let date2 = item2.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate()
-//          {
-//
-//              return date1.compare(date2) == .orderedDescending
-//          }
-//          return false
-//
-//      }
+           
+           if let newPhotosCount = UserDefaults.standard.value(forKey: "NewPhotosCount") as? Int
+           {
+               //when photos are updated need to show increased photos count
+               if newPhotosCount < photosCount
+               {
+                   let newCount = photosCount - newPhotosCount
+                   newCountLb.text = "\(newCount) New"
+                   UserDefaults.standard.setValue(photosCount, forKey: "NewPhotosCount")
+                   newCountLb.isHidden = false
+                   newCountView.isHidden = false
+               }
+               //when we don't have new photos hide the label
+               else {
+                   newCountLb.isHidden = true
+                   newCountView.isHidden = true
+               }
+           }
+           else {
+               newCountLb.isHidden = false
+               newCountView.isHidden = false
+               UserDefaults.standard.setValue(photosCount, forKey: "NewPhotosCount")
+               newCountLb.text = "\(photosCount) New"
+           }
+       }
 
     self.collectionView.reloadData()
     
@@ -144,25 +127,16 @@ class PhotosListVC: UIViewController {
 extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout
 {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-   // return  selectedIndexForQLDSA
-     // return groupedPhotos?.keys.count ?? 0
+
       return collectionDataSource.count
   }
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//    return yearMonthPhotoListArray[selectedIndexForQLDSA].list.count
-//      let arr = Array(groupedPhotos!.keys)
-//      let key = arr[section]
-//      return groupedPhotos?[key]?.count ?? 0
       return collectionDataSource[section].rowData.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosListCVCell.identifier, for: indexPath) as! PhotosListCVCell
-//
-//      let sectionArray = Array(groupedPhotos!.keys)
-//     let sectionTitle = sectionArray[indexPath.section]
-      //cell.sectionNameLb.text = sectionTitle
-   //   let arr = groupedPhotos?[sectionTitle]
+
       let arr = collectionDataSource[indexPath.section].rowData
 //      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
       cell.imView.tintColor = .lightGray
@@ -178,13 +152,6 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
   }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
-      //let item = collectionView.cellForItem(at: indexPath) as? PhotosListCVCell
-      //vc.imgView.image = item?.imView.image
-//
-//      let sectionArray = Array(groupedPhotos!.keys)
-//     let sectionTitle = sectionArray[indexPath.section]
-//      //cell.sectionNameLb.text = sectionTitle
-//      let arr = groupedPhotos?[sectionTitle]
       let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
       vc.imgData = item
       let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
@@ -193,13 +160,9 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     self.navigationController?.pushViewController(vc, animated: true)
   }
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+      
     let section = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionSectionHeaderView.identifier, for: indexPath) as! CollectionSectionHeaderView
       
-//      let sectionArray = Array(groupedPhotos!.keys)
-//    //  print(sectionArray)
-//     let sectionTitle = sectionArray[indexPath.section]
-      //print(sectionArray[indexPath.section])
-//      section.sectionTitleLb.text = groupedPhotos?[sectionTitle]?.first?.title
       let title = collectionDataSource[indexPath.section].rowData.first?.title?.capitalized
       section.sectionTitleLb.text = title
       section.sectionTitleLb.font = ProximaNovaRegular(size: 15.0)

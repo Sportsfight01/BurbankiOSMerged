@@ -9,7 +9,6 @@
 import UIKit
 import SideMenu
 import PagingCollectionViewLayout
-//import PagingCollectionViewLayout
 
 class PhotosVC: UIViewController {
     
@@ -17,13 +16,9 @@ class PhotosVC: UIViewController {
     
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var groupedDict : [String : [DocumentsDetailsStruct]]?
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    //MARK: - LifeCycleMethods
-    var documentList : [DocumentsDetailsStruct]?
+
+    var collectionDataSource : [PhotoItem]?
     var menu : SideMenuNavigationController!
     
     var cellWidth = (3/4) * UIScreen.main.bounds.width
@@ -31,30 +26,12 @@ class PhotosVC: UIViewController {
     var cellSpacing = (1/16) * UIScreen.main.bounds.width
     var sectionTitles : [String]?
     
+    
+    //MARK: - LifeCycleMethods
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = CGSize(width: collectionView.frame.width * 0.8, height: collectionView.frame.height)
-//        layout.scrollDirection = .horizontal
-//        collectionView.collectionViewLayout = layout
-        
-        let layout = PagingCollectionViewLayout()
-       // let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: cellWidth, height: collectionView.frame.height - 20)
-        layout.scrollDirection = .horizontal
-       // layout.collectionView?.decelerationRate = .fast
-        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
-        layout.minimumLineSpacing = cellSpacing
-        collectionView.decelerationRate = .fast
-        collectionView.collectionViewLayout = layout
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        
-        
+        setupUI()
         addGradientLayer()
         getPresentMonthListForVLC()
         setupProfile()
@@ -76,6 +53,22 @@ class PhotosVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     //MARK: - Helper Funcs
+    
+    func setupUI()
+    {
+        
+        let layout = PagingCollectionViewLayout()
+        layout.itemSize = CGSize(width: cellWidth, height: collectionView.frame.height - 20)
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        layout.minimumLineSpacing = cellSpacing
+        collectionView.decelerationRate = .fast
+        collectionView.collectionViewLayout = layout
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+    }
+    
     func sideMenuSetup()
     {
         let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -109,6 +102,22 @@ class PhotosVC: UIViewController {
         profileImgView.addGestureRecognizer(tap)
         
     }
+    func setupServiceData(_ PhotosList : [DocumentsDetailsStruct])
+    {
+        
+        let groupedDict = Dictionary.init(grouping: PhotosList, by: {$0.title!.components(separatedBy: " ")[0]})
+        self.collectionDataSource = []
+        groupedDict.forEach { (key: String, value: [DocumentsDetailsStruct]) in
+            self.collectionDataSource?.append(PhotoItem(title: key, rowData: value))
+        }
+        self.collectionDataSource = collectionDataSource?.sorted(by: {$0.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate()?.compare(($1.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate())!) == .orderedDescending})
+        DispatchQueue.main.async {
+            //  print(self.documentList)
+            self.collectionView.reloadData()
+        }
+    }
+    
+    
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
         self.navigationController?.pushViewController(vc, animated: true)
@@ -145,20 +154,16 @@ class PhotosVC: UIViewController {
             {
             case .success(let data):
                 guard let self = self else {return}
-                self.documentList = data.filter({$0.type?.uppercased() == "JPG"})
-                guard self.documentList?.count ?? 0 > 0 else {DispatchQueue.main.async {
-                
-                    self.showAlert(message: "No photos found") { _ in
-                       // self.backButtonPressed()
+                let documentList = data.filter({$0.type?.uppercased() == "JPG"})
+                guard documentList.count > 0 else {
+                    DispatchQueue.main.async {
+                     self.showAlert(message: "No photos found") { _ in
+                        // self.backButtonPressed()
                     }
-                } ; return}
-                self.groupedDict = Dictionary.init(grouping: self.documentList!, by: {$0.title!.components(separatedBy: " ")[0]})
+                }; return}
                 
-              //  self.groupedDict = Dictionary.init(grouping: self.documentList!, by: {$0.title!})
-                DispatchQueue.main.async {
-                    //  print(self.documentList)
-                    self.collectionView.reloadData()
-                }
+                self.setupServiceData(documentList)
+                
                 
             case.failure(let err):
                 print(err.localizedDescription)
@@ -170,7 +175,7 @@ class PhotosVC: UIViewController {
     //MARK:- Actions
     @IBAction func seeAllPhotosBtnClicked(_ sender: UIButton) {
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "PhotosListVC") as! PhotosListVC
-        vc.groupedPhotos = self.groupedDict
+        vc.collectionDataSource = self.collectionDataSource ?? []
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
@@ -185,21 +190,19 @@ class PhotosVC: UIViewController {
     }
 }
 
-
+//MARK: -  CollectionView Delegate & Datasource
 extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
 {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return groupedDict?.keys.count ?? 0
+      return collectionDataSource?.count ?? 0
   }
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCVCell", for: indexPath) as! PhotosCVCell
-    
-        let sectionArray = Array(groupedDict!.keys)
-        let sectionTitle = sectionArray[indexPath.row]
-        cell.sectionNameLb.text = groupedDict?[sectionTitle]?.first?.title?.capitalized
-        cell.photosCountLb.text = "\(groupedDict?[sectionTitle]?.count ?? 0)"
-        let photoInfo = groupedDict?[sectionTitle]?.last
+
+        cell.sectionNameLb.text = collectionDataSource?[indexPath.row].rowData.first?.title?.capitalized
+        cell.photosCountLb.text = "\(collectionDataSource?[indexPath.row].rowData.count ?? 0)"
+        let photoInfo = collectionDataSource?[indexPath.row].rowData.last
 //        CodeManager.sharedInstance.downloadandShowImageForNewFlow(photoInfo!,cell.imageView)
         cell.imageView.tintColor = .lightGray
         if #available(iOS 13.0, *) {
@@ -212,7 +215,7 @@ extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "PhotosListVC") as! PhotosListVC
-        vc.groupedPhotos = self.groupedDict
+        vc.collectionDataSource = self.collectionDataSource ?? []
         self.navigationController?.pushViewController(vc, animated: true)
     }
   
