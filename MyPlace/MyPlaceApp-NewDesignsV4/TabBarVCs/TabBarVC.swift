@@ -58,7 +58,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         let myTabBarItem2 = (self.tabBar.items?[1])! as UITabBarItem
         myTabBarItem2.image = UIImage(named: "Details_grey")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         myTabBarItem2.selectedImage = UIImage(named: "Details_orange")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        myTabBarItem2.title = "DETAILS"
+        myTabBarItem2.title = "CONTACTS"
    //   myTabBarItem2.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 6)
       //  myTabBarItem2.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         

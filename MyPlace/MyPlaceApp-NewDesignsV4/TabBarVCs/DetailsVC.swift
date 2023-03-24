@@ -46,13 +46,14 @@ class DetailsVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+
+        self.setupNavigationBarButtons(notificationIcon: false)
         setupProfile()
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+      //  self.navigationController?.navigationBar.isHidden = false
     }
     
     func sideMenuSetup()

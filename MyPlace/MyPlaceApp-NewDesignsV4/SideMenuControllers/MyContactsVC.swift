@@ -25,18 +25,43 @@ class MyContactsVC: UIViewController {
     var namesarray = ["Site Supervisor","New Home Coordinator","Interior Designer", "Electical Designer", "New Home Consultant"]
     var jobContacts : ContactDetailsStruct?
     
+    var menu : SideMenuNavigationController!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         checkUserLogin1()
         setupProfile()
+        sideMenuSetup()
     }
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.navigationController?.navigationBar.isHidden = true
         setupProfile()
+        
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    func sideMenuSetup()
+    {
+        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
+        menu.leftSide = true
+        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
+        menu.presentationStyle = .menuSlideIn
+        
+        menu.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+        
+        
+    }
+    
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
@@ -67,6 +92,16 @@ class MyContactsVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
+    
+    @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
+        
+        present(menu, animated: true, completion: nil)
+    }
+    @IBAction func supportBtnTapped(_ sender: UIButton) {
+        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //MARK: - Service Calls
    func checkUserLogin1()
      {

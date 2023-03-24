@@ -17,7 +17,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var usernameLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var imageIcons : [String] = ["icon_MyAppointment",/*"icon_MyHistory",*/"icon_MyContacts","icon_MySupport","Ico-Notification", "icon_AppSetting"]
-    var tableDataSource : [String] = ["MyAppointments",/*"MyHistory",*/"MyContacts","MySupport","MyNotifications","MySettings"]
+    var tableDataSource : [String] = ["MyAppointments",/*"MyHistory",*/"MyDetails","MySupport","MyNotifications","MySettings"]
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -111,7 +111,7 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource
        /* case 1://MyHistory
             vc = storyboard.instantiateViewController(withIdentifier: "MyHistoryVC") as! MyHistoryVC*/
         case 1://MyContacts
-            vc = storyboard.instantiateViewController(withIdentifier: "MyContactsVC") as! MyContactsVC
+            vc = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
         case 2://MySupport
             vc = UIStoryboard(name: "NewDesignsV5", bundle: nil).instantiateViewController(withIdentifier: "SupportVC") as! SupportVC
         case 3://MyNotifications
