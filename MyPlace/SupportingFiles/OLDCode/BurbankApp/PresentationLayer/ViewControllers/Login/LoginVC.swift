@@ -12,7 +12,7 @@ import LocalAuthentication
 
 //class LoginVC: BasicVC {
     
-class LoginVC: BurbankAppVC {
+class LoginVC: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
 
     @IBOutlet weak var labelEnter: UILabel!
        @IBOutlet weak var labelPassword: UILabel!
@@ -58,6 +58,9 @@ class LoginVC: BurbankAppVC {
         .foregroundColor: UIColor.black,
         .underlineStyle: NSUnderlineStyle.single.rawValue]
     
+    let pickerView = UIPickerView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -97,6 +100,10 @@ class LoginVC: BurbankAppVC {
         viewPasswordText.layer.cornerRadius = radius_5
         btnLogin.layer.cornerRadius = radius_5
         
+        jobNumberTextField.inputView = pickerView
+        pickerView.delegate =  self
+        pickerView.dataSource = self
+        
     }
 
     
@@ -105,6 +112,24 @@ class LoginVC: BurbankAppVC {
         CodeManager.sharedInstance.sendScreenName(login_screen_loading)
         
     }
+    
+    //MARK: - PickerViewDelegateDatasource
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return appDelegate.currentUser?.userDetailsArray![0].myPlaceDetailsArray.count ?? 0
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return appDelegate.currentUser?.userDetailsArray![0].myPlaceDetailsArray[row].jobNumber
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        jobNumberTextField.text = appDelegate.currentUser?.userDetailsArray![0].myPlaceDetailsArray[row].jobNumber
+//        whereWouldYouLiveTF.resignFirstResponder()
+    }
+
+    
     
     func updateLoginFields()
     {
@@ -230,7 +255,38 @@ class LoginVC: BurbankAppVC {
                 jobNumberTextField.isUserInteractionEnabled = false
             }
             
-        }else
+        }else if (appDelegate.enteredEmailOrJob.isValidEmail()) {
+//            emailView.alpha = 0
+            emailTextField.text = appDelegate.enteredEmailOrJob
+            
+            if (user?.userDetailsArray?[0].myPlaceDetailsArray.count)! <= 1{
+                jobNumberTextField.isUserInteractionEnabled = false
+                jobNumberTextField.text = user?.userDetailsArray?[0].myPlaceDetailsArray[0].jobNumber
+            }else{
+                jobNumberTextField.placeholder = "Select Job Number"
+                self.jobNumberTextField.setupRightImage(imageName: "Ico-Downarrow-1")
+            }
+            
+            emailTextField.isUserInteractionEnabled = false
+            passwordTextField.placeholder = "Enter App Password"
+            
+            userInfoLabel.isHidden = true
+            setUpinfoLabelTextForCentralLogin()
+            guard let emailOrJob = UserDefaults.standard.object(forKey: "EnteredEmailOrJob") as? String else { return }
+            if self.jobNumberTextField.text == emailOrJob
+            {
+                touchIDButton.isHidden = false
+                touchIDImageButton.isHidden = false
+                viewOR.isHidden = false
+            }else
+            {
+                touchIDButton.isHidden = true
+                touchIDImageButton.isHidden = true
+                viewOR.isHidden = true
+            }
+            
+        }
+        else
         {
             emailView.alpha = 0
             jobNumberTextField.text = appDelegate.enteredEmailOrJob
@@ -344,6 +400,13 @@ class LoginVC: BurbankAppVC {
                 return
         }
         }
+        if jobNumberTextField.text == ""
+        {
+                AlertManager.sharedInstance.showAlert(alertMessage: "Please select job number", title: "")
+                jobNumberTextField.resignFirstResponder()
+                return
+           
+        }
         if passwordTextField.text == ""
         {
             AlertManager.sharedInstance.showAlert(alertMessage: "Please enter password", title: "")
@@ -374,7 +437,11 @@ class LoginVC: BurbankAppVC {
     {
        // let postDic =  ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as! NSDictionary
         
-        let postDic = isEmail() ? ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary : ["jobNumber": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary
+        // Sending only job number not using Email
+        let postDic = ["jobNumber": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary
+        
+        
+//        isEmail() ? ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary : ["jobNumber": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary
         
         #if DEDEBUG
         print(postDic)

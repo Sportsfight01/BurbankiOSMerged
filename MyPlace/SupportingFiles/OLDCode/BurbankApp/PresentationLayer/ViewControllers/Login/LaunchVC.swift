@@ -293,7 +293,7 @@ class LaunchVC: BurbankAppVC {
         handleUISetup()
         
         #if DEDEBUG
-        txtEmail.text = "sreekanthreddy@gmail.com"
+        txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
         #endif
         
         
@@ -320,6 +320,10 @@ class LaunchVC: BurbankAppVC {
         
         txtEmail.text = appDelegate.enteredEmailOrJob
         txtEmail.resignFirstResponder()
+#if DEDEBUG
+txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
+#endif
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
