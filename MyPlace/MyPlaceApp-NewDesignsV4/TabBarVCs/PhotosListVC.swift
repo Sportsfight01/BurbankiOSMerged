@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 struct PhotoItem
 {
@@ -139,26 +140,39 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
 
       let arr = collectionDataSource[indexPath.section].rowData
 //      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
-      cell.imView.tintColor = .lightGray
-      if #available(iOS 13.0, *) {
-          cell.imView.sd_setImage(with: URL(string: "\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")"), placeholderImage: UIImage(systemName: "photo"))
-      } else {
-          // Fallback on earlier versions
-                cell.imView.downloadImage(url: "\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")")
+      cell.imView.backgroundColor = .lightGray.withAlphaComponent(0.5)
+      let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")")
+      cell.imView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+      cell.imView.sd_imageIndicator?.indicatorView.tintColor = APPCOLORS_3.Orange_BG
+    //  cell.imView.sd_setImage(with: imgURL)
+      cell.imView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
+          cell.imView.backgroundColor = .white
       }
+ 
 
    
     return cell
   }
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
-      let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
-      vc.imgData = item
-      let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
-      vc.docDate = date
-    
-    self.navigationController?.pushViewController(vc, animated: true)
-  }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
+        let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
+        if let cell = collectionView.cellForItem(at: indexPath) as? PhotosListCVCell
+        {
+            if let img = cell.imView.image
+            {
+                vc.imageData = img
+            }
+        }
+        
+        //vc.imgData = item
+        let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
+        vc.docDate = date
+//        vc.imageURlsArray = collectionDataSource[indexPath.section].rowData.compactMap({$0.url})
+//        vc.currentPhotoIndex =
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
+        //self.navigationController?.pushViewController(vc, animated: true)
+    }
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
       
     let section = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionSectionHeaderView.identifier, for: indexPath) as! CollectionSectionHeaderView

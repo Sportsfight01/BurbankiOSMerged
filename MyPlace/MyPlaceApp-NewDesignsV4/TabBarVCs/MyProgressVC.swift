@@ -173,6 +173,11 @@ class MyProgressVC: UIViewController {
     }
     
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
+//        if ((kWindow.rootViewController?.isKind(of: UITabBarController.self)) != nil)
+//        {
+//            let navVC = UINavigationController(rootViewController: kWindow.rootViewController!)
+//            present(menu, animated: true)
+//        }
         
         present(menu, animated: true, completion: nil)
         
@@ -265,7 +270,7 @@ class MyProgressVC: UIViewController {
             let totalTasks = stagesDictionary[key]!.count // total records in particular stage
             let progress =  Double(completedTasks ?? 0)/Double(totalTasks) // progress of particular stage
             
-            print("Key :- \(key.rawValue) progress :- \(progress)")
+            //print("Key :- \(key.rawValue) progress :- \(progress)")
             switch key
             {
             case .administration:

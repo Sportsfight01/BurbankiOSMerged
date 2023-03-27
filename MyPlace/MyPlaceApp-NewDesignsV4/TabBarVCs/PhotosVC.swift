@@ -9,6 +9,7 @@
 import UIKit
 import SideMenu
 import PagingCollectionViewLayout
+import SDWebImage
 
 class PhotosVC: UIViewController {
     
@@ -205,12 +206,9 @@ extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
         let photoInfo = collectionDataSource?[indexPath.row].rowData.last
 //        CodeManager.sharedInstance.downloadandShowImageForNewFlow(photoInfo!,cell.imageView)
         cell.imageView.tintColor = .lightGray
-        if #available(iOS 13.0, *) {
-            cell.imageView.sd_setImage(with: URL(string: "\(clickHomeBaseImageURL)/\(photoInfo?.url ?? "")"), placeholderImage: UIImage(systemName: "photo"))
-        } else {
-            // Fallback on earlier versions
-                  cell.imageView.downloadImage(url: "\(clickHomeBaseImageURL)/\(photoInfo?.url ?? "")")
-        }
+        
+        cell.imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
+        cell.imageView.sd_setImage(with: URL(string: "\(clickHomeBaseImageURL)/\(photoInfo?.url ?? "")"))
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
