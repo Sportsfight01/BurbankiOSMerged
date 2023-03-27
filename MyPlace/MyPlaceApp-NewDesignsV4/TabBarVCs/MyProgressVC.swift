@@ -168,7 +168,6 @@ class MyProgressVC: UIViewController {
         menu.leftSide = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
         menu.presentationStyle = .menuSlideIn
-     
         menu.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
     }

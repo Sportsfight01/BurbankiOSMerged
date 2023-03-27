@@ -19,18 +19,20 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.tintColor = AppColors.appOrange
         self.tabBar.backgroundColor = UIColor.white
         self.delegate = self
-//        let storyBoard = UIStoryboard(name: "NewDesignsV4", bundle: nil)
-//        let MyProgressView = storyBoard.instantiateViewController(withIdentifier: "MyProgressVC") as! MyProgressVC
-//        let FirstNVC = UINavigationController(rootViewController: MyProgressView)
-//
-//        self.viewControllers = [FirstNVC]
-//        let homeImage = UIImage(named: "icon_Progress")
-//        let homeButton = UITabBarItem(title: "Home", image: homeImage, selectedImage: homeImage)
-//        MyProgressView.tabBarItem = homeButton
-        
         setTabBarItems()
-            //    tabBar.itemWidth = 20
-        //tabBar.itemSpacing = 10
+
+        
+                tabBar.layer.shadowColor = UIColor.darkGray.cgColor
+               tabBar.layer.shadowOpacity = 0.7
+               tabBar.layer.shadowOffset = CGSize.zero
+               tabBar.layer.shadowRadius = 5
+               self.tabBar.layer.borderColor = UIColor.clear.cgColor
+               self.tabBar.layer.borderWidth = 0
+               self.tabBar.clipsToBounds = false
+               self.tabBar.backgroundColor = UIColor.white
+               UITabBar.appearance().shadowImage = UIImage()
+               UITabBar.appearance().backgroundImage = UIImage()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,8 +58,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
       //  myTabBarItem1.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         
         let myTabBarItem2 = (self.tabBar.items?[1])! as UITabBarItem
-        myTabBarItem2.image = UIImage(named: "Details_grey")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        myTabBarItem2.selectedImage = UIImage(named: "Details_orange")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        myTabBarItem2.image = UIImage(named: "Contacts_grey")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        myTabBarItem2.selectedImage = UIImage(named: "Contacts_orange")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         myTabBarItem2.title = "CONTACTS"
    //   myTabBarItem2.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 6)
       //  myTabBarItem2.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)

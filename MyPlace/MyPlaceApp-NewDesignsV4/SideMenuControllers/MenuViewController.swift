@@ -16,13 +16,16 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var yourhomecurrentbuildLb: UILabel!
     @IBOutlet weak var usernameLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var imageIcons : [String] = ["icon_MyAppointment",/*"icon_MyHistory",*/"icon_MyContacts","icon_MySupport","Ico-Notification", "icon_AppSetting"]
+    var imageIcons : [String] = ["icon_MyAppointment",/*"icon_MyHistory",*/"icon_MyDetails","icon_MySupport","Ico-Notification", "icon_AppSetting"]
     var tableDataSource : [String] = ["MyAppointments",/*"MyHistory",*/"MyDetails","MySupport","MyNotifications","MySettings"]
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-       
+        self.view.layer.shadowColor = APPCOLORS_3.GreyTextFont.cgColor
+        self.view.layer.shadowOpacity = 0.7
+        self.view.layer.shadowRadius = 5
+        self.view.layer.shadowOffset = CGSize(width: 10, height: 10) // shadow on the bottom right
        // self.view.backgroundColor = AppColors.appOrange
         // Do any additional setup after loading the view.
     }
