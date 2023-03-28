@@ -50,7 +50,9 @@ class PhotosListVC: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        collectionView.collectionViewLayout = layout
+            // Fallback on earlier versions
+            collectionView.collectionViewLayout = layout
+
         
         self.photosCount = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).count
         
@@ -114,7 +116,7 @@ class PhotosListVC: UIViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalWidth(0.2)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 2.0
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -135,24 +137,24 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
       return collectionDataSource[section].rowData.count
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosListCVCell.identifier, for: indexPath) as! PhotosListCVCell
-
-      let arr = collectionDataSource[indexPath.section].rowData
-//      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
-      cell.imView.backgroundColor = .lightGray.withAlphaComponent(0.5)
-      let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")")
-      cell.imView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-      cell.imView.sd_imageIndicator?.indicatorView.tintColor = APPCOLORS_3.Orange_BG
-    //  cell.imView.sd_setImage(with: imgURL)
-      cell.imView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
-          cell.imView.backgroundColor = .white
-      }
- 
-
-   
-    return cell
-  }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosListCVCell.identifier, for: indexPath) as! PhotosListCVCell
+        
+        let arr = collectionDataSource[indexPath.section].rowData
+        //      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
+        cell.imView.backgroundColor = .lightGray.withAlphaComponent(0.5)
+        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")")
+        cell.imView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        cell.imView.sd_imageIndicator?.indicatorView.tintColor = APPCOLORS_3.Orange_BG
+        //  cell.imView.sd_setImage(with: imgURL)
+        cell.imView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
+            cell.imView.backgroundColor = .white
+        }
+        
+        
+        
+        return cell
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
         let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
@@ -167,11 +169,12 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         //vc.imgData = item
         let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
         vc.docDate = date
-//        vc.imageURlsArray = collectionDataSource[indexPath.section].rowData.compactMap({$0.url})
-//        vc.currentPhotoIndex =
-        let navVC = UINavigationController(rootViewController: vc)
-        present(navVC, animated: true)
-        //self.navigationController?.pushViewController(vc, animated: true)
+        let flatImageUrls = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).compactMap({$0.url})
+        vc.imageURlsArray = flatImageUrls
+        vc.currentPhotoIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
+       // let navVC = UINavigationController(rootViewController: vc)
+       // present(navVC, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
       

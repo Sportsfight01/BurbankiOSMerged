@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ZoomImageVC: UIViewController {
     
@@ -14,28 +15,26 @@ class ZoomImageVC: UIViewController {
     //var imgData : DocumentsDetailsStruct!
     @IBOutlet weak var imgView : UIImageView!
     var docDate : String?
-    var imageURlsArray : [PhotoItem]?
+    var imageURlsArray : [String] = []
+    var currentPhotoIndex : Int = 0
     var imageData : UIImage?
+    
+    //MARK: - Life Cycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // CodeManager.sharedInstance.downloadandShowImageForNewFlow(imgData,imgView)
-        // Do any additional setup after loading the view.
-//        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
-//        self.view.addGestureRecognizer(swipeGesture)
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+        rightSwipeGesture.direction = .right
+        self.imgView.superview?.addGestureRecognizer(rightSwipeGesture)
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+        leftSwipeGesture.direction = .left
+        self.imgView.superview?.addGestureRecognizer(leftSwipeGesture)
         
-    }
-    @objc func swipeGesture(_ gesture : UISwipeGestureRecognizer)
-    {
-        if gesture.direction == .left
-        {
-            
-        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        //CodeManager.sharedInstance.downloadandShowImageForNewFlow(imgData,imgView)
         titleLb.text = docDate
         imgView.image = imageData
     }
@@ -44,13 +43,41 @@ class ZoomImageVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    //MARK: - Helper Methods
+    @objc func swipeGesture(_ gesture : UISwipeGestureRecognizer)
+    {
+        print(gesture.direction)
+        switch gesture.direction
+        {
+        case .left:
+            currentPhotoIndex += 1
+        case .right:
+            currentPhotoIndex -= 1
+        default:
+            debugPrint("other direction")
+        }
+        handleImageSwipe()
+        
+    }
+    
+    func handleImageSwipe()
+    {
+        guard 0..<imageURlsArray.count ~= currentPhotoIndex else {return}
+        self.imgView.backgroundColor = .lightGray.withAlphaComponent(0.5)
+        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(imageURlsArray[currentPhotoIndex] )")
+        self.imgView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        //  cell.imView.sd_setImage(with: imgURL)
+        self.imgView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
+            self.imgView.backgroundColor = .white
+        }
+    }
     
     @IBAction func backButtonClicked(_ sender: UIButton) {
         dismiss(animated: true)
     }
     
     @IBAction func shareBtnTapped(_ sender: UIButton) {
-       // shareImage()
+        // shareImage()
     }
     func shareImage() {
         
