@@ -55,7 +55,13 @@ class LaunchVCNew: BurbankAppVC {
         
         CodeManager.sharedInstance.sendScreenName(landing_screen_loading)
         txtEmail.text = appDelegate.enteredEmailOrJob
+        txtEmail.autocorrectionType = .no
         txtEmail.resignFirstResponder()
+        
+#if DEDEBUG
+txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
+#endif
+        
     }
     //MARK: - View
 //    @objc func handleBackButton(_ sender: UIButton) {
@@ -64,21 +70,22 @@ class LaunchVCNew: BurbankAppVC {
 //    }
     func handleUISetup () {
                 
-        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: txtEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
-        setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
-        setAppearanceFor(view: btnCreate, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnCreate, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         
         
         let _ = setAttributetitleFor(view: btnCreate, title: "Are you a new user? Create account", rangeStrings: ["Are you a new user?", " Create account"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_13), FONT_BUTTON_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
         
         //New user? Create Account
         viewText.layer.cornerRadius = radius_5
+        viewText.cardView()
         btnNext.layer.cornerRadius = radius_5
         
     }
@@ -190,6 +197,7 @@ extension LaunchVCNew {
                         if user.isSuccess == true
                         {
                             appDelegate.currentUser = user//Need To Check whethere we need to fill user data here or not
+                            appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray.append(self.getRandomMyPlaceDetails()!)
                             self.message = (jsonDic.object(forKey: "Message")as? String)!
                             
                             self.handleUserSignUpOrLoginScenarios(user: user)
@@ -216,6 +224,45 @@ extension LaunchVCNew {
             }
             
         })
+        
+    }
+    private func getRandomMyPlaceDetails() -> MyPlaceDetails?
+    {
+        let json = """
+
+                           {
+                               "Id": 0,
+                               "UserId": 1770,
+                               "JobNo": "160582",
+                               "UserName": "TestForApp",
+                               "Password": "BurbanK1",
+                               "JobType": null,
+                               "Region": "VIC",
+                               "CreatedOn": null,
+                               "UpdatedOn": null,
+                               "MyPlaceEmails": [
+                                   {
+                                       "JobNumber": null,
+                                       "ContactId": null,
+                                       "FullName": "srikanth my place",
+                                       "FirstName": "srikanth",
+                                       "LastName": "my place",
+                                       "Email": "srikanth.vunyala@digitalminds.solutions",
+                                       "UserName": "TestForApp",
+                                       "Password": "BurbanK1",
+                                       "IsPrimaryUser": true
+                                   }
+                               ]
+                           }
+""".data(using: .utf8)
+        if let dict = try? JSONSerialization.jsonObject(with: json!, options: []) as? [String : Any]
+        {
+            return MyPlaceDetails(dic: dict)
+        }else {
+            return nil
+        }
+        
+   
         
     }
     private func handleUserSignUpOrLoginScenarios(user: User)

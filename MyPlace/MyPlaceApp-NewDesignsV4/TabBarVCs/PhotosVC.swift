@@ -18,6 +18,7 @@ class PhotosVC: UIViewController {
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var seeAllPhotosBtn : UIButton!
 
     var collectionDataSource : [PhotoItem]?
     var menu : SideMenuNavigationController!
@@ -26,7 +27,6 @@ class PhotosVC: UIViewController {
     var spacing = (1/8) * UIScreen.main.bounds.width
     var cellSpacing = (1/16) * UIScreen.main.bounds.width
     var sectionTitles : [String]?
-    
     
     //MARK: - LifeCycleMethods
     override func viewDidLoad() {
@@ -115,6 +115,8 @@ class PhotosVC: UIViewController {
         DispatchQueue.main.async {
             //  print(self.documentList)
             self.collectionView.reloadData()
+          
+            
         }
     }
     
@@ -158,9 +160,11 @@ class PhotosVC: UIViewController {
                 let documentList = data.filter({$0.type?.uppercased() == "JPG"})
                 guard documentList.count > 0 else {
                     DispatchQueue.main.async {
-                     self.showAlert(message: "No photos found") { _ in
-                        // self.backButtonPressed()
-                    }
+                        self.collectionView.setEmptyMessage("No Photos Found")
+                        self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
+//                     self.showAlert(message: "No photos found") { _ in
+//                        // self.backButtonPressed()
+//                    }
                 }; return}
                 
                 self.setupServiceData(documentList)
@@ -194,9 +198,10 @@ class PhotosVC: UIViewController {
 //MARK: -  CollectionView Delegate & Datasource
 extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
 {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return collectionDataSource?.count ?? 0
-  }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return collectionDataSource?.count ?? 0
+    }
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCVCell", for: indexPath) as! PhotosCVCell
@@ -255,3 +260,5 @@ extension UIImageView {
         }.resume()
     }
 }
+
+

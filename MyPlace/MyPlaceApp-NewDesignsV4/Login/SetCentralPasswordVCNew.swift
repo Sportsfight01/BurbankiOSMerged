@@ -16,7 +16,11 @@ class SetCentralPasswordVCNew: BurbankAppVC {
     @IBOutlet weak var passCodeTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+   
     @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var passcodeView: UIView!
+    @IBOutlet weak var newPasscodeView: UIView!
+    @IBOutlet weak var confirmPasscodeView: UIView!
     @IBOutlet weak var infoTextLabel: UILabel!
 
     
@@ -38,6 +42,9 @@ class SetCentralPasswordVCNew: BurbankAppVC {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        handleUISetup()
+        
         if alertMessage != "" {
             BurbankApp.showAlert(alertMessage)
         }
@@ -46,14 +53,11 @@ class SetCentralPasswordVCNew: BurbankAppVC {
 //            infoMessage = ""
 //        }
         checkEmail()
-        
-        
-        handleUISetup()
-        
         if infoMessage == "Forgot Password" {
             labelCentral.text = "Forgot"
-            infoTextLabel.text = ""
+
         }
+        infoTextLabel.text = "Passcode will be sent to following Email to reset central login password"
         
     }
     
@@ -333,9 +337,9 @@ class SetCentralPasswordVCNew: BurbankAppVC {
 
     func handleUISetup () {
                 
-        setAppearanceFor(view: labelCentral, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_HEADING(size: FONT_30))
-        setAppearanceFor(view: infoTextLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: labelCentral, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: infoTextLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: emailOrJobTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: passCodeTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
@@ -346,8 +350,8 @@ class SetCentralPasswordVCNew: BurbankAppVC {
        // infoTextLabel.addCharacterSpacing(kernValue: -0.3)
 
         
-        setAppearanceFor(view: btnSubmit, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
-        setAppearanceFor(view: btnResend, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: btnSubmit, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: btnResend, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         
         
         emailOrJobTextField.superview?.layer.cornerRadius = radius_5
@@ -357,6 +361,11 @@ class SetCentralPasswordVCNew: BurbankAppVC {
         
         btnSubmit.layer.cornerRadius = radius_5
         btnResend.layer.cornerRadius = radius_5
+        
+        emailView.cardView()
+        passcodeView.cardView()
+        newPasscodeView.cardView()
+        confirmPasscodeView.cardView()
 
     }
     

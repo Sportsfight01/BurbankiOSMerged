@@ -234,7 +234,7 @@ class UserPreferenceVC: UIViewController {
                 return
             }else {
                                 
-                self.navigationController?.pushViewController(UIStoryboard(name: "Main_OLD", bundle: nil).instantiateViewController(withIdentifier: "LaunchVC") as! LaunchVC, animated: true)
+                self.navigationController?.pushViewController(UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateViewController(withIdentifier: "LaunchVCNew") as! LaunchVCNew, animated: true)
             }
         }
     }
