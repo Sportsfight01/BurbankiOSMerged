@@ -9,7 +9,11 @@
 import UIKit
 import SDWebImage
 
-class ZoomImageVC: UIViewController {
+class ZoomImageVC: UIViewController,imageSliderDelegate {
+    func didMovedToIndex(index: Int) {
+        print(index)
+    }
+    
     
     @IBOutlet weak var titleLb: UILabel!
     //var imgData : DocumentsDetailsStruct!
@@ -19,19 +23,53 @@ class ZoomImageVC: UIViewController {
     var currentPhotoIndex : Int = 0
     var imageData : UIImage?
     
+    @IBOutlet weak var imageSlider: CLabsImageSlider!
     //MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
-        rightSwipeGesture.direction = .right
-        self.imgView.superview?.addGestureRecognizer(rightSwipeGesture)
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
-        leftSwipeGesture.direction = .left
-        self.imgView.superview?.addGestureRecognizer(leftSwipeGesture)
+//        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+//        rightSwipeGesture.direction = .right
+//        self.imgView.superview?.addGestureRecognizer(rightSwipeGesture)
+//        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+//        leftSwipeGesture.direction = .left
+//        self.imgView.superview?.addGestureRecognizer(leftSwipeGesture)
+        
+        imageSlider.clipsToBounds = true
+        imageSlider.layer.cornerRadius = 5
+//        imageSlider.imageSourceArray = []
+        imageSlider.sliderDelegate = self
+//        imageSlider.translatesAutoresizingMaskIntoConstraints = false
+        let swipeleft = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeleft(_:)))
+        swipeleft.direction = .left
+        imageSlider?.addGestureRecognizer(swipeleft)
+        
+        let swiperight = UISwipeGestureRecognizer(target: self, action: #selector(self.swiperight(_:)))
+        swiperight.direction = .right
+        imageSlider?.addGestureRecognizer(swiperight)
+        
+        var imageSliderArr = [""]
+        for i in 0..<imageURlsArray.count{
+            let imgURL = "\(clickHomeBaseImageURL)/\(imageURlsArray[i] )"
+            print(imgURL)
+            imageSliderArr.append(imgURL)
+        }
+        
+        self.imageSlider?.setUpView(imageSource: .Url(imageArray: imageSliderArr, placeHolderImage: UIImage(named: "placeholder")),slideType: .ManualSwipe,isArrowBtnEnabled: true, contentMode: "SC")
         
     }
+    @objc func swipeleft(_ gestureRecognizer: UISwipeGestureRecognizer) {
+            imageSlider?.swipeRight(swipeGesture: gestureRecognizer)
+        
+    }
+    @objc func swiperight(_ gestureRecognizer: UISwipeGestureRecognizer)
+    {
+        
+            imageSlider?.swipeLeft(swipeGesture: gestureRecognizer)
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -62,18 +100,19 @@ class ZoomImageVC: UIViewController {
     
     func handleImageSwipe()
     {
-        guard 0..<imageURlsArray.count ~= currentPhotoIndex else {return}
-        self.imgView.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(imageURlsArray[currentPhotoIndex] )")
-        self.imgView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        //  cell.imView.sd_setImage(with: imgURL)
-        self.imgView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
-            self.imgView.backgroundColor = .white
-        }
+//        guard 0..<imageURlsArray.count ~= currentPhotoIndex else { currentPhotoIndex = 0; return}
+//        self.imgView.backgroundColor = .lightGray.withAlphaComponent(0.5)
+//        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(imageURlsArray[currentPhotoIndex] )")
+//        self.imgView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+//        //  cell.imView.sd_setImage(with: imgURL)
+//        self.imgView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
+//            self.imgView.backgroundColor = .white
+//        }
+       
     }
     
     @IBAction func backButtonClicked(_ sender: UIButton) {
-        dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func shareBtnTapped(_ sender: UIButton) {
