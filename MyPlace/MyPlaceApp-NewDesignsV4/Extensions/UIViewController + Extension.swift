@@ -13,7 +13,7 @@ extension UIViewController {
     func setupNavigationBar()
     {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.barTintColor = AppColors.appOrange
+        self.navigationController?.navigationBar.barTintColor = AppColors.appGray
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = UIColor.white
@@ -23,7 +23,6 @@ extension UIViewController {
         
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
@@ -33,10 +32,11 @@ extension UIViewController {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.shadowColor = UIColor(red: 230/255, green: 231/255, blue: 232/255, alpha: 0.5)
-            appearance.backgroundColor = AppColors.appGray
+            appearance.backgroundColor = AppColors.darkGray
             appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            self.navigationController?.navigationBar.compactAppearance = appearance
         } else {
             // Fallback on earlier versions
             self.navigationController?.navigationBar.barTintColor = AppColors.appGray
@@ -44,25 +44,29 @@ extension UIViewController {
         
         //
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        // self.title = title
-        //        let logo = UIImage(named: "Top Menu Icon_ButbankMyplace")
-        //        let imageView = UIImageView(image:logo)
-        //        imageView.contentMode = .scaleAspectFit
-        //        imageView.frame = CGRect(x: self.view.center.x, y: 0, width: 193, height: 50)
-        //        imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        //        imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        //        self.navigationItem.titleView = imageView
         self.addLogoToNavigationBarItem()
-        //Back Button
-        let btn1 = UIButton(type: .custom)
-        //  btn1.backgroundColor = UIColor.blue
-        btn1.setImage(UIImage(named: "Ico-Back"), for: .normal)
-        btn1.tintColor = .white
-        btn1.frame = CGRect(x: 0, y: 0, width: 25, height: 10)
-        btn1.imageEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 8)
-        btn1.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        // self.navigationController?.navigationBar.back
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn1)
+        //MARK: - Back Button
+        let backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonPressed))
+        backBtn.tintColor = .white
+        navigationItem.backBarButtonItem = backBtn
+        
+        
+//        let btn1 = UIButton(type: .custom)
+//        //  btn1.backgroundColor = UIColor.blue
+//        if #available(iOS 13.0, *) {
+//            btn1.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+//        } else {
+//            // Fallback on earlier versions
+//            btn1.setImage(UIImage(named: "Ico-Back"), for: .normal)
+//        }
+//
+//        btn1.tintColor = .white
+//        btn1.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+//        btn1.backgroundColor = .red
+//       // btn1.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
+//        btn1.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+//        // self.navigationController?.navigationBar.back
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn1)
         
         //notification button
         let btn2 = UIButton(type: .custom)
@@ -73,9 +77,10 @@ extension UIViewController {
         btn2.imageEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 8)
         //  btn2.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         // self.navigationController?.navigationBar.back
-        if notificationIcon{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
-        }
+        #warning("currently not receiving any data in contactus module so disabling this icon for now can be enabled later in future")
+//        if notificationIcon{
+//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
+//        }
         //to remove navigation separation line
         
     }
