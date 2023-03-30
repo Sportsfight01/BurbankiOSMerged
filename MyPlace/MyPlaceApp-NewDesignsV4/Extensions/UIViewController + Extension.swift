@@ -46,27 +46,27 @@ extension UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         self.addLogoToNavigationBarItem()
         //MARK: - Back Button
-        let backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonPressed))
-        backBtn.tintColor = .white
-        navigationItem.backBarButtonItem = backBtn
+//        let backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonPressed))
+//        backBtn.tintColor = .white
+//        navigationItem.backBarButtonItem = backBtn
         
         
-//        let btn1 = UIButton(type: .custom)
-//        //  btn1.backgroundColor = UIColor.blue
-//        if #available(iOS 13.0, *) {
-//            btn1.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
-//        } else {
-//            // Fallback on earlier versions
-//            btn1.setImage(UIImage(named: "Ico-Back"), for: .normal)
-//        }
-//
-//        btn1.tintColor = .white
-//        btn1.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-//        btn1.backgroundColor = .red
-//       // btn1.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
-//        btn1.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-//        // self.navigationController?.navigationBar.back
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn1)
+        let btn1 = UIButton(type: .custom)
+        //  btn1.backgroundColor = UIColor.blue
+        if #available(iOS 13.0, *) {
+            btn1.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        } else {
+            // Fallback on earlier versions
+            btn1.setImage(UIImage(named: "Ico-Back"), for: .normal)
+        }
+
+        btn1.tintColor = .white
+        btn1.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+       // btn1.backgroundColor = .red
+        btn1.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        btn1.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        // self.navigationController?.navigationBar.back
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn1)
         
         //notification button
         let btn2 = UIButton(type: .custom)

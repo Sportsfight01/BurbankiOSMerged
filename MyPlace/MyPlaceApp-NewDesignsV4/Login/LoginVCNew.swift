@@ -13,23 +13,23 @@ import LocalAuthentication
 //class LoginVC: BasicVC {
     
 class LoginVCNew: BurbankAppVC {
-
+    
     @IBOutlet weak var labelEnter: UILabel!
-       @IBOutlet weak var labelPassword: UILabel!
-//       @IBOutlet weak var labelHint: UILabel!
-//
-//
-       @IBOutlet weak var viewEmailText: UIView!
-       @IBOutlet weak var viewPasswordText: UIView!
-//
-//       @IBOutlet weak var txtEmail: UITextField!
-//       @IBOutlet weak var txtPassword: UITextField!
-//
-       @IBOutlet weak var btnLogin: UIButton!
-//       @IBOutlet weak var btnForgot: UIButton!
-       
+    @IBOutlet weak var labelPassword: UILabel!
+    //       @IBOutlet weak var labelHint: UILabel!
+    //
+    //
+    @IBOutlet weak var viewEmailText: UIView!
+    @IBOutlet weak var viewPasswordText: UIView!
+    //
+    //       @IBOutlet weak var txtEmail: UITextField!
+    //       @IBOutlet weak var txtPassword: UITextField!
+    //
+    @IBOutlet weak var btnLogin: UIButton!
+    //       @IBOutlet weak var btnForgot: UIButton!
+    
     @IBOutlet weak var viewOR: UIView!
-
+    
     
     
     
@@ -38,20 +38,20 @@ class LoginVCNew: BurbankAppVC {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var userInfoLabel: UILabel!
     @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var fieldsViewVerticalConstraint: NSLayoutConstraint!
-
+    //    @IBOutlet weak var fieldsViewVerticalConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var touchIDButton: UIButton!
     @IBOutlet weak var touchIDImageButton: UIButton!
-
-   
+    
+    
     @IBOutlet weak var jobNumberBackGroundView: UIView!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var backGroundStackView: UIStackView!
     var forgotMessage = ""
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//    let pickerView = UIPickerView()
+    //    let pickerView = UIPickerView()
     @IBOutlet weak var labelHint: UILabel!
     
     let yourAttributes: [NSAttributedString.Key: Any] = [
@@ -62,7 +62,7 @@ class LoginVCNew: BurbankAppVC {
     var pickerDataSource = [""]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         forgotPasswordButton.alpha = 0
         
         touchIDButton.isHidden = true
@@ -71,12 +71,12 @@ class LoginVCNew: BurbankAppVC {
         handleUISetup()
         updateLoginFields()
         setAsNonEditColour()
-    
-//        pickerDataSource = (appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray.map({$0.jobNumber ?? ""}))!
+        
+        //        pickerDataSource = (appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray.map({$0.jobNumber ?? ""}))!
     }
     
     func handleUISetup () {
-                
+        
         setAppearanceFor(view: labelEnter, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
         setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
         setAppearanceFor(view: userInfoLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
@@ -86,20 +86,20 @@ class LoginVCNew: BurbankAppVC {
         setAppearanceFor(view: emailTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: passwordTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: jobNumberTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-
+        
         
         setAppearanceFor(view: btnLogin, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
         setAppearanceFor(view: forgotPasswordButton, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: touchIDButton, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
-
+        
         viewEmailText.layer.cornerRadius = radius_5
         jobNumberTextField.superview?.layer.cornerRadius = radius_5
         viewPasswordText.layer.cornerRadius = radius_5
         btnLogin.layer.cornerRadius = radius_5
         
-//        jobNumberTextField.inputView = pickerView
-//        pickerView.delegate =  self
-//        pickerView.dataSource = self
+        //        jobNumberTextField.inputView = pickerView
+        //        pickerView.delegate =  self
+        //        pickerView.dataSource = self
         
         viewEmailText.cardView()
         viewPasswordText.cardView()
@@ -107,12 +107,12 @@ class LoginVCNew: BurbankAppVC {
         
         
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
         CodeManager.sharedInstance.sendScreenName(login_screen_loading)
-//        pickerView.reloadAllComponents()
+        //        pickerView.reloadAllComponents()
         
     }
     
@@ -189,8 +189,8 @@ class LoginVCNew: BurbankAppVC {
             }
             if (user?.isMultipleJobs == false && user?.isMultipleEmails == true)
             {
-//                jobNumberTextField.text = appDelegate.enteredEmailOrJob
-//                jobNumberTextField.isUserInteractionEnabled = false
+                //                jobNumberTextField.text = appDelegate.enteredEmailOrJob
+                //                jobNumberTextField.isUserInteractionEnabled = false
                 if isEmail()
                 {
                     emailTextField.text = appDelegate.enteredEmailOrJob
@@ -299,7 +299,7 @@ class LoginVCNew: BurbankAppVC {
                 backGroundStackView.reloadInputViews()
             }
         }
-       
+        
     }
     func isCentralLoginUser() -> Bool
     {
@@ -311,12 +311,12 @@ class LoginVCNew: BurbankAppVC {
         
         return false
     }
- 
+    
     @IBAction func handleBackButton(_ sender: UIButton) {
         
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     
     @IBAction func loginButtonTapped(sender: AnyObject)
     {
@@ -325,42 +325,42 @@ class LoginVCNew: BurbankAppVC {
         
         
         emailTextField.text = emailTextField.text ?? "".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-
+        
         
         if isCentralLoginUser() == false {
-        if emailTextField.text == ""
-        {
-            if isCentralLoginUser() == false
+            if emailTextField.text == ""
             {
-                AlertManager.sharedInstance.showAlert(alertMessage: "Plase enter email id", title: "")
-                emailTextField.resignFirstResponder()
-                return
-            }
-            
-        }else if emailTextField.text?.trim().isValidEmail() == false
-        {
+                if isCentralLoginUser() == false
+                {
+                    AlertManager.sharedInstance.showAlert(alertMessage: "Plase enter email id", title: "")
+                    emailTextField.resignFirstResponder()
+                    return
+                }
+                
+            }else if emailTextField.text?.trim().isValidEmail() == false
+            {
                 AlertManager.sharedInstance.showAlert(alertMessage: "Plase enter valid email id", title: "")
                 emailTextField.resignFirstResponder()
                 return
-        }else if jobNumberTextField.text == ""
-        {
+            }else if jobNumberTextField.text == ""
+            {
                 AlertManager.sharedInstance.showAlert(alertMessage: "Please enter job number", title: "")
                 jobNumberTextField.resignFirstResponder()
                 return
-           
-        }else if passwordTextField.text == ""
-        {
+                
+            }else if passwordTextField.text == ""
+            {
                 AlertManager.sharedInstance.showAlert(alertMessage: "Please enter password", title: "")
                 passwordTextField.resignFirstResponder()
                 return
-        }
+            }
         }
         if jobNumberTextField.text == ""
         {
-                AlertManager.sharedInstance.showAlert(alertMessage: "Please select job number", title: "")
-                jobNumberTextField.resignFirstResponder()
-                return
-           
+            AlertManager.sharedInstance.showAlert(alertMessage: "Please select job number", title: "")
+            jobNumberTextField.resignFirstResponder()
+            return
+            
         }
         if passwordTextField.text == ""
         {
@@ -368,7 +368,7 @@ class LoginVCNew: BurbankAppVC {
             passwordTextField.resignFirstResponder()
             return
         }
-
+        
         if isCentralLoginUser()
         {
             handleUserCentralLogin()
@@ -378,54 +378,54 @@ class LoginVCNew: BurbankAppVC {
             
             if user?.IsEmailNotMapped == true {
                 validateEmailandSendPasscode()
-
+                
             }
             else {
                 handleUserMyPlaceLogin()
-
+                
             }
         }
         
     }
-   
+    
     func handleUserCentralLogin()
     {
-       // let postDic =  ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as! NSDictionary
+        // let postDic =  ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as! NSDictionary
         
         //Passing only Job number because of multiple Job number coming with email
         let postDic = isEmail() ? ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary : ["jobNumber": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary
         
-        #if DEDEBUG
+#if DEDEBUG
         print(postDic)
-        #endif
+#endif
         
         ServiceSession.shared.callToPostDataToServerWithGivenURLString(urlString: authenticateCentralLoginUserURL, postBodyDictionary: postDic) { (json) in
             let jsonDic = json as! NSDictionary
             
-            #if DEDEBUG
+#if DEDEBUG
             print(jsonDic)
-            #endif
+#endif
             
             if let status = jsonDic.object(forKey: "Status") as? Bool {
                 
                 if status == true {
-                        if let userDic = jsonDic.object(forKey: "Result") as? [String: Any]
+                    if let userDic = jsonDic.object(forKey: "Result") as? [String: Any]
+                    {
+                        let user = User(dic: userDic)
+                        if user.isSuccess == true
                         {
-                            let user = User(dic: userDic)
-                            if user.isSuccess == true
+                            // let userID = user.userDetailsArray?[0].id ?? -1
+                            CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
+                            
+                        }else
+                        {
+                            if let message = jsonDic["Message"] as? String
                             {
-                               // let userID = user.userDetailsArray?[0].id ?? -1
-                               CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
-                                
-                            }else
-                            {
-                                if let message = jsonDic["Message"] as? String
-                                {
-                                     AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
-                                     self.passwordTextField.becomeFirstResponder()
-                                     return
-                                }
+                                AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                                self.passwordTextField.becomeFirstResponder()
+                                return
                             }
+                        }
                     }
                 }
                 else
@@ -447,62 +447,62 @@ class LoginVCNew: BurbankAppVC {
     
     func handleUserMyPlaceLogin()
     {
-       
+        
         let postDic = ["Email":emailTextField.text!,
-                           "JobNumber":jobNumberTextField.text!,
-                           "MyPlacePassword":passwordTextField.text!,
-                           "IsMultipleEmails": (appDelegate.currentUser?.isMultipleEmails)!,
-                           "IsMultipleJobs": (appDelegate.currentUser?.isMultipleJobs)!] as [String : Any]
-            
+                       "JobNumber":jobNumberTextField.text!,
+                       "MyPlacePassword":passwordTextField.text!,
+                       "IsMultipleEmails": (appDelegate.currentUser?.isMultipleEmails)!,
+                       "IsMultipleJobs": (appDelegate.currentUser?.isMultipleJobs)!] as [String : Any]
+        
         ServiceSession.shared.callToPostDataToServerWithGivenURLString(urlString: validateMyPlaceURL, postBodyDictionary: postDic as NSDictionary, completionHandler: { (json) in
-                let jsonDic = json as! NSDictionary
-                if let status = jsonDic.object(forKey: "Status") as? Bool {
-                    
-                    #if DEDEBUG
-                    print(jsonDic)
-                    #endif
-                    
-                    if status == true {
-                        if let userDic = jsonDic.object(forKey: "Result") as? [String: Any]
+            let jsonDic = json as! NSDictionary
+            if let status = jsonDic.object(forKey: "Status") as? Bool {
+                
+#if DEDEBUG
+                print(jsonDic)
+#endif
+                
+                if status == true {
+                    if let userDic = jsonDic.object(forKey: "Result") as? [String: Any]
+                    {
+                        let user = User(dic: userDic)
+                        if user.isSuccess  == true
                         {
-                            let user = User(dic: userDic)
-                            if user.isSuccess  == true
+                            //need to change,it's may cause error in future for corrupt current user object data
+                            self.appDelegate.currentUser = user
+                            
+                            self.appDelegate.passcodeStr = user.passCode!
+                            
+                            //Entered Email is already Registered in Central DB, so we need to direclt allow user to dashboard
+                            if user.isCentralLoginUser == true
                             {
-                                //need to change,it's may cause error in future for corrupt current user object data
-                                self.appDelegate.currentUser = user
-                                
-                                self.appDelegate.passcodeStr = user.passCode!
-
-                                //Entered Email is already Registered in Central DB, so we need to direclt allow user to dashboard
-                                if user.isCentralLoginUser == true
-                                {
-                                    CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
-                                }else
-                                {
-                                    self.performSegue(withIdentifier: "showSetCentralPasswordVC", sender: nil)
-                                }
+                                CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
                             }else
                             {
-                                if let message = userDic["Message"] as? String
-                                {
-                                    AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
-                                    return
-                                }
-                                
+                                self.performSegue(withIdentifier: "showSetCentralPasswordVC", sender: nil)
+                            }
+                        }else
+                        {
+                            if let message = userDic["Message"] as? String
+                            {
+                                AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                                return
                             }
                             
                         }
-                    }
-                }else
-                {
-                    if let message = jsonDic["Message"] as? String
-                    {
-                        AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                        
                     }
                 }
-            })
+            }else
+            {
+                if let message = jsonDic["Message"] as? String
+                {
+                    AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                }
+            }
+        })
         
-
+        
     }
     func validateEmailandSendPasscode() {
         
@@ -517,9 +517,9 @@ class LoginVCNew: BurbankAppVC {
             let jsonDic = json as! NSDictionary
             if let status = jsonDic.object(forKey: "Status") as? Bool {
                 
-                #if DEDEBUG
+#if DEDEBUG
                 print(jsonDic)
-                #endif
+#endif
                 
                 if status == true {
                     if let userDic = jsonDic.object(forKey: "Result") as? [String: Any]
@@ -530,7 +530,7 @@ class LoginVCNew: BurbankAppVC {
                             self.appDelegate.currentUser = user//need to change,it's may cause error in future for corrupt current user object data
                             
                             self.appDelegate.passcodeStr = user.passCode!
-
+                            
                             if user.isCentralLoginUser == true//Entered Email is already Registered in Central DB, so we need to direclt allow user to dashboard
                             {
                                 CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
@@ -575,15 +575,15 @@ class LoginVCNew: BurbankAppVC {
             if isCentralLoginUser()
             {
                 
-//                let postDic = ["Email":jobNumberTextField.text!,
-//                               "JobNumber":""] as [String : Any]
+                //                let postDic = ["Email":jobNumberTextField.text!,
+                //                               "JobNumber":""] as [String : Any]
                 
                 let name = appDelegate.currentUser?.userDetailsArray?[0].firstName ?? ""
                 let primaryEmail = appDelegate.currentUser?.jobNumber ?? ""
-
-            let postDic = ["Email":jobNumberTextField.text ?? "",
-                           "Name": name ,
-                           "JobNumber":primaryEmail ] as [String : Any]
+                
+                let postDic = ["Email":jobNumberTextField.text ?? "",
+                               "Name": name ,
+                               "JobNumber":primaryEmail ] as [String : Any]
                 
                 ServiceSession.shared.callToPostDataToServerWithGivenURLString(urlString: forgotPasswordURL, postBodyDictionary: postDic as NSDictionary, completionHandler: { (json) in
                     let jsonDic = json as! NSDictionary
@@ -687,7 +687,7 @@ class LoginVCNew: BurbankAppVC {
                              case LAError.Code.userFallback.rawValue:
                              self.notifyUser(msg: "Authentication", err: "Password option selected")
                              */
-                        // Custom code to obtain password here
+                            // Custom code to obtain password here
                         default:
                             print(error?.localizedDescription as Any)
                             
@@ -718,7 +718,7 @@ class LoginVCNew: BurbankAppVC {
                         
                         
                     }
-            })
+                })
             
         } else {
             
@@ -734,9 +734,9 @@ class LoginVCNew: BurbankAppVC {
                 self.notifyUser(msg: "A passcode has not been set", err: error?.localizedDescription)
                 
             default:
-                #if DEDEBUG
+#if DEDEBUG
                 print(" TouchID not available")
-                #endif
+#endif
                 // self.notifyUser(msg: "TouchID not available", err: error?.localizedDescription)
             }
         }
@@ -751,7 +751,7 @@ class LoginVCNew: BurbankAppVC {
     func notifyUser(msg: String, err: String?) {
         
         DispatchQueue.main.async {
-             // Perform your async code here
+            // Perform your async code here
             
             let alert = UIAlertController(title: msg, message: err, preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -761,35 +761,35 @@ class LoginVCNew: BurbankAppVC {
         
         
     }
-
-
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-   {
-    if segue.identifier == "showSetCentralPasswordVC"
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let destination = segue.destination as! SetCentralPasswordVCNew
-        destination.myPlacePasswordFromLogin = passwordTextField.text!
-        destination.alertMessage = forgotMessage
-        if isForgotPasswordTapped
+        if segue.identifier == "showSetCentralPasswordVC"
         {
-            isForgotPasswordTapped = !isForgotPasswordTapped
-            destination.infoMessage = "Forgot Password"
+            let destination = segue.destination as! SetCentralPasswordVCNew
+            destination.myPlacePasswordFromLogin = passwordTextField.text!
+            destination.alertMessage = forgotMessage
+            if isForgotPasswordTapped
+            {
+                isForgotPasswordTapped = !isForgotPasswordTapped
+                destination.infoMessage = "Forgot Password"
+            }
+            
+            destination.kPassCode = appDelegate.passcodeStr
+        }else if segue.identifier == "showValidatedEmail"
+        {
+            let destination = segue.destination as! ValidateEmailVC
+            //           if forgotMessage != "" {
+            destination.jobId = jobNumberTextField.text ?? ""
+            destination.message = forgotMessage
+            //                destination.kPassCode = appDelegate.passcodeStr
+            //           }
         }
         
-        destination.kPassCode = appDelegate.passcodeStr
-    }else if segue.identifier == "showValidatedEmail"
-       {
-           let destination = segue.destination as! ValidateEmailVC
-//           if forgotMessage != "" {
-               destination.jobId = jobNumberTextField.text ?? ""
-                destination.message = forgotMessage
-//                destination.kPassCode = appDelegate.passcodeStr
-//           }
-       }
-
     }
 }
 

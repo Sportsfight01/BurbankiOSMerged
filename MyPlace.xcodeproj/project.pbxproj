@@ -25,6 +25,7 @@
 		4212D6032938A8EE00855CDC /* FavouritesTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5FA2938A8EE00855CDC /* FavouritesTVCell.xib */; };
 		4212D6042938A8EE00855CDC /* MyDesignsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
+		42999C9229D556AA00FE2507 /* ImageSliderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C9129D556AA00FE2507 /* ImageSliderVC.swift */; };
 		42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7E829349BD80038179F /* Assets.xcassets */; };
 		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
@@ -478,6 +479,7 @@
 		4212D5FA2938A8EE00855CDC /* FavouritesTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouritesTVCell.xib; sourceTree = "<group>"; };
 		4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDesignsTVC.xib; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
+		42999C9129D556AA00FE2507 /* ImageSliderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageSliderVC.swift; path = "../../../../../BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/ImageSliderVC.swift"; sourceTree = "<group>"; };
 		42E6D7E829349BD80038179F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1095,6 +1097,7 @@
 				A1659931292F32BA00C36B3B /* FinanceDetailVC.swift */,
 				A1659932292F32BA00C36B3B /* PDFPreviewController.swift */,
 				A1659933292F32BA00C36B3B /* FinanceVC.swift */,
+				42999C9129D556AA00FE2507 /* ImageSliderVC.swift */,
 				A1659934292F32BA00C36B3B /* MyProgressVC.swift */,
 				A1659935292F32BA00C36B3B /* PhotosListVC.swift */,
 				A1659936292F32BA00C36B3B /* DetailsVC.swift */,
@@ -2901,6 +2904,7 @@
 				D16FE375242885800082DECF /* ViewAppearance.swift in Sources */,
 				EDC770212434AAD400BB9707 /* ProfileDayTVCell.swift in Sources */,
 				ED8C3C4B24BECCD900364CA4 /* StudyVC.swift in Sources */,
+				42999C9229D556AA00FE2507 /* ImageSliderVC.swift in Sources */,
 				ED35973B243B573C003A1159 /* HomeLandPackage.swift in Sources */,
 				A1659AE8292F4A4500C36B3B /* ModelController.m in Sources */,
 				A1659B0C292F4A4500C36B3B /* ProfileVC.swift in Sources */,
@@ -3214,7 +3218,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3251,7 +3255,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

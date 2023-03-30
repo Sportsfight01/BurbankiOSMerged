@@ -46,7 +46,8 @@ class FinanceDetailVC: UIViewController {
     }
   
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+        super.viewWillAppear(animated)
+        self.setupNavigationBarButtons()
     }
     @IBAction func didTappedOnShareBTN(_ sender: UIButton) {
         let takenIMG = screenshot()

@@ -20,22 +20,13 @@ class PhotosListVC: UIViewController {
     
     //MARK: - Properties
     @IBOutlet weak var newCountView: UIView!
-    @IBOutlet weak var countPhotosLb: UILabel!    
+    @IBOutlet weak var countPhotosLb: UILabel!
     @IBOutlet weak var newCountLb: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // var photoList : [DocumentsDetailsStruct]!
-   // var yearMonthPhotoListArray = [YearMonthListNewFlow]()
     var selectedIndexForQLDSA = 0
-
-  
-  //  var dayWisePhotoList : DayWisePhotoList<MyPlaceDocuments>!//for QLDSA
     var selectedDayIndex = 0//for QLS SA
-  //  var monthWisePhotoList : YearMonthList!//for QLDSA for next and previous
-   // var yearMonthNumber = 0
-//    var isFromNotifications = false
     var selectedImgViewIndex = 0
-    
     var collectionDataSource : [PhotoItem] = []
     var photosCount : Int = 0
     
@@ -55,20 +46,21 @@ class PhotosListVC: UIViewController {
 
         
         self.photosCount = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).count
-        
-        
-        
         //   print("photoscount :- \(photoCount)")
         self.countPhotosLb.text = "\(photosCount) photo".appending(photosCount > 1 ? "s" : "")
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated : Bool)
+    {
+        super.viewDidAppear(animated)
+        //self.navigationItem.backBarButtonItem = uiba
+    }
+    
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    title = "BURBANK MYPLACE"
+      self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
       newCountLb.isHidden = true
       newCountView.isHidden = true
-
-    self.navigationController?.setNavigationBarHidden(true, animated: false)
       
        if photosCount > 0
       {
@@ -102,10 +94,7 @@ class PhotosListVC: UIViewController {
     
     
   }
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    self.navigationController?.setNavigationBarHidden(false, animated: false)
-  }
+    
   //MARK: - Helper functions
     //will try for future versions
     @available(iOS 13.0, *)
@@ -121,9 +110,9 @@ class PhotosListVC: UIViewController {
         return layout
     }
     
-  @IBAction func backBtnClicked(_ sender: UIButton) {
-    self.navigationController?.popViewController(animated: true)
-  }
+//  @IBAction func backBtnClicked(_ sender: UIButton) {
+//    self.navigationController?.popViewController(animated: true)
+//  }
   
 }
 //MARK: - CollectionView Delegate & Datasource
@@ -156,7 +145,7 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
+        var vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
         let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
         if let cell = collectionView.cellForItem(at: indexPath) as? PhotosListCVCell
         {
@@ -170,14 +159,27 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
         vc.docDate = date
         let flatImageUrls = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).compactMap({$0.url})
-        let flatNameUrls = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).compactMap({$0.title})
         vc.imageURlsArray = flatImageUrls
         vc.currentPhotoIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
-        
-        vc.collectionDatasource = collectionDataSource
        // let navVC = UINavigationController(rootViewController: vc)
        // present(navVC, animated: true)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if #available(iOS 13.0, *) {
+            let imgVC = ImageSliderVC()
+            let items = collectionDataSource
+                .compactMap({$0.rowData})
+                .flatMap({$0})
+                .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "EEEE, dd/MM/yy") ?? "", url: $0.url ?? "") })
+            imgVC.collectionDataSource = items
+            imgVC.currentIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
+            self.navigationController?.pushViewController(imgVC, animated: true)
+
+        } else {
+            // Fallback on earlier versions
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+       
     }
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
       

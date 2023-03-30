@@ -72,6 +72,7 @@ class MyProgressDetailVC: UIViewController {
         
         let contentheight = tableView.contentSize.height
         self.tableHeightConstraint.constant = contentheight
+        tableView.isScrollEnabled = false
     }
     //MARK: - Helper Methods
 
