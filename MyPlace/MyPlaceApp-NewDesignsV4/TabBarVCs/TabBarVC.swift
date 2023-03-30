@@ -110,7 +110,7 @@ class TabBarVC: UITabBarController {
             {
             case .success(let data):
                 // print(data)
-                let filtered = data.lazy.filter({$0.stageName?.lowercased() == "Administration".lowercased()}).filter({($0.name?.trim().lowercased() == "Sign Building Contract".trim().lowercased() || $0.name?.trim().lowercased() == "Contract Signed".lowercased()) && $0.status?.lowercased() == "completed"})
+                let filtered = data.filter({$0.phasecode?.lowercased() == "presite".lowercased()}).filter({($0.name?.trim().lowercased() == "Sign Building Contract".trim().lowercased() || $0.name?.trim().lowercased() == "Contract Signed".lowercased()) && $0.status?.lowercased() == "completed"})
                 
                 if filtered.count == 1
                 {

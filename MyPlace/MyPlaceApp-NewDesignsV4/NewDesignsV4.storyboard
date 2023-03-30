@@ -4287,14 +4287,22 @@ Tap below to see all.</string>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aero" translatesAutoresizingMaskIntoConstraints="NO" id="D5q-Zm-2fJ">
                                         <rect key="frame" x="0.0" y="142.66666666666666" width="390" height="427.66666666666674"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwQ-a3-KeH" customClass="CLabsImageSlider" customModule="BurbankApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="142.66666666666666" width="390" height="427.66666666666674"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="D5q-Zm-2fJ" secondAttribute="trailing" id="5r0-c3-Kc0"/>
+                                    <constraint firstItem="qwQ-a3-KeH" firstAttribute="bottom" secondItem="D5q-Zm-2fJ" secondAttribute="bottom" id="AdH-ZS-txa"/>
+                                    <constraint firstItem="qwQ-a3-KeH" firstAttribute="trailing" secondItem="D5q-Zm-2fJ" secondAttribute="trailing" id="Jjp-Ge-giH"/>
                                     <constraint firstItem="D5q-Zm-2fJ" firstAttribute="centerX" secondItem="6vW-fR-ojG" secondAttribute="centerX" id="NNo-5L-nyb"/>
                                     <constraint firstItem="D5q-Zm-2fJ" firstAttribute="leading" secondItem="6vW-fR-ojG" secondAttribute="leading" id="YM1-6u-zlM"/>
                                     <constraint firstItem="D5q-Zm-2fJ" firstAttribute="height" secondItem="6vW-fR-ojG" secondAttribute="height" multiplier="0.6" id="Yby-ce-0RQ"/>
+                                    <constraint firstItem="qwQ-a3-KeH" firstAttribute="leading" secondItem="D5q-Zm-2fJ" secondAttribute="leading" id="arO-nR-j70"/>
                                     <constraint firstItem="D5q-Zm-2fJ" firstAttribute="centerY" secondItem="6vW-fR-ojG" secondAttribute="centerY" id="n8P-QG-juV"/>
+                                    <constraint firstItem="qwQ-a3-KeH" firstAttribute="top" secondItem="D5q-Zm-2fJ" secondAttribute="top" id="web-2t-d14"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7s-Yc-gd6" userLabel="NavBarView">
@@ -4355,13 +4363,14 @@ Tap below to see all.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageSlider" destination="qwQ-a3-KeH" id="lGi-e2-pgE"/>
                         <outlet property="imgView" destination="D5q-Zm-2fJ" id="Pct-Or-cW6"/>
                         <outlet property="titleLb" destination="gab-P4-zU8" id="I81-lr-8uA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yuw-89-ICG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="1210.0446428571429"/>
+            <point key="canvasLocation" x="927.69230769230762" y="1209.9526066350711"/>
         </scene>
         <!--My Progress DetailVC-->
         <scene sceneID="Rwp-Ik-a9x">

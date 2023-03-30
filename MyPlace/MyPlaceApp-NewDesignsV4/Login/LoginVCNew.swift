@@ -12,7 +12,7 @@ import LocalAuthentication
 
 //class LoginVC: BasicVC {
     
-class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
+class LoginVCNew: BurbankAppVC {
 
     @IBOutlet weak var labelEnter: UILabel!
        @IBOutlet weak var labelPassword: UILabel!
@@ -51,7 +51,7 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
     var forgotMessage = ""
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let pickerView = UIPickerView()
+//    let pickerView = UIPickerView()
     @IBOutlet weak var labelHint: UILabel!
     
     let yourAttributes: [NSAttributedString.Key: Any] = [
@@ -72,7 +72,7 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
         updateLoginFields()
         setAsNonEditColour()
     
-        pickerDataSource = (appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray.map({$0.jobNumber ?? ""}))!
+//        pickerDataSource = (appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray.map({$0.jobNumber ?? ""}))!
     }
     
     func handleUISetup () {
@@ -97,9 +97,9 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
         viewPasswordText.layer.cornerRadius = radius_5
         btnLogin.layer.cornerRadius = radius_5
         
-        jobNumberTextField.inputView = pickerView
-        pickerView.delegate =  self
-        pickerView.dataSource = self
+//        jobNumberTextField.inputView = pickerView
+//        pickerView.delegate =  self
+//        pickerView.dataSource = self
         
         viewEmailText.cardView()
         viewPasswordText.cardView()
@@ -112,7 +112,7 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         
         CodeManager.sharedInstance.sendScreenName(login_screen_loading)
-        pickerView.reloadAllComponents()
+//        pickerView.reloadAllComponents()
         
     }
     
@@ -239,36 +239,6 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
                 jobNumberTextField.isUserInteractionEnabled = false
             }
             
-        }else if isEmail() {
-            //            emailView.alpha = 0
-            emailTextField.text = appDelegate.enteredEmailOrJob
-            
-            if (user?.userDetailsArray?[0].myPlaceDetailsArray.count)! <= 1{
-                jobNumberTextField.isUserInteractionEnabled = false
-                jobNumberTextField.text = user?.userDetailsArray?[0].myPlaceDetailsArray[0].jobNumber
-            }else{
-                jobNumberTextField.placeholder = "Select Job Number"
-                self.jobNumberTextField.setupRightImage(imageName: "Ico-Downarrow-1")
-            }
-            
-            emailTextField.isUserInteractionEnabled = false
-            passwordTextField.placeholder = "Enter Password"
-            
-            userInfoLabel.isHidden = true
-            setUpinfoLabelTextForCentralLogin()
-            guard let emailOrJob = UserDefaults.standard.object(forKey: "EnteredEmailOrJob") as? String else { return }
-            if self.jobNumberTextField.text == emailOrJob
-            {
-                touchIDButton.isHidden = false
-                touchIDImageButton.isHidden = false
-                viewOR.isHidden = false
-            }else
-            {
-                touchIDButton.isHidden = true
-                touchIDImageButton.isHidden = true
-                viewOR.isHidden = true
-            }
-            
         }
         else
         {
@@ -342,22 +312,6 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
         return false
     }
  
-    //MARK: - PickerViewDelegateDatasource
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDataSource.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDataSource[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        jobNumberTextField.text = pickerDataSource[row]
-    }
-
-    
     @IBAction func handleBackButton(_ sender: UIButton) {
         
         self.navigationController?.popViewController(animated: true)
@@ -439,9 +393,7 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
        // let postDic =  ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as! NSDictionary
         
         //Passing only Job number because of multiple Job number coming with email
-        let postDic = ["jobNumber": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary
-        
-//        isEmail() ? ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary : ["jobNumber": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary
+        let postDic = isEmail() ? ["Email": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary : ["jobNumber": jobNumberTextField.text!,"CentralLoginPassword": passwordTextField.text!] as NSDictionary
         
         #if DEDEBUG
         print(postDic)
@@ -627,11 +579,11 @@ class LoginVCNew: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
 //                               "JobNumber":""] as [String : Any]
                 
                 let name = appDelegate.currentUser?.userDetailsArray?[0].firstName ?? ""
-//                let primaryEmail = appDelegate.currentUser?.userDetailsArray?[0].primaryEmail ?? ""
+                let primaryEmail = appDelegate.currentUser?.jobNumber ?? ""
 
-            let postDic = ["Email":emailTextField.text ?? "",
+            let postDic = ["Email":jobNumberTextField.text ?? "",
                            "Name": name ,
-                           "JobNumber":jobNumberTextField.text ?? ""] as [String : Any]
+                           "JobNumber":primaryEmail ] as [String : Any]
                 
                 ServiceSession.shared.callToPostDataToServerWithGivenURLString(urlString: forgotPasswordURL, postBodyDictionary: postDic as NSDictionary, completionHandler: { (json) in
                     let jsonDic = json as! NSDictionary

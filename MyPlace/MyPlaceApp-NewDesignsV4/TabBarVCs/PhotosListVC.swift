@@ -170,8 +170,11 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
         vc.docDate = date
         let flatImageUrls = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).compactMap({$0.url})
+        let flatNameUrls = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).compactMap({$0.title})
         vc.imageURlsArray = flatImageUrls
         vc.currentPhotoIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
+        
+        vc.collectionDatasource = collectionDataSource
        // let navVC = UINavigationController(rootViewController: vc)
        // present(navVC, animated: true)
         self.navigationController?.pushViewController(vc, animated: true)
