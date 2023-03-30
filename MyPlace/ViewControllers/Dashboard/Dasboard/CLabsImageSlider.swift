@@ -505,7 +505,7 @@ public class imageData {
             if let imageUrl  =  NSURL(string:imageUrl)
             {
 
-                DispatchQueue.global(qos: .userInitiated).async {
+                DispatchQueue.global(qos: .default).async {
                     
                     let data =   NSData(contentsOf:imageUrl as URL)
                     DispatchQueue.main.async {

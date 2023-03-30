@@ -10,37 +10,32 @@ import UIKit
 import SDWebImage
 
 class ZoomImageVC: UIViewController,imageSliderDelegate {
-    func didMovedToIndex(index: Int) {
-        print(index)
-    }
+    
     
     
     @IBOutlet weak var titleLb: UILabel!
     //var imgData : DocumentsDetailsStruct!
     @IBOutlet weak var imgView : UIImageView!
     var docDate : String?
+    var collectionDatasource : [PhotoItem]!
+    
     var imageURlsArray : [String] = []
     var currentPhotoIndex : Int = 0
     var imageData : UIImage?
     
+    var collectionOfPhotoItemArr : [DocumentsDetailsStruct]!
     @IBOutlet weak var imageSlider: CLabsImageSlider!
     //MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
-//        rightSwipeGesture.direction = .right
-//        self.imgView.superview?.addGestureRecognizer(rightSwipeGesture)
-//        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
-//        leftSwipeGesture.direction = .left
-//        self.imgView.superview?.addGestureRecognizer(leftSwipeGesture)
         
+        
+       
         imageSlider.clipsToBounds = true
         imageSlider.layer.cornerRadius = 5
-//        imageSlider.imageSourceArray = []
         imageSlider.sliderDelegate = self
-//        imageSlider.translatesAutoresizingMaskIntoConstraints = false
         let swipeleft = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeleft(_:)))
         swipeleft.direction = .left
         imageSlider?.addGestureRecognizer(swipeleft)
@@ -48,25 +43,38 @@ class ZoomImageVC: UIViewController,imageSliderDelegate {
         let swiperight = UISwipeGestureRecognizer(target: self, action: #selector(self.swiperight(_:)))
         swiperight.direction = .right
         imageSlider?.addGestureRecognizer(swiperight)
+
+        collectionOfPhotoItemArr  = collectionDatasource.compactMap({$0.rowData}).flatMap({$0})
         
-        var imageSliderArr = [""]
-        for i in 0..<imageURlsArray.count{
-            let imgURL = "\(clickHomeBaseImageURL)/\(imageURlsArray[i] )"
-            print(imgURL)
-            imageSliderArr.append(imgURL)
-        }
+        imageURlsArray = collectionDatasource.compactMap({$0.rowData}).flatMap({$0}).map({"\(clickHomeBaseImageURL)/\($0.url ?? "")"})
+        loadTitleName(index: currentPhotoIndex)
         
-        self.imageSlider?.setUpView(imageSource: .Url(imageArray: imageSliderArr, placeHolderImage: UIImage(named: "placeholder")),slideType: .ManualSwipe,isArrowBtnEnabled: true, contentMode: "SC")
+//        self.imageSlider.currentIndex = currentPhotoIndex
+        self.imageSlider?.setUpView(imageSource: .Url(imageArray: imageURlsArray, placeHolderImage: UIImage(named: "placeholder")),slideType: .ManualSwipe,isArrowBtnEnabled: true, contentMode: "SC")
+    }
+    
+    
+    func loadTitleName(index : Int){
+        let date = dateFormatter(dateStr: collectionOfPhotoItemArr[index].docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
+        titleLb.text = "\(collectionOfPhotoItemArr[index].title ?? "") , \(date ?? "")"
+       
         
     }
+    
+    
     @objc func swipeleft(_ gestureRecognizer: UISwipeGestureRecognizer) {
             imageSlider?.swipeRight(swipeGesture: gestureRecognizer)
-        
     }
     @objc func swiperight(_ gestureRecognizer: UISwipeGestureRecognizer)
     {
-        
             imageSlider?.swipeLeft(swipeGesture: gestureRecognizer)
+    }
+    func didMovedToIndex(index: Int) {
+        print(index)
+        
+        loadTitleName(index: index)
+//        let date = dateFormatter(dateStr: collectionOfPhotoItemArr[index].docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
+//        titleLb.text = "\(collectionOfPhotoItemArr[index].title ?? "") , \(date ?? "")"
         
     }
     
@@ -80,36 +88,8 @@ class ZoomImageVC: UIViewController,imageSliderDelegate {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
-    
-    //MARK: - Helper Methods
-    @objc func swipeGesture(_ gesture : UISwipeGestureRecognizer)
-    {
-        print(gesture.direction)
-        switch gesture.direction
-        {
-        case .left:
-            currentPhotoIndex += 1
-        case .right:
-            currentPhotoIndex -= 1
-        default:
-            debugPrint("other direction")
-        }
-        handleImageSwipe()
-        
-    }
-    
-    func handleImageSwipe()
-    {
-//        guard 0..<imageURlsArray.count ~= currentPhotoIndex else { currentPhotoIndex = 0; return}
-//        self.imgView.backgroundColor = .lightGray.withAlphaComponent(0.5)
-//        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(imageURlsArray[currentPhotoIndex] )")
-//        self.imgView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-//        //  cell.imView.sd_setImage(with: imgURL)
-//        self.imgView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
-//            self.imgView.backgroundColor = .white
-//        }
-       
-    }
+
+
     
     @IBAction func backButtonClicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
