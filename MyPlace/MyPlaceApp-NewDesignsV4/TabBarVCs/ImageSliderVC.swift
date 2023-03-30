@@ -22,18 +22,20 @@ class ImageSliderVC: UIViewController {
         setupUI()
         collectionView.backgroundColor = .systemBackground
         configureDataSource()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.jhjednnnn
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.frame = view.frame
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.6),
-//            collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-//        ])
+       // collectionView.frame = view.frame
+        guard collectionView.superview != nil else {return}
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.6),
+            collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -65,10 +67,9 @@ class ImageSliderVC: UIViewController {
     {
         dataSource = UICollectionViewDiffableDataSource<Int, String>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as! ImageCell
-            cell.contentView.backgroundColor = .red
             cell.titleLb.text = self.collectionDataSource[indexPath.item].title.capitalized
             cell.dateLb.text = self.collectionDataSource[indexPath.item].docDate
-            let imageView = cell.zoomImageView.imageView
+            let imageView = cell.zoomImageView
             imageView.backgroundColor = .lightGray.withAlphaComponent(0.5)
             let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(itemIdentifier)")
             imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
@@ -84,17 +85,17 @@ class ImageSliderVC: UIViewController {
         snapShot.appendSections([0])
         let items = collectionDataSource.map({$0.url})
         snapShot.appendItems(items)
-        dataSource.apply(snapShot, animatingDifferences: false)
+        dataSource.apply(snapShot, animatingDifferences: true)
         
-        collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: false)
+        collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
 
 @available(iOS 13.0, *)
 class ImageCell : UICollectionViewCell {
     static let identifier = "ImageCell"
-    var zoomImageView : ZoomImageView = {
-        return ZoomImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+    var zoomImageView : UIImageView = {
+        return UIImageView()
     }()
     
     var titleLb : UILabel = UILabel()
@@ -112,12 +113,14 @@ class ImageCell : UICollectionViewCell {
     func configure()
     {
         
-        setAppearanceFor(view: titleLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaSemiBold(size: 17.0))
-        setAppearanceFor(view: dateLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaRegular(size: 14.0))
-    
+        setAppearanceFor(view: titleLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaSemiBold(size: 20.0))
+        setAppearanceFor(view: dateLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaRegular(size: 16.0))
+        [titleLb, dateLb].forEach({$0.textAlignment = .center})
 //        zoomImageView.backgroundColor = .red
         //zoomImageView.ima.contentMode = .scaleAspectFit
+        dateLb.transform = CGAffineTransform(translationX: 0, y: -10)
         let stackView = UIStackView(arrangedSubviews: [titleLb, dateLb, zoomImageView])
+        stackView.spacing = 20
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill

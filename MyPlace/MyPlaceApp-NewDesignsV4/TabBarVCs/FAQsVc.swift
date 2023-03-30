@@ -190,7 +190,14 @@ extension FAQsVc : UITableViewDelegate , UITableViewDataSource
         
         //imgView
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "icon_rightArrow")
+
+        if #available(iOS 13.0, *) {
+            imageView.image = UIImage(systemName: "chevron.right")
+        } else {
+            // Fallback on earlier versions
+            imageView.image = UIImage(named: "icon_rightArrow")
+        }
+        
         imageView.tintColor = AppColors.appOrange
         if tableDataSource[section].isOpened
         {

@@ -405,6 +405,7 @@ extension DocumentsVC : UITableViewDelegate , UITableViewDataSource , UISearchBa
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         getPdfDataAt(rowNo: indexPath.row)
+        searchBar.resignFirstResponder()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
