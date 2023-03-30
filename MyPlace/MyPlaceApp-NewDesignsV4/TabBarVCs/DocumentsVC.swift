@@ -81,9 +81,15 @@ class DocumentsVC: UIViewController {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
+        viewFavouritesContainerView.addGestureRecognizer(tap)
       
         // Do any additional setup after loading the view.
     }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
@@ -144,14 +150,20 @@ class DocumentsVC: UIViewController {
     }
     
     @IBAction func searchBtnAction(_ sender: UIButton) {
-        searchBarHeight.constant = searchBarHeight.constant == 0 ? 44 : 0
+        hideAndShowSearchBar()
+    }
+    
+    @objc func handleGestureRecognizer(recognizer : UITapGestureRecognizer){
+        hideAndShowSearchBar()
+    }
+    
+    func hideAndShowSearchBar(){
+        searchBarHeight.constant = searchBarHeight.constant == 0 ? 44 : 0; self.searchBar.resignFirstResponder()
         UIView.animate(withDuration: 0.250) {
             self.view.layoutIfNeeded()
         } completion: { cmp in
             
         }
-        
-        
     }
     
     //MARK: - Helper Methods

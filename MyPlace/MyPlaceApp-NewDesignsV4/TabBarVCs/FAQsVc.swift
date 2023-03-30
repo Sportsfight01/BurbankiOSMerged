@@ -191,6 +191,7 @@ extension FAQsVc : UITableViewDelegate , UITableViewDataSource
         //imgView
         let imageView = UIImageView()
 
+        imageView.contentMode = .scaleAspectFit
         if #available(iOS 13.0, *) {
             imageView.image = UIImage(systemName: "chevron.right")
         } else {
