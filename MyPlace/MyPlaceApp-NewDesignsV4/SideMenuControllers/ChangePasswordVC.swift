@@ -17,14 +17,42 @@ class ChangePasswordVC: UIViewController {
         @IBOutlet weak var newPasswordTextField: UITextField!
         @IBOutlet weak var confirmPasswordTextField: UITextField!
         
-        var currentPassword = ""
+    @IBOutlet weak var passwordLBL: UILabel!
+    @IBOutlet weak var changeLBL: UILabel!
+    @IBOutlet weak var helpTextLBL: UILabel!
+    @IBOutlet weak var confirmPasswordView: UIView!
+    @IBOutlet weak var newPasswordView: UIView!
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var emailView: UIView!
+    var currentPassword = ""
         /// Mark:- View life cycle methods.
         override func viewDidLoad() {
             super.viewDidLoad()
             self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
             // Do any additional setup after loading the view.
             emailTextField.text = appDelegate.enteredEmailOrJob
+            setupView()
+            fillEmail()
         }
+
+    func setupView(){
+        emailView.cardView()
+        passwordView.cardView()
+        newPasswordView.cardView()
+        confirmPasswordView.cardView()
+        
+        
+    }
+    func fillEmail () {
+        
+        self.emailTextField.text = appDelegate.enteredEmailOrJob
+        
+        if emailTextField.text!.count > 0 {
+            self.emailView.isUserInteractionEnabled = false
+            self.emailView.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
+        }
+        
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,6 +89,10 @@ class ChangePasswordVC: UIViewController {
             else if newPasswordTextField.text == "" {
                 AlertManager.sharedInstance.showAlert(alertMessage: "Please enter new password")
             }
+            else if (newPasswordTextField.text?.trim().count)! < 6 {
+                
+                AlertManager.sharedInstance.showAlert(alertMessage: "Please enter minimum 6 characters for new password")
+            }
             else if confirmPasswordTextField.text == "" {
                 AlertManager.sharedInstance.showAlert(alertMessage: "Please enter confirm password")
             }
@@ -81,7 +113,7 @@ class ChangePasswordVC: UIViewController {
 
         /// posting data to server for resetting password.
         func postDataToServerForResetPassword() {
-            updatePasswordURL
+            
             let urlString = String(format: "login/UpdatePassword")
             
             ServiceSession.shared.callToPostDataToServer(appendUrlString: urlString, postBodyDictionary: ["Email":emailTextField.text!, "CentralLoginPassword":newPasswordTextField.text!], completionHandler: {(json) in
