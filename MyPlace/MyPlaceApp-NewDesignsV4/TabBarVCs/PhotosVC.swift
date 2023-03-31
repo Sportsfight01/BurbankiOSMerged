@@ -161,7 +161,7 @@ class PhotosVC: UIViewController {
                 let documentList = data.filter({$0.type?.uppercased() == "JPG"})
                 guard documentList.count > 0 else {
                     DispatchQueue.main.async {
-                        self.collectionView.setEmptyMessage("No Recent Photos")
+                        self.collectionView.setEmptyMessage("No recent photos")
                         self.helpTextLBL.text = "No photos available for this job number"
                         self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
 //                     self.showAlert(message: "No photos found") { _ in

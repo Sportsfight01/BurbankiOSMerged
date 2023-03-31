@@ -109,7 +109,13 @@ class SetCentralPasswordVCNew: BurbankAppVC {
             BurbankApp.showAlert("Please enter password")
             passCodeTextField.becomeFirstResponder()
             return
-        }else if confirmPasswordTextField.text == ""
+        }
+        else if (passwordTextField.text?.trim().count)! < 6 {
+            
+            BurbankApp.showAlert("Please enter minimum 6 characters for new password", self)
+            return
+        }
+        else if confirmPasswordTextField.text == ""
         {
             BurbankApp.showAlert("Please enter confirm password")
             confirmPasswordTextField.becomeFirstResponder()

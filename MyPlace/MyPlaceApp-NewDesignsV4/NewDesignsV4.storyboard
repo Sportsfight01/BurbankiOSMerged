@@ -1648,13 +1648,13 @@
                                 <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJe-2Q-rBr">
-                                        <rect key="frame" x="35" y="175.33333333333334" width="320" height="305.33333333333326"/>
+                                        <rect key="frame" x="35" y="150.33333333333334" width="320" height="305.33333333333326"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hqv-nV-SBE">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="250.66666666666666"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Kq-ca-0p3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="55.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Email" translatesAutoresizingMaskIntoConstraints="NO" id="cR8-GB-R1u">
                                                                 <rect key="frame" x="10.000000000000002" y="19.333333333333314" width="20.666666666666671" height="16.666666666666671"/>
@@ -1663,7 +1663,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="User@gmail.com" placeholder="Enter Email ID:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e49-Ln-Wna">
-                                                                <rect key="frame" x="40.666666666666657" y="0.0" width="279.33333333333337" height="55.333333333333336"/>
+                                                                <rect key="frame" x="40.666666666666657" y="0.0" width="279.33333333333337" height="55"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -1688,19 +1688,25 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightGreyDisabled_BG_3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="had-cX-7Gk">
-                                                        <rect key="frame" x="0.0" y="65.333333333333343" width="320" height="55"/>
+                                                        <rect key="frame" x="0.0" y="64.999999999999972" width="320" height="55.333333333333343"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-key" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-Qs-0SF">
-                                                                <rect key="frame" x="9.9999999999999982" y="18" width="19.333333333333329" height="19"/>
+                                                                <rect key="frame" x="9.9999999999999982" y="18.333333333333371" width="19.333333333333329" height="18.666666666666671"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="PuK-Qs-0SF" secondAttribute="height" multiplier="1:1" constant="0.5" id="xf0-X7-oAP"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Current App Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYN-Zj-u3f">
-                                                                <rect key="frame" x="39" y="0.0" width="281" height="55"/>
+                                                                <rect key="frame" x="39" y="0.0" width="281" height="55.333333333333336"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -1725,19 +1731,25 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightGreyDisabled_BG_3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FP-iE-hVz">
-                                                        <rect key="frame" x="0.0" y="130.33333333333334" width="320" height="55.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="130.33333333333334" width="320" height="55"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-key" translatesAutoresizingMaskIntoConstraints="NO" id="yTU-6v-ece">
-                                                                <rect key="frame" x="10" y="18.333333333333314" width="19" height="18.666666666666671"/>
+                                                                <rect key="frame" x="10" y="18" width="19" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="yTU-6v-ece" secondAttribute="height" multiplier="1:1" id="DuU-RF-WRL"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Set New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGN-5Q-iXL">
-                                                                <rect key="frame" x="39" y="0.0" width="281" height="55.333333333333336"/>
+                                                                <rect key="frame" x="39" y="0.0" width="281" height="55"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -1762,19 +1774,25 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightGreyDisabled_BG_3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipp-wl-8IB">
-                                                        <rect key="frame" x="0.0" y="195.66666666666666" width="320" height="55"/>
+                                                        <rect key="frame" x="0.0" y="195.33333333333334" width="320" height="55.333333333333343"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-key" translatesAutoresizingMaskIntoConstraints="NO" id="14g-CG-1Q8">
-                                                                <rect key="frame" x="10" y="18" width="19" height="19"/>
+                                                                <rect key="frame" x="10" y="18.333333333333314" width="19" height="18.666666666666671"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="14g-CG-1Q8" secondAttribute="height" multiplier="1:1" id="CDx-uW-e6f"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lA-UI-UIy">
-                                                                <rect key="frame" x="39" y="0.0" width="281" height="55"/>
+                                                                <rect key="frame" x="39" y="0.0" width="281" height="55.333333333333336"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
@@ -1799,6 +1817,12 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightGreyDisabled_BG_3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
@@ -1808,10 +1832,10 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-d2-wJx">
                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="39.666666666666664"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="Orange_BG_3"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                                         <state key="normal" title="Submit">
-                                                            <color key="titleColor" name="AppOrange"/>
+                                                            <color key="titleColor" name="HeaderFooter_BG_3"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1843,13 +1867,41 @@
                                             <constraint firstItem="Hqv-nV-SBE" firstAttribute="leading" secondItem="wJe-2Q-rBr" secondAttribute="leading" id="vLd-HH-ik3"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJF-Pg-wYl">
+                                        <rect key="frame" x="34.999999999999993" y="72" width="88.333333333333314" height="29.333333333333329"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29.333333333333329" id="qBv-Jx-9hf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your password here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-gC-88T">
+                                        <rect key="frame" x="35" y="111.33333333333334" width="302.33333333333331" height="14"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" name="GreyTextFont_3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjN-oi-hfa">
+                                        <rect key="frame" x="123.33333333333331" y="74.333333333333329" width="110" height="25"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
+                                        <color key="textColor" name="GreyTextFont_3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" name="AppGray"/>
+                                <color key="backgroundColor" name="HeaderFooter_BG_3"/>
                                 <constraints>
-                                    <constraint firstItem="wJe-2Q-rBr" firstAttribute="centerY" secondItem="7rs-c6-G58" secondAttribute="centerY" multiplier="0.86" id="5Y4-oV-hfp"/>
+                                    <constraint firstItem="Hqv-nV-SBE" firstAttribute="top" secondItem="BCa-gC-88T" secondAttribute="bottom" constant="25" id="1Fn-NY-Nl2"/>
+                                    <constraint firstItem="vJF-Pg-wYl" firstAttribute="top" secondItem="7rs-c6-G58" secondAttribute="top" constant="72" id="GKY-5V-WLf"/>
+                                    <constraint firstItem="BCa-gC-88T" firstAttribute="leading" secondItem="vJF-Pg-wYl" secondAttribute="leading" id="Hsl-dK-u6g"/>
+                                    <constraint firstItem="sjN-oi-hfa" firstAttribute="centerY" secondItem="vJF-Pg-wYl" secondAttribute="centerY" id="Qd1-wm-3kX"/>
+                                    <constraint firstItem="BCa-gC-88T" firstAttribute="top" secondItem="vJF-Pg-wYl" secondAttribute="bottom" constant="10" id="bjB-6n-PAI"/>
                                     <constraint firstItem="wJe-2Q-rBr" firstAttribute="height" secondItem="7rs-c6-G58" secondAttribute="height" multiplier="0.4" id="f4a-C4-khj"/>
+                                    <constraint firstItem="vJF-Pg-wYl" firstAttribute="leading" secondItem="wJe-2Q-rBr" secondAttribute="leading" id="nfD-ot-ZfG"/>
                                     <constraint firstAttribute="trailing" secondItem="wJe-2Q-rBr" secondAttribute="trailing" constant="35" id="pC8-NX-iQd"/>
+                                    <constraint firstItem="sjN-oi-hfa" firstAttribute="leading" secondItem="vJF-Pg-wYl" secondAttribute="trailing" id="qPz-tM-Ij3"/>
                                     <constraint firstItem="wJe-2Q-rBr" firstAttribute="leading" secondItem="7rs-c6-G58" secondAttribute="leading" constant="35" id="rAB-QB-b7e"/>
+                                    <constraint firstAttribute="trailing" secondItem="BCa-gC-88T" secondAttribute="trailing" constant="52.666666666666515" id="rjQ-U0-TFt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1863,15 +1915,22 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changeLBL" destination="vJF-Pg-wYl" id="ZdD-Fj-zxM"/>
                         <outlet property="confirmPasswordTextField" destination="5lA-UI-UIy" id="oAH-tU-NN2"/>
+                        <outlet property="confirmPasswordView" destination="ipp-wl-8IB" id="TWJ-5a-cW9"/>
                         <outlet property="currentPasswordTextField" destination="gYN-Zj-u3f" id="f8x-LM-Co0"/>
                         <outlet property="emailTextField" destination="e49-Ln-Wna" id="CZo-S4-s1E"/>
+                        <outlet property="emailView" destination="6Kq-ca-0p3" id="NO7-wa-Wlv"/>
+                        <outlet property="helpTextLBL" destination="BCa-gC-88T" id="z7M-iA-8OW"/>
                         <outlet property="newPasswordTextField" destination="ZGN-5Q-iXL" id="Zfa-BR-Nf2"/>
+                        <outlet property="newPasswordView" destination="7FP-iE-hVz" id="TzN-GG-FrD"/>
+                        <outlet property="passwordLBL" destination="sjN-oi-hfa" id="5J3-Ve-gpC"/>
+                        <outlet property="passwordView" destination="had-cX-7Gk" id="dcv-Pz-YEa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzJ-co-fZW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3787" y="-375"/>
+            <point key="canvasLocation" x="3786.1538461538462" y="-375.35545023696682"/>
         </scene>
         <!--My ProgressVC-->
         <scene sceneID="s0d-6b-0kx">
@@ -2161,28 +2220,28 @@ adipiscing elitsed</string>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="LdC-ID-yYV">
-                                        <rect key="frame" x="106" y="34.000000000000007" width="274" height="125.66666666666669"/>
+                                        <rect key="frame" x="121" y="34.000000000000007" width="259" height="125.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyDetails" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VH2-UC-UM4">
-                                                <rect key="frame" x="0.0" y="0.0" width="274" height="28.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="259" height="28.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr Samuel Muraguri Muchoki &amp; Miss Hilda Wanji Ku Ka" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyd-oV-W1M">
-                                                <rect key="frame" x="0.0" y="37.666666666666657" width="274" height="36"/>
+                                                <rect key="frame" x="0.0" y="37.666666666666657" width="259" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELI-bc-gVh">
-                                                <rect key="frame" x="0.0" y="82.666666666666657" width="274" height="17"/>
+                                                <rect key="frame" x="0.0" y="82.666666666666657" width="259" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <color key="textColor" red="0.81960784313725488" green="0.82745098039215681" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ndX-kl-mBi">
-                                                <rect key="frame" x="0.0" y="108.66666666666666" width="274" height="17"/>
+                                                <rect key="frame" x="0.0" y="108.66666666666666" width="259" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2214,7 +2273,7 @@ adipiscing elitsed</string>
                                     <constraint firstItem="oYQ-K9-XtT" firstAttribute="leading" secondItem="kQ9-Nx-Ndl" secondAttribute="leading" constant="26" id="XkG-nl-x8z"/>
                                     <constraint firstItem="LdC-ID-yYV" firstAttribute="top" secondItem="oYQ-K9-XtT" secondAttribute="top" constant="-6" id="aOI-gA-uMi"/>
                                     <constraint firstItem="lmK-R1-wn7" firstAttribute="trailing" secondItem="oYQ-K9-XtT" secondAttribute="trailing" constant="5" id="cNX-Tc-05n"/>
-                                    <constraint firstItem="LdC-ID-yYV" firstAttribute="leading" secondItem="oYQ-K9-XtT" secondAttribute="trailing" constant="20" id="l27-B6-75c"/>
+                                    <constraint firstItem="LdC-ID-yYV" firstAttribute="leading" secondItem="oYQ-K9-XtT" secondAttribute="trailing" constant="35" id="l27-B6-75c"/>
                                     <constraint firstAttribute="trailing" secondItem="LdC-ID-yYV" secondAttribute="trailing" constant="10" id="xxM-ud-fEV"/>
                                 </constraints>
                             </view>
@@ -5349,6 +5408,15 @@ Tap below to see all.</string>
         </namedColor>
         <namedColor name="AppOrange">
             <color red="0.9649999737739563" green="0.54500001668930054" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GreyTextFont_3">
+            <color red="0.36100000143051147" green="0.36899998784065247" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="HeaderFooter_BG_3">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGreyDisabled_BG_3">
+            <color red="0.81999999284744263" green="0.82700002193450928" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange_BG_3">
             <color red="0.9649999737739563" green="0.53700000047683716" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
