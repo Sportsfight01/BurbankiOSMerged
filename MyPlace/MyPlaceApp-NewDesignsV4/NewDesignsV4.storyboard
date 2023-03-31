@@ -1648,7 +1648,7 @@
                                 <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJe-2Q-rBr">
-                                        <rect key="frame" x="35" y="150.33333333333334" width="320" height="305.33333333333326"/>
+                                        <rect key="frame" x="35" y="145.99999999999997" width="320" height="305.33333333333326"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hqv-nV-SBE">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="250.66666666666666"/>
@@ -1657,7 +1657,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Email" translatesAutoresizingMaskIntoConstraints="NO" id="cR8-GB-R1u">
-                                                                <rect key="frame" x="10.000000000000002" y="19.333333333333314" width="20.666666666666671" height="16.666666666666671"/>
+                                                                <rect key="frame" x="10.000000000000002" y="19.333333333333343" width="20.666666666666671" height="16.666666666666671"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="cR8-GB-R1u" secondAttribute="height" multiplier="1.25:1" id="yXv-Fu-IYe"/>
                                                                 </constraints>
@@ -1697,10 +1697,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="had-cX-7Gk">
-                                                        <rect key="frame" x="0.0" y="64.999999999999972" width="320" height="55.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="65" width="320" height="55.333333333333343"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-key" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-Qs-0SF">
-                                                                <rect key="frame" x="9.9999999999999982" y="18.333333333333371" width="19.333333333333329" height="18.666666666666671"/>
+                                                                <rect key="frame" x="9.9999999999999982" y="18.333333333333314" width="19.333333333333329" height="18.666666666666671"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="PuK-Qs-0SF" secondAttribute="height" multiplier="1:1" constant="0.5" id="xf0-X7-oAP"/>
                                                                 </constraints>
@@ -1740,7 +1740,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FP-iE-hVz">
-                                                        <rect key="frame" x="0.0" y="130.33333333333334" width="320" height="55"/>
+                                                        <rect key="frame" x="0.0" y="130.33333333333331" width="320" height="55"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-key" translatesAutoresizingMaskIntoConstraints="NO" id="yTU-6v-ece">
                                                                 <rect key="frame" x="10" y="18" width="19" height="19"/>
@@ -1783,10 +1783,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipp-wl-8IB">
-                                                        <rect key="frame" x="0.0" y="195.33333333333334" width="320" height="55.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="195.33333333333331" width="320" height="55.333333333333343"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-key" translatesAutoresizingMaskIntoConstraints="NO" id="14g-CG-1Q8">
-                                                                <rect key="frame" x="10" y="18.333333333333314" width="19" height="18.666666666666671"/>
+                                                                <rect key="frame" x="10" y="18.333333333333371" width="19" height="18.666666666666671"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="14g-CG-1Q8" secondAttribute="height" multiplier="1:1" id="CDx-uW-e6f"/>
                                                                 </constraints>
@@ -1828,7 +1828,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MQg-O3-IMU">
-                                                <rect key="frame" x="80" y="265.66666666666663" width="160" height="39.666666666666686"/>
+                                                <rect key="frame" x="80" y="265.66666666666669" width="160" height="39.666666666666686"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-d2-wJx">
                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="39.666666666666664"/>
@@ -1867,23 +1867,20 @@
                                             <constraint firstItem="Hqv-nV-SBE" firstAttribute="leading" secondItem="wJe-2Q-rBr" secondAttribute="leading" id="vLd-HH-ik3"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJF-Pg-wYl">
-                                        <rect key="frame" x="34.999999999999993" y="72" width="88.333333333333314" height="29.333333333333329"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="29.333333333333329" id="qBv-Jx-9hf"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJF-Pg-wYl">
+                                        <rect key="frame" x="34.999999999999993" y="72" width="88.333333333333314" height="25"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your password here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-gC-88T">
-                                        <rect key="frame" x="35" y="111.33333333333334" width="302.33333333333331" height="14"/>
+                                        <rect key="frame" x="35" y="107" width="302.33333333333331" height="14"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                         <color key="textColor" name="GreyTextFont_3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjN-oi-hfa">
-                                        <rect key="frame" x="123.33333333333331" y="74.333333333333329" width="110" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjN-oi-hfa">
+                                        <rect key="frame" x="123.33333333333331" y="72" width="110" height="25"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                         <color key="textColor" name="GreyTextFont_3"/>
                                         <nil key="highlightedColor"/>
