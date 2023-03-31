@@ -3810,7 +3810,7 @@ adipiscing elitsed</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyPhotos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RrJ-AE-S8i">
-                                <rect key="frame" x="121.33333333333331" y="174" width="104.66666666666669" height="28.666666666666657"/>
+                                <rect key="frame" x="121.33333333333331" y="174" width="104.66666666666669" height="28.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3988,6 +3988,7 @@ Tap below to see all.</string>
                     <navigationItem key="navigationItem" id="3ny-WN-v3O"/>
                     <connections>
                         <outlet property="collectionView" destination="8LP-G8-TC5" id="haC-dP-Kik"/>
+                        <outlet property="helpTextLBL" destination="wsw-zk-DKr" id="U9V-py-m9n"/>
                         <outlet property="notificationCountLBL" destination="9YI-3W-Olh" id="rgh-sD-YWo"/>
                         <outlet property="profileImgView" destination="IDo-YP-j8R" id="vIc-vI-gWT"/>
                         <outlet property="seeAllPhotosBtn" destination="wRY-kj-uzu" id="6fK-Gy-OK4"/>

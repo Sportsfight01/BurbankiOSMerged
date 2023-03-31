@@ -15,6 +15,7 @@ class PhotosVC: UIViewController {
     
     //MARK: - Properties
     
+    @IBOutlet weak var helpTextLBL: UILabel!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -160,7 +161,8 @@ class PhotosVC: UIViewController {
                 let documentList = data.filter({$0.type?.uppercased() == "JPG"})
                 guard documentList.count > 0 else {
                     DispatchQueue.main.async {
-                        self.collectionView.setEmptyMessage("No Photos Found")
+                        self.collectionView.setEmptyMessage("No Recent Photos")
+                        self.helpTextLBL.text = "No photos available for this job number"
                         self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
 //                     self.showAlert(message: "No photos found") { _ in
 //                        // self.backButtonPressed()
