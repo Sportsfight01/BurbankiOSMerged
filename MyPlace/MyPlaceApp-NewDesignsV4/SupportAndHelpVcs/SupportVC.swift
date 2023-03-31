@@ -30,8 +30,9 @@ class SupportVC: UIViewController {
         tableView.dataSource = self
         // tableView.allowsSelection = false
         // navigationController?.setNavigationBarHidden(true, animated: true)
-        addGradientLayer()
+        //addGradientLayer()
         // setupProfile()
+        self.view.backgroundColor = AppColors.myplaceGray 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -83,7 +84,7 @@ class SupportVC: UIViewController {
     {
         
         gradientLayer.locations = [0.5,1]
-        gradientLayer.colors = [AppColors.appGray.cgColor ,APPCOLORS_3.HeaderFooter_white_BG.cgColor]
+        gradientLayer.colors = [AppColors.myplaceGray.cgColor,APPCOLORS_3.HeaderFooter_white_BG.cgColor]
         //      gradientLayer.colors = [AppColors.appOrange.cgColor , UIColor(red: 230/255, green: 177/255, blue: 79/255, alpha: 1.0).cgColor]
         gradientLayer.frame = wholeView.bounds
         self.wholeView.layer.insertSublayer(gradientLayer, at: 0)

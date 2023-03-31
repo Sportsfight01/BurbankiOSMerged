@@ -11,6 +11,8 @@ import UIKit
 class MySettingsVC: UIViewController, profileScreenProtocol {
     
     //MARK: - Properties
+    
+    @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet var notificationTypeBtns: [UIButton]!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var notificationCountLBL: UILabel!
@@ -211,6 +213,20 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
        
     }
     @IBAction func btnSaveClicked(_ sender: UIButton) {
+//        UIView.animate(withDuration: 0.250, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseInOut) {
+//
+//        }
+        
+        UIView.animate(withDuration: 0.125, delay: 0, options: .curveEaseInOut) {
+            sender.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        } completion: { flag in
+            UIView.animate(withDuration: 0.125, delay: 0, options: .curveEaseInOut) {
+                sender.transform = .identity
+            }
+        
+        }
+
+        
         postDataToServerForUpdatingUserProfile()
     }
     func resetUserDefaultsForOlderVerion () {

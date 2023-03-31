@@ -11,10 +11,16 @@ import SDWebImage
 
 @available(iOS 13.0, *)
 class ImageSliderVC: UIViewController {
+    
+    //MARK: - Properties
+    
     private var collectionView : UICollectionView! = nil
     var dataSource : UICollectionViewDiffableDataSource<Int, String>!
     var collectionDataSource : [SliderItem] = []
     var currentIndex : Int = 0
+    
+    //MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -42,6 +48,9 @@ class ImageSliderVC: UIViewController {
         super.viewWillAppear(animated)
         self.setupNavigationBarButtons()
     }
+    
+    //MARK: - Helper Methods
+    
     func setupUI()
     {
       
@@ -52,6 +61,7 @@ class ImageSliderVC: UIViewController {
     
     }
   
+    //MARK: - CollectionView Layout & Datasource
     func createCompositionalLayout() -> UICollectionViewLayout
     {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0)))
@@ -90,7 +100,7 @@ class ImageSliderVC: UIViewController {
         collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
-
+//MARK:  - ImageCollectionViewCell
 @available(iOS 13.0, *)
 class ImageCell : UICollectionViewCell {
     static let identifier = "ImageCell"
@@ -137,6 +147,7 @@ class ImageCell : UICollectionViewCell {
     }
     
 }
+//MARK: - ImageSliderModel
 @available(iOS 13.0, *)
 extension ImageSliderVC {
     struct SliderItem{
@@ -146,6 +157,7 @@ extension ImageSliderVC {
     }
 }
 
+//MARK: - ScrollableImageView
 class ZoomImageView : UIScrollView, UIScrollViewDelegate
 {
     var imageView = UIImageView()
@@ -169,10 +181,12 @@ class ZoomImageView : UIScrollView, UIScrollViewDelegate
                addSubview(imageView)
                NSLayoutConstraint.activate([
                 
-                imageView.widthAnchor.constraint(equalTo: self.widthAnchor),
-                imageView.heightAnchor.constraint(equalTo: self.heightAnchor),
-                imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+                imageView.leadingAnchor.constraint(equalTo: self.contentLayoutGuide.leadingAnchor),
+                imageView.trailingAnchor.constraint(equalTo: self.contentLayoutGuide.trailingAnchor),
+                imageView.topAnchor.constraint(equalTo: self.contentLayoutGuide.topAnchor),
+                imageView.bottomAnchor.constraint(equalTo: self.contentLayoutGuide.bottomAnchor),
+                imageView.heightAnchor.constraint(equalTo: self.frameLayoutGuide.heightAnchor),
+                imageView.widthAnchor.constraint(equalTo: self.frameLayoutGuide.widthAnchor)
                    
                ])
 

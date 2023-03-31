@@ -32,7 +32,7 @@ extension UIViewController {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.shadowColor = UIColor(red: 230/255, green: 231/255, blue: 232/255, alpha: 0.5)
-            appearance.backgroundColor = AppColors.darkGray
+            appearance.backgroundColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
             appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance

@@ -1001,12 +1001,12 @@ extension MyProgressVC : UICollectionViewDelegate , UICollectionViewDataSource
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let indexOfPage = scrollView.contentOffset.x / scrollView.frame.size.width * 1.1;
-         print(indexOfPage)
+      //   print(indexOfPage)
         
         // print(indexOfPage.rounded())
         let index = indexOfPage.rounded(.up)
         let currentIndex : Int = Int(index)
-        print(currentIndex)
+       // print(currentIndex)
         guard currentIndex < 7 && currentIndex >= 0 else {return}
         if currentIndex == 0
         {

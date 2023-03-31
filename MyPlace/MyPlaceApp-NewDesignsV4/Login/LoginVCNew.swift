@@ -110,7 +110,7 @@ class LoginVCNew: BurbankAppVC {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        userInfoLabel.isHidden = true
         CodeManager.sharedInstance.sendScreenName(login_screen_loading)
         //        pickerView.reloadAllComponents()
         
@@ -160,6 +160,7 @@ class LoginVCNew: BurbankAppVC {
         {
             // Need to change the text in future in both places, temporary solution by satya
             passwordTextField.placeholder = "Enter Password"
+            userInfoLabel.isHidden = false
             userInfoLabel.text = user?.message
             stackViewHeightConstraint.constant = SCREEN_HEIGHT * 0.0616
             
@@ -242,7 +243,8 @@ class LoginVCNew: BurbankAppVC {
         }
         else
         {
-            emailView.alpha = 0
+            emailView.isHidden = true
+            
             jobNumberTextField.text = appDelegate.enteredEmailOrJob
             jobNumberTextField.isUserInteractionEnabled = false
             jobNumberBackGroundView.backgroundColor = UIColor.lightGray

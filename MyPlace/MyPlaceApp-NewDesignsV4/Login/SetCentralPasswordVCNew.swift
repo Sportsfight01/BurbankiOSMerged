@@ -53,11 +53,11 @@ class SetCentralPasswordVCNew: BurbankAppVC {
 //            infoMessage = ""
 //        }
         checkEmail()
-        if infoMessage == "Forgot Password" {
-            labelCentral.text = "Forgot"
-
-        }
-        infoTextLabel.text = "Passcode will be sent to following Email to reset central login password"
+//        if infoMessage == "Forgot Password" {
+//            labelCentral.text = "Forgot"
+//
+//        }
+       // infoTextLabel.text = "Passcode will be sent to following Email to reset central login password"
         
     }
     

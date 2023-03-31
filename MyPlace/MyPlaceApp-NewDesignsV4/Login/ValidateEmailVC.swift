@@ -87,7 +87,9 @@ class ValidateEmailVC: UIViewController {
         if txtEmail.text!.count > 0 {
             self.viewText.isUserInteractionEnabled = false
             self.viewText.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
-            labelHint.text = "Registered email assigned to the job number \(jobId)"
+            let title = "Registered email assigned to the job number \(jobId)"
+           // labelHint.text = title
+            setAttributetitleFor(view: labelHint, title: title, rangeStrings: ["Registered email assigned to the job number", jobId], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_13),FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: false)
         }
         else{
             labelHint.text = "Enter registered email assigned to the job number \(jobId)"
