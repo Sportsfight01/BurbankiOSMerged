@@ -12,6 +12,12 @@ class PhotosCVCell: UICollectionViewCell {
     
     
     @IBOutlet weak var imageView: UIImageView!
+    {
+        didSet
+        {
+            imageView.contentMode = .scaleAspectFill
+        }
+    }
     @IBOutlet weak var sectionNameLb: UILabel!
     @IBOutlet weak var photosCountLb: UILabel!
     

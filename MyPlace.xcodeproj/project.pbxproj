@@ -26,6 +26,8 @@
 		4212D6042938A8EE00855CDC /* MyDesignsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
 		42999C9429D5717400FE2507 /* ImageSliderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C9329D5717400FE2507 /* ImageSliderVC.swift */; };
+		42B69F2829D6AE38002A0700 /* ImageSliderCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B69F2729D6AE38002A0700 /* ImageSliderCVCell.xib */; };
+		42B69F2A29D6B04F002A0700 /* ImageSliderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F2929D6B04F002A0700 /* ImageSliderCVCell.swift */; };
 		42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7E829349BD80038179F /* Assets.xcassets */; };
 		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
@@ -480,6 +482,8 @@
 		4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDesignsTVC.xib; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
 		42999C9329D5717400FE2507 /* ImageSliderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderVC.swift; sourceTree = "<group>"; };
+		42B69F2729D6AE38002A0700 /* ImageSliderCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderCVCell.xib; sourceTree = "<group>"; };
+		42B69F2929D6B04F002A0700 /* ImageSliderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderCVCell.swift; sourceTree = "<group>"; };
 		42E6D7E829349BD80038179F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1120,6 +1124,8 @@
 				A165992A292F32BA00C36B3B /* FinanceCVCell2.swift */,
 				A165992B292F32BA00C36B3B /* FinanceDetailCell.swift */,
 				A165992C292F32BA00C36B3B /* FinanceCVCell.swift */,
+				42B69F2729D6AE38002A0700 /* ImageSliderCVCell.xib */,
+				42B69F2929D6B04F002A0700 /* ImageSliderCVCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2438,6 +2444,7 @@
 				D16FE47B2428EF6F0082DECF /* Proxima Nova Extra Condensed Semibold.otf in Resources */,
 				D16FE4742428EF6F0082DECF /* Proxima Nova Condensed Bold Italic.otf in Resources */,
 				D16FE4802428EF6F0082DECF /* Proxima Nova Extra Condensed Regular Italic.otf in Resources */,
+				42B69F2829D6AE38002A0700 /* ImageSliderCVCell.xib in Resources */,
 				D16FE4672428EF6F0082DECF /* Proxima Nova Condensed Semibold.otf in Resources */,
 				A1659AD7292F4A4500C36B3B /* OpenSans-Italic.ttf in Resources */,
 				D188C6302424D37600DFE678 /* LaunchScreen.storyboard in Resources */,
@@ -2839,6 +2846,7 @@
 				ED3143A624C6A1EF00F048D2 /* HomeLandPopupVC.swift in Sources */,
 				A1659B00292F4A4500C36B3B /* SWRevealViewController.m in Sources */,
 				A1659970292F32BB00C36B3B /* FinanceCVCell2.swift in Sources */,
+				42B69F2A29D6B04F002A0700 /* ImageSliderCVCell.swift in Sources */,
 				D2225860269C2A7E0004C42F /* DisplayHomesFavouritesVC.swift in Sources */,
 				ED849EA225BEE88100C3327A /* AttributedStringExtension.swift in Sources */,
 				A1659B17292F4A4500C36B3B /* MyPlaceCallEmailVC.swift in Sources */,

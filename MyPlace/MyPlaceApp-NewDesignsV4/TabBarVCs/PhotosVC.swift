@@ -26,7 +26,8 @@ class PhotosVC: UIViewController {
     
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
-    var cellSpacing = (1/16) * UIScreen.main.bounds.width
+//    var cellSpacing = (1/16) * UIScreen.main.bounds.width
+    var cellSpacing : CGFloat = 0.0
     var sectionTitles : [String]?
     
     //MARK: - LifeCycleMethods
@@ -110,7 +111,9 @@ class PhotosVC: UIViewController {
         let groupedDict = Dictionary.init(grouping: PhotosList, by: {$0.title!.components(separatedBy: " ")[0]})
         self.collectionDataSource = []
         groupedDict.forEach { (key: String, value: [DocumentsDetailsStruct]) in
-            self.collectionDataSource?.append(PhotoItem(title: key, rowData: value))
+            let sortedValue = value.sorted(by: { $0.docdate?.components(separatedBy: ".").first?.getDate()?.compare(($1.docdate?.components(separatedBy: ".").first?.getDate())!) == .orderedDescending })
+         //   print("beforeSorting : \(value.map({$0.docdate})) after sorting : \(sortedValue.map({$0.docdate}))")
+            self.collectionDataSource?.append(PhotoItem(title: key, rowData: sortedValue))
         }
         self.collectionDataSource = collectionDataSource?.sorted(by: {$0.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate()?.compare(($1.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate())!) == .orderedDescending})
         DispatchQueue.main.async {
@@ -210,7 +213,7 @@ extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
 
         cell.sectionNameLb.text = collectionDataSource?[indexPath.row].rowData.first?.title?.capitalized
         cell.photosCountLb.text = "\(collectionDataSource?[indexPath.row].rowData.count ?? 0)"
-        let photoInfo = collectionDataSource?[indexPath.row].rowData.last
+        let photoInfo = collectionDataSource?[indexPath.row].rowData.first
 //        CodeManager.sharedInstance.downloadandShowImageForNewFlow(photoInfo!,cell.imageView)
         cell.imageView.tintColor = .lightGray
         
