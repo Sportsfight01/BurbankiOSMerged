@@ -9,8 +9,8 @@
 import UIKit
 
 class FinanceDetailVC: UIViewController {
-  
-  //MARK:- Properties
+    
+    //MARK: - Properties
     
     @IBOutlet weak var lb_lastUpdated: UILabel!
     {
@@ -25,47 +25,57 @@ class FinanceDetailVC: UIViewController {
         }
     }
     @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var contractValueLb: UILabel!
-  @IBOutlet weak var balanceDueLb: UILabel!
-    
+    @IBOutlet weak var contractValueLb: UILabel!
+    @IBOutlet weak var balanceDueLb: UILabel!
     @IBOutlet weak var shareBTN: UIButton!
     
     var sectionTitles : [String] = ["Variations to Date", "Claims to Date", "Receipts to Date"]
-  var financeDetails : FinanceDetailsStruct?
-  
-  //MARK:- LifeCycle
-  override func viewDidLoad() {
+    var moveToSection : Int?
+    var financeDetails : FinanceDetailsStruct?
+    
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
         super.viewDidLoad()
-    tableView.delegate = self
-    tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
-    let dummyViewHeight = CGFloat(40)
-    self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: dummyViewHeight))
-    self.tableView.contentInset = UIEdgeInsets(top: -dummyViewHeight, left: 0, bottom: 0, right: 0)
-    setupData()
+        let dummyViewHeight = CGFloat(40)
+        self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: dummyViewHeight))
+        self.tableView.contentInset = UIEdgeInsets(top: -dummyViewHeight, left: 0, bottom: 0, right: 0)
+        setupData()
     }
-  
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupNavigationBarButtons()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let moveToSection
+        {
+            let lastRow = tableView.numberOfRows(inSection: moveToSection) - 1
+            tableView.scrollToRow(at: IndexPath(row: lastRow, section: moveToSection), at: .bottom, animated: true)
+        }
+    }
+    //MARK: - IBActions
     @IBAction func didTappedOnShareBTN(_ sender: UIButton) {
         let takenIMG = screenshot()
         let takenPDF = createPDFDataFromImage(image: takenIMG)
-//                let documento = NSData(contentsOfFile: takenPDF)
-         let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [takenPDF], applicationActivities: nil)
-         activityViewController.popoverPresentationController?.sourceView=self.view
-         self.present(activityViewController, animated: true, completion: nil)
+        //                let documento = NSData(contentsOfFile: takenPDF)
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [takenPDF], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView=self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
     @IBAction func backBtnClicked(_ sender: UIButton) {
-    self.navigationController?.popViewController(animated: true)
-  }
-  //MARK:- Helper Methods
-  func setupData()
-  {
-    let contractValue = dollarCurrencyFormatter(value: Double(financeDetails!.contractPrice))
-    self.contractValueLb.text = "\(contractValue!)"
-  }
+        self.navigationController?.popViewController(animated: true)
+    }
+    //MARK: - Helper Methods
+    func setupData()
+    {
+        let contractValue = dollarCurrencyFormatter(value: Double(financeDetails!.contractPrice))
+        self.contractValueLb.text = "\(contractValue!)"
+    }
 }
 
 extension FinanceDetailVC : UITableViewDelegate, UITableViewDataSource

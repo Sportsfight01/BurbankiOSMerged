@@ -209,6 +209,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         } else {
             // Fallback on earlier versions
         }
+        kUserDefaults.setValue("2", forKey: "selectedModule")
         
        
     }

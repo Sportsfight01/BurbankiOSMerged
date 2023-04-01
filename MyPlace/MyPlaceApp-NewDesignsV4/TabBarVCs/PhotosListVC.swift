@@ -29,6 +29,7 @@ class PhotosListVC: UIViewController {
     var selectedImgViewIndex = 0
     var collectionDataSource : [PhotoItem] = []
     var photosCount : Int = 0
+    var moveToSection : Int?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -54,8 +55,12 @@ class PhotosListVC: UIViewController {
     {
         super.viewDidAppear(animated)
         //self.navigationItem.backBarButtonItem = uiba
+        if let moveToSection
+        {
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: moveToSection), at: .centeredVertically, animated: true)
+        }
+        
     }
-    
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
       self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
@@ -145,7 +150,7 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
+        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
         let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
         if let cell = collectionView.cellForItem(at: indexPath) as? PhotosListCVCell
         {

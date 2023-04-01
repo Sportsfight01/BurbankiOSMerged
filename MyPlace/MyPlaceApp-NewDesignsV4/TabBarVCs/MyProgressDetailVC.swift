@@ -71,7 +71,7 @@ class MyProgressDetailVC: UIViewController {
         super.viewDidLayoutSubviews()
         
         let contentheight = tableView.contentSize.height
-        self.tableHeightConstraint.constant = contentheight + 10
+        self.tableHeightConstraint.constant = contentheight + 50
         tableView.isScrollEnabled = false
     }
     //MARK: - Helper Methods
@@ -206,7 +206,7 @@ extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 45
     }
 //    func formateDateToNumbers(str : String)
 //    {

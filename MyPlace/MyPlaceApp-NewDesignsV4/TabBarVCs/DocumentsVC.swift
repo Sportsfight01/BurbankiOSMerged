@@ -441,4 +441,8 @@ struct DocumentsDetailsStruct: Decodable , Hashable{
     let current: Bool?
     let type, url: String?
     let externalUrls: [String]?
+    
+    var date : Date {
+        return docdate?.components(separatedBy: ".").first?.getDate() ?? Date()
+    }
 }

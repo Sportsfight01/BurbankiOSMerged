@@ -9,15 +9,20 @@
 import UIKit
 import SDWebImage
 
+protocol PreviousNextProtocolo : AnyObject
+{
+    func didTappedPrevNextBtns(isPrevious : Bool)
+}
+
 @available(iOS 13.0, *)
-class ImageSliderVC: UIViewController {
-    
+class ImageSliderVC: UIViewController, PreviousNextProtocolo {
     //MARK: - Properties
     
     private var collectionView : UICollectionView! = nil
     var dataSource : UICollectionViewDiffableDataSource<Int, String>!
     var collectionDataSource : [SliderItem] = []
     var currentIndex : Int = 0
+   
     
     //MARK: - Life Cycle
     
@@ -42,6 +47,7 @@ class ImageSliderVC: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +75,9 @@ class ImageSliderVC: UIViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)), subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
+        section.visibleItemsInvalidationHandler = { [weak self] visibleItems, point, environment in
+            self?.currentIndex = visibleItems.last?.indexPath.item ?? 0
+        }
         section.orthogonalScrollingBehavior = .groupPagingCentered
         let compositionalLayout = UICollectionViewCompositionalLayout(section: section)
         return compositionalLayout
@@ -79,6 +88,8 @@ class ImageSliderVC: UIViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as! ImageCell
             cell.titleLb.text = self.collectionDataSource[indexPath.item].title.capitalized
             cell.dateLb.text = self.collectionDataSource[indexPath.item].docDate
+            cell.delegate = self
+        
             let imageView = cell.zoomImageView
             imageView.backgroundColor = .lightGray.withAlphaComponent(0.5)
             let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(itemIdentifier)")
@@ -102,6 +113,21 @@ class ImageSliderVC: UIViewController {
         
         collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
     }
+    
+    func didTappedPrevNextBtns(isPrevious: Bool) {
+        
+        if isPrevious
+        {
+            currentIndex -= 1
+            
+        }else {
+            currentIndex += 1
+        }
+        collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .right, animated: true)
+        
+    }
+    
+    
     @objc
      private func startZooming(_ sender: UIPinchGestureRecognizer) {
        let scaleResult = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale)
@@ -114,6 +140,8 @@ class ImageSliderVC: UIViewController {
 //MARK:  - ImageCollectionViewCell
 @available(iOS 13.0, *)
 class ImageCell : UICollectionViewCell {
+    
+    //MARK: - Properties
     static let identifier = "ImageCell"
     var zoomImageView : UIImageView = {
         return UIImageView()
@@ -121,7 +149,7 @@ class ImageCell : UICollectionViewCell {
     
     var titleLb : UILabel = UILabel()
     var dateLb : UILabel = UILabel()
-    
+    weak var delegate : PreviousNextProtocolo?
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -155,6 +183,41 @@ class ImageCell : UICollectionViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
         
+        //Adding Previous Next Buttons
+        
+        let previousBtn = UIButton(frame: .zero)
+        previousBtn.tag = 100
+        previousBtn.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        previousBtn.addTarget(self, action: #selector(previousNextButtonsAction), for: .touchUpInside)
+        
+        let nextBtn = UIButton(frame: .zero)
+        nextBtn.setImage(UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        nextBtn.addTarget(self, action: #selector(previousNextButtonsAction), for: .touchUpInside)
+        [previousBtn, nextBtn].forEach { btn in
+            btn.translatesAutoresizingMaskIntoConstraints = false
+            btn.tintColor = .black
+            contentView.addSubview(btn)
+          
+            NSLayoutConstraint.activate([
+                btn.heightAnchor.constraint(equalToConstant: 25),
+                btn.widthAnchor.constraint(equalToConstant: 25),
+                btn.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            ])
+            
+            if btn.tag == 100//previous
+            {
+                btn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
+            }else {
+                btn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5).isActive = true
+            }
+            
+        }
+        
+    }
+    
+    @objc func previousNextButtonsAction(_ sender : UIButton)
+    {
+        delegate?.didTappedPrevNextBtns(isPrevious: sender.tag == 100 ? true : false)
     }
     
 }

@@ -475,7 +475,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.isSelectedDate = false
         self.isSelectedTime = true
         if kUserID.toInt() > 0 {
-            handleEmailTfUI()
+//            handleEmailTfUI()
         }
     }
     

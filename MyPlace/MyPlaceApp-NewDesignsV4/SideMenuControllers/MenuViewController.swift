@@ -66,12 +66,11 @@ class MenuViewController: UIViewController {
             notificationCountLBL.text = "\(appDelegate.notificationCount)"
         }
         usernameLb.text = CurrentUservars.userName
-        let attrStr = NSMutableAttributedString(string: "Your home is currently ")
-        let percentageAttrStr = NSAttributedString(string: CurrentUservars.currentHomeBuildProgress ?? "0%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.white])
-        let cmpletedStr = NSAttributedString(string: " completed")
-        attrStr.append(percentageAttrStr)
-        attrStr.append(cmpletedStr)
-        yourhomecurrentbuildLb.attributedText = attrStr
+        
+        let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(CurrentUservars.currentHomeBuildProgress ?? "0%") completed"
+        
+        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(CurrentUservars.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [ProximaNovaRegular(size: FONT_10), ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10),ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10)], alignmentCenter: false)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)
         

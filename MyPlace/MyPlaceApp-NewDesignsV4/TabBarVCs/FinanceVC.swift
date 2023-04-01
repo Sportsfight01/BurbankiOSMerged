@@ -260,19 +260,25 @@ extension FinanceVC : UICollectionViewDataSource , UICollectionViewDelegate
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "FinanceDetailVC") as! FinanceDetailVC
         if let financeDetails = self.financeDetails
         {
+            vc.moveToSection = sender.tag - 1
             vc.financeDetails = financeDetails
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "FinanceDetailVC") as! FinanceDetailVC
-      if let financeDetails = self.financeDetails
-      {
-          vc.financeDetails = financeDetails
-          self.navigationController?.pushViewController(vc, animated: true)
-      }
-  }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "FinanceDetailVC") as! FinanceDetailVC
+        if let financeDetails = self.financeDetails
+        {
+            vc.financeDetails = financeDetails
+            if 0...2 ~= indexPath.row - 1 // pass only when in IndexBounds
+            {
+                vc.moveToSection = indexPath.row - 1
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 extension FinanceVC : UICollectionViewDelegateFlowLayout
 {

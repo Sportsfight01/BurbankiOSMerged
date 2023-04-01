@@ -936,9 +936,11 @@ extension MyProgressVC : UICollectionViewDelegate , UICollectionViewDataSource
             cell.seeMoreBtn.isHidden = false
             cell.lastUpdatedLb.text = self.setupLastUpdateDate(progressData: clItems[indexPath.row].progressDetails).lastUpdate
             cell.detailLb.text = clItems[indexPath.row].detailText
+            cell.detailLb.numberOfLines = 2
         }
         else {
             cell.detailLb.text = "We're now on the way to building your new home. All you have to do is swipe to see your build progress."
+            cell.detailLb.numberOfLines = 0
             cell.lastUpdatedLb.isHidden = true
             cell.seeMoreBtn.isHidden = true
             

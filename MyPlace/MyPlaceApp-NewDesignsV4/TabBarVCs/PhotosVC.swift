@@ -111,11 +111,19 @@ class PhotosVC: UIViewController {
         let groupedDict = Dictionary.init(grouping: PhotosList, by: {$0.title!.components(separatedBy: " ")[0]})
         self.collectionDataSource = []
         groupedDict.forEach { (key: String, value: [DocumentsDetailsStruct]) in
-            let sortedValue = value.sorted(by: { $0.docdate?.components(separatedBy: ".").first?.getDate()?.compare(($1.docdate?.components(separatedBy: ".").first?.getDate())!) == .orderedDescending })
+            let sortedValue = value.sorted(by: { item1 , item2 in
+                var date1 = item1.date
+                var date2 = item2.date
+                return date1.compare(date2) == .orderedDescending
+            })
          //   print("beforeSorting : \(value.map({$0.docdate})) after sorting : \(sortedValue.map({$0.docdate}))")
             self.collectionDataSource?.append(PhotoItem(title: key, rowData: sortedValue))
         }
-        self.collectionDataSource = collectionDataSource?.sorted(by: {$0.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate()?.compare(($1.rowData.first?.docdate?.components(separatedBy: ".").first?.getDate())!) == .orderedDescending})
+        self.collectionDataSource = collectionDataSource?.sorted(by: { item1 , item2 in
+            guard var date1 = item1.rowData.first?.date,
+                  var date2 = item2.rowData.first?.date else {return false}
+            return date1.compare(date2) == .orderedDescending
+        })
         DispatchQueue.main.async {
             //  print(self.documentList)
             self.collectionView.reloadData()
@@ -224,6 +232,7 @@ extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "PhotosListVC") as! PhotosListVC
         vc.collectionDataSource = self.collectionDataSource ?? []
+        vc.moveToSection = indexPath.item
         self.navigationController?.pushViewController(vc, animated: true)
     }
   
