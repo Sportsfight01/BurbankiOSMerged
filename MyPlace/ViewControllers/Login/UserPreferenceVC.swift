@@ -223,8 +223,42 @@ class UserPreferenceVC: UIViewController {
 //            ])
             
             LoginDataManagement.shared.handleDefaultLoginforToken {
-                let signIn = kStoryboardLogin.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
-                self.navigationController?.pushViewController(signIn, animated: true)
+                appDelegate.userData = UserData()
+                
+                if let userID = appDelegate.userData?.user?.userID {
+                    print(log: userID)
+                    //load dashboard
+                    
+                    let userGoogleId = appDelegate.userData?.user?.userGoogleID
+                    let userFacebookId = appDelegate.userData?.user?.userFacebookID
+                    
+                    if appDelegate.userData?.user?.userFacebookID != "", appDelegate.userData?.user?.userFacebookID != nil, (appDelegate.userData?.user?.userFacebookID?.count)! > 0 {
+                        LoginDataManagement.shared.getUserDetailsFromFacebook { (user) in
+                            appDelegate.userData?.saveUserDetails()
+                        }
+                    }
+                    
+                    if userFacebookId != "", userFacebookId != nil, (userFacebookId?.count)! > 0 {
+                        LoginDataManagement.shared.getUserDetailsFromFacebook { (user) in
+                            appDelegate.userData?.saveUserDetails()
+                        }
+                    }
+
+                    if userGoogleId != "", userGoogleId != nil, (userGoogleId?.count)! > 0 {
+            //            LoginDataManagement.shared.handleGoogleSignIn()
+                    }
+
+                    loadMainView()
+                    
+                }else {
+                    
+                    //load login
+                    let signIn = kStoryboardLogin.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+                                    self.navigationController?.pushViewController(signIn, animated: true)
+                    //already welcome(login module) screen is initial screen
+                }
+//                let signIn = kStoryboardLogin.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+//                self.navigationController?.pushViewController(signIn, animated: true)
             }
         }else if selectedModule == 2 {
             CodeManager.sharedInstance.sendScreenName(burbank_home_screen_deposited_button_touch)
