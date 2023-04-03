@@ -50,18 +50,16 @@ class PhotosListVC: UIViewController {
         //   print("photoscount :- \(photoCount)")
         self.countPhotosLb.text = "\(photosCount) photo".appending(photosCount > 1 ? "s" : "")
         // Do any additional setup after loading the view.
-    }
-    override func viewDidAppear(_ animated : Bool)
-    {
-        super.viewDidAppear(animated)
-        //self.navigationItem.backBarButtonItem = uiba
-        if let moveToSection
-        {
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: moveToSection), at: .centeredVertically, animated: true)
-            self.moveToSection = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4)
+        {[weak self] in
+            if let moveToSection = self?.moveToSection
+            {
+                let lastItem = (self?.collectionView.numberOfItems(inSection: moveToSection) ?? 1) - 1
+                self?.collectionView.scrollToItem(at: IndexPath(item: lastItem, section: moveToSection), at: .bottom, animated: true)
+            }
         }
-        
     }
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
       self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
