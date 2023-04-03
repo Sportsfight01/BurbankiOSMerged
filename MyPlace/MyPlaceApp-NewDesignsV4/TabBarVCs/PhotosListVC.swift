@@ -58,6 +58,7 @@ class PhotosListVC: UIViewController {
         if let moveToSection
         {
             collectionView.scrollToItem(at: IndexPath(item: 0, section: moveToSection), at: .centeredVertically, animated: true)
+            self.moveToSection = 0
         }
         
     }
@@ -174,8 +175,10 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
                 .compactMap({$0.rowData})
                 .flatMap({$0})
                 .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "EEEE, dd/MM/yy") ?? "", url: $0.url ?? "") })
+            /*testing purpose
+//                .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy, HH:mm:ss") ?? "", url: $0.url ?? "") })*/
             imgVC.collectionDataSource = items
-            imgVC.currentIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
+            imgVC.initialIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
             self.navigationController?.pushViewController(imgVC, animated: true)
 
         } else {

@@ -22,6 +22,7 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
     var dataSource : UICollectionViewDiffableDataSource<Int, String>!
     var collectionDataSource : [SliderItem] = []
     var currentIndex : Int = 0
+    var initialIndex : Int = 0
    
     
     //MARK: - Life Cycle
@@ -76,6 +77,7 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
 
         let section = NSCollectionLayoutSection(group: group)
         section.visibleItemsInvalidationHandler = { [weak self] visibleItems, point, environment in
+        
             self?.currentIndex = visibleItems.last?.indexPath.item ?? 0
         }
         section.orthogonalScrollingBehavior = .groupPagingCentered
@@ -111,7 +113,7 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
         snapShot.appendItems(items)
         dataSource.apply(snapShot, animatingDifferences: true)
         
-        collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: initialIndex, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     func didTappedPrevNextBtns(isPrevious: Bool) {
@@ -187,7 +189,7 @@ class ImageCell : UICollectionViewCell {
         
         let previousBtn = UIButton(frame: .zero)
         previousBtn.tag = 100
-        previousBtn.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        previousBtn.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
         previousBtn.addTarget(self, action: #selector(previousNextButtonsAction), for: .touchUpInside)
         
         let nextBtn = UIButton(frame: .zero)
@@ -197,7 +199,6 @@ class ImageCell : UICollectionViewCell {
             btn.translatesAutoresizingMaskIntoConstraints = false
             btn.tintColor = .black
             contentView.addSubview(btn)
-          
             NSLayoutConstraint.activate([
                 btn.heightAnchor.constraint(equalToConstant: 25),
                 btn.widthAnchor.constraint(equalToConstant: 25),
