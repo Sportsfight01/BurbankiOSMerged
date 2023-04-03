@@ -76,7 +76,9 @@ func appStartUpSetup () {
 //            LoginDataManagement.shared.handleGoogleSignIn()
         }
 
-        loadMainView()
+//        loadMainView()
+        loadLoginView()
+        
     }else {
         
         //load login
