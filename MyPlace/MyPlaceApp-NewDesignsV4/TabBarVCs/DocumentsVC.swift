@@ -254,7 +254,10 @@ class DocumentsVC: UIViewController {
             switch result
             {
             case .success(let data):
-                self?.documentList = data.filter({$0.type?.lowercased() != "jpg" || $0.type?.lowercased() != "png"})
+                
+           
+                self?.documentList = data.filter( { !($0.type!.lowercased().contains("jpg"))}).filter( { !($0.type!.lowercased().contains("png")) })
+                //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {
                     self?.tableDataSource = self?.documentList?.sorted(by: {$0.date > $1.date})
                     

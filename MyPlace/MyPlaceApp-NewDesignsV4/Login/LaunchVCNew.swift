@@ -196,8 +196,7 @@ extension LaunchVCNew {
                         let user = User(dic: resultDic)
                         if user.isSuccess == true
                         {
-                            appDelegate.currentUser = user//Need To Check whethere we need to fill user data here or not
-                            appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray.append(self.getRandomMyPlaceDetails()!)
+                            appDelegate.currentUser = user
                             self.message = (jsonDic.object(forKey: "Message")as? String)!
                             
                             self.handleUserSignUpOrLoginScenarios(user: user)
@@ -224,45 +223,6 @@ extension LaunchVCNew {
             }
             
         })
-        
-    }
-    private func getRandomMyPlaceDetails() -> MyPlaceDetails?
-    {
-        let json = """
-
-                           {
-                               "Id": 0,
-                               "UserId": 1770,
-                               "JobNo": "160582",
-                               "UserName": "TestForApp",
-                               "Password": "BurbanK1",
-                               "JobType": null,
-                               "Region": "VIC",
-                               "CreatedOn": null,
-                               "UpdatedOn": null,
-                               "MyPlaceEmails": [
-                                   {
-                                       "JobNumber": null,
-                                       "ContactId": null,
-                                       "FullName": "srikanth my place",
-                                       "FirstName": "srikanth",
-                                       "LastName": "my place",
-                                       "Email": "srikanth.vunyala@digitalminds.solutions",
-                                       "UserName": "TestForApp",
-                                       "Password": "BurbanK1",
-                                       "IsPrimaryUser": true
-                                   }
-                               ]
-                           }
-""".data(using: .utf8)
-        if let dict = try? JSONSerialization.jsonObject(with: json!, options: []) as? [String : Any]
-        {
-            return MyPlaceDetails(dic: dict)
-        }else {
-            return nil
-        }
-        
-   
         
     }
     private func handleUserSignUpOrLoginScenarios(user: User)

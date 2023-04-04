@@ -1962,11 +1962,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPH-wu-CFH">
                                 <rect key="frame" x="30" y="162" width="330" height="120"/>
                                 <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oN0-Te-JIZ">
-                                        <rect key="frame" x="-4" y="116" width="334" height="4"/>
-                                        <color key="progressTintColor" systemColor="systemRedColor"/>
-                                        <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyProgress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBd-2I-3SG">
                                         <rect key="frame" x="87.333333333333343" y="20" width="118.33333333333334" height="27.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -2019,12 +2014,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="0T0-aJ-Cq6"/>
-                                    <constraint firstAttribute="trailing" secondItem="oN0-Te-JIZ" secondAttribute="trailing" id="1z3-Lb-cuH"/>
                                     <constraint firstItem="Ne8-lu-eCL" firstAttribute="top" secondItem="iBd-2I-3SG" secondAttribute="bottom" constant="8" id="KiF-Ea-RXe"/>
                                     <constraint firstItem="2e0-oi-vjB" firstAttribute="top" secondItem="mZH-e3-EiR" secondAttribute="top" constant="-5" id="Nip-ON-4YM"/>
                                     <constraint firstItem="Ne8-lu-eCL" firstAttribute="leading" secondItem="iBd-2I-3SG" secondAttribute="leading" id="PYX-Ry-Pjy"/>
-                                    <constraint firstAttribute="bottom" secondItem="oN0-Te-JIZ" secondAttribute="bottom" id="TMc-Pq-0Jf"/>
-                                    <constraint firstItem="oN0-Te-JIZ" firstAttribute="leading" secondItem="mZH-e3-EiR" secondAttribute="leading" id="cXM-8v-GNb"/>
                                     <constraint firstItem="2e0-oi-vjB" firstAttribute="trailing" secondItem="mZH-e3-EiR" secondAttribute="trailing" constant="5" id="kYz-bw-quG"/>
                                     <constraint firstItem="mZH-e3-EiR" firstAttribute="top" secondItem="JPH-wu-CFH" secondAttribute="top" constant="20" id="l23-8p-kpS"/>
                                     <constraint firstAttribute="trailing" secondItem="Ne8-lu-eCL" secondAttribute="trailing" constant="16" id="mRi-yz-bzo"/>
@@ -2032,7 +2024,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR OVERALL PROGRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfE-1j-cZQ">
-                                <rect key="frame" x="46" y="302" width="294" height="18"/>
+                                <rect key="frame" x="46" y="310" width="294" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Hyn-EB-s44"/>
                                 </constraints>
@@ -2041,7 +2033,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8ww-n8-gHK">
-                                <rect key="frame" x="0.0" y="328" width="390" height="452"/>
+                                <rect key="frame" x="0.0" y="336" width="390" height="444"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5RU-Ka-uZ5">
@@ -2052,7 +2044,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProgressCVCell" id="bNq-CC-XgZ" customClass="MyProgressCVCell" customModule="BurbankApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="42.666666666666664" width="414" height="367"/>
+                                        <rect key="frame" x="0.0" y="38.666666666666664" width="414" height="367"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zmb-nm-N5o">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="367"/>
@@ -2154,26 +2146,41 @@ adipiscing elitsed</string>
                                     <constraint firstAttribute="height" constant="50" id="7J9-Tf-YJ2"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GGw-va-PmQ" customClass="HorizontalProgressBar" customModule="BurbankApp" customModuleProvider="target">
+                                <rect key="frame" x="26" y="282" width="334" height="8"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="MPy-kG-qIs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" systemColor="systemRedColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.97666090726852417" green="0.95381921529769897" blue="0.93865644931793213" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Gek-Tf-yFq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="2W6-aA-er5"/>
                             <constraint firstItem="8ww-n8-gHK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3Ll-9d-Z2D"/>
+                            <constraint firstItem="TfE-1j-cZQ" firstAttribute="top" secondItem="GGw-va-PmQ" secondAttribute="bottom" constant="20" id="B9j-sR-h21"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8ww-n8-gHK" secondAttribute="bottom" constant="30" id="Df7-Hl-1gb"/>
-                            <constraint firstItem="TfE-1j-cZQ" firstAttribute="top" secondItem="JPH-wu-CFH" secondAttribute="bottom" constant="20" id="Kky-Tp-sp1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JPH-wu-CFH" secondAttribute="trailing" constant="30" id="RBn-pW-jdU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Gek-Tf-yFq" secondAttribute="trailing" constant="20" id="SbC-vZ-41a"/>
                             <constraint firstItem="8ww-n8-gHK" firstAttribute="top" secondItem="TfE-1j-cZQ" secondAttribute="bottom" constant="8" id="U5l-to-p2U"/>
                             <constraint firstItem="Sau-XU-N8e" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="XXV-MZ-a4K"/>
                             <constraint firstItem="zJa-q7-eLD" firstAttribute="centerY" secondItem="Sau-XU-N8e" secondAttribute="centerY" id="Xd6-ML-OU8"/>
-                            <constraint firstItem="TfE-1j-cZQ" firstAttribute="leading" secondItem="oN0-Te-JIZ" secondAttribute="leading" constant="20" id="ady-bA-4dr"/>
                             <constraint firstItem="mZH-e3-EiR" firstAttribute="leading" secondItem="Sau-XU-N8e" secondAttribute="leading" constant="6" id="bCc-TA-aap"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TfE-1j-cZQ" secondAttribute="trailing" constant="50" id="elS-f8-Ej3"/>
+                            <constraint firstItem="GGw-va-PmQ" firstAttribute="top" secondItem="JPH-wu-CFH" secondAttribute="bottom" id="fpE-bL-V3h"/>
                             <constraint firstItem="zJa-q7-eLD" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="gRz-9O-xXZ"/>
+                            <constraint firstItem="TfE-1j-cZQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="46" id="hxU-qv-MBv"/>
+                            <constraint firstItem="GGw-va-PmQ" firstAttribute="leading" secondItem="mZH-e3-EiR" secondAttribute="leading" id="iYd-AA-wUd"/>
                             <constraint firstItem="JPH-wu-CFH" firstAttribute="top" secondItem="Sau-XU-N8e" secondAttribute="bottom" constant="15" id="j8X-6X-pKT"/>
                             <constraint firstItem="iBd-2I-3SG" firstAttribute="leading" secondItem="zJa-q7-eLD" secondAttribute="leading" constant="8" id="lrR-kA-yff"/>
-                            <constraint firstItem="TfE-1j-cZQ" firstAttribute="centerX" secondItem="oN0-Te-JIZ" secondAttribute="centerX" id="ngt-XT-ZcE"/>
                             <constraint firstItem="8ww-n8-gHK" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="o7g-bi-LsI"/>
+                            <constraint firstItem="GGw-va-PmQ" firstAttribute="trailing" secondItem="JPH-wu-CFH" secondAttribute="trailing" id="pSA-Ou-u69"/>
                             <constraint firstItem="zJa-q7-eLD" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.439614" id="pgD-uB-hDk"/>
                             <constraint firstItem="Sau-XU-N8e" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="qjw-7n-e3L"/>
                             <constraint firstItem="JPH-wu-CFH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="vx2-yu-vYO"/>
@@ -2186,13 +2193,13 @@ adipiscing elitsed</string>
                         <outlet property="homeProgressLb" destination="Ne8-lu-eCL" id="KYM-3G-gtu"/>
                         <outlet property="notificationCountLBL" destination="2e0-oi-vjB" id="fPx-o9-qQY"/>
                         <outlet property="profileImgView" destination="mZH-e3-EiR" id="0NZ-bH-DAK"/>
-                        <outlet property="progressBar" destination="oN0-Te-JIZ" id="9Y0-1k-Hdc"/>
+                        <outlet property="progressBar" destination="GGw-va-PmQ" id="XML-Zy-xqX"/>
                         <outlet property="yourOverallProgressLb" destination="TfE-1j-cZQ" id="yRZ-Is-QST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1403" y="550"/>
+            <point key="canvasLocation" x="-1403.0769230769231" y="549.52606635071083"/>
         </scene>
         <!--DetailsVC-->
         <scene sceneID="35F-QW-lrH">

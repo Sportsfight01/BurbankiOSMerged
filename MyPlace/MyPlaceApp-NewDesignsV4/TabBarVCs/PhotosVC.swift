@@ -112,16 +112,16 @@ class PhotosVC: UIViewController {
         self.collectionDataSource = []
         groupedDict.forEach { (key: String, value: [DocumentsDetailsStruct]) in
             let sortedValue = value.sorted(by: { item1 , item2 in
-                var date1 = item1.date
-                var date2 = item2.date
+                let date1 = item1.date
+                let date2 = item2.date
                 return date1.compare(date2) == .orderedDescending
             })
          //   print("beforeSorting : \(value.map({$0.docdate})) after sorting : \(sortedValue.map({$0.docdate}))")
             self.collectionDataSource?.append(PhotoItem(title: key, rowData: sortedValue))
         }
         self.collectionDataSource = collectionDataSource?.sorted(by: { item1 , item2 in
-            guard var date1 = item1.rowData.first?.date,
-                  var date2 = item2.rowData.first?.date else {return false}
+            guard let date1 = item1.rowData.first?.date,
+                  let date2 = item2.rowData.first?.date else {return false}
             return date1.compare(date2) == .orderedDescending
         })
         DispatchQueue.main.async {
@@ -169,11 +169,12 @@ class PhotosVC: UIViewController {
             {
             case .success(let data):
                 guard let self = self else {return}
-                let documentList = data.filter({$0.type?.uppercased() == "JPG"})
+                let imageTypes = ["jpg", "png","jpeg"]
+                let documentList = data.filter( { imageTypes.contains( $0.type?.lowercased() ?? "") } )
                 guard documentList.count > 0 else {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
-                        self.helpTextLBL.text = "No photos available for this job number"
+                        self.helpTextLBL.text = "No photos available for this job number."
                         self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
 //                     self.showAlert(message: "No photos found") { _ in
 //                        // self.backButtonPressed()

@@ -32,12 +32,7 @@ class MyProgressVC: UIViewController {
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var progressBar: UIProgressView!
-    {
-        didSet{
-            progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 2.0)
-        }
-    }
+    @IBOutlet weak var progressBar: HorizontalProgressBar!
     @IBOutlet weak var yourOverallProgressLb: UILabel!
     
     //Variables
@@ -305,7 +300,7 @@ class MyProgressVC: UIViewController {
         let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100).rounded(.toNearestOrAwayFromZero))
         let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: CGFloat(Double(totalHomeProgressPercentage)/100.0), progressDetails: nil)
         clItems.insert(newClItem, at: 0)
-        progressBar.progress = Float(totalHomeProgress)
+        progressBar.progress = CGFloat(totalHomeProgress)
         let attrStr = NSMutableAttributedString(string: "Your home is currently ")
         let percentageAttrStr = NSAttributedString(string: "\(totalHomeProgressPercentage)%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.black])
         let cmpletedStr = NSAttributedString(string: " completed. Swipe to see your stages.")
@@ -510,44 +505,7 @@ class MyProgressVC: UIViewController {
             }
         }
     }
-    
-    
-    
-//    func callServerAndUpdateUserSelectedNotificationTypes()
-//    {
-//        let userID = appDelegate.currentUser?.userDetailsArray?[0].id
-//        ServiceSession.shared.callToPostDataToServer(appendUrlString: getProfileURL, postBodyDictionary: ["Id": userID!], completionHandler: {(json) in
-//
-//            let jsonDic = json as! NSDictionary
-//
-//            DispatchQueue.main.async(execute: {
-//                appDelegate.hideActivity()
-//            })
-//
-//            if let status = jsonDic.object(forKey: "Status") as? Bool
-//            {
-//
-//                if status == true
-//                {
-//                    if let resultArray = jsonDic.object(forKey: "Result") as? NSDictionary
-//                    {
-//                        if let notificationType = resultArray.value(forKey: "NotificationTypes") as? NSArray {
-//                            //  self.notificationArray = (resultArray.value(forKey: "NotificationTypes") as! NSArray).mutableCopy() as! NSMutableArray
-//                            let photoAdded = (notificationType[0] as? NSDictionary)?.value(forKey: "IsUserOpted") as? Bool ?? true
-//                            let stageCompleted = (notificationType[1] as? NSDictionary)?.value(forKey: "IsUserOpted") as? Bool ?? true
-//                            let stageChange = (notificationType[2] as? NSDictionary)?.value(forKey: "IsUserOpted") as? Bool ?? true
-//                            NotificationTypes.updatedSelectedNotificationType(photoAdded, stageCompleted, stageChanged: stageChange)
-//
-//                        }
-//                    }
-//                }
-//                else{
-//
-//                    AlertManager.sharedInstance.alert(jsonDic.value(forKey: "Message") as? String ?? somethingWentWrong)
-//                }
-//            }
-//        })
-//    }
+
     func getNotificationListForQLDSA()
     {
         let notificationType = NotificationTypes.getSelectedNotificationType()
