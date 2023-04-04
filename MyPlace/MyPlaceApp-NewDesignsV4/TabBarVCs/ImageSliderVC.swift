@@ -9,13 +9,8 @@
 import UIKit
 import SDWebImage
 
-protocol PreviousNextProtocolo : AnyObject
-{
-    func didTappedPrevNextBtns(isPrevious : Bool)
-}
-
 @available(iOS 13.0, *)
-class ImageSliderVC: UIViewController, PreviousNextProtocolo {
+class ImageSliderVC: UIViewController {
     //MARK: - Properties
     
     private var collectionView : UICollectionView! = nil
@@ -29,7 +24,6 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
        
         setupUI()
         collectionView.backgroundColor = .systemBackground
@@ -39,12 +33,12 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       // collectionView.frame = view.frame
+//        collectionView.frame = view.frame
         guard collectionView.superview != nil else {return}
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.6),
-            collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
@@ -62,16 +56,17 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
     {
       
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: createCompositionalLayout())
-        collectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.identifier)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.register(ImageSliderCVCell.nib, forCellWithReuseIdentifier: ImageSliderCVCell.identifier)
         self.view.addSubview(collectionView)
+        self.view.layoutIfNeeded()
+       
     
     }
   
     //MARK: - CollectionView Layout & Datasource
     func createCompositionalLayout() -> UICollectionViewLayout
     {
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0)))
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 2)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)), subitems: [item])
 
@@ -87,24 +82,23 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
     func configureDataSource()
     {
         dataSource = UICollectionViewDiffableDataSource<Int, String>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as! ImageCell
-            cell.titleLb.text = self.collectionDataSource[indexPath.item].title.capitalized
-            cell.dateLb.text = self.collectionDataSource[indexPath.item].docDate
-            cell.delegate = self
-        
-            let imageView = cell.zoomImageView
-            imageView.backgroundColor = .lightGray.withAlphaComponent(0.5)
-            let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(itemIdentifier)")
-            imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            //  cell.imView.sd_setImage(with: imgURL)
-            imageView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
-                imageView.backgroundColor = .white
+
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSliderCVCell.identifier, for: indexPath) as! ImageSliderCVCell
+            cell.setup(item: self.collectionDataSource[indexPath.item])
+            cell.prevNextClosure = { [weak self] isPrevious in
+                
+                if isPrevious
+                {
+                    self?.currentIndex -= 1
+                    
+                }else {
+                    self?.currentIndex += 1
+                }
+                self?.collectionView.scrollToItem(at: IndexPath(item: self?.currentIndex ?? 0, section: 0), at: .centeredHorizontally, animated: true)
+                
             }
-//            let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.startZooming(_:)))
-//            imageView.isUserInteractionEnabled = true
-//            imageView.addGestureRecognizer(pinchGesture)
-            
             return cell
+            
         })
         
         var snapShot = NSDiffableDataSourceSnapshot<Int, String>()
@@ -116,20 +110,6 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
         collectionView.scrollToItem(at: IndexPath(item: initialIndex, section: 0), at: .centeredHorizontally, animated: true)
     }
     
-    func didTappedPrevNextBtns(isPrevious: Bool) {
-        
-        if isPrevious
-        {
-            currentIndex -= 1
-            
-        }else {
-            currentIndex += 1
-        }
-        collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .right, animated: true)
-        
-    }
-    
-    
     @objc
      private func startZooming(_ sender: UIPinchGestureRecognizer) {
        let scaleResult = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale)
@@ -137,89 +117,6 @@ class ImageSliderVC: UIViewController, PreviousNextProtocolo {
        sender.view?.transform = scale
        sender.scale = 1
      }
-    
-}
-//MARK:  - ImageCollectionViewCell
-@available(iOS 13.0, *)
-class ImageCell : UICollectionViewCell {
-    
-    //MARK: - Properties
-    static let identifier = "ImageCell"
-    var zoomImageView : UIImageView = {
-        return UIImageView()
-    }()
-    
-    var titleLb : UILabel = UILabel()
-    var dateLb : UILabel = UILabel()
-    weak var delegate : PreviousNextProtocolo?
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure()
-    {
-        
-        setAppearanceFor(view: titleLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaSemiBold(size: 20.0))
-        setAppearanceFor(view: dateLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaRegular(size: 16.0))
-        [titleLb, dateLb].forEach({$0.textAlignment = .center})
-//        zoomImageView.backgroundColor = .red
-        //zoomImageView.ima.contentMode = .scaleAspectFit
-        dateLb.transform = CGAffineTransform(translationX: 0, y: -10)
-        let stackView = UIStackView(arrangedSubviews: [titleLb, dateLb, zoomImageView])
-        stackView.spacing = 20
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        
-        contentView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ])
-        
-        //Adding Previous Next Buttons
-        
-        let previousBtn = UIButton(frame: .zero)
-        previousBtn.tag = 100
-        previousBtn.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
-        previousBtn.addTarget(self, action: #selector(previousNextButtonsAction), for: .touchUpInside)
-        
-        let nextBtn = UIButton(frame: .zero)
-        nextBtn.setImage(UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
-        nextBtn.addTarget(self, action: #selector(previousNextButtonsAction), for: .touchUpInside)
-        [previousBtn, nextBtn].forEach { btn in
-            btn.translatesAutoresizingMaskIntoConstraints = false
-            btn.tintColor = .black
-            contentView.addSubview(btn)
-            NSLayoutConstraint.activate([
-                btn.heightAnchor.constraint(equalToConstant: 25),
-                btn.widthAnchor.constraint(equalToConstant: 25),
-                btn.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            ])
-            
-            if btn.tag == 100//previous
-            {
-                btn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
-            }else {
-                btn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5).isActive = true
-            }
-            
-        }
-        
-    }
-    
-    @objc func previousNextButtonsAction(_ sender : UIButton)
-    {
-        delegate?.didTappedPrevNextBtns(isPrevious: sender.tag == 100 ? true : false)
-    }
     
 }
 //MARK: - ImageSliderModel
@@ -232,48 +129,4 @@ extension ImageSliderVC {
     }
 }
 
-//MARK: - ScrollableImageView
-class ZoomImageView : UIScrollView, UIScrollViewDelegate
-{
-    var imageView = UIImageView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-        self.backgroundColor = .blue
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func commonInit()
-    {
-              
-               // Setup image view
-               imageView.translatesAutoresizingMaskIntoConstraints = false
-               imageView.contentMode = .scaleAspectFit
-               addSubview(imageView)
-               NSLayoutConstraint.activate([
-                
-                imageView.leadingAnchor.constraint(equalTo: self.contentLayoutGuide.leadingAnchor),
-                imageView.trailingAnchor.constraint(equalTo: self.contentLayoutGuide.trailingAnchor),
-                imageView.topAnchor.constraint(equalTo: self.contentLayoutGuide.topAnchor),
-                imageView.bottomAnchor.constraint(equalTo: self.contentLayoutGuide.bottomAnchor),
-                imageView.heightAnchor.constraint(equalTo: self.frameLayoutGuide.heightAnchor),
-                imageView.widthAnchor.constraint(equalTo: self.frameLayoutGuide.widthAnchor)
-                   
-               ])
 
-              // Setup scroll view
-               minimumZoomScale = 1
-               maximumZoomScale = 5
-               showsHorizontalScrollIndicator = false
-               showsVerticalScrollIndicator = false
-               delegate = self
-    }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-}
