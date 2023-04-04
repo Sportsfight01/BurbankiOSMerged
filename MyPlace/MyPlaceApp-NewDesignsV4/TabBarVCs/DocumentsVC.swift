@@ -43,7 +43,6 @@ class DocumentsVC: UIViewController {
     {
         didSet{
             tableView.tableFooterView = UIView()
-
             tableView.separatorStyle = .none
             tableView.separatorColor = .clear
         }
@@ -71,6 +70,7 @@ class DocumentsVC: UIViewController {
 //    typealias SnapShot = NSDiffableDataSourceSnapshot<DifSection ,DocumentsDetailsStruct>
 
     //    public var dataSource : DataSource?
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,9 +87,6 @@ class DocumentsVC: UIViewController {
       
         // Do any additional setup after loading the view.
     }
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
@@ -123,17 +120,10 @@ class DocumentsVC: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-        //        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-        //        {
-        //           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-        //            profileImgView.downloaded(from: url)
-        //        }
         if let imgURlStr = CurrentUservars.profilePicUrl
         {
-            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
         }
-        //        profileImgView.addBadge(number: appDelegate.notificationCount)
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
@@ -264,9 +254,9 @@ class DocumentsVC: UIViewController {
             switch result
             {
             case .success(let data):
-                self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
+                self?.documentList = data.filter({$0.type?.lowercased() != "jpg" || $0.type?.lowercased() != "png"})
                 DispatchQueue.main.async {
-                    self?.tableDataSource = self?.documentList
+                    self?.tableDataSource = self?.documentList?.sorted(by: {$0.date > $1.date})
                     
 //                    if #available(iOS 13.0, *)
 //                    {
@@ -284,6 +274,9 @@ class DocumentsVC: UIViewController {
     }
     func getPdfDataAt(rowNo : Int)
     {
+        
+        
+        
         guard let urlId = tableDataSource?[rowNo].url?.components(separatedBy: "?").first?.components(separatedBy: "/").last else {return}
         guard let url = tableDataSource?[rowNo].url, let type = tableDataSource?[rowNo].type else {return}
     
