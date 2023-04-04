@@ -195,12 +195,19 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     
     @IBAction func logOutClicked(_ sender: UIButton) {
+        
+        
+       
+        
         resetUserDefaultsForOlderVerion()
         CurrentUservars.profilePicUrl = nil
         CurrentUservars.userName = nil
         CurrentUservars.mobileNo = nil
         CurrentUservars.email = nil
         appDelegate.notificationCount = 0
+        
+        
+        
         let vc = UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateInitialViewController()
         if #available(iOS 13.0, *) {
             let delegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate

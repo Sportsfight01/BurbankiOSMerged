@@ -55,22 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A4F8EEAC-626D-43AC-966F-B338272470CF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyPlace/ViewControllers/Dashboard/Designs/DesignsDetailsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "fillAllDetails()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E5303CAF-8978-4FD8-B503-44066F414E7F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1676,6 +1660,118 @@
             endingLineNumber = "98"
             landmarkName = "loadLoginView()"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63E4ACBC-7D35-4DF7-8A13-607BDAF0AD62"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/ViewControllers/Dashboard/Designs/DesignsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79BA1C5E-4E93-4FD9-A8A3-387A0C2620D2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/ViewControllers/Dashboard/Profile/UserProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1176"
+            endingLineNumber = "1176"
+            landmarkName = "handleLogoutAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "79BA1C5E-4E93-4FD9-A8A3-387A0C2620D2 - 724270d3d3931cb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.UserProfileVC.handleLogoutAction(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Profile/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1176"
+                  endingLineNumber = "1176"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "79BA1C5E-4E93-4FD9-A8A3-387A0C2620D2 - 22a7f28f04783773"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in BurbankApp.UserProfileVC.handleLogoutAction(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Profile/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1178"
+                  endingLineNumber = "1178"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59C6A93C-091B-4B87-9B7B-7730FAF9CA25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/ViewControllers/Dashboard/Dasboard/MyPlaceHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "464"
+            endingLineNumber = "464"
+            landmarkName = "handleButtonActions(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59C6A93C-091B-4B87-9B7B-7730FAF9CA25 - 3a43e8e7c4b5658a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.MyPlaceHomeVC.handleButtonActions(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Dasboard/MyPlaceHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "464"
+                  endingLineNumber = "464"
+                  offsetFromSymbolStart = "1336">
+               </Location>
+               <Location
+                  uuid = "59C6A93C-091B-4B87-9B7B-7730FAF9CA25 - 1c1c809e0350e60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in BurbankApp.MyPlaceHomeVC.handleButtonActions(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/ViewControllers/Dashboard/Dasboard/MyPlaceHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "466"
+                  endingLineNumber = "466"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
