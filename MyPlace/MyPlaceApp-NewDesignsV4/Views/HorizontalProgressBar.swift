@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable
+
 class HorizontalProgressBar: UIView {
     @IBInspectable var color: UIColor = .gray {
         didSet { setNeedsDisplay() }
@@ -34,8 +34,10 @@ class HorizontalProgressBar: UIView {
         layer.mask = backgroundMask
 
         let progressRect = CGRect(origin: .zero, size: CGSize(width: rect.width * progress, height: rect.height))
-
-        progressLayer.frame = progressRect
+        UIView.animate(withDuration: 0.250, delay: 0.5) {
+            progressLayer.frame = progressRect
+        }
+      
         progressLayer.backgroundColor = color.cgColor
         progressLayer.cornerRadius = rect.height * 0.5
     }

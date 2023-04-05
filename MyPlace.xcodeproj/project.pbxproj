@@ -94,10 +94,8 @@
 		A1659988292F32BB00C36B3B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659943292F32BA00C36B3B /* MenuViewController.swift */; };
 		A1659989292F32BB00C36B3B /* MySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659944292F32BA00C36B3B /* MySettingsVC.swift */; };
 		A165998A292F32BB00C36B3B /* NewDesignsV4.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1659945292F32BA00C36B3B /* NewDesignsV4.storyboard */; };
-		A165998B292F32BB00C36B3B /* ProfileViewClass.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1659947292F32BA00C36B3B /* ProfileViewClass.xib */; };
 		A165998C292F32BB00C36B3B /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659948292F32BA00C36B3B /* VideoPlayerView.swift */; };
 		A165998D292F32BB00C36B3B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659949292F32BA00C36B3B /* CircularProgressView.swift */; };
-		A165998E292F32BB00C36B3B /* ProfileViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165994A292F32BA00C36B3B /* ProfileViewClass.swift */; };
 		A165998F292F32BB00C36B3B /* ValidateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165994C292F32BA00C36B3B /* ValidateEmailVC.swift */; };
 		A1659990292F32BB00C36B3B /* MyPlaceLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A165994D292F32BA00C36B3B /* MyPlaceLogin.storyboard */; };
 		A1659991292F32BB00C36B3B /* SetCentralPasswordVCNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = A165994E292F32BA00C36B3B /* SetCentralPasswordVCNew.swift */; };
@@ -552,10 +550,8 @@
 		A1659943292F32BA00C36B3B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A1659944292F32BA00C36B3B /* MySettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingsVC.swift; sourceTree = "<group>"; };
 		A1659945292F32BA00C36B3B /* NewDesignsV4.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewDesignsV4.storyboard; sourceTree = "<group>"; };
-		A1659947292F32BA00C36B3B /* ProfileViewClass.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewClass.xib; sourceTree = "<group>"; };
 		A1659948292F32BA00C36B3B /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		A1659949292F32BA00C36B3B /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		A165994A292F32BA00C36B3B /* ProfileViewClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewClass.swift; sourceTree = "<group>"; };
 		A165994C292F32BA00C36B3B /* ValidateEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateEmailVC.swift; sourceTree = "<group>"; };
 		A165994D292F32BA00C36B3B /* MyPlaceLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyPlaceLogin.storyboard; sourceTree = "<group>"; };
 		A165994E292F32BA00C36B3B /* SetCentralPasswordVCNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCentralPasswordVCNew.swift; sourceTree = "<group>"; };
@@ -1162,10 +1158,8 @@
 		A1659946292F32BA00C36B3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A1659947292F32BA00C36B3B /* ProfileViewClass.xib */,
 				A1659948292F32BA00C36B3B /* VideoPlayerView.swift */,
 				A1659949292F32BA00C36B3B /* CircularProgressView.swift */,
-				A165994A292F32BA00C36B3B /* ProfileViewClass.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2437,7 +2431,6 @@
 				ED4F54FA24E5686000FC53B0 /* Turn-Phone-Large3_with-Circle.gif in Resources */,
 				D16FE47C2428EF6F0082DECF /* Proxima Nova Semibold Italic.otf in Resources */,
 				A1659AD4292F4A4500C36B3B /* Ico-Right.png in Resources */,
-				A165998B292F32BB00C36B3B /* ProfileViewClass.xib in Resources */,
 				D16FE47A2428EF6F0082DECF /* Proxima Nova Condensed Light.otf in Resources */,
 				A1659954292F32BA00C36B3B /* MyPlaceNewAssets.xcassets in Resources */,
 				A1659ACB292F4A4500C36B3B /* MyriadPro-It.otf in Resources */,
@@ -2736,7 +2729,6 @@
 				A1659975292F32BB00C36B3B /* DocumentsVC.swift in Sources */,
 				ED7369F624F639BD0008B5E5 /* H&LBedroomsCVCell.swift in Sources */,
 				A1659964292F32BB00C36B3B /* UITableView + Extension.swift in Sources */,
-				A165998E292F32BB00C36B3B /* ProfileViewClass.swift in Sources */,
 				A1659B10292F4A4500C36B3B /* CoBurbankListVC.swift in Sources */,
 				A1659AF3292F4A4500C36B3B /* MyPlacePhotoNote+CoreDataClass.swift in Sources */,
 				A1659AA5292F4A4400C36B3B /* FilterOptions.swift in Sources */,
