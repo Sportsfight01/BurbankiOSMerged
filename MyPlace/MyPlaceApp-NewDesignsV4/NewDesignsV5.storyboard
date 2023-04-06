@@ -1066,22 +1066,22 @@ stages in your build and what you need to know.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTL-rC-2dU">
-                                <rect key="frame" x="10" y="325.5" width="394" height="245"/>
+                                <rect key="frame" x="8" y="320.5" width="398" height="255"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e63-qS-wKl">
-                                        <rect key="frame" x="8" y="16" width="378" height="213"/>
+                                        <rect key="frame" x="14" y="16" width="370" height="223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDIT PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65j-Ef-CA7">
-                                                <rect key="frame" x="0.0" y="0.0" width="378" height="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="370" height="17"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
                                                 <color key="textColor" name="AppOrange"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="leV-Yf-hgX">
-                                                <rect key="frame" x="0.0" y="25" width="378" height="150"/>
+                                                <rect key="frame" x="0.0" y="25" width="370" height="150"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViG-eW-NUB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="378" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="370" height="40"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-user" translatesAutoresizingMaskIntoConstraints="NO" id="RYS-8U-6iS">
                                                                 <rect key="frame" x="10" y="13" width="14" height="14"/>
@@ -1091,7 +1091,7 @@ stages in your build and what you need to know.</string>
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BqH-ml-ZqY">
-                                                                <rect key="frame" x="34" y="0.0" width="344" height="40"/>
+                                                                <rect key="frame" x="34" y="0.0" width="336" height="40"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1129,7 +1129,7 @@ stages in your build and what you need to know.</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1t4-yj-7T1">
-                                                        <rect key="frame" x="0.0" y="55" width="378" height="40"/>
+                                                        <rect key="frame" x="0.0" y="55" width="370" height="40"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-user" translatesAutoresizingMaskIntoConstraints="NO" id="gy3-os-ZP1">
                                                                 <rect key="frame" x="10" y="13" width="13.5" height="14"/>
@@ -1139,7 +1139,7 @@ stages in your build and what you need to know.</string>
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKy-e3-1BT">
-                                                                <rect key="frame" x="33.5" y="0.0" width="344.5" height="40"/>
+                                                                <rect key="frame" x="33.5" y="0.0" width="336.5" height="40"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1176,7 +1176,7 @@ stages in your build and what you need to know.</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlR-4d-E7X">
-                                                        <rect key="frame" x="0.0" y="110" width="378" height="40"/>
+                                                        <rect key="frame" x="0.0" y="110" width="370" height="40"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Mobile" translatesAutoresizingMaskIntoConstraints="NO" id="4Zn-Kv-iuq">
                                                                 <rect key="frame" x="10" y="13" width="13.5" height="14"/>
@@ -1185,7 +1185,7 @@ stages in your build and what you need to know.</string>
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n2g-8q-bxG">
-                                                                <rect key="frame" x="33.5" y="0.0" width="344.5" height="40"/>
+                                                                <rect key="frame" x="33.5" y="0.0" width="336.5" height="40"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -1224,10 +1224,10 @@ stages in your build and what you need to know.</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-L0-8OK">
-                                                <rect key="frame" x="0.0" y="183" width="378" height="30"/>
+                                                <rect key="frame" x="0.0" y="183" width="370" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh8-s0-eVD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="181.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="15"/>
                                                         <state key="normal" title="Cancel">
@@ -1249,10 +1249,10 @@ stages in your build and what you need to know.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1He-zd-xxS">
-                                                        <rect key="frame" x="196.5" y="0.0" width="181.5" height="30"/>
+                                                        <rect key="frame" x="192.5" y="0.0" width="177.5" height="40"/>
                                                         <color key="backgroundColor" name="AppOrange"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="SrJ-GF-u1V"/>
+                                                            <constraint firstAttribute="height" constant="40" id="SrJ-GF-u1V"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="15"/>
                                                         <state key="normal" title="Save">
@@ -1260,13 +1260,7 @@ stages in your build and what you need to know.</string>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="15"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.85683822629999995" green="0.48701989649999999" blue="0.1236078665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <integer key="value" value="20"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -1287,8 +1281,8 @@ stages in your build and what you need to know.</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="e63-qS-wKl" firstAttribute="top" secondItem="fTL-rC-2dU" secondAttribute="top" constant="16" id="EH3-Ee-Z5V"/>
-                                    <constraint firstItem="e63-qS-wKl" firstAttribute="leading" secondItem="fTL-rC-2dU" secondAttribute="leading" constant="8" id="S5Z-n3-4EF"/>
-                                    <constraint firstAttribute="trailing" secondItem="e63-qS-wKl" secondAttribute="trailing" constant="8" id="aZ1-FH-ZHK"/>
+                                    <constraint firstItem="e63-qS-wKl" firstAttribute="leading" secondItem="fTL-rC-2dU" secondAttribute="leading" constant="14" id="S5Z-n3-4EF"/>
+                                    <constraint firstAttribute="trailing" secondItem="e63-qS-wKl" secondAttribute="trailing" constant="14" id="aZ1-FH-ZHK"/>
                                     <constraint firstAttribute="bottom" secondItem="e63-qS-wKl" secondAttribute="bottom" constant="16" id="kC9-Z8-Vpo"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1302,8 +1296,8 @@ stages in your build and what you need to know.</string>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fTL-rC-2dU" firstAttribute="centerY" secondItem="Xqi-gM-8hl" secondAttribute="centerY" id="OyJ-hu-3bp"/>
-                            <constraint firstItem="fTL-rC-2dU" firstAttribute="leading" secondItem="EBZ-At-GNN" secondAttribute="leading" constant="10" id="l9j-ft-xDD"/>
-                            <constraint firstItem="EBZ-At-GNN" firstAttribute="trailing" secondItem="fTL-rC-2dU" secondAttribute="trailing" constant="10" id="xa4-dG-ayG"/>
+                            <constraint firstItem="fTL-rC-2dU" firstAttribute="leading" secondItem="EBZ-At-GNN" secondAttribute="leading" constant="8" id="l9j-ft-xDD"/>
+                            <constraint firstItem="EBZ-At-GNN" firstAttribute="trailing" secondItem="fTL-rC-2dU" secondAttribute="trailing" constant="8" id="xa4-dG-ayG"/>
                         </constraints>
                     </view>
                     <connections>

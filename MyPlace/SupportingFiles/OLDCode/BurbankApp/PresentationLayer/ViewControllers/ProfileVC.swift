@@ -30,7 +30,7 @@ class ProfileVC: BurbankAppVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
         fillUserData()
     }
