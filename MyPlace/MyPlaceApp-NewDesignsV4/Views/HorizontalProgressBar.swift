@@ -34,9 +34,7 @@ class HorizontalProgressBar: UIView {
         layer.mask = backgroundMask
 
         let progressRect = CGRect(origin: .zero, size: CGSize(width: rect.width * progress, height: rect.height))
-        UIView.animate(withDuration: 0.250, delay: 0.5) {
-            progressLayer.frame = progressRect
-        }
+            progressLayer.frame = progressRect        
       
         progressLayer.backgroundColor = color.cgColor
         progressLayer.cornerRadius = rect.height * 0.5

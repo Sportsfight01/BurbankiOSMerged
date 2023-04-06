@@ -8,8 +8,6 @@
 
 import UIKit
 import SideMenu
-
-import QuickLook
 import SafariServices
 
 enum DifSection{
@@ -74,8 +72,9 @@ class DocumentsVC: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       // addGradientLayer()
-        getDocumentDetails()
+        // addGradientLayer()
+        
+      
         setupProfile()
         sideMenuSetup()
         searchBar.delegate = self
@@ -84,7 +83,8 @@ class DocumentsVC: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
         viewFavouritesContainerView.addGestureRecognizer(tap)
-      
+        
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +96,10 @@ class DocumentsVC: UIViewController {
         }else{
             tableView.backgroundColor = .lightGray
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getDocumentDetails()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -233,7 +237,6 @@ class DocumentsVC: UIViewController {
         {
             let jobRegion = currenUserJobDetails?.region
             selectedJobNumberRegionString = jobRegion!
-            print("jobregion :- \(jobRegion)")
         }
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
@@ -277,88 +280,36 @@ class DocumentsVC: UIViewController {
     }
     func getPdfDataAt(rowNo : Int)
     {
-        
-        
-        
-        guard let urlId = tableDataSource?[rowNo].url?.components(separatedBy: "?").first?.components(separatedBy: "/").last else {return}
-        guard let url = tableDataSource?[rowNo].url, let type = tableDataSource?[rowNo].type else {return}
-    
+        guard let url = tableDataSource?[rowNo].url, let type = tableDataSource?[rowNo].type, let title = tableDataSource?[rowNo].title else {return}
+        let fileName = "\(title).\(type)"
         let documentURL = "\(clickHomeBaseImageURL)\(url)"
-        //let jobNumber = appDelegate.myPlaceStatusDetails?.jobNumber ?? ""
-      
-        
-        var filePath = ""
-        let user = appDelegate.currentUser
-        if let jobNumber = user?.jobNumber
+        if type.contains("eml")
         {
-            filePath = "\(documentsPath)/\(jobNumber)_\(urlId).\(type)"
-        }
-        let fileURL = URL(fileURLWithPath: filePath)
-        let fileURLString = fileURL.absoluteString
-        if FileManager.default.fileExists(atPath: fileURL.path)
-        {
-            showPDFFile(fileURLString) // fileURLString
-        }else
-        {
-            MyPlaceServiceSession.shared.callToGetDataFromServer(documentURL, successBlock: { [weak self](json, response) in
-                if let jsosData = json as? Data
-                {
-                    //.appendingPathExtension("pdf")
-                    do
-                    {
-                        try jsosData.write(to: fileURL, options: .atomic)
-                        self?.showPDFFile(fileURLString) // fileURLString
-                    }catch
-                    {
-#if DEDEBUG
-                        print("fail to write file")
-#endif
-                        
-                    }
-                    
-                }
-                
-                // data.writeToFile(filePath, atomically: true)
-            }, errorBlock: { (error, isJSON) in
-                //
-            },isResultEncodedString: true)
+            openSafariVC(url: documentURL)
+        }else {
+            //DocumentPreviewer
+            let documentPreviewer = DocumentPreviewer(fileName: fileName, url: documentURL)
+            documentPreviewer.parentViewController = self
+            documentPreviewer.loadDocument()
         }
         
     }
-    func showPDFFile(_ path: String)
+    
+    func openSafariVC(url : String)
     {
-        let tempPath = path.replacingOccurrences(of: "file://", with: "")
-        print("currentfilePath :- \(tempPath)")
-        self.currentFilePath = tempPath
-        
-//
-        let previewController = QLPreviewController()
-        previewController.dataSource = self
-        self.present(previewController, animated: true)
-
-//            let safariVC = SFSafariViewController(url: URL(fileURLWithPath: tempPath))
-// 
-//        present(safariVC, animated: true)
-        
+        if let url = URL(string: url) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
     }
     
     
 }
-
-//@available(iOS 13.0, *)
-extension DocumentsVC : UITableViewDelegate , UITableViewDataSource , UISearchBarDelegate , QLPreviewControllerDataSource
+extension DocumentsVC : UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
-    //MARK: - Quicklook delegates
-    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return 1
-    }
-    
-    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        let url = URL(fileURLWithPath: currentFilePath)
-        return url as QLPreviewItem
-    }
-    
-    
     //MARK: - SearchBar Delegate & Datasource
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count == 0
@@ -368,9 +319,9 @@ extension DocumentsVC : UITableViewDelegate , UITableViewDataSource , UISearchBa
         else {
             //tableDataSource = documentList?.filter({$0.title?.lowercased().contains(searchText.lowercased()) ?? false})
             tableDataSource = documentList?.filter({ doc in
-                
+                let filter = [doc.title?.lowercased() , doc.type?.lowercased()]
                 let displayDate = doc.docdate?.displayDateFormateString()
-                return (doc.title?.lowercased().contains(searchText.lowercased()) ?? false) ||
+                return (filter.contains(searchText.lowercased())) ||
                 (displayDate?.lowercased().contains(searchText.lowercased()) ?? false)
             })
             
@@ -421,14 +372,6 @@ extension DocumentsVC : UITableViewDelegate , UITableViewDataSource , UISearchBa
     
     
 }
-@available(iOS 13.0, *)
-extension DocumentsVC : UIDocumentInteractionControllerDelegate {
-    //MARK: UIDocumentInteractionController delegates
-    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return self//or use return self.navigationController for fetching app navigation bar colour
-    }
-}
-
 // MARK: - DocumentsDetailsStruct
 struct DocumentsDetailsStruct: Decodable , Hashable{
     let title, authorname: String?
@@ -442,3 +385,5 @@ struct DocumentsDetailsStruct: Decodable , Hashable{
         return docdate?.components(separatedBy: ".").first?.getDate() ?? Date()
     }
 }
+
+

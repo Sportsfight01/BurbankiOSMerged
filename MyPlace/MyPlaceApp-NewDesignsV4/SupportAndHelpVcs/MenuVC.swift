@@ -139,7 +139,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func getJobNumber() -> String
     {
-        return appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0].jobNumber ?? ""
+        return appDelegate.currentUser?.jobNumber ?? appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0].jobNumber ?? ""
     }
     // MARK: - getPhoto/Stage list logic Methods
     func getNotificationList()

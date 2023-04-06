@@ -219,7 +219,7 @@ extension String {
         dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.zzz"
         
         #if DEDEBUG
-        print(self)
+       // print(self)
         #endif
         
         if self != "" {
@@ -227,14 +227,14 @@ extension String {
             if self.contains("00:00:00") {
                 dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
                 #if DEDEBUG
-                print("exists Date format: 00:00:00")
+               // print("exists Date format: 00:00:00")
                 #endif
             }
             
             if !self.contains(".") {
                 dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
                 #if DEDEBUG
-                print("exists Date format: 00:00:00")
+               // print("exists Date format: 00:00:00")
                 #endif
             }
             else {
@@ -260,9 +260,9 @@ extension String {
         if self != ""{
             if self.contains(".") {
                 let splitArray = self.split(separator: ".")
-                print(String(splitArray[0]))
+                //print(String(splitArray[0]))
                 date = dateFormater.date(from: String(splitArray[0]))!
-                print("++++++++++++\(String(describing: date))")
+               // print("++++++++++++\(String(describing: date))")
             }
             else {
                 if self != "- -"{

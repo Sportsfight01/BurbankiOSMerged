@@ -28,6 +28,8 @@
 		42999C9429D5717400FE2507 /* ImageSliderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C9329D5717400FE2507 /* ImageSliderVC.swift */; };
 		42B69F2D29DABA43002A0700 /* ImageSliderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */; };
 		42B69F2E29DABA43002A0700 /* ImageSliderCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B69F2C29DABA43002A0700 /* ImageSliderCVCell.xib */; };
+		42B69F3429DD464A002A0700 /* HorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F3329DD464A002A0700 /* HorizontalProgressBar.swift */; };
+		42B69F3629DD7ED0002A0700 /* DocumentPreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F3529DD7ED0002A0700 /* DocumentPreviewer.swift */; };
 		42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7E829349BD80038179F /* Assets.xcassets */; };
 		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
@@ -482,6 +484,8 @@
 		42999C9329D5717400FE2507 /* ImageSliderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderVC.swift; sourceTree = "<group>"; };
 		42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderCVCell.swift; sourceTree = "<group>"; };
 		42B69F2C29DABA43002A0700 /* ImageSliderCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderCVCell.xib; sourceTree = "<group>"; };
+		42B69F3329DD464A002A0700 /* HorizontalProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalProgressBar.swift; sourceTree = "<group>"; };
+		42B69F3529DD7ED0002A0700 /* DocumentPreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPreviewer.swift; sourceTree = "<group>"; };
 		42E6D7E829349BD80038179F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1060,6 +1064,7 @@
 			children = (
 				A1659910292F32B900C36B3B /* ConstantsNew.swift */,
 				A1659912292F32B900C36B3B /* ImagePickeredView.swift */,
+				42B69F3529DD7ED0002A0700 /* DocumentPreviewer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1158,6 +1163,7 @@
 		A1659946292F32BA00C36B3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				42B69F3329DD464A002A0700 /* HorizontalProgressBar.swift */,
 				A1659948292F32BA00C36B3B /* VideoPlayerView.swift */,
 				A1659949292F32BA00C36B3B /* CircularProgressView.swift */,
 			);
@@ -2799,6 +2805,7 @@
 				A1659984292F32BB00C36B3B /* ChangePasswordVC.swift in Sources */,
 				EDC770232434B95E00BB9707 /* ProfileHomeLandTVCell.swift in Sources */,
 				ED8C3C4D24BECCEE00364CA4 /* LandVC.swift in Sources */,
+				42B69F3629DD7ED0002A0700 /* DocumentPreviewer.swift in Sources */,
 				EDC7701F24349A4E00BB9707 /* ProfileSettingsTVCell.swift in Sources */,
 				ED57A031245FDAF800C24039 /* CollectionViewExtension.swift in Sources */,
 				EDF17B5924C9AA69009C1E7E /* HomeDesignsDetails.swift in Sources */,
@@ -2950,6 +2957,7 @@
 				D188C6212424D37600DFE678 /* Constants.swift in Sources */,
 				A1659971292F32BB00C36B3B /* FinanceDetailCell.swift in Sources */,
 				ED679590246A61E2008FAEED /* Toast.swift in Sources */,
+				42B69F3429DD464A002A0700 /* HorizontalProgressBar.swift in Sources */,
 				EDC62A38246C267900608E52 /* NetworkingManager.swift in Sources */,
 				A1659AEF292F4A4500C36B3B /* Base64.m in Sources */,
 				A1659B4E292F4A4500C36B3B /* MyPlaceAppointmentsCell.swift in Sources */,
