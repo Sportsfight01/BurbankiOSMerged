@@ -904,7 +904,7 @@ extension MyProgressVC : UICollectionViewDelegate , UICollectionViewDataSource
             
           
         }
-        cell.setupCircularBar(progressColor: progressColors[indexPath.row], progress: clItems[indexPath.row].progress ?? 0 , cicleImage: UIImage(named : clItems[indexPath.row].imageName))
+        cell.setupCircularBar(progressColor: progressColors[indexPath.row], progress: clItems[indexPath.row].progress ?? 0 , cicleImage: UIImage(named : clItems[indexPath.row].imageName), index: indexPath.item)
         //self.view.backgroundColor = progressColors[indexPath.row]
         return cell
     }

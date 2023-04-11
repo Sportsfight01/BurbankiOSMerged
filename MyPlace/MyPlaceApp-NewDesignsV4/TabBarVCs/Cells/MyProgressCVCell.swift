@@ -26,7 +26,7 @@ class MyProgressCVCell: UICollectionViewCell {
     super.prepareForReuse()
     progressView.subviews.forEach({$0.removeFromSuperview()})
   }
-  func setupCircularBar(progressColor : UIColor , progress : CGFloat , cicleImage : UIImage? = nil)
+    func setupCircularBar(progressColor : UIColor , progress : CGFloat , cicleImage : UIImage? = nil, index : Int)
     {
         let circleBar = CircularProgressView(frame: progressView.frame)
         circleBar.strokeColor = progressColor
@@ -46,6 +46,11 @@ class MyProgressCVCell: UICollectionViewCell {
             circleBar.labelText = "\(progressInt)% PROGRESS"
         }
         progressView.addSubview(circleBar)
+        if index == 0{
+            circleBar.addAnimation(duration: 1.0)
+        }else {
+            circleBar.removeAnimation()
+        }
         circleBar.translatesAutoresizingMaskIntoConstraints = false
         circleBar.topAnchor.constraint(equalTo: progressView.topAnchor).isActive = true
         circleBar.bottomAnchor.constraint(equalTo: progressView.bottomAnchor).isActive = true

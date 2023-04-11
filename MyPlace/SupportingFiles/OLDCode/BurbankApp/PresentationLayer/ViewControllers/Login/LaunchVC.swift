@@ -61,9 +61,9 @@ class LaunchVC: BurbankAppVC {
         
         txtEmail.text = appDelegate.enteredEmailOrJob
         txtEmail.resignFirstResponder()
-#if DEDEBUG
-txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
-#endif
+//#if DEDEBUG
+//txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
+//#endif
         
     }
     

@@ -22,8 +22,7 @@ class PhotosVC: UIViewController {
     @IBOutlet weak var seeAllPhotosBtn : UIButton!
 
     var collectionDataSource : [PhotoItem]?
-    var menu : SideMenuNavigationController!
-    
+    var menu : SideMenuNavigationController!    
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
 //    var cellSpacing = (1/16) * UIScreen.main.bounds.width

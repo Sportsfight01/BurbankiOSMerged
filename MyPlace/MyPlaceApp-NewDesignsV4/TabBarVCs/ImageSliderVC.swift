@@ -81,10 +81,10 @@ class ImageSliderVC: UIViewController {
     }
     func configureDataSource()
     {
-        dataSource = UICollectionViewDiffableDataSource<Int, String>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource<Int, String>(collectionView: collectionView, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSliderCVCell.identifier, for: indexPath) as! ImageSliderCVCell
-            cell.setup(item: self.collectionDataSource[indexPath.item])
+            cell.setup(item: self.collectionDataSource[indexPath.item], currentIndex: indexPath.item, totalCollectionCount: collectionDataSource.count)
             cell.prevNextClosure = { [weak self] isPrevious in
                 
                 if isPrevious

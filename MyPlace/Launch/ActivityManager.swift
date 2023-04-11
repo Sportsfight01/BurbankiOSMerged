@@ -135,7 +135,7 @@ func setStatusBarColor (color: UIColor? = APPCOLORS_3.Orange_BG) {
 func showActivityManager () {
     
     DispatchQueue.main.async(execute: {
-        
+       // if kWindow.subviews.contains(<#T##other: Collection##Collection#>)
         let progress = MBProgressHUD.showAdded(to: kWindow, animated: true)
         kWindow.bringSubviewToFront(progress)
         setShadow(view: progress, color: .darkGray, shadowRadius: 10)

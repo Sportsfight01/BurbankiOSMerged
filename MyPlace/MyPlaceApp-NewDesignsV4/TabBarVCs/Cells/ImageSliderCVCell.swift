@@ -26,15 +26,17 @@ class ImageSliderCVCell: UICollectionViewCell {
     @IBOutlet weak var scrollView: UIScrollView!
     static let identifier = "ImageSliderCVCell"
     static let nib = UINib(nibName: "ImageSliderCVCell", bundle: nil)
-    
+    var InitialprevNextBtsVisibility : [Bool] = []
     override func awakeFromNib() {
         super.awakeFromNib()
       
 
     }
     @available(iOS 13.0, *)
-    func setup(item : ImageSliderVC.SliderItem)
+    func setup(item : ImageSliderVC.SliderItem, currentIndex : Int, totalCollectionCount : Int)
     {
+        prevBtn.isHidden = currentIndex == 0 ? true : false
+        nextBtn.isHidden = currentIndex + 1 < totalCollectionCount ? false : true
         setAppearanceFor(view: photoTitle_Lb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaSemiBold(size: 20.0))
         setAppearanceFor(view: dateLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaRegular(size: 16.0))
         
@@ -58,11 +60,13 @@ class ImageSliderCVCell: UICollectionViewCell {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapGesture))
         doubleTap.numberOfTapsRequired = 2
         self.scrollView.addGestureRecognizer(doubleTap)
+        InitialprevNextBtsVisibility = [prevBtn,nextBtn].compactMap({$0.isHidden})
     }
     
     @objc func doubleTapGesture(_ gesture : UITapGestureRecognizer)
     {
         let point = gesture.location(in: gesture.view)
+        debugPrint(point)
         let zoomScale = scrollView.zoomScale
         scrollView.setZoomScale(zoomScale == 1.0 ? 5.0 : 1.0, animated: true)
     }
@@ -79,6 +83,16 @@ extension ImageSliderCVCell : UIScrollViewDelegate
         return imageView
     }
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        [prevBtn,nextBtn].forEach({ $0?.isHidden = scrollView.zoomScale > 1.1 ? true : false })
+//        [prevBtn,nextBtn].filter({$0?.isHidden == false}).forEach({ $0?.isHidden = scrollView.zoomScale > 1.1 ? true : false })
+        
+        for i in 0..<InitialprevNextBtsVisibility.count
+        {
+            if i == 0 //previous
+            {
+                prevBtn.isHidden = scrollView.zoomScale != 1.0 ? true : InitialprevNextBtsVisibility[i]
+            }else {
+                nextBtn.isHidden = scrollView.zoomScale != 1.0 ? true : InitialprevNextBtsVisibility[i]
+            }
+        }
     }
 }

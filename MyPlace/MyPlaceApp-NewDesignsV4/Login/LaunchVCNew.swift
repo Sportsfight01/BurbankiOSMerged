@@ -45,7 +45,7 @@ class LaunchVCNew: BurbankAppVC {
         handleUISetup()
         
         #if DEDEBUG
-        txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
+       // txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
         #endif
         btnCreate.isHidden = true
         txtEmail.delegate = self
