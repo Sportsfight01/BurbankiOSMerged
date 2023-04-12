@@ -93,7 +93,7 @@ class NetworkRequest
            // self.showLoading(text: "Loading")
           appDelegate.showActivity()
         }
-        AF.request(urlRequest).responseJSON { (response) in
+        AF.request(urlRequest).responseData { (response) in
           print(response)
           DispatchQueue.main.async {
             appDelegate.hideActivity()
