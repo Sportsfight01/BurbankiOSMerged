@@ -26,6 +26,7 @@ target 'BurbankApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'ValidationComponents'
+  pod 'SkeletonView'
   #pod 'ImageLoader'
   #pod 'Kingfisher'
   pod 'SDWebImage'

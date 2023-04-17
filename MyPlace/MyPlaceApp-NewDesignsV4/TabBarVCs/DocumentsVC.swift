@@ -9,11 +9,7 @@
 import UIKit
 import SideMenu
 import SafariServices
-
-enum DifSection{
-    case first
-}
-
+import SkeletonView
 
 class DocumentsVC: UIViewController {
     
@@ -58,34 +54,24 @@ class DocumentsVC: UIViewController {
     let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     var documentList : [DocumentsDetailsStruct]?
     var tableDataSource : [DocumentsDetailsStruct]?
+    { didSet { handleTableViewEmptyState() } }
     var menu : SideMenuNavigationController!
     var currentFilePath : String!
-    ///Diffable Datasource
-    ///iOS 13.0 *
-//    @available(iOS 13.0, *)
-//    typealias DataSource = UITableViewDiffableDataSource<DifSection ,DocumentsDetailsStruct>
-//    @available(iOS 13.0, *)
-//    typealias SnapShot = NSDiffableDataSourceSnapshot<DifSection ,DocumentsDetailsStruct>
-
-    //    public var dataSource : DataSource?
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // addGradientLayer()
         
-      
         setupProfile()
         sideMenuSetup()
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
-        viewFavouritesContainerView.addGestureRecognizer(tap)
-        
-        
-        // Do any additional setup after loading the view.
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
+//        viewFavouritesContainerView.addGestureRecognizer(tap)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -100,11 +86,18 @@ class DocumentsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getDocumentDetails()
+        tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 120
+        tableView.isSkeletonable = true
+        tableView.showAnimatedGradientSkeleton()
+   
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
+    
+    //MARK: - Helper Methods
     func sideMenuSetup()
     {
         let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -113,12 +106,23 @@ class DocumentsVC: UIViewController {
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
         menu.presentationStyle = .menuSlideIn
         
-     
         menu.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         
         
     }
+    
+    func handleTableViewEmptyState()
+    {
+        if tableDataSource?.count == 0
+        {
+            tableView.setEmptyMessage("No Documents Found")
+        }
+        else {
+            tableView.restore()
+        }
+    }
+    
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
@@ -159,68 +163,18 @@ class DocumentsVC: UIViewController {
             
         }
     }
-    
     //MARK: - Helper Methods
-//
-
-//    @available(iOS 13.0, *)
-//    func makeDataSource() -> DataSource
-//    {
-//        let datasource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, model in
-////            let cell = tableView.dequeueReusableCell(withIdentifier: DocumentsTBCell.identifier) as! DocumentsTBCell
-////            cell.pdfNameLb.numberOfLines = 1
-////            cell.pdfNameLb.font = UIFont.systemFont(ofSize: 16.0,weight: .bold)
-////            cell.pdfNameLb.text = "\(self?.tableDataSource?[indexPath.row].title ?? " ").\(self?.tableDataSource?[indexPath.row].type ?? "pdf")"
-////            let date = self?.tableDataSource?[indexPath.row].docdate?.displayDateFormateString() ?? "-"
-////            let time = self?.tableDataSource?[indexPath.row].docdate?.displayInTimeFormat() ?? "-"
-////            cell.uploadedOnDateLb.text = "Uploaded on: \(date), \(time)"
-////            cell.uploadedOnDateLb.numberOfLines = 1
-////            return cell
-//            return self?.getTableCell(indexPath: indexPath)
-//
-//        }
-//        return datasource
-//    }
-    
     func getTableCell(indexPath : IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: DocumentsTBCell.identifier) as! DocumentsTBCell
-        cell.pdfNameLb.numberOfLines = 1
-        cell.pdfNameLb.font = UIFont.systemFont(ofSize: 16.0,weight: .bold)
-        cell.pdfNameLb.text = "\(tableDataSource?[indexPath.row].title ?? " ").\(tableDataSource?[indexPath.row].type ?? "pdf")"
-      //  let date = tableDataSource?[indexPath.row].docdate?. ?? "-"
-        if let notedate = tableDataSource?[indexPath.row].docdate?.components(separatedBy: ".").first
+        if let item = tableDataSource?[indexPath.row]
         {
-            
-            
-            let notedated = dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM, yyyy, hh:mm a")
-            cell.uploadedOnDateLb.text = "Uploaded on: \(notedated ?? "")"
+            cell.setup(model: item )
         }
-        
-        
-//        let time = tableDataSource?[indexPath.row].docdate?.displayInTimeFormat() ?? "-"
-//        cell.uploadedOnDateLb.text = "Uploaded on: \(date), \(time)"
-        cell.uploadedOnDateLb.numberOfLines = 1
         return cell
     }
-
-//    @available(iOS 13.0, *)
-//    func applySnapShot(array : [DocumentsDetailsStruct], animate : Bool = false)
-    
-//    @available(iOS 13.0, *)
-//    func applySnapShot(array : [DocumentsDetailsStruct])
-//    {
-//        var snapShot = SnapShot()
-//        snapShot.appendSections([.first])
-//        snapShot.appendItems(array)
-//        makeDataSource().apply(snapShot, animatingDifferences: animate)
-//        makeDataSource().apply(snapShot, animatingDifferences: false)
-//    }
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
-        
         present(menu, animated: true, completion: nil)
-        //        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateInitialViewController() else {return}
-        //        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func supportBtnTapped(_ sender: UIButton) {
         guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
@@ -253,24 +207,19 @@ class DocumentsVC: UIViewController {
         
         
         
-        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
+        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: valueStr, contractNo: contractNo), showActivity: false) { [weak self](result) in
             switch result
             {
             case .success(let data):
                 
-           
                 self?.documentList = data.filter( { !($0.type!.lowercased().contains("jpg"))}).filter( { !($0.type!.lowercased().contains("png")) })
                 //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {
                     self?.tableDataSource = self?.documentList?.sorted(by: {$0.date > $1.date})
-                    
-//                    if #available(iOS 13.0, *)
-//                    {
-//                        self?.applySnapShot(array: self?.tableDataSource ?? [])
-//                    }
-//                    else {
+                    self?.tableView.stopSkeletonAnimation()
+                    self?.view.hideSkeleton()
                         self?.tableView.reloadData()
-                   // }
+                        
                 }
                 
             case.failure(let err):
@@ -308,16 +257,17 @@ class DocumentsVC: UIViewController {
     
     
 }
-extension DocumentsVC : UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
+
+//MARK: - SearchBar Delegate & Datasource
+extension DocumentsVC : UISearchBarDelegate
 {
-    //MARK: - SearchBar Delegate & Datasource
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count == 0
         {
             tableDataSource = documentList
         }
         else {
-            //tableDataSource = documentList?.filter({$0.title?.lowercased().contains(searchText.lowercased()) ?? false})
             tableDataSource = documentList?.filter({ doc in
                 let filter = [doc.title?.lowercased() , doc.type?.lowercased()]
                 let displayDate = doc.docdate?.displayDateFormateString()
@@ -326,34 +276,26 @@ extension DocumentsVC : UITableViewDelegate, UITableViewDataSource, UISearchBarD
             })
             
         }
-//        if #available(iOS 13.0, *) {
-//            self.applySnapShot(array: tableDataSource ?? [])
-//        } else {
-            // Fallback on earlier versions
-//            // Fallback on earlier versions
-            tableView.reloadData()
-       // }
-        
-        
+        tableView.reloadData()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
-        {
-            self.searchBar.endEditing(true)
-        }
-    
-    //MARK: - TableView Delegate & Datasource
+    {
+        self.searchBar.endEditing(true)
+    }
+}
+
+
+//MARK: - TableView Delegate & Datasource
+extension DocumentsVC : UITableViewDelegate, SkeletonTableViewDataSource
+{
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return DocumentsTBCell.identifier
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableDataSource?.count == 0
-        {
-            tableView.setEmptyMessage("No Records Found")
-        }
-        else {
-            tableView.restore()
-        }
         return tableDataSource?.count ?? 0
     }
     

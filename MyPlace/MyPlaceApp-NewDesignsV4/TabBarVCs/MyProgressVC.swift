@@ -38,7 +38,7 @@ class MyProgressVC: UIViewController {
     //Variables
     let gradientLayer = CAGradientLayer()
     var progressColors : [UIColor] = [
-        AppColors.appOrange,
+        APPCOLORS_3.Orange_BG,
         AppColors.StageColors.admin,
         AppColors.StageColors.base,
         AppColors.StageColors.frame ,
@@ -168,16 +168,7 @@ class MyProgressVC: UIViewController {
     }
     
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
-//        if ((kWindow.rootViewController?.isKind(of: UITabBarController.self)) != nil)
-//        {
-//            let navVC = UINavigationController(rootViewController: kWindow.rootViewController!)
-//            present(menu, animated: true)
-//        }
-        
         present(menu, animated: true, completion: nil)
-        
-//        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateInitialViewController() else {return}
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func didTappedOnSupport(_ sender: UIButton) {
         guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}

@@ -137,11 +137,6 @@ extension UIViewController {
     }
     func dateFormatter(dateStr : String , currentFormate : String , requiredFormate : String) -> String?
     {
-        //        let dateFormatter = DateFormatter()
-        ////        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        //        dateFormatter.dateFormat = currentFormate
-        //        let currentDate = dateFormatter.date(from: dateStr)
-        
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = currentFormate
         

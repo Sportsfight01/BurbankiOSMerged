@@ -9,35 +9,53 @@
 import UIKit
 
 class DocumentsTBCell: UITableViewCell {
-
-   static let identifier = "DocumentsTBCell"
-  
-  @IBOutlet weak var docIconImgView: UIImageView!
-  @IBOutlet weak var pdfNameLb: UILabel!
-  {
-    didSet
-    {
-      pdfNameLb.numberOfLines = 0
-        pdfNameLb.font = UIFont.systemFont(ofSize: 14.0 , weight: .semibold)
-    }
-  }
-  @IBOutlet weak var uploadedOnDateLb: UILabel!
-  {
-    didSet{
-      uploadedOnDateLb.numberOfLines = 0
-        uploadedOnDateLb.font = UIFont.systemFont(ofSize: 13.0 , weight: .medium)
-    }
-  }
-  
+    //MARK: - Properties
+    static let identifier = "DocumentsTBCell"
+    
+    @IBOutlet weak var docIconImgView: UIImageView!
+    @IBOutlet weak var pdfNameLb: UILabel!
+    @IBOutlet weak var uploadedOnDateLb: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        [pdfNameLb,uploadedOnDateLb].forEach({ label in
+            label?.numberOfLines = 1
+        })
+        pdfNameLb.font = UIFont.systemFont(ofSize: 16.0,weight: .bold)
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    func setup(model : DocumentsDetailsStruct)
+    {
+        pdfNameLb.text = "\(model.title ?? "Title").\(model.type ?? "pdf")"
+        if let notedate = model.docdate?.components(separatedBy: ".").first
+        {
+            let notedated = dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM, yyyy, hh:mm a")
+            uploadedOnDateLb.text = "Uploaded on: \(notedated ?? "- -")"
+        }
+      
+    }
+    
+    func dateFormatter(dateStr : String , currentFormate : String , requiredFormate : String) -> String?
+    {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = currentFormate
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = requiredFormate
+        
+        if let date = dateFormatterGet.date(from: dateStr) {
+            return dateFormatterPrint.string(from: date)
+        } else {
+            return nil
+        }
+    }
+    
 }
