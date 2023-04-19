@@ -20,6 +20,8 @@ class MultipleJobNumberVC: UIViewController {
     var previousJobNum : String?
     var tableDataSource : [String] = []
     var selectionClosure : ((String) -> ())?
+    var titleHeader : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -41,7 +43,14 @@ class MultipleJobNumberVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleOfTable.text = "Please Select JobNumber"
-        self.previousJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
+        if !isEmail()
+        {
+            titleOfTable.text = "Associated JobNumbers"
+            
+        }
+        if  previousJobNum == nil{
+            self.previousJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
+        }
         tableView.reloadData()
     }
     override func viewWillLayoutSubviews() {
@@ -52,7 +61,12 @@ class MultipleJobNumberVC: UIViewController {
     
     @objc func closeBtnAction(_ sender : UIButton)
     {
-        self.dismiss(animated: true)
+        if  previousJobNum != nil || previousJobNum?.count ?? 0 > 0{
+            selectionClosure?(previousJobNum ?? "")
+            self.dismiss(animated: true)
+        }else{
+            showToast("Please Select Jobnumber")
+        }
     }
     
     
@@ -80,6 +94,8 @@ extension MultipleJobNumberVC : UITableViewDelegate, UITableViewDataSource
                 // Fallback on earlier versions
                 cell.containerView.cardView(cornerRadius: radius_5, shadowOpacity: 0.3)
             }
+            
+            
         }
         return cell
     }

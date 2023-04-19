@@ -204,6 +204,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         CurrentUservars.userName = nil
         CurrentUservars.mobileNo = nil
         CurrentUservars.email = nil
+        CurrentUservars.jobNumber = nil
         appDelegate.notificationCount = 0
         
         

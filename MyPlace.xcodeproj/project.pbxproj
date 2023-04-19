@@ -264,8 +264,6 @@
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
-		A1E4543929EFB0D9006B531B /* MultipleJobNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543829EFB0D9006B531B /* MultipleJobNumberVC.swift */; };
-		A1E4543B29EFB0EC006B531B /* APIManager + Service Calls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543A29EFB0EB006B531B /* APIManager + Service Calls.swift */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
 		D16FE371242881F30082DECF /* UIImage+TBTint.m in Sources */ = {isa = PBXBuildFile; fileRef = D16FE36B242881F30082DECF /* UIImage+TBTint.m */; };
 		D16FE372242881F30082DECF /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D16FE36D242881F30082DECF /* ImageDownloader.m */; };
@@ -1588,6 +1586,15 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
+		A1E4543E29EFB8EB006B531B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A1E4543A29EFB0EB006B531B /* APIManager + Service Calls.swift */,
+				A1E4543829EFB0D9006B531B /* MultipleJobNumberVC.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		D16FE368242881F30082DECF /* ExternalFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -1679,6 +1686,7 @@
 				D188C5C02424D2D800DFE678 /* Products */,
 				5E07D3469B1301EA23F9E75C /* Pods */,
 				0A45B49F6BAFF277E0767BB4 /* Frameworks */,
+				A1E4543E29EFB8EB006B531B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2862,7 +2870,6 @@
 				A1659970292F32BB00C36B3B /* FinanceCVCell2.swift in Sources */,
 				42B69F2D29DABA43002A0700 /* ImageSliderCVCell.swift in Sources */,
 				D2225860269C2A7E0004C42F /* DisplayHomesFavouritesVC.swift in Sources */,
-				A1E4543B29EFB0EC006B531B /* APIManager + Service Calls.swift in Sources */,
 				ED849EA225BEE88100C3327A /* AttributedStringExtension.swift in Sources */,
 				A1659B17292F4A4500C36B3B /* MyPlaceCallEmailVC.swift in Sources */,
 				A165999F292F462200C36B3B /* MenuVC.swift in Sources */,
@@ -2999,7 +3006,6 @@
 				EDB10BE124456DAD002E2AE1 /* CollectionTVCell.swift in Sources */,
 				A1659960292F32BA00C36B3B /* UIBarButtonItem+Badge.swift in Sources */,
 				ED8C3C5124BECD2800364CA4 /* HomeDesignPriceVC.swift in Sources */,
-				A1E4543929EFB0D9006B531B /* MultipleJobNumberVC.swift in Sources */,
 				A1659AA0292F4A4400C36B3B /* MyPlaceServiceSession.swift in Sources */,
 				ED8C3C5B24BECE0600364CA4 /* StraightCorridorVC.swift in Sources */,
 				ED913838243319AC005DD459 /* UserProfileVC.swift in Sources */,

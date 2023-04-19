@@ -77,14 +77,14 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMs-UV-gJ3">
                                             <rect key="frame" x="70" y="48" width="25" height="25"/>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" name="Orange_BG_3"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="3R2-Ef-XVB"/>
                                                 <constraint firstAttribute="height" constant="25" id="gTx-kq-zqn"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                            <color key="textColor" name="AppOrange"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="textColor" name="HeaderFooter_BG_3"/>
+                                            <color key="highlightedColor" name="Orange_BG_3"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="12.5"/>
@@ -260,14 +260,14 @@
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0Y-Hj-fFk">
                                                         <rect key="frame" x="50" y="-5" width="25" height="25"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="Orange_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="25" id="6GK-FF-h6V"/>
                                                             <constraint firstAttribute="height" constant="25" id="Pmx-Qv-qDI"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                        <color key="textColor" name="AppOrange"/>
-                                                        <nil key="highlightedColor"/>
+                                                        <color key="textColor" name="HeaderFooter_BG_3"/>
+                                                        <color key="highlightedColor" name="HeaderFooter_BG_3"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="12.5"/>
@@ -331,13 +331,13 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-VC-jNU">
                                                                     <rect key="frame" x="70.000000000000014" y="19.000000000000004" width="135.33333333333337" height="45.333333333333343"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" text="AppointmentType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sw6-Bh-ZXI">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" text="AppointmentType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sw6-Bh-ZXI">
                                                                             <rect key="frame" x="0.0" y="0.0" width="135.33333333333334" height="19.333333333333332"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                             <color key="textColor" name="AppOrange"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" text="AppointmentDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ead-2r-OTa">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" text="AppointmentDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ead-2r-OTa">
                                                                             <rect key="frame" x="0.0" y="27.333333333333336" width="135.33333333333334" height="18"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -426,13 +426,13 @@
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVj-DS-YBK">
                                                         <rect key="frame" x="50" y="-5" width="25" height="25"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="Orange_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="KF7-NL-gib"/>
                                                             <constraint firstAttribute="width" constant="25" id="PYU-rG-Dqj"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                        <color key="textColor" name="AppOrange"/>
+                                                        <color key="textColor" name="HeaderFooter_BG_3"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -941,13 +941,13 @@
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKt-ul-kBx">
                                                                 <rect key="frame" x="50" y="5" width="25" height="25"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" name="Orange_BG_3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="26n-zQ-3wA"/>
                                                                     <constraint firstAttribute="width" constant="25" id="bHL-K6-pt3"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                                <color key="textColor" name="AppOrange"/>
+                                                                <color key="textColor" name="HeaderFooter_BG_3"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -970,13 +970,13 @@
                                                         <rect key="frame" x="105" y="0.0" width="179" height="80"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="MySettings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndi-Nf-OCP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="179" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="179" height="49.666666666666664"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Find all the settings related to your home build." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBo-4h-eem">
-                                                                <rect key="frame" x="0.0" y="36" width="179" height="44"/>
+                                                                <rect key="frame" x="0.0" y="49.666666666666679" width="179" height="30.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -986,12 +986,13 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyL-1A-zVh">
-                                                <rect key="frame" x="352" y="3.6666666666666714" width="54" height="29"/>
+                                                <rect key="frame" x="352" y="10.333333333333329" width="54" height="29"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="   Save   ">
                                                     <color key="titleColor" name="Orange_BG_3"/>
+                                                    <color key="titleShadowColor" name="AppDarkGray"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1988,7 +1989,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPH-wu-CFH">
                                 <rect key="frame" x="30" y="118" width="330" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyProgress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBd-2I-3SG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyProgress" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBd-2I-3SG">
                                         <rect key="frame" x="87.333333333333343" y="20" width="118.33333333333334" height="27.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <color key="textColor" red="0.32941176470588235" green="0.33000001311302185" blue="0.33000001311302185" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2016,7 +2017,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your home is currently 0% completed. Swipe to see your stages." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-lu-eCL">
-                                        <rect key="frame" x="87.333333333333329" y="55.666666666666664" width="226.66666666666669" height="31.333333333333336"/>
+                                        <rect key="frame" x="87.333333333333329" y="55.666666666666664" width="242.66666666666669" height="31.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2045,7 +2046,7 @@
                                     <constraint firstItem="Ne8-lu-eCL" firstAttribute="leading" secondItem="iBd-2I-3SG" secondAttribute="leading" id="PYX-Ry-Pjy"/>
                                     <constraint firstItem="2e0-oi-vjB" firstAttribute="trailing" secondItem="mZH-e3-EiR" secondAttribute="trailing" constant="5" id="kYz-bw-quG"/>
                                     <constraint firstItem="mZH-e3-EiR" firstAttribute="top" secondItem="JPH-wu-CFH" secondAttribute="top" constant="20" id="l23-8p-kpS"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ne8-lu-eCL" secondAttribute="trailing" constant="16" id="mRi-yz-bzo"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ne8-lu-eCL" secondAttribute="trailing" id="mRi-yz-bzo"/>
                                     <constraint firstItem="iBd-2I-3SG" firstAttribute="top" secondItem="JPH-wu-CFH" secondAttribute="top" constant="20" id="nNH-TM-UEZ"/>
                                 </constraints>
                             </view>
@@ -2248,6 +2249,7 @@ adipiscing elitsed</string>
                         <outlet property="burbankLogo" destination="zJa-q7-eLD" id="qEe-fB-Q6o"/>
                         <outlet property="collectionView" destination="8ww-n8-gHK" id="pFC-B8-Rld"/>
                         <outlet property="homeProgressLb" destination="Ne8-lu-eCL" id="KYM-3G-gtu"/>
+                        <outlet property="myProgresHeaderLBL" destination="iBd-2I-3SG" id="GVh-ln-HQ4"/>
                         <outlet property="notificationCountLBL" destination="2e0-oi-vjB" id="fPx-o9-qQY"/>
                         <outlet property="profileImgView" destination="mZH-e3-EiR" id="0NZ-bH-DAK"/>
                         <outlet property="progressBar" destination="GGw-va-PmQ" id="XML-Zy-xqX"/>
@@ -5606,6 +5608,9 @@ Tap below to see all.</string>
         <image name="icon_share" width="16" height="16"/>
         <image name="searchIconGray" width="24" height="24"/>
         <image name="tick_active" width="18" height="18.5"/>
+        <namedColor name="AppDarkGray">
+            <color red="0.3449999988079071" green="0.34900000691413879" blue="0.35699999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="AppGray">
             <color red="0.25499999523162842" green="0.25099998712539673" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -26,6 +26,7 @@ class MyProgressVC: UIViewController {
     
     //MARK: - Properties
     
+    @IBOutlet weak var myProgresHeaderLBL: UILabel!
     @IBOutlet weak var burbankLogo: UIImageView!
     @IBOutlet weak var homeProgressLb: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
@@ -125,6 +126,9 @@ class MyProgressVC: UIViewController {
                 vc.tableDataSource = myplaceDetailsArray?.compactMap({$0.jobNumber}) ?? []
                 vc.modalPresentationStyle = .overCurrentContext
                 vc.modalTransitionStyle = .coverVertical
+                if !isEmail(){
+                    vc.previousJobNum = appDelegate.enteredEmailOrJob
+                }
                 vc.selectionClosure = {[weak self] selectedJobNumber in
                     CurrentUservars.jobNumber = selectedJobNumber
                     self?.setupUI()
@@ -335,12 +339,18 @@ class MyProgressVC: UIViewController {
         let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: CGFloat(Double(totalHomeProgressPercentage)/100.0), progressDetails: nil)
         clItems.insert(newClItem, at: 0)
         progressBar.progress = CGFloat(totalHomeProgress)
-        let attrStr = NSMutableAttributedString(string: "Your home is currently ")
-        let percentageAttrStr = NSAttributedString(string: "\(totalHomeProgressPercentage)%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.black])
-        let cmpletedStr = NSAttributedString(string: " completed. Swipe to see your stages.")
-        attrStr.append(percentageAttrStr)
-        attrStr.append(cmpletedStr)
-        homeProgressLb.attributedText = attrStr
+     
+        let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
+        
+        setAttributetitleFor(view: homeProgressLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [ProximaNovaRegular(size: FONT_10), ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10),ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10)], alignmentCenter: false)
+        
+        
+       // let attrStr = NSMutableAttributedString(string: "Your home is currently ")
+        //let percentageAttrStr = NSAttributedString(string: "\(totalHomeProgressPercentage)%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.black])
+       // let cmpletedStr = NSAttributedString(string: " completed. Swipe to see your stages.")
+        //attrStr.append(percentageAttrStr)
+        //attrStr.append(cmpletedStr)
+       // homeProgressLb.attributedText = attrStr
         // homeProgressLb.attributedText
         //  print(clItems.count)
         collectionView.reloadData()
