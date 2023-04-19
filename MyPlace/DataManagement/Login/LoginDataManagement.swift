@@ -77,7 +77,7 @@ class LoginDataManagement: NSObject {
 
 extension LoginDataManagement {
     
-    func handleFacebookSignIn () {
+    func handleFacebookSignIn () {  
         
         if AccessToken.isCurrentAccessTokenActive {
             self.getUserDetailsFromFacebook(nil)
