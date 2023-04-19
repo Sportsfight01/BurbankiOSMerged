@@ -36,7 +36,7 @@ target 'BurbankApp' do
 pod 'SideMenu'
 pod 'GrowingTextView'
 pod 'Alamofire'
-pod 'PagingCollectionViewLayout'
+#pod 'PagingCollectionViewLayout'
 
   target 'MyPlaceTests' do
     inherit! :search_paths
