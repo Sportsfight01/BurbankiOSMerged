@@ -52,19 +52,20 @@ class MenuViewController: UIViewController {
     
     func presentMultipleJobVc()
     {
+        self.dismiss(animated: true)
        
         let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
         let vc = MultipleJobNumberVC.instace()
         vc.tableDataSource = myplaceDetailsArray?.compactMap({$0.jobNumber}) ?? []
-//        vc.modalPresentationStyle = .overCurrentContext
-//        vc.modalTransitionStyle = .coverVertical
-        vc.selectionClosure = {[weak self] selectedJobNumber in
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .coverVertical
+        vc.selectionClosure = { selectedJobNumber in
             CurrentUservars.jobNumber = selectedJobNumber
             UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
             kWindow.rootViewController = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateInitialViewController()
             kWindow.makeKeyAndVisible()
         }
-        self.navigationController?.present(vc, animated: true)
+        kWindow.rootViewController?.present(vc, animated: true)
         
 
     }
@@ -183,7 +184,7 @@ extension MenuViewController
             case .details:
                 return DetailsVC.instace()
             case .support:
-                return SupportVC.instace()
+                return SupportVC.instace(sb: .newDesignV5)
             case .notifications:
                 return MenuVC.instace()
             case .settings:

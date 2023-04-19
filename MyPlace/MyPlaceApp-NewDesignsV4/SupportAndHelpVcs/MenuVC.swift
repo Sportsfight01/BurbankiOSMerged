@@ -46,7 +46,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentJobNumber = getJobNumber()
+        currentJobNumber = CurrentUservars.jobNumber ?? ""
         
 //        let notificationType = NotificationTypes.getSelectedNotificationType()
 //        if notificationType == nil
@@ -68,7 +68,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             notificationListArray.removeAllObjects()
             callServerAndUpdateUserSelectedNotificationTypes()
         }
-        let jobNumber = getJobNumber()
+        let jobNumber = CurrentUservars.jobNumber
         if notificationListArray.count == 0 || currentJobNumber != jobNumber
         {
             notificationListArray.removeAllObjects()
@@ -80,7 +80,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             storedDayWisePhotoList.removeAll()
             completedStageList.removeAll()
             stageChangeList.removeAll()
-            currentJobNumber = jobNumber
+            currentJobNumber = jobNumber ?? ""
             reloadList()
             getNotificationList()
         }else
@@ -131,15 +131,11 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     fileprivate func fillJobNumber()
     {
-        jobNumberTextField.text = appDelegate.currentUser?.jobNumber
+        jobNumberTextField.text = CurrentUservars.jobNumber
     }
     override func viewDidDisappear(_ animated: Bool) {
 //        self.revealViewController().frontViewController.view.isUserInteractionEnabled=true
 //        menuOpenLayerView.removeFromSuperview()
-    }
-    func getJobNumber() -> String
-    {
-        return appDelegate.currentUser?.jobNumber ?? appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0].jobNumber ?? ""
     }
     // MARK: - getPhoto/Stage list logic Methods
     func getNotificationList()

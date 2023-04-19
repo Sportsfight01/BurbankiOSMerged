@@ -12,7 +12,6 @@ class MultipleJobNumberVC: UIViewController {
 
     //MARK: - Properties
     @IBOutlet weak var containerView: UIView!
-    
     @IBOutlet weak var titleOfTable: UILabel!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -42,12 +41,7 @@ class MultipleJobNumberVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titleOfTable.text = "Please Select JobNumber"
-        if !isEmail()
-        {
-            titleOfTable.text = "Associated JobNumbers"
-            
-        }
+        titleOfTable.text = "Associated Job Numbers".uppercased()
         if  previousJobNum == nil{
             self.previousJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
         }
@@ -62,7 +56,7 @@ class MultipleJobNumberVC: UIViewController {
     @objc func closeBtnAction(_ sender : UIButton)
     {
         if  previousJobNum != nil || previousJobNum?.count ?? 0 > 0{
-            selectionClosure?(previousJobNum ?? "")
+           // selectionClosure?(previousJobNum ?? "")
             self.dismiss(animated: true)
         }else{
             showToast("Please Select Jobnumber")

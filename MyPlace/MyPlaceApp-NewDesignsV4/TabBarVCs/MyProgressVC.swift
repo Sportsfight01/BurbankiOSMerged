@@ -108,7 +108,10 @@ class MyProgressVC: UIViewController {
         getUserProfile()
         sideMenuSetup()
         getNotification()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StagesBackground_Image")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StagesBackground_Image")!)
+        let imgeView = UIImageView(image: UIImage(named: "StagesBackground_Image"))
+        imgeView.frame = view.frame
+        view.insertSubview(imgeView, at: 0)
     }
     
     func setupMultipleJobVc()
