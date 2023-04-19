@@ -16,22 +16,57 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var yourhomecurrentbuildLb: UILabel!
     @IBOutlet weak var usernameLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var imageIcons : [String] = ["icon_MyAppointment",/*"icon_MyHistory",*/"icon_MyDetails","icon_MySupport","Ico-Notification", "icon_AppSetting"]
-    var tableDataSource : [String] = ["MyAppointments",/*"MyHistory",*/"MyDetails","MySupport","MyNotifications","MySettings"]
+    var tableDataSource : [SideMenuItem] = SideMenuItem.allCases
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.view.layer.shadowColor = APPCOLORS_3.GreyTextFont.cgColor
-        self.view.layer.shadowOpacity = 0.7
-        self.view.layer.shadowRadius = 5
-        self.view.layer.shadowOffset = CGSize(width: 10, height: 10) // shadow on the bottom right
-       // self.view.backgroundColor = AppColors.appOrange
-        // Do any additional setup after loading the view.
+        cardViewSetup()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupProfile()
+        checkForMultipleJobNums()
+        
+    }
+    
+    //MARK: - Helper Methods
+    func cardViewSetup()
+    {
+        self.view.layer.shadowColor = APPCOLORS_3.GreyTextFont.cgColor
+        self.view.layer.shadowOpacity = 0.7
+        self.view.layer.shadowRadius = 5
+        self.view.layer.shadowOffset = CGSize(width: 10, height: 10)
+    }
+    
+    func checkForMultipleJobNums()
+    {
+        let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
+        if myplaceDetailsArray?.count == 0// Users with only one Job Number
+        {
+            tableDataSource.removeAll(where: { $0 == .changeJobNumber})
+        }
+        tableView.reloadData()
+    }
+    
+    func presentMultipleJobVc()
+    {
+       
+        let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
+        let vc = MultipleJobNumberVC.instace()
+        vc.tableDataSource = myplaceDetailsArray?.compactMap({$0.jobNumber}) ?? []
+//        vc.modalPresentationStyle = .overCurrentContext
+//        vc.modalTransitionStyle = .coverVertical
+        vc.selectionClosure = {[weak self] selectedJobNumber in
+            CurrentUservars.jobNumber = selectedJobNumber
+            UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
+            kWindow.rootViewController = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateInitialViewController()
+            kWindow.makeKeyAndVisible()
+        }
+        self.navigationController?.present(vc, animated: true)
+        
+
     }
     
     @IBAction func closeBtnClicked(_ sender: UIButton) {
@@ -39,27 +74,15 @@ class MenuViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
-    
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-//        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-//        {
-////            profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-//            profileImgView.downloaded(from: url)
-//        }
-        
         if let imgURlStr = CurrentUservars.profilePicUrl
         {
-           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
         }
-//        profileImgView.addBadge(number: appDelegate.notificationCount)
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
@@ -82,6 +105,7 @@ class MenuViewController: UIViewController {
     }
 
 }
+//MARK: - TableView DataSource & Delegate
 extension MenuViewController : UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,9 +117,9 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource
         cell.selectionStyle = .none
         let contentView = cell.contentView.viewWithTag(50)!
         let imgView = contentView.viewWithTag(100) as! UIImageView
-        imgView.image =  UIImage(named: imageIcons[indexPath.row])
+        imgView.image =  UIImage(named: tableDataSource[indexPath.row].iconName)
         let titleLabel = contentView.viewWithTag(101) as! UILabel
-        titleLabel.text = tableDataSource[indexPath.row]
+        titleLabel.text = tableDataSource[indexPath.row].rawValue
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -104,29 +128,69 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let storyboard = UIStoryboard(name: "NewDesignsV4", bundle: nil)
-        var vc = storyboard.instantiateViewController(withIdentifier: "MyAppointmentsVC")
-        switch indexPath.row
-        {
-        case 0://MyAppointments
-            vc = storyboard.instantiateViewController(withIdentifier: "MyAppointmentsVC") as! MyAppointmentsVC
-       /* case 1://MyHistory
-            vc = storyboard.instantiateViewController(withIdentifier: "MyHistoryVC") as! MyHistoryVC*/
-        case 1://MyContacts
-            vc = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
-        case 2://MySupport
-            vc = UIStoryboard(name: "NewDesignsV5", bundle: nil).instantiateViewController(withIdentifier: "SupportVC") as! SupportVC
-        case 3://MyNotifications
-            vc = storyboard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        case 4://MySetting
-            vc = storyboard.instantiateViewController(withIdentifier: "MySettingsVC") as! MySettingsVC
-        default:
-            break;
-        }
         
-        self.navigationController?.pushViewController(vc, animated: false)
+        if let vc = tableDataSource[indexPath.row].viewController {
+            self.navigationController?.pushViewController(vc, animated: false)
+        } else {//change Job Number case
+            presentMultipleJobVc()
+        }
         
     }
     
+    
+}
+
+//MARK: - Models
+extension MenuViewController
+{
+    enum SideMenuItem : String, CaseIterable
+    {
+        case appointment     = "MyAppointments"
+        case details         = "MyDetails"
+        case support         = "MySupport"
+        case notifications   = "MyNotifications"
+        case settings        = "MySettings"
+        case changeJobNumber = "ChangeJobNumber"
+        
+        var iconName : String
+        {
+            switch self
+            {
+                
+            case .appointment:
+                return "icon_MyAppointment"
+            case .details:
+                return "icon_MyDetails"
+            case .support:
+                return "icon_MySupport"
+            case .notifications:
+                return "Ico-Notification"
+            case .settings:
+                return "icon_AppSetting"
+            case .changeJobNumber:
+                return "icon_password"
+            }
+        }
+        
+        var viewController : UIViewController?
+        {
+            switch self
+            {
+                
+            case .appointment:
+                return MyAppointmentsVC.instace()
+            case .details:
+                return DetailsVC.instace()
+            case .support:
+                return SupportVC.instace()
+            case .notifications:
+                return MenuVC.instace()
+            case .settings:
+                return MySettingsVC.instace()
+            case .changeJobNumber:
+                return nil
+            }
+        }
+    }
     
 }

@@ -81,26 +81,9 @@ class ContactUsNewMsgPopupVC: UIViewController {
     
     func postNote()
     {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-           // print("jobregion :- \(jobRegion)")
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let auth = jobAndAuth.auth
         
 
         var parameters : [String : Any] = [:]
@@ -118,7 +101,7 @@ class ContactUsNewMsgPopupVC: UIViewController {
         }
 
 
-        NetworkRequest.makeRequest(type: MyNotesStruct.self, urlRequest: Router.postNotes(auth: valueStr, contractNo: contractNo , parameters: parameters)) { [weak self](result) in
+        NetworkRequest.makeRequest(type: MyNotesStruct.self, urlRequest: Router.postNotes(auth: auth, contractNo: jobNumber , parameters: parameters)) { [weak self](result) in
             switch result
             {
             case .success(let data):

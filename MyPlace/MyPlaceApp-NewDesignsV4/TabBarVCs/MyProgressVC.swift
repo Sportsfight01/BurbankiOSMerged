@@ -11,6 +11,7 @@ import Alamofire
 //import PagingCollectionViewLayout
 import PagingCollectionViewLayout
 import SideMenu
+import SkeletonView
 
 enum StageName : String {
     case administration = "Administration"
@@ -36,7 +37,6 @@ class MyProgressVC: UIViewController {
     @IBOutlet weak var yourOverallProgressLb: UILabel!
     
     //Variables
-    let gradientLayer = CAGradientLayer()
     var progressColors : [UIColor] = [
         APPCOLORS_3.Orange_BG,
         AppColors.StageColors.admin,
@@ -79,7 +79,101 @@ class MyProgressVC: UIViewController {
     //MARK: - LifeCycleMethods
     override func viewDidLoad() {
         super.viewDidLoad()
+        debugPrint("Myprogress",#function)
+        setupMultipleJobVc()
+       
         
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        debugPrint("Myprogress",#function)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        notificationCountLBL.isHidden = true
+        setupProfile()
+       
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    //MARK: - Helper Funcs
+    
+    func setupUI()
+    {
+        setupCollectionView()
+        getProgressDetails()
+        getUserProfile()
+        sideMenuSetup()
+        getNotification()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StagesBackground_Image")!)
+    }
+    
+    func setupMultipleJobVc()
+    {
+        
+        let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
+        //*** Users With Multiple Job Numbers ***//
+        if myplaceDetailsArray?.count ?? 0 > 1
+        {// user has multiple job numbers
+            let selectedJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
+            if selectedJobNum == nil // when user first come to select Job Number
+            {
+                self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                let vc = MultipleJobNumberVC.instace()
+                vc.tableDataSource = myplaceDetailsArray?.compactMap({$0.jobNumber}) ?? []
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.modalTransitionStyle = .coverVertical
+                vc.selectionClosure = {[weak self] selectedJobNumber in
+                    CurrentUservars.jobNumber = selectedJobNumber
+                    self?.setupUI()
+                    UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
+                    self?.tabBarController?.tabBar.isUserInteractionEnabled = true
+                    
+                }
+                self.present(vc, animated: true)
+            }else { // when user already selected a job from his multiple jobNums go with normal Flow
+                CurrentUservars.jobNumber = selectedJobNum
+                self.setupUI()
+            }
+          
+        }
+        //*** Users with single JobNumber ***//
+        else
+        {
+            setupUI()
+        }
+    }
+    
+    func checkFinanceVisibility(with progressData : [ProgressStruct])
+    {
+        let contracts = ["Sign Building Contract", "Contract Signed"].map({$0.trim().lc})
+        var showFinanceTab : Bool = false
+        for item in progressData where item.phasecode?.trim().lc == "presite"
+        {
+            if contracts.contains(item.name?.trim().lc ?? "") && item.status?.trim().lc.contains("completed") == true
+            {
+                showFinanceTab = true
+                break
+            }
+        }
+        if showFinanceTab
+        {
+            let vc = UINavigationController(rootViewController: FinanceVC.instace())
+            vc.tabBarItem = UITabBarItem(title: "FINANCE", image: UIImage(named : "Finance_grey") , selectedImage: UIImage(named : "Finance_orange"))
+            
+            self.tabBarController?.viewControllers?.append(vc)
+        }
+
+    }
+    
+    
+    
+    func setupCollectionView()
+    {
         //Collection View Setup
         let layout = PagingCollectionViewLayout()
        // let layout = UICollectionViewFlowLayout()
@@ -90,46 +184,9 @@ class MyProgressVC: UIViewController {
         layout.minimumLineSpacing = cellSpacing
         collectionView.decelerationRate = .fast
         collectionView.collectionViewLayout = layout
-        
-        
-//        if #available(iOS 13.0, *)
-//        {
-//            collectionView.collectionViewLayout = compositionalLayout()
-//        }else {
-            collectionView.collectionViewLayout = layout
-     //   }
         collectionView.delegate = self
         collectionView.dataSource = self
-      //  collectionView.isPagingEnabled = true
-       
-
-        
-//        addGradientLayer()
-        getProgressDetails()
-        getUserProfile()
-        sideMenuSetup()
-        getNotification()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StagesBackground_Image")!)
-
-        // Do any additional setup after loading the view.
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        notificationCountLBL.isHidden = true
-        setupProfile()
-      
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-    }
-    
-    //MARK: - Helper Funcs
-    
-    
     /// layout design for future versions
     @available(iOS 13.0, *)
     func compositionalLayout() -> UICollectionViewLayout
@@ -158,7 +215,7 @@ class MyProgressVC: UIViewController {
     }
     func sideMenuSetup()
     {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        let sideMenuVc = MenuViewController.instace()
         menu = SideMenuNavigationController(rootViewController: sideMenuVc)
         menu.leftSide = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
@@ -176,19 +233,7 @@ class MyProgressVC: UIViewController {
   
     }
     
-    //MARK:- Helper Methods
-    func addGradientLayer()
-    {
-        
-        gradientLayer.locations = [0,1]
-        gradientLayer.colors = [AppColors.appOrange.cgColor , AppColors.appOrange.cgColor]
-        gradientLayer.frame = view.bounds
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-        
-    }
-    
-    //below method is to group values with their respected stages
-    //
+    //below method is to group the values with their respected stages
     func setupProgressDetails(progressData : [ProgressStruct])
     {
         var stagesDictionary : [StageName : [ProgressStruct]] = [:]
@@ -330,65 +375,31 @@ class MyProgressVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)
         
-        //jobnumber to currentuservars
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        CurrentUservars.jobNumber = contractNo
-        
         
     }
-@objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-    let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-    self.navigationController?.pushViewController(vc, animated: true)
-
-}
+    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
+        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     //MARK: - Service Calls
     
     func getProgressDetails()
     {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-            print("jobregion :- \(jobRegion)")
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        
-        
-//        let contractNo = appDelegate.currentUser?.jobNumber?.trim().isEmpty || appDelegate.currentUser?.jobNumber == nil ? appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? "" : ""
-        
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        
             
-        
-        
-        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        self.collectionView.showAnimatedGradientSkeleton()
+        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: jobAndAuth.auth, contractNo: jobAndAuth.jobNumber ?? ""), showActivity: false) { [weak self](result) in
+            DispatchQueue.main.async{
+                self?.collectionView.stopSkeletonAnimation()
+                self?.view.hideSkeleton()
+            }
             switch result
             {
             case .success(let data):
                // print(data)
                 self?.setupProgressDetails(progressData: data)
+                self?.checkFinanceVisibility(with: data)
                 
             case.failure(let err):
                 print(err.localizedDescription)
@@ -401,7 +412,7 @@ class MyProgressVC: UIViewController {
     
         let userID = appDelegate.currentUser?.userDetailsArray?[0].id
         let parameters : [String : Any] = ["Id" : userID as Any]
-        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters)) { [weak self]result in
+        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters), showActivity: false) { [weak self]result in
             switch result
             {
             case .success(let data):
@@ -470,7 +481,7 @@ class MyProgressVC: UIViewController {
     
         let userID = appDelegate.currentUser?.userDetailsArray?.first?.id
         let parameters : [String : Any] = ["Id" : userID as Any]
-        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters)) { [weak self]result in
+        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters), showActivity: false) { [weak self]result in
             switch result
             {
             case .success(let data):
@@ -514,7 +525,7 @@ class MyProgressVC: UIViewController {
     }
     func getPhotosNotificationListForQLDSA()
     {
-        MyPlaceServiceSession.shared.callToGetDataFromServer(myPlaceDocumentsDetailsURLString(), successBlock: { (json, response) in
+        MyPlaceServiceSession.shared.callToGetDataFromServer(myPlaceDocumentsDetailsURLString(),showActivity: false, successBlock: { (json, response) in
            
             if let jsonArray = json as? NSArray
             {
@@ -582,7 +593,7 @@ class MyProgressVC: UIViewController {
         print(myPlaceProgressDetailsURLString())
         #endif
         
-        MyPlaceServiceSession.shared.callToGetDataFromServer(myPlaceProgressDetailsURLString(), successBlock: { (json, response) in
+        MyPlaceServiceSession.shared.callToGetDataFromServer(myPlaceProgressDetailsURLString(),showActivity: false, successBlock: { (json, response) in
             if let jsonArray = json as? NSArray
             {
                 #if DEDEBUG
@@ -782,35 +793,7 @@ class MyProgressVC: UIViewController {
         
         notificationListArray = (sortedNames as NSArray).mutableCopy() as! NSMutableArray
         
-        
-//        'Swift._SwiftDeferredNSArray' (0x10558e410) to 'NSMutableArray' (0x10451cea8).
-//        2019-03-26 17:30:02.663199+0530 BurbankApp[13605:208279] Could not cast value of type 'Swift._SwiftDeferredNSArray' (0x10558e410) to 'NSMutableArray' (0x10451cea8).
-        
-//        for value in notificationListArray {
-//            if let photoList = value as? DayWisePhotoList<MyPlaceStoredPhotoInfo> {
-//                print("++++++++")
-//                print(photoList.yyyymmddString)
-//            }
-//
-//            else if let completedStage = value as? MyPlaceStageCompleteDetails {
-//                print("------")
-//                print(completedStage.dateActual as Any)
-//            }
-//            else if let stageChange = value as? MyPlaceStoredProgressDetails {
-//                print("//////////")
-//                print(stageChange.dateActual as Any)
-//            }
-//        }
-        
-        
-        
-        
-        //        notificationListArray.addObjects(from: stageChangeList)
-        //        struct ListWithDate
-        //        {
-        //            var dateString: String
-        //            var list: NSMutableArray
-        //        }
+
         if notificationListArray.count == 0
         {
 //            presentAlert("No Notifications to Display")
@@ -863,9 +846,13 @@ class MyProgressVC: UIViewController {
         //reloadList()
     }
 }
-extension MyProgressVC : UICollectionViewDelegate , UICollectionViewDataSource
+extension MyProgressVC : UICollectionViewDelegate , SkeletonCollectionViewDataSource
 {
-    //MARK:-  CollectionView Delegate Datasource
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "MyProgressCVCell"
+    }
+    //MARK: -  CollectionView Delegate Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return clItems.count
     }
@@ -972,8 +959,8 @@ extension MyProgressVC : UICollectionViewDelegate , UICollectionViewDataSource
         //      let scale = index - indexOfPage
         //      cell?.transform = CGAffineTransform(scaleX: scale, y: scale)
         // self.view.backgroundColor = progressColors[currentIndex]
-        guard currentIndex >= 0 else {return}
-        gradientLayer.colors = [AppColors.appOrange.cgColor,progressColors[currentIndex].cgColor]
+//        guard currentIndex >= 0 else {return}
+//        gradientLayer.colors = [AppColors.appOrange.cgColor,progressColors[currentIndex].cgColor]
         
     }
     

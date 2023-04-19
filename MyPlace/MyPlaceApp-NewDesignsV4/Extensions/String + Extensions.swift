@@ -100,5 +100,9 @@ extension String
         return Int(self) ?? 0
     }
     
+    var lc : String // lowerCased 
+    {
+        self.lowercased()
+    }
     
 }

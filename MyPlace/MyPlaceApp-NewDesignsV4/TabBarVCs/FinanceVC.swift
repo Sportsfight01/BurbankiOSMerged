@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import SkeletonView
 
 class FinanceVC: UIViewController {
     
@@ -26,7 +27,6 @@ class FinanceVC: UIViewController {
         setupNavigationBar()
         collectionView.backgroundColor = .clear
         let layout = UICollectionViewFlowLayout()
-        // collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: collectionView.frame.width * 0.8, height: collectionView.frame.height)
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
@@ -42,14 +42,15 @@ class FinanceVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController?.navigationBar.isHidden = true
-        collectionView.reloadData()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.navigationController?.navigationBar.isHidden = true
+       // collectionView.reloadData()
         setupProfile()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     func sideMenuSetup()
     {
@@ -69,11 +70,7 @@ class FinanceVC: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-//        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-//        {
-//           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-//            profileImgView.downloaded(from: url)
-//        }
+
         if let imgURlStr = CurrentUservars.profilePicUrl
         {
            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
@@ -111,22 +108,14 @@ class FinanceVC: UIViewController {
     //MARK: - Service Calls
     func checkUserLoginForFinance()
     {
-        guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
-        let region = myPlaceDetails.region ?? ""
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        
-        let password = myPlaceDetails.password ?? ""
-        let userName = myPlaceDetails.userName ?? ""
-        // ServiceSessionMyPlace.sharedInstance.serviceConnection("POST", url: url, postBodyDictionary: ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password], serviceModule:"PropertyStatusService")
-        let postDic =  ["Region": region, "JobNumber":contractNo, "UserName":userName, "Password":password]
+        self.collectionView.isSkeletonable = true
+        self.collectionView.showAnimatedGradientSkeleton()
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let password = APIManager.shared.currentJobDetails?.password ?? ""
+        let userName = APIManager.shared.currentJobDetails?.userName ?? ""
+        let region = APIManager.shared.currentJobDetails?.region ?? ""
+        let postDic =  ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password]
         //callMyPlaceLoginServie(myPlaceDetails)
         let url = URL(string: checkUserLogin())
         var urlRequest = URLRequest(url: url!)
@@ -141,12 +130,12 @@ class FinanceVC: UIViewController {
             print("JSON serialization failed:  \(error)")
 #endif
         }
-        appDelegate.showActivity()
+       // appDelegate.showActivity()
         URLSession.shared.dataTask(with: urlRequest, completionHandler: { [weak self](data, response, error) in
             DispatchQueue.main.async {
                 self?.appDelegate.hideActivity()
             }
-            print("URL:- \(response?.url) postData :- \(postDic)")
+            debugPrint("URL:- \(String(describing: response?.url)) postData :- \(postDic)")
             if error != nil
             {
 #if DEDEBUG
@@ -166,16 +155,12 @@ class FinanceVC: UIViewController {
     }
     func getFinanceData()
     {
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
+        guard let jobNumber = APIManager.shared.currentJobDetails?.jobNumber else {print("jobNumber is Null"); return}
+        NetworkRequest.makeRequest(type: FinanceDetailsStruct.self, urlRequest: Router.getFinanceDetails(jobNumber: jobNumber), showActivity: false) {[weak self] (result) in
+            DispatchQueue.main.async {
+                self?.collectionView.stopSkeletonAnimation()
+                self?.view.hideSkeleton()
             }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        NetworkRequest.makeRequest(type: FinanceDetailsStruct.self, urlRequest: Router.getFinanceDetails(jobNumber: contractNo)) {[weak self] (result) in
             switch result
             {
             case .success(let data):
@@ -203,8 +188,14 @@ class FinanceVC: UIViewController {
     }
     
 }
-extension FinanceVC : UICollectionViewDataSource , UICollectionViewDelegate
+extension FinanceVC : UICollectionViewDataSource , SkeletonCollectionViewDataSource
 {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        if indexPath.item == 0{
+            return "FinanceCVCell"
+        }
+        return "FinanceCVCell2"
+    }
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 4
   }
@@ -224,17 +215,6 @@ extension FinanceVC : UICollectionViewDataSource , UICollectionViewDelegate
             cell.totalClaimedLb.text = dollarCurrencyFormatter(value: totClaims ?? 0.0)
             //Receipts
             cell.totalReceivedLb.text = dollarCurrencyFormatter(value: totRcvd ?? 0.0)
-         //   cell.shareBTN.isHidden = true
-//            cell.shareBTNPressed = {
-//                cell.shareBTN.isHidden = true
-//               let takenIMG = cell.baseView.takeScreenshot()
-//               let takenPDF = createPDFDataFromImage(image: takenIMG)
-////                let documento = NSData(contentsOfFile: takenPDF)
-//                let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [takenPDF], applicationActivities: nil)
-//                activityViewController.popoverPresentationController?.sourceView=self.view
-//                self.present(activityViewController, animated: true, completion: nil)
-//                cell.shareBTN.isHidden = false
-//            }
             return cell
         }
         else {

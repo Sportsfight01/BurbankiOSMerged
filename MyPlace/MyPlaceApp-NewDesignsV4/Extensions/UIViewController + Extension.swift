@@ -21,7 +21,7 @@ extension UIViewController {
     func setupNavigationBarButtons(title : String = "" ,backButton : Bool = true, notificationIcon : Bool = true)
     {
         
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

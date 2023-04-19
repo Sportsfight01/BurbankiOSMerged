@@ -185,29 +185,11 @@ class DocumentsVC: UIViewController {
     
     func getDocumentDetails()
     {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        
-        
-        
-        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: valueStr, contractNo: contractNo), showActivity: false) { [weak self](result) in
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let auth = jobAndAuth.auth
+     
+        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: auth, contractNo: jobNumber), showActivity: false) { [weak self](result) in
             switch result
             {
             case .success(let data):

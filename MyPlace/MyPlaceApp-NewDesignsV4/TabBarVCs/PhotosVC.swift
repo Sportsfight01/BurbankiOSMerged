@@ -10,6 +10,7 @@ import UIKit
 import SideMenu
 import PagingCollectionViewLayout
 import SDWebImage
+import SkeletonView
 
 class PhotosVC: UIViewController {
     
@@ -47,12 +48,12 @@ class PhotosVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         setupProfile()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     //MARK: - Helper Funcs
     
@@ -141,35 +142,21 @@ class PhotosVC: UIViewController {
     //MARK: - Service Calls
     func getPresentMonthListForVLC()
     {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-            // print("jobregion :- \(jobRegion)")
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let auth = jobAndAuth.auth
+        self.collectionView.showAnimatedGradientSkeleton()
+        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: auth, contractNo: jobNumber), showActivity: false) { [weak self](result) in
+            DispatchQueue.main.async {
+                self?.collectionView.stopSkeletonAnimation()
+                self?.view.hideSkeleton()
             }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        
-        
-        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
             switch result
             {
             case .success(let data):
                 guard let self = self else {return}
                 let imageTypes = ["jpg", "png","jpeg"]
-                let documentList = data.filter( { imageTypes.contains( $0.type?.lowercased() ?? "") } )
+                let documentList = data.filter( { imageTypes.contains( $0.type?.trim().lowercased() ?? "") } )
                 guard documentList.count > 0 else {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
@@ -198,8 +185,6 @@ class PhotosVC: UIViewController {
     }
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         present(menu, animated: true, completion: nil)
-//        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateInitialViewController() else {return}
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func supportBtnTapped(_ sender: UIButton) {
@@ -209,8 +194,11 @@ class PhotosVC: UIViewController {
 }
 
 //MARK: -  CollectionView Delegate & Datasource
-extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
+extension PhotosVC : UICollectionViewDelegate, SkeletonCollectionViewDataSource
 {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "PhotosCVCell"
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return collectionDataSource?.count ?? 0
@@ -253,26 +241,5 @@ extension PhotosVC : UICollectionViewDelegateFlowLayout
   }
 }
 
-extension UIImageView {
-    
-    func downloadImage(url : String)
-    {
-        if #available(iOS 13.0, *) {
-            image = UIImage(systemName: "photo")
-        } else {
-            // Fallback on earlier versions
-            image = nil
-        }
-        guard let url = URL(string: url) else {return}
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data, error == nil
-            {
-                DispatchQueue.main.async {
-                    self.image = UIImage(data: data)
-                }
-            }
-        }.resume()
-    }
-}
 
 

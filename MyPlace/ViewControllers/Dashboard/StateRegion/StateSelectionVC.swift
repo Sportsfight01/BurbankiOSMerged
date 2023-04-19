@@ -181,11 +181,7 @@ class StateSelection: UITableViewCell {
         // Initialization code
         
         setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
-        
-//        viewS.layer.cornerRadius = radius_3
-      //  viewS.clipsToBounds = true
-       
-       // setBorder(view: viewS, color: APPCOLORS_3.Orange_BG, width: 1.0)
+
         
     }
     

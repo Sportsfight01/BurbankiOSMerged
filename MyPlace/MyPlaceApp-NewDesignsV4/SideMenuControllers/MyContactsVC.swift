@@ -103,20 +103,14 @@ class MyContactsVC: UIViewController {
     //MARK: - Service Calls
    func checkUserLogin1()
      {
-         guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
-         let region = myPlaceDetails.region ?? ""
-         var contractNo : String = ""
-     
-             if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-             {
-                 contractNo = jobNum
-             }
-             else {
-                 contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-             }
-         let password = myPlaceDetails.password ?? ""
-         let userName = myPlaceDetails.userName ?? ""
-         let postDic =  ["Region": region, "JobNumber":contractNo, "UserName":userName, "Password":password]
+         
+         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+         let password = APIManager.shared.currentJobDetails?.password ?? ""
+         let userName = APIManager.shared.currentJobDetails?.userName ?? ""
+         let region = APIManager.shared.currentJobDetails?.region ?? ""
+         
+         let postDic =  ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password]
          //callMyPlaceLoginServie(myPlaceDetails)
          let url = URL(string: checkUserLogin())
          var urlRequest = URLRequest(url: url!)
@@ -156,16 +150,10 @@ class MyContactsVC: UIViewController {
      }
    func getContacts()
    {
-       var contractNo : String = ""
-   
-           if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-           {
-               contractNo = jobNum
-           }
-           else {
-               contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-           }
-       NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: contractNo), showActivity: false) {[weak self] (result) in
+       let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+       guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+       
+       NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: jobNumber), showActivity: false) {[weak self] (result) in
            
            DispatchQueue.main.async {
                self?.tableView.stopSkeletonAnimation()

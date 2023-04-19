@@ -37,29 +37,11 @@ class MyHistoryVC: UIViewController {
     //MARK: - Service Call
     func getHistoryDetails()
     {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-            print("jobregion :- \(jobRegion)")
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let auth = jobAndAuth.auth
         
-        
-        NetworkRequest.makeRequestArray(type: MyNotesStruct.self, urlRequest: Router.getNotes(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
+        NetworkRequest.makeRequestArray(type: MyNotesStruct.self, urlRequest: Router.getNotes(auth: auth, contractNo: jobNumber)) { [weak self](result) in
             switch result
             {
             case .success(let data):

@@ -9,23 +9,22 @@
 import UIKit
 
 class MyProgressCVCell: UICollectionViewCell {
-  
-  @IBOutlet weak var seeMoreBtn: UIButton!
-  @IBOutlet weak var lastUpdatedLb: UILabel!
-  @IBOutlet weak var titleLb: UILabel!
-  @IBOutlet weak var progressView: UIView!
-  @IBOutlet weak var detailLb: UILabel!
+    
+    @IBOutlet weak var seeMoreBtn: UIButton!
+    @IBOutlet weak var lastUpdatedLb: UILabel!
+    @IBOutlet weak var titleLb: UILabel!
+    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var detailLb: UILabel!
     
     
-  override class func awakeFromNib() {
-    super.awakeFromNib()
-    
-      
-  }
-  override func prepareForReuse() {
-    super.prepareForReuse()
-    progressView.subviews.forEach({$0.removeFromSuperview()})
-  }
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        progressView.subviews.forEach({$0.removeFromSuperview()})
+    }
     func setupCircularBar(progressColor : UIColor , progress : CGFloat , cicleImage : UIImage? = nil, index : Int)
     {
         let circleBar = CircularProgressView(frame: progressView.frame)
@@ -33,7 +32,7 @@ class MyProgressCVCell: UICollectionViewCell {
         circleBar.progress = progress
         circleBar.image = cicleImage
         let progressInt = Int(progress * 100)
-      //  print("progress Int :- \(progressInt)")
+        //  print("progress Int :- \(progressInt)")
         if progressInt == 0
         {
             circleBar.labelText = "PENDING"
@@ -46,16 +45,21 @@ class MyProgressCVCell: UICollectionViewCell {
             circleBar.labelText = "\(progressInt)% PROGRESS"
         }
         progressView.addSubview(circleBar)
-        if index == 0{
+      //  if index == 0{
             circleBar.addAnimation(duration: 1.0)
-        }else {
-            circleBar.removeAnimation()
-        }
+//        }else {
+//            circleBar.removeAnimation()
+//        }
         circleBar.translatesAutoresizingMaskIntoConstraints = false
-        circleBar.topAnchor.constraint(equalTo: progressView.topAnchor).isActive = true
-        circleBar.bottomAnchor.constraint(equalTo: progressView.bottomAnchor).isActive = true
-        circleBar.leadingAnchor.constraint(equalTo: progressView.leadingAnchor).isActive = true
-        circleBar.trailingAnchor.constraint(equalTo: progressView.trailingAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            circleBar.topAnchor.constraint(equalTo: progressView.topAnchor),
+            circleBar.bottomAnchor.constraint(equalTo: progressView.bottomAnchor),
+            circleBar.leadingAnchor.constraint(equalTo: progressView.leadingAnchor),
+            circleBar.trailingAnchor.constraint(equalTo: progressView.trailingAnchor)
+            
+        ])
+        
         progressView.backgroundColor = .clear
         // seeMoreBtn.setTitleColor(progressColor, for: UIControl.State())
     }
