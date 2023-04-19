@@ -8,7 +8,7 @@
 
 import UIKit
 import SideMenu
-import PagingCollectionViewLayout
+//import PagingCollectionViewLayout
 import SDWebImage
 import SkeletonView
 

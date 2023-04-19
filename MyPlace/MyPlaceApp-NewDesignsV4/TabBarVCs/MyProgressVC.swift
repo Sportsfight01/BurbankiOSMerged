@@ -8,8 +8,6 @@
 
 import UIKit
 import Alamofire
-//import PagingCollectionViewLayout
-import PagingCollectionViewLayout
 import SideMenu
 import SkeletonView
 
