@@ -30,6 +30,8 @@
 		42B69F2E29DABA43002A0700 /* ImageSliderCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B69F2C29DABA43002A0700 /* ImageSliderCVCell.xib */; };
 		42B69F3429DD464A002A0700 /* HorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F3329DD464A002A0700 /* HorizontalProgressBar.swift */; };
 		42B69F3629DD7ED0002A0700 /* DocumentPreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F3529DD7ED0002A0700 /* DocumentPreviewer.swift */; };
+		42E2A3F929EFAD00007A6ABB /* APIManager + Service Calls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E2A3F829EFAD00007A6ABB /* APIManager + Service Calls.swift */; };
+		42E2A3FB29EFAE6A007A6ABB /* MultipleJobNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E2A3FA29EFAE6A007A6ABB /* MultipleJobNumberVC.swift */; };
 		42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7E829349BD80038179F /* Assets.xcassets */; };
 		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
@@ -486,6 +488,8 @@
 		42B69F2C29DABA43002A0700 /* ImageSliderCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderCVCell.xib; sourceTree = "<group>"; };
 		42B69F3329DD464A002A0700 /* HorizontalProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalProgressBar.swift; sourceTree = "<group>"; };
 		42B69F3529DD7ED0002A0700 /* DocumentPreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPreviewer.swift; sourceTree = "<group>"; };
+		42E2A3F829EFAD00007A6ABB /* APIManager + Service Calls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIManager + Service Calls.swift"; sourceTree = "<group>"; };
+		42E2A3FA29EFAE6A007A6ABB /* MultipleJobNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleJobNumberVC.swift; sourceTree = "<group>"; };
 		42E6D7E829349BD80038179F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1039,6 +1043,7 @@
 		A1659904292F32B900C36B3B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				42E2A3F829EFAD00007A6ABB /* APIManager + Service Calls.swift */,
 				A1659905292F32B900C36B3B /* Router.swift */,
 				A1659906292F32B900C36B3B /* NetworkRequest.swift */,
 			);
@@ -1145,6 +1150,7 @@
 		A1659939292F32BA00C36B3B /* SideMenuControllers */ = {
 			isa = PBXGroup;
 			children = (
+				42E2A3FA29EFAE6A007A6ABB /* MultipleJobNumberVC.swift */,
 				A165993A292F32BA00C36B3B /* CoBurbankTVCell.swift */,
 				A165993B292F32BA00C36B3B /* MyContactsTBCell.swift */,
 				A165993C292F32BA00C36B3B /* MyHistoryVC.swift */,
@@ -2803,6 +2809,7 @@
 				ED8C3C4F24BECD0500364CA4 /* BedroomsVC.swift in Sources */,
 				A1659B04292F4A4500C36B3B /* BurbankAppVC.swift in Sources */,
 				A1659984292F32BB00C36B3B /* ChangePasswordVC.swift in Sources */,
+				42E2A3F929EFAD00007A6ABB /* APIManager + Service Calls.swift in Sources */,
 				EDC770232434B95E00BB9707 /* ProfileHomeLandTVCell.swift in Sources */,
 				ED8C3C4D24BECCEE00364CA4 /* LandVC.swift in Sources */,
 				42B69F3629DD7ED0002A0700 /* DocumentPreviewer.swift in Sources */,
@@ -3005,6 +3012,7 @@
 				D188C6272424D37600DFE678 /* DashboardDataManagement.swift in Sources */,
 				ED487BDA242CD1F400907BE1 /* UserBean.swift in Sources */,
 				A1659B38292F4A4500C36B3B /* AddJobNumberVC.swift in Sources */,
+				42E2A3FB29EFAE6A007A6ABB /* MultipleJobNumberVC.swift in Sources */,
 				A148363F2907BDDA0008AF29 /* PopupDisplayHomesVC.swift in Sources */,
 				A1659B25292F4A4500C36B3B /* CollectionsVC.swift in Sources */,
 				EDC83DDA264533E6000E3343 /* DisplaysDesignsCVCell.swift in Sources */,

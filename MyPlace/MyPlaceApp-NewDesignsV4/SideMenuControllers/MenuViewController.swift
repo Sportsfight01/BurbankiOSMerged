@@ -43,7 +43,7 @@ class MenuViewController: UIViewController {
     func checkForMultipleJobNums()
     {
         let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
-        if myplaceDetailsArray?.count == 0// Users with only one Job Number
+        if myplaceDetailsArray?.count == 1// Users with only one Job Number
         {
             tableDataSource.removeAll(where: { $0 == .changeJobNumber})
         }
@@ -73,7 +73,6 @@ class MenuViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
-    
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
@@ -117,7 +116,7 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource
         cell.selectionStyle = .none
         let contentView = cell.contentView.viewWithTag(50)!
         let imgView = contentView.viewWithTag(100) as! UIImageView
-        imgView.image =  UIImage(named: tableDataSource[indexPath.row].iconName)
+        imgView.image =  UIImage(named: tableDataSource[indexPath.row].iconName)?.withRenderingMode(.alwaysTemplate).withTintColor(.white)
         let titleLabel = contentView.viewWithTag(101) as! UILabel
         titleLabel.text = tableDataSource[indexPath.row].rawValue
         return cell
@@ -136,6 +135,7 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource
         }
         
     }
+
     
     
 }
@@ -145,12 +145,13 @@ extension MenuViewController
 {
     enum SideMenuItem : String, CaseIterable
     {
+        case changeJobNumber = "MyJobNumber"
         case appointment     = "MyAppointments"
         case details         = "MyDetails"
         case support         = "MySupport"
         case notifications   = "MyNotifications"
         case settings        = "MySettings"
-        case changeJobNumber = "ChangeJobNumber"
+        
         
         var iconName : String
         {

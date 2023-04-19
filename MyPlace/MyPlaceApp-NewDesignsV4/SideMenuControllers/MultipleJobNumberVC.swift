@@ -24,8 +24,7 @@ class MultipleJobNumberVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView()
-     
+        
         setupUI()
         self.view.backgroundColor = .black.withAlphaComponent(0.2)
         btnClose.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
@@ -94,6 +93,19 @@ extension MultipleJobNumberVC : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: tableView.frame.width, height: 70)))
+        footerLabel.numberOfLines = 0
+        footerLabel.font = ProximaNovaRegular(size: 14.0)
+        footerLabel.textColor = APPCOLORS_3.GreyTextFont
+        footerLabel.textAlignment = .center
+        footerLabel.text = "* Access other job numbers from menu option \"MyJobNumber\""
+        
+        return footerLabel
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 70
     }
     
 }
