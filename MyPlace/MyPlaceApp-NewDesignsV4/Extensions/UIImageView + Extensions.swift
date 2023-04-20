@@ -37,7 +37,7 @@ extension UIImageView {
            }.resume()
        }
     func downloaded(from link: String, contentMode mode: ContentMode = .scaleToFill) {
-        guard let url = URL(string: link) else {  self.image = UIImage(named: "BurbankLogo")  ; return }
+        guard let url = URL(string: link) else {  self.image = UIImage(named: "BurbankLogo_White")?.withRenderingMode(.alwaysTemplate).withTintColor(APPCOLORS_3.GreyTextFont)  ; return }
         downloaded(from: url, contentMode: mode)
     }
 }

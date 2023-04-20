@@ -63,7 +63,9 @@ class DetailsVC: UIViewController {
         menu.leftSide = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
         menu.presentationStyle = .menuSlideIn
-        
+        menu.presentationStyle.onTopShadowColor = .darkGray
+        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
+        menu.presentationStyle.onTopShadowOpacity = 1.0
         menu.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         
