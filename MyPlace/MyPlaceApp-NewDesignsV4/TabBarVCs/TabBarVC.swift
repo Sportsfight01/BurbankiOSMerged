@@ -21,6 +21,11 @@ class TabBarVC: UITabBarController {
         debugPrint("TabBarController", #function)
 //        getProgressData()
         setupUI()
+        if let viewControllers = viewControllers {
+            for viewController in viewControllers {
+                _ = viewController.view
+            }
+        }
         
      
     }

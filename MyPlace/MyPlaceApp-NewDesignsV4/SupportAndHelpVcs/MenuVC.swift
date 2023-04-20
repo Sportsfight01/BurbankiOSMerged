@@ -300,7 +300,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.reloadNotificationList()
             }
         }, errorBlock: { (error, isJson) in
-            self.presentAlert("No Notifications available")
+            self.presentAlert("No notifications found")
         })
         
     }
@@ -489,7 +489,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if notificationListArray.count == 0
         {
             self.appDelegate.notificationCount = notificationListArray.count
-            presentAlert("No Notifications to Display")
+            presentAlert("No notifications found")
         }
         else {
             
@@ -536,7 +536,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     {
         if notificationListArray.count == 0
         {
-            presentAlert("No Notifications to Display")
+            presentAlert("No notifications found")
         }
         menuTableView.reloadData()
     }
@@ -639,7 +639,15 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         {
             let stageComplete = value as! MyPlaceStageCompleteDetails
             MyPlaceStageCompleteDetails.updateProgressDetails(stageComplete, true)
-            self.performSegue(withIdentifier: "showProgressDetailsVC", sender: value)
+//            if let vc = self.navigationController?.viewControllers.filter({$0.isKind(of: MyProgressVC.self)}).first
+//            {
+//                self.navigationController?.popToViewController(vc, animated: true)
+//            }else {
+//                self.navigationController?.topViewController?.tabBarController?.selectedIndex = 0
+//            }
+            let tabbar = TabBarVC.instace(sb: .newDesignV4)
+            kWindow.rootViewController = tabbar
+            kWindow.makeKeyAndVisible()
             
         }else if value is DayWisePhotoList<MyPlaceStoredPhotoInfo>
         {
@@ -648,14 +656,22 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             {
                 MyPlaceStoredPhotoInfo.updatePhotoInfo(photoInfo, true)
             }
-            
-            self.performSegue(withIdentifier: "showPhotoDetailsVC", sender: value)
+            if let vc = self.navigationController?.viewControllers.filter({$0.isKind(of: PhotosVC.self)}).first
+            {
+                self.navigationController?.popToViewController(vc, animated: true)
+            }else {
+                self.navigationController?.topViewController?.tabBarController?.selectedIndex = 2//PhotosVC
+            }
+          //  self.performSegue(withIdentifier: "showPhotoDetailsVC", sender: value)
             
         }else if value is MyPlaceStoredProgressDetails
         {
             let stageChange = value as! MyPlaceStoredProgressDetails
             MyPlaceStoredProgressDetails.updateProgressDetailsToRead(stageChange, true)
-            self.performSegue(withIdentifier: "showProgressDetailsVC", sender: value)
+            let tabbar = TabBarVC.instace(sb: .newDesignV4)
+            kWindow.rootViewController = tabbar
+            kWindow.makeKeyAndVisible()
+          //  self.performSegue(withIdentifier: "showProgressDetailsVC", sender: value)
         }
         hideNotificationView()
     //    self.perform(#selector(hideNotificationView), with: nil, afterDelay: 0.5)

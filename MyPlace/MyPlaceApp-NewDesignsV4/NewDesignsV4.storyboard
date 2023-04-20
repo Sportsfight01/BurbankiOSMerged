@@ -31,7 +31,7 @@
         <!--Tab BarVC-->
         <scene sceneID="025-d5-dMY">
             <objects>
-                <tabBarController id="Vhx-qu-kQP" customClass="TabBarVC" customModule="BurbankApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" id="Vhx-qu-kQP" customClass="TabBarVC" customModule="BurbankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="W2c-gX-Cds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -753,6 +753,9 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="roc-Kx-T3A">
                                         <rect key="frame" x="17" y="83" width="333" height="70"/>
@@ -3591,7 +3594,7 @@ adipiscing elitsed</string>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3he-eI-igm">
-                                        <rect key="frame" x="127.99999999999999" y="38" width="166.66666666666663" height="47.333333333333343"/>
+                                        <rect key="frame" x="127.99999999999999" y="38" width="166.66666666666657" height="47.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Updated Friday, 3/6/21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDs-vt-yUQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="15.666666666666666"/>

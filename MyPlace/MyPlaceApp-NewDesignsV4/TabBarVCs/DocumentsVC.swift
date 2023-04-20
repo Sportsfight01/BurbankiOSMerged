@@ -75,7 +75,7 @@ class DocumentsVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         setupProfile()
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = .systemGray6
@@ -94,7 +94,7 @@ class DocumentsVC: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+     
     }
     
     //MARK: - Helper Methods
@@ -200,6 +200,12 @@ class DocumentsVC: UIViewController {
                 //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {
                     self?.tableDataSource = self?.documentList?.sorted(by: {$0.date > $1.date})
+                    if self?.tableDataSource?.count == 0
+                    {
+                        self?.viewFavouritesContainerView.isHidden = true
+                    }else {
+                        self?.viewFavouritesContainerView.isHidden = false
+                    }
                     self?.tableView.stopSkeletonAnimation()
                     self?.view.hideSkeleton()
                         self?.tableView.reloadData()
