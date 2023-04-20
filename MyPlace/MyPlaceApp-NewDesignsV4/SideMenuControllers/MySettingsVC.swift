@@ -64,7 +64,6 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = true
         
     }
     

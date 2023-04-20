@@ -69,8 +69,8 @@ class DocumentsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
-//        viewFavouritesContainerView.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
+        viewFavouritesContainerView.addGestureRecognizer(tap)
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +105,9 @@ class DocumentsVC: UIViewController {
         menu.leftSide = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
         menu.presentationStyle = .menuSlideIn
-        
+        menu.presentationStyle.onTopShadowColor = .darkGray
+        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
+        menu.presentationStyle.onTopShadowOpacity = 1.0
         menu.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         

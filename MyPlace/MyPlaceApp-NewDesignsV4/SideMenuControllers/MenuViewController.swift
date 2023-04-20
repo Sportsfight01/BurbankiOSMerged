@@ -23,6 +23,7 @@ class MenuViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         cardViewSetup()
+        tableView.isScrollEnabled = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
