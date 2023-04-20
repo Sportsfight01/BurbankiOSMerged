@@ -206,6 +206,24 @@ extension UIView {
     
     
 }
+
+extension UIViewController
+{
+    #warning("Storyboard ID must be same as ViewController Name to utilize below method")
+    static func instace(sb : StoryBoard = .newDesignV4) -> Self{
+        
+        let instance = UIStoryboard(name: sb.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: self)) as! Self
+        return instance
+    }
+    
+    enum StoryBoard : String
+    {
+        case newDesignV4 = "NewDesignsV4"
+        case newDesignV5 = "NewDesignsV5"
+        case myPlaceLogin = "MyPlaceLogin"
+    }
+}
+
 extension UINavigationBar {
     
     func shouldRemoveShadow(_ value: Bool) -> Void {
