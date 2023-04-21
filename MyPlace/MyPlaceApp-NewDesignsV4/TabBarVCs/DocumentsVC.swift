@@ -90,6 +90,8 @@ class DocumentsVC: UIViewController {
         tableView.estimatedRowHeight = 120
         tableView.isSkeletonable = true
         tableView.showAnimatedGradientSkeleton()
+        searchBar.resignFirstResponder()
+        searchBar.text?.removeAll()
    
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -118,7 +120,7 @@ class DocumentsVC: UIViewController {
     {
         if tableDataSource?.count == 0
         {
-            tableView.setEmptyMessage("No Documents Found")
+            tableView.setEmptyMessage("No documents found")
         }
         else {
             tableView.restore()
