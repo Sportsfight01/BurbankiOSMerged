@@ -12,18 +12,15 @@ import SideMenu
 import SDWebImage
 import SkeletonView
 
-class PhotosVC: UIViewController {
+class PhotosVC: BaseProfileVC {
     
     //MARK: - Properties
     
-    @IBOutlet weak var helpTextLBL: UILabel!
-    @IBOutlet weak var notificationCountLBL: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var seeAllPhotosBtn : UIButton!
 
     var collectionDataSource : [PhotoItem]?
-    var menu : SideMenuNavigationController!    
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
 //    var cellSpacing = (1/16) * UIScreen.main.bounds.width
@@ -37,8 +34,8 @@ class PhotosVC: UIViewController {
         setupUI()
         addGradientLayer()
         getPresentMonthListForVLC()
-        setupProfile()
-        sideMenuSetup()
+        setupTitles()
+       
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -49,7 +46,8 @@ class PhotosVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setupProfile()
+       
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -57,6 +55,11 @@ class PhotosVC: UIViewController {
     }
     //MARK: - Helper Funcs
     
+    func setupTitles()
+    {
+        profileView.titleLb.text = "MyPhotos"
+        profileView.helpTextLb.text = "Here's your most recent site photos.\nTap below to see all."
+    }
     func setupUI()
     {
         
@@ -72,41 +75,6 @@ class PhotosVC: UIViewController {
         
     }
     
-    func sideMenuSetup()
-    {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        menu.presentationStyle.onTopShadowColor = .darkGray
-        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
-        menu.presentationStyle.onTopShadowOpacity = 1.0
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
-    }
- 
-    func setupProfile()
-    {
-        profileImgView.contentMode = .scaleToFill
-        profileImgView.clipsToBounds = true
-        profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-        if let imgURlStr = CurrentUservars.profilePicUrl
-        {
-            profileImgView.image = imgURlStr
-        }
-//        profileImgView.addBadge(number: appDelegate.notificationCount)
-        if appDelegate.notificationCount == 0{
-            notificationCountLBL.isHidden = true
-        }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
-        }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileImgView.addGestureRecognizer(tap)
-        
-    }
     func setupServiceData(_ PhotosList : [DocumentsDetailsStruct])
     {
         
@@ -134,12 +102,6 @@ class PhotosVC: UIViewController {
         }
     }
     
-    
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
-
-    }
 
     //MARK: - Service Calls
     func getPresentMonthListForVLC()
@@ -162,7 +124,7 @@ class PhotosVC: UIViewController {
                 guard documentList.count > 0 else {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
-                        self.helpTextLBL.text = "No photos available for this job number."
+                        self.profileView.helpTextLb.text = "No photos available for this job number."
                         self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
 //                     self.showAlert(message: "No photos found") { _ in
 //                        // self.backButtonPressed()

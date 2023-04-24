@@ -11,7 +11,7 @@ import SideMenu
 import SafariServices
 import SkeletonView
 
-class DocumentsVC: UIViewController {
+class DocumentsVC: BaseProfileVC {
     
     //MARK: - Properties
     @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
@@ -31,8 +31,7 @@ class DocumentsVC: UIViewController {
             }
         }
     }
-    @IBOutlet weak var notificationCountLBL: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
+
     @IBOutlet weak var tableView: UITableView!
     {
         didSet{
@@ -55,28 +54,25 @@ class DocumentsVC: UIViewController {
     var documentList : [DocumentsDetailsStruct]?
     var tableDataSource : [DocumentsDetailsStruct]?
     { didSet { handleTableViewEmptyState() } }
-    var menu : SideMenuNavigationController!
     var currentFilePath : String!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // addGradientLayer()
-        
-        setupProfile()
-        sideMenuSetup()
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleGestureRecognizer(recognizer:)))
         viewFavouritesContainerView.addGestureRecognizer(tap)
+        setupTitles()
 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setupProfile()
+//        setupProfile()
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = .systemGray6
         }else{
@@ -98,22 +94,11 @@ class DocumentsVC: UIViewController {
         super.viewWillDisappear(animated)
      
     }
-    
-    //MARK: - Helper Methods
-    func sideMenuSetup()
+
+    func setupTitles()
     {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        menu.presentationStyle.onTopShadowColor = .darkGray
-        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
-        menu.presentationStyle.onTopShadowOpacity = 1.0
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
+        profileView.titleLb.text = "MyDocuments"
+        profileView.helpTextLb.text = "Find all the documents related to your home build."
     }
     
     func handleTableViewEmptyState()
@@ -127,29 +112,7 @@ class DocumentsVC: UIViewController {
         }
     }
     
-    func setupProfile()
-    {
-        profileImgView.contentMode = .scaleToFill
-        profileImgView.clipsToBounds = true
-        profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-        if let imgURlStr = CurrentUservars.profilePicUrl
-        {
-            profileImgView.image = imgURlStr
-        }
-        if appDelegate.notificationCount == 0{
-            notificationCountLBL.isHidden = true
-        }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
-        }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileImgView.addGestureRecognizer(tap)
-        
-    }
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
+ 
     
     @IBAction func searchBtnAction(_ sender: UIButton) {
         hideAndShowSearchBar()

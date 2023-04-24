@@ -10,16 +10,12 @@ import UIKit
 import SideMenu
 import SkeletonView
 
-class FinanceVC: UIViewController {
+class FinanceVC: BaseProfileVC {
     
-    @IBOutlet weak var notificationCountLBL: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
-    @IBOutlet weak var balanceDueLb: UILabel!
-    @IBOutlet weak var contractValueLb: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var financeDetails : FinanceDetailsStruct?
-    var menu : SideMenuNavigationController!
+
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +26,9 @@ class FinanceVC: UIViewController {
         layout.itemSize = CGSize(width: collectionView.frame.width * 0.8, height: collectionView.frame.height)
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
+        setupTitles()
         checkUserLoginForFinance()
-        setupProfile()
-        sideMenuSetup()
+
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -45,69 +41,21 @@ class FinanceVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 //        self.navigationController?.navigationBar.isHidden = true
        // collectionView.reloadData()
-        setupProfile()
+    
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    func sideMenuSetup()
-    {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        menu.presentationStyle.onTopShadowColor = .darkGray
-        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
-        menu.presentationStyle.onTopShadowOpacity = 1.0
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
-    }
-    func setupProfile()
-    {
-        profileImgView.contentMode = .scaleToFill
-        profileImgView.clipsToBounds = true
-        profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-
-        if let imgURlStr = CurrentUservars.profilePicUrl
-        {
-           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-            profileImgView.image = imgURlStr
-        }
-//        profileImgView.addBadge(number: appDelegate.notificationCount)
-        if appDelegate.notificationCount == 0{
-            notificationCountLBL.isHidden = true
-        }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
-        }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileImgView.addGestureRecognizer(tap)
-        
-    }
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
-
-    }
- 
     
-    @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
-        
-        present(menu, animated: true, completion: nil)
-//        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateInitialViewController() else {return}
-//        self.navigationController?.pushViewController(vc, animated: true)
+    func setupTitles()
+    {
+        profileView.titleLb.text = "MyFinance"
+        profileView.helpTextLb.text = "--"
     }
-    @IBAction func supportBtnTapped(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
-    
     //MARK: - Service Calls
+    
     func checkUserLoginForFinance()
     {
         self.collectionView.isSkeletonable = true
@@ -184,7 +132,9 @@ class FinanceVC: UIViewController {
     {
         
         let contractValue = dollarCurrencyFormatter(value: Double(financeDetails!.contractPrice))
-        self.contractValueLb.text = "Contract Value : \(contractValue!)"
+        self.profileView.helpTextLb.text = "Contract Value : \(contractValue!)"
+        self.profileView.secondHelpTextLb.isHidden = false
+        self.profileView.secondHelpTextLb.text = "Balance Due : $0.00"
         collectionView.reloadData()
         
     }

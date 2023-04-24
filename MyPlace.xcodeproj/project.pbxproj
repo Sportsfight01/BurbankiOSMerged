@@ -24,6 +24,9 @@
 		4212D6022938A8EE00855CDC /* MyDesignsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F92938A8EE00855CDC /* MyDesignsTVC.swift */; };
 		4212D6032938A8EE00855CDC /* FavouritesTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5FA2938A8EE00855CDC /* FavouritesTVCell.xib */; };
 		4212D6042938A8EE00855CDC /* MyDesignsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */; };
+		4223782329F6642800CDD69D /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223782229F6642800CDD69D /* ProfileHeaderView.xib */; };
+		4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782429F6677400CDD69D /* ProfileHeaderView.swift */; };
+		4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782629F679E000CDD69D /* BaseProfileVC.swift */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
 		42999C9429D5717400FE2507 /* ImageSliderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C9329D5717400FE2507 /* ImageSliderVC.swift */; };
 		42B69F2D29DABA43002A0700 /* ImageSliderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */; };
@@ -483,6 +486,9 @@
 		4212D5F92938A8EE00855CDC /* MyDesignsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDesignsTVC.swift; sourceTree = "<group>"; };
 		4212D5FA2938A8EE00855CDC /* FavouritesTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouritesTVCell.xib; sourceTree = "<group>"; };
 		4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDesignsTVC.xib; sourceTree = "<group>"; };
+		4223782229F6642800CDD69D /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		4223782429F6677400CDD69D /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		4223782629F679E000CDD69D /* BaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileVC.swift; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
 		42999C9329D5717400FE2507 /* ImageSliderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderVC.swift; sourceTree = "<group>"; };
 		42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderCVCell.swift; sourceTree = "<group>"; };
@@ -1040,6 +1046,7 @@
 				A1659939292F32BA00C36B3B /* SideMenuControllers */,
 				A1659946292F32BA00C36B3B /* Views */,
 				A165994B292F32BA00C36B3B /* Login */,
+				4223782629F679E000CDD69D /* BaseProfileVC.swift */,
 			);
 			path = "MyPlaceApp-NewDesignsV4";
 			sourceTree = "<group>";
@@ -1177,6 +1184,8 @@
 				A1659948292F32BA00C36B3B /* VideoPlayerView.swift */,
 				A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */,
 				A1659949292F32BA00C36B3B /* CircularProgressView.swift */,
+				4223782229F6642800CDD69D /* ProfileHeaderView.xib */,
+				4223782429F6677400CDD69D /* ProfileHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2466,6 +2475,7 @@
 				D16FE4802428EF6F0082DECF /* Proxima Nova Extra Condensed Regular Italic.otf in Resources */,
 				42B69F2E29DABA43002A0700 /* ImageSliderCVCell.xib in Resources */,
 				D16FE4672428EF6F0082DECF /* Proxima Nova Condensed Semibold.otf in Resources */,
+				4223782329F6642800CDD69D /* ProfileHeaderView.xib in Resources */,
 				A1659AD7292F4A4500C36B3B /* OpenSans-Italic.ttf in Resources */,
 				D188C6302424D37600DFE678 /* LaunchScreen.storyboard in Resources */,
 				D16FE4612428EF6F0082DECF /* Proxima Nova Condensed Black Italic.otf in Resources */,
@@ -2855,6 +2865,7 @@
 				A1659A9E292F4A4400C36B3B /* DisplayHomeDataModels.swift in Sources */,
 				A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */,
 				ED3B3A5B26428F1600A03D85 /* DisplaysNearByVC.swift in Sources */,
+				4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */,
 				ED67958A246A5C9C008FAEED /* RegionVC.swift in Sources */,
 				A1659AF6292F4A4500C36B3B /* MyPlaceStoredPhotoInfo+CoreDataClass.swift in Sources */,
 				EDC62A36246C122C00608E52 /* MyPlacePackages+CoreDataProperties.swift in Sources */,
@@ -3003,6 +3014,7 @@
 				A1659B18292F4A4500C36B3B /* MyPlaceWithTabBarVC.swift in Sources */,
 				A1659AA9292F4A4400C36B3B /* ContactUs.swift in Sources */,
 				A1659961292F32BA00C36B3B /* UIViewController + Extension.swift in Sources */,
+				4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */,
 				EDB10BE124456DAD002E2AE1 /* CollectionTVCell.swift in Sources */,
 				A1659960292F32BA00C36B3B /* UIBarButtonItem+Badge.swift in Sources */,
 				ED8C3C5124BECD2800364CA4 /* HomeDesignPriceVC.swift in Sources */,

@@ -22,15 +22,11 @@ enum StageName : String {
 }
 
 
-class MyProgressVC: UIViewController {
+class MyProgressVC: BaseProfileVC {
     
     //MARK: - Properties
     
-    @IBOutlet weak var myProgresHeaderLBL: UILabel!
-    @IBOutlet weak var burbankLogo: UIImageView!
-    @IBOutlet weak var homeProgressLb: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
-    @IBOutlet weak var notificationCountLBL: UILabel!
+ 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressBar: HorizontalProgressBar!
     @IBOutlet weak var yourOverallProgressLb: UILabel!
@@ -51,8 +47,7 @@ class MyProgressVC: UIViewController {
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
     var cellSpacing = (1/16) * UIScreen.main.bounds.width
-    
-    var menu : SideMenuNavigationController!
+
     
     
     var selectedStageName = ""
@@ -80,6 +75,7 @@ class MyProgressVC: UIViewController {
         super.viewDidLoad()
         debugPrint("Myprogress",#function)
         setupMultipleJobVc()
+        setupTitles()
        
         
         // Do any additional setup after loading the view.
@@ -89,8 +85,8 @@ class MyProgressVC: UIViewController {
         super.viewWillAppear(animated)
         debugPrint("Myprogress",#function)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        notificationCountLBL.isHidden = true
-        setupProfile()
+        profileView.notificationCountLb.isHidden = true
+        
        
 
     }
@@ -100,6 +96,16 @@ class MyProgressVC: UIViewController {
     }
     
     //MARK: - Helper Funcs
+    
+    func setupTitles()
+    {
+        profileView.titleLb.text = "MyProgress"
+        profileView.helpTextLb.text = "--"
+        profileView.profilePicImgView.tintColor = .black
+        profileView.titleLb.textColor = .black
+        profileView.helpTextLb.textColor = .black
+        [profileView.menubtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
+    }
     
     func setupUI()
     {
@@ -218,28 +224,7 @@ class MyProgressVC: UIViewController {
             CLItem(title: "Finishing Stage", imageName: "icon_Complete", detailText: "As the name suggests, we’re almost there.")
          ]
     }
-    func sideMenuSetup()
-    {
-        let sideMenuVc = MenuViewController.instace()
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        menu.presentationStyle.onTopShadowColor = .darkGray
-        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
-        menu.presentationStyle.onTopShadowOpacity = 1.0
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-    }
-    
-    @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
-        present(menu, animated: true, completion: nil)
-    }
-    @IBAction func didTappedOnSupport(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
-        self.navigationController?.pushViewController(vc, animated: true)
-  
-    }
+
     
     //below method is to group the values with their respected stages
     func setupProgressDetails(progressData : [ProgressStruct])
@@ -348,7 +333,7 @@ class MyProgressVC: UIViewController {
      
         let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
         
-        setAttributetitleFor(view: homeProgressLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [ProximaNovaRegular(size: FONT_10), ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10),ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10)], alignmentCenter: false)
+        setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [ProximaNovaRegular(size: FONT_10), ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10),ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10)], alignmentCenter: false)
         
         
        // let attrStr = NSMutableAttributedString(string: "Your home is currently ")
@@ -364,38 +349,8 @@ class MyProgressVC: UIViewController {
         CurrentUservars.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"
         
     }
-    func setupProfile()
-    {
-        //        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-        //        {
-        ////            profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-        //            profileImgView.downloaded(from: url)
-        //        }
-        if let imgURlStr = CurrentUservars.profilePicUrl
-        {
-            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-            profileImgView.image = imgURlStr
-        }
-        let mobileNo = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray?[0].mobile
-        CurrentUservars.mobileNo = mobileNo
-        //        profileView.profileImage.addBadge(number: appDelegate.notificationCount)
-        if appDelegate.notificationCount == 0{
-            notificationCountLBL.isHidden = true
-        }else{
-            notificationCountLBL.isHidden = false
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
-        }
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileImgView.addGestureRecognizer(tap)
-        
-        
-    }
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
+    
+
     //MARK: - Service Calls
     
     func getProgressDetails()
@@ -439,7 +394,7 @@ class MyProgressVC: UIViewController {
                 CurrentUservars.userName = data.result?.userName
                 //let imgdata = try! Data.init(contentsOf: URL(string: data.result?.profilePicPath ?? "")!)
                 //self?.profileImgView.image = UIImage(data: imgdata)
-                self?.profileImgView.downloaded(from: data.result?.profilePicPath ?? "")
+                self?.profileView.profilePicImgView.downloaded(from: data.result?.profilePicPath ?? "")
             
                 self?.setupProfile()
                 
@@ -851,10 +806,10 @@ class MyProgressVC: UIViewController {
             #endif
             appDelegate.notificationCount = notificationListArray.count
             if appDelegate.notificationCount == 0{
-                notificationCountLBL.isHidden = true
+                profileView.notificationCountLb.isHidden = true
             }else{
-                notificationCountLBL.isHidden = false
-                notificationCountLBL.text = "\(appDelegate.notificationCount)"
+                profileView.notificationCountLb.isHidden = false
+                profileView.notificationCountLb.text = "\(appDelegate.notificationCount)"
             }
         }
         //reloadList()

@@ -12,33 +12,31 @@ import UIKit
 import SideMenu
 import SkeletonView
 
-class MyContactsVC: UIViewController {
+class MyContactsVC: BaseProfileVC {
     enum JobContactNames: Int
     {
         case SiteSupervisor = 0, CRO, SalesConsultant, ElecticalConsultant, ColorConsultant, StaffManager
     }
-    @IBOutlet weak var notificationCountLBL: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var tableView: UITableView!
     var namesarray = ["Site Supervisor","New Home Coordinator","Interior Designer", "Electical Designer", "New Home Consultant"]
     var jobContacts : ContactDetailsStruct?
     
-    var menu : SideMenuNavigationController!
+   // var menu : SideMenuNavigationController!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-      
-        setupProfile()
-        sideMenuSetup()
     }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setupProfile()
-        
+        setupTitles()
+    }
+    func setupTitles()
+    {
+        profileView.titleLb.text = "MyContacts"
+        profileView.helpTextLb.text = "Find all the contacts related to your home build."
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,47 +50,6 @@ class MyContactsVC: UIViewController {
         super.viewWillDisappear(animated)
       
     }
-    
-    func sideMenuSetup()
-    {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        menu.presentationStyle.onTopShadowColor = .darkGray
-        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
-        menu.presentationStyle.onTopShadowOpacity = 1.0
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
-    }
-    
-    func setupProfile()
-    {
-        profileImgView.contentMode = .scaleToFill
-        profileImgView.clipsToBounds = true
-        profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-        if let imgURlStr = CurrentUservars.profilePicUrl
-        {
-            profileImgView.image = imgURlStr
-        }
-        if appDelegate.notificationCount == 0{
-            notificationCountLBL.isHidden = true
-        }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
-        }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileImgView.addGestureRecognizer(tap)
-        
-    }
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
-
-    }
-    
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         
         present(menu, animated: true, completion: nil)
