@@ -73,7 +73,6 @@ class MyProgressVC: BaseProfileVC {
     //MARK: - LifeCycleMethods
     override func viewDidLoad() {
         super.viewDidLoad()
-        debugPrint("Myprogress",#function)
         setupMultipleJobVc()
         setupTitles()
        
@@ -83,12 +82,9 @@ class MyProgressVC: BaseProfileVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        debugPrint("Myprogress",#function)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         profileView.notificationCountLb.isHidden = true
-        
-       
-
+  
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

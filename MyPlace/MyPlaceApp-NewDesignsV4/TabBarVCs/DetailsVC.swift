@@ -31,18 +31,10 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var superVisorLb: UILabel!
     @IBOutlet weak var newHomeConsultant: UILabel!
     //@IBOutlet weak var siteStartDateLb: UILabel!
-    
-    var menu : SideMenuNavigationController!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupProfile()
-        sideMenuSetup()
         getContractDetails()
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,24 +47,7 @@ class DetailsVC: UIViewController {
         super.viewWillDisappear(animated)
       //  self.navigationController?.navigationBar.isHidden = false
     }
-    
-    func sideMenuSetup()
-    {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        menu.presentationStyle.onTopShadowColor = .darkGray
-        menu.presentationStyle.onTopShadowOffset = CGSize(width: 1.0, height: 1.0)
-        menu.presentationStyle.onTopShadowOpacity = 1.0
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
-    }
-    
-    
+
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
@@ -93,7 +68,7 @@ class DetailsVC: UIViewController {
         emailLb.attributedText = emailFirstStr
         
         let phoneFirstStr = NSMutableAttributedString(string: "Phone ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let phoneAttrStr = NSAttributedString(string: "\(CurrentUservars.mobileNo ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let phoneAttrStr = NSAttributedString(string: "\(appDelegate.currentUser?.userDetailsArray?.first?.mobile ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         phoneFirstStr.append(phoneAttrStr)
         phoneLb.attributedText = phoneFirstStr
         if appDelegate.notificationCount == 0{
@@ -126,11 +101,7 @@ class DetailsVC: UIViewController {
         newHomeConsultant.text = data.clientliaison ?? "--"
         //        siteStartDateLb.text = data.sitestartdate
     }
-    
-    @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
-        
-        present(menu, animated: true, completion: nil)
-    }
+
     @IBAction func supportBtnTapped(_ sender: UIButton) {
         guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
         self.navigationController?.pushViewController(vc, animated: true)

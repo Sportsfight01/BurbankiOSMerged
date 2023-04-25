@@ -90,11 +90,6 @@ class DocumentsVC: BaseProfileVC {
         searchBar.text?.removeAll()
    
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-     
-    }
-
     func setupTitles()
     {
         profileView.titleLb.text = "MyDocuments"
