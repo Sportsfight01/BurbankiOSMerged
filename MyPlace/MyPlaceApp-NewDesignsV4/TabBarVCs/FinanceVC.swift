@@ -20,7 +20,6 @@ class FinanceVC: BaseProfileVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
-        setupNavigationBar()
         collectionView.backgroundColor = .clear
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: collectionView.frame.width * 0.8, height: collectionView.frame.height)

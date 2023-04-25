@@ -11,6 +11,9 @@ import SideMenu
 
 class DetailsVC: UIViewController {
     
+    
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     //ProfileDetails
@@ -41,6 +44,7 @@ class DetailsVC: UIViewController {
 
         self.setupNavigationBarButtons(notificationIcon: false)
         setupProfile()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
     }
     override func viewWillDisappear(_ animated: Bool) {

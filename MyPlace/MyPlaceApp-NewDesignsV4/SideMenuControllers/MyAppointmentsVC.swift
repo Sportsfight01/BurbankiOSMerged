@@ -11,6 +11,7 @@ import UIKit
 class MyAppointmentsVC: UIViewController {
 
     
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +31,7 @@ class MyAppointmentsVC: UIViewController {
         super.viewWillAppear(animated)
         self.setupNavigationBarButtons(notificationIcon: false)
         setupProfile()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
     }
     func setupProfile()

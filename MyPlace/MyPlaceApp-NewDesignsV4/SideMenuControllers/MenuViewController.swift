@@ -129,7 +129,7 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        self.dismiss(animated: false)
         if let vc = tableDataSource[indexPath.row].viewController {
             self.navigationController?.pushViewController(vc, animated: false)
         } else {//change Job Number case

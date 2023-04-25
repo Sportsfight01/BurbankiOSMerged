@@ -83,7 +83,7 @@ class MyProgressVC: BaseProfileVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        profileView.notificationCountLb.isHidden = true
+       // profileView.notificationCountLb.isHidden = true
   
     }
     override func viewWillDisappear(_ animated: Bool) {

@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MySupport" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xx-ld-r74">
-                                        <rect key="frame" x="128" y="40" width="278" height="28"/>
+                                        <rect key="frame" x="113" y="33" width="293" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="pUr-qb-7Ia"/>
                                         </constraints>
@@ -40,12 +40,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BurbankLogo_White" translatesAutoresizingMaskIntoConstraints="NO" id="3vM-GX-h4k">
-                                        <rect key="frame" x="20" y="40" width="70" height="70"/>
+                                        <rect key="frame" x="20" y="40" width="60" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="H9H-d4-KRF"/>
-                                            <constraint firstAttribute="width" constant="70" id="waE-4U-NlJ"/>
+                                            <constraint firstAttribute="height" constant="60" id="H9H-d4-KRF"/>
+                                            <constraint firstAttribute="width" constant="60" id="waE-4U-NlJ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -57,7 +57,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owk-lc-qc6">
-                                        <rect key="frame" x="70" y="35" width="25" height="25"/>
+                                        <rect key="frame" x="60" y="35" width="25" height="25"/>
                                         <color key="backgroundColor" name="Orange_BG_3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="B7o-TU-k5B"/>
@@ -73,7 +73,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z4D-EN-kF8">
-                                        <rect key="frame" x="0.0" y="154" width="414" height="694"/>
+                                        <rect key="frame" x="0.0" y="147" width="414" height="701"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,7 +152,7 @@ stages in your build and what you need to know.</string>
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your hub for tips and answers to your build questions. How can we help?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="982-kn-CIg">
-                                        <rect key="frame" x="128" y="68" width="266" height="56"/>
+                                        <rect key="frame" x="113" y="61" width="281" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="BsV-0i-iyr"/>
                                         </constraints>
@@ -167,15 +167,15 @@ stages in your build and what you need to know.</string>
                                     <constraint firstAttribute="trailing" secondItem="4Xx-ld-r74" secondAttribute="trailing" constant="8" id="86s-zp-Xy7"/>
                                     <constraint firstItem="z4D-EN-kF8" firstAttribute="leading" secondItem="Str-bC-ODq" secondAttribute="leading" id="Bf1-mB-WUy"/>
                                     <constraint firstItem="z4D-EN-kF8" firstAttribute="top" secondItem="982-kn-CIg" secondAttribute="bottom" constant="30" id="Bsv-W5-QrX"/>
-                                    <constraint firstItem="3vM-GX-h4k" firstAttribute="top" secondItem="4Xx-ld-r74" secondAttribute="top" id="DiG-2I-KnY"/>
+                                    <constraint firstItem="3vM-GX-h4k" firstAttribute="top" secondItem="4Xx-ld-r74" secondAttribute="top" constant="7" id="DiG-2I-KnY"/>
                                     <constraint firstAttribute="trailing" secondItem="982-kn-CIg" secondAttribute="trailing" constant="20" id="Qmw-oH-b0m"/>
                                     <constraint firstItem="982-kn-CIg" firstAttribute="leading" secondItem="4Xx-ld-r74" secondAttribute="leading" id="WHD-tc-oIv"/>
                                     <constraint firstItem="Owk-lc-qc6" firstAttribute="trailing" secondItem="3vM-GX-h4k" secondAttribute="trailing" constant="5" id="ZP4-PF-eTc"/>
                                     <constraint firstItem="3vM-GX-h4k" firstAttribute="top" secondItem="Str-bC-ODq" secondAttribute="top" constant="40" id="cyK-Qj-6V0"/>
                                     <constraint firstItem="3vM-GX-h4k" firstAttribute="leading" secondItem="Str-bC-ODq" secondAttribute="leading" constant="20" id="d1r-Pu-6at"/>
-                                    <constraint firstItem="4Xx-ld-r74" firstAttribute="leading" secondItem="3vM-GX-h4k" secondAttribute="trailing" constant="38" id="dQb-gz-rUs"/>
                                     <constraint firstItem="Owk-lc-qc6" firstAttribute="top" secondItem="3vM-GX-h4k" secondAttribute="top" constant="-5" id="gLK-So-U0d"/>
                                     <constraint firstAttribute="bottom" secondItem="z4D-EN-kF8" secondAttribute="bottom" id="lIE-EY-GpT"/>
+                                    <constraint firstItem="4Xx-ld-r74" firstAttribute="leading" secondItem="Str-bC-ODq" secondAttribute="leading" constant="113" id="s5p-0A-WpG"/>
                                     <constraint firstItem="982-kn-CIg" firstAttribute="top" secondItem="4Xx-ld-r74" secondAttribute="bottom" id="xps-BY-hdb"/>
                                 </constraints>
                             </view>
@@ -190,6 +190,7 @@ stages in your build and what you need to know.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="headerLeadingConstraint" destination="s5p-0A-WpG" id="uBG-Eh-QaA"/>
                         <outlet property="notificationCountLBL" destination="Owk-lc-qc6" id="Drr-oM-8RX"/>
                         <outlet property="profileImgView" destination="3vM-GX-h4k" id="UNb-aL-Ovz"/>
                         <outlet property="tableView" destination="z4D-EN-kF8" id="xWC-bS-Boz"/>

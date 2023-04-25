@@ -12,6 +12,7 @@ class SupportVC: UIViewController {
     
     let gradientLayer = CAGradientLayer()
     
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var wholeView: UIView!
@@ -38,6 +39,7 @@ class SupportVC: UIViewController {
         super.viewWillAppear(animated)
         self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
         setupProfile()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
     }
     override func viewDidAppear(_ animated: Bool) {

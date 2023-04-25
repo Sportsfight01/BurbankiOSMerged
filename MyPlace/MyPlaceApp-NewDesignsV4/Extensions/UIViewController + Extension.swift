@@ -10,23 +10,10 @@ import UIKit
 
 extension UIViewController {
     
-    func setupNavigationBar()
-    {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.barTintColor = AppColors.appGray
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor = UIColor.white
-    }
     func setupNavigationBarButtons(title : String = "" ,backButton : Bool = true, notificationIcon : Bool = true)
     {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
-        
         //Setting appearance
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
@@ -41,9 +28,6 @@ extension UIViewController {
             // Fallback on earlier versions
             self.navigationController?.navigationBar.barTintColor = AppColors.appGray
         }
-        
-        //
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         self.addLogoToNavigationBarItem()
         //MARK: - Back Button
 //        let backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonPressed))
@@ -85,17 +69,30 @@ extension UIViewController {
         
     }
     func addLogoToNavigationBarItem() {
+        
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.image =  UIImage(named: "Top Menu Icon_ButbankMyplace")
         imageView.tintColor = .white
         let contentView = UIView()
         self.navigationItem.titleView = contentView
         self.navigationItem.titleView?.addSubview(imageView)
-        imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+//        imageView.backgroundColor = .purple
+//        contentView.backgroundColor = .red
+        //adding constraints for imageView
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: 30),
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.5)//50% of screen width
+        
+        ])
+        
+        
+        
+       
     }
     @objc func backButtonPressed()
     {
@@ -232,5 +229,17 @@ extension UINavigationBar {
         } else {
             self.setValue(false, forKey: "hidesShadow")
         }
+    }
+}
+
+extension UIViewController
+{
+    func getLeadingSpaceForNavigationTitleImage() -> Double
+    {
+        let screenWidth = self.view.frame.width
+        let navigationTitleImgWidth = screenWidth * 0.5
+        let leadingConstant = (screenWidth / 2) - (navigationTitleImgWidth / 2) + 12
+        debugPrint("screenWidth :- \(screenWidth), titlewidth :- \(navigationTitleImgWidth), leadinConstant :- \(leadingConstant)")
+        return leadingConstant
     }
 }

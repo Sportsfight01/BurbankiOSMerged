@@ -12,6 +12,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     
     //MARK: - Properties
     
+    @IBOutlet weak var myProgressLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet var notificationTypeBtns: [UIButton]!
     @IBOutlet weak var profileImgView: UIImageView!
@@ -60,7 +61,9 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBarButtons(notificationIcon: false)
-        self.navigationController?.navigationBar.isHidden = false
+        myProgressLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
+   
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

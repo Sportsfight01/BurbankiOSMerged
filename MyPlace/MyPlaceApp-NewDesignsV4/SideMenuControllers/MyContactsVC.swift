@@ -211,7 +211,7 @@ extension MyContactsVC : UITableViewDelegate, SkeletonTableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyContactsTBCell") as! MyContactsTBCell
         cell.nameLabel.text = namesarray[indexPath.row]
         let data = getContactNameEmailPhone(rowNo: indexPath.row)
-        cell.fullNameLabel.text = data.contactName
+        cell.fullNameLabel.text = data.contactName.trim() == "" ? "NA" : data.contactName
         cell.emailLabel.text = data.contactEmail
         cell.mobileLabel.text = data.contactPhone
         

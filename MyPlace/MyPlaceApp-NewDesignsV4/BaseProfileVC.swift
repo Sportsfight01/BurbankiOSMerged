@@ -61,6 +61,7 @@ class BaseProfileVC: UIViewController {
         menu.presentationStyle.onTopShadowOpacity = 1.0
         menu.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.leftMenuNavigationController?.dismissOnPush = false
         
         
     }
@@ -96,10 +97,4 @@ class BaseProfileVC: UIViewController {
 
     }
     
-}
-
-extension UINavigationBar {
-    open override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 80)
-    }
 }
