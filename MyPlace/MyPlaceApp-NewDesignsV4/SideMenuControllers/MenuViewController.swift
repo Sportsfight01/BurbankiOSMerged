@@ -100,8 +100,10 @@ class MenuViewController: UIViewController {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+//        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        let vc = NotificationsVC.instace(sb: .newDesignV4)
         self.navigationController?.pushViewController(vc, animated: true)
+        self.dismiss(animated: false)
 
     }
 
@@ -187,7 +189,7 @@ extension MenuViewController
             case .support:
                 return SupportVC.instace(sb: .newDesignV5)
             case .notifications:
-                return MenuVC.instace()
+                return NotificationsVC.instace()
             case .settings:
                 return MySettingsVC.instace()
             case .changeJobNumber:

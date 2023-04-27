@@ -23,8 +23,9 @@ class NetworkRequest
             }
         }
         AF.request(urlRequest).responseData { (response) in
-            
-            response.debugPrintReqResponse()
+            #if DEDEBUG
+             response.debugPrintReqResponse()
+            #endif
             
             DispatchQueue.main.async {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -48,8 +49,8 @@ class NetworkRequest
     }
     class func makeRequestArray<T : Decodable>(type : T.Type, urlRequest : Router, showActivity : Bool = true, completion : @escaping (Swift.Result<[T] , NetworkError>)->())
     {
-      let appDelegate = UIApplication.shared.delegate as! AppDelegate
-     
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         if showActivity
         {
             DispatchQueue.main.async {
@@ -57,11 +58,13 @@ class NetworkRequest
             }
         }
         AF.request(urlRequest).responseData { (response) in
-            response.debugPrintReqResponse()
+            #if DEDEBUG
+             response.debugPrintReqResponse()
+            #endif
             
-          DispatchQueue.main.async {
-            appDelegate.hideActivity()
-          }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
             guard let data = response.data, response.error == nil else {
                 if let error = response.error as NSError?, error.domain == NSURLErrorDomain {
                     completion(.failure(.domainError(error)))
@@ -75,9 +78,9 @@ class NetworkRequest
                 debugPrint("Decoding Error :- \(err.localizedDescription)")
                 completion(.failure(.decodingError(err)))
             }
-
+            
         }
-
+        
     }
 }
 
@@ -88,7 +91,7 @@ extension AFDataResponse<Data>
     {
         let url = self.request?.url?.absoluteString ?? "No URL"
         let headers = self.request?.allHTTPHeaderFields ?? [:]
-        let response = String(data: self.data ?? Data(), encoding: .utf8) ?? "Unable to Serialize Response"
+      //  let response = String(data: self.data ?? Data(), encoding: .utf8) ?? "Unable to Serialize Response"
         if let jsonData = self.request?.httpBody{
             if let params = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
             {
@@ -97,7 +100,7 @@ extension AFDataResponse<Data>
         }
         
         debugPrint("Service URL :- \(url)", "Header Fields:- \(headers)", separator: "\n")
-        print("Service Response :- \(response)")
+//        print("Service Response :- \(response)")
         
     }
 }

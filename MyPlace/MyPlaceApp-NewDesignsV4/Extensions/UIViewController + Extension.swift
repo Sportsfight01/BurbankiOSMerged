@@ -15,42 +15,26 @@ extension UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         //Setting appearance
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.shadowColor = UIColor(red: 230/255, green: 231/255, blue: 232/255, alpha: 0.5)
-            appearance.backgroundColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-            self.navigationController?.navigationBar.standardAppearance = appearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            self.navigationController?.navigationBar.compactAppearance = appearance
-        } else {
-            // Fallback on earlier versions
-            self.navigationController?.navigationBar.barTintColor = AppColors.appGray
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.shadowColor = UIColor(red: 230/255, green: 231/255, blue: 232/255, alpha: 0.5)
+        appearance.backgroundColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        self.navigationController?.navigationBar.compactAppearance = appearance
         self.addLogoToNavigationBarItem()
-        //MARK: - Back Button
-//        let backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonPressed))
-//        backBtn.tintColor = .white
-//        navigationItem.backBarButtonItem = backBtn
         
-        
-        let btn1 = UIButton(type: .custom)
-        //  btn1.backgroundColor = UIColor.blue
-        if #available(iOS 13.0, *) {
-            btn1.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
-        } else {
-            // Fallback on earlier versions
-            btn1.setImage(UIImage(named: "Ico-Back"), for: .normal)
-        }
-
-        btn1.tintColor = .white
-        btn1.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-       // btn1.backgroundColor = .red
-        btn1.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-        btn1.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        //Adding BackButton to navigationBar
+        let backButton = UIButton(type: .custom)
+        backButton.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        backButton.tintColor = .white
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        // btn1.backgroundColor = .red
+        backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         // self.navigationController?.navigationBar.back
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn1)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
         //notification button
         let btn2 = UIButton(type: .custom)
@@ -61,10 +45,10 @@ extension UIViewController {
         btn2.imageEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 8)
         //  btn2.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         // self.navigationController?.navigationBar.back
-        #warning("currently not receiving any data in contactus module so disabling this icon for now can be enabled later in future")
-//        if notificationIcon{
-//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
-//        }
+#warning("currently not receiving any data in contactus module so disabling this icon for now can be enabled later in future")
+        //        if notificationIcon{
+        //            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
+        //        }
         //to remove navigation separation line
         
     }
@@ -77,7 +61,7 @@ extension UIViewController {
         let contentView = UIView()
         self.navigationItem.titleView = contentView
         self.navigationItem.titleView?.addSubview(imageView)
-//        imageView.backgroundColor = .purple
+       // imageView.backgroundColor = .purple
 //        contentView.backgroundColor = .red
         //adding constraints for imageView
         imageView.translatesAutoresizingMaskIntoConstraints = false

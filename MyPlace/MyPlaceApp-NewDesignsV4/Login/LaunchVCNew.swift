@@ -57,10 +57,10 @@ class LaunchVCNew: BurbankAppVC {
         txtEmail.text = appDelegate.enteredEmailOrJob
         txtEmail.autocorrectionType = .no
         txtEmail.resignFirstResponder()
-        
-#if DEDEBUG
-txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
-#endif
+//        
+//#if DEDEBUG
+//txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
+//#endif
         
     }
     //MARK: - View

@@ -36,6 +36,7 @@ target 'BurbankApp' do
 pod 'SideMenu'
 pod 'GrowingTextView'
 pod 'Alamofire'
+pod 'RealmSwift'
 #pod 'PagingCollectionViewLayout'
 
   target 'MyPlaceTests' do

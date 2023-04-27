@@ -56,7 +56,7 @@ class MultipleJobNumberVC: UIViewController {
     @objc func closeBtnAction(_ sender : UIButton)
     {
         if  previousJobNum != nil || previousJobNum?.count ?? 0 > 0{
-           // selectionClosure?(previousJobNum ?? "")
+            selectionClosure?(previousJobNum ?? "")
             self.dismiss(animated: true)
         }else{
             showToast("Please Select Jobnumber")

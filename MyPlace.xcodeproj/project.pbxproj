@@ -29,6 +29,7 @@
 		4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782629F679E000CDD69D /* BaseProfileVC.swift */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
 		42999C9429D5717400FE2507 /* ImageSliderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C9329D5717400FE2507 /* ImageSliderVC.swift */; };
+		429F4FB929F908B700D2BC47 /* RealmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429F4FB829F908B700D2BC47 /* RealmModels.swift */; };
 		42B69F2D29DABA43002A0700 /* ImageSliderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */; };
 		42B69F2E29DABA43002A0700 /* ImageSliderCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B69F2C29DABA43002A0700 /* ImageSliderCVCell.xib */; };
 		42B69F3429DD464A002A0700 /* HorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F3329DD464A002A0700 /* HorizontalProgressBar.swift */; };
@@ -37,6 +38,8 @@
 		42E2A3FB29EFAE6A007A6ABB /* MultipleJobNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E2A3FA29EFAE6A007A6ABB /* MultipleJobNumberVC.swift */; };
 		42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7E829349BD80038179F /* Assets.xcassets */; };
 		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
+		42EA224D29FA4B4800354DC6 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */; };
+		42EA225029FA74EF00354DC6 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
 		6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */; };
 		A144018F27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist in Resources */ = {isa = PBXBuildFile; fileRef = A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */; };
@@ -491,6 +494,7 @@
 		4223782629F679E000CDD69D /* BaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileVC.swift; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
 		42999C9329D5717400FE2507 /* ImageSliderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderVC.swift; sourceTree = "<group>"; };
+		429F4FB829F908B700D2BC47 /* RealmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModels.swift; sourceTree = "<group>"; };
 		42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderCVCell.swift; sourceTree = "<group>"; };
 		42B69F2C29DABA43002A0700 /* ImageSliderCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderCVCell.xib; sourceTree = "<group>"; };
 		42B69F3329DD464A002A0700 /* HorizontalProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalProgressBar.swift; sourceTree = "<group>"; };
@@ -499,6 +503,8 @@
 		42E2A3FA29EFAE6A007A6ABB /* MultipleJobNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleJobNumberVC.swift; sourceTree = "<group>"; };
 		42E6D7E829349BD80038179F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
 		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBC195AC9DDB9C68F5CDD05 /* Pods-BurbankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.release.xcconfig"; sourceTree = "<group>"; };
 		6EA4C7D2432698A18CEE720A /* Pods-BurbankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.debug.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1005,6 +1011,14 @@
 			path = Favourites;
 			sourceTree = "<group>";
 		};
+		42EA224E29FA74AC00354DC6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		5E07D3469B1301EA23F9E75C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1034,6 +1048,7 @@
 		A1659902292F32B900C36B3B /* MyPlaceApp-NewDesignsV4 */ = {
 			isa = PBXGroup;
 			children = (
+				42EA224E29FA74AC00354DC6 /* ViewModels */,
 				A1659945292F32BA00C36B3B /* NewDesignsV4.storyboard */,
 				A1659903292F32B900C36B3B /* NewDesignsV5.storyboard */,
 				A1659904292F32B900C36B3B /* Networking */,
@@ -1081,6 +1096,7 @@
 				A1659910292F32B900C36B3B /* ConstantsNew.swift */,
 				A1659912292F32B900C36B3B /* ImagePickeredView.swift */,
 				42B69F3529DD7ED0002A0700 /* DocumentPreviewer.swift */,
+				429F4FB829F908B700D2BC47 /* RealmModels.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1173,6 +1189,7 @@
 				A1659942292F32BA00C36B3B /* AboutBurbankWebVC.swift */,
 				A1659943292F32BA00C36B3B /* MenuViewController.swift */,
 				A1659944292F32BA00C36B3B /* MySettingsVC.swift */,
+				42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */,
 			);
 			path = SideMenuControllers;
 			sourceTree = "<group>";
@@ -2764,6 +2781,7 @@
 				ED3B3A6126428FD900A03D85 /* DisplaysDesignsVC.swift in Sources */,
 				A1659956292F32BA00C36B3B /* InfoCentreVC.swift in Sources */,
 				A1659975292F32BB00C36B3B /* DocumentsVC.swift in Sources */,
+				42EA224D29FA4B4800354DC6 /* NotificationsVC.swift in Sources */,
 				ED7369F624F639BD0008B5E5 /* H&LBedroomsCVCell.swift in Sources */,
 				A1659964292F32BB00C36B3B /* UITableView + Extension.swift in Sources */,
 				A1659B10292F4A4500C36B3B /* CoBurbankListVC.swift in Sources */,
@@ -3017,6 +3035,7 @@
 				4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */,
 				EDB10BE124456DAD002E2AE1 /* CollectionTVCell.swift in Sources */,
 				A1659960292F32BA00C36B3B /* UIBarButtonItem+Badge.swift in Sources */,
+				429F4FB929F908B700D2BC47 /* RealmModels.swift in Sources */,
 				ED8C3C5124BECD2800364CA4 /* HomeDesignPriceVC.swift in Sources */,
 				A1659AA0292F4A4400C36B3B /* MyPlaceServiceSession.swift in Sources */,
 				ED8C3C5B24BECE0600364CA4 /* StraightCorridorVC.swift in Sources */,
@@ -3033,6 +3052,7 @@
 				ED7369F424F639A40008B5E5 /* H&LPriceCVCell.swift in Sources */,
 				012682AD24C03046006BB92A /* MarkerPopupView.swift in Sources */,
 				A1659965292F32BB00C36B3B /* TabBarVC.swift in Sources */,
+				42EA225029FA74EF00354DC6 /* NotificationsViewModel.swift in Sources */,
 				ED8C3C5D24BECE3000364CA4 /* LivingMealsVC.swift in Sources */,
 				A165997C292F32BB00C36B3B /* DetailsVC.swift in Sources */,
 				A165996C292F32BB00C36B3B /* InfoCategoriesCVC.swift in Sources */,

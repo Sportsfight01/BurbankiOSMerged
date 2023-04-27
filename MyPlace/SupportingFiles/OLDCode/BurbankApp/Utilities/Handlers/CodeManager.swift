@@ -220,8 +220,8 @@ class CodeManager: NSObject, UIScrollViewDelegate {
         var fixoutStageArray = [MyPlaceProgressDetails]()
         var finishingStageArray = [MyPlaceProgressDetails]()
         #if DEDEBUG
-        print("---->")
-        print(jsonArray)
+//        print("---->")
+//        print(jsonArray)
         #endif
         for obj in jsonArray
         {

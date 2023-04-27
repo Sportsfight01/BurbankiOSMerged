@@ -26,7 +26,7 @@ class MyProgressVC: BaseProfileVC {
     
     //MARK: - Properties
     
- 
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressBar: HorizontalProgressBar!
     @IBOutlet weak var yourOverallProgressLb: UILabel!
@@ -47,25 +47,18 @@ class MyProgressVC: BaseProfileVC {
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
     var cellSpacing = (1/16) * UIScreen.main.bounds.width
-
+    
     
     
     var selectedStageName = ""
     var stageName: StageName = .none
     var progressDetailsDic = [String:[MyPlaceProgressDetails]]()
     //For QLD and SA
-     var selectedIndex = 1
-     var progressValues = [CGFloat]()
+    var selectedIndex = 1
+    var progressValues = [CGFloat]()
     
-    //MARK: - notifications Data
-    var dayWisePhotoList = [DayWisePhotoList<MyPlaceDocuments>]()
-    var storedDayWisePhotoList = [DayWisePhotoList<MyPlaceStoredPhotoInfo>]()
-    var completedStageListArray = [MyPlaceProgressDetails]()
-    var completedStageList = [MyPlaceStageCompleteDetails]()
-    var stageChangeList = [MyPlaceStoredProgressDetails]()
-  //  var photoListWithDocDate = [String:[MyPlaceDocuments]]()
+    //  var photoListWithDocDate = [String:[MyPlaceDocuments]]()
     var stagesProgressDetailsDic = [String: [MyPlaceProgressDetails]]()
-    var notificationListArray = NSMutableArray()
     var currentJobNumber = ""
     
     
@@ -75,16 +68,16 @@ class MyProgressVC: BaseProfileVC {
         super.viewDidLoad()
         setupMultipleJobVc()
         setupTitles()
-       
+        
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-       // profileView.notificationCountLb.isHidden = true
-  
+        // profileView.notificationCountLb.isHidden = true
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -110,7 +103,7 @@ class MyProgressVC: BaseProfileVC {
         getUserProfile()
         sideMenuSetup()
         getNotification()
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StagesBackground_Image")!)
+        //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StagesBackground_Image")!)
         let imgeView = UIImageView(image: UIImage(named: "StagesBackground_Image"))
         imgeView.frame = view.frame
         view.insertSubview(imgeView, at: 0)
@@ -146,7 +139,7 @@ class MyProgressVC: BaseProfileVC {
                 CurrentUservars.jobNumber = selectedJobNum
                 self.setupUI()
             }
-          
+            
         }
         //*** Users with single JobNumber ***//
         else
@@ -174,7 +167,7 @@ class MyProgressVC: BaseProfileVC {
             
             self.tabBarController?.viewControllers?.append(vc)
         }
-
+        
     }
     
     
@@ -183,10 +176,10 @@ class MyProgressVC: BaseProfileVC {
     {
         //Collection View Setup
         let layout = PagingCollectionViewLayout()
-       // let layout = UICollectionViewFlowLayout()
+        // let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: cellWidth, height: collectionView.frame.height - 20)
         layout.scrollDirection = .horizontal
-       // layout.collectionView?.decelerationRate = .fast
+        // layout.collectionView?.decelerationRate = .fast
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
         layout.minimumLineSpacing = cellSpacing
         collectionView.decelerationRate = .fast
@@ -211,16 +204,16 @@ class MyProgressVC: BaseProfileVC {
     
     func prepareCollectionViewItems() -> [CLItem]
     {
-         return [
+        return [
             CLItem(title: "Admin Stage", imageName: "icon_Details_Dark", detailText: "We’re gathering the paperwork ready for approvals."),
             CLItem(title: "Base Stage", imageName: "icon_Base", detailText: "We will pour the foundation for your new home."),
             CLItem(title: "Frame Stage", imageName: "icon_Frame",detailText: "The frame forms the skeleton of your new home."),
             CLItem(title: "Lockup Stage", imageName: "icon_Lockup",detailText: "Your home will now be prepared for locking up."),
             CLItem(title: "Fixing Stage", imageName: "icon_Fixout",detailText: "All the internal design features will now be fitted into your home."),
             CLItem(title: "Finishing Stage", imageName: "icon_Complete", detailText: "As the name suggests, we’re almost there.")
-         ]
+        ]
     }
-
+    
     
     //below method is to group the values with their respected stages
     func setupProgressDetails(progressData : [ProgressStruct])
@@ -315,7 +308,7 @@ class MyProgressVC: BaseProfileVC {
             case .none:
                 self.clItems[0].progress = CGFloat(progress)
                 self.clItems[0].progressDetails = stagesDictionary[key]
-      
+                
             }
         }
         
@@ -326,18 +319,18 @@ class MyProgressVC: BaseProfileVC {
         let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: CGFloat(Double(totalHomeProgressPercentage)/100.0), progressDetails: nil)
         clItems.insert(newClItem, at: 0)
         progressBar.progress = CGFloat(totalHomeProgress)
-     
+        
         let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
         
         setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [ProximaNovaRegular(size: FONT_10), ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10),ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10)], alignmentCenter: false)
         
         
-       // let attrStr = NSMutableAttributedString(string: "Your home is currently ")
+        // let attrStr = NSMutableAttributedString(string: "Your home is currently ")
         //let percentageAttrStr = NSAttributedString(string: "\(totalHomeProgressPercentage)%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.black])
-       // let cmpletedStr = NSAttributedString(string: " completed. Swipe to see your stages.")
+        // let cmpletedStr = NSAttributedString(string: " completed. Swipe to see your stages.")
         //attrStr.append(percentageAttrStr)
         //attrStr.append(cmpletedStr)
-       // homeProgressLb.attributedText = attrStr
+        // homeProgressLb.attributedText = attrStr
         // homeProgressLb.attributedText
         //  print(clItems.count)
         collectionView.reloadData()
@@ -346,12 +339,12 @@ class MyProgressVC: BaseProfileVC {
         
     }
     
-
+    
     //MARK: - Service Calls
     
     func getProgressDetails()
     {
-            
+        
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         self.collectionView.showAnimatedGradientSkeleton()
         NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: jobAndAuth.auth, contractNo: jobAndAuth.jobNumber ?? ""), showActivity: false) { [weak self](result) in
@@ -362,7 +355,7 @@ class MyProgressVC: BaseProfileVC {
             switch result
             {
             case .success(let data):
-               // print(data)
+                // print(data)
                 self?.setupProgressDetails(progressData: data)
                 self?.checkFinanceVisibility(with: data)
                 
@@ -374,14 +367,14 @@ class MyProgressVC: BaseProfileVC {
     
     func getUserProfile()
     {
-    
+        
         let userID = appDelegate.currentUser?.userDetailsArray?[0].id
         let parameters : [String : Any] = ["Id" : userID as Any]
         NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters), showActivity: false) { [weak self]result in
             switch result
             {
             case .success(let data):
-                print(data)
+                //print(data)
                 guard data.status == true else {
                     DispatchQueue.main.async {
                         self?.showAlert(message: data.message ?? somethingWentWrong)
@@ -391,7 +384,7 @@ class MyProgressVC: BaseProfileVC {
                 //let imgdata = try! Data.init(contentsOf: URL(string: data.result?.profilePicPath ?? "")!)
                 //self?.profileImgView.image = UIImage(data: imgdata)
                 self?.profileView.profilePicImgView.downloaded(from: data.result?.profilePicPath ?? "")
-            
+                
                 self?.setupProfile()
                 
             case .failure(let err):
@@ -404,412 +397,18 @@ class MyProgressVC: BaseProfileVC {
     }
     
     //MARK: - NotificationSection
-    
     func getNotification()
     {
-        //Getting UserSelectedNotifications(user can chose which kind notifications has to get. in MySettings Page) from coredata
-        let notificationType = NotificationTypes.getSelectedNotificationType()
-        if notificationType == nil // No notification added locally so adding it
-        {
-            notificationListArray.removeAllObjects()
-            getUserSelectedNotificationTypes { [weak self] status in
-                if status == true
-                {
-                    self?.getNotificationListForQLDSA()
-                }
-            }
-        }
-        else {
-            let jobNumber = appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0].jobNumber ?? ""
-            if notificationListArray.count == 0 || currentJobNumber != jobNumber
-            {
-                notificationListArray.removeAllObjects()
-                dayWisePhotoList.removeAll()
-                //  photoListArray.removeAll()
-                completedStageListArray.removeAll()
-                stageChangeList.removeAll()
-                
-                storedDayWisePhotoList.removeAll()
-                completedStageList.removeAll()
-                stageChangeList.removeAll()
-                currentJobNumber = jobNumber
-                getNotificationListForQLDSA()
-            }else
-            {
-                reloadNotificationList()
+        let viewModel = NotificationsViewModel()
+        viewModel.setupLocalStorageForNotification { [weak self] localNotificationsCount in
+            appDelegate.notificationCount = localNotificationsCount
+            DispatchQueue.main.async {
+                self?.profileView.notificationCountLb.text = "\(localNotificationsCount)"
+                self?.profileView.notificationCountLb.isHidden = localNotificationsCount == 0 ? true : false
             }
         }
     }
     
-    func getUserSelectedNotificationTypes(completion : @escaping ((Bool) -> Void))
-    {
-    
-        let userID = appDelegate.currentUser?.userDetailsArray?.first?.id
-        let parameters : [String : Any] = ["Id" : userID as Any]
-        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters), showActivity: false) { [weak self]result in
-            switch result
-            {
-            case .success(let data):
-                print(data)
-                guard data.status == true else {
-                    DispatchQueue.main.async {
-                        self?.showAlert(message: data.message ?? somethingWentWrong)
-                    };return}
-              //  self?.profileData = data
-                let notificationArray = data.result?.notificationTypes
-                let photoAdded = notificationArray?[0].isUserOpted ?? false
-                let stageCompleted = notificationArray?[1].isUserOpted ?? false
-                let stageChange = notificationArray?[2].isUserOpted ?? false
-                NotificationTypes.updatedSelectedNotificationType(photoAdded, stageCompleted, stageChanged: stageChange)
-                completion(true) // call
-          
-                
-            case .failure(let err):
-                print(err.localizedDescription)
-                DispatchQueue.main.async {
-                    self?.showAlert(message: err.localizedDescription)
-                }
-            }
-        }
-    }
-
-    func getNotificationListForQLDSA()
-    {
-        let notificationType = NotificationTypes.getSelectedNotificationType()
-        let photoAdded = notificationType?.photoAdded
-        let stageComplete = notificationType?.stageComplete
-        let stageChange = notificationType?.stageChange
-        if photoAdded == false && stageComplete == false && stageChange == false
-        {
-            showAlert(message: "Notifications Settings are not Enabled, Please enable preferred Notifications from Settings.", okCompletion: nil)
-            return
-        }
-        //noNotificationsLabel.alpha = 0
-        getPhotosNotificationListForQLDSA() //for photos Notifications
-        
-    }
-    func getPhotosNotificationListForQLDSA()
-    {
-        MyPlaceServiceSession.shared.callToGetDataFromServer(myPlaceDocumentsDetailsURLString(),showActivity: false, successBlock: { (json, response) in
-           
-            if let jsonArray = json as? NSArray
-            {
-               // var photoInfoList = [MyPlaceDocuments]()
-                
-                #if DEDEBUG
-                print("++++++++")
-                print(jsonArray)
-                #endif
-                
-                for obj in jsonArray
-                {
-                    if let jsonDic = obj as? [String: Any]
-                    {
-                        let photoInfo = MyPlaceDocuments(jsonDic)
-                        if photoInfo.type.uppercased() == "JPG" || photoInfo.type.uppercased() == "PNG"
-                        {
-                           // photoInfoList.append(photoInfo)
-                            
-                            let date = photoInfo.docDate.stringToDateConverter()//dateFormater.date(from: photoInfo.docDate)
-                            let month = date?.monthNumber ?? 1
-                            let monthStr = month < 10 ? String(format:"%02d",month) : "\(month)"
-                            let dayValue = date?.dayValue ?? 1
-                            let day = dayValue < 10 ? String(format:"%02d",dayValue) : "\(dayValue)"
-                            let presetnYearStr = "\(date?.presentYear ?? 1)\(monthStr)\(day)"
-                            // let presentYearInt = Int(presetnYearStr) ?? 0
- //                           var isAdded = false
-                            var isPhotoAdded = false
-
-                            self.dayWisePhotoList.forEach({ (photo) in
-                                if photo.yyyymmddString == presetnYearStr
-                                {
-                                    isPhotoAdded = true
-                                    var list = photo.list
-                                    list.append(photoInfo)
-                                    photo.list = list
-                                }
-                            })
-                            if isPhotoAdded == false
-                            {
-                                let photo = DayWisePhotoList(dayValue,[photoInfo],presetnYearStr)
-                                self.dayWisePhotoList.append(photo)
-                            }
-                            let storedPhotoInfo = MyPlaceStoredPhotoInfo.fetchPhotoInfo(photoInfo.urlId)
-                            if storedPhotoInfo == nil
-                            {
-                                MyPlaceStoredPhotoInfo.addPhotoInfo(photoInfo)
-                            }
-                        }
-                    }
-                }
-               
-               
-                self.getStageCompleteNotificationListForQLDSA() //for Stage Complete Notifications
-            }
-        }, errorBlock: { (error, isJSON) in
-            //
-            self.getStageCompleteNotificationListForQLDSA()
-        })
-        
-    }
-    func getStageCompleteNotificationListForQLDSA()
-    {
-        #if DEDEBUG
-        print(myPlaceProgressDetailsURLString())
-        #endif
-        
-        MyPlaceServiceSession.shared.callToGetDataFromServer(myPlaceProgressDetailsURLString(),showActivity: false, successBlock: { (json, response) in
-            if let jsonArray = json as? NSArray
-            {
-                #if DEDEBUG
-                print("------")
-                print(jsonArray)
-                #endif
-                
-                for obj in jsonArray
-                {
-                    if let jsonDic = obj as? [String: Any]
-                    {
-                        let progressDetails = MyPlaceProgressDetails(dic: jsonDic)
-                        self.stagesProgressDetailsDic = CodeManager.sharedInstance.fillAndGetMyPlaceProgressDetails(jsonArray)
-//                        self.calculateProgressValues()
-                        if progressDetails.status == kStageCompleted
-                        {
-                            //  let stage = StageList(stageName: progressDetails.stageName, completedStages: progressDetails)
-                            if progressDetails.phasecode == adminStagePhaseCode || progressDetails.stageName == kFrameStage || progressDetails.stageName == kLockUpStage || progressDetails.stageName == kFixoutStage || progressDetails.stageName == kCompletion || progressDetails.stageName == kHandover || progressDetails.stageName == kBaseStage
-                            {
-                                self.completedStageListArray.append(progressDetails)
-                                let completedStageDetails = MyPlaceStageCompleteDetails.fetchProgressDetails(progressDetails.taskid)
-                                if completedStageDetails == nil
-                                {
-                                    MyPlaceStageCompleteDetails.addProgressDetails(progressDetails)
-                                }
-                            }
-
-                        }
-                        let stroredProgressResult = MyPlaceStoredProgressDetails.fetchStoredProgressDetails(progressDetails.taskid)
-                        if stroredProgressResult == nil
-                        {
-                            //need to add stages
-                            // MyPlaceStoredProgressDetails.addNotetoPhotoForQLDSA(progressDetails, "", "")
-                            MyPlaceStoredProgressDetails.addStoredProgressDetails(progressDetails, progressDetails.status, progressDetails.status)
-                        }else
-                        {
-                            //need to check whether stage is changed or not
-                           // progressDetails.status = "toTestPlan"//kCompletion
-                            if stroredProgressResult?.currentStatus != progressDetails.status
-                            {
-                                MyPlaceStoredProgressDetails.updateStoredProgressDetails(progressDetails, stroredProgressResult?.currentStatus ?? "", progressDetails.status)
-                            }
-                        }
-                    }
-                }
-                
-           
-                self.reloadNotificationList()
-            }
-        }, errorBlock: { (error, isJson) in
-//            self.presentAlert("No Notifications available")
-        })
-        
-    }
-    
-    func reloadNotificationList()
-    {
-        notificationListArray.removeAllObjects()
-        self.stageChangeList.removeAll()
-        self.completedStageList.removeAll()
-        self.storedDayWisePhotoList.removeAll()
-        //        dayWisePhotoList.sort { (list1, list2) -> Bool in
-        //            return list1.yyyymmddString > list2.yyyymmddString
-        //        }
-        if let storedProgressDetails = MyPlaceStoredProgressDetails.fetchAllStoredProgressDetails()
-        {
-            for progressDetails in storedProgressDetails
-            {
-                if progressDetails.previousStatus != progressDetails.currentStatus
-                {
-                    //need to add in stage
-                    self.stageChangeList.append(progressDetails)
-                }
-            }
-        }
-        self.completedStageList = MyPlaceStageCompleteDetails.fetchAllProgressDetails()!
-        guard let photoList = MyPlaceStoredPhotoInfo.fetchAllStoredPhotoInfo() else {return}
-        photoList.forEach { (photoInfo) in
-            let dateString = photoInfo.docDate ?? ""
-            let date = dateString.stringToDateConverter()//dateFormater.date(from: photoInfo.docDate)
-            let month = date?.monthNumber ?? 1
-            let monthStr = month < 10 ? String(format:"%02d",month) : "\(month)"
-            let dayValue = date?.dayValue ?? 1
-            let day = dayValue < 10 ? String(format:"%02d",dayValue) : "\(dayValue)"
-            let presetnYearStr = "\(date?.presentYear ?? 1)\(monthStr)\(day)"
-            // let presentYearInt = Int(presetnYearStr) ?? 0
-            //                           var isAdded = false
-            var isPhotoAdded = false
-            
-            self.storedDayWisePhotoList.forEach({ (photo) in
-                if photo.yyyymmddString == presetnYearStr
-                {
-                    isPhotoAdded = true
-                    var list = photo.list
-                    list.append(photoInfo)
-                    photo.list = list
-                }
-            })
-            if isPhotoAdded == false
-            {
-                let photo = DayWisePhotoList(dayValue,[photoInfo],presetnYearStr)
-                self.storedDayWisePhotoList.append(photo)
-            }
-        }
-        // notificationListArray.addObjects(from: photoListArray)
-        let notificationTypes = NotificationTypes.getSelectedNotificationType()
-        let photoAdded = notificationTypes?.photoAdded
-        let stageCompleted = notificationTypes?.stageComplete
-        let stageChange = notificationTypes?.stageChange
-        if photoAdded == false && stageCompleted == false && stageChange == false
-        {
-//            presentAlert("Notifications Settings are not Enabled, Please enable preffered Notifications from Settings.")
-            //            reloadList()
-            //            return
-        }
-        storedDayWisePhotoList.sort { (list1, list2) -> Bool in
-            return list1.yyyymmddString > list2.yyyymmddString
-        }
-        
-        
-        if photoAdded == true
-        {
-            let cout = storedDayWisePhotoList.count
-            notificationListArray.addObjects(from: storedDayWisePhotoList)
-        }
-        if stageCompleted == true
-        {
-            notificationListArray.addObjects(from: completedStageList)//completedStageListArray
-        }
-        if stageChange == true
-        {
-            notificationListArray.addingObjects(from: stageChangeList)
-        }
-        
-        
-//        let datesArray = NSMutableArray()
-        
-        
-        
-        let sortedNames = notificationListArray.sorted { (list1, list2) -> Bool in
-
-            if let photoList1 = list1 as? DayWisePhotoList<MyPlaceStoredPhotoInfo> {
-
-                if let photoList2 = list2 as? DayWisePhotoList<MyPlaceStoredPhotoInfo> {
-
-                    return photoList1.yyyymmddString > photoList2.yyyymmddString
-                }
-                else if let completedStage2 = list2 as? MyPlaceStageCompleteDetails {
-
-                    return ((photoList1.list[0]).docDate)! > (completedStage2.dateActual)!
-                }
-                else if let stageChange2 = list2 as? MyPlaceStoredProgressDetails {
-                    
-                    return ((photoList1.list[0]).docDate)! > (stageChange2.dateActual)!
-                }
-            }
-            else if let completedStage1 = list1 as? MyPlaceStageCompleteDetails {
-                #if DEDEBUG
-                print(completedStage1.dateActual as Any)
-                #endif
-                if let photoList2 = list2 as? DayWisePhotoList<MyPlaceStoredPhotoInfo> {
-                    
-                    return (completedStage1.dateActual)! > ((photoList2.list[0]).docDate)!
-                }
-                else if let completedStage2 = list2 as? MyPlaceStageCompleteDetails {
-                    
-                    return (completedStage1.dateActual)! > (completedStage2.dateActual)!
-                }
-                else if let stageChange2 = list2 as? MyPlaceStoredProgressDetails {
-                    
-                    return (completedStage1.dateActual)! > (stageChange2.dateActual)!
-                }
-            }
-            else if let stageChange1 = list1 as? MyPlaceStoredProgressDetails {
-                
-                if let photoList2 = list2 as? DayWisePhotoList<MyPlaceStoredPhotoInfo> {
-                    
-                    return (stageChange1.dateActual)! > ((photoList2.list[0]).docDate)!
-                }
-                else if let completedStage2 = list2 as? MyPlaceStageCompleteDetails {
-                    
-                    return (stageChange1.dateActual)! > (completedStage2.dateActual)!
-                }
-                else if let stageChange2 = list2 as? MyPlaceStoredProgressDetails {
-                    
-                    return (stageChange1.dateActual)! > (stageChange2.dateActual)!
-                }
-            }
-
-
-            return false
-        }
-        
-        #if DEDEBUG
-        print(sortedNames)
-        #endif
-        
-        notificationListArray = (sortedNames as NSArray).mutableCopy() as! NSMutableArray
-        
-
-        if notificationListArray.count == 0
-        {
-//            presentAlert("No Notifications to Display")
-        }
-        else {
-            
-            #if DEDEBUG
-            print(notificationListArray.count)
-            #endif
-            
-           // notificationCountLBL.text = "\(appDelegate.notificationCount)"
-            let tempNotificationArray = NSMutableArray()
-            
-            // remove Read notification from List
-            for i in 0..<notificationListArray.count {
-                
-                let value = notificationListArray[i]
-                
-                if let photoList = value as? DayWisePhotoList<MyPlaceStoredPhotoInfo> {
-                    let photoInfo = photoList.list[0]
-                    if photoInfo.isRead == false {
-                        tempNotificationArray.add(value)
-                    }
-                }
-                else if let completedStage = value as? MyPlaceStageCompleteDetails {
-                    if completedStage.isRead == false {
-                        tempNotificationArray.add(value)
-                    }
-                }
-                else if let stageChange = value as? MyPlaceStoredProgressDetails {
-                    if stageChange.isRead == false {
-                        tempNotificationArray.add(value)
-                    }
-                }
-            }
-            
-            notificationListArray = tempNotificationArray
-            
-            #if DEDEBUG
-            print(notificationListArray.count)
-            #endif
-            appDelegate.notificationCount = notificationListArray.count
-            if appDelegate.notificationCount == 0{
-                profileView.notificationCountLb.isHidden = true
-            }else{
-                profileView.notificationCountLb.isHidden = false
-                profileView.notificationCountLb.text = "\(appDelegate.notificationCount)"
-            }
-        }
-        //reloadList()
-    }
 }
 extension MyProgressVC : UICollectionViewDelegate , SkeletonCollectionViewDataSource
 {
@@ -971,5 +570,8 @@ struct ProgressStruct: Codable {
         case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient
         case stageID = "stageId"
         case stageName
+    }
+    var date : Date {
+        return dateactual?.components(separatedBy: ".").first?.getDate() ?? Date()
     }
 }

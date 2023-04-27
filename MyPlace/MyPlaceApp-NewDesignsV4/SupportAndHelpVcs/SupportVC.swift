@@ -77,8 +77,9 @@ class SupportVC: UIViewController {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+                let vc = NotificationsVC.instace(sb: .newDesignV4)
+                self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

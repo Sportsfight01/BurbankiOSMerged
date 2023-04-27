@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MySettingsVC: UIViewController, profileScreenProtocol {
     
@@ -131,7 +132,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+//        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        let vc = NotificationsVC.instace(sb: .newDesignV4)
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
@@ -197,10 +199,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     
     @IBAction func logOutClicked(_ sender: UIButton) {
-        
-        
-       
-        
+
         resetUserDefaultsForOlderVerion()
         CurrentUservars.profilePicUrl = nil
         CurrentUservars.userName = nil
@@ -208,7 +207,10 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         CurrentUservars.email = nil
         CurrentUservars.jobNumber = nil
         appDelegate.notificationCount = 0
-        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
         
         
         let vc = UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateInitialViewController()
@@ -270,9 +272,9 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
             let jsonDic = json as! NSDictionary
             if let status = jsonDic.object(forKey: "Status") as? Bool {
                 
-#if DEDEBUG
-                print(jsonDic)
-#endif
+                #if DEDEBUG
+                // print(jsonDic)
+                #endif
                 
                 let message = jsonDic.object(forKey: "Message")as? String
                 if status == true {

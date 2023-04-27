@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import RealmSwift
 import UIKit
 
 class TabBarVC: UITabBarController {
@@ -16,6 +16,7 @@ class TabBarVC: UITabBarController {
     
     var tabBarItems : [TabBarItemStruct] = []
     var isFinanceTabVisible : Bool = false
+    let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
         debugPrint("TabBarController", #function)
@@ -26,18 +27,13 @@ class TabBarVC: UITabBarController {
                 _ = viewController.view
             }
         }
+
+      
         
      
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        var tabFrame = self.tabBar.frame
-//        tabFrame.size.height = HEIGHT_TAB_BAR
-//        tabFrame.origin.y = self.view.frame.size.height - HEIGHT_TAB_BAR
-//        self.tabBar.frame = tabFrame
-//        tabBar.itemWidth = 20
-//        tabBar.itemSpacing = 10
-        
        
     }
     
@@ -57,7 +53,10 @@ class TabBarVC: UITabBarController {
         tabBar.backgroundColor = UIColor.white
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        setupViewControllers()
+   
+            self.setupViewControllers()
+        
+       
     }
     
     func setupViewControllers()
@@ -78,6 +77,7 @@ class TabBarVC: UITabBarController {
         }
        
     }
+    
     
 
 }
