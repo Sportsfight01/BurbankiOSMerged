@@ -92,7 +92,13 @@ class NotificationsViewModel
     
     func createAndAddRealmObject(taskName : String?, taskId : Int?, photoURL : String?, date : Date, isPhoto : Bool, stageName : String? = nil)
     {
-        let realmObj = RealmStageComplete(taskName: taskName ?? "", taskId: taskId ?? 0, photoURl: photoURL ?? "", date: date, isPhoto: isPhoto, stageName: stageName)
+        let realmObj = RealmStageComplete(taskName: taskName ?? "",
+                                          taskId: taskId ?? 0,
+                                          photoURl: photoURL ?? "",
+                                          date: date,
+                                          isPhoto: isPhoto,
+                                          stageName: stageName)
+        
         try! realm.write {
             realm.add(realmObj)
         }

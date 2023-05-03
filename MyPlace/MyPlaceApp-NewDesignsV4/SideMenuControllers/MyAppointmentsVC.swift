@@ -24,12 +24,13 @@ class MyAppointmentsVC: UIViewController {
     
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         getAppointments()
        // setupProfile()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.setupNavigationBarButtons()
         setupProfile()
         headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
@@ -39,12 +40,7 @@ class MyAppointmentsVC: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-//        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-//        {
-//           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-//            profileImgView.downloaded(from: url)
-//        }
-        
+
         if let imgURlStr = CurrentUservars.profilePicUrl
         {
            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
@@ -134,7 +130,7 @@ extension MyAppointmentsVC : UITableViewDelegate, UITableViewDataSource
         }
         if let appointmentDatelb = containerView?.viewWithTag(102) as? UILabel
         {
-          let date = dateFormatter(dateStr: appointmentDates[indexPath.row], currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "d MMMM, yyyy")
+            let date = dateFormatter(dateStr: appointmentDates[indexPath.row].components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "d MMMM, yyyy")
             appointmentDatelb.text = date ?? "- -"
         }
         return cell

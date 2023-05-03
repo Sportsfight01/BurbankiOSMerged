@@ -12,17 +12,13 @@ class ProfileHeaderView: UIView {
 
     //MARK: - Properties
     
-    @IBOutlet var contentView: UIView!
-    
+    @IBOutlet var contentView: UIView!    
     @IBOutlet weak var navBarTitleImg: UIImageView!
     @IBOutlet weak var menubtn: UIButton!
     @IBOutlet weak var stackLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var profilePicImgView: UIImageView!
-    
     @IBOutlet weak var notificationCountLb: UILabel!
-    
     @IBOutlet weak var titleLb: UILabel!
-    
     @IBOutlet weak var helpTextLb: UILabel!
     
     @IBOutlet weak var secondHelpTextLb: UILabel!

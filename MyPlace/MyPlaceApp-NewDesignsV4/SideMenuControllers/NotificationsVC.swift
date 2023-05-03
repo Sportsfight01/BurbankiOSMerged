@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SkeletonView
 
 class NotificationsVC: UIViewController {
 
@@ -23,41 +24,62 @@ class NotificationsVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 70
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
-        
-        appDelegate.showActivity()
+        getNotifications()
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        debugPrint(self.navigationController)
+        self.setupNavigationBarButtons()
+        jobNumber.text = CurrentUservars.jobNumber
+    }
+    
+    //MARK: - Service Calls
+    func getNotifications()
+    {
+//        appDelegate.showActivity()
+        tableView.showAnimatedGradientSkeleton()
         APIManager.shared.getUserSelectedNotificationTypes {[weak self] notificationTypes in
+            DispatchQueue.main.async {
+               // appDelegate.hideActivity()
+                self?.tableView.stopSkeletonAnimation()
+                self?.view.hideSkeleton()
+            }
             if notificationTypes.photoAdd == false && notificationTypes.stageCompleted == false && notificationTypes.stageChange == false
             {
                 //Notifications Settings not selected
                 let errMsg = "Notifications settings are not enabled, Please enable preferred notifications from settings."
                 self?.tableView.setEmptyMessage(errMsg)
             }else {
-                let objects = self?.realm.objects(RealmStageComplete.self)
+                let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber
+                let objects = self?.realm.objects(RealmStageComplete.self).filter({$0.jobNumber == jobNumber})
                 let sorted = objects?.sorted(by: { $0.date > $1.date } ).filter({$0.isRead == false})
                 DispatchQueue.main.async {
                     
                     self?.tableDataSource = sorted ?? []
-                    self?.tableView.reloadData()
-                    appDelegate.hideActivity()
+                    if self?.tableDataSource.count == 0
+                    {
+                        self?.tableView.setEmptyMessage("No notifications to display")
+                    }else {
+                        self?.tableView.reloadData()
+                    }
+                  //  appDelegate.hideActivity()
                 }
             }
         }
-        
-            
-        
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setupNavigationBarButtons()
-        jobNumber.text = CurrentUservars.jobNumber
     }
     
 }
 //MARK: - TableView Delegate & DataSource
-extension NotificationsVC : UITableViewDelegate, UITableViewDataSource
+extension NotificationsVC : UITableViewDelegate, SkeletonTableViewDataSource
 {
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "cell"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableDataSource.count
     }
@@ -73,11 +95,11 @@ extension NotificationsVC : UITableViewDelegate, UITableViewDataSource
         
         if item.isPhoto == true // stage complete
         {
-            cell.imgView.image = UIImage(systemName: "photo.circle.fill",withConfiguration: UIImage.SymbolConfiguration(scale: .medium))
+            cell.imgView.image = UIImage(systemName: "photo.circle.fill",withConfiguration: UIImage.SymbolConfiguration(scale: .large)) ?? UIImage(named: "Ico-ImageNotify")
             cell.title.text = "Check out the new photos added on \(dateStr)"
         }else {
             cell.title.text = "\(item.taskName!) Completed on \(dateStr)"
-            cell.imgView.image = UIImage(systemName: "bell.circle.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .medium))
+            cell.imgView.image = UIImage(systemName: "bell.circle.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         }
         
         let formatter = RelativeDateTimeFormatter()
@@ -97,8 +119,8 @@ extension NotificationsVC : UITableViewDelegate, UITableViewDataSource
         try! realm.write {
             item.isRead = true
         }
-        
-        let objects = self.realm.objects(RealmStageComplete.self)
+        let currentJobNum = APIManager.shared.getJobNumberAndAuthorization().jobNumber
+        let objects = self.realm.objects(RealmStageComplete.self).filter({$0.jobNumber == currentJobNum})
         let unreadObjects = objects.filter({$0.isRead == false})
         appDelegate.notificationCount = unreadObjects.count
         if item.isPhoto // Photo Clicked(go to photos screen)
@@ -118,6 +140,9 @@ extension NotificationsVC : UITableViewDelegate, UITableViewDataSource
         
         
     }
+    
+
+    
     
     
 }

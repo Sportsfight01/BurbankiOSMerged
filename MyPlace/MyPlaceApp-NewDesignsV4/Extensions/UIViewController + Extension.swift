@@ -13,6 +13,7 @@ extension UIViewController {
     func setupNavigationBarButtons(title : String = "" ,backButton : Bool = true, notificationIcon : Bool = true)
     {
         
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         //Setting appearance
         let appearance = UINavigationBarAppearance()

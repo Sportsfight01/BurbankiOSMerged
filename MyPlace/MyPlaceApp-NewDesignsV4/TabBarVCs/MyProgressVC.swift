@@ -25,8 +25,6 @@ enum StageName : String {
 class MyProgressVC: BaseProfileVC {
     
     //MARK: - Properties
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressBar: HorizontalProgressBar!
     @IBOutlet weak var yourOverallProgressLb: UILabel!
@@ -47,36 +45,19 @@ class MyProgressVC: BaseProfileVC {
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
     var cellSpacing = (1/16) * UIScreen.main.bounds.width
-    
-    
-    
-    var selectedStageName = ""
-    var stageName: StageName = .none
-    var progressDetailsDic = [String:[MyPlaceProgressDetails]]()
-    //For QLD and SA
-    var selectedIndex = 1
-    var progressValues = [CGFloat]()
-    
-    //  var photoListWithDocDate = [String:[MyPlaceDocuments]]()
-    var stagesProgressDetailsDic = [String: [MyPlaceProgressDetails]]()
-    var currentJobNumber = ""
-    
-    
-    
+ 
     //MARK: - LifeCycleMethods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMultipleJobVc()
         setupTitles()
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        // profileView.notificationCountLb.isHidden = true
+      
+        profileView.notificationCountLb.isHidden = appDelegate.notificationCount == 0 ? true : false
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,9 +71,10 @@ class MyProgressVC: BaseProfileVC {
     {
         profileView.titleLb.text = "MyProgress"
         profileView.helpTextLb.text = "--"
-        profileView.profilePicImgView.tintColor = .black
+        profileView.profilePicImgView.tintColor = .darkGray
         profileView.titleLb.textColor = .black
         profileView.helpTextLb.textColor = .black
+        profileView.profilePicImgView.borderColor = .darkGray
         [profileView.menubtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
     }
     
@@ -128,9 +110,9 @@ class MyProgressVC: BaseProfileVC {
                     vc.previousJobNum = appDelegate.enteredEmailOrJob
                 }
                 vc.selectionClosure = {[weak self] selectedJobNumber in
-                    CurrentUservars.jobNumber = selectedJobNumber
-                    self?.setupUI()
                     UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
+                    self?.setupUI()
+                   
                     self?.tabBarController?.tabBar.isUserInteractionEnabled = true
                     
                 }
@@ -462,7 +444,7 @@ extension MyProgressVC : UICollectionViewDelegate , SkeletonCollectionViewDataSo
     @objc func seemoreBtnTapped(_ sender : UIButton)
     {
         let rowNo = sender.tag
-        let vc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MyProgressDetailVC") as! MyProgressDetailVC
+        let vc = MyProgressDetailVC.instace(sb: .newDesignV4)
         vc.progressData = clItems[rowNo]
         vc.progressColor = progressColors[rowNo]
         vc.progressImgName = clItems[rowNo].imageName
@@ -539,7 +521,7 @@ extension MyProgressVC : UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-   
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return cellSpacing
     }
@@ -573,5 +555,9 @@ struct ProgressStruct: Codable {
     }
     var date : Date {
         return dateactual?.components(separatedBy: ".").first?.getDate() ?? Date()
+    }
+    var dateWithoutTime : Date
+    {
+        return dateactual?.components(separatedBy: "T").first?.getDate("yyyy-MM-dd") ?? Date()
     }
 }

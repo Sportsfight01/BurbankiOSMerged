@@ -51,7 +51,7 @@ class BaseProfileVC: UIViewController {
     
     func sideMenuSetup()
     {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        let sideMenuVc = MenuViewController.instace(sb: .newDesignV4)
         menu = SideMenuNavigationController(rootViewController: sideMenuVc)
         menu.leftSide = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width

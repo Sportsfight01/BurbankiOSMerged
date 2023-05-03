@@ -27,6 +27,11 @@ class MyContactsVC: BaseProfileVC {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isSkeletonable = true
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableView.automaticDimension
+        
+         checkUserLogin1()
     }
    
     override func viewWillAppear(_ animated: Bool) {
@@ -41,11 +46,8 @@ class MyContactsVC: BaseProfileVC {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.isSkeletonable = true
-        tableView.estimatedRowHeight = 200
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.showAnimatedGradientSkeleton()
-        checkUserLogin1()
+     
+      
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -63,7 +65,7 @@ class MyContactsVC: BaseProfileVC {
     //MARK: - Service Calls
    func checkUserLogin1()
      {
-         
+     
          let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
          guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
          let password = APIManager.shared.currentJobDetails?.password ?? ""
@@ -81,27 +83,31 @@ class MyContactsVC: BaseProfileVC {
              urlRequest.httpBody = try JSONSerialization.data(withJSONObject: postDic, options:[])
          }
          catch {
- #if DEDEBUG
-             print("JSON serialization failed:  \(error)")
- #endif
+                #if DEDEBUG
+                print("JSON serialization failed:  \(error)")
+                #endif
          }
-//         appDelegate.showActivity()
+         tableView.showAnimatedGradientSkeleton()
          URLSession.shared.dataTask(with: urlRequest, completionHandler: { [weak self](data, response, error) in
-//             DispatchQueue.main.async {
-//                 self?.appDelegate.hideActivity()
-//             }
+
              print("URL:- \(response?.url) postData :- \(postDic)")
              if error != nil
              {
-#if DEDEBUG
-                 print("fail to Logout")
-#endif
+                 DispatchQueue.main.async {
+                     self?.tableView.stopSkeletonAnimation()
+                     self?.view.hideSkeleton()
+                 }
                  return
              }
              if let strData = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
              {
                  print(strData)
-                 guard strData == "true" || strData.contains("true") else {return}
+                 guard strData == "true" || strData.contains("true") else {
+                     DispatchQueue.main.async {
+                         self?.tableView.stopSkeletonAnimation()
+                         self?.view.hideSkeleton()
+                     };return}
+                 
                  self?.getContacts()
                  
                  

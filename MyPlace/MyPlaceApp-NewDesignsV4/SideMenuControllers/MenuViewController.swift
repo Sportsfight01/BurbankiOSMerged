@@ -53,7 +53,7 @@ class MenuViewController: UIViewController {
     
     func presentMultipleJobVc()
     {
-        self.dismiss(animated: true)
+       // self.dismiss(animated: true)
        
         let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
         let vc = MultipleJobNumberVC.instace()

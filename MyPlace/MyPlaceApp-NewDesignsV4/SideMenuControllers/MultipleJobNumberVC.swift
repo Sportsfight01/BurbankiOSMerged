@@ -96,6 +96,7 @@ extension MultipleJobNumberVC : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        // print("selected Job Number :- \(tableDataSource[indexPath.row])")
+        appDelegate.notificationCount = 0
         tableView.deselectRow(at: indexPath, animated: true)
         selectionClosure?(tableDataSource[indexPath.row])
         self.dismiss(animated: true)
