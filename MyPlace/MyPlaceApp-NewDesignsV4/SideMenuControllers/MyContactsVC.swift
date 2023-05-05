@@ -6,93 +6,53 @@
 //  Copyright © 2022 DMSS. All rights reserved.
 //
 
-enum JobContactNames: Int
-{
-    
-    case SiteSupervisor = 0, CRO, SalesConsultant, ElecticalConsultant, ColorConsultant, StaffManager
-    
-}
+
 
 import UIKit
 import SideMenu
-class MyContactsVC: UIViewController {
-    
-    @IBOutlet weak var notificationCountLBL: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
-    
+import SkeletonView
+
+class MyContactsVC: BaseProfileVC {
+    enum JobContactNames: Int
+    {
+        case SiteSupervisor = 0, CRO, SalesConsultant, ElecticalConsultant, ColorConsultant, StaffManager
+    }
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var tableView: UITableView!
     var namesarray = ["Site Supervisor","New Home Coordinator","Interior Designer", "Electical Designer", "New Home Consultant"]
     var jobContacts : ContactDetailsStruct?
     
-    var menu : SideMenuNavigationController!
-    
-    
+   // var menu : SideMenuNavigationController!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        checkUserLogin1()
-        setupProfile()
-        sideMenuSetup()
+        tableView.isSkeletonable = true
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableView.automaticDimension
+        
+         checkUserLogin1()
     }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        setupProfile()
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setupTitles()
+    }
+    func setupTitles()
+    {
+        profileView.titleLb.text = "MyContacts"
+        profileView.helpTextLb.text = "Find all the contacts related to your home build."
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+     
+      
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+      
     }
-    
-    func sideMenuSetup()
-    {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
-    }
-    
-    func setupProfile()
-    {
-        profileImgView.contentMode = .scaleToFill
-        profileImgView.clipsToBounds = true
-        profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-//        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-//        {
-//            //profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-//            profileImgView.downloaded(from: url)
-//        }
-        if let imgURlStr = CurrentUservars.profilePicUrl
-        {
-           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-            profileImgView.image = imgURlStr
-        }
-        if appDelegate.notificationCount == 0{
-            notificationCountLBL.isHidden = true
-        }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
-        }
-        //        profileImgView.addBadge(number: appDelegate.notificationCount)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileImgView.addGestureRecognizer(tap)
-        
-    }
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
-
-    }
-    
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         
         present(menu, animated: true, completion: nil)
@@ -105,21 +65,14 @@ class MyContactsVC: UIViewController {
     //MARK: - Service Calls
    func checkUserLogin1()
      {
-         guard  let myPlaceDetails = self.appDelegate.currentUser?.userDetailsArray?[0].myPlaceDetailsArray[0] else {return }
-         let region = myPlaceDetails.region ?? ""
-         var contractNo : String = ""
      
-             if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-             {
-                 contractNo = jobNum
-             }
-             else {
-                 contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-             }
-         let password = myPlaceDetails.password ?? ""
-         let userName = myPlaceDetails.userName ?? ""
-         // ServiceSessionMyPlace.sharedInstance.serviceConnection("POST", url: url, postBodyDictionary: ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password], serviceModule:"PropertyStatusService")
-         let postDic =  ["Region": region, "JobNumber":contractNo, "UserName":userName, "Password":password]
+         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+         let password = APIManager.shared.currentJobDetails?.password ?? ""
+         let userName = APIManager.shared.currentJobDetails?.userName ?? ""
+         let region = APIManager.shared.currentJobDetails?.region ?? ""
+         
+         let postDic =  ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password]
          //callMyPlaceLoginServie(myPlaceDetails)
          let url = URL(string: checkUserLogin())
          var urlRequest = URLRequest(url: url!)
@@ -130,27 +83,31 @@ class MyContactsVC: UIViewController {
              urlRequest.httpBody = try JSONSerialization.data(withJSONObject: postDic, options:[])
          }
          catch {
- #if DEDEBUG
-             print("JSON serialization failed:  \(error)")
- #endif
+                #if DEDEBUG
+                print("JSON serialization failed:  \(error)")
+                #endif
          }
-         appDelegate.showActivity()
+         tableView.showAnimatedGradientSkeleton()
          URLSession.shared.dataTask(with: urlRequest, completionHandler: { [weak self](data, response, error) in
-             DispatchQueue.main.async {
-                 self?.appDelegate.hideActivity()
-             }
+
              print("URL:- \(response?.url) postData :- \(postDic)")
              if error != nil
              {
- #if DEDEBUG
-                 print("fail to Logout")
- #endif
+                 DispatchQueue.main.async {
+                     self?.tableView.stopSkeletonAnimation()
+                     self?.view.hideSkeleton()
+                 }
                  return
              }
              if let strData = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
              {
                  print(strData)
-                 guard strData == "true" || strData.contains("true") else {return}
+                 guard strData == "true" || strData.contains("true") else {
+                     DispatchQueue.main.async {
+                         self?.tableView.stopSkeletonAnimation()
+                         self?.view.hideSkeleton()
+                     };return}
+                 
                  self?.getContacts()
                  
                  
@@ -159,36 +116,34 @@ class MyContactsVC: UIViewController {
      }
    func getContacts()
    {
-       var contractNo : String = ""
-   
-           if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
+       let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+       guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+       
+       NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: jobNumber), showActivity: false) {[weak self] (result) in
+           
+           DispatchQueue.main.async {
+               self?.tableView.stopSkeletonAnimation()
+               self?.tableView.hideSkeleton()
+           }
+           
+           switch result
            {
-               contractNo = jobNum
-           }
-           else {
-               contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-           }
-     NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: contractNo)) {[weak self] (result) in
-       switch result
-       {
-       case .success(let data):
-         print(data)
-        // let contractPrice =  String(format: "%.2f",data.contractPrice)
-//         self?.financeDetails = data
-//         self?.setupUI()
-           self?.jobContacts = data
-           DispatchQueue.main.async {
-               self?.tableView.reloadData()
+           case .success(let data):
+              // print(data)
+               self?.jobContacts = data
+               DispatchQueue.main.async {
+                   
+                   self?.tableView.reloadData()
+                   
+               }
                
-           }
-     
-       case .failure(let err):
-         print(err.localizedDescription)
-           DispatchQueue.main.async {
-               self?.showAlert(message: "No Data Found")
+           case .failure(let err):
+               print(err.localizedDescription)
+               DispatchQueue.main.async {
+                   self?.showAlert(message: "No Data Found")
+               }
            }
        }
-     }
    }
     
     func getContactNameEmailPhone(rowNo : Int) -> (contactName : String, contactEmail : String, contactPhone : String)
@@ -249,16 +204,20 @@ class MyContactsVC: UIViewController {
     
 
 }
-extension MyContactsVC : UITableViewDelegate, UITableViewDataSource
+extension MyContactsVC : UITableViewDelegate, SkeletonTableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return namesarray.count
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "MyContactsTBCell"
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyContactsTBCell") as! MyContactsTBCell
         cell.nameLabel.text = namesarray[indexPath.row]
         let data = getContactNameEmailPhone(rowNo: indexPath.row)
-        cell.fullNameLabel.text = data.contactName
+        cell.fullNameLabel.text = data.contactName.trim() == "" ? "NA" : data.contactName
         cell.emailLabel.text = data.contactEmail
         cell.mobileLabel.text = data.contactPhone
         

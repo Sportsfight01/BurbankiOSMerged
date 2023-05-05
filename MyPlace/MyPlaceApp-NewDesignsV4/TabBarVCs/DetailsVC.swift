@@ -11,6 +11,9 @@ import SideMenu
 
 class DetailsVC: UIViewController {
     
+    
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     //ProfileDetails
@@ -31,46 +34,24 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var superVisorLb: UILabel!
     @IBOutlet weak var newHomeConsultant: UILabel!
     //@IBOutlet weak var siteStartDateLb: UILabel!
-    
-    var menu : SideMenuNavigationController!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupProfile()
-        sideMenuSetup()
         getContractDetails()
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         self.setupNavigationBarButtons(notificationIcon: false)
         setupProfile()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
       //  self.navigationController?.navigationBar.isHidden = false
     }
-    
-    func sideMenuSetup()
-    {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-        
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
-    }
-    
-    
+
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
@@ -91,7 +72,7 @@ class DetailsVC: UIViewController {
         emailLb.attributedText = emailFirstStr
         
         let phoneFirstStr = NSMutableAttributedString(string: "Phone ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let phoneAttrStr = NSAttributedString(string: "\(CurrentUservars.mobileNo ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let phoneAttrStr = NSAttributedString(string: "\(appDelegate.currentUser?.userDetailsArray?.first?.mobile ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         phoneFirstStr.append(phoneAttrStr)
         phoneLb.attributedText = phoneFirstStr
         if appDelegate.notificationCount == 0{
@@ -104,8 +85,9 @@ class DetailsVC: UIViewController {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+                let vc = NotificationsVC.instace(sb: .newDesignV4)
+                self.navigationController?.pushViewController(vc, animated: true)
         
     }
     //MARK:- Helper Methods
@@ -124,11 +106,7 @@ class DetailsVC: UIViewController {
         newHomeConsultant.text = data.clientliaison ?? "--"
         //        siteStartDateLb.text = data.sitestartdate
     }
-    
-    @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
-        
-        present(menu, animated: true, completion: nil)
-    }
+
     @IBAction func supportBtnTapped(_ sender: UIButton) {
         guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
         self.navigationController?.pushViewController(vc, animated: true)
@@ -137,31 +115,13 @@ class DetailsVC: UIViewController {
     //MARK:- Service Calls
     func getContractDetails()
     {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-            // print("jobregion :- \(jobRegion)")
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        NetworkRequest.makeRequest(type: ContractDetailsStruct.self, urlRequest: Router.contractDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let auth = jobAndAuth.auth
+        
+        NetworkRequest.makeRequest(type: ContractDetailsStruct.self, urlRequest: Router.contractDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
             switch result{
             case .success(let data):
-                
-                
                 self?.setupData(data: data)
             case .failure(let err):
                 print(err.localizedDescription)

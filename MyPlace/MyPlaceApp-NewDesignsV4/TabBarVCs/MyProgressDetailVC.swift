@@ -12,15 +12,6 @@ import AVKit
 class MyProgressDetailVC: UIViewController {
     
     //MARK: - Properties
-//    enum stageNames: String
-//    {
-//        case adminStage
-//        case frameStage
-//        case lockUpStage
-//        case fixingStage
-//        case finishStage
-//        case none
-//    }
     
     @IBOutlet weak var progressImgView: UIImageView!
     @IBOutlet weak var commentsLb: UILabel!
@@ -36,6 +27,7 @@ class MyProgressDetailVC: UIViewController {
     @IBOutlet weak var stageTitleLb: UILabel!
     @IBOutlet weak var progressLb: UILabel!
     var progressData : CLItem?
+    var tableDataSource : [ProgressStruct] = []
     var progressColor : UIColor?
     var progressImgName : String?
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
@@ -44,21 +36,8 @@ class MyProgressDetailVC: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.allowsSelection = false
-        tableView.separatorColor = .clear
-        addVideo()
-        setupDataForProgress()
-        if let imgname = progressImgName
-        {
-            progressImgView.image = UIImage(named: imgname)
-        }
+        setupUI()
 
-        setupdescriptionText()
-//        print(progressData?.progressDetails?.map({$0.datedescription}))
-       // print(progressData?.progressDetails)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,18 +53,35 @@ class MyProgressDetailVC: UIViewController {
         self.tableHeightConstraint.constant = contentheight + 50
         tableView.isScrollEnabled = false
     }
+    
     //MARK: - Helper Methods
 
+    func setupUI()
+    {
+        //TableView Setup
+        tableView.tableFooterView = UIView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+        tableView.separatorColor = .clear
+        //:TableView
+        setupDataForProgress()
+        if let imgname = progressImgName
+        {
+            progressImgView.image = UIImage(named: imgname)
+        }
+
+        setupdescriptionText()
+        
+    }
+    
     func setupDataForProgress()
     {
-        // let progress = Float(progressData?.progress ?? 0.0)
-        //progressBar.progress = progress
         stageTitleLb.text = progressData?.title
         let totalTaks = progressData?.progressDetails?.count
-        let completedTaks = progressData?.progressDetails?.filter({$0.status == "Completed"}).count
-        noOfTaskCompletedLb.text = "\(completedTaks ?? 0) of \(totalTaks ?? 0) Tasks Complete"
-        let progressBarData = Double(Double(completedTaks ?? 0) / Double(totalTaks ?? 0))
-        print(progressBarData)
+        let completedTasks = progressData?.progressDetails?.filter({$0.status == "Completed"})
+        noOfTaskCompletedLb.text = "\(completedTasks?.count ?? 0) of \(totalTaks ?? 0) Tasks Complete"
+        let progressBarData = Double(Double(completedTasks?.count ?? 0) / Double(totalTaks ?? 0))
         let isProgrssData = progressBarData.isNaN
         if isProgrssData{
 //            let progressInt = Int(progressBarData * 100)
@@ -96,11 +92,13 @@ class MyProgressDetailVC: UIViewController {
             progressBar.progress = Float(progressBarData)
             progressLb.text = "\(progressInt)%"
         }
-//        let progressInt = Int(progressBarData * 100)
-//        progressBar.progress = Float(progressBarData)
-//        progressLb.text = "\(progressInt)%"
         progressBar.progressTintColor = progressColor
         
+        tableDataSource = completedTasks?.sorted(by: {$0.dateWithoutTime.compare($1.date) == .orderedDescending}) ?? []
+        if let unCompletedTasks = progressData?.progressDetails?.filter({$0.status?.lc != "completed"})
+        {
+            tableDataSource.append(contentsOf: unCompletedTasks)
+        }
         tableView.reloadData()
         
     }
@@ -184,17 +182,16 @@ class MyProgressDetailVC: UIViewController {
 extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return progressData?.progressDetails?.count ?? 0
+        return tableDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyProgressDetailsCell") as! MyProgressDetailsCell
-        cell.progressNameLb.text = progressData?.progressDetails?[indexPath.row].name
-        let date = dateFormatter(dateStr: progressData?.progressDetails?[indexPath.row].dateactual ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy")
-        cell.dateLb.text = date
+        let item = tableDataSource[indexPath.row]
+        cell.progressNameLb.text = item.name
         cell.checkMarkImage.tintColor = progressColor
-        cell.checkMarkImage.image = progressData?.progressDetails?[indexPath.row].status == "Completed" ? UIImage(named: "icon_Check")?.withRenderingMode(.alwaysTemplate) : UIImage(named: "icon_UnCheck")
-        if progressData?.progressDetails?[indexPath.row].status == "Completed"{
+        if item.status?.lowercased() == "completed"{
+            let date = dateFormatter(dateStr: item.dateactual?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "dd/MM/yyyy")
             cell.checkMarkImage.image = UIImage(named: "icon_Check")?.withRenderingMode(.alwaysTemplate)
             cell.dateLb.text = date
         }else{

@@ -840,12 +840,17 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
-  - PagingCollectionViewLayout (0.0.4)
   - PromisesObjC (2.1.1)
+  - Realm (10.38.0):
+    - Realm/Headers (= 10.38.0)
+  - Realm/Headers (10.38.0)
+  - RealmSwift (10.38.0):
+    - Realm (= 10.38.0)
   - SDWebImage (5.13.2):
     - SDWebImage/Core (= 5.13.2)
   - SDWebImage/Core (5.13.2)
   - SideMenu (6.5.0)
+  - SkeletonView (1.30.4)
   - SwiftGifOrigin (1.7.0)
   - ValidationComponents (0.3.0):
     - ValidationToolkit (~> 0.4.1)
@@ -872,9 +877,10 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - MBCircularProgressBar
   - MBProgressHUD
-  - PagingCollectionViewLayout
+  - RealmSwift
   - SDWebImage
   - SideMenu
+  - SkeletonView
   - SwiftGifOrigin
   - ValidationComponents
   - WARangeSlider
@@ -919,10 +925,12 @@ SPEC REPOS:
     - MBCircularProgressBar
     - MBProgressHUD
     - nanopb
-    - PagingCollectionViewLayout
     - PromisesObjC
+    - Realm
+    - RealmSwift
     - SDWebImage
     - SideMenu
+    - SkeletonView
     - SwiftGifOrigin
     - ValidationComponents
     - ValidationToolkit
@@ -967,16 +975,18 @@ SPEC CHECKSUMS:
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
-  PagingCollectionViewLayout: a75339d9fe45affc116b6770f37c884a8a5e9cd9
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  Realm: 5902885dd1d5e71b0b020830caab937ecdf5bf07
+  RealmSwift: 0fc037d6c32c7c4fc9362892380f380114ecdcf0
   SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   ValidationComponents: fad1f9e9d7fbf3e10c893c880ef9d27627e90382
   ValidationToolkit: ce8e9c1a5d49eddc3266a009d46df5ea22042dbc
   WARangeSlider: 54b3e0853b8d16c444fd539005901aecee86837d
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: 6e53f8c47ac256242af6101fecb492dd72f672f3
+PODFILE CHECKSUM: 83217048cf893c780e00418aae57d5878da2a6ce
 
 COCOAPODS: 1.11.3

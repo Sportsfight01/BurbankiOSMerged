@@ -8,21 +8,19 @@
 
 import UIKit
 import SideMenu
-import PagingCollectionViewLayout
+//import PagingCollectionViewLayout
 import SDWebImage
+import SkeletonView
 
-class PhotosVC: UIViewController {
+class PhotosVC: BaseProfileVC {
     
     //MARK: - Properties
     
-    @IBOutlet weak var helpTextLBL: UILabel!
-    @IBOutlet weak var notificationCountLBL: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var seeAllPhotosBtn : UIButton!
 
     var collectionDataSource : [PhotoItem]?
-    var menu : SideMenuNavigationController!    
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
 //    var cellSpacing = (1/16) * UIScreen.main.bounds.width
@@ -36,8 +34,8 @@ class PhotosVC: UIViewController {
         setupUI()
         addGradientLayer()
         getPresentMonthListForVLC()
-        setupProfile()
-        sideMenuSetup()
+        setupTitles()
+       
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -47,15 +45,21 @@ class PhotosVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        setupProfile()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+       
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     //MARK: - Helper Funcs
     
+    func setupTitles()
+    {
+        profileView.titleLb.text = "MyPhotos"
+        profileView.helpTextLb.text = "Here's your most recent site photos.\nTap below to see all."
+    }
     func setupUI()
     {
         
@@ -71,39 +75,6 @@ class PhotosVC: UIViewController {
         
     }
     
-    func sideMenuSetup()
-    {
-        let sideMenuVc = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu = SideMenuNavigationController(rootViewController: sideMenuVc)
-        menu.leftSide = true
-        menu.menuWidth = 0.8 * UIScreen.main.bounds.width
-        menu.presentationStyle = .menuSlideIn
-     
-        menu.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        
-        
-    }
- 
-    func setupProfile()
-    {
-        profileImgView.contentMode = .scaleToFill
-        profileImgView.clipsToBounds = true
-        profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-        if let imgURlStr = CurrentUservars.profilePicUrl
-        {
-            profileImgView.image = imgURlStr
-        }
-//        profileImgView.addBadge(number: appDelegate.notificationCount)
-        if appDelegate.notificationCount == 0{
-            notificationCountLBL.isHidden = true
-        }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
-        }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileImgView.addGestureRecognizer(tap)
-        
-    }
     func setupServiceData(_ PhotosList : [DocumentsDetailsStruct])
     {
         
@@ -131,49 +102,29 @@ class PhotosVC: UIViewController {
         }
     }
     
-    
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
-
-    }
 
     //MARK: - Service Calls
     func getPresentMonthListForVLC()
     {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-            // print("jobregion :- \(jobRegion)")
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let auth = jobAndAuth.auth
+        self.collectionView.showAnimatedGradientSkeleton()
+        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: auth, contractNo: jobNumber), showActivity: false) { [weak self](result) in
+            DispatchQueue.main.async {
+                self?.collectionView.stopSkeletonAnimation()
+                self?.view.hideSkeleton()
             }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        
-        
-        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
             switch result
             {
             case .success(let data):
                 guard let self = self else {return}
                 let imageTypes = ["jpg", "png","jpeg"]
-                let documentList = data.filter( { imageTypes.contains( $0.type?.lowercased() ?? "") } )
+                let documentList = data.filter( { imageTypes.contains( $0.type?.trim().lowercased() ?? "") } )
                 guard documentList.count > 0 else {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
-                        self.helpTextLBL.text = "No photos available for this job number."
+                        self.profileView.helpTextLb.text = "No photos available for this job number."
                         self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
 //                     self.showAlert(message: "No photos found") { _ in
 //                        // self.backButtonPressed()
@@ -198,8 +149,6 @@ class PhotosVC: UIViewController {
     }
     @IBAction func didTappedOnMenuIcon(_ sender: UIButton) {
         present(menu, animated: true, completion: nil)
-//        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateInitialViewController() else {return}
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func supportBtnTapped(_ sender: UIButton) {
@@ -209,8 +158,11 @@ class PhotosVC: UIViewController {
 }
 
 //MARK: -  CollectionView Delegate & Datasource
-extension PhotosVC : UICollectionViewDelegate , UICollectionViewDataSource
+extension PhotosVC : UICollectionViewDelegate, SkeletonCollectionViewDataSource
 {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "PhotosCVCell"
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return collectionDataSource?.count ?? 0
@@ -253,26 +205,5 @@ extension PhotosVC : UICollectionViewDelegateFlowLayout
   }
 }
 
-extension UIImageView {
-    
-    func downloadImage(url : String)
-    {
-        if #available(iOS 13.0, *) {
-            image = UIImage(systemName: "photo")
-        } else {
-            // Fallback on earlier versions
-            image = nil
-        }
-        guard let url = URL(string: url) else {return}
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data, error == nil
-            {
-                DispatchQueue.main.async {
-                    self.image = UIImage(data: data)
-                }
-            }
-        }.resume()
-    }
-}
 
 

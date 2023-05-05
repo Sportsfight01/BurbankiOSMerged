@@ -26,6 +26,7 @@ target 'BurbankApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'ValidationComponents'
+  pod 'SkeletonView'
   #pod 'ImageLoader'
   #pod 'Kingfisher'
   pod 'SDWebImage'
@@ -35,7 +36,8 @@ target 'BurbankApp' do
 pod 'SideMenu'
 pod 'GrowingTextView'
 pod 'Alamofire'
-pod 'PagingCollectionViewLayout'
+pod 'RealmSwift'
+#pod 'PagingCollectionViewLayout'
 
   target 'MyPlaceTests' do
     inherit! :search_paths

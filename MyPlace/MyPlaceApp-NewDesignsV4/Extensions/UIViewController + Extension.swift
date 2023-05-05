@@ -10,63 +10,32 @@ import UIKit
 
 extension UIViewController {
     
-    func setupNavigationBar()
-    {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.barTintColor = AppColors.appGray
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor = UIColor.white
-    }
     func setupNavigationBarButtons(title : String = "" ,backButton : Bool = true, notificationIcon : Bool = true)
     {
         
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
-        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         //Setting appearance
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.shadowColor = UIColor(red: 230/255, green: 231/255, blue: 232/255, alpha: 0.5)
-            appearance.backgroundColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-            self.navigationController?.navigationBar.standardAppearance = appearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            self.navigationController?.navigationBar.compactAppearance = appearance
-        } else {
-            // Fallback on earlier versions
-            self.navigationController?.navigationBar.barTintColor = AppColors.appGray
-        }
-        
-        //
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.shadowColor = UIColor(red: 230/255, green: 231/255, blue: 232/255, alpha: 0.5)
+        appearance.backgroundColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        self.navigationController?.navigationBar.compactAppearance = appearance
         self.addLogoToNavigationBarItem()
-        //MARK: - Back Button
-//        let backBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(backButtonPressed))
-//        backBtn.tintColor = .white
-//        navigationItem.backBarButtonItem = backBtn
         
-        
-        let btn1 = UIButton(type: .custom)
-        //  btn1.backgroundColor = UIColor.blue
-        if #available(iOS 13.0, *) {
-            btn1.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
-        } else {
-            // Fallback on earlier versions
-            btn1.setImage(UIImage(named: "Ico-Back"), for: .normal)
-        }
-
-        btn1.tintColor = .white
-        btn1.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-       // btn1.backgroundColor = .red
-        btn1.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-        btn1.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        //Adding BackButton to navigationBar
+        let backButton = UIButton(type: .custom)
+        backButton.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        backButton.tintColor = .white
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        // btn1.backgroundColor = .red
+        backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         // self.navigationController?.navigationBar.back
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn1)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
         //notification button
         let btn2 = UIButton(type: .custom)
@@ -77,25 +46,38 @@ extension UIViewController {
         btn2.imageEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 8)
         //  btn2.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         // self.navigationController?.navigationBar.back
-        #warning("currently not receiving any data in contactus module so disabling this icon for now can be enabled later in future")
-//        if notificationIcon{
-//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
-//        }
+#warning("currently not receiving any data in contactus module so disabling this icon for now can be enabled later in future")
+        //        if notificationIcon{
+        //            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
+        //        }
         //to remove navigation separation line
         
     }
     func addLogoToNavigationBarItem() {
+        
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.image =  UIImage(named: "Top Menu Icon_ButbankMyplace")
         imageView.tintColor = .white
         let contentView = UIView()
         self.navigationItem.titleView = contentView
         self.navigationItem.titleView?.addSubview(imageView)
-        imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+       // imageView.backgroundColor = .purple
+//        contentView.backgroundColor = .red
+        //adding constraints for imageView
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: 30),
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.5)//50% of screen width
+        
+        ])
+        
+        
+        
+       
     }
     @objc func backButtonPressed()
     {
@@ -137,11 +119,6 @@ extension UIViewController {
     }
     func dateFormatter(dateStr : String , currentFormate : String , requiredFormate : String) -> String?
     {
-        //        let dateFormatter = DateFormatter()
-        ////        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        //        dateFormatter.dateFormat = currentFormate
-        //        let currentDate = dateFormatter.date(from: dateStr)
-        
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = currentFormate
         
@@ -211,6 +188,24 @@ extension UIView {
     
     
 }
+
+extension UIViewController
+{
+    #warning("Storyboard ID must be same as ViewController Name to utilize below method")
+    static func instace(sb : StoryBoard = .newDesignV4) -> Self{
+        
+        let instance = UIStoryboard(name: sb.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: self)) as! Self
+        return instance
+    }
+    
+    enum StoryBoard : String
+    {
+        case newDesignV4 = "NewDesignsV4"
+        case newDesignV5 = "NewDesignsV5"
+        case myPlaceLogin = "MyPlaceLogin"
+    }
+}
+
 extension UINavigationBar {
     
     func shouldRemoveShadow(_ value: Bool) -> Void {
@@ -219,5 +214,17 @@ extension UINavigationBar {
         } else {
             self.setValue(false, forKey: "hidesShadow")
         }
+    }
+}
+
+extension UIViewController
+{
+    func getLeadingSpaceForNavigationTitleImage() -> Double
+    {
+        let screenWidth = self.view.frame.width
+        let navigationTitleImgWidth = screenWidth * 0.5
+        let leadingConstant = (screenWidth / 2) - (navigationTitleImgWidth / 2) + 12
+        debugPrint("screenWidth :- \(screenWidth), titlewidth :- \(navigationTitleImgWidth), leadinConstant :- \(leadingConstant)")
+        return leadingConstant
     }
 }

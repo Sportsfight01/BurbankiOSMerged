@@ -60,9 +60,9 @@ class RecentSearchPopUp: UIViewController {
         
         setAppearanceFor(view: recentSearch, backgroundColor: nil, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY (size: FONT_14))
 
-        setAppearanceFor(view: btnStart, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_16))
+        setAppearanceFor(view: btnStart, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_16))
 
-        setAppearanceFor(view: btnShow, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_16))
+        setAppearanceFor(view: btnShow, backgroundColor: APPCOLORS_3.DisabledFooterIconGrey, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_16))
         
     }
     

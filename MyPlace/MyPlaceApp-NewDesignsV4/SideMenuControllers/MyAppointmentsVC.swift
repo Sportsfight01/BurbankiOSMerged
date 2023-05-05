@@ -11,6 +11,7 @@ import UIKit
 class MyAppointmentsVC: UIViewController {
 
     
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -23,13 +24,15 @@ class MyAppointmentsVC: UIViewController {
     
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         getAppointments()
        // setupProfile()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.setupNavigationBarButtons()
         setupProfile()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
     }
     func setupProfile()
@@ -37,12 +40,7 @@ class MyAppointmentsVC: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-//        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-//        {
-//           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-//            profileImgView.downloaded(from: url)
-//        }
-        
+
         if let imgURlStr = CurrentUservars.profilePicUrl
         {
            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
@@ -59,50 +57,33 @@ class MyAppointmentsVC: UIViewController {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name:StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+                let vc = NotificationsVC.instace(sb: .newDesignV4)
+                self.navigationController?.pushViewController(vc, animated: true)
 
     }
     //MARK: - Service Calls
     
     func getAppointments()
     {
-            var currenUserJobDetails : MyPlaceDetails?
-            currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-            if selectedJobNumberRegionString == ""
+        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+        let auth = jobAndAuth.auth
+
+        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
+            switch result
             {
-                let jobRegion = currenUserJobDetails?.region
-                selectedJobNumberRegionString = jobRegion!
-                print("jobregion :- \(jobRegion)")
-            }
-            let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-            let encodeString = authorizationString.base64String
-            let valueStr = "Basic \(encodeString)"
-        var contractNo : String = ""
-    
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-            
-            
-            NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: valueStr, contractNo: contractNo)) { [weak self](result) in
-                switch result
-                {
-                case .success(let data):
-                    print(data)
-                    self?.setupAppointments(progressData: data)
-                    
-                case.failure(let err):
-                    print(err.localizedDescription)
-                    DispatchQueue.main.async {
-                        self?.showAlert(message: err.localizedDescription)
-                    }
+            case .success(let data):
+                print(data)
+                self?.setupAppointments(progressData: data)
+                
+            case.failure(let err):
+                print(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self?.showAlert(message: err.localizedDescription)
                 }
             }
+        }
         
     }
     
@@ -149,7 +130,7 @@ extension MyAppointmentsVC : UITableViewDelegate, UITableViewDataSource
         }
         if let appointmentDatelb = containerView?.viewWithTag(102) as? UILabel
         {
-          let date = dateFormatter(dateStr: appointmentDates[indexPath.row], currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "d MMMM, yyyy")
+            let date = dateFormatter(dateStr: appointmentDates[indexPath.row].components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "d MMMM, yyyy")
             appointmentDatelb.text = date ?? "- -"
         }
         return cell

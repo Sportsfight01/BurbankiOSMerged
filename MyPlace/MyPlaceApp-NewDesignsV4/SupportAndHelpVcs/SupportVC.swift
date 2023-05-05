@@ -2,7 +2,7 @@
 //  SupportVC.swift
 //  BurbankApp
 //
-//  Created by Lifecykul on 15/12/21.
+//  Created by Naveen on 15/12/21.
 //  Copyright © 2021 DMSS. All rights reserved.
 //
 
@@ -12,6 +12,7 @@ class SupportVC: UIViewController {
     
     let gradientLayer = CAGradientLayer()
     
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var wholeView: UIView!
@@ -38,6 +39,7 @@ class SupportVC: UIViewController {
         super.viewWillAppear(animated)
         self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
         setupProfile()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -75,8 +77,9 @@ class SupportVC: UIViewController {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+                let vc = NotificationsVC.instace(sb: .newDesignV4)
+                self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

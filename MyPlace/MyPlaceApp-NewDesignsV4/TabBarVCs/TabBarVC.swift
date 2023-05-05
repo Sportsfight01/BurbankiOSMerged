@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import RealmSwift
 import UIKit
 
 class TabBarVC: UITabBarController {
@@ -16,45 +16,49 @@ class TabBarVC: UITabBarController {
     
     var tabBarItems : [TabBarItemStruct] = []
     var isFinanceTabVisible : Bool = false
+    let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
+        debugPrint("TabBarController", #function)
+//        getProgressData()
+        setupUI()
+        if let viewControllers = viewControllers {
+            for viewController in viewControllers {
+                _ = viewController.view
+            }
+        }
+
+      
+        
+     
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+       
+    }
+    
+    //MARK: - Helper Methods
+    
+    func setupUI()
+    {
+        self.delegate = self
+        //Tint COLOR
         self.tabBar.unselectedItemTintColor = UIColor.darkGray
         self.tabBar.tintColor = AppColors.appOrange
-//        self.tabBar.backgroundColor = UIColor.white
-        self.delegate = self
-       // setTabBarItems()
-        
-        //to make tabbar as cardView
+        //CARD VIEW
         tabBar.layer.shadowColor = UIColor.darkGray.cgColor
         tabBar.layer.shadowOpacity = 0.7
         tabBar.layer.shadowOffset = CGSize.zero
         tabBar.layer.shadowRadius = 5
-        self.tabBar.layer.borderColor = UIColor.clear.cgColor
-        self.tabBar.layer.borderWidth = 0
-        self.tabBar.clipsToBounds = false
-        self.tabBar.backgroundColor = UIColor.white
+        tabBar.backgroundColor = UIColor.white
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        getProgressData()
-     
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setupViewControllers()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        var tabFrame = self.tabBar.frame
-//        tabFrame.size.height = HEIGHT_TAB_BAR
-//        tabFrame.origin.y = self.view.frame.size.height - HEIGHT_TAB_BAR
-//        self.tabBar.frame = tabFrame
-        tabBar.itemWidth = 20
-        tabBar.itemSpacing = 10
+   
+            self.setupViewControllers()
         
        
     }
+    
     func setupViewControllers()
     {
         self.tabBarItems.removeAll()
@@ -64,67 +68,17 @@ class TabBarVC: UITabBarController {
             TabBarItemStruct(viewController: PhotosVC.self, title: "PHOTOS", selectedItemImage: "Photos_orange", unSelectedItemImage: "Photos_grey"),
             TabBarItemStruct(viewController: DocumentsVC.self, title: "DOCUMENTS", selectedItemImage: "Documents_orange", unSelectedItemImage: "Documents_grey"),
         ]
-        
-        if isFinanceTabVisible{
-            
-            let financeTab = TabBarItemStruct(viewController: FinanceVC.self, title: "FINANCE", selectedItemImage: "Finance_orange", unSelectedItemImage: "Finance_grey")
-            self.tabBarItems.append(financeTab)
-        }
-        
         self.viewControllers = tabBarItems.map { item in
             let vc = UINavigationController(rootViewController: item.viewController.instace())
+            vc.setNavigationBarHidden(true, animated: true)
             vc.tabBarItem = UITabBarItem(title: item.title, image: UIImage(named : item.unSelectedItemImage) , selectedImage: UIImage(named : item.selectedItemImage))
             return vc
             
         }
        
     }
-    //MARK: - ServiceCall
     
-    func getProgressData()
-    {
-        var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
-        if selectedJobNumberRegionString == ""
-        {
-            let jobRegion = currenUserJobDetails?.region
-            selectedJobNumberRegionString = jobRegion!
-            print("jobregion :- \(jobRegion)")
-        }
-        let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-        let encodeString = authorizationString.base64String
-        let valueStr = "Basic \(encodeString)"
-        
-        var contractNo : String = ""
     
-            if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-            {
-                contractNo = jobNum
-            }
-            else {
-                contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-            }
-        
-        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: valueStr, contractNo: contractNo)) {[weak self] (result) in
-            switch result
-            {
-            case .success(let data):
-                // print(data)
-                let filtered = data.filter({$0.phasecode?.lowercased() == "presite".lowercased()}).filter({($0.name?.trim().lowercased() == "Sign Building Contract".trim().lowercased() || $0.name?.trim().lowercased() == "Contract Signed".lowercased()) && $0.status?.lowercased() == "completed"})
-                
-                if filtered.count == 1
-                {
-                    self?.isFinanceTabVisible = true
-                    DispatchQueue.main.async {
-                        self?.setupViewControllers()
-                    }
-                }
-                
-            case.failure(let err):
-                print(err.localizedDescription)
-            }
-        }
-    }
 
 }
 extension TabBarVC : UITabBarControllerDelegate
@@ -136,16 +90,6 @@ extension TabBarVC : UITabBarControllerDelegate
     }
 }
 
-
-extension UIViewController
-{
-    
-   static func instace() -> Self{
-        
-        let instance = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateViewController(withIdentifier: String(describing: self)) as! Self
-        return instance
-    }
-}
 
 
 struct TabBarItemStruct

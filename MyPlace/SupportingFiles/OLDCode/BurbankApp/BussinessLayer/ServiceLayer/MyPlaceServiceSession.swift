@@ -22,9 +22,9 @@ class MyPlaceServiceSession
     let session = URLSession.shared
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    func callToGetDataFromServer(_ appendingURL:String, successBlock:@escaping successBlock, errorBlock:@escaping errorBlock,isResultEncodedString: Bool = false) // at this point of time we are assuming that jobNumber details are at first index of current user for authenticating
+    func callToGetDataFromServer(_ appendingURL:String,showActivity : Bool = true, successBlock:@escaping successBlock, errorBlock:@escaping errorBlock,isResultEncodedString: Bool = false) // at this point of time we are assuming that jobNumber details are at first index of current user for authenticating
     {
-        if !checkNetAvailabilityAndShowActivity()
+        if !checkNetAvailabilityAndShowActivity(showActivity: showActivity)
         {
             return
         }
@@ -36,23 +36,12 @@ class MyPlaceServiceSession
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
             if selectedJobNumberRegion != .OLD
             {
-                let currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]//// at this point of time we are assuming that jobNumber details are at first index of current user
-                let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
-                let encodeString = authorizationString.base64String
-                let valueStr = "Basic \(encodeString)"
+                let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+                guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+                let auth = jobAndAuth.auth
                 
-                var contractNo : String = ""
-            
-                    if let jobNum = appDelegate.currentUser?.jobNumber, !jobNum.trim().isEmpty
-                    {
-                        contractNo = jobNum
-                    }
-                    else {
-                        contractNo = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber ?? ""
-                    }
-                
-                urlRequest.addValue(valueStr, forHTTPHeaderField: "Authorization")
-                urlRequest.addValue(contractNo, forHTTPHeaderField: "ContractNumber")
+                urlRequest.addValue(auth, forHTTPHeaderField: "Authorization")
+                urlRequest.addValue(jobNumber, forHTTPHeaderField: "ContractNumber")
             }
             session.dataTask(with: urlRequest, completionHandler: {(data, response, error) in
                 
@@ -182,7 +171,7 @@ class MyPlaceServiceSession
             //
         })
     }
-    func checkNetAvailabilityAndShowActivity() -> Bool {
+    func checkNetAvailabilityAndShowActivity(showActivity : Bool = true) -> Bool {
         
         appDelegate.checkInternetConnection()
         
@@ -192,10 +181,11 @@ class MyPlaceServiceSession
             
             return false
         }
-        
-        DispatchQueue.main.async(execute: {
-            self.appDelegate.showActivity()
-        })
+        if showActivity{
+            DispatchQueue.main.async(execute: {
+                self.appDelegate.showActivity()
+            })
+        }
         
         return true
     }

@@ -15,111 +15,94 @@ enum NetworkError: Error {
 }
 class NetworkRequest
 {
-    class func makeRequest<T : Decodable>(type : T.Type , urlRequest : Router , completion : @escaping (Swift.Result<T , NetworkError>)->())
+    class func makeRequest<T : Decodable>(type : T.Type, urlRequest : Router, showActivity : Bool = true,  completion : @escaping (Swift.Result<T, NetworkError>)->())
     {
-      DispatchQueue.main.async {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.showActivity()
-      }
-  
-        print("url :- \(urlRequest.urlRequest?.url?.absoluteString)")
-        print("headers :- \(String(describing: urlRequest.urlRequest?.allHTTPHeaderFields))")
-//        print("Url:- ",urlRequest.urlRequest?.url?.absoluteString as Any)
-        if let jsonData = urlRequest.urlRequest?.httpBody
-        {
-            if let params = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
-            {
-                print("parameters :- ", params)
+        if showActivity{
+            DispatchQueue.main.async {
+                appDelegate.showActivity()
             }
         }
-        
-        
-//        let configuration = URLSessionConfiguration.default
-//        configuration.timeoutIntervalForRequest = urlRequestTimeOutInterval
-//        configuration.timeoutIntervalForResource = urlRequestTimeOutInterval
-//        let alamoFireManager = Alamofire.SessionManager(configuration: configuration) // not in this line
-        //guard Reachability.isConnectedToNetwork() else { self.showAlert(message: NoInternet) ; return }
-//        DispatchQueue.main.async {
-//            self.showLoading(text: "Loading")
-//        }
         AF.request(urlRequest).responseData { (response) in
+            #if DEDEBUG
+             response.debugPrintReqResponse()
+            #endif
             
-          DispatchQueue.main.async {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.hideActivity()
-          }
-          //  print(response)
-          //  print(try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments))
+            DispatchQueue.main.async {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.hideActivity()
+            }
             guard let data = response.data, response.error == nil else {
-
                 if let error = response.error as NSError? {
-                print(error)
-                    DispatchQueue.main.async {
-                      //  self.hideLoading()
-                    }
-                     completion(.failure(.domainError(error)))
+                    debugPrint(error)
+                    completion(.failure(.domainError(error)))
                 }
                 return
             }
-            
-            if let JSONString = String(data: data, encoding: String.Encoding.utf8)
-            {
-                print("response:p- ", JSONString)
-            }
-        
-           
             do {
                 let modelData = try JSONDecoder().decode(T.self, from: data)
-                DispatchQueue.main.async {
-                   //  self.hideLoading()
-                }
                 completion(.success(modelData))
             } catch let err{
-                DispatchQueue.main.async {
-                    //self.hideLoading()
-                    debugPrint(err.localizedDescription)
-                }
+                debugPrint("Decoding Error :- \(err.localizedDescription)")
                 completion(.failure(.decodingError(err)))
             }
         }
     }
-    class func makeRequestArray<T : Decodable>(type : T.Type , urlRequest : Router , completion : @escaping (Swift.Result<[T] , NetworkError>)->())
+    class func makeRequestArray<T : Decodable>(type : T.Type, urlRequest : Router, showActivity : Bool = true, completion : @escaping (Swift.Result<[T] , NetworkError>)->())
     {
-      print("url :- \(urlRequest.urlRequest?.url?.absoluteString)")
-      print("headers :- \(String(describing: urlRequest.urlRequest?.allHTTPHeaderFields))")
-      let appDelegate = UIApplication.shared.delegate as! AppDelegate
-     
-        DispatchQueue.main.async {
-           // self.showLoading(text: "Loading")
-          appDelegate.showActivity()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if showActivity
+        {
+            DispatchQueue.main.async {
+                appDelegate.showActivity()
+            }
         }
         AF.request(urlRequest).responseData { (response) in
-          print(response)
-          DispatchQueue.main.async {
-            appDelegate.hideActivity()
-          }
+            #if DEDEBUG
+             response.debugPrintReqResponse()
+            #endif
+            
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
             guard let data = response.data, response.error == nil else {
                 if let error = response.error as NSError?, error.domain == NSURLErrorDomain {
-                 
                     completion(.failure(.domainError(error)))
                 }
                 return
             }
             do {
                 let modelData = try JSONDecoder().decode([T].self, from: data)
-                DispatchQueue.main.async {
-                   // self.hideLoading()
-                }
                 completion(.success(modelData))
             } catch let err{
-              print(err.localizedDescription)
-                DispatchQueue.main.async {
-                   // self.hideLoading()
-                }
+                debugPrint("Decoding Error :- \(err.localizedDescription)")
                 completion(.failure(.decodingError(err)))
             }
-
+            
         }
-
+        
     }
 }
+
+
+extension AFDataResponse<Data>
+{
+    func debugPrintReqResponse()
+    {
+        let url = self.request?.url?.absoluteString ?? "No URL"
+        let headers = self.request?.allHTTPHeaderFields ?? [:]
+      //  let response = String(data: self.data ?? Data(), encoding: .utf8) ?? "Unable to Serialize Response"
+        if let jsonData = self.request?.httpBody{
+            if let params = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+            {
+                debugPrint("parameters :- ", params)
+            }
+        }
+        
+        debugPrint("Service URL :- \(url)", "Header Fields:- \(headers)", separator: "\n")
+//        print("Service Response :- \(response)")
+        
+    }
+}
+
+

@@ -182,13 +182,13 @@ class DayWisePhotoList<T>
         self.list = list
         
         #if DEDEBUG
-        print(yyyymmddString)
+       // print(yyyymmddString)
         #endif
         
         if !(yyyymmddString.contains(".")) {
             
             #if DEDEBUG
-            print("not exists")
+           // print("not exists")
             #endif
             
             self.yyyymmddString = yyyymmddString + ".00"
