@@ -32,9 +32,12 @@ class NotificationsVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        debugPrint(self.navigationController)
         self.setupNavigationBarButtons()
         jobNumber.text = CurrentUservars.jobNumber
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+ 
     }
     
     //MARK: - Service Calls
