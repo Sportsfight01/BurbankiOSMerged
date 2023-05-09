@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,6 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="BurbankApp" customModuleProvider="target">
             <connections>
+                <outlet property="contactUsBtn" destination="3tl-yq-wHd" id="7z8-oq-7v5"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="WXW-on-go2"/>
                 <outlet property="helpTextLb" destination="0q1-JM-MOA" id="5Xa-mr-wug"/>
                 <outlet property="menubtn" destination="cWz-hL-9Be" id="AQa-Zl-rsN"/>
@@ -51,6 +53,18 @@
                                         <constraint firstAttribute="height" constant="30" id="Df6-Ks-66Q"/>
                                     </constraints>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tl-yq-wHd">
+                                    <rect key="frame" x="404" y="22" width="36" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="36" id="Gjp-Yo-ycj"/>
+                                        <constraint firstAttribute="height" constant="36" id="S2f-mz-Lnz"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="ellipsis.message" catalog="system" symbolScale="large"/>
+                                    </state>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -59,7 +73,9 @@
                                 <constraint firstItem="cWz-hL-9Be" firstAttribute="leading" secondItem="SHR-LO-WP0" secondAttribute="leading" constant="16" id="9D7-Ib-fqm"/>
                                 <constraint firstItem="ecE-sx-yif" firstAttribute="centerX" secondItem="SHR-LO-WP0" secondAttribute="centerX" id="AUa-dc-Rza"/>
                                 <constraint firstAttribute="height" constant="80" id="Pim-0R-xmE"/>
+                                <constraint firstItem="3tl-yq-wHd" firstAttribute="centerY" secondItem="ecE-sx-yif" secondAttribute="centerY" id="UlZ-bv-yKu"/>
                                 <constraint firstItem="ecE-sx-yif" firstAttribute="centerY" secondItem="cWz-hL-9Be" secondAttribute="centerY" id="dfQ-Kh-QEL"/>
+                                <constraint firstAttribute="trailing" secondItem="3tl-yq-wHd" secondAttribute="trailing" constant="16" id="jpe-QT-aoS"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Bwv-TD-VPX">
@@ -78,7 +94,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second help text dslfkjasldkfjlsakdfjlksdjflksajfldksjflksd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pP5-ZL-hXm">
-                                    <rect key="frame" x="0.0" y="50.666666666666664" width="309" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="44" width="309" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,6 +172,7 @@
     <resources>
         <image name="BurbankLogo_White" width="40" height="40"/>
         <image name="Top Menu Icon_ButbankMyplace" width="971.5" height="153.5"/>
+        <image name="ellipsis.message" catalog="system" width="128" height="116"/>
         <image name="icon_Menu" width="36" height="36"/>
         <namedColor name="Black_BG_3">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

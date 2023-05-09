@@ -17,7 +17,12 @@ class BaseProfileVC: UIViewController {
         super.viewDidLoad()
         addProfileHeaderView()
         sideMenuSetup()
-        // Do any additional setup after loading the view.
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
+        profileView.profilePicImgView.superview?.addGestureRecognizer(tap)
+        profileView.contactUsBtn.addTarget(self, action: #selector(contactUsBtnTapped), for: .touchUpInside)
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -81,8 +86,7 @@ class BaseProfileVC: UIViewController {
         }else{
             profileView.notificationCountLb.text = "\(appDelegate.notificationCount)"
         }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileView.profilePicImgView.superview?.addGestureRecognizer(tap)
+     
         
     }
     
@@ -90,6 +94,13 @@ class BaseProfileVC: UIViewController {
     {
         debugPrint("leftBarButtonTapped")
         present(menu, animated: true)
+    }
+    @objc func contactUsBtnTapped()
+    {
+        debugPrint("contactUsBtnTapped")
+        let vc = UIStoryboard(name : StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as! ContactUsVC
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
 //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC

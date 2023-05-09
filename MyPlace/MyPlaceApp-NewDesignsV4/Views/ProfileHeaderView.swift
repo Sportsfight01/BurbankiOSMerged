@@ -12,6 +12,7 @@ class ProfileHeaderView: UIView {
 
     //MARK: - Properties
     
+    @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var contentView: UIView!    
     @IBOutlet weak var navBarTitleImg: UIImageView!
     @IBOutlet weak var menubtn: UIButton!

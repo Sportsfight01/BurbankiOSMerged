@@ -75,7 +75,7 @@ class MyProgressVC: BaseProfileVC {
         profileView.titleLb.textColor = .black
         profileView.helpTextLb.textColor = .black
         profileView.profilePicImgView.borderColor = .darkGray
-        [profileView.menubtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
+        [profileView.menubtn,profileView.contactUsBtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
     }
     
     func setupUI()
