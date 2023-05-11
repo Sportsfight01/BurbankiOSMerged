@@ -124,10 +124,18 @@ struct MyNotesStruct : Codable
     var authorname : String?
     var body : String?
     var notedate : String?
-    var noteid : Int?
+    var noteId : Int?
     var replies : [MyNotesStruct]?
     var replytoid : Int?
     var subject : String?
     var byclient : Bool?
+    
+    enum CodingKeys : String, CodingKey
+    {
+        case authorname = "unknownAuthor"
+        case body, noteId, replies, replytoid, subject, byclient
+        case notedate = "activityDate"
+        
+    }
         
 }
