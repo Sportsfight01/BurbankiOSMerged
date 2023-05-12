@@ -57,7 +57,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     }
     @IBAction func didTappedOnNewMsg(_ sender: UIButton) {
         
-        let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsNewMsgPopupVC") as! ContactUsNewMsgPopupVC
+        let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
         
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .overCurrentContext
@@ -66,7 +66,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             
             self?.getNotes()
         }
-        self.present(vc, animated: true)
+        self.present(vc, animated: false)
         
     }
     
@@ -86,18 +86,21 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
         
         appDelegate.showActivity()
-        
+        //HTTPCookieStorage.shared.cookieAcceptPolicy = .always
         //LoginService
         URLSession.shared.dataTask(with: urlRequest) {[weak self] data, response, error in
-            
-            guard let httpResp = response as? HTTPURLResponse, (200...299).contains(httpResp.statusCode) else {debugPrint("response code not valid");return}
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                ;return}
             debugPrint("login Service succesfully got the results")
             //Get Notes service
 
             self?.getNotesList()
               
-            
-            
         }.resume()
 
     }
@@ -109,106 +112,59 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         urlRequest.httpBody = getNotesPostData()
-        
+        DispatchQueue.main.async {
+            appDelegate.showActivity()
+        }
         URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
             DispatchQueue.main.async {
                 appDelegate.hideActivity()
             }
-            guard let httpResp = response as? HTTPURLResponse, (200...299).contains(httpResp.statusCode) else {debugPrint("response code not valid");return}
-            guard let data else { debugPrint("\(error?.localizedDescription ?? somethingWentWrong)");return }
-            //debug print
-            let jsonresp = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            debugPrint(jsonresp)
-            
+            //Validation
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                return}
+            guard let data else {
+                self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"));return }
+            //:End Of Validation
             
             guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
-            if let notesList = json.value(forKeyPath: "constructionContract.notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
-            {
-                if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
-                {
-                   self?.contactArr = tableData
-                   self?.tableDataSource = tableData
-                   DispatchQueue.main.async {
-                       if self?.tableDataSource?.count == 0
-                       {
-                           self?.tableView.setEmptyMessage("No Notes Found")
-                       }else {
-                           self?.tableView.reloadData()
-                       }
-                   }
-               }
-            }
+            
+            self?.setupSerivceData(dictionary: json)
          
         }.resume()
 
         
     }
-    func getNotesPostData() -> Data
+    
+    func setupSerivceData(dictionary : NSDictionary)
     {
-        guard let json = """
-         {
-         
-             "client": {
-         
-                 "contacts": {
-         
-                     "list": {}
-         
-                 }
-         
-             },
-         
-             "leadContract": {},
-         
-             "preconstructionContract": {
-         
-                 "tasks": {
-         
-                     "list": {
-         
-                         "resource": {},
-         
-                         "virtualResource": {}
-         
-                     }
-         
-                 },
-         
-                 "notes": {
-         
-                     "list": {}
-         
-                 }
-         
-             },
-         
-             "constructionContract": {
-         
-                 "tasks": {
-         
-                     "list": {
-         
-                         "resource": {},
-         
-                         "virtualResource": {}
-         
-                     }
-         
-                 },
-         
-                 "notes": {
-         
-                     "list": {}
-         
-                 }
-         
-             }
-         
-         }
-         
-         """.data(using: .utf8) else { return Data() }
-        return json
+        
+        var keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+        var tempDataSource : [MyNotesStruct] = []
+        keyPaths.forEach { keypath in
+            if let notesList = dictionary.value(forKeyPath: "\(keypath).notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
+            {
+                if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
+                {
+                    tempDataSource.append(contentsOf: tableData)
+                }
+            }
+        }
+        tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        self.contactArr = tempDataSource
+        self.tableDataSource = tempDataSource
+        DispatchQueue.main.async {
+            if self.tableDataSource?.count == 0
+            {
+                self.tableView.setEmptyMessage("No Notes Found")
+            }else {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
+    
     
 }
 //MARK: - Tableview Delegate && Datasource
@@ -281,7 +237,7 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = UIStoryboard(name: "NewDesignsV5", bundle: nil).instantiateViewController(withIdentifier: "ContactUsDetailsVC") as! ContactUsDetailsVC
+        let vc = ContactUsDetailsVC.instace(sb: .supportAndHelp)
         vc.contactDetails = tableDataSource?[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -318,3 +274,89 @@ func mailComposeController(_ controller: MFMailComposeViewController, didFinishW
     controller.dismiss(animated: true)
 }
 
+extension ContactUsVC
+{
+    func getNotesPostData() -> Data
+    {
+        guard let json = """
+         {
+
+             "client": {
+
+                 "contacts": {
+
+                     "list": {}
+
+                 }
+
+             },
+
+             "leadContract": {
+                    "tasks": {
+
+                     "list": {
+
+                         "resource": {},
+
+                         "virtualResource": {}
+
+                     }
+
+                 },
+
+                 "notes": {
+
+                     "list": {}
+
+                 }
+         },
+
+             "preconstructionContract": {
+
+                 "tasks": {
+
+                     "list": {
+
+                         "resource": {},
+
+                         "virtualResource": {}
+
+                     }
+
+                 },
+
+                 "notes": {
+
+                     "list": {}
+
+                 }
+
+             },
+
+             "constructionContract": {
+
+                 "tasks": {
+
+                     "list": {
+
+                         "resource": {},
+
+                         "virtualResource": {}
+
+                     }
+
+                 },
+         "notes": {
+
+                     "list": {}
+
+                 }
+
+             }
+
+         }
+         
+         """.data(using: .utf8) else { return Data() }
+        return json
+    }
+}

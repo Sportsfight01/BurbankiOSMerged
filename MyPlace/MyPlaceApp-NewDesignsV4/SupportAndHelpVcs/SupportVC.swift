@@ -37,7 +37,7 @@ class SupportVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
+        self.setupNavigationBarButtons(shouldShowNotification: false)
         setupProfile()
         headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
@@ -51,24 +51,18 @@ class SupportVC: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-        //        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-        //        {
-        //           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-        //            profileImgView.downloaded(from: url)
-        //        }
-        
+
         if let imgURlStr = CurrentUservars.profilePicUrl
         {
-            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
         }
-        
-        //        profileImgView.addBadge(number: appDelegate.notificationCount)
+        ///notification count
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
             notificationCountLBL.text = "\(appDelegate.notificationCount)"
         }
+        ///Gesture for ImageView to go to NotificationScreen
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)
         
@@ -115,7 +109,7 @@ extension SupportVC : UITableViewDelegate , UITableViewDataSource
     return cell
   }
   @objc func didTappedOnSeemore(sender : UIButton){
-    let vc = UIStoryboard(name: "NewDesignsV5", bundle: nil).instantiateViewController(withIdentifier: "InfoCentreVC") as! InfoCentreVC
+      let vc = InfoCentreVC.instace(sb: .supportAndHelp)
     self.navigationController?.pushViewController(vc, animated: true)
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,13 +117,13 @@ extension SupportVC : UITableViewDelegate , UITableViewDataSource
    // var vc : UIViewController!
     switch indexPath.row {
     case 0: //Info
-      let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "InfoCentreVC") as! InfoCentreVC
+        let vc = InfoCentreVC.instace(sb: .supportAndHelp)
         self.navigationController?.pushViewController(vc, animated: true)
     case 1: //FAQs
-      let vc = UIStoryboard(name : StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "FAQsVc") as! FAQsVc
+        let vc = FAQsVc.instace(sb: .supportAndHelp)
         self.navigationController?.pushViewController(vc, animated: true)
     case 2://Contact Us
-      let vc = UIStoryboard(name : StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as! ContactUsVC
+        let vc = ContactUsVC.instace(sb: .supportAndHelp)
         self.navigationController?.pushViewController(vc, animated: true)
         
     default:

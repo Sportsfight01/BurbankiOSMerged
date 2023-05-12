@@ -170,18 +170,18 @@ class MyProgressVC: BaseProfileVC {
         collectionView.dataSource = self
     }
     /// layout design for future versions
-    @available(iOS 13.0, *)
-    func compositionalLayout() -> UICollectionViewLayout
-    {
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(3/4), heightDimension: .fractionalHeight(1)), subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPagingCentered
-        section.interGroupSpacing = 16.0
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
+//    @available(iOS 13.0, *)
+//    func compositionalLayout() -> UICollectionViewLayout
+//    {
+//        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
+//
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(3/4), heightDimension: .fractionalHeight(1)), subitems: [item])
+//        let section = NSCollectionLayoutSection(group: group)
+//        section.orthogonalScrollingBehavior = .groupPagingCentered
+//        section.interGroupSpacing = 16.0
+//        let layout = UICollectionViewCompositionalLayout(section: section)
+//        return layout
+//    }
     
     
     func prepareCollectionViewItems() -> [CLItem]
@@ -306,15 +306,7 @@ class MyProgressVC: BaseProfileVC {
         
         setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [ProximaNovaRegular(size: FONT_10), ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10),ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10)], alignmentCenter: false)
         
-        
-        // let attrStr = NSMutableAttributedString(string: "Your home is currently ")
-        //let percentageAttrStr = NSAttributedString(string: "\(totalHomeProgressPercentage)%", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14.0 , weight: .semibold) , .foregroundColor : UIColor.black])
-        // let cmpletedStr = NSAttributedString(string: " completed. Swipe to see your stages.")
-        //attrStr.append(percentageAttrStr)
-        //attrStr.append(cmpletedStr)
-        // homeProgressLb.attributedText = attrStr
-        // homeProgressLb.attributedText
-        //  print(clItems.count)
+  
         collectionView.reloadData()
         collectionView.contentSize.width = collectionView.contentSize.width + 50 // to make last item of collectionView visible properly
         CurrentUservars.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"

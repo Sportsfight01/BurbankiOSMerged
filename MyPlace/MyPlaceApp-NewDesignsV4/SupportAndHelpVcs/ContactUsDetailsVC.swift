@@ -76,7 +76,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         let subject = "Re : \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0)"
        // let body = ""
         
-        let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsNewMsgPopupVC") as! ContactUsNewMsgPopupVC
+        let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
         vc.screenData = (sub : subject,to : recipientEmail ,from : self.contactDetails?.authorname ?? "" )
         vc.noteId = contactDetails?.noteId
         vc.modalTransitionStyle = .coverVertical

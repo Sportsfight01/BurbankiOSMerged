@@ -30,7 +30,7 @@ class MyHistoryVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.setupNavigationBarButtons()
         setupProfile()
     }
     
@@ -136,6 +136,10 @@ struct MyNotesStruct : Codable
         case body, noteId, replies, replytoid, subject, byclient
         case notedate = "activityDate"
         
+    }
+    var date : Date
+    {
+        return notedate?.components(separatedBy: ".").first?.getDate() ?? Date()
     }
         
 }

@@ -57,10 +57,10 @@ class MyContactsVC: BaseProfileVC {
         
         present(menu, animated: true, completion: nil)
     }
-    @IBAction func supportBtnTapped(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    @IBAction func supportBtnTapped(_ sender: UIButton) {
+//        guard let vc = ContactUsVC
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     //MARK: - Service Calls
    func checkUserLogin1()

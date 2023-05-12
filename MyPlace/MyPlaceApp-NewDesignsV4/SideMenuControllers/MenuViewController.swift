@@ -63,7 +63,7 @@ class MenuViewController: UIViewController {
         vc.selectionClosure = { selectedJobNumber in
             CurrentUservars.jobNumber = selectedJobNumber
             UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
-            kWindow.rootViewController = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateInitialViewController()
+            kWindow.rootViewController = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateInitialViewController()
             kWindow.makeKeyAndVisible()
         }
         kWindow.rootViewController?.present(vc, animated: true)
@@ -187,7 +187,7 @@ extension MenuViewController
             case .details:
                 return DetailsVC.instace()
             case .support:
-                return SupportVC.instace(sb: .newDesignV5)
+                return SupportVC.instace(sb: .supportAndHelp)
             case .notifications:
                 return NotificationsVC.instace()
             case .settings:

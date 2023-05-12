@@ -36,14 +36,14 @@ class PhotosListVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         let layout = UICollectionViewFlowLayout()
         let width = (collectionView.bounds.width - 24) / 5
         layout.itemSize = CGSize(width: width, height: width)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-            // Fallback on earlier versions
-            collectionView.collectionViewLayout = layout
+        collectionView.collectionViewLayout = layout
 
         
         self.photosCount = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).count
@@ -62,7 +62,7 @@ class PhotosListVC: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-      self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
+      self.setupNavigationBarButtons()
       newCountLb.isHidden = true
       newCountView.isHidden = true
       
@@ -149,43 +149,24 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ZoomImageVC") as! ZoomImageVC
+        
         let item = collectionDataSource[indexPath.section].rowData[indexPath.item]
-        if let cell = collectionView.cellForItem(at: indexPath) as? PhotosListCVCell
-        {
-            if let img = cell.imView.image
-            {
-                vc.imageData = img
-            }
-        }
-        
         //vc.imgData = item
-        let date = dateFormatter(dateStr: item.docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
-        vc.docDate = date
         let flatImageUrls = collectionDataSource.compactMap({$0.rowData}).flatMap({$0}).compactMap({$0.url})
-        vc.imageURlsArray = flatImageUrls
-        vc.currentPhotoIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
-       // let navVC = UINavigationController(rootViewController: vc)
-       // present(navVC, animated: true)
-        if #available(iOS 13.0, *) {
-            let imgVC = ImageSliderVC()
-            let items = collectionDataSource
-                .compactMap({$0.rowData})
-                .flatMap({$0})
-                .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "EEEE, dd/MM/yy") ?? "", url: $0.url ?? "") })
-            /*testing purpose
-//                .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy, HH:mm:ss") ?? "", url: $0.url ?? "") })*/
-            imgVC.collectionDataSource = items
-            imgVC.initialIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
-            self.navigationController?.pushViewController(imgVC, animated: true)
-
-        } else {
-            // Fallback on earlier versions
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
         
-       
+        let imgVC = ImageSliderVC()
+        let items = collectionDataSource
+            .compactMap({$0.rowData})
+            .flatMap({$0})
+            .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "EEEE, dd/MM/yy") ?? "", url: $0.url ?? "") })
+        /*testing purpose to see exact time on photo
+         //                .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy, HH:mm:ss") ?? "", url: $0.url ?? "") })*/
+        imgVC.collectionDataSource = items
+        imgVC.initialIndex = flatImageUrls.firstIndex(of: item.url ?? "") ?? 0
+        self.navigationController?.pushViewController(imgVC, animated: true)
+        
+        
+        
     }
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
       

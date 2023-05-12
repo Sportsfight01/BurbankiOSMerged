@@ -188,7 +188,7 @@ extension FinanceVC : UICollectionViewDataSource , SkeletonCollectionViewDataSou
   
     @objc func loadMoreBtnTapped(_ sender : UIButton)
     {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "FinanceDetailVC") as! FinanceDetailVC
+        let vc = FinanceDetailVC.instace()
         if let financeDetails = self.financeDetails
         {
             vc.moveToSection = sender.tag - 1
@@ -199,7 +199,7 @@ extension FinanceVC : UICollectionViewDataSource , SkeletonCollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "FinanceDetailVC") as! FinanceDetailVC
+        let vc = FinanceDetailVC.instace()
         if let financeDetails = self.financeDetails
         {
             vc.financeDetails = financeDetails

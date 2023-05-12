@@ -61,7 +61,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarButtons(notificationIcon: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        setupNavigationBarButtons(shouldShowNotification: true)
         myProgressLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
    
         
@@ -169,8 +170,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
 //        updateProfilePic(imageContent: imageBaseString!)
 //    }
     @IBAction func editBtnClicked(_ sender: UIButton) {
-        let storyBoard  = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil)
-        let profileVC = storyBoard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        
+        let profileVC = ProfileVC.instace(sb: .supportAndHelp)
         profileVC.delegate = self
         profileVC.modalPresentationStyle = .overCurrentContext
         present(profileVC, animated: true, completion: nil)
@@ -283,7 +284,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
                         if let userDic = jsonDic.object(forKey: "Result") as? [String: Any]
                         {
                             self.oldPassword = (userDic as NSDictionary).value(forKey: "Password") as? String ?? ""
-                            let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ChangePasswordVC") as! ChangePasswordVC
+                            let vc = ChangePasswordVC.instace()
                             vc.currentPassword = self.oldPassword
                             appDelegate.enteredEmailOrJob = self.emailLb.text!
                             self.navigationController?.pushViewController(vc, animated: true)
@@ -306,16 +307,16 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     @objc func didTappedOnshareaPartner(_ sender : UITapGestureRecognizer)
     {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "CoBurbankVC") as! CoBurbankVC
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "CoBurbankVC") as! CoBurbankVC
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     @objc func aboutBurbankViewTapped(_ sender : UITapGestureRecognizer)
     {
         let tag = sender.view?.tag
         
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "AboutBurbankWebVC") as! AboutBurbankWebVC
+        let vc = AboutBurbankWebVC.instace()
         switch tag
         {
         case 100:

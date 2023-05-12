@@ -42,7 +42,7 @@ class DetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.setupNavigationBarButtons()
         setupProfile()
         headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
@@ -85,9 +85,8 @@ class DetailsVC: UIViewController {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-                let vc = NotificationsVC.instace(sb: .newDesignV4)
-                self.navigationController?.pushViewController(vc, animated: true)
+        let vc = NotificationsVC.instace(sb: .newDesignV4)
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     //MARK:- Helper Methods
@@ -108,7 +107,7 @@ class DetailsVC: UIViewController {
     }
 
     @IBAction func supportBtnTapped(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
+        let vc = ContactUsVC.instace(sb: .supportAndHelp)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

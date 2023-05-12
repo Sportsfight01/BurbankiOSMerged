@@ -46,6 +46,7 @@ struct AppColors
     static let appOrange : UIColor = UIColor(named: namedColors.orange.rawValue)!
     static let appGray : UIColor = APPCOLORS_3.GreyTextFont
     static let myplaceGray : UIColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
+
     
     static let appPink : UIColor = UIColor.systemPink
     
@@ -67,11 +68,6 @@ struct AppColors
     static let systemGray2  = UIColor.systemGray2
     
     
-}
-struct StoryboardNames
-{
-  static let newDesing = "NewDesignsV4"
-    static let newDesing5 = "NewDesignsV5"
 }
 struct AppVariables
 {

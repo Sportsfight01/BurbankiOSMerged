@@ -98,7 +98,7 @@ class BaseProfileVC: UIViewController {
     @objc func contactUsBtnTapped()
     {
         debugPrint("contactUsBtnTapped")
-        let vc = UIStoryboard(name : StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as! ContactUsVC
+        let vc = ContactUsVC.instace(sb: .supportAndHelp)
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

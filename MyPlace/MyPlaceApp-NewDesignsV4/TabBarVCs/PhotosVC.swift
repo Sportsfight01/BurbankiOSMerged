@@ -33,7 +33,7 @@ class PhotosVC: BaseProfileVC {
         
         setupUI()
         addGradientLayer()
-        getPresentMonthListForVLC()
+        getPhotos()
         setupTitles()
        
         // Do any additional setup after loading the view.
@@ -104,7 +104,7 @@ class PhotosVC: BaseProfileVC {
     
 
     //MARK: - Service Calls
-    func getPresentMonthListForVLC()
+    func getPhotos()
     {
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
@@ -143,7 +143,7 @@ class PhotosVC: BaseProfileVC {
     
     //MARK:- Actions
     @IBAction func seeAllPhotosBtnClicked(_ sender: UIButton) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "PhotosListVC") as! PhotosListVC
+        let vc = PhotosListVC.instace()
         vc.collectionDataSource = self.collectionDataSource ?? []
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -152,7 +152,7 @@ class PhotosVC: BaseProfileVC {
     }
     
     @IBAction func supportBtnTapped(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
+        let vc = ContactUsVC.instace(sb: .supportAndHelp)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -182,7 +182,7 @@ extension PhotosVC : UICollectionViewDelegate, SkeletonCollectionViewDataSource
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "PhotosListVC") as! PhotosListVC
+        let vc = PhotosListVC.instace()
         vc.collectionDataSource = self.collectionDataSource ?? []
         vc.moveToSection = indexPath.item
         self.navigationController?.pushViewController(vc, animated: true)

@@ -39,7 +39,7 @@ class InfoCentreDetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
+        self.setupNavigationBarButtons(shouldShowNotification: false)
     }
     //MARK: - Helper Funcs
     func setupUI()

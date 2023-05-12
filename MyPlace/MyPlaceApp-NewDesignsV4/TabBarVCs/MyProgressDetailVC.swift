@@ -43,7 +43,7 @@ class MyProgressDetailVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.title = "BURBANK MYPLACE"
-        setupNavigationBarButtons(notificationIcon: false)
+        setupNavigationBarButtons()
        
     }
     override func viewDidLayoutSubviews() {

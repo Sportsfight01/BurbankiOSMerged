@@ -37,12 +37,10 @@ class ContactUsNewMsgPopupVC: UIViewController {
             headerLb.text = "Reply Message"
             // When clicked Reply
             subjectTf.isUserInteractionEnabled = false
-            if #available(iOS 13.0, *)
-            {
-          //  toTf.backgroundColor = .systemGray6
             subjectTf.backgroundColor = .systemGray6
-            }
             
+        }else {
+            headerLb.text = "New Message"
         }
     
         // Do any additional setup after loading the view.
@@ -69,7 +67,7 @@ class ContactUsNewMsgPopupVC: UIViewController {
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
         
-        dismiss(animated: true)
+        dismiss(animated: false)
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
@@ -111,7 +109,7 @@ class ContactUsNewMsgPopupVC: UIViewController {
                 DispatchQueue.main.async {
                  //   self?.contactArr = self?.tableDataSource
                    // self?.tableView.reloadData()
-                    self?.dismiss(animated: true) {
+                    self?.dismiss(animated: false) {
                         self?.completion?("success")
                     }
                    
