@@ -72,19 +72,19 @@
                                 <rect key="frame" x="0.0" y="128" width="414" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdl-k5-oIx">
-                                        <rect key="frame" x="60" y="209.5" width="50" height="25"/>
+                                        <rect key="frame" x="55" y="202" width="50" height="29.5"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC4-E2-Gzi">
-                                        <rect key="frame" x="110" y="209.5" width="21.5" height="25"/>
+                                        <rect key="frame" x="105" y="202" width="20.5" height="29.5"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                         <color key="textColor" name="GreyTextFont_3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email or job number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uf-d0-Jvd">
-                                        <rect key="frame" x="60" y="244.5" width="294" height="16"/>
+                                        <rect key="frame" x="55" y="241.5" width="299" height="19"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                         <color key="textColor" name="GreyTextFont_3"/>
                                         <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IV-1G-ba6">
-                                        <rect key="frame" x="104.5" y="508.5" width="205" height="29"/>
+                                        <rect key="frame" x="104.5" y="508.5" width="205" height="32"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                         <state key="normal" title="New user? Create Account">
                                             <color key="titleColor" name="GreyTextFont_3"/>
@@ -132,7 +132,7 @@
                                 <color key="backgroundColor" name="HeaderFooter_BG_3"/>
                                 <constraints>
                                     <constraint firstItem="6IV-1G-ba6" firstAttribute="centerX" secondItem="2jY-MG-LLm" secondAttribute="centerX" id="2K0-tW-eeH"/>
-                                    <constraint firstItem="Cdl-k5-oIx" firstAttribute="leading" secondItem="wPl-yQ-JTT" secondAttribute="leading" constant="20" id="6vd-gJ-VRo"/>
+                                    <constraint firstItem="Cdl-k5-oIx" firstAttribute="leading" secondItem="wPl-yQ-JTT" secondAttribute="leading" constant="15" id="6vd-gJ-VRo"/>
                                     <constraint firstItem="bds-kH-GOV" firstAttribute="height" secondItem="wPl-yQ-JTT" secondAttribute="height" id="Ax4-rg-hr7"/>
                                     <constraint firstItem="UC4-E2-Gzi" firstAttribute="leading" secondItem="Cdl-k5-oIx" secondAttribute="trailing" id="CPS-Wq-4b8"/>
                                     <constraint firstItem="6IV-1G-ba6" firstAttribute="top" secondItem="bds-kH-GOV" secondAttribute="bottom" constant="60" id="Ea5-pB-e3m"/>
@@ -140,7 +140,7 @@
                                     <constraint firstItem="wPl-yQ-JTT" firstAttribute="leading" secondItem="2jY-MG-LLm" secondAttribute="leading" constant="40" id="N0H-l8-JKT"/>
                                     <constraint firstItem="bds-kH-GOV" firstAttribute="trailing" secondItem="wPl-yQ-JTT" secondAttribute="trailing" constant="-20" id="Rpf-yR-C4U"/>
                                     <constraint firstItem="wPl-yQ-JTT" firstAttribute="height" secondItem="2jY-MG-LLm" secondAttribute="height" multiplier="0.074" id="TLU-Mp-Gpq"/>
-                                    <constraint firstItem="5Uf-d0-Jvd" firstAttribute="leading" secondItem="wPl-yQ-JTT" secondAttribute="leading" constant="20" id="Yv7-XQ-RHk"/>
+                                    <constraint firstItem="5Uf-d0-Jvd" firstAttribute="leading" secondItem="wPl-yQ-JTT" secondAttribute="leading" constant="15" id="Yv7-XQ-RHk"/>
                                     <constraint firstItem="wPl-yQ-JTT" firstAttribute="top" secondItem="5Uf-d0-Jvd" secondAttribute="bottom" constant="39.5" id="ZYg-Le-hgh"/>
                                     <constraint firstItem="bds-kH-GOV" firstAttribute="leading" secondItem="wPl-yQ-JTT" secondAttribute="leading" constant="20" id="akP-OH-kiM"/>
                                     <constraint firstAttribute="trailing" secondItem="wPl-yQ-JTT" secondAttribute="trailing" constant="40" id="fO9-Ua-d2I"/>
@@ -168,11 +168,11 @@
                     <connections>
                         <outlet property="btnCreate" destination="6IV-1G-ba6" id="Kor-Nq-KgG"/>
                         <outlet property="btnNext" destination="bds-kH-GOV" id="st3-zH-63G"/>
-                        <outlet property="labelHint" destination="5Uf-d0-Jvd" id="1al-ak-N9K"/>
-                        <outlet property="labelIn" destination="UC4-E2-Gzi" id="z1t-OU-180"/>
-                        <outlet property="labelSign" destination="Cdl-k5-oIx" id="U7n-qi-AdB"/>
-                        <outlet property="txtEmail" destination="A93-bU-yCO" id="btB-OQ-NcQ"/>
-                        <outlet property="viewText" destination="wPl-yQ-JTT" id="n3f-YO-PIP"/>
+                        <outlet property="inputFieldContainerView" destination="wPl-yQ-JTT" id="n3f-YO-PIP"/>
+                        <outlet property="lbHint" destination="5Uf-d0-Jvd" id="1al-ak-N9K"/>
+                        <outlet property="lbIn" destination="UC4-E2-Gzi" id="z1t-OU-180"/>
+                        <outlet property="lbSign" destination="Cdl-k5-oIx" id="U7n-qi-AdB"/>
+                        <outlet property="tfInputField" destination="A93-bU-yCO" id="btB-OQ-NcQ"/>
                         <segue destination="uXM-e8-E8Y" kind="show" identifier="showSetCentralPasswordVC" id="TMn-sY-M2f"/>
                         <segue destination="Fef-1d-gxO" kind="show" identifier="showLoginVC" id="EP6-Ok-av6"/>
                     </connections>
@@ -884,7 +884,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uxt-16-jTX"/>
+        <segue reference="TMn-sY-M2f"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ico-TouchID" width="36" height="37.5"/>

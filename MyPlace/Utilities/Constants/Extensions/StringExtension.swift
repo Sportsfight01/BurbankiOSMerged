@@ -32,7 +32,7 @@ extension String {
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
-    func htmlAttributed(family: String? = "ProximaNova-Regular", size: CGFloat = 14.0, color: UIColor = .black) -> NSAttributedString? {
+    func htmlAttributed(family: String? = "Montserrat-Regular", size: CGFloat = 14.0, color: UIColor = .black) -> NSAttributedString? {
           do {
               let htmlCSSString = "<style>" +
                   "html *" +

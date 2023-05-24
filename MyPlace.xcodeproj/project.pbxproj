@@ -28,6 +28,11 @@
 		4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782429F6677400CDD69D /* ProfileHeaderView.swift */; };
 		4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782629F679E000CDD69D /* BaseProfileVC.swift */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
+		4298DBE22A1CA32100109D6A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */; };
+		4298DBEC2A1CB81100109D6A /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBE82A1CB81000109D6A /* Montserrat-Light.ttf */; };
+		4298DBED2A1CB81100109D6A /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBE92A1CB81100109D6A /* Montserrat-ExtraBold.ttf */; };
+		4298DBEE2A1CB81100109D6A /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBEA2A1CB81100109D6A /* Montserrat-Regular.ttf */; };
+		4298DBEF2A1CB81100109D6A /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBEB2A1CB81100109D6A /* Montserrat-SemiBold.ttf */; };
 		42999C9429D5717400FE2507 /* ImageSliderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C9329D5717400FE2507 /* ImageSliderVC.swift */; };
 		429F4FB929F908B700D2BC47 /* RealmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429F4FB829F908B700D2BC47 /* RealmModels.swift */; };
 		42B69F2D29DABA43002A0700 /* ImageSliderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */; };
@@ -493,6 +498,11 @@
 		4223782429F6677400CDD69D /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		4223782629F679E000CDD69D /* BaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileVC.swift; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
+		4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		4298DBE82A1CB81000109D6A /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		4298DBE92A1CB81100109D6A /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4298DBEA2A1CB81100109D6A /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		4298DBEB2A1CB81100109D6A /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		42999C9329D5717400FE2507 /* ImageSliderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderVC.swift; sourceTree = "<group>"; };
 		429F4FB829F908B700D2BC47 /* RealmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModels.swift; sourceTree = "<group>"; };
 		42B69F2B29DABA43002A0700 /* ImageSliderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderCVCell.swift; sourceTree = "<group>"; };
@@ -1009,6 +1019,18 @@
 				4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */,
 			);
 			path = Favourites;
+			sourceTree = "<group>";
+		};
+		4298DBE02A1CA31700109D6A /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				4298DBE92A1CB81100109D6A /* Montserrat-ExtraBold.ttf */,
+				4298DBE82A1CB81000109D6A /* Montserrat-Light.ttf */,
+				4298DBEA2A1CB81100109D6A /* Montserrat-Regular.ttf */,
+				4298DBEB2A1CB81100109D6A /* Montserrat-SemiBold.ttf */,
+				4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */,
+			);
+			path = Montserrat;
 			sourceTree = "<group>";
 		};
 		42C869BC2A0E212B00DDA572 /* RealmModel */ = {
@@ -1655,6 +1677,7 @@
 		D16FE37624288A830082DECF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4298DBE02A1CA31700109D6A /* Montserrat */,
 				D16FE42F2428EF6E0082DECF /* Proxima Nova */,
 			);
 			path = Fonts;
@@ -2454,6 +2477,7 @@
 				A1659AE0292F4A4500C36B3B /* GoogleService-Info.plist in Resources */,
 				D16FE45F2428EF6F0082DECF /* Proxima Nova Extra Condensed Thin Italic.otf in Resources */,
 				D16FE47E2428EF6F0082DECF /* Proxima Nova Condensed Thin.otf in Resources */,
+				4298DBEF2A1CB81100109D6A /* Montserrat-SemiBold.ttf in Resources */,
 				D16FE46E2428EF6F0082DECF /* Proxima Nova Condensed Extrabold Italic.otf in Resources */,
 				4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */,
 				A1659ACF292F4A4500C36B3B /* MyriadPro-BoldCond.otf in Resources */,
@@ -2463,6 +2487,7 @@
 				A1659AE2292F4A4500C36B3B /* LaunchScreen_OLD.storyboard in Resources */,
 				A1659AD8292F4A4500C36B3B /* OpenSans-ExtraBold.ttf in Resources */,
 				D16FE4792428EF6F0082DECF /* Proxima Nova Extra Condensed Light.otf in Resources */,
+				4298DBED2A1CB81100109D6A /* Montserrat-ExtraBold.ttf in Resources */,
 				D16FE4602428EF6F0082DECF /* Proxima Nova Extra Condensed Bold_1.otf in Resources */,
 				D16FE4682428EF6F0082DECF /* Proxima Nova Extra Condensed Black.otf in Resources */,
 				A1659AC7292F4A4500C36B3B /* MyriadPro-BoldCondIt.otf in Resources */,
@@ -2534,13 +2559,16 @@
 				D16FE4692428EF6F0082DECF /* Proxima Nova Condensed Black.otf in Resources */,
 				A1659AD6292F4A4500C36B3B /* OpenSans-Light.ttf in Resources */,
 				D16FE46A2428EF6F0082DECF /* proxima-nova-bold-593a736757215.otf in Resources */,
+				4298DBEE2A1CB81100109D6A /* Montserrat-Regular.ttf in Resources */,
 				D16FE4712428EF6F0082DECF /* Proxima Nova Extra Condensed Thin.otf in Resources */,
 				D16FE46B2428EF6F0082DECF /* Proxima Nova A W07 Medium.otf in Resources */,
 				A162E54C2908F81E009647AE /* TimingsAndDirectionTVC.xib in Resources */,
 				D16FE46C2428EF6F0082DECF /* Proxima Nova Extra Condensed Semibold Italic.otf in Resources */,
+				4298DBEC2A1CB81100109D6A /* Montserrat-Light.ttf in Resources */,
 				ED8E4E2E24442B1F0010BF57 /* SortFilter.storyboard in Resources */,
 				D16FE47D2428EF6F0082DECF /* Proxima Nova Condensed Light Italic.otf in Resources */,
 				A1659ADA292F4A4500C36B3B /* OpenSans-Bold.ttf in Resources */,
+				4298DBE22A1CA32100109D6A /* Montserrat-Bold.ttf in Resources */,
 				42E6D7E929349BDC0038179F /* Assets.xcassets in Resources */,
 				D16FE4822428EF6F0082DECF /* Proxima Nova Extra Condensed Extrabold.otf in Resources */,
 			);

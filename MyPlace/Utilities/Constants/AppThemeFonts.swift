@@ -68,26 +68,31 @@ let FONT_signin = SCREEN_HEIGHT/50.6
 //MARK: - SYSTEM FONTS
 
 func lightFontWith (size: CGFloat) -> UIFont {
-    return  UIFont(name: "ProximaNova-Light", size: size)!
+    return  UIFont(name: "Montserrat-Light", size: size)!
 }
 
 
 func regularFontWith (size: CGFloat) -> UIFont {
-    return  UIFont(name: "ProximaNova-Regular", size: size)!
+    return  UIFont(name: "Montserrat-Regular", size: size)!
 }
 
-func mediumFontWith (size: CGFloat) -> UIFont { //ProximaNovaAW07-Medium 14.0
-//    return UIFont(name: "ProximaNovaAW07-Medium", size: size)!
-    return UIFont(name: "ProximaNova-Semibold", size: size)!
+func mediumFontWith (size: CGFloat) -> UIFont {
+    UIFont.familyNames.forEach { font in
+        if font == "Montserrat" {
+            let familynames = UIFont.fontNames(forFamilyName: font)
+            debugPrint("familyName :- \(font), families :- \(familynames)")
+        }
+    }
+    return UIFont(name: "Montserrat-SemiBold", size: size)!
 }
 
 func boldFontWith (size: CGFloat) -> UIFont {
-    return  UIFont(name: "ProximaNova-Bold", size: size)!
+    return  UIFont(name: "Montserrat-Bold", size: size)!
 }
 
 
-func extraBoldFontWith (size: CGFloat) -> UIFont {//ProximaNova-Extrabld 14.0
-    return UIFont(name: "ProximaNova-Extrabld", size: size)!
+func extraBoldFontWith (size: CGFloat) -> UIFont {
+    return UIFont(name: "Montserrat-ExtraBold", size: size)!
 }
 
 

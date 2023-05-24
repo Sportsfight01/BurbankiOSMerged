@@ -10,14 +10,11 @@ import UIKit
 class LaunchVCNew: BurbankAppVC {
     
     //MARK: - Properties
-    @IBOutlet weak var labelSign: UILabel!
-    @IBOutlet weak var labelIn: UILabel!
-    @IBOutlet weak var labelHint: UILabel!
-    
-    
-    @IBOutlet weak var viewText: UIView!
-    @IBOutlet weak var txtEmail: UITextField!
-    
+    @IBOutlet weak var lbSign: UILabel!
+    @IBOutlet weak var lbIn: UILabel!
+    @IBOutlet weak var lbHint: UILabel!
+    @IBOutlet weak var inputFieldContainerView: UIView!
+    @IBOutlet weak var tfInputField: UITextField!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnCreate: UIButton!
     
@@ -43,38 +40,26 @@ class LaunchVCNew: BurbankAppVC {
         }
 
         handleUISetup()
-        
-        #if DEDEBUG
-       // txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
-        #endif
         btnCreate.isHidden = true
-        txtEmail.delegate = self
+        tfInputField.delegate = self
         
     }
     override func viewWillAppear(_ animated: Bool) {
         
         CodeManager.sharedInstance.sendScreenName(landing_screen_loading)
-        txtEmail.text = appDelegate.enteredEmailOrJob
-        txtEmail.autocorrectionType = .no
-        txtEmail.resignFirstResponder()
-//        
-//#if DEDEBUG
-//txtEmail.text = "srikanth.vunyala@digitalminds.solutions"
-//#endif
+        tfInputField.text = appDelegate.enteredEmailOrJob
+        tfInputField.autocorrectionType = .no
+        tfInputField.resignFirstResponder()
         
     }
     //MARK: - View
-//    @objc func handleBackButton(_ sender: UIButton) {
-//        
-//        loadLoginView()
-//    }
     func handleUISetup () {
                 
-        setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelIn, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
-        setAppearanceFor(view: labelHint, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: lbSign, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: lbIn, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
+        setAppearanceFor(view: lbHint, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
-        setAppearanceFor(view: txtEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: tfInputField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
         setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
@@ -84,8 +69,8 @@ class LaunchVCNew: BurbankAppVC {
         let _ = setAttributetitleFor(view: btnCreate, title: "Are you a new user? Create account", rangeStrings: ["Are you a new user?", " Create account"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_13), FONT_BUTTON_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
         
         //New user? Create Account
-        viewText.layer.cornerRadius = radius_5
-        viewText.cardView()
+        inputFieldContainerView.layer.cornerRadius = radius_5
+        inputFieldContainerView.cardView()
         btnNext.layer.cornerRadius = radius_5
         
     }
@@ -127,11 +112,11 @@ class LaunchVCNew: BurbankAppVC {
         
         CodeManager.sharedInstance.sendScreenName(landing_screen_next_button_touch)
         //Form Validation
-        guard txtEmail.text?.trim().count ?? 0 > 0 else {AlertManager.sharedInstance.showAlert(alertMessage : "Please enter email or job number");return}
+        guard tfInputField.text?.trim().count ?? 0 > 0 else {AlertManager.sharedInstance.showAlert(alertMessage : "Please enter email or job number");return}
         
-        if let emailText = txtEmail.text
+        if let emailText = tfInputField.text
         {
-            if (txtEmail.text?.contains("@"))! || (txtEmail.text?.contains("."))!
+            if (tfInputField.text?.contains("@"))! || (tfInputField.text?.contains("."))!
             {
                 if emailText.trim().isValidEmail()
                 {
@@ -140,7 +125,7 @@ class LaunchVCNew: BurbankAppVC {
                 }else
                 {
                     AlertManager.sharedInstance.showAlert(alertMessage: "Please enter valid email" )
-                    txtEmail.becomeFirstResponder()
+                    tfInputField.becomeFirstResponder()
                 }
             }
             else {
@@ -153,7 +138,7 @@ class LaunchVCNew: BurbankAppVC {
                 let  bodyDict = ["jobNumber":emailText]
                 checkUserExistInServer(emailStr: emailText,body: bodyDict)
             }
-            txtEmail.resignFirstResponder()
+            tfInputField.resignFirstResponder()
         }
     }
     
@@ -227,7 +212,7 @@ extension LaunchVCNew {
     }
     private func handleUserSignUpOrLoginScenarios(user: User)
     {
-        appDelegate.enteredEmailOrJob = (txtEmail.text ?? "")
+        appDelegate.enteredEmailOrJob = (tfInputField.text ?? "")
         if !isEmail()
         {
             appDelegate.enteredEmailOrJob = appDelegate.enteredEmailOrJob.capitalized
