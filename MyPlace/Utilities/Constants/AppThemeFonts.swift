@@ -77,13 +77,7 @@ func regularFontWith (size: CGFloat) -> UIFont {
 }
 
 func mediumFontWith (size: CGFloat) -> UIFont {
-    UIFont.familyNames.forEach { font in
-        if font == "Montserrat" {
-            let familynames = UIFont.fontNames(forFamilyName: font)
-            debugPrint("familyName :- \(font), families :- \(familynames)")
-        }
-    }
-    return UIFont(name: "Montserrat-SemiBold", size: size)!
+    return UIFont(name: "Montserrat-Medium", size: size)!
 }
 
 func boldFontWith (size: CGFloat) -> UIFont {

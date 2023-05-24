@@ -26,6 +26,8 @@ class MyProgressDetailVC: UIViewController {
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var stageTitleLb: UILabel!
     @IBOutlet weak var progressLb: UILabel!
+    @IBOutlet weak var completionDateLb: UILabel!
+    
     var progressData : CLItem?
     var tableDataSource : [ProgressStruct] = []
     var progressColor : UIColor?
@@ -44,6 +46,7 @@ class MyProgressDetailVC: UIViewController {
         
         self.title = "BURBANK MYPLACE"
         setupNavigationBarButtons()
+        setupFonts()
        
     }
     override func viewDidLayoutSubviews() {
@@ -73,8 +76,18 @@ class MyProgressDetailVC: UIViewController {
 
         setupdescriptionText()
         
+        
     }
-    
+    func setupFonts()
+    {
+        noOfTaskCompletedLb.font = FONT_LABEL_BODY(size: FONT_9)
+        stageTitleLb.font = FONT_LABEL_BODY(size: FONT_18)
+        progressLb.font = FONT_LABEL_BODY(size: FONT_10)
+        commentsLb.font = FONT_LABEL_BODY(size: FONT_10)
+        completionDateLb.font = FONT_LABEL_BODY(size: FONT_10)
+        
+        
+    }
     func setupDataForProgress()
     {
         stageTitleLb.text = progressData?.title
@@ -188,6 +201,10 @@ extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyProgressDetailsCell") as! MyProgressDetailsCell
         let item = tableDataSource[indexPath.row]
+        //font setup
+        cell.progressNameLb.font = FONT_LABEL_BODY(size: FONT_10)
+        cell.dateLb.font = FONT_LABEL_BODY(size: FONT_10)
+        //
         cell.progressNameLb.text = item.name
         cell.checkMarkImage.tintColor = progressColor
         if item.status?.lowercased() == "completed"{

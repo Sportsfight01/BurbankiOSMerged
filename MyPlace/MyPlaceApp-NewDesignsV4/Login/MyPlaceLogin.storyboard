@@ -72,19 +72,19 @@
                                 <rect key="frame" x="0.0" y="128" width="414" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdl-k5-oIx">
-                                        <rect key="frame" x="55" y="202" width="50" height="29.5"/>
+                                        <rect key="frame" x="55" y="209.5" width="50" height="25"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC4-E2-Gzi">
-                                        <rect key="frame" x="105" y="202" width="20.5" height="29.5"/>
+                                        <rect key="frame" x="105" y="209.5" width="21.5" height="25"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                         <color key="textColor" name="GreyTextFont_3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email or job number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uf-d0-Jvd">
-                                        <rect key="frame" x="55" y="241.5" width="299" height="19"/>
+                                        <rect key="frame" x="55" y="244.5" width="299" height="16"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                         <color key="textColor" name="GreyTextFont_3"/>
                                         <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IV-1G-ba6">
-                                        <rect key="frame" x="104.5" y="508.5" width="205" height="32"/>
+                                        <rect key="frame" x="104.5" y="508.5" width="205" height="29"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                         <state key="normal" title="New user? Create Account">
                                             <color key="titleColor" name="GreyTextFont_3"/>
@@ -246,7 +246,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGl-eN-hf3">
-                                                <rect key="frame" x="289" y="3" width="46" height="30"/>
+                                                <rect key="frame" x="289" y="3" width="45" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                 <connections>
                                                     <action selector="passcodeButtonTappedWithSender:" destination="uXM-e8-E8Y" eventType="touchUpInside" id="YbF-xU-ZVE"/>

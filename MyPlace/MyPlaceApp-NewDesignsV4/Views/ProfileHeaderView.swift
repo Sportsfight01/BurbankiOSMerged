@@ -39,7 +39,9 @@ class ProfileHeaderView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth,
             .flexibleHeight]
-        setAppearanceFor(view: titleLb, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_25))
+        titleLb.font = FONT_LABEL_BODY(size: FONT_22)
+        helpTextLb.font = FONT_LABEL_BODY(size: FONT_10)
+        secondHelpTextLb.font = FONT_LABEL_BODY(size: FONT_10)
     }
     
     @IBAction func menuBtnAction(_ sender: UIButton) {

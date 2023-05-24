@@ -19,14 +19,22 @@ class MyProgressCVCell: UICollectionViewCell {
     
     override class func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     override func prepareForReuse() {
         super.prepareForReuse()
         progressView.subviews.forEach({$0.removeFromSuperview()})
     }
+    func setupFonts()
+    {
+        titleLb.font = FONT_LABEL_BODY(size: FONT_20)
+        lastUpdatedLb.font = FONT_LABEL_BODY(size: FONT_10)
+        detailLb.font = FONT_LABEL_BODY(size: FONT_22)
+        seeMoreBtn.titleLabel?.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
+    }
+    
     func setupCircularBar(progressColor : UIColor , progress : CGFloat , cicleImage : UIImage? = nil, index : Int)
     {
+        setupFonts()
         let circleBar = CircularProgressView(frame: progressView.frame)
         circleBar.strokeColor = progressColor
         circleBar.progress = progress
@@ -63,4 +71,6 @@ class MyProgressCVCell: UICollectionViewCell {
         progressView.backgroundColor = .clear
         // seeMoreBtn.setTitleColor(progressColor, for: UIControl.State())
     }
+    
+  
 }
