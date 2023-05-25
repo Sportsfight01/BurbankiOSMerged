@@ -21,7 +21,9 @@ class TimingsAndDirectionTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        bookAnAppointmentBTN.titleLabel?.font = FONT_BUTTON_HEADING(size: 12)
+        getDirectionBTN.titleLabel?.font = FONT_BUTTON_HEADING(size: 12)
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

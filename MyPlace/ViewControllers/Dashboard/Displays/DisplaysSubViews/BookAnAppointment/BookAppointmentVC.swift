@@ -56,6 +56,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
     @IBOutlet weak var dateInSuccesCardLBL: UILabel!
     @IBOutlet weak var timeInSuccessCardLBL: UILabel!
     
+    @IBOutlet weak var acceptTermsLBL: UILabel!
     @IBOutlet weak var successMSGLBL: UILabel!
     @IBOutlet weak var dateCardView: UIView!
     @IBOutlet weak var selecteTimeBTN: UIButton!
@@ -167,7 +168,12 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
 //        }
         
         
+        
+       
+        
     }
+    
+    
     
     func handleEmailTfUI()
     {
@@ -264,6 +270,36 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
 //        }else{
 //         setAppearanceFor(view: mobileNumberTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
 //        }
+        
+        setAppearanceFor(view: mobileNumberTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: commentsTV, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        setAppearanceFor(view: whereWouldyouLikeToLiveTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        
+        setAppearanceFor(view: backBTN, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_10))
+        
+        setAppearanceFor(view: titleLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: titleNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: streetNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_8))
+        setAppearanceFor(view: dateLBLinRqstCard, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: dateLBLInChooseDateCard, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
+        
+      
+        setAppearanceFor(view: successMSGLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
+        
+        setAppearanceFor(view: estateNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_16))
+        setAppearanceFor(view: dateInSuccesCardLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: timeInSuccessCardLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_8))
+        
+        setAppearanceFor(view: acceptTermsLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_9))
+        
+        
+        setAppearanceFor(view: chooseYourDateBTN, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: middleOftheBTN, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: mrngBTN, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        setAppearanceFor(view: afternoonBTN, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
+        
+        setAppearanceFor(view: selecteTimeBTN, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: requestBTN, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
         
     }
     

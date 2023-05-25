@@ -94,6 +94,11 @@ class DisplaysMapDetailCell: UITableViewCell {
         [bedRoomCountLBL,bathRoomCountLBL,carSpaceCountLBL].forEach { lbl in
             setAppearanceFor(view: lbl, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))
         }
+        setAppearanceFor(view: houseNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_HEADING(size: FONT_10))
+        setAppearanceFor(view: estateNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_HEADING(size: FONT_8))
+        setAppearanceFor(view: facadeNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
+        setAppearanceFor(view: streetNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

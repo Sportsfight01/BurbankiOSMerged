@@ -11,6 +11,7 @@ import UIKit
 class DisplaysRegionsVC: UIViewController {
 
     
+    @IBOutlet weak var titleLBL: UILabel!
     @IBOutlet weak var regionTableHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var arrRegions: [String]?
@@ -27,6 +28,7 @@ class DisplaysRegionsVC: UIViewController {
         print(arrRegions)
         self.tableView.reloadData()
         self.tableView.layoutIfNeeded()
+        setAppearanceFor(view: titleLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_HEADING(size: FONT_12))
     }
     
     @IBAction func handleSomeButtonAction (_ sender: UIButton) {

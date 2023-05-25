@@ -20,6 +20,7 @@ class DisplaysMapVC: UIViewController {
     var selectedMarker : NearByPlaceMarkers?
     private var clusterManager: GMUClusterManager!
     
+    @IBOutlet weak var backBTN: UIButton!
     @IBOutlet weak var backBTNCard: UIView!
     
     @IBOutlet weak var mapView: MyPlaceMap!
@@ -51,6 +52,10 @@ class DisplaysMapVC: UIViewController {
         mapView.isMyLocationEnabled = true
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
         
+        setAppearanceFor(view: titleNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_HEADING(size: FONT_12))
+        setAppearanceFor(view: estateNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
+        setAppearanceFor(view: streetNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_10))
+        setAppearanceFor(view: backBTN, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
         
         
     }
@@ -414,7 +419,6 @@ extension DisplaysMapVC: UITableViewDelegate, UITableViewDataSource {
             cell.bookAnAppointmentBTN.tag = indexPath.row
             cell.getDirectionBTN.addTarget(self, action: #selector(didTappedOnGetDirections(_:)), for: .touchUpInside)
             cell.bookAnAppointmentBTN.addTarget(self, action: #selector(didTappedOnBookAppointments(_:)), for: .touchUpInside)
-            
             cell.selectionStyle = .none
             if self.houseDetailsByHouseTypeArr.count > 0{
                 let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnTradingView))

@@ -38,7 +38,7 @@ class DisplaysDesignsTVCell: UITableViewCell, UITableViewDelegate, UITableViewDa
         super.awakeFromNib()
         subTableView.tableFooterView = UIView()
         subTableView.separatorColor = .clear
-        
+        setupUI()
     }
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -54,6 +54,14 @@ class DisplaysDesignsTVCell: UITableViewCell, UITableViewDelegate, UITableViewDa
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupUI(){
+        setAppearanceFor(view: estateNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: locationsLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_HEADING(size: FONT_8))
+        setAppearanceFor(view: bedCountLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_HEADING(size: FONT_8))
+        setAppearanceFor(view: bathroomCountLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_HEADING(size: FONT_8))
+        setAppearanceFor(view: parkingCountLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_HEADING(size: FONT_8))
     }
     func fillAllDisplayHomeDetails () {
         
@@ -144,7 +152,7 @@ class DisplaysDesignsSubTVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setAppearanceFor(view: propertyNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_BODY(size: FONT_8))
     }
     
 

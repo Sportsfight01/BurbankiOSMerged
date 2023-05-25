@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qaa-wK-WMq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qaa-wK-WMq">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -3664,7 +3664,7 @@
                                                     <rect key="frame" x="10" y="5" width="171.33333333333334" height="90"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWX-Id-2PN">
-                                                    <rect key="frame" x="395.33333333333331" y="5" width="22.666666666666686" height="20.666666666666664"/>
+                                                    <rect key="frame" x="395.33333333333331" y="5" width="22.666666666666686" height="20.666666666666668"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vWX-Id-2PN" secondAttribute="height" multiplier="20:18" id="2Cw-S4-nGM"/>
                                                     </constraints>
@@ -5197,7 +5197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4H-Cn-ycK">
-                                <rect key="frame" x="0.0" y="532" width="428" height="370"/>
+                                <rect key="frame" x="0.0" y="498" width="428" height="370"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkI-I2-HZm">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="60"/>
@@ -10284,7 +10284,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jBj-gU-LX9">
-                                <rect key="frame" x="0.0" y="111" width="428" height="480"/>
+                                <rect key="frame" x="0.0" y="111" width="428" height="446"/>
                                 <color key="backgroundColor" name="Body_BG_3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DisplaysDesignsTVCell" id="lmK-Ux-Lca" customClass="DisplaysDesignsTVCell" customModule="BurbankApp" customModuleProvider="target">
@@ -10544,6 +10544,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                         <outlet property="collectionHeight" destination="dOS-4j-QNA" id="exB-Yg-aRk"/>
                         <outlet property="colletionView" destination="RrL-db-efF" id="wIq-M6-0s1"/>
                         <outlet property="tableView" destination="jBj-gU-LX9" id="Axv-z0-420"/>
+                        <outlet property="titleNameLBL" destination="AwM-ud-J45" id="wBz-Tr-aTO"/>
                         <segue destination="Jsv-MT-Gf2" kind="push" identifier="DisplaysRegionsMapDetailVC" id="5hr-w0-YnI"/>
                     </connections>
                 </viewController>
@@ -10629,7 +10630,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXi-x2-Tnq" userLabel="View1">
-                                <rect key="frame" x="0.0" y="441" width="428" height="150"/>
+                                <rect key="frame" x="0.0" y="407" width="428" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jz8-fb-Bwz" userLabel="View2">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="50"/>
@@ -11221,6 +11222,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                     </view>
                     <navigationItem key="navigationItem" id="Bpx-nR-6BC"/>
                     <connections>
+                        <outlet property="backBTN" destination="ZPX-I6-VMn" id="uJG-E3-zr8"/>
                         <outlet property="displayDetailsCard" destination="OXi-x2-Tnq" id="mq4-cs-46B"/>
                         <outlet property="estateNameLBL" destination="lXC-dF-rQt" id="GMv-Ll-AtV"/>
                         <outlet property="mapView" destination="OwP-Ju-xRJ" id="XVv-qm-QXC"/>
@@ -11334,6 +11336,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                     <connections>
                         <outlet property="regionTableHeight" destination="gLC-NP-vjc" id="n7l-qh-Ut9"/>
                         <outlet property="tableView" destination="WLY-56-k3t" id="Nfr-kx-Mmz"/>
+                        <outlet property="titleLBL" destination="zYS-32-vje" id="sB4-r9-Egg"/>
                         <segue destination="Jsv-MT-Gf2" kind="push" identifier="DisplaysRegionsMapDetailVC" id="mHW-r3-k9A"/>
                     </connections>
                 </viewController>
@@ -11498,7 +11501,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADY-UC-JUV">
-                                <rect key="frame" x="0.0" y="289" width="428" height="302"/>
+                                <rect key="frame" x="0.0" y="289" width="428" height="268"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tuesday, March 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUb-eQ-xyL">
                                         <rect key="frame" x="20" y="10" width="175" height="21"/>
@@ -11635,7 +11638,7 @@ once you let us know your preference</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSC-dp-Mii">
-                                <rect key="frame" x="0.0" y="289" width="428" height="302"/>
+                                <rect key="frame" x="0.0" y="289" width="428" height="268"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your appointment request. A New Home Consultant will be in touch with your precise appointment times." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3D-FL-Nvk">
                                         <rect key="frame" x="30" y="180" width="368" height="64"/>
@@ -11702,10 +11705,10 @@ once you let us know your preference</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WvA-5R-hhD">
-                                <rect key="frame" x="0.0" y="289" width="428" height="302"/>
+                                <rect key="frame" x="0.0" y="289" width="428" height="268"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCp-4T-D8J">
-                                        <rect key="frame" x="10" y="0.0" width="408" height="298"/>
+                                        <rect key="frame" x="10" y="0.0" width="408" height="264"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qxW-4N-smc">
                                                 <rect key="frame" x="0.0" y="0.0" width="408" height="340"/>
@@ -11758,10 +11761,10 @@ once you let us know your preference</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-23-daY">
-                                <rect key="frame" x="0.0" y="289" width="428" height="302"/>
+                                <rect key="frame" x="0.0" y="289" width="428" height="268"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c91-X9-zLM">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="302"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="268"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lQ-eG-5n2">
                                                 <rect key="frame" x="0.0" y="0.0" width="428" height="600"/>
@@ -12017,9 +12020,10 @@ once you let us know your preference</string>
                     </view>
                     <navigationItem key="navigationItem" id="eg3-H7-7E1"/>
                     <connections>
+                        <outlet property="acceptTermsLBL" destination="fMs-Yo-3MM" id="O4b-RP-f4u"/>
                         <outlet property="afternoonBTN" destination="QrD-lX-eBH" id="6Sm-6u-apB"/>
                         <outlet property="appointmentMSGInDateAndTimeCARDLBL" destination="4ta-ug-Yzk" id="PuT-1e-Ueo"/>
-                        <outlet property="backBTN" destination="Sex-2h-XTt" id="lOt-V6-fQ2"/>
+                        <outlet property="backBTN" destination="Sex-2h-XTt" id="vyr-Rh-Y05"/>
                         <outlet property="backBTNCardWidthConstant" destination="YLQ-fC-wnD" id="hr5-ex-cVl"/>
                         <outlet property="backBtnView" destination="1mp-Ga-6zq" id="Qdu-mS-Dnk"/>
                         <outlet property="backIconBtn" destination="NSH-hh-gxV" id="CbX-6E-jvC"/>
@@ -12140,7 +12144,7 @@ once you let us know your preference</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vib-J6-XqE">
-                                <rect key="frame" x="0.0" y="441" width="428" height="150"/>
+                                <rect key="frame" x="0.0" y="407" width="428" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0A1-sj-m2n" userLabel="View2">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="50"/>
@@ -12735,6 +12739,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                     </view>
                     <navigationItem key="navigationItem" id="ltu-ff-0ma"/>
                     <connections>
+                        <outlet property="backBTN" destination="uu9-nC-ECt" id="pSp-qV-JZV"/>
                         <outlet property="backBTNCard" destination="kqw-w8-WNp" id="dlW-YC-0oy"/>
                         <outlet property="displayDetailsCard" destination="Vib-J6-XqE" id="duS-g6-vGw"/>
                         <outlet property="estateNameLBL" destination="ooJ-CS-Lio" id="4Qc-Df-YLs"/>
@@ -12783,7 +12788,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                 <color key="backgroundColor" name="Body_BG_3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yq7-Yd-JTR">
-                                <rect key="frame" x="0.0" y="131" width="428" height="460"/>
+                                <rect key="frame" x="0.0" y="97" width="428" height="460"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-zc-6Fn" userLabel="View2">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="60"/>
@@ -13409,7 +13414,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsTraffic="YES" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flF-px-1qd">
-                                <rect key="frame" x="0.0" y="48" width="428" height="542"/>
+                                <rect key="frame" x="0.0" y="48" width="428" height="508"/>
                                 <connections>
                                     <outlet property="delegate" destination="JCo-a0-OkX" id="8Mg-wo-eS3"/>
                                 </connections>
@@ -13422,7 +13427,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4n-o3-Hvp">
-                                <rect key="frame" x="0.0" y="531" width="428" height="60"/>
+                                <rect key="frame" x="0.0" y="497" width="428" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJe-aQ-GEn" userLabel="View2">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="60"/>
@@ -14506,8 +14511,8 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XYD-gi-wgH"/>
-        <segue reference="oK4-nA-jN8"/>
+        <segue reference="0AC-nT-gUD"/>
+        <segue reference="Qfo-3J-yYK"/>
         <segue reference="5hr-w0-YnI"/>
         <segue reference="XLK-Lu-xSd"/>
         <segue reference="mUn-gE-koJ"/>

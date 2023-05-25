@@ -19,6 +19,8 @@ class DisplyHomesFavouritesTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.favouriteBTN.addTarget(self, action: #selector(didTappedOnFavourites(_:)), for: .touchUpInside)
+        setAppearanceFor(view: estateNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_10))
+        setAppearanceFor(view: designCountLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_9))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
