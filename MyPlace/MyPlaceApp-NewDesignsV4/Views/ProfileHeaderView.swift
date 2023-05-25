@@ -40,8 +40,8 @@ class ProfileHeaderView: UIView {
         contentView.autoresizingMask = [.flexibleWidth,
             .flexibleHeight]
         titleLb.font = FONT_LABEL_BODY(size: FONT_22)
-        helpTextLb.font = FONT_LABEL_BODY(size: FONT_10)
-        secondHelpTextLb.font = FONT_LABEL_BODY(size: FONT_10)
+        helpTextLb.font = FONT_LABEL_BODY(size: FONT_11)
+        secondHelpTextLb.font = FONT_LABEL_BODY(size: FONT_11)
         notificationCountLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
     }
     

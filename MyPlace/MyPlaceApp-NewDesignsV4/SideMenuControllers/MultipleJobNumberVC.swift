@@ -108,7 +108,7 @@ extension MultipleJobNumberVC : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: tableView.frame.width, height: 70)))
         footerLabel.numberOfLines = 0
-        footerLabel.font = ProximaNovaRegular(size: 14.0)
+        footerLabel.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
         footerLabel.textColor = APPCOLORS_3.GreyTextFont
         footerLabel.textAlignment = .center
         footerLabel.text = "* Access other job numbers from menu option \"MyJobNumber\""

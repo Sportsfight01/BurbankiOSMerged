@@ -19,12 +19,13 @@ extension UIViewController {
         self.addBackButton()
         ///NavigationLogo
         self.addLogoToNavigationBarItem()
+       
         ///Adding ContactUs Btn
-        if shouldShowNotification{
-            self.addContactUsButton()
-        }else {
-            self.navigationItem.rightBarButtonItem = nil
-        }
+//        if shouldShowNotification{
+//            self.addContactUsButton()
+//        }else {
+//            self.navigationItem.rightBarButtonItem = nil
+//        }
         //to remove navigation separation line
         
     }

@@ -47,11 +47,12 @@ class FinanceDetailCell: UITableViewCell {
     func setupFonts()
     {
         //titlesLbs
-        (bottomTitleLbs + [financeDescriptionLb]).forEach({$0.font = FONT_LABEL_BODY(size: FONT_10)})
+        bottomTitleLbs.forEach({$0.font = FONT_LABEL_BODY(size: FONT_12)})
+        financeDescriptionLb.font = FONT_LABEL_BODY(size: FONT_12)
         //valuesLbs
         [approvedVariationsLb,adjustedContractValueLb,totalAmountClaimedLb, totalAmountReceivedLb,financeAmountLb].forEach({
             
-            $0?.font = FONT_LABEL_SUB_HEADING(size: FONT_10)
+            $0?.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
         })
     }
     

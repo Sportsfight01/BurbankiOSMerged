@@ -55,7 +55,7 @@ class FinanceCVCell: UICollectionViewCell {
     {
         //titles
         [totalClaimedTitleLb,totalReceivedTitleLb,approvedVariationTitleLb,approvedVariationTitleLb,adjustedContractValueTitleLb].forEach({
-            $0?.font = FONT_LABEL_BODY(size: FONT_10)
+            $0?.font = FONT_LABEL_BODY(size: FONT_12)
         })
         //headers
         [variationToDateHeaderLb, claimsToDateHeaderLb, ReceiptsToDateHeaderLb].forEach({
@@ -63,12 +63,12 @@ class FinanceCVCell: UICollectionViewCell {
         })
         //values labes
         [approvedVariationLb,adjustedContractValueLb,totalClaimedLb,totalReceivedLb].forEach({
-            $0?.font = FONT_LABEL_SUB_HEADING(size: FONT_10)
+            $0?.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
         })
         
         //top labels
         overViewLb.font = FONT_LABEL_BODY(size: FONT_25)
-        tapForMoreInfoLb.font = FONT_LABEL_BODY(size: FONT_10)
+        tapForMoreInfoLb.font = FONT_LABEL_BODY(size: FONT_12)
         
     }
 }

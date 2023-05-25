@@ -80,11 +80,11 @@ class MyProgressDetailVC: UIViewController {
     }
     func setupFonts()
     {
-        noOfTaskCompletedLb.font = FONT_LABEL_BODY(size: FONT_9)
+        noOfTaskCompletedLb.font = FONT_LABEL_BODY(size: FONT_10)
         stageTitleLb.font = FONT_LABEL_BODY(size: FONT_18)
         progressLb.font = FONT_LABEL_BODY(size: FONT_10)
-        commentsLb.font = FONT_LABEL_BODY(size: FONT_10)
-        completionDateLb.font = FONT_LABEL_BODY(size: FONT_10)
+        commentsLb.font = FONT_LABEL_BODY(size: FONT_11)
+        completionDateLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
         
         
     }
@@ -203,7 +203,7 @@ extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
         let item = tableDataSource[indexPath.row]
         //font setup
         cell.progressNameLb.font = FONT_LABEL_BODY(size: FONT_10)
-        cell.dateLb.font = FONT_LABEL_BODY(size: FONT_10)
+        cell.dateLb.font = FONT_LABEL_SUB_HEADING(size: FONT_10)
         //
         cell.progressNameLb.text = item.name
         cell.checkMarkImage.tintColor = progressColor

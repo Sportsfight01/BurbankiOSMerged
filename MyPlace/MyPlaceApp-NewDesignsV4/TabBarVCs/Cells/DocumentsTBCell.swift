@@ -21,8 +21,8 @@ class DocumentsTBCell: UITableViewCell {
         [pdfNameLb,uploadedOnDateLb].forEach({ label in
             label?.numberOfLines = 1
         })
-        pdfNameLb.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
-        uploadedOnDateLb.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
+        pdfNameLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
+        uploadedOnDateLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
         
     }
     
