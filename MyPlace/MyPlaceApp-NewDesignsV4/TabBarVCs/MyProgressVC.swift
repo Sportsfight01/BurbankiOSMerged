@@ -306,7 +306,7 @@ class MyProgressVC: BaseProfileVC {
         
         let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
         
-        setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10), FONT_LABEL_SUB_HEADING(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),FONT_LABEL_SUB_HEADING(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+        setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
   
         collectionView.reloadData()

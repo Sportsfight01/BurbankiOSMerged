@@ -19,6 +19,9 @@ class PhotosVC: BaseProfileVC {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var seeAllPhotosBtn : UIButton!
+    {
+        didSet{ seeAllPhotosBtn.titleLabel?.font = FONT_LABEL_BODY(size: FONT_16) }
+    }
 
     var collectionDataSource : [PhotoItem]?
     var cellWidth = (3/4) * UIScreen.main.bounds.width

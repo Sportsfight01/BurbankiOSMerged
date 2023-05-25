@@ -19,7 +19,19 @@ class PhotosCVCell: UICollectionViewCell {
         }
     }
     @IBOutlet weak var sectionNameLb: UILabel!
+    {
+        didSet
+        {
+            sectionNameLb.font = FONT_LABEL_SUB_HEADING(size: FONT_15)
+        }
+    }
     @IBOutlet weak var photosCountLb: UILabel!
+    {
+        didSet
+        {
+            photosCountLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
+        }
+    }
     
     
 }

@@ -93,7 +93,7 @@ class MenuViewController: UIViewController {
         
         let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(CurrentUservars.currentHomeBuildProgress ?? "0%") completed"
         
-        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(CurrentUservars.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [ProximaNovaRegular(size: FONT_10), ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10),ProximaNovaSemiBold(size: FONT_10),ProximaNovaRegular(size: FONT_10)], alignmentCenter: false)
+        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(CurrentUservars.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)

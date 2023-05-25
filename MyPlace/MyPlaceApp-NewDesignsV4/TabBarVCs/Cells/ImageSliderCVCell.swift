@@ -14,7 +14,13 @@ class ImageSliderCVCell: UICollectionViewCell {
     @IBOutlet weak var prevBtn : UIButton!
     @IBOutlet weak var nextBtn : UIButton!
     @IBOutlet weak var photoTitle_Lb: UILabel!
+    {
+        didSet { photoTitle_Lb.font = boldFontWith(size: FONT_16) }
+    }
     @IBOutlet weak var dateLb: UILabel!
+    {
+        didSet { dateLb.font = FONT_LABEL_BODY(size: FONT_12) }
+    }
     @IBOutlet weak var imageView: UIImageView!
     {
        didSet

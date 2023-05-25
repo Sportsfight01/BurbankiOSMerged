@@ -15,14 +15,14 @@ class DocumentsTBCell: UITableViewCell {
     @IBOutlet weak var docIconImgView: UIImageView!
     @IBOutlet weak var pdfNameLb: UILabel!
     @IBOutlet weak var uploadedOnDateLb: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         [pdfNameLb,uploadedOnDateLb].forEach({ label in
             label?.numberOfLines = 1
         })
-        pdfNameLb.font = UIFont.systemFont(ofSize: 16.0,weight: .bold)
+        pdfNameLb.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
+        uploadedOnDateLb.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
         
     }
     

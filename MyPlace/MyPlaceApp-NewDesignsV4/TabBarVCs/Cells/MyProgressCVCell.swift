@@ -28,7 +28,7 @@ class MyProgressCVCell: UICollectionViewCell {
     {
         titleLb.font = FONT_LABEL_BODY(size: FONT_20)
         lastUpdatedLb.font = FONT_LABEL_BODY(size: FONT_10)
-        detailLb.font = FONT_LABEL_BODY(size: FONT_22)
+        detailLb.font = FONT_LABEL_BODY(size: FONT_10)
         seeMoreBtn.titleLabel?.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
     }
     

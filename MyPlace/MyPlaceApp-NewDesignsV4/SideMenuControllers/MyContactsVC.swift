@@ -215,6 +215,9 @@ extension MyContactsVC : UITableViewDelegate, SkeletonTableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyContactsTBCell") as! MyContactsTBCell
+        //font setup
+        cell.setupFonts()
+        //
         cell.nameLabel.text = namesarray[indexPath.row]
         let data = getContactNameEmailPhone(rowNo: indexPath.row)
         cell.fullNameLabel.text = data.contactName.trim() == "" ? "NA" : data.contactName

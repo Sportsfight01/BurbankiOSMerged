@@ -22,6 +22,7 @@ class PhotosListVC: UIViewController {
     @IBOutlet weak var newCountView: UIView!
     @IBOutlet weak var countPhotosLb: UILabel!
     @IBOutlet weak var newCountLb: UILabel!
+    @IBOutlet weak var titleLb : UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var selectedIndexForQLDSA = 0
@@ -63,6 +64,7 @@ class PhotosListVC: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
       self.setupNavigationBarButtons()
+      setupFonts()
       newCountLb.isHidden = true
       newCountView.isHidden = true
       
@@ -117,6 +119,14 @@ class PhotosListVC: UIViewController {
 //  @IBAction func backBtnClicked(_ sender: UIButton) {
 //    self.navigationController?.popViewController(animated: true)
 //  }
+    
+    func setupFonts()
+    {
+        countPhotosLb.font = FONT_LABEL_BODY(size: FONT_10)
+        titleLb.font = FONT_LABEL_BODY(size: FONT_16)
+        newCountLb.font = FONT_LABEL_SUB_HEADING(size: FONT_10)
+        
+    }
   
 }
 //MARK: - CollectionView Delegate & Datasource

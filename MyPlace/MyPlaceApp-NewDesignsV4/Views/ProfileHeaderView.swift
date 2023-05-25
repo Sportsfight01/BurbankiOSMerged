@@ -42,6 +42,7 @@ class ProfileHeaderView: UIView {
         titleLb.font = FONT_LABEL_BODY(size: FONT_22)
         helpTextLb.font = FONT_LABEL_BODY(size: FONT_10)
         secondHelpTextLb.font = FONT_LABEL_BODY(size: FONT_10)
+        notificationCountLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
     }
     
     @IBAction func menuBtnAction(_ sender: UIButton) {

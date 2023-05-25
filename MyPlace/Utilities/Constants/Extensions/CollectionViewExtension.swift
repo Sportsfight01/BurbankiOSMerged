@@ -16,7 +16,7 @@ extension UICollectionView {
         messageLabel.textColor = .black
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = .center;
-        messageLabel.font = boldFontWith(size: FONT_18)
+        messageLabel.font = FONT_LABEL_SUB_HEADING(size: FONT_16)
         if IS_IPAD
         {
             messageLabel.font = boldFontWith(size: FONT_18)

@@ -160,6 +160,7 @@ extension FinanceVC : UICollectionViewDataSource , SkeletonCollectionViewDataSou
         if indexPath.item == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FinanceCVCell", for: indexPath) as! FinanceCVCell
             //Variations
+            cell.setupFonts()
             cell.approvedVariationLb.text = dollarCurrencyFormatter(value: totalVariation ?? 0.0)
             cell.adjustedContractValueLb.text = dollarCurrencyFormatter(value: adjustedContractValue)
             //Claims

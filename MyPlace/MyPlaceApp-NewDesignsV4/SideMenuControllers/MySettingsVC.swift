@@ -341,12 +341,12 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     func openBurbankPrivacyPolocyPortal()
     {
         var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
+        currenUserJobDetails = APIManager.shared.currentJobDetails
         if selectedJobNumberRegionString == ""
         {
             let jobRegion = currenUserJobDetails?.region
             selectedJobNumberRegionString = jobRegion!
-            print("jobregion :- \(jobRegion)")
+            print("jobregion :- \(String(describing: jobRegion))")
         }
         
         var urlString = "https://www.burbank.com.au/victoria/terms-conditions#privacypolicy"
