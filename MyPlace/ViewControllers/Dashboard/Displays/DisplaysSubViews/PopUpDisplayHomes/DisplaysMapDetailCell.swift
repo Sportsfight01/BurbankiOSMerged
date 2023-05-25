@@ -47,7 +47,7 @@ class DisplaysMapDetailCell: UITableViewCell {
         
         self.houseIMG?.image = imageEmpty
 //        activity.startAnimating()
-        pageUISetup()
+       
         
         if let imageurl = displayHomeData?.facadePermanentUrl {
             
@@ -86,6 +86,7 @@ class DisplaysMapDetailCell: UITableViewCell {
             self.favoriteBTN.setBackgroundImage(imageUNFavorite, for: .normal)
         }
         self.favoriteBTN.addTarget(self, action: #selector(didTappedOnFavourites(_:)), for: .touchUpInside)
+        pageUISetup()
         
     }
     

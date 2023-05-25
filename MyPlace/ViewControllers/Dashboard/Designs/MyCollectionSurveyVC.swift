@@ -746,6 +746,9 @@ class MyCollectionSurveyVC: HeaderVC {
     if displayValue == "" {
         displayValue = infoStaicText.capitalized
     }
+      if displayValue == "All" {
+          displayValue = "Selected All Designs"
+      }
     
     return displayValue
   }

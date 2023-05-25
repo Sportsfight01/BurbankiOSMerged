@@ -87,10 +87,10 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
     }
     
     func setUpUI(){
-        nearByBTN.titleLabel?.font = FONT_LABEL_BODY(size: 8)
-        designBTN.titleLabel?.font = FONT_LABEL_BODY(size: 8)
-        mapBTN.titleLabel?.font = FONT_LABEL_BODY(size: 8)
-        regionBTN.titleLabel?.font = FONT_LABEL_BODY(size: 8)
+        nearByBTN.titleLabel?.font = FONT_LABEL_BODY(size: 10)
+        designBTN.titleLabel?.font = FONT_LABEL_BODY(size: 10)
+        mapBTN.titleLabel?.font = FONT_LABEL_BODY(size: 10)
+        regionBTN.titleLabel?.font = FONT_LABEL_BODY(size: 10)
     }
     func updatedNotification(notification:Notification) -> Void  {
         guard let changeBreadCrumbLBL = notification.userInfo!["breadcrumb"] else { return }
