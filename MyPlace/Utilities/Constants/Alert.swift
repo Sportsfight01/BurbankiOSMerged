@@ -39,9 +39,16 @@ struct Alert {
                     han(str)
                 }
             })
-            
+            let titleFont = UIFont(name: "Montserrat-Medium", size: 18) ?? UIFont.systemFont(ofSize: 20)
+            let messageFont = UIFont(name: "Montserrat-Regular", size: 14) ?? UIFont.systemFont(ofSize: 16)
+
+            alert.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : titleFont ,NSAttributedString.Key.foregroundColor : APPCOLORS_3.Orange_BG]), forKey: "attributedTitle")
+
+            alert.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : messageFont ,NSAttributedString.Key.foregroundColor : APPCOLORS_3.Black_BG]), forKey: "attributedMessage")
+
             action.setValue( buttons.count > 1 ? (index == 0 ? APPCOLORS_3.Black_BG : APPCOLORS_3.Orange_BG) : APPCOLORS_3.Orange_BG, forKey: "titleTextColor")
-            
+           
+//            alert.setValue(FONT_LABEL_SUB_HEADING(size: FONT_12),forKey: "titleTextFont")
             alert.addAction(action)
         }
         
