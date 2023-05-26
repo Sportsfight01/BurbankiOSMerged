@@ -58,15 +58,15 @@ class DetailsVC: UIViewController {
         print("profile bounds",profileImgView.bounds.height , profileImgView.bounds.width)
         profileImgView.layer.cornerRadius = 30
         self.profileImgView.layoutIfNeeded()
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
             // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
         }
         //        profileImgView.addBadge(number: appDelegate.notificationCount)
-        nameLb.text = CurrentUservars.userName
+        nameLb.text = CurrentUser.userName
         let emailFirstStr = NSMutableAttributedString(string: "Email ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let emailAttrStr = NSAttributedString(string: "\(CurrentUservars.email ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let emailAttrStr = NSAttributedString(string: "\(CurrentUser.email ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         emailFirstStr.append(emailAttrStr)
         // emailLb.lineBreakMode = .byWordWrapping
         emailLb.attributedText = emailFirstStr

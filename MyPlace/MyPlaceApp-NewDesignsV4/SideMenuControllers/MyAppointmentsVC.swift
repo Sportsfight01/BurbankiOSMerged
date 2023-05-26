@@ -41,7 +41,7 @@ class MyAppointmentsVC: UIViewController {
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
 
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr

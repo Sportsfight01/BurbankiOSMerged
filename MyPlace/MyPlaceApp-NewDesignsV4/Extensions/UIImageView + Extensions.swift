@@ -32,7 +32,7 @@ extension UIImageView {
                    else { return }
                DispatchQueue.main.async() { [weak self] in
                    self?.image = image
-                   CurrentUservars.profilePicUrl = image
+                   CurrentUser.profilePicUrl = image
                }
            }.resume()
        }

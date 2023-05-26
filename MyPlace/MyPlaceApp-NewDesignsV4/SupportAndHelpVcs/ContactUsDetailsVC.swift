@@ -49,7 +49,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         guard let contactData = contactDetails else {return}
         if let noteId = contactData.noteId
         {
-            let jobNum = CurrentUservars.jobNumber
+            let jobNum = CurrentUser.jobNumber
             let key = "\(jobNum ?? "")_\(noteId)_isRead"
             print("key :- \(key)")
             UserDefaults.standard.set(true, forKey: key )

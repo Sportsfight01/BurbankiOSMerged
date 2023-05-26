@@ -52,7 +52,7 @@ class SupportVC: UIViewController {
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
 
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
             profileImgView.image = imgURlStr
         }

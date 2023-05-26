@@ -98,7 +98,7 @@ class MyProgressVC: BaseProfileVC {
         
         let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
         //*** Users With Multiple Job Numbers ***//
-        if myplaceDetailsArray?.count ?? 0 > 1
+        if (myplaceDetailsArray?.count ?? 0) > 1
         {// user has multiple job numbers
             let selectedJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
             if selectedJobNum == nil // when user first come to select Job Number
@@ -108,6 +108,7 @@ class MyProgressVC: BaseProfileVC {
                 vc.tableDataSource = myplaceDetailsArray?.compactMap({$0.jobNumber}) ?? []
                 vc.modalPresentationStyle = .overCurrentContext
                 vc.modalTransitionStyle = .coverVertical
+                //*if user loggedIn with Job Number show jobNumber as selected in multipleJobNumbers List
                 if !isEmail(){
                     vc.previousJobNum = appDelegate.enteredEmailOrJob
                 }
@@ -120,7 +121,7 @@ class MyProgressVC: BaseProfileVC {
                 }
                 self.present(vc, animated: true)
             }else { // when user already selected a job from his multiple jobNums go with normal Flow
-                CurrentUservars.jobNumber = selectedJobNum
+                CurrentUser.jobNumber = selectedJobNum
                 self.setupUI()
             }
             
@@ -304,14 +305,14 @@ class MyProgressVC: BaseProfileVC {
         clItems.insert(newClItem, at: 0)
         progressBar.progress = CGFloat(totalHomeProgress)
         
-        let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
+        let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
         
-        setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+        setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
   
         collectionView.reloadData()
         collectionView.contentSize.width = collectionView.contentSize.width + 50 // to make last item of collectionView visible properly
-        CurrentUservars.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"
+        CurrentUser.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"
         
     }
     
@@ -355,8 +356,8 @@ class MyProgressVC: BaseProfileVC {
                     DispatchQueue.main.async {
                         self?.showAlert(message: data.message ?? somethingWentWrong)
                     };return}
-                CurrentUservars.email = data.result?.email
-                CurrentUservars.userName = data.result?.userName
+                CurrentUser.email = data.result?.email
+                CurrentUser.userName = data.result?.userName
                 //let imgdata = try! Data.init(contentsOf: URL(string: data.result?.profilePicPath ?? "")!)
                 //self?.profileImgView.image = UIImage(data: imgdata)
                 self?.profileView.profilePicImgView.downloaded(from: data.result?.profilePicPath ?? "")
@@ -408,16 +409,18 @@ extension MyProgressVC : UICollectionViewDelegate , SkeletonCollectionViewDataSo
         cell.titleLb.superview?.layer.cornerRadius = 10.0
         cell.titleLb.superview?.layer.masksToBounds = true
         if indexPath.row > 0 {
-            cell.lastUpdatedLb.isHidden = false
+            //cell.lastUpdatedLb.isHidden = false
             cell.seeMoreBtn.isHidden = false
             cell.lastUpdatedLb.text = self.setupLastUpdateDate(progressData: clItems[indexPath.row].progressDetails).lastUpdate
             cell.detailLb.text = clItems[indexPath.row].detailText
             cell.detailLb.numberOfLines = 2
         }
-        else {
+        else { //Admin Stage
             cell.detailLb.text = "We're now on the way to building your new home. All you have to do is swipe to see your build progress."
             cell.detailLb.numberOfLines = 0
-            cell.lastUpdatedLb.isHidden = true
+            cell.lastUpdatedLb.text = "dummy text"
+            cell.lastUpdatedLb.textColor = .clear
+           // cell.lastUpdatedLb.isHidden = true
             cell.seeMoreBtn.isHidden = true
             
           

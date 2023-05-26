@@ -61,7 +61,7 @@ class MenuViewController: UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .coverVertical
         vc.selectionClosure = { selectedJobNumber in
-            CurrentUservars.jobNumber = selectedJobNumber
+            CurrentUser.jobNumber = selectedJobNumber
             UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
             kWindow.rootViewController = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateInitialViewController()
             kWindow.makeKeyAndVisible()
@@ -80,7 +80,7 @@ class MenuViewController: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
             profileImgView.image = imgURlStr
         }
@@ -89,11 +89,11 @@ class MenuViewController: UIViewController {
         }else{
             notificationCountLBL.text = "\(appDelegate.notificationCount)"
         }
-        usernameLb.text = CurrentUservars.userName
+        usernameLb.text = CurrentUser.userName
         
-        let yourHomeBuild = "Your home \(CurrentUservars.jobNumber ?? "") is currently \(CurrentUservars.currentHomeBuildProgress ?? "0%") completed"
+        let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(CurrentUser.currentHomeBuildProgress ?? "0%") completed"
         
-        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUservars.jobNumber ?? "", "is currently", "\(CurrentUservars.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(CurrentUser.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)

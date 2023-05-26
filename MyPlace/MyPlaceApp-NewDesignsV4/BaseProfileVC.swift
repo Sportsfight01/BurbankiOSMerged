@@ -79,7 +79,7 @@ class BaseProfileVC: UIViewController {
         profileView.profilePicImgView.contentMode = .scaleToFill
         profileView.profilePicImgView.clipsToBounds = true
         profileView.profilePicImgView.layer.cornerRadius = profileView.profilePicImgView.bounds.width/2
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
             profileView.profilePicImgView.image = imgURlStr
         }

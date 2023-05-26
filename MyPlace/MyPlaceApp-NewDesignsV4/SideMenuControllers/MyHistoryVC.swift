@@ -69,7 +69,7 @@ class MyHistoryVC: UIViewController {
 //          //  profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
 //            profileImgView.downloaded(from: url)
 //        }
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr

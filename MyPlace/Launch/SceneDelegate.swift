@@ -34,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         window = UIWindow(windowScene: windowScene)
+        UITabBarItem.appearance().setTitleTextAttributes([.font : FONT_LABEL_SUB_HEADING(size: FONT_8)], for: .normal)
           
         appStartUpSetup()
         window?.makeKeyAndVisible()

@@ -73,7 +73,7 @@ struct AppVariables
 {
   static var user : UserStruct.Result? = nil
 }
-struct CurrentUservars
+struct CurrentUser
 {
     static var profilePicUrl : UIImage?
     static var userName : String?

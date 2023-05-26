@@ -93,7 +93,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-ZY-P4W">
-                                <rect key="frame" x="0.0" y="192" width="414" height="376.5"/>
+                                <rect key="frame" x="0.0" y="192" width="414" height="325"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAz-MN-8Vd">
                                         <rect key="frame" x="40" y="35" width="75" height="30"/>
@@ -106,7 +106,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-Ti-r60">
-                                        <rect key="frame" x="40" y="307" width="154" height="30"/>
+                                        <rect key="frame" x="40" y="291" width="154" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7WG-GG-cGP"/>
@@ -142,9 +142,9 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstItem="ZLq-Jr-W5C" firstAttribute="leading" secondItem="W5A-EQ-7UN" secondAttribute="leading" id="1hw-l9-Ta6"/>
-                                    <constraint firstItem="bbG-Ti-r60" firstAttribute="top" secondItem="ZLq-Jr-W5C" secondAttribute="bottom" constant="16" id="KWf-KM-Lpi"/>
+                                    <constraint firstItem="bbG-Ti-r60" firstAttribute="top" secondItem="ZLq-Jr-W5C" secondAttribute="bottom" id="KWf-KM-Lpi"/>
                                     <constraint firstItem="aAz-MN-8Vd" firstAttribute="top" secondItem="QXd-ZY-P4W" secondAttribute="top" constant="35" id="MmN-k9-90M"/>
-                                    <constraint firstAttribute="bottom" secondItem="bbG-Ti-r60" secondAttribute="bottom" constant="39.5" id="UNf-ct-rF0"/>
+                                    <constraint firstAttribute="bottom" secondItem="bbG-Ti-r60" secondAttribute="bottom" constant="4" id="UNf-ct-rF0"/>
                                     <constraint firstItem="W5A-EQ-7UN" firstAttribute="top" secondItem="aAz-MN-8Vd" secondAttribute="bottom" constant="8" id="Y2n-we-1QF"/>
                                     <constraint firstItem="bbG-Ti-r60" firstAttribute="leading" secondItem="aAz-MN-8Vd" secondAttribute="leading" id="ctX-bb-E6d"/>
                                     <constraint firstAttribute="trailing" secondItem="ZLq-Jr-W5C" secondAttribute="trailing" constant="20" id="fZp-bv-BIy"/>
@@ -154,7 +154,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-Un-YRH">
-                                <rect key="frame" x="0.0" y="568.5" width="414" height="293.5"/>
+                                <rect key="frame" x="0.0" y="517" width="414" height="345"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-JF-Oig">
                                         <rect key="frame" x="30" y="0.0" width="354" height="165.5"/>
@@ -176,20 +176,20 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Looking" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-5A-dEP">
-                                                        <rect key="frame" x="61" y="36" width="50" height="49.5"/>
+                                                        <rect key="frame" x="65.5" y="40" width="41" height="41.5"/>
                                                         <color key="tintColor" name="darkGray"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="rjJ-5A-dEP" secondAttribute="height" multiplier="1:1" id="fCC-XJ-KXj"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="JUST LOOKING" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-lg-NJL">
-                                                        <rect key="frame" x="5" y="95.5" width="162" height="15"/>
+                                                        <rect key="frame" x="5" y="93.5" width="162" height="15"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am shopping around" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-ea-G6L">
-                                                        <rect key="frame" x="20" y="115.5" width="132" height="12.5"/>
+                                                        <rect key="frame" x="20" y="116.5" width="132" height="12.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -200,14 +200,14 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                     <constraint firstItem="rjJ-5A-dEP" firstAttribute="centerX" secondItem="9cV-Wd-ydt" secondAttribute="centerX" id="3Pb-ed-shE"/>
                                                     <constraint firstAttribute="trailing" secondItem="ObQ-ea-G6L" secondAttribute="trailing" constant="20" id="71x-Wq-4Vp"/>
                                                     <constraint firstItem="rjJ-5A-dEP" firstAttribute="centerY" secondItem="9cV-Wd-ydt" secondAttribute="centerY" constant="-22" id="84s-UO-0X1"/>
-                                                    <constraint firstItem="ObQ-ea-G6L" firstAttribute="top" secondItem="9yg-lg-NJL" secondAttribute="bottom" constant="5" id="Hkw-ae-gcl"/>
+                                                    <constraint firstItem="ObQ-ea-G6L" firstAttribute="top" secondItem="9yg-lg-NJL" secondAttribute="bottom" constant="8" id="Hkw-ae-gcl"/>
                                                     <constraint firstItem="G5S-fh-39H" firstAttribute="leading" secondItem="9cV-Wd-ydt" secondAttribute="leading" id="I31-ve-X0X"/>
                                                     <constraint firstItem="9yg-lg-NJL" firstAttribute="leading" secondItem="9cV-Wd-ydt" secondAttribute="leading" constant="5" id="IXk-iz-C8U"/>
-                                                    <constraint firstItem="9yg-lg-NJL" firstAttribute="top" secondItem="rjJ-5A-dEP" secondAttribute="bottom" constant="10" id="O5G-cI-Nfu"/>
+                                                    <constraint firstItem="9yg-lg-NJL" firstAttribute="top" secondItem="rjJ-5A-dEP" secondAttribute="bottom" constant="12" id="O5G-cI-Nfu"/>
                                                     <constraint firstItem="G5S-fh-39H" firstAttribute="top" secondItem="9cV-Wd-ydt" secondAttribute="top" id="OTd-we-Arg"/>
                                                     <constraint firstAttribute="trailing" secondItem="zBM-hh-PLR" secondAttribute="trailing" constant="5" id="PWb-ei-134"/>
                                                     <constraint firstItem="zBM-hh-PLR" firstAttribute="top" secondItem="9cV-Wd-ydt" secondAttribute="top" constant="5" id="UGt-t4-tR1"/>
-                                                    <constraint firstItem="rjJ-5A-dEP" firstAttribute="height" secondItem="9cV-Wd-ydt" secondAttribute="height" multiplier="0.3" id="Weg-qa-EZ7"/>
+                                                    <constraint firstItem="rjJ-5A-dEP" firstAttribute="height" secondItem="9cV-Wd-ydt" secondAttribute="height" multiplier="0.25" id="Weg-qa-EZ7"/>
                                                     <constraint firstItem="ObQ-ea-G6L" firstAttribute="leading" secondItem="9cV-Wd-ydt" secondAttribute="leading" constant="20" id="cKq-R8-Uvr"/>
                                                     <constraint firstItem="zBM-hh-PLR" firstAttribute="height" secondItem="9cV-Wd-ydt" secondAttribute="height" multiplier="0.1" id="e88-ba-al4"/>
                                                     <constraint firstAttribute="trailing" secondItem="9yg-lg-NJL" secondAttribute="trailing" constant="5" id="l6q-1j-FCp"/>
@@ -240,19 +240,19 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Customers" translatesAutoresizingMaskIntoConstraints="NO" id="bcD-yR-SoS">
                                                         <rect key="frame" x="61" y="36" width="50" height="49.5"/>
-                                                        <color key="tintColor" name="darkGray"/>
+                                                        <color key="tintColor" name="DarkGrey_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="bcD-yR-SoS" secondAttribute="height" multiplier="1:1" id="PZI-cu-zk5"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="CUSTOMERS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-Hs-uqN">
-                                                        <rect key="frame" x="5" y="95.5" width="162" height="15"/>
+                                                        <rect key="frame" x="5" y="93.5" width="162" height="15"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am building with Burbank" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6u-rO-tQa">
-                                                        <rect key="frame" x="5" y="115.5" width="162" height="12.5"/>
+                                                        <rect key="frame" x="5" y="116.5" width="162" height="12.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -263,8 +263,8 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                     <constraint firstItem="ckh-Hs-uqN" firstAttribute="leading" secondItem="Iwx-fM-upu" secondAttribute="leading" constant="5" id="3dr-Hf-sB9"/>
                                                     <constraint firstAttribute="trailing" secondItem="jPq-OX-bgH" secondAttribute="trailing" constant="5" id="577-63-Z4V"/>
                                                     <constraint firstItem="u2h-t8-ZQx" firstAttribute="top" secondItem="Iwx-fM-upu" secondAttribute="top" id="Njw-le-Blm"/>
-                                                    <constraint firstItem="T6u-rO-tQa" firstAttribute="top" secondItem="ckh-Hs-uqN" secondAttribute="bottom" constant="5" id="R3L-BB-eMm"/>
-                                                    <constraint firstItem="ckh-Hs-uqN" firstAttribute="top" secondItem="bcD-yR-SoS" secondAttribute="bottom" constant="10" id="YyG-W6-Pnl"/>
+                                                    <constraint firstItem="T6u-rO-tQa" firstAttribute="top" secondItem="ckh-Hs-uqN" secondAttribute="bottom" constant="8" id="R3L-BB-eMm"/>
+                                                    <constraint firstItem="ckh-Hs-uqN" firstAttribute="top" secondItem="bcD-yR-SoS" secondAttribute="bottom" constant="8" id="YyG-W6-Pnl"/>
                                                     <constraint firstAttribute="trailing" secondItem="u2h-t8-ZQx" secondAttribute="trailing" id="a5G-Fg-q2Z"/>
                                                     <constraint firstItem="u2h-t8-ZQx" firstAttribute="leading" secondItem="Iwx-fM-upu" secondAttribute="leading" id="fKl-3U-Qsp"/>
                                                     <constraint firstItem="T6u-rO-tQa" firstAttribute="leading" secondItem="Iwx-fM-upu" secondAttribute="leading" constant="5" id="fmq-dh-VZw"/>
@@ -344,7 +344,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-k2-3yC">
-                                        <rect key="frame" x="15" y="224" width="384" height="44.5"/>
+                                        <rect key="frame" x="15" y="267.5" width="384" height="52.5"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.5450980392" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Extrabld" family="Proxima Nova" pointSize="17"/>
                                         <state key="normal" title="Continue">
@@ -653,6 +653,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Mail" translatesAutoresizingMaskIntoConstraints="NO" id="gB3-61-cFJ">
                                                 <rect key="frame" x="30" y="15" width="30" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gB3-61-cFJ" secondAttribute="height" multiplier="1:1" id="mtJ-zf-aaL"/>
                                                 </constraints>
@@ -1842,10 +1843,10 @@ Whether you’re looking at building or are already building with us, the MyPlac
         <image name="Ico-BB-Black" width="64.5" height="64.5"/>
         <image name="Ico-Back1" width="19" height="24.5"/>
         <image name="Ico-Checked" width="24.5" height="24.5"/>
-        <image name="Ico-Customers" width="851" height="654"/>
+        <image name="Ico-Customers" width="48" height="48"/>
         <image name="Ico-Facebook" width="36" height="36"/>
         <image name="Ico-Google" width="36" height="36"/>
-        <image name="Ico-Looking" width="72" height="72"/>
+        <image name="Ico-Looking" width="36" height="36"/>
         <image name="Ico-Mail" width="41" height="26"/>
         <image name="Ico-Uncheckd" width="24.5" height="24.5"/>
         <image name="Img-BB-Logo" width="290" height="67"/>
@@ -9013,6 +9014,9 @@ BosGAAaLEwAGixgABosgAAaLIwAGiygABoswAAAAAAAABAEAAAAAAAAAaAAAAAAAAAAAAAAAAAAGizM
         </namedColor>
         <namedColor name="AppOrange">
             <color red="0.9649999737739563" green="0.54500001668930054" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey_BG_3">
+            <color red="0.65499997138977051" green="0.66299998760223389" blue="0.67500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GreyTextFont_3">
             <color red="0.36100000143051147" green="0.36899998784065247" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -187,7 +187,7 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
         cell.bodyLb.text = tableDataSource?[indexPath.row].body
         if let noteId = tableDataSource?[indexPath.row].noteId
         {
-            let jobNum = CurrentUservars.jobNumber ?? ""
+            let jobNum = CurrentUser.jobNumber ?? ""
             if let isRead = UserDefaults.standard.value(forKey: "\(jobNum)_\(noteId)_isRead") as? Bool , isRead == true
             {
                 cell.circlelb.isHidden = true
