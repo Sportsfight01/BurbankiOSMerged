@@ -38,7 +38,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="pUr-qb-7Ia"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -76,23 +76,23 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z4D-EN-kF8">
-                                        <rect key="frame" x="0.0" y="147" width="414" height="701"/>
+                                        <rect key="frame" x="0.0" y="131.5" width="414" height="716.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SupportTVC" rowHeight="119" id="6Mb-9s-XFW" customClass="SupportTVC" customModule="BurbankApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="50" width="414" height="119"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SupportTVC" rowHeight="144" id="6Mb-9s-XFW" customClass="SupportTVC" customModule="BurbankApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50" width="414" height="144"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Mb-9s-XFW" id="Zpr-BQ-pUU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZeS-uc-tvW">
-                                                            <rect key="frame" x="20" y="10" width="374" height="104"/>
+                                                            <rect key="frame" x="20" y="10" width="374" height="129"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="33v-90-ssQ">
-                                                                    <rect key="frame" x="25" y="10" width="339" height="90"/>
+                                                                    <rect key="frame" x="25" y="10" width="339" height="115"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info Centre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6F-9g-qoU">
                                                                             <rect key="frame" x="0.0" y="0.0" width="339" height="27"/>
@@ -101,15 +101,15 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAB-2C-qMf">
-                                                                            <rect key="frame" x="0.0" y="30" width="339" height="29.5"/>
+                                                                            <rect key="frame" x="0.0" y="30" width="339" height="51.5"/>
                                                                             <string key="text">Helpful videos and information to explain some of the 
 stages in your build and what you need to know.</string>
-                                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Eh-SN-nrX">
-                                                                            <rect key="frame" x="0.0" y="62.5" width="339" height="27.5"/>
+                                                                            <rect key="frame" x="0.0" y="84.5" width="339" height="30.5"/>
                                                                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                                                             <state key="normal" title="SEE MORE">
                                                                                 <color key="titleColor" systemColor="systemOrangeColor"/>
@@ -155,10 +155,7 @@ stages in your build and what you need to know.</string>
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your hub for tips and answers to your build questions. How can we help?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="982-kn-CIg">
-                                        <rect key="frame" x="113" y="61" width="281" height="56"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="BsV-0i-iyr"/>
-                                        </constraints>
+                                        <rect key="frame" x="113" y="67" width="281" height="34.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -179,7 +176,7 @@ stages in your build and what you need to know.</string>
                                     <constraint firstItem="Owk-lc-qc6" firstAttribute="top" secondItem="3vM-GX-h4k" secondAttribute="top" constant="-5" id="gLK-So-U0d"/>
                                     <constraint firstAttribute="bottom" secondItem="z4D-EN-kF8" secondAttribute="bottom" id="lIE-EY-GpT"/>
                                     <constraint firstItem="4Xx-ld-r74" firstAttribute="leading" secondItem="Str-bC-ODq" secondAttribute="leading" constant="113" id="s5p-0A-WpG"/>
-                                    <constraint firstItem="982-kn-CIg" firstAttribute="top" secondItem="4Xx-ld-r74" secondAttribute="bottom" id="xps-BY-hdb"/>
+                                    <constraint firstItem="982-kn-CIg" firstAttribute="top" secondItem="4Xx-ld-r74" secondAttribute="bottom" constant="6" id="xps-BY-hdb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -350,7 +347,7 @@ stages in your build and what you need to know.</string>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9w5-nC-6kZ">
                                                                 <rect key="frame" x="46" y="0.0" width="328" height="40"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="26"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -363,7 +360,7 @@ stages in your build and what you need to know.</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="73" id="ygR-tw-TzJ"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                 <color key="textColor" white="0.0" alpha="0.76620960884353739" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -401,6 +398,7 @@ stages in your build and what you need to know.</string>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjj-i2-ybp">
                                                                         <rect key="frame" x="8" y="8" width="120.5" height="44"/>
+                                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                         <connections>
                                                                             <action selector="didTappedOnNewMsg:" destination="gxC-1i-55L" eventType="touchUpInside" id="czA-LB-2nM"/>
@@ -469,13 +467,13 @@ stages in your build and what you need to know.</string>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="30" id="MXI-5y-AXC"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                                             <color key="textColor" white="0.0" alpha="0.78552827380952384" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27/07/2022" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZZ-Kb-apj">
                                                                             <rect key="frame" x="299" y="0.0" width="73" height="30"/>
-                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                                                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="11"/>
                                                                             <color key="textColor" name="AppOrange"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -489,7 +487,7 @@ stages in your build and what you need to know.</string>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="sfS-nB-iBJ"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="15"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                                     <color key="textColor" name="AppOrange"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -497,7 +495,7 @@ stages in your build and what you need to know.</string>
                                                                     <rect key="frame" x="0.0" y="55" width="372" height="99"/>
                                                                     <string key="text">Hi (Customer), I am writing to you to let you know that we have applied for you new home building permit. We expect to hear back from the...
 8 Sep 2021. 9:14am</string>
-                                                                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>

@@ -11,6 +11,7 @@ import UIKit
 class FinanceDetailCell: UITableViewCell {
     
     
+    
     @IBOutlet var bottomTitleLbs: [UILabel]!
     
     @IBOutlet weak var FinanceDataStackView: UIStackView!
@@ -47,8 +48,8 @@ class FinanceDetailCell: UITableViewCell {
     func setupFonts()
     {
         //titlesLbs
-        bottomTitleLbs.forEach({$0.font = FONT_LABEL_BODY(size: FONT_12)})
-        financeDescriptionLb.font = FONT_LABEL_BODY(size: FONT_12)
+//        bottomTitleLbs.forEach({$0.font = FONT_LABEL_BODY(size: FONT_12)})
+      //  financeDescriptionLb.font = FONT_LABEL_BODY(size: FONT_12)
         //valuesLbs
         [approvedVariationsLb,adjustedContractValueLb,totalAmountClaimedLb, totalAmountReceivedLb,financeAmountLb].forEach({
             

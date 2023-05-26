@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q4J-VK-jZl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q4J-VK-jZl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,6 +12,9 @@
     <customFonts key="customFonts">
         <array key="Mark Simonson - Proxima Nova Semibold-webfont.ttf">
             <string>ProximaNova-Semibold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
         </array>
         <array key="Proxima Nova Extrabold.otf">
             <string>ProximaNova-Extrabld</string>
@@ -180,14 +183,14 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="JUST LOOKING" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-lg-NJL">
-                                                        <rect key="frame" x="5" y="95.5" width="162" height="12"/>
-                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                                        <rect key="frame" x="5" y="95.5" width="162" height="15"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am shopping around." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-ea-G6L">
-                                                        <rect key="frame" x="5" y="109.5" width="162" height="12"/>
-                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am shopping around" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-ea-G6L">
+                                                        <rect key="frame" x="20" y="115.5" width="132" height="12.5"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -195,9 +198,9 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="rjJ-5A-dEP" firstAttribute="centerX" secondItem="9cV-Wd-ydt" secondAttribute="centerX" id="3Pb-ed-shE"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ObQ-ea-G6L" secondAttribute="trailing" constant="5" id="71x-Wq-4Vp"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ObQ-ea-G6L" secondAttribute="trailing" constant="20" id="71x-Wq-4Vp"/>
                                                     <constraint firstItem="rjJ-5A-dEP" firstAttribute="centerY" secondItem="9cV-Wd-ydt" secondAttribute="centerY" constant="-22" id="84s-UO-0X1"/>
-                                                    <constraint firstItem="ObQ-ea-G6L" firstAttribute="top" secondItem="9yg-lg-NJL" secondAttribute="bottom" constant="2" id="Hkw-ae-gcl"/>
+                                                    <constraint firstItem="ObQ-ea-G6L" firstAttribute="top" secondItem="9yg-lg-NJL" secondAttribute="bottom" constant="5" id="Hkw-ae-gcl"/>
                                                     <constraint firstItem="G5S-fh-39H" firstAttribute="leading" secondItem="9cV-Wd-ydt" secondAttribute="leading" id="I31-ve-X0X"/>
                                                     <constraint firstItem="9yg-lg-NJL" firstAttribute="leading" secondItem="9cV-Wd-ydt" secondAttribute="leading" constant="5" id="IXk-iz-C8U"/>
                                                     <constraint firstItem="9yg-lg-NJL" firstAttribute="top" secondItem="rjJ-5A-dEP" secondAttribute="bottom" constant="10" id="O5G-cI-Nfu"/>
@@ -205,7 +208,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                     <constraint firstAttribute="trailing" secondItem="zBM-hh-PLR" secondAttribute="trailing" constant="5" id="PWb-ei-134"/>
                                                     <constraint firstItem="zBM-hh-PLR" firstAttribute="top" secondItem="9cV-Wd-ydt" secondAttribute="top" constant="5" id="UGt-t4-tR1"/>
                                                     <constraint firstItem="rjJ-5A-dEP" firstAttribute="height" secondItem="9cV-Wd-ydt" secondAttribute="height" multiplier="0.3" id="Weg-qa-EZ7"/>
-                                                    <constraint firstItem="ObQ-ea-G6L" firstAttribute="leading" secondItem="9cV-Wd-ydt" secondAttribute="leading" constant="5" id="cKq-R8-Uvr"/>
+                                                    <constraint firstItem="ObQ-ea-G6L" firstAttribute="leading" secondItem="9cV-Wd-ydt" secondAttribute="leading" constant="20" id="cKq-R8-Uvr"/>
                                                     <constraint firstItem="zBM-hh-PLR" firstAttribute="height" secondItem="9cV-Wd-ydt" secondAttribute="height" multiplier="0.1" id="e88-ba-al4"/>
                                                     <constraint firstAttribute="trailing" secondItem="9yg-lg-NJL" secondAttribute="trailing" constant="5" id="l6q-1j-FCp"/>
                                                     <constraint firstAttribute="bottom" secondItem="G5S-fh-39H" secondAttribute="bottom" id="rl4-YK-sJI"/>
@@ -243,14 +246,14 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="CUSTOMERS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-Hs-uqN">
-                                                        <rect key="frame" x="5" y="95.5" width="162" height="12"/>
-                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                                        <rect key="frame" x="5" y="95.5" width="162" height="15"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am building with Burbank." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6u-rO-tQa">
-                                                        <rect key="frame" x="5" y="109.5" width="162" height="12"/>
-                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am building with Burbank" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6u-rO-tQa">
+                                                        <rect key="frame" x="5" y="115.5" width="162" height="12.5"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -260,7 +263,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                     <constraint firstItem="ckh-Hs-uqN" firstAttribute="leading" secondItem="Iwx-fM-upu" secondAttribute="leading" constant="5" id="3dr-Hf-sB9"/>
                                                     <constraint firstAttribute="trailing" secondItem="jPq-OX-bgH" secondAttribute="trailing" constant="5" id="577-63-Z4V"/>
                                                     <constraint firstItem="u2h-t8-ZQx" firstAttribute="top" secondItem="Iwx-fM-upu" secondAttribute="top" id="Njw-le-Blm"/>
-                                                    <constraint firstItem="T6u-rO-tQa" firstAttribute="top" secondItem="ckh-Hs-uqN" secondAttribute="bottom" constant="2" id="R3L-BB-eMm"/>
+                                                    <constraint firstItem="T6u-rO-tQa" firstAttribute="top" secondItem="ckh-Hs-uqN" secondAttribute="bottom" constant="5" id="R3L-BB-eMm"/>
                                                     <constraint firstItem="ckh-Hs-uqN" firstAttribute="top" secondItem="bcD-yR-SoS" secondAttribute="bottom" constant="10" id="YyG-W6-Pnl"/>
                                                     <constraint firstAttribute="trailing" secondItem="u2h-t8-ZQx" secondAttribute="trailing" id="a5G-Fg-q2Z"/>
                                                     <constraint firstItem="u2h-t8-ZQx" firstAttribute="leading" secondItem="Iwx-fM-upu" secondAttribute="leading" id="fKl-3U-Qsp"/>

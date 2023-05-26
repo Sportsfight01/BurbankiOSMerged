@@ -120,11 +120,11 @@ class UserPreferenceVC: UIViewController {
         
         
         setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: labelLookingDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: labelLookingDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
         setAppearanceFor(view: labelDepositedName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
+        setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
         setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY (size: FONT_12))
