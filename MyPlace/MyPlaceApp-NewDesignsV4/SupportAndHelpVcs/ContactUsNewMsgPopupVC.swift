@@ -90,7 +90,7 @@ class ContactUsNewMsgPopupVC: UIViewController {
         {
             parameters = ["replytoid" : NSNull() , "subject" : subjectTf.text ?? "", "stepid" : 0, "body" : replyTextView.text ?? ""]
         }
-        else
+        else//reply
         {
             if let noteId = noteId {
                 parameters = ["replytoid" : noteId , "subject" : subjectTf.text ?? "", "stepid" : 0, "body" : replyTextView.text ?? ""]

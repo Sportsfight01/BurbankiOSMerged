@@ -10,9 +10,11 @@ import UIKit
 import MessageUI
 
 class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
+    
+    //MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
-    var tableDataSource : [MyNotesStruct]?
-    var contactArr : [MyNotesStruct]?
+    private var tableDataSource : [MyNotesStruct]?
+    private var contactArr : [MyNotesStruct]?
     @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -26,7 +28,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             }
         }
     }
-    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +49,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         getNotes()
     }
     
+    //MARK: - IBActions
     @IBAction func didTappedOnSearch(_ sender: UIButton) {
         searchBarHeight.constant = searchBarHeight.constant == 0 ? 44 : 0
         UIView.animate(withDuration: 0.250) {
@@ -72,7 +75,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     
     
-    //MARK: - Service Call
+    //MARK: - Service Calls
     func getNotes()
     {
         guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
@@ -84,9 +87,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
-        
         appDelegate.showActivity()
-        //HTTPCookieStorage.shared.cookieAcceptPolicy = .always
         //LoginService
         URLSession.shared.dataTask(with: urlRequest) {[weak self] data, response, error in
             DispatchQueue.main.async {
@@ -120,6 +121,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 appDelegate.hideActivity()
             }
             //Validation
+            debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
                 self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
@@ -137,10 +139,15 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         
     }
     
-    func setupSerivceData(dictionary : NSDictionary)
+    func createNewNote()
     {
         
-        var keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+    }
+    //MARK: - HelperMethods
+    func setupSerivceData(dictionary : NSDictionary)
+    {
+        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+//        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
         var tempDataSource : [MyNotesStruct] = []
         keyPaths.forEach { keypath in
             if let notesList = dictionary.value(forKeyPath: "\(keypath).notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
