@@ -47,7 +47,8 @@ class DisplaysNearByVC: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("tappedOnNearBy"), object: nil, queue: nil, using:updatedNotification)
         self.tableView.register(UINib(nibName: "TimingsAndDirectionTVC", bundle: nil), forCellReuseIdentifier: "TimingsAndDirectionTVC")
        
-        
+        setAppearanceFor(view: estateNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: subarbStreetLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_8))
         
     }
     

@@ -75,6 +75,7 @@ class SignInVC: UIViewController {
         
         CodeManager.sharedInstance.sendScreenName(burbank_signIn_screen_loading)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     //MARK: - View
@@ -233,6 +234,7 @@ class SignInVC: UIViewController {
         
         btnContinue.layer.cornerRadius = radius_5
         btnSignIn.layer.cornerRadius = radius_5
+//        imageEmail.tintColor = APPCOLORS_3.HeaderFooter_white_BG
         
     }
     
