@@ -301,10 +301,35 @@ class CodeManager: NSObject, UIScrollViewDelegate {
             appDelegate.window?.rootViewController = rootVc
             appDelegate.window?.makeKeyAndVisible()
         }
-          
-
         
     }
+
+    func handleUserHomecareModule(user: User,In viewController: UIViewController)
+    {
+        
+        //print(user)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.currentUser = user //Need To Check whethere we need to fill user data here or not
+        
+        removeIsShownProfileKey() //Need to Place here before set the key "EnteredEmailOrJob"
+        
+        UserDefaults.standard.set(appDelegate.enteredEmailOrJob, forKey: "EnteredEmailOrJob")
+        
+        saveUserInUserDefaults(user)
+        let rootVc = UIStoryboard(name : AppStoryBoards.homeScreenSb.rawValue, bundle : nil).instantiateInitialViewController()
+        
+        //viewController.performSegue(withIdentifier: "showMyPlaceDashboardVC", sender: nil)
+        
+        appDelegate.currentUser = user //Need To Check whethere we need to fill user data here or not
+        
+        //Need to Place here before set the key "EnteredEmailOrJob"
+        kWindow.rootViewController = rootVc
+        kWindow.makeKeyAndVisible()
+    }
+
+
+
     func saveUserInUserDefaults(_ user: User)
     {
         let userDefaults = UserDefaults.standard

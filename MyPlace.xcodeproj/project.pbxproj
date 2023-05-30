@@ -27,6 +27,20 @@
 		4223782329F6642800CDD69D /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223782229F6642800CDD69D /* ProfileHeaderView.xib */; };
 		4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782429F6677400CDD69D /* ProfileHeaderView.swift */; };
 		4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782629F679E000CDD69D /* BaseProfileVC.swift */; };
+		426ACA672A24AA60001317EF /* HomeCareFilesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */; };
+		426ACA682A24AA60001317EF /* DashBoardImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */; };
+		426ACA692A24AA60001317EF /* HomeCareFilesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426ACA5A2A24AA5F001317EF /* HomeCareFilesTVC.xib */; };
+		426ACA6A2A24AA60001317EF /* HomeCareDashBoardScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5C2A24AA60001317EF /* HomeCareDashBoardScreenVC.swift */; };
+		426ACA6B2A24AA60001317EF /* Tabbarscreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5D2A24AA60001317EF /* Tabbarscreens.swift */; };
+		426ACA6C2A24AA60001317EF /* HMCPDFViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5E2A24AA60001317EF /* HMCPDFViewerVC.swift */; };
+		426ACA6D2A24AA60001317EF /* HomeScreenTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5F2A24AA60001317EF /* HomeScreenTabBarVC.swift */; };
+		426ACA6E2A24AA60001317EF /* HomeCareProfileScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426ACA612A24AA60001317EF /* HomeCareProfileScreen.xib */; };
+		426ACA6F2A24AA60001317EF /* HomeCareBaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA622A24AA60001317EF /* HomeCareBaseProfileVC.swift */; };
+		426ACA702A24AA60001317EF /* HomeCareProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA632A24AA60001317EF /* HomeCareProfileScreen.swift */; };
+		426ACA712A24AA60001317EF /* HomaeCareAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426ACA652A24AA60001317EF /* HomaeCareAssets.xcassets */; };
+		426ACA722A24AA60001317EF /* HomeScreenStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426ACA662A24AA60001317EF /* HomeScreenStoryBoard.storyboard */; };
+		426ACA742A24ABCA001317EF /* HomeCareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA732A24ABCA001317EF /* HomeCareConstants.swift */; };
+		426ACA762A24B3BC001317EF /* CustomersUserpreferrenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA752A24B3BC001317EF /* CustomersUserpreferrenceVC.swift */; };
 		4292D24F2A1DE3D300131297 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4292D24E2A1DE3D300131297 /* Montserrat-Medium.ttf */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
 		4298DBE22A1CA32100109D6A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */; };
@@ -498,6 +512,20 @@
 		4223782229F6642800CDD69D /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		4223782429F6677400CDD69D /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		4223782629F679E000CDD69D /* BaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileVC.swift; sourceTree = "<group>"; };
+		426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareFilesTVC.swift; sourceTree = "<group>"; };
+		426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardImageCVC.swift; sourceTree = "<group>"; };
+		426ACA5A2A24AA5F001317EF /* HomeCareFilesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCareFilesTVC.xib; sourceTree = "<group>"; };
+		426ACA5C2A24AA60001317EF /* HomeCareDashBoardScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareDashBoardScreenVC.swift; sourceTree = "<group>"; };
+		426ACA5D2A24AA60001317EF /* Tabbarscreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbarscreens.swift; sourceTree = "<group>"; };
+		426ACA5E2A24AA60001317EF /* HMCPDFViewerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMCPDFViewerVC.swift; sourceTree = "<group>"; };
+		426ACA5F2A24AA60001317EF /* HomeScreenTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTabBarVC.swift; sourceTree = "<group>"; };
+		426ACA612A24AA60001317EF /* HomeCareProfileScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCareProfileScreen.xib; sourceTree = "<group>"; };
+		426ACA622A24AA60001317EF /* HomeCareBaseProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareBaseProfileVC.swift; sourceTree = "<group>"; };
+		426ACA632A24AA60001317EF /* HomeCareProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareProfileScreen.swift; sourceTree = "<group>"; };
+		426ACA652A24AA60001317EF /* HomaeCareAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomaeCareAssets.xcassets; sourceTree = "<group>"; };
+		426ACA662A24AA60001317EF /* HomeScreenStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeScreenStoryBoard.storyboard; sourceTree = "<group>"; };
+		426ACA732A24ABCA001317EF /* HomeCareConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareConstants.swift; sourceTree = "<group>"; };
+		426ACA752A24B3BC001317EF /* CustomersUserpreferrenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersUserpreferrenceVC.swift; sourceTree = "<group>"; };
 		4292D24E2A1DE3D300131297 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
 		4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -1021,6 +1049,58 @@
 				4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */,
 			);
 			path = Favourites;
+			sourceTree = "<group>";
+		};
+		426ACA442A24A98F001317EF /* HomeCare */ = {
+			isa = PBXGroup;
+			children = (
+				426ACA642A24AA60001317EF /* HMCSupportScreens */,
+				426ACA5B2A24AA60001317EF /* HMCViewControllers */,
+				426ACA572A24AA5F001317EF /* HomeCareSubClasses */,
+				426ACA602A24AA60001317EF /* HomeCareViews */,
+				426ACA732A24ABCA001317EF /* HomeCareConstants.swift */,
+			);
+			path = HomeCare;
+			sourceTree = "<group>";
+		};
+		426ACA572A24AA5F001317EF /* HomeCareSubClasses */ = {
+			isa = PBXGroup;
+			children = (
+				426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */,
+				426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */,
+				426ACA5A2A24AA5F001317EF /* HomeCareFilesTVC.xib */,
+			);
+			path = HomeCareSubClasses;
+			sourceTree = "<group>";
+		};
+		426ACA5B2A24AA60001317EF /* HMCViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				426ACA5C2A24AA60001317EF /* HomeCareDashBoardScreenVC.swift */,
+				426ACA5D2A24AA60001317EF /* Tabbarscreens.swift */,
+				426ACA5E2A24AA60001317EF /* HMCPDFViewerVC.swift */,
+				426ACA5F2A24AA60001317EF /* HomeScreenTabBarVC.swift */,
+			);
+			path = HMCViewControllers;
+			sourceTree = "<group>";
+		};
+		426ACA602A24AA60001317EF /* HomeCareViews */ = {
+			isa = PBXGroup;
+			children = (
+				426ACA612A24AA60001317EF /* HomeCareProfileScreen.xib */,
+				426ACA622A24AA60001317EF /* HomeCareBaseProfileVC.swift */,
+				426ACA632A24AA60001317EF /* HomeCareProfileScreen.swift */,
+			);
+			path = HomeCareViews;
+			sourceTree = "<group>";
+		};
+		426ACA642A24AA60001317EF /* HMCSupportScreens */ = {
+			isa = PBXGroup;
+			children = (
+				426ACA652A24AA60001317EF /* HomaeCareAssets.xcassets */,
+				426ACA662A24AA60001317EF /* HomeScreenStoryBoard.storyboard */,
+			);
+			path = HMCSupportScreens;
 			sourceTree = "<group>";
 		};
 		4298DBE02A1CA31700109D6A /* Montserrat */ = {
@@ -1774,6 +1854,7 @@
 				EDAB55A02449B59D0052B251 /* Service Layer */,
 				D188C60F2424D37500DFE678 /* SupportingFiles */,
 				A16599B6292F4A4300C36B3B /* OLDCode */,
+				426ACA442A24A98F001317EF /* HomeCare */,
 				A1659902292F32B900C36B3B /* MyPlaceApp-NewDesignsV4 */,
 			);
 			path = MyPlace;
@@ -1914,6 +1995,7 @@
 				D188C60E2424D37500DFE678 /* CreateAccountVC.swift */,
 				01762A272462997E00F66A64 /* NewForgotPasswordVC.swift */,
 				01762A292462999500F66A64 /* NewResetPasswordVC.swift */,
+				426ACA752A24B3BC001317EF /* CustomersUserpreferrenceVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2496,6 +2578,7 @@
 				A1659AC7292F4A4500C36B3B /* MyriadPro-BoldCondIt.otf in Resources */,
 				A1659AE9292F4A4500C36B3B /* sample.pdf in Resources */,
 				4292D24F2A1DE3D300131297 /* Montserrat-Medium.ttf in Resources */,
+				426ACA6E2A24AA60001317EF /* HomeCareProfileScreen.xib in Resources */,
 				4212D6042938A8EE00855CDC /* MyDesignsTVC.xib in Resources */,
 				D16FE4622428EF6F0082DECF /* Proxima Nova Condensed Extrabold.otf in Resources */,
 				A1659AD9292F4A4500C36B3B /* OpenSans-LightItalic.ttf in Resources */,
@@ -2503,6 +2586,7 @@
 				D16FE4702428EF6F0082DECF /* Proxima Nova Thin Italic.otf in Resources */,
 				D16FE4662428EF6F0082DECF /* Proxima Nova Extra Condensed Regular.otf in Resources */,
 				D16FE4762428EF6F0082DECF /* Proxima Nova Light Italic.otf in Resources */,
+				426ACA722A24AA60001317EF /* HomeScreenStoryBoard.storyboard in Resources */,
 				A1659AD2292F4A4500C36B3B /* CommonOLD.xcassets in Resources */,
 				A1659ABC292F4A4400C36B3B /* Privacy Policy.html in Resources */,
 				ED8E040825384E39000FCFED /* GoogleService-MyPlace-burbank-Info.plist in Resources */,
@@ -2525,6 +2609,7 @@
 				A1659954292F32BA00C36B3B /* MyPlaceNewAssets.xcassets in Resources */,
 				A1659ACB292F4A4500C36B3B /* MyriadPro-It.otf in Resources */,
 				D16FE47B2428EF6F0082DECF /* Proxima Nova Extra Condensed Semibold.otf in Resources */,
+				426ACA692A24AA60001317EF /* HomeCareFilesTVC.xib in Resources */,
 				D16FE4742428EF6F0082DECF /* Proxima Nova Condensed Bold Italic.otf in Resources */,
 				D16FE4802428EF6F0082DECF /* Proxima Nova Extra Condensed Regular Italic.otf in Resources */,
 				42B69F2E29DABA43002A0700 /* ImageSliderCVCell.xib in Resources */,
@@ -2564,6 +2649,7 @@
 				A1659AD6292F4A4500C36B3B /* OpenSans-Light.ttf in Resources */,
 				D16FE46A2428EF6F0082DECF /* proxima-nova-bold-593a736757215.otf in Resources */,
 				4298DBEE2A1CB81100109D6A /* Montserrat-Regular.ttf in Resources */,
+				426ACA712A24AA60001317EF /* HomaeCareAssets.xcassets in Resources */,
 				D16FE4712428EF6F0082DECF /* Proxima Nova Extra Condensed Thin.otf in Resources */,
 				D16FE46B2428EF6F0082DECF /* Proxima Nova A W07 Medium.otf in Resources */,
 				A162E54C2908F81E009647AE /* TimingsAndDirectionTVC.xib in Resources */,
@@ -2826,6 +2912,7 @@
 				A1659B10292F4A4500C36B3B /* CoBurbankListVC.swift in Sources */,
 				A1659AF3292F4A4500C36B3B /* MyPlacePhotoNote+CoreDataClass.swift in Sources */,
 				A1659AA5292F4A4400C36B3B /* FilterOptions.swift in Sources */,
+				426ACA672A24AA60001317EF /* HomeCareFilesTVC.swift in Sources */,
 				EDC83DD42645307B000E3343 /* DisplaysMapDetailExpandedCell.swift in Sources */,
 				D188C6292424D37600DFE678 /* HeaderVC.swift in Sources */,
 				ED7E41F825303D23004377BE /* AppleSignIn.swift in Sources */,
@@ -2882,8 +2969,11 @@
 				A1659B40292F4A4500C36B3B /* Reachability.m in Sources */,
 				ED487BCB242C8ED100907BE1 /* MyDayVC.swift in Sources */,
 				A1659B16292F4A4500C36B3B /* AboutBurbankVC.swift in Sources */,
+				426ACA762A24B3BC001317EF /* CustomersUserpreferrenceVC.swift in Sources */,
 				D188C62E2424D37600DFE678 /* CreateAccountVC.swift in Sources */,
 				A1659955292F32BA00C36B3B /* ContactUsVC.swift in Sources */,
+				426ACA6A2A24AA60001317EF /* HomeCareDashBoardScreenVC.swift in Sources */,
+				426ACA742A24ABCA001317EF /* HomeCareConstants.swift in Sources */,
 				A1659AF8292F4A4500C36B3B /* MyPlaceStageCompleteDetails+CoreDataProperties.swift in Sources */,
 				A1659AE7292F4A4500C36B3B /* PDFScrollView.m in Sources */,
 				A1659B28292F4A4500C36B3B /* FiltersOptionVC.swift in Sources */,
@@ -2920,12 +3010,14 @@
 				A1659B48292F4A4500C36B3B /* RegionListTVCell.swift in Sources */,
 				A1659B20292F4A4500C36B3B /* MyPlacePhotoDetailVC.swift in Sources */,
 				A1659A9E292F4A4400C36B3B /* DisplayHomeDataModels.swift in Sources */,
+				426ACA6D2A24AA60001317EF /* HomeScreenTabBarVC.swift in Sources */,
 				A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */,
 				ED3B3A5B26428F1600A03D85 /* DisplaysNearByVC.swift in Sources */,
 				4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */,
 				ED67958A246A5C9C008FAEED /* RegionVC.swift in Sources */,
 				A1659AF6292F4A4500C36B3B /* MyPlaceStoredPhotoInfo+CoreDataClass.swift in Sources */,
 				EDC62A36246C122C00608E52 /* MyPlacePackages+CoreDataProperties.swift in Sources */,
+				426ACA6B2A24AA60001317EF /* Tabbarscreens.swift in Sources */,
 				ED487BD3242CAD8100907BE1 /* MyCollectionSurveyVC.swift in Sources */,
 				EDA2A93025025007005FCEF9 /* HeaderBreadCrumpCV.swift in Sources */,
 				D188C6232424D37600DFE678 /* AppThemeColors.swift in Sources */,
@@ -2934,6 +3026,7 @@
 				D188C62D2424D37600DFE678 /* UserPreferenceVC.swift in Sources */,
 				ED99C3F924615E5F008BB421 /* AppManager.swift in Sources */,
 				ED3143A624C6A1EF00F048D2 /* HomeLandPopupVC.swift in Sources */,
+				426ACA702A24AA60001317EF /* HomeCareProfileScreen.swift in Sources */,
 				A1659B00292F4A4500C36B3B /* SWRevealViewController.m in Sources */,
 				A1659970292F32BB00C36B3B /* FinanceCVCell2.swift in Sources */,
 				42B69F2D29DABA43002A0700 /* ImageSliderCVCell.swift in Sources */,
@@ -2972,6 +3065,7 @@
 				ED487BCD242C8EDC00907BE1 /* MyStyleVC.swift in Sources */,
 				ED57A02F245FDAF800C24039 /* DateExtension.swift in Sources */,
 				ED51DEA024BDD406008681C0 /* HomeDesignFeature.swift in Sources */,
+				426ACA6F2A24AA60001317EF /* HomeCareBaseProfileVC.swift in Sources */,
 				ED74EEC72490AF0800E77CF9 /* EnquireNowVC.swift in Sources */,
 				ED5965CF24FFC75A0066896F /* LocationServices.swift in Sources */,
 				ED57A030245FDAF800C24039 /* TableViewExtension.swift in Sources */,
@@ -3009,6 +3103,7 @@
 				A1659982292F32BB00C36B3B /* CoBurbankVC.swift in Sources */,
 				A1659B33292F4A4500C36B3B /* SetCentralPasswordVC.swift in Sources */,
 				ED9A832D24DACF4600D85E17 /* MyPlace3DVC.swift in Sources */,
+				426ACA682A24AA60001317EF /* DashBoardImageCVC.swift in Sources */,
 				EDC7701D24349A3700BB9707 /* ProfileCollectionTVCell.swift in Sources */,
 				ED8C3C5324BECD3E00364CA4 /* AlfrescoVC.swift in Sources */,
 				EDC83DCF26453040000E3343 /* DisplaysMapDetailCell.swift in Sources */,
@@ -3110,6 +3205,7 @@
 				A1659957292F32BA00C36B3B /* ContactUsNewMsgPopupVC.swift in Sources */,
 				A1659958292F32BA00C36B3B /* InfoCentreDetailsVC.swift in Sources */,
 				ED3B3A0C26415C4800A03D85 /* DisplaysCVCell.swift in Sources */,
+				426ACA6C2A24AA60001317EF /* HMCPDFViewerVC.swift in Sources */,
 				A1659AA6292F4A4400C36B3B /* MyPlace.swift in Sources */,
 				A1659ADF292F4A4500C36B3B /* BurbankDataModel.xcdatamodeld in Sources */,
 				A165998F292F32BB00C36B3B /* ValidateEmailVC.swift in Sources */,

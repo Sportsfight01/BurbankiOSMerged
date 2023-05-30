@@ -65,3 +65,16 @@ let kuserNamePasswordNotMatched = "Email or Password is incorrect"
 //let googleApiKey = "AIzaSyDf3eyRvZoh1C4UYLtQOlcYKSMj3NtczGk"
 
 
+
+enum AppStoryBoards : String
+{
+    case newDesignV4 = "NewDesignsV4"
+    case supportAndHelp = "SupportAndHelp"
+    case myPlaceLogin = "MyPlaceLogin"
+    
+    //Home Care storyboard IDs
+    
+    case homeScreenSb = "HomeScreenStoryBoard"
+    case homeCareFilesTVC = "HomeCareFilesTVC"
+    case homeCareProfile = "HomeCareProfileScreen"
+}

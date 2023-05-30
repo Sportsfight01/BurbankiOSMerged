@@ -417,7 +417,9 @@ class LoginVCNew: BurbankAppVC {
                         if user.isSuccess == true
                         {
                             // let userID = user.userDetailsArray?[0].id ?? -1
-                            CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
+                            let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+                            self.navigationController?.pushViewController(vc, animated: true)
+                           // CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
                             
                         }else
                         {
