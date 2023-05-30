@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-Ll-9Gr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-Ll-9Gr">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -129,7 +129,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction on how to use the app. Lorem ipsum dolor sit amet, consectetuer adipiscing elitsed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjj-bu-3hO">
-                                                                    <rect key="frame" x="6" y="43" width="300.66666666666674" height="57"/>
+                                                                    <rect key="frame" x="6" y="43" width="300.66666666666669" height="57"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                                     <color key="textColor" name="Black_BG_3"/>
                                                                     <nil key="highlightedColor"/>
@@ -204,48 +204,60 @@
                                 <color key="textColor" name="AppOrange"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKD-2g-X6L">
-                                <rect key="frame" x="0.0" y="719" width="393" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5Z-4D-awB">
+                                <rect key="frame" x="0.0" y="719" width="393" height="133"/>
+                                <subviews>
+                                    <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKD-2g-X6L">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="qmt-sH-Stb"/>
+                                        </constraints>
+                                        <items>
+                                            <tabBarItem title="MANUALS" image="Ico-Manuals" id="0es-7V-2gz">
+                                                <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tabBarItem>
+                                            <tabBarItem tag="1" title="DOCUMENTS" image="doc" catalog="system" id="sHg-hb-p0k">
+                                                <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tabBarItem>
+                                            <tabBarItem tag="2" title="WARRANTIES" image="Ico-Warranties" id="AWo-QE-TT1">
+                                                <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tabBarItem>
+                                            <tabBarItem tag="3" title="REPORT" image="Ico-Report" id="Qet-cd-z8O">
+                                                <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tabBarItem>
+                                            <tabBarItem tag="4" title="MY SUPPORT" image="Ico-Help" id="F50-g3-Yiq">
+                                                <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tabBarItem>
+                                        </items>
+                                        <color key="tintColor" name="Black_BG_3"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="selectedImageTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBar>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="qmt-sH-Stb"/>
+                                    <constraint firstItem="rKD-2g-X6L" firstAttribute="top" secondItem="v5Z-4D-awB" secondAttribute="top" id="ATe-n8-DXJ"/>
+                                    <constraint firstItem="rKD-2g-X6L" firstAttribute="leading" secondItem="v5Z-4D-awB" secondAttribute="leading" id="AxT-tv-jg9"/>
+                                    <constraint firstAttribute="trailing" secondItem="rKD-2g-X6L" secondAttribute="trailing" id="Ga8-kg-1uY"/>
+                                    <constraint firstAttribute="bottom" secondItem="rKD-2g-X6L" secondAttribute="bottom" constant="83" id="ZCY-0Y-tvE"/>
                                 </constraints>
-                                <items>
-                                    <tabBarItem title="MANUALS" image="Ico-Manuals" id="0es-7V-2gz">
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
-                                    <tabBarItem tag="1" title="DOCUMENTS" image="doc" catalog="system" id="sHg-hb-p0k">
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
-                                    <tabBarItem tag="2" title="WARRANTIES" image="Ico-Warranties" id="AWo-QE-TT1">
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
-                                    <tabBarItem tag="3" title="REPORT" image="Ico-Report" id="Qet-cd-z8O">
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
-                                    <tabBarItem tag="4" title="MY SUPPORT" image="Ico-Help" id="F50-g3-Yiq">
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
-                                </items>
-                                <color key="tintColor" name="Black_BG_3"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="selectedImageTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tabBar>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qzA-FN-brQ"/>
                         <color key="backgroundColor" name="AppGray"/>
                         <constraints>
-                            <constraint firstItem="rKD-2g-X6L" firstAttribute="leading" secondItem="Khh-vn-MPA" secondAttribute="leading" id="6vc-lf-KMY"/>
                             <constraint firstItem="qzA-FN-brQ" firstAttribute="trailing" secondItem="17p-zk-Dxf" secondAttribute="trailing" id="BD2-Ij-T4f"/>
+                            <constraint firstItem="qzA-FN-brQ" firstAttribute="bottom" secondItem="v5Z-4D-awB" secondAttribute="bottom" constant="-83" id="FEO-QX-Kim"/>
                             <constraint firstItem="Khh-vn-MPA" firstAttribute="top" secondItem="17p-zk-Dxf" secondAttribute="bottom" id="IO4-ec-Uqg"/>
                             <constraint firstItem="Khh-vn-MPA" firstAttribute="leading" secondItem="17p-zk-Dxf" secondAttribute="leading" id="JLH-pi-O14"/>
-                            <constraint firstItem="rKD-2g-X6L" firstAttribute="trailing" secondItem="Khh-vn-MPA" secondAttribute="trailing" id="MUw-rY-Mqy"/>
-                            <constraint firstItem="rKD-2g-X6L" firstAttribute="top" secondItem="Khh-vn-MPA" secondAttribute="bottom" id="RIL-7L-ZhB"/>
+                            <constraint firstItem="v5Z-4D-awB" firstAttribute="top" secondItem="Khh-vn-MPA" secondAttribute="bottom" id="PEP-Re-pud"/>
                             <constraint firstItem="17p-zk-Dxf" firstAttribute="top" secondItem="Sba-8I-Kc9" secondAttribute="bottom" id="TjR-ZF-RHA"/>
+                            <constraint firstItem="v5Z-4D-awB" firstAttribute="leading" secondItem="qzA-FN-brQ" secondAttribute="leading" id="TlK-Hg-a99"/>
                             <constraint firstItem="17p-zk-Dxf" firstAttribute="leading" secondItem="qzA-FN-brQ" secondAttribute="leading" id="aiy-5P-YRh"/>
                             <constraint firstItem="Khh-vn-MPA" firstAttribute="trailing" secondItem="17p-zk-Dxf" secondAttribute="trailing" id="bjF-w4-pKh"/>
                             <constraint firstItem="Sba-8I-Kc9" firstAttribute="leading" secondItem="qzA-FN-brQ" secondAttribute="leading" id="gtE-zS-0xH"/>
-                            <constraint firstItem="rKD-2g-X6L" firstAttribute="bottom" secondItem="qzA-FN-brQ" secondAttribute="bottom" id="nbQ-Cj-NpF"/>
+                            <constraint firstItem="qzA-FN-brQ" firstAttribute="trailing" secondItem="v5Z-4D-awB" secondAttribute="trailing" id="tzF-0u-f1T"/>
                             <constraint firstItem="qzA-FN-brQ" firstAttribute="trailing" secondItem="Sba-8I-Kc9" secondAttribute="trailing" id="u1N-Ae-vTY"/>
                             <constraint firstItem="Sba-8I-Kc9" firstAttribute="top" secondItem="qzA-FN-brQ" secondAttribute="top" constant="251" id="ybx-br-3hy"/>
                         </constraints>

@@ -18,6 +18,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var tableDataSource : [SideMenuItem] = SideMenuItem.allCases
     
+    var isHomecareSideMenu = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -91,15 +93,26 @@ class MenuViewController: UIViewController {
         }
         usernameLb.text = CurrentUser.userName
         
-        let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(CurrentUser.currentHomeBuildProgress ?? "0%") completed"
+        var yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(CurrentUser.currentHomeBuildProgress ?? "0%") completed"
         
         setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(CurrentUser.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)
+        if isHomecareSideMenu{
+            yourHomeBuild = "Home Care\nChange phase"
+            setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Home Care", "Change phase"], colors: [.white,.white], fonts: [ProximaNovaSemiBold(size: FONT_13),ProximaNovaRegular(size: FONT_11)], alignmentCenter: false)
+            yourhomecurrentbuildLb.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleChangePhase(recognizer:)))
+            yourhomecurrentbuildLb.addGestureRecognizer(tap)
+            usernameLb.text = "Mitchell Symonds"
+        }
+        
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+
 //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
         let vc = NotificationsVC.instace(sb: .newDesignV4)
         self.navigationController?.pushViewController(vc, animated: true)
@@ -107,6 +120,14 @@ class MenuViewController: UIViewController {
 
     }
 
+    @objc func handleChangePhase (recognizer: UIGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+
+        let vc = UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateViewController(withIdentifier: "CustomersUserpreferrenceVC") as! CustomersUserpreferrenceVC
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
+    
 }
 //MARK: - TableView DataSource & Delegate
 extension MenuViewController : UITableViewDelegate, UITableViewDataSource

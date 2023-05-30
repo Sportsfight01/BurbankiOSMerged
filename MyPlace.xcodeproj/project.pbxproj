@@ -1056,21 +1056,21 @@
 			children = (
 				426ACA642A24AA60001317EF /* HMCSupportScreens */,
 				426ACA5B2A24AA60001317EF /* HMCViewControllers */,
-				426ACA572A24AA5F001317EF /* HomeCareSubClasses */,
-				426ACA602A24AA60001317EF /* HomeCareViews */,
+				426ACA572A24AA5F001317EF /* HMCSubClasses */,
+				426ACA602A24AA60001317EF /* HMCViews */,
 				426ACA732A24ABCA001317EF /* HomeCareConstants.swift */,
 			);
 			path = HomeCare;
 			sourceTree = "<group>";
 		};
-		426ACA572A24AA5F001317EF /* HomeCareSubClasses */ = {
+		426ACA572A24AA5F001317EF /* HMCSubClasses */ = {
 			isa = PBXGroup;
 			children = (
 				426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */,
 				426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */,
 				426ACA5A2A24AA5F001317EF /* HomeCareFilesTVC.xib */,
 			);
-			path = HomeCareSubClasses;
+			path = HMCSubClasses;
 			sourceTree = "<group>";
 		};
 		426ACA5B2A24AA60001317EF /* HMCViewControllers */ = {
@@ -1084,14 +1084,14 @@
 			path = HMCViewControllers;
 			sourceTree = "<group>";
 		};
-		426ACA602A24AA60001317EF /* HomeCareViews */ = {
+		426ACA602A24AA60001317EF /* HMCViews */ = {
 			isa = PBXGroup;
 			children = (
 				426ACA612A24AA60001317EF /* HomeCareProfileScreen.xib */,
 				426ACA622A24AA60001317EF /* HomeCareBaseProfileVC.swift */,
 				426ACA632A24AA60001317EF /* HomeCareProfileScreen.swift */,
 			);
-			path = HomeCareViews;
+			path = HMCViews;
 			sourceTree = "<group>";
 		};
 		426ACA642A24AA60001317EF /* HMCSupportScreens */ = {
