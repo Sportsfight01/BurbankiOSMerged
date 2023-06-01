@@ -126,20 +126,25 @@ struct MyNotesStruct : Codable
     var notedate : String?
     var noteId : Int?
     var replies : [MyNotesStruct]?
-    var replytoid : Int?
+    var replyTo : ReplyTo?
     var subject : String?
     var byclient : Bool?
     
     enum CodingKeys : String, CodingKey
     {
         case authorname = "unknownAuthor"
-        case body, noteId, replies, replytoid, subject, byclient
+        case body, noteId, replies, replyTo, subject, byclient
         case notedate = "activityDate"
         
     }
     var date : Date
     {
         return notedate?.components(separatedBy: ".").first?.getDate() ?? Date()
+    }
+    
+    struct ReplyTo : Codable
+    {
+        let noteId : Int?
     }
         
 }
