@@ -68,11 +68,12 @@ class HomeScreenTabBarVC: UITabBarController {
             TabBarItemStruct(viewController: Tabbarscreens.self, title: "MANUALS", selectedItemImage: "Ico-ManualsBlack", unSelectedItemImage: "Ico-Manuals"),
             TabBarItemStruct(viewController: Tabbarscreens.self, title: "DOCUMENTS", selectedItemImage: "Ico-DocumentsBlack", unSelectedItemImage: "Ico-DocumentsHC"),
             TabBarItemStruct(viewController: Tabbarscreens.self, title: "WARRANTIES", selectedItemImage: "Ico-WarrantiesBlack", unSelectedItemImage: "Ico-Warranties"),
-            TabBarItemStruct(viewController: Tabbarscreens.self, title: "REPORT", selectedItemImage: "Ico-ReportBlack", unSelectedItemImage: "Ico-Report"),
+            TabBarItemStruct(viewController: ReportIssueHomeVC.self,storyboard : .reports, title: "REPORT", selectedItemImage: "Ico-ReportBlack", unSelectedItemImage: "Ico-Report"),
             TabBarItemStruct(viewController: Tabbarscreens.self, title: "HELP SECTION", selectedItemImage: "Ico-HelpBlack", unSelectedItemImage: "Ico-Help"),
         ]
         self.viewControllers = tabBarItems.map { item in
-            let vc = UINavigationController(rootViewController: item.viewController.instace(sb: .homeScreenSb))
+            let storyBoard : AppStoryBoards = item.storyboard ?? .homeScreenSb
+            let vc = UINavigationController(rootViewController: item.viewController.instace(sb: storyBoard))
             vc.setNavigationBarHidden(true, animated: true)
             vc.tabBarItem = UITabBarItem(title: item.title, image: UIImage(named : item.unSelectedItemImage) , selectedImage: UIImage(named : item.selectedItemImage))
             

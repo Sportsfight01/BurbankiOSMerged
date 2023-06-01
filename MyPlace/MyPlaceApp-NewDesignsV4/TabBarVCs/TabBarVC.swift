@@ -97,7 +97,15 @@ extension TabBarVC : UITabBarControllerDelegate
 struct TabBarItemStruct
 {
     let viewController : UIViewController.Type
+    let storyboard : AppStoryBoards?
     let title : String
     let selectedItemImage : String
     let unSelectedItemImage : String
+    init(viewController: UIViewController.Type, storyboard: AppStoryBoards? = nil, title: String, selectedItemImage: String, unSelectedItemImage: String) {
+        self.viewController = viewController
+        self.storyboard = storyboard
+        self.title = title
+        self.selectedItemImage = selectedItemImage
+        self.unSelectedItemImage = unSelectedItemImage
+    }
 }

@@ -8,24 +8,18 @@
 
 import UIKit
 
-class HomeCareProfileScreen: UIView {
+class HomeCareHeaderView: UIView {
 
+    //MARK: - Properties
     @IBOutlet var contentView: UIView!
-    
     @IBOutlet weak var burbankLogoBTN: UIButton!
     @IBOutlet weak var baseImageView: UIImageView!
-    
     @IBOutlet weak var navigationView: UIView!
-    
     @IBOutlet weak var menuAndBackBtn: UIButton!
     @IBOutlet weak var contactUsBtn: UIButton!
-    
     @IBOutlet weak var profileBaseView: UIView!
-    
     @IBOutlet weak var profileView: UIImageView!
-    
     @IBOutlet weak var titleLBL: UILabel!
-    
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var descriptionLBL: UILabel!
     override init(frame: CGRect) {
@@ -39,7 +33,7 @@ class HomeCareProfileScreen: UIView {
     
     func commonInit()
     {
-        Bundle.main.loadNibNamed("HomeCareProfileScreen", owner: self)
+        Bundle.main.loadNibNamed("HomeCareHeaderView", owner: self)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth,

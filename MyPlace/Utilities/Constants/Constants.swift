@@ -72,9 +72,10 @@ enum AppStoryBoards : String
     case supportAndHelp = "SupportAndHelp"
     case myPlaceLogin = "MyPlaceLogin"
     
-    //Home Care storyboard IDs
+    //Home Care storyboard Names
     
-    case homeScreenSb = "HomeScreenStoryBoard"
-    case homeCareFilesTVC = "HomeCareFilesTVC"
-    case homeCareProfile = "HomeCareProfileScreen"
+    case homeScreenSb = "HomeCareMain"
+    case reports = "Report"
+//    case homeCareFilesTVC = "HomeCareFilesTVC"
+//    case homeCareProfile = "HomeCareProfileScreen"
 }

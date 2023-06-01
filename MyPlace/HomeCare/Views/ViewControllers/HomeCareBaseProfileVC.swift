@@ -11,12 +11,13 @@ import SideMenu
 
 class HomeCareBaseProfileVC: UIViewController {
 
-    var profileBaseView : HomeCareProfileScreen!
+    var profileBaseView : HomeCareHeaderView!
     var menu : SideMenuNavigationController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+       self.setStatusBar(AppColors.appGray)
         addProfileHeaderView()
         sideMenuSetup()
     }
@@ -25,16 +26,15 @@ class HomeCareBaseProfileVC: UIViewController {
     
     func addProfileHeaderView()
     {
-     
-        setStatusBar(AppColors.appGray)
-        self.profileBaseView = HomeCareProfileScreen(frame: .zero)
+        
+        self.profileBaseView = HomeCareHeaderView(frame: .zero)
         self.view.addSubview(profileBaseView)
         profileBaseView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             profileBaseView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileBaseView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileBaseView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileBaseView.heightAnchor.constraint(equalToConstant: 250)
+            profileBaseView.heightAnchor.constraint(equalToConstant: 220)
         
         ])
         
@@ -47,7 +47,8 @@ class HomeCareBaseProfileVC: UIViewController {
     {
         let statusBar = UIView(frame: kWindow.windowScene?.statusBarManager?.statusBarFrame ?? .zero)
         statusBar.backgroundColor = color
-        kWindow.addSubview(statusBar)
+        self.view.addSubview(statusBar)
+       
     }
     func setupProfile()
     {
@@ -96,7 +97,7 @@ class HomeCareBaseProfileVC: UIViewController {
     
     @objc func didTappedOnBurbanklogo(){
         self.navigationController?.parent?.navigationController?.viewControllers.forEach({ vc in
-            if vc.isKind(of: HomeCareDashBoardScreenVC.self)
+            if vc.isKind(of: HomeCareDashBoardVC.self)
             {
                 vc.navigationController?.popToViewController(vc, animated: true)
             }
@@ -126,4 +127,13 @@ class HomeCareBaseProfileVC: UIViewController {
 
     }
 
+}
+extension UIApplication {
+    class var statusBarBackgroundColor: UIColor? {
+        get {
+            return (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor
+        } set {
+            (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = newValue
+        }
+    }
 }

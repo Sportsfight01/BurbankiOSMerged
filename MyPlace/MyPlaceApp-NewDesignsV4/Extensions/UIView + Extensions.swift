@@ -39,5 +39,14 @@ extension UIView {
         layer.rasterizationScale = UIScreen.main.scale
     }
     
+    func addBorder()
+    {
+      let borderLayer = CAShapeLayer()
+        borderLayer.backgroundColor = AppColors.appGray.cgColor
+        borderLayer.frame = CGRect(x: 0, y: self.bounds.height - 1, width: self.bounds.width, height: 1)
+        self.layer.addSublayer(borderLayer)
+        
+    }
+    
     
 }

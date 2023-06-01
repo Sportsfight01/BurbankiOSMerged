@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeCareDashBoardScreenVC: HomeCareBaseProfileVC,UITabBarDelegate {
+class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -85,7 +85,7 @@ class HomeCareDashBoardScreenVC: HomeCareBaseProfileVC,UITabBarDelegate {
     */
 
 }
-extension HomeCareDashBoardScreenVC : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension HomeCareDashBoardVC : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dashBoardDataArr.count
     }
@@ -121,7 +121,7 @@ extension HomeCareDashBoardScreenVC : UICollectionViewDelegate,UICollectionViewD
 
 
 
-extension HomeCareDashBoardScreenVC{
+extension HomeCareDashBoardVC{
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let vc = HomeScreenTabBarVC.instace(sb: .homeScreenSb)
         vc.selectedTab = item.tag

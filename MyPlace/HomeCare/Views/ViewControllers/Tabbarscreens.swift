@@ -37,22 +37,12 @@ class Tabbarscreens: HomeCareBaseProfileVC {
         profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")
         profileBaseView.titleLBL.textColor = .black
         profileBaseView.titleLBL.text = "My" + (self.navigationController?.tabBarItem.title?.capitalized ?? "")
-        profileBaseView.baseImageView.image = UIImage(named: "")
+        profileBaseView.baseImageView.image = UIImage(named: "welcome")
 //        profileBaseView.menuAndBackBtn.setImage(UIImage(systemName:"arrow.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
 //        getTabBardetail()
        
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension Tabbarscreens : UITableViewDelegate,UITableViewDataSource{
