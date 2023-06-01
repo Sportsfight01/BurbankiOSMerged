@@ -55,13 +55,6 @@ class ContactUsNewMsgPopupVC: UIViewController {
         replyTextView.layer.borderColor = UIColor.black.cgColor
         replyTextView.backgroundColor = .white
         replyTextView.layer.cornerRadius = 5.0
-//        if #available(iOS 13.0, *)
-//        {
-//            replyTextView.backgroundColor = .systemGray6
-//        }
-//        else {
-//        replyTextView.backgroundColor = .lightGray
-//        }
     }
     
     
@@ -195,3 +188,4 @@ class ContactUsNewMsgPopupVC: UIViewController {
 //    }
 
 }
+

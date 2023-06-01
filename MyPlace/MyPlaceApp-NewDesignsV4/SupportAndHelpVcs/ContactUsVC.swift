@@ -112,7 +112,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = getNotesPostData()
+        urlRequest.httpBody = ContactUsVC.getNotesPostData()
         DispatchQueue.main.async {
             appDelegate.showActivity()
         }
@@ -136,11 +136,6 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
          
         }.resume()
 
-        
-    }
-    
-    func createNewNote()
-    {
         
     }
     //MARK: - HelperMethods
@@ -296,7 +291,7 @@ func mailComposeController(_ controller: MFMailComposeViewController, didFinishW
 
 extension ContactUsVC
 {
-    func getNotesPostData() -> Data
+    static func getNotesPostData() -> Data
     {
         guard let json = """
          {

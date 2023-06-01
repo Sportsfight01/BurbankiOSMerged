@@ -153,6 +153,7 @@ extension MenuViewController
         case appointment     = "MyAppointments"
         case details         = "MyDetails"
         case support         = "MySupport"
+        case history         = "MyHistory"
         case notifications   = "MyNotifications"
         case settings        = "MySettings"
         
@@ -167,6 +168,8 @@ extension MenuViewController
             case .details:
                 return "icon_MyDetails"
             case .support:
+                return "icon_MySupport"
+            case .history:
                 return "icon_MySupport"
             case .notifications:
                 return "Ico-Notification"
@@ -188,6 +191,8 @@ extension MenuViewController
                 return DetailsVC.instace()
             case .support:
                 return SupportVC.instace(sb: .supportAndHelp)
+            case .history:
+                return MyHistoryVC.instace(sb: .newDesignV4)
             case .notifications:
                 return NotificationsVC.instace()
             case .settings:

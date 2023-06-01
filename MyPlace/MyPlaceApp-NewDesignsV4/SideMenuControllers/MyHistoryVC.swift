@@ -19,11 +19,10 @@ class MyHistoryVC: UIViewController {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupProfile()
-        // Do any additional setup after loading the view.
-        getHistoryDetails()
         tableView.delegate = self
         tableView.dataSource = self
+        getHistoryDetails()
+     
     
     }
  
@@ -34,28 +33,98 @@ class MyHistoryVC: UIViewController {
         setupProfile()
     }
     
-    //MARK: - Service Call
+    
+    //MARK: - Service Calls
     func getHistoryDetails()
     {
-        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
-        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
-        let auth = jobAndAuth.auth
+        guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
+        let url = "\(clickHomeV3BaseURL)Accounts/Login"
+        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
+
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
+        appDelegate.showActivity()
+        //LoginService
+        URLSession.shared.dataTask(with: urlRequest) {[weak self] data, response, error in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                ;return}
+            debugPrint("login Service succesfully got the results")
+            //Get Notes service
+
+            self?.getNotesList()
+              
+        }.resume()
+
+    }
+    func getNotesList()
+    {
+        let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = ContactUsVC.getNotesPostData()
+        DispatchQueue.main.async {
+            appDelegate.showActivity()
+        }
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            //Validation
+            debugPrint(response.debugDescription)
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                return}
+            guard let data else {
+                self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"));return }
+            //:End Of Validation
+            
+            guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
+            
+            self?.setupSerivceData(dictionary: json)
+         
+        }.resume()
+
         
-        NetworkRequest.makeRequestArray(type: MyNotesStruct.self, urlRequest: Router.getNotes(auth: auth, contractNo: jobNumber)) { [weak self](result) in
-            switch result
+    }
+    //MARK: - HelperMethods
+    func setupSerivceData(dictionary : NSDictionary)
+    {
+        //        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+        var tempDataSource : [MyNotesStruct] = []
+        if let notesList = dictionary.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
+        {
+            if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
             {
-            case .success(let data):
-                print(data)
-                //self?.setupProgressDetails(progressData: data)
-                self?.tableDataSource = data
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-                
-            case.failure(let err):
-                print(err.localizedDescription)
+                //Note without "replyTo" key goes to MainNotes
+                //Note with "replyTo" key means it is reply to a note in the list
+
+                tableDataSource = tableData.filter({$0.replyTo == nil})
+               
+               // tempDataSource = tableData
             }
         }
+        
+        tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+
+        self.tableDataSource = tempDataSource
+            if self.tableDataSource?.count == 0
+            {
+                self.tableView.setEmptyMessage("No Notes Found")
+            }else {
+                self.tableView.reloadData()
+            }
+        
     }
     
     
@@ -64,14 +133,9 @@ class MyHistoryVC: UIViewController {
         profileImgView.contentMode = .scaleToFill
         profileImgView.clipsToBounds = true
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
-//        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
-//        {
-//          //  profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
-//            profileImgView.downloaded(from: url)
-//        }
         if let imgURlStr = CurrentUser.profilePicUrl
         {
-           // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
+
             profileImgView.image = imgURlStr
         }
         if appDelegate.notificationCount == 0{
@@ -101,18 +165,10 @@ extension MyHistoryVC : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyHistoryTBCell", for: indexPath) as! MyHistoryTBCell
         let history = tableDataSource?[indexPath.row]
-        
-        //"yyyy-MM-dd'T'HH:mm:ss.zzz"
-        
-//        let dateFormatterPrint = DateFormatter()
-//        dateFormatterPrint.dateFormat = "dd/MM/yyyy HH:mm:ss a"
-       // "By " + (contactUsVICArray[indexPath.row].authorname + "on " + contactUsVICArray[indexPath.row].notedateWithFormat)
-        
         cell.subjectLb.text = history?.subject
-        let noteDate = dateFormatter(dateStr: (history?.notedate ?? ""), currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "dd/MM/yyyy HH:mm:ss a") ?? ""
-     //   print("Note Date :- \(noteDate)")
-      cell.authorNameLb.text =  "By " + (history?.authorname ?? "")
-       // cell.authorNameLb.text =  "By " + (history?.authorname ?? "") + " on " + noteDate
+        let noteDate = dateFormatter(dateStr: history?.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy hh:mm a")
+        cell.authorNameLb.text =  "By " + (history?.authorname ?? "")
+        // cell.authorNameLb.text =  "By " + (history?.authorname ?? "") + " on " + noteDate
         cell.bodyLb.text = history?.body
         return cell
     }
