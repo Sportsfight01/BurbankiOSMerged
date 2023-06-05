@@ -17,7 +17,7 @@ class HomeCareBaseProfileVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-       self.setStatusBar(AppColors.appGray)
+       self.setStatusBar(AppColors.AppGray)
         addProfileHeaderView()
         sideMenuSetup()
     }
@@ -34,7 +34,7 @@ class HomeCareBaseProfileVC: UIViewController {
             profileBaseView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileBaseView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileBaseView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileBaseView.heightAnchor.constraint(equalToConstant: 220)
+            profileBaseView.heightAnchor.constraint(equalToConstant: 200)
         
         ])
         

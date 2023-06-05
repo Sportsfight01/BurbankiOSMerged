@@ -418,6 +418,7 @@ class LoginVCNew: BurbankAppVC {
                         {
                             // let userID = user.userDetailsArray?[0].id ?? -1
                             let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+                            vc.userData = user
                             self.navigationController?.pushViewController(vc, animated: true)
                            // CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
                             
@@ -480,7 +481,10 @@ class LoginVCNew: BurbankAppVC {
                             //Entered Email is already Registered in Central DB, so we need to direclt allow user to dashboard
                             if user.isCentralLoginUser == true
                             {
-                                CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
+                                let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+                                vc.userData = user
+                                self.navigationController?.pushViewController(vc, animated: true)
+//                                CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
                             }else
                             {
                                 self.performSegue(withIdentifier: "showSetCentralPasswordVC", sender: nil)
@@ -537,7 +541,10 @@ class LoginVCNew: BurbankAppVC {
                             
                             if user.isCentralLoginUser == true//Entered Email is already Registered in Central DB, so we need to direclt allow user to dashboard
                             {
-                                CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
+                                let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+                                vc.userData = user
+                                self.navigationController?.pushViewController(vc, animated: true)
+//                                CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
                             }else
                             {
                                 self.performSegue(withIdentifier: "showSetCentralPasswordVC", sender: nil)
@@ -869,7 +876,10 @@ extension LoginVCNew {
                     //TODO: User authenticated successfully, take appropriate action
                     DispatchQueue.main.async {
                         if let user = self.appDelegate.currentUser {
-                            CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
+                            let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+                            vc.userData = user
+                            self.navigationController?.pushViewController(vc, animated: true)
+//                            CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
                         }
                     }
                 }

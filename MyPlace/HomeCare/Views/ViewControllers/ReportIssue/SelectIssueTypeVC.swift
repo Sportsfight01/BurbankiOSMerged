@@ -19,7 +19,9 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
     
     //MARK: - ButtonActions
     
-  
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     @IBAction func selectIssueTypeBtnsAction(_ sender: UIButton) {
         
         switch sender.tag

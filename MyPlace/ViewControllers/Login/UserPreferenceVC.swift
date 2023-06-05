@@ -264,7 +264,10 @@ class UserPreferenceVC: UIViewController {
             CodeManager.sharedInstance.sendScreenName(burbank_home_screen_deposited_button_touch)
             if appDelegate.loginStatus == true
             {
-                CodeManager.sharedInstance.handleUserLoginSuccess(user: appDelegate.currentUser!, In: self)
+                let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+                vc.userData = appDelegate.currentUser!
+                self.navigationController?.pushViewController(vc, animated: true)
+//                CodeManager.sharedInstance.handleUserLoginSuccess(user: appDelegate.currentUser!, In: self)
                 return
             }else {
                                 

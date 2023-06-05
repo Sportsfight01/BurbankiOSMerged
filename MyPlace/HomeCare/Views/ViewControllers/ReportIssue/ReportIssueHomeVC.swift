@@ -21,14 +21,16 @@ class ReportIssueHomeVC: HomeCareBaseProfileVC {
     {
         //profileSetup
         profileBaseView.baseImageView.image = nil
-        profileBaseView.contentView.backgroundColor = AppColors.appGray
-        profileBaseView.navigationView.backgroundColor = AppColors.appGray
+        profileBaseView.contentView.backgroundColor = AppColors.AppGray
+        profileBaseView.navigationView.backgroundColor = AppColors.AppGray
         //addScrollView()
     }
     
     //MARK: - Button Actions
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     @IBAction func reportMinorDefectsBtnAction(_ sender: UIButton) {
     }
     

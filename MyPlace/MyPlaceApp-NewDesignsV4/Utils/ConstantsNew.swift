@@ -47,7 +47,7 @@ struct AppColors
     static let appGray : UIColor = APPCOLORS_3.GreyTextFont
     static let myplaceGray : UIColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
 
-    
+    static let AppGray : UIColor = UIColor.hexCode("#414042")
     static let appPink : UIColor = UIColor.systemPink
     
     struct StageColors {

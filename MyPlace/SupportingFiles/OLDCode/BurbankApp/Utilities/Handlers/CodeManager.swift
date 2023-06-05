@@ -281,27 +281,27 @@ class CodeManager: NSObject, UIScrollViewDelegate {
     func handleUserLoginSuccess(user: User,In viewController: UIViewController)
     {
         //print(user)
-        handleUserHomecareModule(user: user, In: viewController)
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        //        viewController.performSegue(withIdentifier: "showMyPlaceDashboardVC", sender: nil)
-//        appDelegate.currentUser = user //Need To Check whethere we need to fill user data here or not
-//        removeIsShownProfileKey() //Need to Place here before set the key "EnteredEmailOrJob"
-//        UserDefaults.standard.set(appDelegate.enteredEmailOrJob, forKey: "EnteredEmailOrJob")
-//        saveUserInUserDefaults(user)
-//
-//        let rootVc = UIStoryboard(name : "NewDesignsV4" , bundle : nil).instantiateInitialViewController()
-//        //viewController.performSegue(withIdentifier: "showMyPlaceDashboardVC", sender: nil)
-//        appDelegate.currentUser = user //Need To Check whethere we need to fill user data here or not
-//         //Need to Place here before set the key "EnteredEmailOrJob"
-//        if #available(iOS 13.0, *) {
-//            let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
-//            sceneDelegate.window?.rootViewController = rootVc
-//            sceneDelegate.window?.makeKeyAndVisible()
-//        } else {
-//            // Fallback on earlier versions
-//            appDelegate.window?.rootViewController = rootVc
-//            appDelegate.window?.makeKeyAndVisible()
-//        }
+//        handleUserHomecareModule(user: user, In: viewController)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //        viewController.performSegue(withIdentifier: "showMyPlaceDashboardVC", sender: nil)
+        appDelegate.currentUser = user //Need To Check whethere we need to fill user data here or not
+        removeIsShownProfileKey() //Need to Place here before set the key "EnteredEmailOrJob"
+        UserDefaults.standard.set(appDelegate.enteredEmailOrJob, forKey: "EnteredEmailOrJob")
+        saveUserInUserDefaults(user)
+
+        let rootVc = UIStoryboard(name : "NewDesignsV4" , bundle : nil).instantiateInitialViewController()
+        //viewController.performSegue(withIdentifier: "showMyPlaceDashboardVC", sender: nil)
+        appDelegate.currentUser = user //Need To Check whethere we need to fill user data here or not
+         //Need to Place here before set the key "EnteredEmailOrJob"
+        if #available(iOS 13.0, *) {
+            let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
+            sceneDelegate.window?.rootViewController = rootVc
+            sceneDelegate.window?.makeKeyAndVisible()
+        } else {
+            // Fallback on earlier versions
+            appDelegate.window?.rootViewController = rootVc
+            appDelegate.window?.makeKeyAndVisible()
+        }
         
     }
 

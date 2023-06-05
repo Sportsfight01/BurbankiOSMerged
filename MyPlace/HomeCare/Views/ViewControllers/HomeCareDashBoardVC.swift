@@ -55,9 +55,7 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func setUpProfileView(){
-//        self.view.backgroundColor = AppColors.AppGray
-        profileBaseView.navigationView.backgroundColor = AppColors.appGray
-//        profileBaseView.contentView.backgroundColor = AppColors.AppGray
+        profileBaseView.navigationView.backgroundColor = AppColors.AppGray
         profileBaseView.descriptionLBL.textColor = .black
         profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")
         profileBaseView.baseImageView.image = UIImage(named: "")
@@ -70,7 +68,7 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
         tabBar.tintColor = .gray
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_LIGHT (size: FONT_20))
         setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_BODY (size: FONT_10))
-        
+        setStatusBarColor(color: AppColors.AppGray)
     }
     
 

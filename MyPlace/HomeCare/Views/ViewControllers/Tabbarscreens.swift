@@ -31,7 +31,7 @@ class Tabbarscreens: HomeCareBaseProfileVC {
     
     func setUpProfileView(){
 //        self.view.backgroundColor = AppColors.AppGray
-        profileBaseView.navigationView.backgroundColor = AppColors.appGray
+        profileBaseView.navigationView.backgroundColor = AppColors.AppGray
         profileBaseView.contentView.backgroundColor = AppColors.appGray
         profileBaseView.descriptionLBL.textColor = .black
         profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")

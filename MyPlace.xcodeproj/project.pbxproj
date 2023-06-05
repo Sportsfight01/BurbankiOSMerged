@@ -1043,13 +1043,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		421129CC2A27110500F92AE4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		421129CD2A27111800F92AE4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1059,13 +1052,6 @@
 				421129D02A27115E00F92AE4 /* StoryBoards */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		421129CE2A27112900F92AE4 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		421129CF2A27114900F92AE4 /* Uitilities */ = {
@@ -1154,9 +1140,7 @@
 			children = (
 				4212CFC62A27237700A098B2 /* Resources */,
 				421129CF2A27114900F92AE4 /* Uitilities */,
-				421129CE2A27112900F92AE4 /* ViewModels */,
 				421129CD2A27111800F92AE4 /* Views */,
-				421129CC2A27110500F92AE4 /* Models */,
 			);
 			path = HomeCare;
 			sourceTree = "<group>";

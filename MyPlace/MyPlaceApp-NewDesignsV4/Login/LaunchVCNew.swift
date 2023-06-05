@@ -32,7 +32,11 @@ class LaunchVCNew: BurbankAppVC {
         super.viewDidLoad()
         if appDelegate.loginStatus == true
         {
-            CodeManager.sharedInstance.handleUserLoginSuccess(user: appDelegate.currentUser!, In: self)
+            let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+            vc.userData = appDelegate.currentUser!
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+//            CodeManager.sharedInstance.handleUserLoginSuccess(user: appDelegate.currentUser!, In: self)
 
 //            self.performSegue(withIdentifier: "showMyPlaceDashboardVC", sender: nil)
             // CodeManager.sharedInstance.callServiceAndUpdateUser()
