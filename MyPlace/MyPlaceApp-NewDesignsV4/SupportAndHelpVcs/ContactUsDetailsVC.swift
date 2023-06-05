@@ -94,29 +94,99 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     @IBAction func didTappedOnBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    //MARK: - Service Call
+    //MARK: - Service Calls
     func getNotes()
     {
-        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
-        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
-        let auth = jobAndAuth.auth
+        guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
+        let url = "\(clickHomeV3BaseURL)Accounts/Login"
+        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
+
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
+        appDelegate.showActivity()
+        //LoginService
+        URLSession.shared.dataTask(with: urlRequest) {[weak self] data, response, error in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                ;return}
+            debugPrint("login Service succesfully got the results")
+            //Get Notes service
+
+            self?.getNotesList()
+              
+        }.resume()
+
+    }
+    func getNotesList()
+    {
+        let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = getNotesPostData()
+        DispatchQueue.main.async {
+            appDelegate.showActivity()
+        }
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            //Validation
+            debugPrint(response.debugDescription)
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                return}
+            guard let data else {
+                self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"));return }
+            //:End Of Validation
+            
+            guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
+            
+            self?.setupSerivceData(dictionary: json)
+         
+        }.resume()
+
         
-        NetworkRequest.makeRequestArray(type: MyNotesStruct.self, urlRequest: Router.getNotes(auth: auth, contractNo: jobNumber)) { [weak self](result) in
-            switch result
+    }
+    //MARK: - HelperMethods
+    func setupSerivceData(dictionary : NSDictionary)
+    {
+        //        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+        var tempDataSource : [MyNotesStruct] = []
+        if let notesList = dictionary.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
+        {
+            if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
             {
-            case .success(let data):
-                print(data)
-                //self?.setupProgressDetails(progressData: data)
-                let currentData = data.filter({$0.noteId == self?.contactDetails?.noteId})
-                self?.tableDataSource = currentData.first?.replies
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+                //Note without "replyTo" key goes to MainNotes
+                //Note with "replyTo" key means it is reply to a note in the list
                 
-            case.failure(let err):
-                print(err.localizedDescription)
+                let noteId = contactDetails?.noteId
+                let replies = tableData.filter({ noteId == $0.replyTo?.noteId})
+                tempDataSource = replies
             }
         }
+        
+        tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+
+        self.tableDataSource = tempDataSource
+        DispatchQueue.main.async {
+            if self.tableDataSource?.count == 0
+            {
+                self.tableView.setEmptyMessage("No Notes Found")
+            }else {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
 
 
@@ -146,4 +216,21 @@ extension ContactUsDetailsVC : UITableViewDelegate, UITableViewDataSource
     }
     
     
+}
+extension ContactUsDetailsVC
+{
+    func getNotesPostData() -> Data
+    {
+        guard let json = """
+         {
+             "Notes": {
+               "List": {
+                 "MetaData": {}
+               }
+             }
+         }
+         
+         """.data(using: .utf8) else { return Data() }
+        return json
+    }
 }

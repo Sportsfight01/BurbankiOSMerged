@@ -38,7 +38,7 @@ let clickHomeBaseImageURLForTesting = "http://10.6.45.14:8085/getattachment/"
 let clickHomeBaseImageURLForLive = "https://www.burbank.com.au/getattachment/"
 
 
-
+let clickHomeV3BaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/myhome/V3/"
 let clickHomeBaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/ClickHome.myhome/v2/"
 let myPlaceVICBaseURL = "https://www.burbank.com.au/victoria/myplace/api/"
 

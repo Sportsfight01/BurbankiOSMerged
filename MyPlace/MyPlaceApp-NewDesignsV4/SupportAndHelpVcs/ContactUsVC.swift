@@ -79,7 +79,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     func getNotes()
     {
         guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
-        let url = "https://clickhomedev.burbankgroup.com.au/clickhome3webservice_DEV/MyHome/V3/Accounts/Login"
+        let url = "\(clickHomeV3BaseURL)Accounts/Login"
         let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
 
         var urlRequest = URLRequest(url: URL(string: url)!)
@@ -107,12 +107,12 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     }
     func getNotesList()
     {
-        let url = "https://clickhomedev.burbankgroup.com.au/ClickHome3WebService_DEV/MyHome/V3/MasterContracts/Get"
+        let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = getNotesPostData()
+        urlRequest.httpBody = ContactUsVC.getNotesPostData()
         DispatchQueue.main.async {
             appDelegate.showActivity()
         }
@@ -138,26 +138,34 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
         
     }
-    
-    func createNewNote()
-    {
-        
-    }
     //MARK: - HelperMethods
     func setupSerivceData(dictionary : NSDictionary)
     {
-        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
-//        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+        //        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
         var tempDataSource : [MyNotesStruct] = []
-        keyPaths.forEach { keypath in
-            if let notesList = dictionary.value(forKeyPath: "\(keypath).notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
+        if let notesList = dictionary.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
+        {
+            if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
             {
-                if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
+                //Note without "replyTo" key goes to MainNotes
+                //Note with "replyTo" key means it is reply to a note in the list
+
+                var mainNotes = tableData.filter({$0.replyTo == nil})
+                for item in mainNotes
                 {
-                    tempDataSource.append(contentsOf: tableData)
+                    var note = item
+                    let noteId = item.noteId
+                    let replies = tableData.filter({ noteId == $0.replyTo?.noteId})
+                    if replies.count > 0//replies found
+                    {
+                        note.replies = replies
+                    }
+                    tempDataSource.append(note)
                 }
+               // tempDataSource = tableData
             }
         }
+        
         tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
         self.contactArr = tempDataSource
         self.tableDataSource = tempDataSource
@@ -283,84 +291,15 @@ func mailComposeController(_ controller: MFMailComposeViewController, didFinishW
 
 extension ContactUsVC
 {
-    func getNotesPostData() -> Data
+    static func getNotesPostData() -> Data
     {
         guard let json = """
          {
-
-             "client": {
-
-                 "contacts": {
-
-                     "list": {}
-
-                 }
-
-             },
-
-             "leadContract": {
-                    "tasks": {
-
-                     "list": {
-
-                         "resource": {},
-
-                         "virtualResource": {}
-
-                     }
-
-                 },
-
-                 "notes": {
-
-                     "list": {}
-
-                 }
-         },
-
-             "preconstructionContract": {
-
-                 "tasks": {
-
-                     "list": {
-
-                         "resource": {},
-
-                         "virtualResource": {}
-
-                     }
-
-                 },
-
-                 "notes": {
-
-                     "list": {}
-
-                 }
-
-             },
-
-             "constructionContract": {
-
-                 "tasks": {
-
-                     "list": {
-
-                         "resource": {},
-
-                         "virtualResource": {}
-
-                     }
-
-                 },
-         "notes": {
-
-                     "list": {}
-
-                 }
-
-             }
-
+             "Notes": {
+               "List": {
+                 "MetaData": {}
+               }
+             }
          }
          
          """.data(using: .utf8) else { return Data() }
