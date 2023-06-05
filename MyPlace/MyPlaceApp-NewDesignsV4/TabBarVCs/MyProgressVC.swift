@@ -411,6 +411,7 @@ extension MyProgressVC : UICollectionViewDelegate , SkeletonCollectionViewDataSo
         if indexPath.row > 0 {
             //cell.lastUpdatedLb.isHidden = false
             cell.seeMoreBtn.isHidden = false
+            cell.lastUpdatedLb.textColor = AppColors.darkGray
             cell.lastUpdatedLb.text = self.setupLastUpdateDate(progressData: clItems[indexPath.row].progressDetails).lastUpdate
             cell.detailLb.text = clItems[indexPath.row].detailText
             cell.detailLb.numberOfLines = 2
