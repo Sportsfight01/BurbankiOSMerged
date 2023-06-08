@@ -13,7 +13,7 @@ class MyHistoryTBCell: UITableViewCell {
     @IBOutlet weak var subjectLb: UILabel!
     
     @IBOutlet weak var authorNameLb: UILabel!
-    
+    @IBOutlet weak var noteDateLb: UILabel!
     @IBOutlet weak var bodyLb: UILabel!
     
     

@@ -62,7 +62,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        setupNavigationBarButtons(shouldShowNotification: true)
+        setupNavigationBarButtons(shouldShowNotification: false)
         myProgressLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
    
         

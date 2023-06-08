@@ -10,11 +10,12 @@ import UIKit
 import MessageUI
 
 class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
-    @IBOutlet weak var repliesHeader: UILabel!
     
-    @IBOutlet weak var tableHeight: NSLayoutConstraint!
+     //MARK: - Properties
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var descriptionLb: UILabel!
     @IBOutlet weak var contactUsHdrLBL: UILabel!
+    
     var contactDetails : MyNotesStruct?
 
    // @IBOutlet weak var fromLBL: UILabel!
@@ -27,23 +28,26 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        showData()
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor.clear
+        showData()
+
     }
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      self.setupNavigationBarButtons()
+        setupNavigationBarButtons(shouldShowNotification: false)
         readUnreadMessage()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //tableHeight.constant = tableView.contentSize.height
+      //  tableViewHeight.constant = tableView.contentSize.height + 50
+       
     }
 
+     //MARK: - HelperMethods
     func readUnreadMessage()
     {
         guard let contactData = contactDetails else {return}
@@ -64,11 +68,21 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
        // fromLBL.text =  "From : " + (appDelegate.currentUser?.userDetailsArray?[0].fullName)!
         descriptionLb.text = self.contactDetails?.body ?? ""
         self.tableDataSource = contactDetails?.replies //All replies
-        tableView.reloadData()
-//        self.view.layoutSubviews()
-//        self.view.layoutIfNeeded()
-     
-        
+        setupUI()
+    }
+    func setupUI()
+    {
+        DispatchQueue.main.async {
+            if self.tableDataSource?.count == 0 || self.tableDataSource == nil
+            {
+                self.tableView.isHidden = true
+                
+            }else {
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+                self.tableView.layoutIfNeeded()
+            }
+        }
     }
 
     @IBAction func didTappedOnReplay(_ sender: UIButton) {
@@ -91,9 +105,6 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     @IBAction func didTappedOnInbox(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func didTappedOnBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
     //MARK: - Service Calls
     func getNotes()
     {
@@ -114,8 +125,11 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
             }
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                DispatchQueue.main.async
+                {
                 self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
-                ;return}
+                }
+                return}
             debugPrint("login Service succesfully got the results")
             //Get Notes service
 
@@ -143,10 +157,17 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
             debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                DispatchQueue.main.async
+                {
                 self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                }
                 return}
             guard let data else {
-                self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"));return }
+                DispatchQueue.main.async {
+                    self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"))
+                }
+                
+                return }
             //:End Of Validation
             
             guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
@@ -178,14 +199,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
 
         self.tableDataSource = tempDataSource
-        DispatchQueue.main.async {
-            if self.tableDataSource?.count == 0
-            {
-                self.tableView.setEmptyMessage("No Notes Found")
-            }else {
-                self.tableView.reloadData()
-            }
-        }
+        self.setupUI()
         
     }
 
@@ -200,19 +214,33 @@ extension ContactUsDetailsVC : UITableViewDelegate, UITableViewDataSource
         return tableDataSource?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {return UITableViewCell()}
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContactUsReplyTBCell
         let cellData = tableDataSource?[indexPath.row]
-        if let titleLb = cell.contentView.viewWithTag(100) as? UILabel
-        {
-            titleLb.text = cellData?.body
-        }
-        if let datelb = cell.contentView.viewWithTag(101) as? UILabel
-        {
-            let notedate = dateFormatter(dateStr: cellData?.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy hh:mm a")
-            datelb.text = notedate
-        }
-        
+        cell.setup(model: cellData)
+
         return cell
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        let sectionLabel = UILabel(frame: .zero)
+        sectionLabel.font = mediumFontWith(size: 18.0)
+        sectionLabel.textColor = AppColors.appOrange
+        sectionLabel.text = "Replies"
+        sectionLabel.textAlignment = .left
+        sectionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(sectionLabel)
+        NSLayoutConstraint.activate([
+            sectionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            sectionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            sectionLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            sectionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+
+        ])
+        return view
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
     }
     
     

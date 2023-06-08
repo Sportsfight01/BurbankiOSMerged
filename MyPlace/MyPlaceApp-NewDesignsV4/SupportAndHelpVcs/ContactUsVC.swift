@@ -43,7 +43,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupNavigationBarButtons()
+        setupNavigationBarButtons(shouldShowNotification: false)
         searchBar.text?.removeAll()
         searchBar.resignFirstResponder()
         getNotes()
@@ -95,7 +95,11 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             }
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                DispatchQueue.main.async
+                {
                 self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                    
+                }
                 ;return}
             debugPrint("login Service succesfully got the results")
             //Get Notes service
@@ -124,15 +128,23 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                DispatchQueue.main.async
+                {
                 self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                }
                 return}
             guard let data else {
-                self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"));return }
+                DispatchQueue.main.async {
+                    self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"))
+                }
+                return }
             //:End Of Validation
             
             guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
+            DispatchQueue.main.async {
+                self?.setupSerivceData(dictionary: json)
+            }
             
-            self?.setupSerivceData(dictionary: json)
          
         }.resume()
 
@@ -197,9 +209,9 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
-        cell.authorNameLb.text = tableDataSource?[indexPath.row].authorname ?? "No Author"
-        cell.subjectLb.text = tableDataSource?[indexPath.row].subject
-        cell.bodyLb.text = tableDataSource?[indexPath.row].body
+        cell.authorNameLb.text = tableDataSource?[indexPath.row].authorname ?? "--"
+        cell.subjectLb.text = tableDataSource?[indexPath.row].subject ?? "--"
+        cell.bodyLb.text = tableDataSource?[indexPath.row].body ?? "--"
         if let noteId = tableDataSource?[indexPath.row].noteId
         {
             let jobNum = CurrentUser.jobNumber ?? ""
@@ -214,8 +226,7 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
         if let notedate = tableDataSource?[indexPath.row].notedate?.components(separatedBy: ".").first
         {
             cell.noteDateLb.isHidden = false
-            
-            let notedated = dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy")
+            let notedated = dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM, yyyy, hh:mm a")
             cell.noteDateLb.text = notedated
         }
         else {

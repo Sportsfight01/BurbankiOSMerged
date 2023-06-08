@@ -170,7 +170,7 @@ extension MenuViewController
             case .support:
                 return "icon_MySupport"
             case .history:
-                return "icon_MySupport"
+                return "icon_MyHistory"
             case .notifications:
                 return "Ico-Notification"
             case .settings:

@@ -12,17 +12,20 @@ class MyHistoryVC: UIViewController {
 
     //MARK: - Properties
     @IBOutlet weak var profileImgView: UIImageView!
-    
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var tableDataSource : [MyNotesStruct]?
+  
+    
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+    
         getHistoryDetails()
-     
     
     }
  
@@ -30,9 +33,10 @@ class MyHistoryVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.setupNavigationBarButtons()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         setupProfile()
+        
     }
-    
     
     //MARK: - Service Calls
     func getHistoryDetails()
@@ -86,12 +90,17 @@ class MyHistoryVC: UIViewController {
                 self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
                 return}
             guard let data else {
-                self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"));return }
+                DispatchQueue.main.async {
+                    self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"))
+                };return}
+            
             //:End Of Validation
             
             guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
-            
-            self?.setupSerivceData(dictionary: json)
+            DispatchQueue.main.async {
+                self?.setupSerivceData(dictionary: json)
+            }
+         
          
         }.resume()
 
@@ -109,15 +118,13 @@ class MyHistoryVC: UIViewController {
                 //Note without "replyTo" key goes to MainNotes
                 //Note with "replyTo" key means it is reply to a note in the list
 
-                tableDataSource = tableData.filter({$0.replyTo == nil})
+                tempDataSource = tableData.filter({$0.replyTo == nil})
                
                // tempDataSource = tableData
             }
         }
         
-        tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
-
-        self.tableDataSource = tempDataSource
+        self.tableDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
             if self.tableDataSource?.count == 0
             {
                 self.tableView.setEmptyMessage("No Notes Found")
@@ -167,7 +174,8 @@ extension MyHistoryVC : UITableViewDelegate, UITableViewDataSource
         let history = tableDataSource?[indexPath.row]
         cell.subjectLb.text = history?.subject
         let noteDate = dateFormatter(dateStr: history?.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy hh:mm a")
-        cell.authorNameLb.text =  "By " + (history?.authorname ?? "")
+        cell.noteDateLb.text = noteDate ?? "--"
+        cell.authorNameLb.text =  "By " + (history?.authorname ?? "--")
         // cell.authorNameLb.text =  "By " + (history?.authorname ?? "") + " on " + noteDate
         cell.bodyLb.text = history?.body
         return cell

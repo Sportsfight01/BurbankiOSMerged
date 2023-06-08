@@ -64,7 +64,8 @@ class ContactUsNewMsgPopupVC: UIViewController {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        guard replyTextView.text.count > 10 else {self.showAlert(message: "Please Enter Minimum of 10 characters");return}
+        guard subjectTf.text?.trim().count ?? 0 > 0 else {self.showAlert(message: "Please enter subject");return}
+        guard replyTextView.text.count > 10 else {self.showAlert(message: "Please enter minimum of 10 characters");return}
      
         postNote()
     }

@@ -27,6 +27,7 @@
 		4223782329F6642800CDD69D /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223782229F6642800CDD69D /* ProfileHeaderView.xib */; };
 		4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782429F6677400CDD69D /* ProfileHeaderView.swift */; };
 		4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782629F679E000CDD69D /* BaseProfileVC.swift */; };
+		428227402A3085C900FD237B /* ContactUsReplyTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282273F2A3085C900FD237B /* ContactUsReplyTBCell.swift */; };
 		4292D24F2A1DE3D300131297 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4292D24E2A1DE3D300131297 /* Montserrat-Medium.ttf */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
 		4298DBE22A1CA32100109D6A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */; };
@@ -498,6 +499,7 @@
 		4223782229F6642800CDD69D /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		4223782429F6677400CDD69D /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		4223782629F679E000CDD69D /* BaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileVC.swift; sourceTree = "<group>"; };
+		4282273F2A3085C900FD237B /* ContactUsReplyTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsReplyTBCell.swift; sourceTree = "<group>"; };
 		4292D24E2A1DE3D300131297 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
 		4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -1120,6 +1122,7 @@
 				A165990C292F32B900C36B3B /* InfoCentreDetailsVC.swift */,
 				A165990D292F32B900C36B3B /* SupportVC.swift */,
 				A165990E292F32B900C36B3B /* ContactUsDetailsVC.swift */,
+				4282273F2A3085C900FD237B /* ContactUsReplyTBCell.swift */,
 			);
 			path = SupportAndHelpVcs;
 			sourceTree = "<group>";
@@ -2797,6 +2800,7 @@
 				D188C6282424D37600DFE678 /* LoginDataManagement.swift in Sources */,
 				A1659B4A292F4A4500C36B3B /* SettingsCell.swift in Sources */,
 				A1659962292F32BA00C36B3B /* UIImage + Extensions.swift in Sources */,
+				428227402A3085C900FD237B /* ContactUsReplyTBCell.swift in Sources */,
 				A1659B3F292F4A4500C36B3B /* FilterDBManagar.swift in Sources */,
 				A1659B0D292F4A4500C36B3B /* MyPlaceFavPhotosVC.swift in Sources */,
 				A165996A292F32BB00C36B3B /* PhotosListCVCell.swift in Sources */,
@@ -3322,7 +3326,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3359,7 +3363,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
