@@ -30,7 +30,7 @@ class MyHistoryVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.setupNavigationBarButtons()
         setupProfile()
     }
     
@@ -69,7 +69,7 @@ class MyHistoryVC: UIViewController {
 //          //  profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
 //            profileImgView.downloaded(from: url)
 //        }
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
@@ -124,10 +124,22 @@ struct MyNotesStruct : Codable
     var authorname : String?
     var body : String?
     var notedate : String?
-    var noteid : Int?
+    var noteId : Int?
     var replies : [MyNotesStruct]?
     var replytoid : Int?
     var subject : String?
     var byclient : Bool?
+    
+    enum CodingKeys : String, CodingKey
+    {
+        case authorname = "unknownAuthor"
+        case body, noteId, replies, replytoid, subject, byclient
+        case notedate = "activityDate"
+        
+    }
+    var date : Date
+    {
+        return notedate?.components(separatedBy: ".").first?.getDate() ?? Date()
+    }
         
 }

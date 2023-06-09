@@ -75,6 +75,7 @@ class SignInVC: UIViewController {
         
         CodeManager.sharedInstance.sendScreenName(burbank_signIn_screen_loading)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     //MARK: - View
@@ -184,10 +185,10 @@ class SignInVC: UIViewController {
        
         //setAppearanceFor(view: btnContinue, backgroundColor: APPCOLORS_3.Orange_BG, textColor: AppColors.white, textFont:  FONT_LABEL_SUB_HEADING(size: FONT_13))
         
-        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: systemRegularFont(size: FONT_signin))
-        setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
-        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
-        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: systemRegularFont(size: FONT_signin))
+        setAppearanceFor(view: labelGoogle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_signin))
+        setAppearanceFor(view: labelFacebook, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_signin))
+        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_signin))
+        setAppearanceFor(view: labelEmail, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_signin))
 //        setAppearanceFor(view: labelApple, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: systemRegularFont(size: FONT_signin))
         
        
@@ -233,6 +234,7 @@ class SignInVC: UIViewController {
         
         btnContinue.layer.cornerRadius = radius_5
         btnSignIn.layer.cornerRadius = radius_5
+//        imageEmail.tintColor = APPCOLORS_3.HeaderFooter_white_BG
         
     }
     

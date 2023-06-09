@@ -20,7 +20,7 @@ class FinanceDetailVC: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE, dd/MM/yyyy"
             let str = dateFormatter.string(from: currentDate)
-            lb_lastUpdated.font = UIFont.systemFont(ofSize: 14,weight: .medium)
+            lb_lastUpdated.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
             lb_lastUpdated.text = "Last Updated \(str)"
         }
     }
@@ -60,12 +60,12 @@ class FinanceDetailVC: UIViewController {
     }
     //MARK: - IBActions
     @IBAction func didTappedOnShareBTN(_ sender: UIButton) {
-        let takenIMG = screenshot()
-        let takenPDF = createPDFDataFromImage(image: takenIMG)
-        //                let documento = NSData(contentsOfFile: takenPDF)
-        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [takenPDF], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView=self.view
-        self.present(activityViewController, animated: true, completion: nil)
+//        let takenIMG = screenshot()
+//        let takenPDF = createPDFDataFromImage(image: takenIMG)
+//        //                let documento = NSData(contentsOfFile: takenPDF)
+//        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [takenPDF], applicationActivities: nil)
+//        activityViewController.popoverPresentationController?.sourceView=self.view
+//        self.present(activityViewController, animated: true, completion: nil)
     }
     @IBAction func backBtnClicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -164,7 +164,7 @@ extension FinanceDetailVC : UITableViewDelegate, UITableViewDataSource
     //Label
     let label = UILabel()
     label.text = sectionTitles[section]
-    label.font = UIFont.systemFont(ofSize: 16.0 , weight: .semibold)
+    label.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
     label.textColor =  AppColors.appOrange
     view.addSubview(label)
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -174,51 +174,51 @@ extension FinanceDetailVC : UITableViewDelegate, UITableViewDataSource
   }
   
 }
-extension FinanceDetailVC{
-    func screenshot() -> UIImage{
-    var image = UIImage();
-        UIGraphicsBeginImageContextWithOptions(self.tableView.contentSize, false, UIScreen.main.scale)
-
-        // save initial values
-        let savedContentOffset = self.tableView.contentOffset;
-        let savedFrame = self.tableView.frame;
-        let savedBackgroundColor = self.tableView.backgroundColor
-
-        // reset offset to top left point
-        self.tableView.contentOffset = CGPoint(x: 0, y: 0);
-        // set frame to content size
-        self.tableView.frame = CGRect(x: 0, y: 0, width: self.tableView.contentSize.width, height: self.tableView.contentSize.height);
-        // remove background
-        self.tableView.backgroundColor = UIColor.clear
-
-        // make temp view with scroll view content size
-        // a workaround for issue when image on ipad was drawn incorrectly
-        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.contentSize.width, height: self.tableView.contentSize.height));
-
-        // save superview
-        let tempSuperView = self.tableView.superview
-        // remove scrollView from old superview
-        self.tableView.removeFromSuperview()
-        // and add to tempView
-        tempView.addSubview(self.tableView)
-
-        // render view
-        // drawViewHierarchyInRect not working correctly
-        tempView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        // and get image
-        image = UIGraphicsGetImageFromCurrentImageContext()!;
-
-        // and return everything back
-        tempView.subviews[0].removeFromSuperview()
-        tempSuperView?.addSubview(self.tableView)
-
-        // restore saved settings
-        self.tableView.contentOffset = savedContentOffset;
-        self.tableView.frame = savedFrame;
-        self.tableView.backgroundColor = savedBackgroundColor
-
-        UIGraphicsEndImageContext();
-
-        return image
-    }
-}
+//extension FinanceDetailVC{
+//    func screenshot() -> UIImage{
+//    var image = UIImage();
+//        UIGraphicsBeginImageContextWithOptions(self.tableView.contentSize, false, UIScreen.main.scale)
+//
+//        // save initial values
+//        let savedContentOffset = self.tableView.contentOffset;
+//        let savedFrame = self.tableView.frame;
+//        let savedBackgroundColor = self.tableView.backgroundColor
+//
+//        // reset offset to top left point
+//        self.tableView.contentOffset = CGPoint(x: 0, y: 0);
+//        // set frame to content size
+//        self.tableView.frame = CGRect(x: 0, y: 0, width: self.tableView.contentSize.width, height: self.tableView.contentSize.height);
+//        // remove background
+//        self.tableView.backgroundColor = UIColor.clear
+//
+//        // make temp view with scroll view content size
+//        // a workaround for issue when image on ipad was drawn incorrectly
+//        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.contentSize.width, height: self.tableView.contentSize.height));
+//
+//        // save superview
+//        let tempSuperView = self.tableView.superview
+//        // remove scrollView from old superview
+//        self.tableView.removeFromSuperview()
+//        // and add to tempView
+//        tempView.addSubview(self.tableView)
+//
+//        // render view
+//        // drawViewHierarchyInRect not working correctly
+//        tempView.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        // and get image
+//        image = UIGraphicsGetImageFromCurrentImageContext()!;
+//
+//        // and return everything back
+//        tempView.subviews[0].removeFromSuperview()
+//        tempSuperView?.addSubview(self.tableView)
+//
+//        // restore saved settings
+//        self.tableView.contentOffset = savedContentOffset;
+//        self.tableView.frame = savedFrame;
+//        self.tableView.backgroundColor = savedBackgroundColor
+//
+//        UIGraphicsEndImageContext();
+//
+//        return image
+//    }
+//}

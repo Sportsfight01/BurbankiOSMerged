@@ -42,7 +42,7 @@ class CoBurbankVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarButtons(title: "Share with partners", backButton: true, notificationIcon: false)
+        setupNavigationBarButtons(shouldShowNotification: false)
         self.navigationController?.navigationBar.isHidden = false
     }
     override func viewWillDisappear(_ animated: Bool) {

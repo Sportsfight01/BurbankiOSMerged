@@ -32,13 +32,13 @@ extension String {
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
-    func htmlAttributed(family: String? = "ProximaNova-Regular", size: CGFloat = 14.0, color: UIColor = .black) -> NSAttributedString? {
+    func htmlAttributed(family: String? = "Montserrat", size: CGFloat = 12.0, color: UIColor = .black) -> NSAttributedString? {
           do {
               let htmlCSSString = "<style>" +
                   "html *" +
                   "{" +
                   "font-size: \(size)pt !important;" +
-//                  "font-family: \(family ?? "Helvetica"), Helvetica !important;" +
+                  "font-family: \(family ?? "Montserrat"), Montserrat !important;" +
               "}</style> \(self)"
 
               guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {

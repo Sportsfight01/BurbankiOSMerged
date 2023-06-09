@@ -20,7 +20,7 @@ class AboutBurbankWebVC: UIViewController, WKNavigationDelegate,UIScrollViewDele
         super.viewDidLoad()
         setTextViewData()
         webView.navigationDelegate = self
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.setupNavigationBarButtons(shouldShowNotification: false)
         //  webView.scalesPageToFit = true
     
         // Do any additional setup after loading the view.

@@ -33,12 +33,7 @@ class JobNumberVC: UIViewController {
         
         handleUISetup()
         
-        #if DEDEBUG
-        txtEmail.text = "sreekanthreddy@gmail.com"
-        txtEmail.text = "sreekanth.t.bs@gmail.com"
-        txtEmail.text = "test666@gmail.com"
-        txtEmail.text = "naveenkaurampallydigitalminds@gmail.com"
-        #endif
+//  x
         
         CodeManager.sharedInstance.sendScreenName(burbank_signIn_password_screen_loading)
 

@@ -17,7 +17,14 @@ class BaseProfileVC: UIViewController {
         super.viewDidLoad()
         addProfileHeaderView()
         sideMenuSetup()
-        // Do any additional setup after loading the view.
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
+        profileView.profilePicImgView.superview?.addGestureRecognizer(tap)
+        profileView.contactUsBtn.addTarget(self, action: #selector(contactUsBtnTapped), for: .touchUpInside)
+        //contactUsVisibility
+        profileView.contactUsBtn.isHidden = true
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -72,7 +79,7 @@ class BaseProfileVC: UIViewController {
         profileView.profilePicImgView.contentMode = .scaleToFill
         profileView.profilePicImgView.clipsToBounds = true
         profileView.profilePicImgView.layer.cornerRadius = profileView.profilePicImgView.bounds.width/2
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
             profileView.profilePicImgView.image = imgURlStr
         }
@@ -81,8 +88,7 @@ class BaseProfileVC: UIViewController {
         }else{
             profileView.notificationCountLb.text = "\(appDelegate.notificationCount)"
         }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
-        profileView.profilePicImgView.superview?.addGestureRecognizer(tap)
+     
         
     }
     
@@ -90,6 +96,13 @@ class BaseProfileVC: UIViewController {
     {
         debugPrint("leftBarButtonTapped")
         present(menu, animated: true)
+    }
+    @objc func contactUsBtnTapped()
+    {
+        debugPrint("contactUsBtnTapped")
+        let vc = ContactUsVC.instace(sb: .supportAndHelp)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
 //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC

@@ -102,25 +102,25 @@ extension APIManager
     {
         //CurrentuserVars.jobNumber contain current selected jobNumber
         //if multipleJobNumbers are there
-        CurrentUservars.jobNumber = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
+        CurrentUser.jobNumber = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
         
-        if CurrentUservars.jobNumber == nil || CurrentUservars.jobNumber?.count == 0
+        if CurrentUser.jobNumber == nil || CurrentUser.jobNumber?.count == 0
         {
             if appDelegate.currentUser?.jobNumber?.count == 0 || appDelegate.currentUser?.jobNumber == nil
             {
-                CurrentUservars.jobNumber = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber
+                CurrentUser.jobNumber = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.first?.jobNumber
             }else {
-                CurrentUservars.jobNumber = appDelegate.currentUser?.jobNumber
+                CurrentUser.jobNumber = appDelegate.currentUser?.jobNumber
             }
         }
         
-        let currenUserJobDetails =  appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.filter({ $0.jobNumber?.trim() == CurrentUservars.jobNumber?.trim()}).first
+        let currenUserJobDetails =  appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray.filter({ $0.jobNumber?.trim() == CurrentUser.jobNumber?.trim()}).first
         self.currentJobDetails = currenUserJobDetails
 
         let authorizationString = "\(currenUserJobDetails?.userName ?? ""):\(currenUserJobDetails?.password ?? "")"
         let encodeString = authorizationString.base64String
         let auth = "Basic \(encodeString)"
-        return (jobNumber : CurrentUservars.jobNumber, auth : auth)
+        return (jobNumber : CurrentUser.jobNumber, auth : auth)
     }
 }
 

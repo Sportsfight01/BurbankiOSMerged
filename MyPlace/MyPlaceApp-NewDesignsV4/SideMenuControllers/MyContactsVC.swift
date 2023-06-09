@@ -57,10 +57,10 @@ class MyContactsVC: BaseProfileVC {
         
         present(menu, animated: true, completion: nil)
     }
-    @IBAction func supportBtnTapped(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    @IBAction func supportBtnTapped(_ sender: UIButton) {
+//        guard let vc = ContactUsVC
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     //MARK: - Service Calls
    func checkUserLogin1()
@@ -215,6 +215,9 @@ extension MyContactsVC : UITableViewDelegate, SkeletonTableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyContactsTBCell") as! MyContactsTBCell
+        //font setup
+        cell.setupFonts()
+        //
         cell.nameLabel.text = namesarray[indexPath.row]
         let data = getContactNameEmailPhone(rowNo: indexPath.row)
         cell.fullNameLabel.text = data.contactName.trim() == "" ? "NA" : data.contactName

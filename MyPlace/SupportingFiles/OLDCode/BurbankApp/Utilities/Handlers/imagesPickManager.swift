@@ -177,7 +177,7 @@ class imagesPickManager: NSObject , UIImagePickerControllerDelegate,UINavigation
                        let dict = jsonDic.object(forKey: "Result") as? NSDictionary
                       // let profilePicPath = dict?.object(forKey: "ProfilePicPath") as? String
                      //  print(profilePicPath)
-                       CurrentUservars.profilePicUrl = image
+                       CurrentUser.profilePicUrl = image
                     }
                     
                 }

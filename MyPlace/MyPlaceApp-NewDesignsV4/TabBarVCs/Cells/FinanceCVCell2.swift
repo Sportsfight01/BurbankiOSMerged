@@ -12,6 +12,15 @@ import UIKit
 
 class FinanceCVCell2: UICollectionViewCell {
   
+    
+    @IBOutlet var titleLbs: [UILabel]!
+    @IBOutlet weak var topHeaderTitleLb: UILabel!
+    @IBOutlet weak var tapForMoreInfoLb: UILabel!
+    
+    @IBOutlet weak var loadMorebtn: UIButton!
+    
+    
+    
 //MARK:- Variations To Date
   
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
@@ -66,10 +75,17 @@ class FinanceCVCell2: UICollectionViewCell {
        
     }
  
-    
+    func setupFonts()
+    {
+        titleLbs.forEach({$0.font = FONT_LABEL_BODY(size: FONT_12)})
+        topHeaderTitleLb.font = FONT_LABEL_BODY(size: FONT_22)
+        tapForMoreInfoLb.font = FONT_LABEL_BODY(size: FONT_12)
+        loadMorebtn.titleLabel?.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
+    }
     
     func setupFinanceDetails(financeDetails : FinanceDetailsStruct? , rowNo : Int)
     {
+        setupFonts()
         if financeDetails == nil
         {
             loadMoreBtn.isHidden = true
@@ -132,11 +148,13 @@ extension FinanceCVCell2 : UITableViewDelegate , UITableViewDataSource
                     if view2.tag == 100 // titleLb
                     {
                         let lb = view2 as! UILabel
+                        lb.font = FONT_LABEL_BODY(size: FONT_12)
                         lb.text = tableDataSource?[indexPath.row].financeDescription
                     }
                     else if view2.tag == 101 // detailLb
                     {
                         let lb = view2 as! UILabel
+                        lb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
                         let dollarAmount = UIViewController().dollarCurrencyFormatter(value: tableDataSource?[indexPath.row].amount ?? 0.0)
                         lb.text = dollarAmount
                         //lb.text = "\(tableDataSource?[indexPath.row].amount ?? 0.0)"

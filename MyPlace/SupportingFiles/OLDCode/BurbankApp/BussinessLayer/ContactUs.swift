@@ -61,7 +61,7 @@ class ContactUsQLDSA
     
     init(_ dic:[String: Any])
     {
-        noteid = dic["noteid"] as? String ?? "".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        noteid = dic["noteId"] as? String ?? "".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         subject = dic["subject"] as? String ?? "".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         authorname = dic["authorname"] as? String ?? "".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         notedate = dic["notedate"] as? String ?? "".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)

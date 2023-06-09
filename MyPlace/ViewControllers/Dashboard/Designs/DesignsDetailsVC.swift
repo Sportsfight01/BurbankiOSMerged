@@ -809,7 +809,7 @@ extension DesignsDetailsVC {
         setAppearanceFor(view: lBBathrooms, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_10))
         
         
-        setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_6))
+        setAppearanceFor(view: lBLot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_LIGHT(size: FONT_5))
         setAppearanceFor(view: lBLotWidth, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
         
         

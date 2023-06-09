@@ -10,9 +10,11 @@ import UIKit
 import MessageUI
 
 class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
+    
+    //MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
-    var tableDataSource : [MyNotesStruct]?
-    var contactArr : [MyNotesStruct]?
+    private var tableDataSource : [MyNotesStruct]?
+    private var contactArr : [MyNotesStruct]?
     @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -26,7 +28,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             }
         }
     }
-    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +49,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         getNotes()
     }
     
+    //MARK: - IBActions
     @IBAction func didTappedOnSearch(_ sender: UIButton) {
         searchBarHeight.constant = searchBarHeight.constant == 0 ? 44 : 0
         UIView.animate(withDuration: 0.250) {
@@ -57,7 +60,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     }
     @IBAction func didTappedOnNewMsg(_ sender: UIButton) {
         
-        let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsNewMsgPopupVC") as! ContactUsNewMsgPopupVC
+        let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
         
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .overCurrentContext
@@ -66,38 +69,109 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             
             self?.getNotes()
         }
-        self.present(vc, animated: true)
+        self.present(vc, animated: false)
         
     }
     
     
     
-    //MARK: - Service Call
+    //MARK: - Service Calls
     func getNotes()
     {
-        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
-        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
-        let auth = jobAndAuth.auth
+        guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
+        let url = "https://clickhomedev.burbankgroup.com.au/clickhome3webservice_DEV/MyHome/V3/Accounts/Login"
+        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
+
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
+        appDelegate.showActivity()
+        //LoginService
+        URLSession.shared.dataTask(with: urlRequest) {[weak self] data, response, error in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                ;return}
+            debugPrint("login Service succesfully got the results")
+            //Get Notes service
+
+            self?.getNotesList()
+              
+        }.resume()
+
+    }
+    func getNotesList()
+    {
+        let url = "https://clickhomedev.burbankgroup.com.au/ClickHome3WebService_DEV/MyHome/V3/MasterContracts/Get"
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = getNotesPostData()
+        DispatchQueue.main.async {
+            appDelegate.showActivity()
+        }
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            //Validation
+            debugPrint(response.debugDescription)
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
+                return}
+            guard let data else {
+                self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"));return }
+            //:End Of Validation
+            
+            guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
+            
+            self?.setupSerivceData(dictionary: json)
+         
+        }.resume()
+
         
+    }
+    
+    func createNewNote()
+    {
         
-        
-        NetworkRequest.makeRequestArray(type: MyNotesStruct.self, urlRequest: Router.getNotes(auth: auth, contractNo: jobNumber)) { [weak self](result) in
-            switch result
+    }
+    //MARK: - HelperMethods
+    func setupSerivceData(dictionary : NSDictionary)
+    {
+        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+//        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
+        var tempDataSource : [MyNotesStruct] = []
+        keyPaths.forEach { keypath in
+            if let notesList = dictionary.value(forKeyPath: "\(keypath).notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
             {
-            case .success(let data):
-                //print(data)
-                //self?.setupProgressDetails(progressData: data)
-                self?.tableDataSource = data.reversed()
-                DispatchQueue.main.async {
-                    self?.contactArr = self?.tableDataSource
-                    self?.tableView.reloadData()
+                if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
+                {
+                    tempDataSource.append(contentsOf: tableData)
                 }
-                
-            case.failure(let err):
-                print(err.localizedDescription)
             }
         }
+        tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        self.contactArr = tempDataSource
+        self.tableDataSource = tempDataSource
+        DispatchQueue.main.async {
+            if self.tableDataSource?.count == 0
+            {
+                self.tableView.setEmptyMessage("No Notes Found")
+            }else {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
+    
     
 }
 //MARK: - Tableview Delegate && Datasource
@@ -105,7 +179,7 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableDataSource?.count == 0 {
-            tableView.setEmptyMessage("No Records Found")
+            tableView.setEmptyMessage("No Notes Found")
         }else{
             tableView.restore()
         }
@@ -115,12 +189,12 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
-        cell.authorNameLb.text = tableDataSource?[indexPath.row].authorname
+        cell.authorNameLb.text = tableDataSource?[indexPath.row].authorname ?? "No Author"
         cell.subjectLb.text = tableDataSource?[indexPath.row].subject
         cell.bodyLb.text = tableDataSource?[indexPath.row].body
-        if let noteId = tableDataSource?[indexPath.row].noteid
+        if let noteId = tableDataSource?[indexPath.row].noteId
         {
-            let jobNum = CurrentUservars.jobNumber ?? ""
+            let jobNum = CurrentUser.jobNumber ?? ""
             if let isRead = UserDefaults.standard.value(forKey: "\(jobNum)_\(noteId)_isRead") as? Bool , isRead == true
             {
                 cell.circlelb.isHidden = true
@@ -151,17 +225,12 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
             
         }
         else {
-//            tableDataSource = contactArr?.filter({$0.authorname?.lowercased().contains(searchText.lowercased()) ?? false})
             tableDataSource = contactArr?.filter({ note in
                 let displaydate = note.notedate?.components(separatedBy: "T").first
                 let notedated = dateFormatter(dateStr: displaydate ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "dd/MM/yyyy")
                 return (note.authorname?.lowercased().contains(searchText.lowercased()) ?? false) || (note.subject?.lowercased().contains(searchText.lowercased()) ?? false) ||
                 (notedated?.contains(searchText.lowercased()) ?? false)
             })
-            //            tableDataSource = contactArr?.filter({ note in
-            //                 (note.authorname?.lowercased().contains(searchText.lowercased()))! || ((note.subject?.lowercased().contains(searchText.lowercased())) != nil)
-            //
-            //            })
         }
         tableView.reloadData()
     }
@@ -175,7 +244,7 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = UIStoryboard(name: "NewDesignsV5", bundle: nil).instantiateViewController(withIdentifier: "ContactUsDetailsVC") as! ContactUsDetailsVC
+        let vc = ContactUsDetailsVC.instace(sb: .supportAndHelp)
         vc.contactDetails = tableDataSource?[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -212,3 +281,89 @@ func mailComposeController(_ controller: MFMailComposeViewController, didFinishW
     controller.dismiss(animated: true)
 }
 
+extension ContactUsVC
+{
+    func getNotesPostData() -> Data
+    {
+        guard let json = """
+         {
+
+             "client": {
+
+                 "contacts": {
+
+                     "list": {}
+
+                 }
+
+             },
+
+             "leadContract": {
+                    "tasks": {
+
+                     "list": {
+
+                         "resource": {},
+
+                         "virtualResource": {}
+
+                     }
+
+                 },
+
+                 "notes": {
+
+                     "list": {}
+
+                 }
+         },
+
+             "preconstructionContract": {
+
+                 "tasks": {
+
+                     "list": {
+
+                         "resource": {},
+
+                         "virtualResource": {}
+
+                     }
+
+                 },
+
+                 "notes": {
+
+                     "list": {}
+
+                 }
+
+             },
+
+             "constructionContract": {
+
+                 "tasks": {
+
+                     "list": {
+
+                         "resource": {},
+
+                         "virtualResource": {}
+
+                     }
+
+                 },
+         "notes": {
+
+                     "list": {}
+
+                 }
+
+             }
+
+         }
+         
+         """.data(using: .utf8) else { return Data() }
+        return json
+    }
+}

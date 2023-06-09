@@ -145,6 +145,9 @@ class MyDesignsTVC: UITableViewCell {
         if displayValue == "" {
             displayValue = infoStaicText
         }
+        if displayValue.lowercased() == "all" {
+            displayValue = "Selected All Designs"
+        }
         
         return displayValue
     }

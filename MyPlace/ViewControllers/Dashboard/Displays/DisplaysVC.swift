@@ -83,7 +83,14 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
             
         }
         NotificationCenter.default.addObserver(forName: NSNotification.Name("changeBreadCrumbs"), object: nil, queue: nil, using:updatedNotification)
-        
+        setUpUI()
+    }
+    
+    func setUpUI(){
+        nearByBTN.titleLabel?.font = FONT_LABEL_BODY(size: 12)
+        designBTN.titleLabel?.font = FONT_LABEL_BODY(size: 12)
+        mapBTN.titleLabel?.font = FONT_LABEL_BODY(size: 12)
+        regionBTN.titleLabel?.font = FONT_LABEL_BODY(size: 12)
     }
     func updatedNotification(notification:Notification) -> Void  {
         guard let changeBreadCrumbLBL = notification.userInfo!["breadcrumb"] else { return }
@@ -250,7 +257,7 @@ extension DisplaysVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
             case UICollectionView.elementKindSectionHeader:
             if self.DisplayHomeData.count <= 0{
                 if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Cell", for: indexPath) as? SectionHeader{
-                       sectionHeader.sectionHeaderlabel.text = "POPULAR HOME DESIGNS"
+                    sectionHeader.sectionHeaderlabel.text = "POPULAR HOME DESIGNS"
                        return sectionHeader
                    }
                    return UICollectionReusableView()

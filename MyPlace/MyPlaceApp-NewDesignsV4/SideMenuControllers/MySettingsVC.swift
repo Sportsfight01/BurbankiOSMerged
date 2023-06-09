@@ -61,7 +61,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarButtons(notificationIcon: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        setupNavigationBarButtons(shouldShowNotification: true)
         myProgressLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
    
         
@@ -77,7 +78,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     {
         self.userNameLb.text = profileData?.result?.userName
         self.emailLb.text = profileData?.result?.email
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
             profileImage.image = imgURlStr
         }
@@ -107,7 +108,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     
     func setupProfile()
     {
-        debugPrint("CurrentUserVarUrl :- \(CurrentUservars.profilePicUrl), serviceUrl :- \(profileData?.result?.profilePicPath)")
+        debugPrint("CurrentUserVarUrl :- \(CurrentUser.profilePicUrl), serviceUrl :- \(profileData?.result?.profilePicPath)")
         profileImgView.contentMode = .scaleToFill
         profileImgView.layer.cornerRadius = profileImgView.bounds.width/2
 //        if let imgURlStr = CurrentUservars.profilePicUrl , let url = URL(string: imgURlStr)
@@ -116,7 +117,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
 //            profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User") ,options : .continueInBackground)
 //            //profileImgView.downloaded(from: url)
 //        }
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
            // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
@@ -139,8 +140,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     func setupCurrentUserVars()
     {
-        CurrentUservars.userName = profileData?.result?.userName
-        CurrentUservars.email = profileData?.result?.email
+        CurrentUser.userName = profileData?.result?.userName
+        CurrentUser.email = profileData?.result?.email
     //    CurrentUservars.profilePicUrl = profileData?.result?.profilePicPath
         self.setupProfile()
     }
@@ -169,8 +170,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
 //        updateProfilePic(imageContent: imageBaseString!)
 //    }
     @IBAction func editBtnClicked(_ sender: UIButton) {
-        let storyBoard  = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil)
-        let profileVC = storyBoard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        
+        let profileVC = ProfileVC.instace(sb: .supportAndHelp)
         profileVC.delegate = self
         profileVC.modalPresentationStyle = .overCurrentContext
         present(profileVC, animated: true, completion: nil)
@@ -201,11 +202,11 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     @IBAction func logOutClicked(_ sender: UIButton) {
 
         resetUserDefaultsForOlderVerion()
-        CurrentUservars.profilePicUrl = nil
-        CurrentUservars.userName = nil
-        CurrentUservars.mobileNo = nil
-        CurrentUservars.email = nil
-        CurrentUservars.jobNumber = nil
+        CurrentUser.profilePicUrl = nil
+        CurrentUser.userName = nil
+        CurrentUser.mobileNo = nil
+        CurrentUser.email = nil
+        CurrentUser.jobNumber = nil
         appDelegate.notificationCount = 0
         let realm = try! Realm()
         try! realm.write {
@@ -283,7 +284,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
                         if let userDic = jsonDic.object(forKey: "Result") as? [String: Any]
                         {
                             self.oldPassword = (userDic as NSDictionary).value(forKey: "Password") as? String ?? ""
-                            let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "ChangePasswordVC") as! ChangePasswordVC
+                            let vc = ChangePasswordVC.instace()
                             vc.currentPassword = self.oldPassword
                             appDelegate.enteredEmailOrJob = self.emailLb.text!
                             self.navigationController?.pushViewController(vc, animated: true)
@@ -306,16 +307,16 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     @objc func didTappedOnshareaPartner(_ sender : UITapGestureRecognizer)
     {
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "CoBurbankVC") as! CoBurbankVC
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "CoBurbankVC") as! CoBurbankVC
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     @objc func aboutBurbankViewTapped(_ sender : UITapGestureRecognizer)
     {
         let tag = sender.view?.tag
         
-        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "AboutBurbankWebVC") as! AboutBurbankWebVC
+        let vc = AboutBurbankWebVC.instace()
         switch tag
         {
         case 100:
@@ -340,12 +341,12 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     func openBurbankPrivacyPolocyPortal()
     {
         var currenUserJobDetails : MyPlaceDetails?
-        currenUserJobDetails = (UIApplication.shared.delegate as! AppDelegate).currentUser?.userDetailsArray![0].myPlaceDetailsArray[0]
+        currenUserJobDetails = APIManager.shared.currentJobDetails
         if selectedJobNumberRegionString == ""
         {
             let jobRegion = currenUserJobDetails?.region
             selectedJobNumberRegionString = jobRegion!
-            print("jobregion :- \(jobRegion)")
+            print("jobregion :- \(String(describing: jobRegion))")
         }
         
         var urlString = "https://www.burbank.com.au/victoria/terms-conditions#privacypolicy"

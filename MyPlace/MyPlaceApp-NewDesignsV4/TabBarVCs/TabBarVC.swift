@@ -53,6 +53,7 @@ class TabBarVC: UITabBarController {
         tabBar.backgroundColor = UIColor.white
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
+        UITabBarItem.appearance().setTitleTextAttributes([.font : FONT_LABEL_SUB_HEADING(size: FONT_8)], for: .normal)
    
             self.setupViewControllers()
         
@@ -72,6 +73,7 @@ class TabBarVC: UITabBarController {
             let vc = UINavigationController(rootViewController: item.viewController.instace())
             vc.setNavigationBarHidden(true, animated: true)
             vc.tabBarItem = UITabBarItem(title: item.title, image: UIImage(named : item.unSelectedItemImage) , selectedImage: UIImage(named : item.selectedItemImage))
+            
             return vc
             
         }

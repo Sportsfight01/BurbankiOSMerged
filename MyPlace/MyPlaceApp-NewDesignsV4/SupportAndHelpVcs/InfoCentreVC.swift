@@ -104,7 +104,7 @@ class InfoCentreVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupNavigationBarButtons(title: "", backButton: true, notificationIcon: false)
+        self.setupNavigationBarButtons()
         
     }
     
@@ -176,7 +176,7 @@ extension InfoCentreVC : UICollectionViewDelegate , UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == resultCollection
         {
-            let vc = UIStoryboard(name: "NewDesignsV5", bundle: nil).instantiateViewController(withIdentifier: "InfoCentreDetailsVC") as! InfoCentreDetailsVC
+            let vc = InfoCentreDetailsVC.instace(sb: .supportAndHelp)
             
             vc.infoCentreDetails = self.infoCentreDataFilterArr[indexPath.row]
             

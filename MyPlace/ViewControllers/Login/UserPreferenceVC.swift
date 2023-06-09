@@ -113,17 +113,17 @@ class UserPreferenceVC: UIViewController {
         setAppearanceFor(view: viewModuleSelection, backgroundColor: APPCOLORS_3.Body_BG)
         
         setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
-        setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
         _ = setAttributetitleFor(view: lb_myPlace_heading, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
 //        setAppearanceFor(view: lb_myPlace_heading, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
       //  setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
         
-        setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_11))
+        setAppearanceFor(view: labelLookingName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         setAppearanceFor(view: labelLookingDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: labelDepositedName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_11))
+        setAppearanceFor(view: labelDepositedName, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
         setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         

@@ -26,7 +26,7 @@ class NotificationsViewModel
        
    
         debugPrint("realmLocation :- \(realm.configuration.fileURL as Any)")
-        let currentjobNumber = CurrentUservars.jobNumber ?? APIManager.shared.getJobNumberAndAuthorization().jobNumber
+        let currentjobNumber = CurrentUser.jobNumber ?? APIManager.shared.getJobNumberAndAuthorization().jobNumber
         let LocalStorageNotifications = realm.objects(RealmStageComplete.self).filter({$0.jobNumber.contains(currentjobNumber!)})
         
         //STEP 1 :- Check what type of notifications UserOpted for

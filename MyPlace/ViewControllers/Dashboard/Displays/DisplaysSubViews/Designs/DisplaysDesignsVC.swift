@@ -15,6 +15,7 @@ class DisplaysDesignsVC: UIViewController {
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var colletionView: UICollectionView!
     
+    @IBOutlet weak var titleNameLBL: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -45,6 +46,8 @@ class DisplaysDesignsVC: UIViewController {
                                                queue: nil,
                                                using:updatedNotificationForLocartion)
         NotificationCenter.default.addObserver(forName: NSNotification.Name("tappedOnPopularHomeDesigns"), object: nil, queue: nil, using:updatedNotification)
+        
+        setAppearanceFor(view: titleNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_HEADING(size: FONT_12))
         
     }
     
@@ -149,6 +152,7 @@ extension DisplaysDesignsVC: UICollectionViewDelegate, UICollectionViewDataSourc
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DisplaysDesignsCVCell", for: indexPath) as! DisplaysDesignsCVCell
        
+       
         cell.storeyBTN.setTitle(arrayDesignStoreys[indexPath.item], for: .normal)
         cell.storeyBTN.tag = indexPath.item
         cell.storeyBTN.addTarget(self, action: #selector(didTappedOnFiltersBTN(_:)), for: .touchUpInside)
@@ -162,7 +166,8 @@ extension DisplaysDesignsVC: UICollectionViewDelegate, UICollectionViewDataSourc
             cell.storeyBTN.backgroundColor = APPCOLORS_3.Body_BG
             cell.storeyBTN.setTitleColor(APPCOLORS_3.GreyTextFont, for: .normal)
         }
-        
+        cell.storeyBTN.titleLabel?.font = FONT_LABEL_BODY(size: 14)
+
         return cell
     }
     

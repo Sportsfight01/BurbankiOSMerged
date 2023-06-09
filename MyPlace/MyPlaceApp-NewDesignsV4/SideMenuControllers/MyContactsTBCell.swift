@@ -36,6 +36,11 @@ class MyContactsTBCell: UITableViewCell , MFMailComposeViewControllerDelegate {
 
         // Configure the view for the selected state
     }
+    func setupFonts()
+    {
+        nameLabel.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
+        [fullNameLabel,emailLabel,mobileLabel].forEach({ $0?.font = FONT_LABEL_SUB_HEADING(size: FONT_12) })
+    }
     @objc func handleMailTapped()
     {
         

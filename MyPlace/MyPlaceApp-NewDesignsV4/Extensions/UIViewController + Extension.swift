@@ -10,48 +10,49 @@ import UIKit
 
 extension UIViewController {
     
-    func setupNavigationBarButtons(title : String = "" ,backButton : Bool = true, notificationIcon : Bool = true)
+    func setupNavigationBarButtons(shouldShowNotification : Bool = true)
     {
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         //Setting appearance
+        self.setupAppearance()
+        ///BackButton Setup
+        self.addBackButton()
+        ///NavigationLogo
+        self.addLogoToNavigationBarItem()
+       
+        ///Adding ContactUs Btn
+//        if shouldShowNotification{
+//            self.addContactUsButton()
+//        }else {
+//            self.navigationItem.rightBarButtonItem = nil
+//        }
+        //to remove navigation separation line
+        
+    }
+    //MARK: - NavigationBtnSetup Functions
+    func setupAppearance()
+    {
+        self.navigationController?.navigationBar.barTintColor = AppColors.myplaceGray
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.shadowColor = UIColor(red: 230/255, green: 231/255, blue: 232/255, alpha: 0.5)
-        appearance.backgroundColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
+        appearance.backgroundColor = AppColors.myplaceGray
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         self.navigationController?.navigationBar.standardAppearance = appearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.navigationController?.navigationBar.compactAppearance = appearance
-        self.addLogoToNavigationBarItem()
-        
+    }
+    func addBackButton()
+    {
         //Adding BackButton to navigationBar
         let backButton = UIButton(type: .custom)
         backButton.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
         backButton.tintColor = .white
         backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        // btn1.backgroundColor = .red
         backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
         // self.navigationController?.navigationBar.back
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-        
-        //notification button
-        let btn2 = UIButton(type: .custom)
-        //  btn1.backgroundColor = UIColor.blue
-        btn2.setImage(UIImage(named: "icon_Notification"), for: .normal)
-        btn2.tintColor = .white
-        btn2.frame = CGRect(x: 0, y: 0, width: 25, height: 10)
-        btn2.imageEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 8)
-        //  btn2.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        // self.navigationController?.navigationBar.back
-#warning("currently not receiving any data in contactus module so disabling this icon for now can be enabled later in future")
-        //        if notificationIcon{
-        //            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
-        //        }
-        //to remove navigation separation line
-        
     }
     func addLogoToNavigationBarItem() {
         
@@ -62,9 +63,6 @@ extension UIViewController {
         let contentView = UIView()
         self.navigationItem.titleView = contentView
         self.navigationItem.titleView?.addSubview(imageView)
-       // imageView.backgroundColor = .purple
-//        contentView.backgroundColor = .red
-        //adding constraints for imageView
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -74,12 +72,22 @@ extension UIViewController {
             imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.5)//50% of screen width
         
         ])
-        
-        
-        
-       
     }
-    @objc func backButtonPressed()
+    func addContactUsButton()
+    {
+        //notification button
+        let btn2 = UIButton(type: .custom)
+        //  btn1.backgroundColor = UIColor.blue
+        btn2.setImage(UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        btn2.tintColor = .white
+        btn2.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        btn2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        btn2.addTarget(self, action: #selector(contactUsbtnClicked), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
+    }
+    
+    //MARK: - Navigation Btn Action Methods
+    @objc func backButtonClicked()
     {
         dismiss(animated: true, completion: nil)
         guard let navController = self.navigationController else {return}
@@ -99,6 +107,13 @@ extension UIViewController {
         
     }
     
+    @objc func contactUsbtnClicked()
+    {
+        let vc = ContactUsVC.instace(sb: .supportAndHelp)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //MARK: - Utility Methods
     func addGradientLayer(colors : [CGColor]? = [AppColors.appGray.cgColor , APPCOLORS_3.HeaderFooter_white_BG.cgColor])
     {
         
@@ -144,51 +159,8 @@ extension UIViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    func downloadImage()
-    {
-        let urlReq = URLRequest(url: URL(string: "")!)
-        URLSession.shared.downloadTask(with: urlReq) { url, res, err in
-            
-        }
-    }
-    
 }
-extension UIView {
-    
-    func takeScreenshot() -> UIImage {
-        
-        // Begin context
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
-        
-        // Draw view in that context
-        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-        
-        // And finally, get image
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        if (image != nil)
-        {
-            return image!
-        }
-        return UIImage()
-    }
-    
-    func appalyShadow() {
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 10
-        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = UIScreen.main.scale
-    }
-    
-    
-}
-
+//MARK: - ViewController Instance Creation
 extension UIViewController
 {
     #warning("Storyboard ID must be same as ViewController Name to utilize below method")
@@ -201,11 +173,12 @@ extension UIViewController
     enum StoryBoard : String
     {
         case newDesignV4 = "NewDesignsV4"
-        case newDesignV5 = "NewDesignsV5"
+        case supportAndHelp = "SupportAndHelp"
         case myPlaceLogin = "MyPlaceLogin"
     }
 }
 
+//MARK: - NavigationBar Extension
 extension UINavigationBar {
     
     func shouldRemoveShadow(_ value: Bool) -> Void {
@@ -217,10 +190,12 @@ extension UINavigationBar {
     }
 }
 
+//MARK: - Leading Constraint of Navigation Title
 extension UIViewController
 {
     func getLeadingSpaceForNavigationTitleImage() -> Double
     {
+        //just to align the header Title with navigationTitle
         let screenWidth = self.view.frame.width
         let navigationTitleImgWidth = screenWidth * 0.5
         let leadingConstant = (screenWidth / 2) - (navigationTitleImgWidth / 2) + 12

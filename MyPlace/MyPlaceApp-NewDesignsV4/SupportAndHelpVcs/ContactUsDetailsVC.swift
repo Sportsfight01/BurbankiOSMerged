@@ -47,9 +47,9 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     func readUnreadMessage()
     {
         guard let contactData = contactDetails else {return}
-        if let noteId = contactData.noteid
+        if let noteId = contactData.noteId
         {
-            let jobNum = CurrentUservars.jobNumber
+            let jobNum = CurrentUser.jobNumber
             let key = "\(jobNum ?? "")_\(noteId)_isRead"
             print("key :- \(key)")
             UserDefaults.standard.set(true, forKey: key )
@@ -73,12 +73,12 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
     @IBAction func didTappedOnReplay(_ sender: UIButton) {
         let recipientEmail = "srikanth.vunyala@digitalminds.solutions"
-        let subject = "Re : \(contactDetails?.subject ?? "") \(contactDetails?.noteid ?? 0)"
+        let subject = "Re : \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0)"
        // let body = ""
         
-        let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsNewMsgPopupVC") as! ContactUsNewMsgPopupVC
+        let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
         vc.screenData = (sub : subject,to : recipientEmail ,from : self.contactDetails?.authorname ?? "" )
-        vc.noteId = contactDetails?.noteid
+        vc.noteId = contactDetails?.noteId
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .overCurrentContext
         vc.isFromNewMessage = false
@@ -107,7 +107,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
             case .success(let data):
                 print(data)
                 //self?.setupProgressDetails(progressData: data)
-                let currentData = data.filter({$0.noteid == self?.contactDetails?.noteid})
+                let currentData = data.filter({$0.noteId == self?.contactDetails?.noteId})
                 self?.tableDataSource = currentData.first?.replies
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()

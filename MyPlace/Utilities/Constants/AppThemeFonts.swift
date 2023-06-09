@@ -20,6 +20,7 @@ let radius_10 = SCREEN_HEIGHT/56.8
 
 //MARK: - DEVICE FONTS
 
+let FONT_5 = SCREEN_WIDTH/55
 let FONT_6 = SCREEN_WIDTH/53
 let FONT_7 = SCREEN_WIDTH/45.7
 let FONT_8 = SCREEN_WIDTH/40
@@ -68,26 +69,25 @@ let FONT_signin = SCREEN_HEIGHT/50.6
 //MARK: - SYSTEM FONTS
 
 func lightFontWith (size: CGFloat) -> UIFont {
-    return  UIFont(name: "ProximaNova-Light", size: size)!
+    return  UIFont(name: "Montserrat-Light", size: size)!
 }
 
 
 func regularFontWith (size: CGFloat) -> UIFont {
-    return  UIFont(name: "ProximaNova-Regular", size: size)!
+    return  UIFont(name: "Montserrat-Regular", size: size)!
 }
 
-func mediumFontWith (size: CGFloat) -> UIFont { //ProximaNovaAW07-Medium 14.0
-//    return UIFont(name: "ProximaNovaAW07-Medium", size: size)!
-    return UIFont(name: "ProximaNova-Semibold", size: size)!
+func mediumFontWith (size: CGFloat) -> UIFont {
+    return UIFont(name: "Montserrat-Medium", size: size)!
 }
 
 func boldFontWith (size: CGFloat) -> UIFont {
-    return  UIFont(name: "ProximaNova-Bold", size: size)!
+    return  UIFont(name: "Montserrat-Bold", size: size)!
 }
 
 
-func extraBoldFontWith (size: CGFloat) -> UIFont {//ProximaNova-Extrabld 14.0
-    return UIFont(name: "ProximaNova-Extrabld", size: size)!
+func extraBoldFontWith (size: CGFloat) -> UIFont {
+    return UIFont(name: "Montserrat-ExtraBold", size: size)!
 }
 
 

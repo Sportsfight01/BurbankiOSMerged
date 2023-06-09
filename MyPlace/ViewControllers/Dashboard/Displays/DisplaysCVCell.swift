@@ -272,7 +272,7 @@ class SectionHeader: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        loadCellView ()
+        setAppearanceFor(view: sectionHeaderlabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_16))
     }
     
 }
@@ -300,6 +300,10 @@ class DisplaysSuggestedSubCVCell: UICollectionViewCell {
         super.awakeFromNib()
       
         self.likeBTN.addTarget(self, action: #selector(didTappedOnFavourites(_:)), for: .touchUpInside)
+        
+        setAppearanceFor(view: estateNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_12))
+        setAppearanceFor(view: LBLDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_9))
+        
     }
     
     
@@ -347,6 +351,10 @@ class DisplaysCVCell: UICollectionViewCell {
         
         locationsBTN.setImage(mapImg?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
         locationsBTN.tintColor = .white
+      
+        setAppearanceFor(view: designNameLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_10))
+        setAppearanceFor(view: locationsLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_HEADING (size: FONT_8))
+    
       
     }
 }

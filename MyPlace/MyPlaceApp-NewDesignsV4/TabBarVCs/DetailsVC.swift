@@ -42,7 +42,7 @@ class DetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.setupNavigationBarButtons(notificationIcon: false)
+        self.setupNavigationBarButtons()
         setupProfile()
         headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
@@ -58,15 +58,15 @@ class DetailsVC: UIViewController {
         print("profile bounds",profileImgView.bounds.height , profileImgView.bounds.width)
         profileImgView.layer.cornerRadius = 30
         self.profileImgView.layoutIfNeeded()
-        if let imgURlStr = CurrentUservars.profilePicUrl
+        if let imgURlStr = CurrentUser.profilePicUrl
         {
             // profileImgView.sd_setImage(with: url, placeholderImage: UIImage(named: "icon_User"))
             profileImgView.image = imgURlStr
         }
         //        profileImgView.addBadge(number: appDelegate.notificationCount)
-        nameLb.text = CurrentUservars.userName
+        nameLb.text = CurrentUser.userName
         let emailFirstStr = NSMutableAttributedString(string: "Email ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let emailAttrStr = NSAttributedString(string: "\(CurrentUservars.email ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let emailAttrStr = NSAttributedString(string: "\(CurrentUser.email ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         emailFirstStr.append(emailAttrStr)
         // emailLb.lineBreakMode = .byWordWrapping
         emailLb.attributedText = emailFirstStr
@@ -85,9 +85,8 @@ class DetailsVC: UIViewController {
         
     }
     @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-                let vc = NotificationsVC.instace(sb: .newDesignV4)
-                self.navigationController?.pushViewController(vc, animated: true)
+        let vc = NotificationsVC.instace(sb: .newDesignV4)
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     //MARK:- Helper Methods
@@ -108,7 +107,7 @@ class DetailsVC: UIViewController {
     }
 
     @IBAction func supportBtnTapped(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: StoryboardNames.newDesing5, bundle: nil).instantiateViewController(withIdentifier: "ContactUsVC") as? ContactUsVC else {return}
+        let vc = ContactUsVC.instace(sb: .supportAndHelp)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

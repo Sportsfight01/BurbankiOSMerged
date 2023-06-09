@@ -170,7 +170,7 @@ class DocumentsVC: BaseProfileVC {
     }
     func getPdfDataAt(rowNo : Int)
     {
-        guard let url = tableDataSource?[rowNo].url, let type = tableDataSource?[rowNo].type, let title = tableDataSource?[rowNo].title else {return}
+        guard let url = tableDataSource?[rowNo].url, let type = tableDataSource?[rowNo].type?.trim(), let title = tableDataSource?[rowNo].title else {return}
         let fileName = "\(title).\(type)"
         let documentURL = "\(clickHomeBaseImageURL)\(url)"
         if type.contains("eml")

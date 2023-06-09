@@ -102,7 +102,7 @@ class DisplayHomesFavouritesVC: HeaderVC, ChildVCDelegate {
                   DispatchQueue.main.async {
                       if self.displayFavorites.count == 0
                       {
-                          self.backButtonPressed()
+                          self.backButtonClicked()
                           self.tableView.setEmptyMessage("NO SAVED DISPLAYS", bgColor: APPCOLORS_3.Body_BG)
                           self.addBreadCrumb(from: "Your favourite displays")
                       }else {

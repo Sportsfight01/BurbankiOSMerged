@@ -90,7 +90,7 @@ class CircularProgressView : UIView {
         
         label.text = labelText
         label.textColor = strokeColor
-        label.font = UIFont.systemFont(ofSize: self.bounds.width / 12.0 , weight: .semibold)
+        label.font = FONT_LABEL_SUB_HEADING(size:  self.bounds.width / 12.0)
         // label.font = UIFont.systemFont(ofSize: 11.0, weight: .regular)
         self.addSubview(label)
         

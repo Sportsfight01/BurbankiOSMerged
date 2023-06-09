@@ -12,6 +12,7 @@ class ProfileHeaderView: UIView {
 
     //MARK: - Properties
     
+    @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var contentView: UIView!    
     @IBOutlet weak var navBarTitleImg: UIImageView!
     @IBOutlet weak var menubtn: UIButton!
@@ -38,6 +39,10 @@ class ProfileHeaderView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth,
             .flexibleHeight]
+        titleLb.font = FONT_LABEL_BODY(size: FONT_22)
+        helpTextLb.font = FONT_LABEL_BODY(size: FONT_11)
+        secondHelpTextLb.font = FONT_LABEL_BODY(size: FONT_11)
+        notificationCountLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
     }
     
     @IBAction func menuBtnAction(_ sender: UIButton) {
