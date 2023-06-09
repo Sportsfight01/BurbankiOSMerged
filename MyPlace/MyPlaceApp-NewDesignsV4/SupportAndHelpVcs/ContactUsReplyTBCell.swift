@@ -28,7 +28,7 @@ class ContactUsReplyTBCell: UITableViewCell {
         guard let data = model else {return}
         replyTitleLb.text = data.body ?? "--"
         
-        let notedate = dateFormatter(dateStr: data.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM, yyyy, hh:mm a")
+        let notedate = dateFormatter(dateStr: data.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
         timeStampLb.text = notedate
         //containerView.cardView()
         cardView()

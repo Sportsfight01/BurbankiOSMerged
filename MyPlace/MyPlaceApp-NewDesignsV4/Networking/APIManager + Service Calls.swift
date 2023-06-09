@@ -10,9 +10,21 @@ import Foundation
 
 enum APIError : Error, Equatable
 {
-    case errorStatusCode(code : String)
+    case networkError(code : String)
     case decodingError(err : String)
     case other(err : String?)
+    var description : String
+    {
+        switch self
+        {
+        case .networkError(code: let code):
+            return "error occured status code \(code)"
+        case .decodingError(err: _):
+            return "error decoding json"
+        case .other(err: let err):
+            return err ?? somethingWentWrong
+        }
+    }
     
 }
 class APIManager{
@@ -116,15 +128,16 @@ class APIManager{
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                completion(.failure(.errorStatusCode(code: "\(httpResp?.statusCode ?? 400)")));
+                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
                 return}
-            debugPrint("login Service succesfully got the results")
+           // debugPrint("contactUsLoginSuccessFull")
             //Get Notes service
+            completion(.success(true))
               
         }.resume()
 
     }
-    private func getNotesList(completion : @escaping(Result<NSDictionary,APIError>) -> ())
+    private func getNotesList(completion : @escaping(Result<[MyNotesStruct],APIError>) -> ())
     {
         let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
         var urlRequest = URLRequest(url: URL(string: url)!)
@@ -140,7 +153,6 @@ class APIManager{
                }
              }
          }
-         
          """.data(using: .utf8)
         urlRequest.httpBody = json
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
@@ -148,66 +160,61 @@ class APIManager{
             //debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                completion(.failure(.errorStatusCode(code: "\(httpResp?.statusCode ?? 400)")))
+                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
                 return}
             guard let data else {
                 completion(.failure(.other(err: error?.localizedDescription)))
                 return }
             //:End Of Validation
             
-            guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
+            guard let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
                 completion(.failure(.other(err: "Json Serialization Failed")))
                 return}
-            completion(.success(json))
+            guard let notesList = jsonDict.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList) else {
+                completion(.failure(.other(err: "Json Serialization Failed")))
+                return
+            }
             
-           
+            do {
+                let tableData = try JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
+                completion(.success(tableData))
+                
+            }catch let err {
+                completion(.failure(.decodingError(err: err.localizedDescription)))
+            }
          
         }.resume()
 
         
     }
-    //MARK: - HelperMethods
-    func setupSerivceData(dictionary : NSDictionary) -> [MyNotesStruct]?
-    {
-        //        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
-        var tempDataSource : [MyNotesStruct] = []
-        if let notesList = dictionary.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
-        {
-            if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
-            {
-
-            }
-        }
-        return nil
-
-        
-    }
 
     func getNotes(completion : @escaping (Result<[MyNotesStruct], APIError>) ->()){
-        let operationQueue = OperationQueue()
-         
-        var contactUsResults : Result<Bool, APIError> = .failure(.other(err: "error"))
         
-        let loginTask = BlockOperation {
-            
-            self.contactUSLogin { result in
-                contactUsResults = result
-                if result == .failure
-                {
-                    completion(result.failure)
+        self.contactUSLogin { result in
+            switch result{
+                
+            case .success(_):
+                debugPrint("ContactUsloginAPISuccessful")
+                self.getNotesList { result in
+                    switch result{
+                    case .success(let notes):
+                        debugPrint("notes api got successful results")
+                        completion(.success(notes))
+                    case .failure(let err):
+                        debugPrint(err.localizedDescription)
+                        completion(.failure(err))
+                    }
+             
                 }
+            case .failure(let err):
+                debugPrint("ContactUsloginAPIFailed")
+                completion(.failure(err))
             }
-            
+        
         }
         
-        let getNotesTask = BlockOperation {
-            if contactUsResults == .success
-            {
-                self.getNotesList { <#Result<NSDictionary, APIError>#> in
-                    <#code#>
-                }
-            }
-        }
+  
+       
         
         
     }

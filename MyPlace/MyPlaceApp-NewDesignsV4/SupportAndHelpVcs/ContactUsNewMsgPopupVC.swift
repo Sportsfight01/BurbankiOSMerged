@@ -33,15 +33,7 @@ class ContactUsNewMsgPopupVC: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
        // toTf.isUserInteractionEnabled = false
-        if !isFromNewMessage {
-            headerLb.text = "Reply Message"
-            // When clicked Reply
-            subjectTf.isUserInteractionEnabled = false
-            subjectTf.backgroundColor = .systemGray6
-            
-        }else {
-            headerLb.text = "New Message"
-        }
+      
     
         // Do any additional setup after loading the view.
         
@@ -51,10 +43,22 @@ class ContactUsNewMsgPopupVC: UIViewController {
        // fromLb.text = screenData?.to
        // toTf.text = screenData?.from
         subjectTf.text = screenData?.sub
-        replyTextView.layer.borderWidth = 1.0
-        replyTextView.layer.borderColor = UIColor.black.cgColor
-        replyTextView.backgroundColor = .white
-        replyTextView.layer.cornerRadius = 5.0
+        [subjectTf,replyTextView].forEach { tf in
+            tf.layer.borderWidth = 0.7
+            tf.layer.borderColor = UIColor.black.withAlphaComponent(0.7).cgColor
+            tf.backgroundColor = .white
+            tf.layer.cornerRadius = 5.0
+        }
+        if !isFromNewMessage {
+            headerLb.text = "Reply Message"
+            // When clicked Reply
+            subjectTf.isUserInteractionEnabled = false
+            subjectTf.backgroundColor = .systemGray6
+            
+        }else {
+            headerLb.text = "New Message"
+        }
+        
     }
     
     
@@ -65,6 +69,7 @@ class ContactUsNewMsgPopupVC: UIViewController {
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
         guard subjectTf.text?.trim().count ?? 0 > 0 else {self.showAlert(message: "Please enter subject");return}
+        guard replyTextView.text.trim().count > 0 else {self.showAlert(message: "Please enter message");return}
         guard replyTextView.text.count > 10 else {self.showAlert(message: "Please enter minimum of 10 characters");return}
      
         postNote()

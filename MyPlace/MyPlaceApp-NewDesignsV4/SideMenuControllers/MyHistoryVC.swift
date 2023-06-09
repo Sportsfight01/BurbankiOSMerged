@@ -16,16 +16,13 @@ class MyHistoryVC: UIViewController {
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var tableDataSource : [MyNotesStruct]?
-  
-    
-    
+
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-    
-        getHistoryDetails()
+        getAPIData()
     
     }
  
@@ -35,106 +32,10 @@ class MyHistoryVC: UIViewController {
         self.setupNavigationBarButtons()
         headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         setupProfile()
+       
         
     }
-    
-    //MARK: - Service Calls
-    func getHistoryDetails()
-    {
-        guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
-        let url = "\(clickHomeV3BaseURL)Accounts/Login"
-        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
-
-        var urlRequest = URLRequest(url: URL(string: url)!)
-        urlRequest.httpMethod = "POST"
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
-        appDelegate.showActivity()
-        //LoginService
-        URLSession.shared.dataTask(with: urlRequest) {[weak self] data, response, error in
-            DispatchQueue.main.async {
-                appDelegate.hideActivity()
-            }
-            let httpResp = response as? HTTPURLResponse
-            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
-                ;return}
-            debugPrint("login Service succesfully got the results")
-            //Get Notes service
-
-            self?.getNotesList()
-              
-        }.resume()
-
-    }
-    func getNotesList()
-    {
-        let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
-        var urlRequest = URLRequest(url: URL(string: url)!)
-        urlRequest.httpMethod = "POST"
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = ContactUsVC.getNotesPostData()
-        DispatchQueue.main.async {
-            appDelegate.showActivity()
-        }
-        URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
-            DispatchQueue.main.async {
-                appDelegate.hideActivity()
-            }
-            //Validation
-            debugPrint(response.debugDescription)
-            let httpResp = response as? HTTPURLResponse
-            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
-                return}
-            guard let data else {
-                DispatchQueue.main.async {
-                    self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"))
-                };return}
-            
-            //:End Of Validation
-            
-            guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
-            DispatchQueue.main.async {
-                self?.setupSerivceData(dictionary: json)
-            }
-         
-         
-        }.resume()
-
-        
-    }
-    //MARK: - HelperMethods
-    func setupSerivceData(dictionary : NSDictionary)
-    {
-        //        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
-        var tempDataSource : [MyNotesStruct] = []
-        if let notesList = dictionary.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
-        {
-            if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
-            {
-                //Note without "replyTo" key goes to MainNotes
-                //Note with "replyTo" key means it is reply to a note in the list
-
-                tempDataSource = tableData.filter({$0.replyTo == nil})
-               
-               // tempDataSource = tableData
-            }
-        }
-        
-        self.tableDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
-            if self.tableDataSource?.count == 0
-            {
-                self.tableView.setEmptyMessage("No Notes Found")
-            }else {
-                self.tableView.reloadData()
-            }
-        
-    }
-    
-    
+     //MARK: - Helper Methods
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
@@ -155,11 +56,47 @@ class MyHistoryVC: UIViewController {
         profileImgView.addGestureRecognizer(tap)
         
     }
-    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
-        //        let vc = UIStoryboard(name: StoryboardNames.newDesing, bundle: nil).instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-                let vc = NotificationsVC.instace(sb: .newDesignV4)
-                self.navigationController?.pushViewController(vc, animated: true)
+    func setupUI()
+    {
+        self.tableDataSource = self.tableDataSource?.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        if self.tableDataSource?.count == 0
+        {
+            self.tableView.setEmptyMessage("No History Found")
+        }else {
+            self.tableView.reloadData()
+        }
+    }
+    
+    //MARK: - Service Calls
+    func getAPIData()
+    {
+        appDelegate.showActivity()
+        APIManager.shared.getNotes {[weak self] result in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            guard let self else { return }
+            switch result{
+            case .success(let notes):
+                self.tableDataSource = notes.filter({$0.replyTo == nil})
+                DispatchQueue.main.async {
+                    self.setupUI()
+                }
+            case .failure(let err):
+                debugPrint(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message: err.description)
+                    return}
+                }
+            }
+        
+    }
 
+
+    @objc func handleProfileClick (recognizer: UIGestureRecognizer) {
+        let vc = NotificationsVC.instace(sb: .newDesignV4)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 
 }
@@ -172,13 +109,16 @@ extension MyHistoryVC : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyHistoryTBCell", for: indexPath) as! MyHistoryTBCell
         let history = tableDataSource?[indexPath.row]
-        cell.subjectLb.text = history?.subject
-        let noteDate = dateFormatter(dateStr: history?.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy hh:mm a")
+        cell.subjectLb.text = history?.subject ?? "--"
+        let noteDate = dateFormatter(dateStr: history?.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
         cell.noteDateLb.text = noteDate ?? "--"
         cell.authorNameLb.text =  "By " + (history?.authorname ?? "--")
         // cell.authorNameLb.text =  "By " + (history?.authorname ?? "") + " on " + noteDate
-        cell.bodyLb.text = history?.body
+        cell.bodyLb.text = history?.body ?? "--"
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

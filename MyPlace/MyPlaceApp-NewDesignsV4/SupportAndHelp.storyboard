@@ -76,7 +76,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z4D-EN-kF8">
-                                        <rect key="frame" x="0.0" y="131.5" width="414" height="716.5"/>
+                                        <rect key="frame" x="0.0" y="130" width="414" height="718"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,13 +95,13 @@
                                                                     <rect key="frame" x="25" y="10" width="339" height="115"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info Centre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6F-9g-qoU">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="339" height="27"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="339" height="26"/>
                                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAB-2C-qMf">
-                                                                            <rect key="frame" x="0.0" y="30" width="339" height="51.5"/>
+                                                                            <rect key="frame" x="0.0" y="29" width="339" height="33"/>
                                                                             <string key="text">Helpful videos and information to explain some of the 
 stages in your build and what you need to know.</string>
                                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -109,7 +109,7 @@ stages in your build and what you need to know.</string>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Eh-SN-nrX">
-                                                                            <rect key="frame" x="0.0" y="84.5" width="339" height="30.5"/>
+                                                                            <rect key="frame" x="0.0" y="65" width="339" height="50"/>
                                                                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                                                             <state key="normal" title="SEE MORE">
                                                                                 <color key="titleColor" systemColor="systemOrangeColor"/>
@@ -155,7 +155,7 @@ stages in your build and what you need to know.</string>
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your hub for tips and answers to your build questions. How can we help?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="982-kn-CIg">
-                                        <rect key="frame" x="113" y="67" width="281" height="34.5"/>
+                                        <rect key="frame" x="113" y="67" width="281" height="33"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -216,19 +216,19 @@ stages in your build and what you need to know.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0un-gu-yda">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="364.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lBE-5a-TYe">
-                                                        <rect key="frame" x="30" y="15" width="354" height="27"/>
+                                                        <rect key="frame" x="20" y="15" width="374" height="26"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using the MyPlace App..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmM-CJ-dLR">
-                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="27"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="26"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plW-VH-Qo5" userLabel="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
-                                                                <rect key="frame" x="0.0" y="27" width="354" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="26" width="374" height="0.0"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" id="Jtx-qs-8Hd"/>
                                                                 </constraints>
@@ -239,14 +239,14 @@ stages in your build and what you need to know.</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52c-WR-AYe">
-                                                        <rect key="frame" x="0.0" y="47" width="414" height="250"/>
+                                                        <rect key="frame" x="0.0" y="46" width="414" height="250"/>
                                                         <color key="backgroundColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="250" id="sME-mZ-kh9"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ1-pz-uCb">
-                                                        <rect key="frame" x="30" y="307" width="354" height="17.5"/>
+                                                        <rect key="frame" x="20" y="306" width="374" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -254,14 +254,14 @@ stages in your build and what you need to know.</string>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="lBE-5a-TYe" firstAttribute="leading" secondItem="0un-gu-yda" secondAttribute="leading" constant="30" id="1GN-z6-LSg"/>
+                                                    <constraint firstItem="lBE-5a-TYe" firstAttribute="leading" secondItem="0un-gu-yda" secondAttribute="leading" constant="20" id="1GN-z6-LSg"/>
                                                     <constraint firstItem="VQ1-pz-uCb" firstAttribute="top" secondItem="52c-WR-AYe" secondAttribute="bottom" constant="10" id="2yN-Jh-KaX"/>
                                                     <constraint firstItem="lBE-5a-TYe" firstAttribute="top" secondItem="0un-gu-yda" secondAttribute="top" constant="15" id="3DX-yF-dDx"/>
                                                     <constraint firstItem="VQ1-pz-uCb" firstAttribute="leading" secondItem="lBE-5a-TYe" secondAttribute="leading" id="Dh6-uK-xGg"/>
                                                     <constraint firstItem="52c-WR-AYe" firstAttribute="top" secondItem="lBE-5a-TYe" secondAttribute="bottom" constant="5" id="GFL-8e-2WB"/>
                                                     <constraint firstAttribute="trailing" secondItem="52c-WR-AYe" secondAttribute="trailing" id="TNh-nQ-r34"/>
                                                     <constraint firstItem="52c-WR-AYe" firstAttribute="leading" secondItem="0un-gu-yda" secondAttribute="leading" id="dzz-Xp-Fkw"/>
-                                                    <constraint firstAttribute="trailing" secondItem="lBE-5a-TYe" secondAttribute="trailing" constant="30" id="ihy-yl-g0N"/>
+                                                    <constraint firstAttribute="trailing" secondItem="lBE-5a-TYe" secondAttribute="trailing" constant="20" id="ihy-yl-g0N"/>
                                                     <constraint firstItem="VQ1-pz-uCb" firstAttribute="trailing" secondItem="lBE-5a-TYe" secondAttribute="trailing" id="oYp-Tk-hbc"/>
                                                     <constraint firstAttribute="bottom" secondItem="VQ1-pz-uCb" secondAttribute="bottom" constant="40" id="qRH-0x-fXJ"/>
                                                 </constraints>
@@ -355,13 +355,12 @@ stages in your build and what you need to know.</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="THB-pY-wgv">
                                                         <rect key="frame" x="0.0" y="44" width="374" height="141"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're here to help you. Send us a message or reply to an existing message and we'll get back to you soon." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8q1-jZ-aqn">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're here to help you. Send us a message or reply to an existing message and we'll get back to you soon." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8q1-jZ-aqn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="73"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="73" id="ygR-tw-TzJ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                                <color key="textColor" white="0.0" alpha="0.76620960884353739" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej0-ng-mcV">
@@ -476,7 +475,7 @@ stages in your build and what you need to know.</string>
                                                                     <color key="textColor" name="AppOrange"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx8-oc-HHg">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx8-oc-HHg">
                                                                     <rect key="frame" x="0.0" y="100.5" width="389" height="34.5"/>
                                                                     <string key="text">Hi (Customer), I am writing to you to let you know that we have applied for you new home building permit. We expect to hear back from the...
 8 Sep 2021. 9:14am</string>
@@ -563,6 +562,7 @@ stages in your build and what you need to know.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="newMessageBtn" destination="pjj-i2-ybp" id="yH4-Gn-vwg"/>
                         <outlet property="searchBar" destination="o4O-KC-cGP" id="Egf-Bv-aEL"/>
                         <outlet property="searchBarHeight" destination="FSx-cn-h5M" id="eUo-RC-6SE"/>
                         <outlet property="tableView" destination="wEp-Es-pnf" id="O6l-rC-ZLT"/>
@@ -605,7 +605,7 @@ stages in your build and what you need to know.</string>
                                                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                                         <subviews>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_ContactUs_Green" translatesAutoresizingMaskIntoConstraints="NO" id="W5F-gz-GH2">
-                                                                                                <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                                                                                <rect key="frame" x="0.0" y="5" width="40" height="40"/>
                                                                                                 <color key="tintColor" name="AppOrange"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" constant="40" id="6rJ-dU-cG1"/>
@@ -616,8 +616,8 @@ stages in your build and what you need to know.</string>
                                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                         <constraints>
                                                                                             <constraint firstItem="W5F-gz-GH2" firstAttribute="centerY" secondItem="v9s-5z-44Q" secondAttribute="centerY" id="8gY-SR-Qk1"/>
-                                                                                            <constraint firstItem="W5F-gz-GH2" firstAttribute="centerX" secondItem="v9s-5z-44Q" secondAttribute="centerX" id="TUs-PR-JYL"/>
                                                                                             <constraint firstAttribute="width" constant="50" id="UPc-hz-dUH"/>
+                                                                                            <constraint firstItem="W5F-gz-GH2" firstAttribute="leading" secondItem="v9s-5z-44Q" secondAttribute="leading" id="ayY-Yg-IHn"/>
                                                                                             <constraint firstAttribute="height" constant="50" id="npI-EU-j0B"/>
                                                                                         </constraints>
                                                                                         <userDefinedRuntimeAttributes>
@@ -640,7 +640,7 @@ stages in your build and what you need to know.</string>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OH5-Ru-kbW">
                                                                                 <rect key="frame" x="0.0" y="58" width="374" height="127"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're here to help you. Send us a message or reply to an existing message and we'll get back to you soon." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tl-YI-NQy">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're here to help you. Send us a message or reply to an existing message and we'll get back to you soon." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tl-YI-NQy">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="59"/>
                                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                                         <nil key="textColor"/>
@@ -756,8 +756,8 @@ stages in your build and what you need to know.</string>
                                                                             <constraint firstAttribute="height" constant="1" id="pQB-ZX-wEK"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Hi (Customer), I am writing to you to let you know that we " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbA-Zs-W1f">
-                                                                        <rect key="frame" x="20" y="59.5" width="344" height="34.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Hi (Customer), I am writing to you to let you know that we " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbA-Zs-W1f">
+                                                                        <rect key="frame" x="20" y="59.5" width="374" height="34.5"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -767,7 +767,7 @@ stages in your build and what you need to know.</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="j8x-Ts-8AW" secondAttribute="trailing" id="5t6-13-cvs"/>
                                                                     <constraint firstItem="gbA-Zs-W1f" firstAttribute="leading" secondItem="YIF-mT-lAf" secondAttribute="leading" id="A2d-a1-G5Y"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="gbA-Zs-W1f" secondAttribute="trailing" constant="50" id="RpN-Au-30V"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="gbA-Zs-W1f" secondAttribute="trailing" constant="20" id="RpN-Au-30V"/>
                                                                     <constraint firstItem="j8x-Ts-8AW" firstAttribute="top" secondItem="YIF-mT-lAf" secondAttribute="bottom" constant="13" id="bT2-G1-6sf"/>
                                                                     <constraint firstItem="YIF-mT-lAf" firstAttribute="leading" secondItem="nwh-5p-Gge" secondAttribute="leading" constant="20" id="cKI-DN-jD5"/>
                                                                     <constraint firstAttribute="bottom" secondItem="gbA-Zs-W1f" secondAttribute="bottom" constant="16" id="ejg-Sb-Qi4"/>
@@ -794,7 +794,7 @@ stages in your build and what you need to know.</string>
                                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3Ng-be-Gn4">
                                                                                             <rect key="frame" x="12" y="12" width="374" height="48"/>
                                                                                             <subviews>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" text="This is Reply" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBg-4C-4Wm">
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" text="This is Reply" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBg-4C-4Wm">
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="30.5"/>
                                                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                                                     <nil key="textColor"/>
@@ -923,7 +923,7 @@ stages in your build and what you need to know.</string>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reply Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-v4-1gb">
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                        <color key="textColor" name="orangeColor"/>
+                                                        <color key="textColor" name="Orange_BG_3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -936,29 +936,20 @@ stages in your build and what you need to know.</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wv3-XM-QAa">
-                                                <rect key="frame" x="0.0" y="57" width="342" height="30"/>
+                                                <rect key="frame" x="0.0" y="57" width="342" height="40"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-TM-zFE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lyG-kb-Y03">
-                                                        <rect key="frame" x="80.5" y="0.0" width="261.5" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lyG-kb-Y03">
+                                                        <rect key="frame" x="0.0" y="0.0" width="342" height="40"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="tPm-zu-4cg"/>
+                                                            <constraint firstAttribute="height" constant="40" id="tPm-zu-4cg"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="gf0-TM-zFE" firstAttribute="width" secondItem="lyG-kb-Y03" secondAttribute="width" multiplier="1.2:4" id="mfK-UG-ZT8"/>
-                                                </constraints>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-xg-Fnu" customClass="GrowingTextView" customModule="GrowingTextView">
-                                                <rect key="frame" x="0.0" y="104" width="342" height="117"/>
+                                                <rect key="frame" x="0.0" y="114" width="342" height="97"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -971,10 +962,10 @@ stages in your build and what you need to know.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZtR-2q-ubv">
-                                                <rect key="frame" x="0.0" y="238" width="342" height="30"/>
+                                                <rect key="frame" x="0.0" y="228" width="342" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMi-hB-u00">
-                                                        <rect key="frame" x="0.0" y="0.0" width="166" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="166" height="40"/>
                                                         <color key="backgroundColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -991,7 +982,7 @@ stages in your build and what you need to know.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYl-Uw-px2">
-                                                        <rect key="frame" x="176" y="0.0" width="166" height="30"/>
+                                                        <rect key="frame" x="176" y="0.0" width="166" height="40"/>
                                                         <color key="backgroundColor" name="AppOrange"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1008,6 +999,9 @@ stages in your build and what you need to know.</string>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="QCf-ii-hGd"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -1314,7 +1308,7 @@ stages in your build and what you need to know.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="848"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eiO-fz-Dbq">
-                                                <rect key="frame" x="30" y="15" width="354" height="150.5"/>
+                                                <rect key="frame" x="30" y="15" width="354" height="130"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RXW-PP-eaR">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
@@ -1340,8 +1334,8 @@ stages in your build and what you need to know.</string>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMZ-N9-e5E">
-                                                        <rect key="frame" x="0.0" y="48" width="354" height="102.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMZ-N9-e5E">
+                                                        <rect key="frame" x="0.0" y="48" width="354" height="82"/>
                                                         <string key="text">Our Info Centre is the heartbeat of Burbank MyPlace where you can find everything that you need to help you along your journey. It will collate and show you relevant information on your new build. You can even find out how to use the MyPlace app!</string>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                         <nil key="textColor"/>
@@ -1350,7 +1344,7 @@ stages in your build and what you need to know.</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XJK-9V-Th8">
-                                                <rect key="frame" x="30" y="180.5" width="354" height="667.5"/>
+                                                <rect key="frame" x="30" y="160" width="354" height="688"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ApK-tB-wdf">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="152"/>
@@ -1419,7 +1413,7 @@ stages in your build and what you need to know.</string>
                                                         </cells>
                                                     </collectionView>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uQT-nj-1RJ">
-                                                        <rect key="frame" x="0.0" y="172" width="354" height="495.5"/>
+                                                        <rect key="frame" x="0.0" y="172" width="354" height="516"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="RZh-WE-RCc">
                                                             <size key="itemSize" width="157" height="117"/>
@@ -1439,7 +1433,7 @@ stages in your build and what you need to know.</string>
                                                                             <rect key="frame" x="0.0" y="0.0" width="157" height="64.5"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using the myPlace app" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6u3-jc-qsa">
-                                                                            <rect key="frame" x="0.0" y="72.5" width="157" height="15"/>
+                                                                            <rect key="frame" x="0.0" y="72.5" width="157" height="14"/>
                                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -1521,20 +1515,20 @@ stages in your build and what you need to know.</string>
                                 <rect key="frame" x="0.0" y="56" width="414" height="806"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8e-em-XFj">
-                                        <rect key="frame" x="20" y="20" width="374" height="27"/>
+                                        <rect key="frame" x="20" y="20" width="374" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymv-dZ-Q7z">
-                                        <rect key="frame" x="20" y="57" width="374" height="68.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymv-dZ-Q7z">
+                                        <rect key="frame" x="20" y="56" width="374" height="65.5"/>
                                         <string key="text">Lots of questions arise when you build a new home. Here we answer some of the most common ones. If you have a question that isn’t answered below, please contact us and we’ll be happy to help!</string>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="grf-oj-YZU">
-                                        <rect key="frame" x="20" y="142.5" width="374" height="663.5"/>
+                                        <rect key="frame" x="20" y="138.5" width="374" height="667.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FAQsVCCell" rowHeight="277" id="gZP-s4-62v" customClass="FAQsVCCell" customModule="BurbankApp" customModuleProvider="target">
@@ -1568,7 +1562,7 @@ stages in your build and what you need to know.</string>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHU-TM-yXO">
-                                                                                    <rect key="frame" x="24" y="10" width="330" height="20"/>
+                                                                                    <rect key="frame" x="24" y="10.5" width="330" height="19"/>
                                                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1593,7 +1587,7 @@ stages in your build and what you need to know.</string>
                                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Okh-2T-iI2">
                                                                                             <rect key="frame" x="24" y="0.0" width="350" height="227"/>
                                                                                             <subviews>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label skfhdksjhfksjdhfksd dsfhksafhdksd fskdf akjshfkas fs dfhajshfks df sd " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Eu-Kx-oQQ">
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label skfhdksjhfksjdhfksd dsfhksafhdksd fskdf akjshfkas fs dfhajshfks df sd " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Eu-Kx-oQQ">
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="49"/>
                                                                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                                                     <nil key="textColor"/>
@@ -1658,7 +1652,7 @@ stages in your build and what you need to know.</string>
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsi-RW-ctr">
-                                        <rect key="frame" x="20" y="141.5" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="137.5" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="vmM-yl-whu"/>

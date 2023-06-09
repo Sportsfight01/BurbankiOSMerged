@@ -223,20 +223,23 @@ extension MyContactsVC : UITableViewDelegate, SkeletonTableViewDataSource
         cell.fullNameLabel.text = data.contactName.trim() == "" ? "NA" : data.contactName
         cell.emailLabel.text = data.contactEmail
         cell.mobileLabel.text = data.contactPhone
-        
-        cell.emailBackGroundView.alpha = 1.0
-        cell.emailBackGroundView.isUserInteractionEnabled = true
-        
-        cell.callBackGroundView.alpha = 1.0
-        cell.callBackGroundView.isUserInteractionEnabled = true
+        [cell.emailBackGroundView.subviews.first, cell.callBackGroundView.subviews.first].forEach { view in
+            view?.isUserInteractionEnabled = true
+            view?.tintColor = APPCOLORS_3.Orange_BG
+        }
+//        cell.emailBackGroundView.alpha = 1.0
+//        cell.emailBackGroundView.isUserInteractionEnabled = true
+//
+//        cell.callBackGroundView.alpha = 1.0
+//        cell.callBackGroundView.isUserInteractionEnabled = true
         
         if data.contactEmail == "NA" || data.contactEmail == "" {
-            cell.emailBackGroundView.alpha = 0.5
+            cell.emailBackGroundView.subviews.first?.tintColor = APPCOLORS_3.LightGreyDisabled_BG
             cell.emailBackGroundView.isUserInteractionEnabled = false
         }
         
         if data.contactPhone == "NA" || data.contactPhone == "" {
-            cell.callBackGroundView.alpha = 0.5
+            cell.callBackGroundView.subviews.first?.tintColor = APPCOLORS_3.LightGreyDisabled_BG
             cell.callBackGroundView.isUserInteractionEnabled = false
         }
         
