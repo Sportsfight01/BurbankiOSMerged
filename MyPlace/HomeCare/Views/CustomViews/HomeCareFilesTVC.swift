@@ -10,6 +10,9 @@ import UIKit
 
 class HomeCareFilesTVC: UITableViewCell {
 
+    @IBOutlet weak var imageCategory: UIImageView!
+    @IBOutlet weak var dateLBL: UILabel!
+    @IBOutlet weak var titleLBL: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

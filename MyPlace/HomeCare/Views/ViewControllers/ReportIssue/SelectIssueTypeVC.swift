@@ -12,7 +12,7 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +22,15 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    func setupUI()
+    {
+        //profileSetup
+        profileBaseView.baseImageView.image = nil
+        profileBaseView.contentView.backgroundColor = AppColors.AppGray
+        profileBaseView.navigationView.backgroundColor = AppColors.AppGray
+        //addScrollView()
+    }
+    
     @IBAction func selectIssueTypeBtnsAction(_ sender: UIButton) {
         
         switch sender.tag

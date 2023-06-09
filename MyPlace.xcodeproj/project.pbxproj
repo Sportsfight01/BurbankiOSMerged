@@ -66,7 +66,7 @@
 		42EA224D29FA4B4800354DC6 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */; };
 		42EA225029FA74EF00354DC6 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
-		6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */; };
+		94B5973BBFBA2735B6BFFF8D /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */; };
 		A144018F27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist in Resources */ = {isa = PBXBuildFile; fileRef = A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */; };
 		A148363F2907BDDA0008AF29 /* PopupDisplayHomesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148363E2907BDD90008AF29 /* PopupDisplayHomesVC.swift */; };
 		A1583504291BB9CA0089133D /* SeperateLivingAreaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1583503291BB9CA0089133D /* SeperateLivingAreaVC.swift */; };
@@ -292,6 +292,8 @@
 		A1659B52292F4A4500C36B3B /* MenuCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */; };
 		A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */; };
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
+		A18F34952A30829800C44822 /* LoggedissuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34942A30829800C44822 /* LoggedissuesVC.swift */; };
+		A18F34972A3082DB00C44822 /* PreviewEditIssuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
@@ -796,6 +798,8 @@
 		A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCVCell.swift; sourceTree = "<group>"; };
 		A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOptionsCVCell.swift; sourceTree = "<group>"; };
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		A18F34942A30829800C44822 /* LoggedissuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedissuesVC.swift; sourceTree = "<group>"; };
+		A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewEditIssuesVC.swift; sourceTree = "<group>"; };
 		A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLabsImageSlider.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1E4543829EFB0D9006B531B /* MultipleJobNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleJobNumberVC.swift; sourceTree = "<group>"; };
@@ -1000,7 +1004,7 @@
 			files = (
 				ED3060BD2462796200C53DCD /* NVImageLoader.framework in Frameworks */,
 				259621B9274C9F4A0085D46C /* FBSDKCoreKit.framework in Frameworks */,
-				6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */,
+				94B5973BBFBA2735B6BFFF8D /* Pods_BurbankApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,6 +1119,8 @@
 				4212CFCA2A27315700A098B2 /* ReportIssueHomeVC.swift */,
 				4212CFCC2A27538400A098B2 /* SelectIssueTypeVC.swift */,
 				4212CFCE2A2757D400A098B2 /* LogIssueVC.swift */,
+				A18F34942A30829800C44822 /* LoggedissuesVC.swift */,
+				A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */,
 			);
 			path = ReportIssue;
 			sourceTree = "<group>";
@@ -2887,8 +2893,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		EDAB8DFB25123CAE004256A7 /* DSYMs Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3028,6 +3033,7 @@
 				A1659955292F32BA00C36B3B /* ContactUsVC.swift in Sources */,
 				426ACA6A2A24AA60001317EF /* HomeCareDashBoardVC.swift in Sources */,
 				426ACA742A24ABCA001317EF /* HomeCareConstants.swift in Sources */,
+				A18F34972A3082DB00C44822 /* PreviewEditIssuesVC.swift in Sources */,
 				A1659AF8292F4A4500C36B3B /* MyPlaceStageCompleteDetails+CoreDataProperties.swift in Sources */,
 				A1659AE7292F4A4500C36B3B /* PDFScrollView.m in Sources */,
 				A1659B28292F4A4500C36B3B /* FiltersOptionVC.swift in Sources */,
@@ -3138,6 +3144,7 @@
 				A1659AEE292F4A4500C36B3B /* ARSPopover.m in Sources */,
 				A1659B2C292F4A4500C36B3B /* ProgressStatusDetailVC.swift in Sources */,
 				A165996B292F32BB00C36B3B /* InfoCVC.swift in Sources */,
+				A18F34952A30829800C44822 /* LoggedissuesVC.swift in Sources */,
 				D188C6222424D37600DFE678 /* ServiceAPI.swift in Sources */,
 				A165997B292F32BB00C36B3B /* PhotosListVC.swift in Sources */,
 				A1659B2F292F4A4500C36B3B /* MyPlacePhotosVC.swift in Sources */,
