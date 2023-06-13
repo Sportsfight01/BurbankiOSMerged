@@ -22,7 +22,7 @@ class BaseProfileVC: UIViewController {
         profileView.profilePicImgView.superview?.addGestureRecognizer(tap)
         profileView.contactUsBtn.addTarget(self, action: #selector(contactUsBtnTapped), for: .touchUpInside)
         //contactUsVisibility
-        profileView.contactUsBtn.isHidden = true
+        profileView.contactUsBtn.isHidden = false
         
         
     }

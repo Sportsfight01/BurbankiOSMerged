@@ -8,6 +8,25 @@
 
 import Foundation
 
+enum APIError : Error, Equatable
+{
+    case networkError(code : String)
+    case decodingError(err : String)
+    case other(err : String?)
+    var description : String
+    {
+        switch self
+        {
+        case .networkError(code: let code):
+            return "error occured status code \(code)"
+        case .decodingError(err: _):
+            return "error decoding json"
+        case .other(err: let err):
+            return err ?? somethingWentWrong
+        }
+    }
+    
+}
 class APIManager{
     
     static let shared = APIManager()
@@ -91,6 +110,115 @@ class APIManager{
             }
         }
     }
+    
+    //MARK: - ContactUS Service Calls
+    private func contactUSLogin(completion : @escaping (Result<Bool,APIError>) ->())
+    {
+        guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
+        let url = "\(clickHomeV3BaseURL)Accounts/Login"
+        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
+
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
+        
+        //LoginService
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
+                return}
+           // debugPrint("contactUsLoginSuccessFull")
+            //Get Notes service
+            completion(.success(true))
+              
+        }.resume()
+
+    }
+    private func getNotesList(completion : @escaping(Result<[MyNotesStruct],APIError>) -> ())
+    {
+        let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        //Post Data
+        let json = """
+         {
+             "Notes": {
+               "List": {
+                 "MetaData": {}
+               }
+             }
+         }
+         """.data(using: .utf8)
+        urlRequest.httpBody = json
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            //Validation
+            //debugPrint(response.debugDescription)
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
+                return}
+            guard let data else {
+                completion(.failure(.other(err: error?.localizedDescription)))
+                return }
+            //:End Of Validation
+            
+            guard let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
+                completion(.failure(.other(err: "Json Serialization Failed")))
+                return}
+            guard let notesList = jsonDict.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList) else {
+                completion(.failure(.other(err: "Json Serialization Failed")))
+                return
+            }
+            
+            do {
+                let tableData = try JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
+                completion(.success(tableData))
+                
+            }catch let err {
+                completion(.failure(.decodingError(err: err.localizedDescription)))
+            }
+         
+        }.resume()
+
+        
+    }
+
+    func getNotes(completion : @escaping (Result<[MyNotesStruct], APIError>) ->()){
+        
+        self.contactUSLogin { result in
+            switch result{
+                
+            case .success(_):
+                debugPrint("ContactUsloginAPISuccessful")
+                self.getNotesList { result in
+                    switch result{
+                    case .success(let notes):
+                        debugPrint("notes api got successful results")
+                        completion(.success(notes))
+                    case .failure(let err):
+                        debugPrint(err.localizedDescription)
+                        completion(.failure(err))
+                    }
+             
+                }
+            case .failure(let err):
+                debugPrint("ContactUsloginAPIFailed")
+                completion(.failure(err))
+            }
+        
+        }
+        
+  
+       
+        
+        
+    }
+    
     
     
 }
