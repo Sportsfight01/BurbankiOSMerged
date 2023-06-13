@@ -15,24 +15,21 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var descriptionLb: UILabel!
     @IBOutlet weak var contactUsHdrLBL: UILabel!
+    @IBOutlet weak var subjectLBL: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     var contactDetails : MyNotesStruct?
-
-   // @IBOutlet weak var fromLBL: UILabel!
-    @IBOutlet weak var subjectLBL: UILabel!
-   // @IBOutlet weak var toLBL: UILabel!
-    
-    @IBOutlet weak var tableView: UITableView!
     var tableDataSource : [MyNotesStruct]?
-    
+    lazy var dataSource : UITableViewDiffableDataSource<Int, MyNotesStruct>! = makeDataSource()
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
-        tableView.dataSource = self
+       // tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor.clear
+        tableView.allowsSelection = false
         showData()
 
     }
@@ -41,13 +38,41 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         setupNavigationBarButtons(shouldShowNotification: false)
         readUnreadMessage()
     }
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        let contentheight = tableView.contentSize.height
+//        self.tableViewHeight.constant = contentheight + 50
+//    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      //  tableViewHeight.constant = tableView.contentSize.height + 50
-       
+        let contentheight = tableView.contentSize.height
+        self.tableViewHeight.constant = contentheight + 50
+//        tableView.isScrollEnabled = false
+
+
     }
 
      //MARK: - HelperMethods
+    func applySnapShot()
+    {
+        var snapShot = NSDiffableDataSourceSnapshot<Int, MyNotesStruct>()
+        snapShot.appendSections([0])
+        snapShot.appendItems(tableDataSource ?? [])
+        dataSource.apply(snapShot, animatingDifferences: true)
+        
+    }
+    func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
+    {
+        let dataSource = UITableViewDiffableDataSource<Int, MyNotesStruct>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContactUsReplyTBCell
+            cell.setup(model: itemIdentifier)
+
+            return cell
+        }
+        return dataSource
+    }
+    
+    
     func readUnreadMessage()
     {
         guard let contactData = contactDetails else {return}
@@ -63,7 +88,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     func showData(){
         
-        subjectLBL.text =  "Subject : \(self.contactDetails?.subject ?? "")"
+        subjectLBL.text =  "Subject: \(self.contactDetails?.subject ?? "")"
         //toLBL.text = "To : \(self.contactDetails?.authorname ?? "")"
        // fromLBL.text =  "From : " + (appDelegate.currentUser?.userDetailsArray?[0].fullName)!
         descriptionLb.text = self.contactDetails?.body ?? ""
@@ -79,7 +104,10 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 
             }else {
                 self.tableView.isHidden = false
-                self.tableView.reloadData()
+                self.tableView.layoutIfNeeded()
+//                self.tableView.reloadData()
+//                self.tableView.layoutIfNeeded()
+                self.applySnapShot()
                 self.tableView.layoutIfNeeded()
             }
         }
@@ -87,7 +115,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
     @IBAction func didTappedOnReplay(_ sender: UIButton) {
         let recipientEmail = "srikanth.vunyala@digitalminds.solutions"
-        let subject = "Re : \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0)"
+        let subject = "Re: \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0)"
        // let body = ""
         
         let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
@@ -97,7 +125,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         vc.modalPresentationStyle = .overCurrentContext
         vc.isFromNewMessage = false
         vc.completion = { [weak self](success) in
-            self?.getNotes()
+            self?.getAPIData()
         }
         self.present(vc, animated: true)
         
@@ -106,99 +134,37 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     //MARK: - Service Calls
-    func getNotes()
+    func getAPIData()
     {
-        guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
-        let url = "\(clickHomeV3BaseURL)Accounts/Login"
-        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
-
-        var urlRequest = URLRequest(url: URL(string: url)!)
-        urlRequest.httpMethod = "POST"
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: postDict)
         appDelegate.showActivity()
-        //LoginService
-        URLSession.shared.dataTask(with: urlRequest) {[weak self] data, response, error in
+        APIManager.shared.getNotes {[weak self] result in
             DispatchQueue.main.async {
                 appDelegate.hideActivity()
             }
-            let httpResp = response as? HTTPURLResponse
-            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                DispatchQueue.main.async
-                {
-                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
-                }
-                return}
-            debugPrint("login Service succesfully got the results")
-            //Get Notes service
-
-            self?.getNotesList()
-              
-        }.resume()
-
-    }
-    func getNotesList()
-    {
-        let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
-        var urlRequest = URLRequest(url: URL(string: url)!)
-        urlRequest.httpMethod = "POST"
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.httpBody = getNotesPostData()
-        DispatchQueue.main.async {
-            appDelegate.showActivity()
-        }
-        URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
-            DispatchQueue.main.async {
-                appDelegate.hideActivity()
-            }
-            //Validation
-            debugPrint(response.debugDescription)
-            let httpResp = response as? HTTPURLResponse
-            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                DispatchQueue.main.async
-                {
-                self?.showAlert(message: "error occured statusCode : \(httpResp?.statusCode ?? 400)")
-                }
-                return}
-            guard let data else {
+            guard let self else { return }
+            switch result{
+            case .success(let notes):
                 DispatchQueue.main.async {
-                    self?.showAlert(message:("\(error?.localizedDescription ?? somethingWentWrong)"))
+                    self.setupSerivceData(notes: notes)
                 }
-                
-                return }
-            //:End Of Validation
-            
-            guard let json = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {return}
-            
-            self?.setupSerivceData(dictionary: json)
-         
-        }.resume()
-
+            case .failure(let err):
+                debugPrint(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message: err.description)
+                    return}
+                }
+            }
         
     }
     //MARK: - HelperMethods
-    func setupSerivceData(dictionary : NSDictionary)
+    func setupSerivceData(notes : [MyNotesStruct])
     {
-        //        let keyPaths = ["constructionContract","preconstructionContract","leadContract"]
-        var tempDataSource : [MyNotesStruct] = []
-        if let notesList = dictionary.value(forKeyPath: "notes.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: notesList)
-        {
-            if let tableData = try? JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
-            {
-                //Note without "replyTo" key goes to MainNotes
-                //Note with "replyTo" key means it is reply to a note in the list
-                
-                let noteId = contactDetails?.noteId
-                let replies = tableData.filter({ noteId == $0.replyTo?.noteId})
-                tempDataSource = replies
-            }
-        }
         
-        tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
-
-        self.tableDataSource = tempDataSource
+        //Note without "replyTo" key goes to MainNotes
+        //Note with "replyTo" key means it is reply to a note in the list
+        let noteId = contactDetails?.noteId
+        let replies = notes.filter({ noteId == $0.replyTo?.noteId})
+        self.tableDataSource = replies.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
         self.setupUI()
         
     }
@@ -208,21 +174,11 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
 
 //MARK: - Tableview Delegate & Datasource
-extension ContactUsDetailsVC : UITableViewDelegate, UITableViewDataSource
+extension ContactUsDetailsVC : UITableViewDelegate
 {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableDataSource?.count ?? 0
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContactUsReplyTBCell
-        let cellData = tableDataSource?[indexPath.row]
-        cell.setup(model: cellData)
-
-        return cell
-    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        view.backgroundColor = UIColor.systemGray6
         let sectionLabel = UILabel(frame: .zero)
         sectionLabel.font = mediumFontWith(size: 18.0)
         sectionLabel.textColor = AppColors.appOrange

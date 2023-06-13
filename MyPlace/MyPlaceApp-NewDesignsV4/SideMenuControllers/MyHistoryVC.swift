@@ -123,8 +123,16 @@ extension MyHistoryVC : UITableViewDelegate, UITableViewDataSource
     
     
 }
-struct MyNotesStruct : Codable
+struct MyNotesStruct : Codable, Hashable
 {
+    static func == (lhs: MyNotesStruct, rhs: MyNotesStruct) -> Bool {
+        lhs.noteId == rhs.noteId
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(noteId)
+    }
+
+    
     var authorname : String?
     var body : String?
     var notedate : String?

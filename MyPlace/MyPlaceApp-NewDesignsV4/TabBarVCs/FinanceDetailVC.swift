@@ -11,7 +11,7 @@ import UIKit
 class FinanceDetailVC: UIViewController {
     
     //MARK: - Properties
-    
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var lb_lastUpdated: UILabel!
     {
         didSet
@@ -48,6 +48,7 @@ class FinanceDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupNavigationBarButtons()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -43,13 +43,23 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tableView.separatorColor = .clear
         searchBar.delegate = self
         searchBarHeight.constant = 0
-        setupAnimation()
-        getAPIData()
+        //setupAnimation()
+      
         //let gesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
         //newMessageBtn.addGestureRecognizer(gesture)
       
         //  navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBarButtons(shouldShowNotification: false)
+        searchBar.text?.removeAll()
+        searchBar.resignFirstResponder()
+        getAPIData()
+        
+    }
+    
     private func setupAnimation()
     {
         newMsgBtnPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut, animations: {
@@ -65,13 +75,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupNavigationBarButtons(shouldShowNotification: false)
-        searchBar.text?.removeAll()
-        searchBar.resignFirstResponder()
-        
-    }
+
     
     //MARK: - IBActions
     @IBAction func didTappedOnSearch(_ sender: UIButton) {
@@ -127,7 +131,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         DispatchQueue.main.async {
             if self.tableDataSource?.count == 0
             {
-                self.tableView.setEmptyMessage("No Notes Found")
+                self.tableView.setEmptyMessage("No records found")
             }else {
                 self.tableView.reloadData()
             }
@@ -169,7 +173,7 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableDataSource?.count == 0 {
-            tableView.setEmptyMessage("No Notes Found")
+            tableView.setEmptyMessage("No records found")
         }else{
             tableView.restore()
         }

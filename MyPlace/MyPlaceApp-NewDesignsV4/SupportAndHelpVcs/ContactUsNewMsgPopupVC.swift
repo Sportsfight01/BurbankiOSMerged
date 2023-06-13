@@ -11,6 +11,9 @@ import GrowingTextView
 class ContactUsNewMsgPopupVC: UIViewController {
 
     //MARK: - Properties
+    
+    @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var cancelBtb: UIButton!
     @IBOutlet weak var replyTextView: GrowingTextView!
     @IBOutlet weak var subjectTf: UITextField!
 //    @IBOutlet weak var toTf: UITextField!
@@ -31,7 +34,10 @@ class ContactUsNewMsgPopupVC: UIViewController {
         super.viewDidLoad()
         self.definesPresentationContext = true
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        
+        headerLb.font = FONT_LABEL_SUB_HEADING(size: FONT_15)
+        subjectTf.font = FONT_LABEL_BODY(size: FONT_13)
+        replyTextView.font = FONT_LABEL_BODY(size: FONT_13)
+        [cancelBtb, submitBtn].forEach({$0.titleLabel?.font =  FONT_LABEL_SUB_HEADING(size: FONT_14)} )
        // toTf.isUserInteractionEnabled = false
       
     
@@ -87,12 +93,12 @@ class ContactUsNewMsgPopupVC: UIViewController {
 
         if isFromNewMessage
         {
-            parameters = ["replytoid" : NSNull() , "subject" : subjectTf.text ?? "", "stepid" : 0, "body" : replyTextView.text ?? ""]
+            parameters = ["replytoid" : NSNull() , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : replyTextView.text.trim() ]
         }
         else//reply
         {
             if let noteId = noteId {
-                parameters = ["replytoid" : noteId , "subject" : subjectTf.text ?? "", "stepid" : 0, "body" : replyTextView.text ?? ""]
+                parameters = ["replytoid" : noteId , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : replyTextView.text.trim() ]
             }
             
         }

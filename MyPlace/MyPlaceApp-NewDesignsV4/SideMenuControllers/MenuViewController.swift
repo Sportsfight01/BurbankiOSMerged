@@ -151,9 +151,9 @@ extension MenuViewController
     {
         case changeJobNumber = "MyJobNumber"
         case appointment     = "MyAppointments"
+        case history         = "MyHistory"
         case details         = "MyDetails"
         case support         = "MySupport"
-        case history         = "MyHistory"
         case notifications   = "MyNotifications"
         case settings        = "MySettings"
         
