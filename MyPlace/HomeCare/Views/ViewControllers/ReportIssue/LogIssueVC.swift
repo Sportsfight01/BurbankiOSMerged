@@ -13,6 +13,10 @@ class LogIssueVC: UIViewController {
     @IBOutlet weak var logIssueBTN: UIButton!
     
     @IBOutlet weak var saveEditBTN: UIButton!
+    @IBOutlet weak var deleteBTN: UIButton!
+    @IBOutlet weak var cancelBTN: UIButton!
+    
+    
     //MARK: - Properties
     @IBOutlet weak var addImagesView: UIView!
     @IBOutlet weak var TopFlagView: UIView!
@@ -29,6 +33,7 @@ class LogIssueVC: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        setUpUI()
        
     
     }
@@ -44,6 +49,7 @@ class LogIssueVC: UIViewController {
     @available(iOS 14.0, *)
     @objc func addPhotosClicker()
     {
+        
         var photoConfig = PHPickerConfiguration()
         photoConfig.selectionLimit = 6
         let photoPickerVc = PHPickerViewController(configuration: photoConfig)
@@ -52,8 +58,11 @@ class LogIssueVC: UIViewController {
     }
 
     func setUpUI(){
+        imagesPickerColectionView.isHidden = true
         if isEditIssueScreen{
-            
+            [logIssueBTN].forEach({$0?.isHidden = true})
+        }else{
+            [saveEditBTN,deleteBTN,cancelBTN].forEach({$0?.isHidden = true})
         }
     }
     
@@ -95,6 +104,7 @@ extension LogIssueVC : PHPickerViewControllerDelegate
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true) // dismiss a picker
+        imagesPickerColectionView.isHidden = false
         
         let imageItems = results
             .map { $0.itemProvider }
@@ -128,7 +138,7 @@ extension LogIssueVC : PHPickerViewControllerDelegate
 
 class ImagePickerCollectionView : UIView
 {
-    var collectionDataSource : [UIImage] = [UIImage(systemName: "plus.square")!,UIImage(systemName: "plus.square")!,UIImage(systemName: "plus.square")!,UIImage(systemName: "plus.square")!,UIImage(systemName: "plus.square")!]
+    var collectionDataSource : [UIImage] = []
     {
         didSet {  collectionView.reloadData()  }
     }
@@ -170,10 +180,13 @@ class ImagePickerCollectionView : UIView
     }
     private func createLayout() -> UICollectionViewLayout
     {
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/6), heightDimension: .fractionalHeight(1)), subitems: [item])
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/7), heightDimension: .fractionalWidth(1/7)))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(4)
         let section = NSCollectionLayoutSection(group: group)
-        let layout = UICollectionViewCompositionalLayout(section: section)
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .horizontal
+        let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
         return layout
     }
     
@@ -182,11 +195,11 @@ extension ImagePickerCollectionView :  UICollectionViewDataSource, UICollectionV
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionDataSource.count
-//        < maxPhots ? collectionDataSource.count + 1 : maxPhots
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
         cell.imageView.image = collectionDataSource[indexPath.item]
+        cell.imageView.layer.cornerRadius = 6
         return cell
     }
 }
@@ -194,13 +207,27 @@ extension ImagePickerCollectionView :  UICollectionViewDataSource, UICollectionV
 class ImageCell : UICollectionViewCell
 {
     var imageView : UIImageView!
+    var deleteImgBTN : UIButton!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         imageView = UIImageView(frame: contentView.frame)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
+        imageView.layer.borderColor = APPCOLORS_3.GreyTextFont.cgColor
+        imageView.layer.borderWidth = 1
+//        imageView.clipsToBounds = true
         contentView.addSubview(imageView)
-        imageView.layer.cornerRadius = 3
-        imageView.borderColor = APPCOLORS_3.GreyTextFont
+        let closeImage  = UIImage(systemName: "xmark.circle.fill")
+        let width = imageView.frame.size.width
+        deleteImgBTN = UIButton(frame: CGRect(x:  width-20 , y: -5, width: 20, height: 20))
+        deleteImgBTN.setImage(closeImage, for: .normal)
+        deleteImgBTN.tintColor = .white
+        deleteImgBTN.layer.cornerRadius = 10
+        deleteImgBTN.backgroundColor = .orange
+        imageView.addSubview(deleteImgBTN)
+        imageView.bringSubviewToFront(deleteImgBTN)
+       
+        
     }
     
     required init?(coder: NSCoder) {
