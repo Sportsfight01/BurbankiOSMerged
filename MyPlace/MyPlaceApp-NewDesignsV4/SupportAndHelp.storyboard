@@ -366,18 +366,6 @@ stages in your build and what you need to know.</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej0-ng-mcV">
                                                                 <rect key="frame" x="0.0" y="81" width="374" height="60"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Message      " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gi7-Vh-p5e">
-                                                                        <rect key="frame" x="8" y="8" width="120.5" height="44"/>
-                                                                        <color key="backgroundColor" red="0.79607843137254897" green="0.80392156862745101" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdH-Yp-9Ce">
                                                                         <rect key="frame" x="318" y="8" width="48" height="44"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -396,9 +384,13 @@ stages in your build and what you need to know.</string>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjj-i2-ybp">
-                                                                        <rect key="frame" x="8" y="8" width="120.5" height="44"/>
+                                                                        <rect key="frame" x="8" y="8" width="127" height="44"/>
+                                                                        <color key="backgroundColor" name="LightGreyDisabled_BG_3"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                        <state key="normal" title="    New Message    ">
+                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                        </state>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                 <integer key="value" value="5"/>
@@ -412,16 +404,12 @@ stages in your build and what you need to know.</string>
                                                                 <color key="backgroundColor" red="0.88627450980392153" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="xdH-Yp-9Ce" firstAttribute="top" secondItem="ej0-ng-mcV" secondAttribute="top" constant="8" id="DMr-t1-ntG"/>
-                                                                    <constraint firstItem="pjj-i2-ybp" firstAttribute="leading" secondItem="Gi7-Vh-p5e" secondAttribute="leading" id="El2-TF-4DG"/>
-                                                                    <constraint firstItem="pjj-i2-ybp" firstAttribute="top" secondItem="Gi7-Vh-p5e" secondAttribute="top" id="F74-1a-zY8"/>
                                                                     <constraint firstAttribute="height" constant="60" id="YMe-Qm-Hy1"/>
-                                                                    <constraint firstItem="Gi7-Vh-p5e" firstAttribute="top" secondItem="ej0-ng-mcV" secondAttribute="top" constant="8" id="Yyt-CC-1Sv"/>
-                                                                    <constraint firstItem="Gi7-Vh-p5e" firstAttribute="leading" secondItem="ej0-ng-mcV" secondAttribute="leading" constant="8" id="a8i-Ul-2xk"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="Gi7-Vh-p5e" secondAttribute="bottom" constant="8" id="jMC-cd-5PT"/>
-                                                                    <constraint firstItem="pjj-i2-ybp" firstAttribute="trailing" secondItem="Gi7-Vh-p5e" secondAttribute="trailing" id="jlZ-C3-vSW"/>
                                                                     <constraint firstAttribute="bottom" secondItem="xdH-Yp-9Ce" secondAttribute="bottom" constant="8" id="khl-XP-6mJ"/>
+                                                                    <constraint firstItem="pjj-i2-ybp" firstAttribute="top" secondItem="ej0-ng-mcV" secondAttribute="top" constant="8" id="mRa-T2-jnL"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="pjj-i2-ybp" secondAttribute="bottom" constant="8" id="mv3-g5-8At"/>
                                                                     <constraint firstAttribute="trailing" secondItem="xdH-Yp-9Ce" secondAttribute="trailing" constant="8" id="rTa-BL-Ozh"/>
-                                                                    <constraint firstItem="pjj-i2-ybp" firstAttribute="bottom" secondItem="Gi7-Vh-p5e" secondAttribute="bottom" id="t5K-AU-LHn"/>
+                                                                    <constraint firstItem="pjj-i2-ybp" firstAttribute="leading" secondItem="ej0-ng-mcV" secondAttribute="leading" constant="8" id="tS9-51-nkE"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -524,7 +512,6 @@ stages in your build and what you need to know.</string>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
-                                            <outlet property="dataSource" destination="gxC-1i-55L" id="eAI-2H-uBG"/>
                                             <outlet property="delegate" destination="gxC-1i-55L" id="alX-kj-XOM"/>
                                         </connections>
                                     </tableView>
@@ -646,48 +633,36 @@ stages in your build and what you need to know.</string>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akZ-Ax-1qV">
                                                                                 <rect key="frame" x="0.0" y="67" width="374" height="60"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inbox" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUQ-j8-cKO">
-                                                                                        <rect key="frame" x="8" y="8" width="80" height="44"/>
-                                                                                        <color key="backgroundColor" red="0.79607843137254897" green="0.80392156862745101" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="width" constant="80" id="tV4-Sb-dEY"/>
-                                                                                        </constraints>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                                        <nil key="textColor"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                        <userDefinedRuntimeAttributes>
-                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                <real key="value" value="5"/>
-                                                                                            </userDefinedRuntimeAttribute>
-                                                                                        </userDefinedRuntimeAttributes>
-                                                                                    </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reply" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-Dv-afm">
-                                                                                        <rect key="frame" x="286" y="8" width="80" height="44"/>
-                                                                                        <color key="backgroundColor" red="0.79607843137254897" green="0.80392156862745101" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="width" constant="80" id="qks-go-lbD"/>
-                                                                                        </constraints>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                                        <nil key="textColor"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                        <userDefinedRuntimeAttributes>
-                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                <real key="value" value="5"/>
-                                                                                            </userDefinedRuntimeAttribute>
-                                                                                        </userDefinedRuntimeAttributes>
-                                                                                    </label>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pu-bP-rjM">
-                                                                                        <rect key="frame" x="286" y="8" width="80" height="44"/>
+                                                                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pu-bP-rjM">
+                                                                                        <rect key="frame" x="292" y="8" width="74" height="44"/>
+                                                                                        <color key="backgroundColor" name="LightGreyDisabled_BG_3"/>
                                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                        <state key="normal" title="    Reply    ">
+                                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                                        </state>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <integer key="value" value="5"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
                                                                                         <connections>
                                                                                             <action selector="didTappedOnReplay:" destination="z0C-Do-Bsf" eventType="touchUpInside" id="0e5-0X-Ifp"/>
                                                                                         </connections>
                                                                                     </button>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7R-XL-PV9">
-                                                                                        <rect key="frame" x="8" y="8" width="80" height="44"/>
-                                                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                                                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7R-XL-PV9">
+                                                                                        <rect key="frame" x="8" y="8" width="69" height="44"/>
+                                                                                        <color key="backgroundColor" name="LightGreyDisabled_BG_3"/>
+                                                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                        <state key="normal" title="    Inbox    ">
+                                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                                        </state>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <integer key="value" value="5"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
                                                                                         <connections>
                                                                                             <action selector="didTappedOnInbox:" destination="z0C-Do-Bsf" eventType="touchUpInside" id="WGE-eL-x6o"/>
                                                                                         </connections>
@@ -695,21 +670,13 @@ stages in your build and what you need to know.</string>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" red="0.88627450980392153" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
-                                                                                    <constraint firstItem="Z7R-XL-PV9" firstAttribute="top" secondItem="GUQ-j8-cKO" secondAttribute="top" id="3yd-v4-pRa"/>
-                                                                                    <constraint firstItem="L5J-Dv-afm" firstAttribute="top" secondItem="akZ-Ax-1qV" secondAttribute="top" constant="8" id="7r2-rh-OzE"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="L5J-Dv-afm" secondAttribute="bottom" constant="8" id="AFu-6o-bwm"/>
-                                                                                    <constraint firstItem="Z7R-XL-PV9" firstAttribute="leading" secondItem="GUQ-j8-cKO" secondAttribute="leading" id="AW4-j6-gYH"/>
-                                                                                    <constraint firstItem="GUQ-j8-cKO" firstAttribute="leading" secondItem="akZ-Ax-1qV" secondAttribute="leading" constant="8" id="F7N-Jg-SMP"/>
-                                                                                    <constraint firstItem="5pu-bP-rjM" firstAttribute="top" secondItem="L5J-Dv-afm" secondAttribute="top" id="Lut-N2-qQo"/>
-                                                                                    <constraint firstItem="5pu-bP-rjM" firstAttribute="bottom" secondItem="L5J-Dv-afm" secondAttribute="bottom" id="ZIb-bv-BXA"/>
-                                                                                    <constraint firstItem="5pu-bP-rjM" firstAttribute="trailing" secondItem="L5J-Dv-afm" secondAttribute="trailing" id="cWc-2G-UJX"/>
-                                                                                    <constraint firstItem="5pu-bP-rjM" firstAttribute="leading" secondItem="L5J-Dv-afm" secondAttribute="leading" id="gf3-XS-uSm"/>
-                                                                                    <constraint firstItem="Z7R-XL-PV9" firstAttribute="bottom" secondItem="GUQ-j8-cKO" secondAttribute="bottom" id="h6F-Lr-VWV"/>
+                                                                                    <constraint firstItem="5pu-bP-rjM" firstAttribute="top" secondItem="akZ-Ax-1qV" secondAttribute="top" constant="8" id="4D0-EE-mYF"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="Z7R-XL-PV9" secondAttribute="bottom" constant="8" id="Sel-ML-9lU"/>
+                                                                                    <constraint firstItem="Z7R-XL-PV9" firstAttribute="top" secondItem="akZ-Ax-1qV" secondAttribute="top" constant="8" id="XPs-si-97f"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="5pu-bP-rjM" secondAttribute="bottom" constant="8" id="aUW-x8-eM1"/>
                                                                                     <constraint firstAttribute="height" constant="60" id="iYh-Sf-Ilk"/>
-                                                                                    <constraint firstItem="GUQ-j8-cKO" firstAttribute="top" secondItem="akZ-Ax-1qV" secondAttribute="top" constant="8" id="nI9-PP-rNl"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="L5J-Dv-afm" secondAttribute="trailing" constant="8" id="qGW-lQ-AWN"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="GUQ-j8-cKO" secondAttribute="bottom" constant="8" id="sX6-0K-b3o"/>
-                                                                                    <constraint firstItem="Z7R-XL-PV9" firstAttribute="trailing" secondItem="GUQ-j8-cKO" secondAttribute="trailing" id="whC-ux-UKH"/>
+                                                                                    <constraint firstItem="Z7R-XL-PV9" firstAttribute="leading" secondItem="akZ-Ax-1qV" secondAttribute="leading" constant="8" id="slf-B2-79S"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="5pu-bP-rjM" secondAttribute="trailing" constant="8" id="v0c-cV-jaq"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -892,6 +859,8 @@ stages in your build and what you need to know.</string>
                     <connections>
                         <outlet property="contactUsHdrLBL" destination="9tl-YI-NQy" id="NhQ-ZA-h7Y"/>
                         <outlet property="descriptionLb" destination="gbA-Zs-W1f" id="9Iy-Sw-0qc"/>
+                        <outlet property="inboxButton" destination="Z7R-XL-PV9" id="m2f-kb-Xvn"/>
+                        <outlet property="replyButton" destination="5pu-bP-rjM" id="H6y-Ed-WSA"/>
                         <outlet property="subjectLBL" destination="YIF-mT-lAf" id="Rnd-Uh-iG6"/>
                         <outlet property="tableView" destination="GF9-na-NOR" id="BQX-UU-NaR"/>
                         <outlet property="tableViewHeight" destination="0LU-0b-cR0" id="NbM-fA-KJ6"/>
@@ -936,7 +905,7 @@ stages in your build and what you need to know.</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wv3-XM-QAa">
                                                 <rect key="frame" x="0.0" y="57" width="342" height="40"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lyG-kb-Y03">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lyG-kb-Y03">
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="tPm-zu-4cg"/>
@@ -953,7 +922,7 @@ stages in your build and what you need to know.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your message"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter message"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minHeight">
                                                         <real key="value" value="70"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1715,6 +1684,9 @@ stages in your build and what you need to know.</string>
         </namedColor>
         <namedColor name="HeaderFooter_BG_3">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGreyDisabled_BG_3">
+            <color red="0.81999999284744263" green="0.82700002193450928" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange_BG_3">
             <color red="0.9649999737739563" green="0.53700000047683716" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

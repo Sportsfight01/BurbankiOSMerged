@@ -21,8 +21,7 @@ class BaseProfileVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileView.profilePicImgView.superview?.addGestureRecognizer(tap)
         profileView.contactUsBtn.addTarget(self, action: #selector(contactUsBtnTapped), for: .touchUpInside)
-        //contactUsVisibility
-        profileView.contactUsBtn.isHidden = false
+      
         
         
     }

@@ -197,9 +197,10 @@ class RegionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setAppearanceFor(view: titleLabel, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_14))
+        setAppearanceFor(view: titleLabel, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_12))
 ////
         titleLabel.layer.cornerRadius = radius_5
+    
 //
 //        setBorder(view: titleLabel, color: APPCOLORS_3.Orange_BG, width: 1.0)
 //

@@ -15,10 +15,6 @@
 		017C6EA124C563FF005F6C45 /* HomeDesigns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C6EA024C563FF005F6C45 /* HomeDesigns.swift */; };
 		1BEBA0958985D5B3B9BBFEC0 /* Pods_BurbankApp_MyPlaceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */; };
 		259621B9274C9F4A0085D46C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */; };
-		4212CFC42A27134D00A098B2 /* HomeCareHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212CFC32A27134D00A098B2 /* HomeCareHeaderView.xib */; };
-		4212CFCB2A27315700A098B2 /* ReportIssueHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212CFCA2A27315700A098B2 /* ReportIssueHomeVC.swift */; };
-		4212CFCD2A27538400A098B2 /* SelectIssueTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212CFCC2A27538400A098B2 /* SelectIssueTypeVC.swift */; };
-		4212CFCF2A2757D400A098B2 /* LogIssueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212CFCE2A2757D400A098B2 /* LogIssueVC.swift */; };
 		4212D5FC2938A8EE00855CDC /* HomeAndLandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */; };
 		4212D5FD2938A8EE00855CDC /* DisplayHomesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */; };
 		4212D5FE2938A8EE00855CDC /* DisplayHomesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5F52938A8EE00855CDC /* DisplayHomesTVC.xib */; };
@@ -31,20 +27,7 @@
 		4223782329F6642800CDD69D /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223782229F6642800CDD69D /* ProfileHeaderView.xib */; };
 		4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782429F6677400CDD69D /* ProfileHeaderView.swift */; };
 		4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782629F679E000CDD69D /* BaseProfileVC.swift */; };
-		426ACA672A24AA60001317EF /* HomeCareFilesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */; };
-		426ACA682A24AA60001317EF /* DashBoardImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */; };
-		426ACA6A2A24AA60001317EF /* HomeCareDashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5C2A24AA60001317EF /* HomeCareDashBoardVC.swift */; };
-		426ACA6B2A24AA60001317EF /* Tabbarscreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5D2A24AA60001317EF /* Tabbarscreens.swift */; };
-		426ACA6C2A24AA60001317EF /* HMCPDFViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5E2A24AA60001317EF /* HMCPDFViewerVC.swift */; };
-		426ACA6D2A24AA60001317EF /* HomeScreenTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5F2A24AA60001317EF /* HomeScreenTabBarVC.swift */; };
-		426ACA6F2A24AA60001317EF /* HomeCareBaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA622A24AA60001317EF /* HomeCareBaseProfileVC.swift */; };
-		426ACA702A24AA60001317EF /* HomeCareHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA632A24AA60001317EF /* HomeCareHeaderView.swift */; };
-		426ACA712A24AA60001317EF /* HomaeCareAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426ACA652A24AA60001317EF /* HomaeCareAssets.xcassets */; };
-		426ACA722A24AA60001317EF /* HomeCareMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426ACA662A24AA60001317EF /* HomeCareMain.storyboard */; };
-		426ACA742A24ABCA001317EF /* HomeCareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA732A24ABCA001317EF /* HomeCareConstants.swift */; };
-		426ACA762A24B3BC001317EF /* CustomersUserpreferrenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA752A24B3BC001317EF /* CustomersUserpreferrenceVC.swift */; };
-		4273AB8C2A2712730042E590 /* HomeCareFilesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4273AB8B2A2712730042E590 /* HomeCareFilesTVC.xib */; };
-		4273AB8E2A2712E20042E590 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4273AB8D2A2712E20042E590 /* Report.storyboard */; };
+		428227402A3085C900FD237B /* ContactUsReplyTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282273F2A3085C900FD237B /* ContactUsReplyTBCell.swift */; };
 		4292D24F2A1DE3D300131297 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4292D24E2A1DE3D300131297 /* Montserrat-Medium.ttf */; };
 		4293ACD4292FA856001A0589 /* Main_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4293ACD3292FA856001A0589 /* Main_OLD.storyboard */; };
 		4298DBE22A1CA32100109D6A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */; };
@@ -66,7 +49,7 @@
 		42EA224D29FA4B4800354DC6 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */; };
 		42EA225029FA74EF00354DC6 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */; };
 		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
-		94B5973BBFBA2735B6BFFF8D /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */; };
+		6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */; };
 		A144018F27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist in Resources */ = {isa = PBXBuildFile; fileRef = A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */; };
 		A148363F2907BDDA0008AF29 /* PopupDisplayHomesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148363E2907BDD90008AF29 /* PopupDisplayHomesVC.swift */; };
 		A1583504291BB9CA0089133D /* SeperateLivingAreaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1583503291BB9CA0089133D /* SeperateLivingAreaVC.swift */; };
@@ -292,8 +275,6 @@
 		A1659B52292F4A4500C36B3B /* MenuCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */; };
 		A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */; };
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
-		A18F34952A30829800C44822 /* LoggedissuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34942A30829800C44822 /* LoggedissuesVC.swift */; };
-		A18F34972A3082DB00C44822 /* PreviewEditIssuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
@@ -506,10 +487,6 @@
 		0B16BDB4B1FE8F15AE78670B /* Pods-MyPlaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaceTests.release.xcconfig"; path = "Target Support Files/Pods-MyPlaceTests/Pods-MyPlaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp_MyPlaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4212CFC32A27134D00A098B2 /* HomeCareHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCareHeaderView.xib; sourceTree = "<group>"; };
-		4212CFCA2A27315700A098B2 /* ReportIssueHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueHomeVC.swift; sourceTree = "<group>"; };
-		4212CFCC2A27538400A098B2 /* SelectIssueTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIssueTypeVC.swift; sourceTree = "<group>"; };
-		4212CFCE2A2757D400A098B2 /* LogIssueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIssueVC.swift; sourceTree = "<group>"; };
 		4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAndLandTVC.swift; sourceTree = "<group>"; };
 		4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayHomesTVC.swift; sourceTree = "<group>"; };
 		4212D5F52938A8EE00855CDC /* DisplayHomesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayHomesTVC.xib; sourceTree = "<group>"; };
@@ -522,20 +499,7 @@
 		4223782229F6642800CDD69D /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		4223782429F6677400CDD69D /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		4223782629F679E000CDD69D /* BaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileVC.swift; sourceTree = "<group>"; };
-		426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareFilesTVC.swift; sourceTree = "<group>"; };
-		426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardImageCVC.swift; sourceTree = "<group>"; };
-		426ACA5C2A24AA60001317EF /* HomeCareDashBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareDashBoardVC.swift; sourceTree = "<group>"; };
-		426ACA5D2A24AA60001317EF /* Tabbarscreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbarscreens.swift; sourceTree = "<group>"; };
-		426ACA5E2A24AA60001317EF /* HMCPDFViewerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMCPDFViewerVC.swift; sourceTree = "<group>"; };
-		426ACA5F2A24AA60001317EF /* HomeScreenTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTabBarVC.swift; sourceTree = "<group>"; };
-		426ACA622A24AA60001317EF /* HomeCareBaseProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareBaseProfileVC.swift; sourceTree = "<group>"; };
-		426ACA632A24AA60001317EF /* HomeCareHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareHeaderView.swift; sourceTree = "<group>"; };
-		426ACA652A24AA60001317EF /* HomaeCareAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomaeCareAssets.xcassets; sourceTree = "<group>"; };
-		426ACA662A24AA60001317EF /* HomeCareMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeCareMain.storyboard; sourceTree = "<group>"; };
-		426ACA732A24ABCA001317EF /* HomeCareConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareConstants.swift; sourceTree = "<group>"; };
-		426ACA752A24B3BC001317EF /* CustomersUserpreferrenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersUserpreferrenceVC.swift; sourceTree = "<group>"; };
-		4273AB8B2A2712730042E590 /* HomeCareFilesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCareFilesTVC.xib; sourceTree = "<group>"; };
-		4273AB8D2A2712E20042E590 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
+		4282273F2A3085C900FD237B /* ContactUsReplyTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsReplyTBCell.swift; sourceTree = "<group>"; };
 		4292D24E2A1DE3D300131297 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		4293ACD3292FA856001A0589 /* Main_OLD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_OLD.storyboard; sourceTree = "<group>"; };
 		4298DBE12A1CA32100109D6A /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -798,8 +762,6 @@
 		A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCVCell.swift; sourceTree = "<group>"; };
 		A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOptionsCVCell.swift; sourceTree = "<group>"; };
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
-		A18F34942A30829800C44822 /* LoggedissuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedissuesVC.swift; sourceTree = "<group>"; };
-		A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewEditIssuesVC.swift; sourceTree = "<group>"; };
 		A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLabsImageSlider.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1E4543829EFB0D9006B531B /* MultipleJobNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleJobNumberVC.swift; sourceTree = "<group>"; };
@@ -1004,7 +966,7 @@
 			files = (
 				ED3060BD2462796200C53DCD /* NVImageLoader.framework in Frameworks */,
 				259621B9274C9F4A0085D46C /* FBSDKCoreKit.framework in Frameworks */,
-				94B5973BBFBA2735B6BFFF8D /* Pods_BurbankApp.framework in Frameworks */,
+				6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,84 +1009,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		421129CD2A27111800F92AE4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4212CFC82A2723F700A098B2 /* Cells */,
-				4212CFC72A2723BD00A098B2 /* ViewControllers */,
-				42DD0FAF2A27122700579F92 /* CustomViews */,
-				421129D02A27115E00F92AE4 /* StoryBoards */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		421129CF2A27114900F92AE4 /* Uitilities */ = {
-			isa = PBXGroup;
-			children = (
-				426ACA732A24ABCA001317EF /* HomeCareConstants.swift */,
-			);
-			path = Uitilities;
-			sourceTree = "<group>";
-		};
-		421129D02A27115E00F92AE4 /* StoryBoards */ = {
-			isa = PBXGroup;
-			children = (
-				426ACA662A24AA60001317EF /* HomeCareMain.storyboard */,
-				4273AB8D2A2712E20042E590 /* Report.storyboard */,
-			);
-			path = StoryBoards;
-			sourceTree = "<group>";
-		};
-		4212CFC52A27138B00A098B2 /* Xibs */ = {
-			isa = PBXGroup;
-			children = (
-				4212CFC32A27134D00A098B2 /* HomeCareHeaderView.xib */,
-				4273AB8B2A2712730042E590 /* HomeCareFilesTVC.xib */,
-			);
-			path = Xibs;
-			sourceTree = "<group>";
-		};
-		4212CFC62A27237700A098B2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				426ACA652A24AA60001317EF /* HomaeCareAssets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		4212CFC72A2723BD00A098B2 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4212CFC92A2730E600A098B2 /* ReportIssue */,
-				426ACA622A24AA60001317EF /* HomeCareBaseProfileVC.swift */,
-				426ACA5C2A24AA60001317EF /* HomeCareDashBoardVC.swift */,
-				426ACA5D2A24AA60001317EF /* Tabbarscreens.swift */,
-				426ACA5E2A24AA60001317EF /* HMCPDFViewerVC.swift */,
-				426ACA5F2A24AA60001317EF /* HomeScreenTabBarVC.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		4212CFC82A2723F700A098B2 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		4212CFC92A2730E600A098B2 /* ReportIssue */ = {
-			isa = PBXGroup;
-			children = (
-				4212CFCA2A27315700A098B2 /* ReportIssueHomeVC.swift */,
-				4212CFCC2A27538400A098B2 /* SelectIssueTypeVC.swift */,
-				4212CFCE2A2757D400A098B2 /* LogIssueVC.swift */,
-				A18F34942A30829800C44822 /* LoggedissuesVC.swift */,
-				A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */,
-			);
-			path = ReportIssue;
-			sourceTree = "<group>";
-		};
 		4212D5F22938A8EE00855CDC /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
@@ -1139,16 +1023,6 @@
 				4212D5FB2938A8EE00855CDC /* MyDesignsTVC.xib */,
 			);
 			path = Favourites;
-			sourceTree = "<group>";
-		};
-		426ACA442A24A98F001317EF /* HomeCare */ = {
-			isa = PBXGroup;
-			children = (
-				4212CFC62A27237700A098B2 /* Resources */,
-				421129CF2A27114900F92AE4 /* Uitilities */,
-				421129CD2A27111800F92AE4 /* Views */,
-			);
-			path = HomeCare;
 			sourceTree = "<group>";
 		};
 		4298DBE02A1CA31700109D6A /* Montserrat */ = {
@@ -1170,16 +1044,6 @@
 				429F4FB829F908B700D2BC47 /* RealmModels.swift */,
 			);
 			path = RealmModel;
-			sourceTree = "<group>";
-		};
-		42DD0FAF2A27122700579F92 /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				4212CFC52A27138B00A098B2 /* Xibs */,
-				426ACA632A24AA60001317EF /* HomeCareHeaderView.swift */,
-				426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */,
-			);
-			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		42EA224E29FA74AC00354DC6 /* ViewModels */ = {
@@ -1258,6 +1122,7 @@
 				A165990C292F32B900C36B3B /* InfoCentreDetailsVC.swift */,
 				A165990D292F32B900C36B3B /* SupportVC.swift */,
 				A165990E292F32B900C36B3B /* ContactUsDetailsVC.swift */,
+				4282273F2A3085C900FD237B /* ContactUsReplyTBCell.swift */,
 			);
 			path = SupportAndHelpVcs;
 			sourceTree = "<group>";
@@ -1912,7 +1777,6 @@
 				EDAB55A02449B59D0052B251 /* Service Layer */,
 				D188C60F2424D37500DFE678 /* SupportingFiles */,
 				A16599B6292F4A4300C36B3B /* OLDCode */,
-				426ACA442A24A98F001317EF /* HomeCare */,
 				A1659902292F32B900C36B3B /* MyPlaceApp-NewDesignsV4 */,
 			);
 			path = MyPlace;
@@ -2053,7 +1917,6 @@
 				D188C60E2424D37500DFE678 /* CreateAccountVC.swift */,
 				01762A272462997E00F66A64 /* NewForgotPasswordVC.swift */,
 				01762A292462999500F66A64 /* NewResetPasswordVC.swift */,
-				426ACA752A24B3BC001317EF /* CustomersUserpreferrenceVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2643,7 +2506,6 @@
 				D16FE4702428EF6F0082DECF /* Proxima Nova Thin Italic.otf in Resources */,
 				D16FE4662428EF6F0082DECF /* Proxima Nova Extra Condensed Regular.otf in Resources */,
 				D16FE4762428EF6F0082DECF /* Proxima Nova Light Italic.otf in Resources */,
-				426ACA722A24AA60001317EF /* HomeCareMain.storyboard in Resources */,
 				A1659AD2292F4A4500C36B3B /* CommonOLD.xcassets in Resources */,
 				A1659ABC292F4A4400C36B3B /* Privacy Policy.html in Resources */,
 				ED8E040825384E39000FCFED /* GoogleService-MyPlace-burbank-Info.plist in Resources */,
@@ -2679,7 +2541,6 @@
 				4212D6032938A8EE00855CDC /* FavouritesTVCell.xib in Resources */,
 				D16FE4842428EF6F0082DECF /* Proxima Nova Condensed Thin Italic.otf in Resources */,
 				A1659AD3292F4A4500C36B3B /* AssetsOLD.xcassets in Resources */,
-				4273AB8C2A2712730042E590 /* HomeCareFilesTVC.xib in Resources */,
 				D16FE4722428EF6F0082DECF /* Proxima Nova Extrabold Italic.otf in Resources */,
 				D16FE46D2428EF6F0082DECF /* Proxima Nova Extra Condensed Bold Italic.otf in Resources */,
 				A1659AEA292F4A4500C36B3B /* SwipeLR.png in Resources */,
@@ -2690,13 +2551,11 @@
 				A1659ACD292F4A4500C36B3B /* MyriadPro-CondIt.otf in Resources */,
 				ED51DE9A24BDAF7E008681C0 /* HomeDesign.storyboard in Resources */,
 				D16FE4652428EF6F0082DECF /* Proxima Nova Condensed Semibold Italic.otf in Resources */,
-				4212CFC42A27134D00A098B2 /* HomeCareHeaderView.xib in Resources */,
 				A1659ADB292F4A4500C36B3B /* OpenSans-SemiboldItalic.ttf in Resources */,
 				D16FE46F2428EF6F0082DECF /* Proxima Nova Extrabold.otf in Resources */,
 				D16FE4832428EF6F0082DECF /* Mark Simonson - Proxima Nova Thin-webfont.ttf in Resources */,
 				D16FE47F2428EF6F0082DECF /* Proxima Nova Black.otf in Resources */,
 				A1659951292F32BA00C36B3B /* SupportAndHelp.storyboard in Resources */,
-				4273AB8E2A2712E20042E590 /* Report.storyboard in Resources */,
 				D16FE4872428EF6F0082DECF /* Proxima Nova Condensed Regular Italic.otf in Resources */,
 				D16FE4852428EF6F0082DECF /* Proxima Nova Bold Italic.otf in Resources */,
 				A1659ACA292F4A4500C36B3B /* MyriadPro-Regular.otf in Resources */,
@@ -2708,7 +2567,6 @@
 				A1659AD6292F4A4500C36B3B /* OpenSans-Light.ttf in Resources */,
 				D16FE46A2428EF6F0082DECF /* proxima-nova-bold-593a736757215.otf in Resources */,
 				4298DBEE2A1CB81100109D6A /* Montserrat-Regular.ttf in Resources */,
-				426ACA712A24AA60001317EF /* HomaeCareAssets.xcassets in Resources */,
 				D16FE4712428EF6F0082DECF /* Proxima Nova Extra Condensed Thin.otf in Resources */,
 				D16FE46B2428EF6F0082DECF /* Proxima Nova A W07 Medium.otf in Resources */,
 				A162E54C2908F81E009647AE /* TimingsAndDirectionTVC.xib in Resources */,
@@ -2893,7 +2751,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		EDAB8DFB25123CAE004256A7 /* DSYMs Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2941,6 +2800,7 @@
 				D188C6282424D37600DFE678 /* LoginDataManagement.swift in Sources */,
 				A1659B4A292F4A4500C36B3B /* SettingsCell.swift in Sources */,
 				A1659962292F32BA00C36B3B /* UIImage + Extensions.swift in Sources */,
+				428227402A3085C900FD237B /* ContactUsReplyTBCell.swift in Sources */,
 				A1659B3F292F4A4500C36B3B /* FilterDBManagar.swift in Sources */,
 				A1659B0D292F4A4500C36B3B /* MyPlaceFavPhotosVC.swift in Sources */,
 				A165996A292F32BB00C36B3B /* PhotosListCVCell.swift in Sources */,
@@ -2970,7 +2830,6 @@
 				A1659B10292F4A4500C36B3B /* CoBurbankListVC.swift in Sources */,
 				A1659AF3292F4A4500C36B3B /* MyPlacePhotoNote+CoreDataClass.swift in Sources */,
 				A1659AA5292F4A4400C36B3B /* FilterOptions.swift in Sources */,
-				426ACA672A24AA60001317EF /* HomeCareFilesTVC.swift in Sources */,
 				EDC83DD42645307B000E3343 /* DisplaysMapDetailExpandedCell.swift in Sources */,
 				D188C6292424D37600DFE678 /* HeaderVC.swift in Sources */,
 				ED7E41F825303D23004377BE /* AppleSignIn.swift in Sources */,
@@ -3017,7 +2876,6 @@
 				A1659973292F32BB00C36B3B /* FAQsVCCell.swift in Sources */,
 				ED3B3A6E2642901300A03D85 /* DisplaysMapVC.swift in Sources */,
 				A1659B08292F4A4500C36B3B /* imagesPickManager.swift in Sources */,
-				4212CFCB2A27315700A098B2 /* ReportIssueHomeVC.swift in Sources */,
 				A165997E292F32BB00C36B3B /* PhotosVC.swift in Sources */,
 				A1659953292F32BA00C36B3B /* NetworkRequest.swift in Sources */,
 				A1659B45292F4A4500C36B3B /* MenuCustomVC.swift in Sources */,
@@ -3028,12 +2886,8 @@
 				A1659B40292F4A4500C36B3B /* Reachability.m in Sources */,
 				ED487BCB242C8ED100907BE1 /* MyDayVC.swift in Sources */,
 				A1659B16292F4A4500C36B3B /* AboutBurbankVC.swift in Sources */,
-				426ACA762A24B3BC001317EF /* CustomersUserpreferrenceVC.swift in Sources */,
 				D188C62E2424D37600DFE678 /* CreateAccountVC.swift in Sources */,
 				A1659955292F32BA00C36B3B /* ContactUsVC.swift in Sources */,
-				426ACA6A2A24AA60001317EF /* HomeCareDashBoardVC.swift in Sources */,
-				426ACA742A24ABCA001317EF /* HomeCareConstants.swift in Sources */,
-				A18F34972A3082DB00C44822 /* PreviewEditIssuesVC.swift in Sources */,
 				A1659AF8292F4A4500C36B3B /* MyPlaceStageCompleteDetails+CoreDataProperties.swift in Sources */,
 				A1659AE7292F4A4500C36B3B /* PDFScrollView.m in Sources */,
 				A1659B28292F4A4500C36B3B /* FiltersOptionVC.swift in Sources */,
@@ -3056,7 +2910,6 @@
 				4212D5FC2938A8EE00855CDC /* HomeAndLandTVC.swift in Sources */,
 				A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */,
 				D188C6202424D37600DFE678 /* Networking.swift in Sources */,
-				4212CFCD2A27538400A098B2 /* SelectIssueTypeVC.swift in Sources */,
 				A1659B24292F4A4500C36B3B /* FiltersVC.swift in Sources */,
 				ED35973E243C553E003A1159 /* HomeDesignTVCell.swift in Sources */,
 				A1659B2E292F4A4500C36B3B /* MyPlaceStagesCell.swift in Sources */,
@@ -3071,14 +2924,12 @@
 				A1659B48292F4A4500C36B3B /* RegionListTVCell.swift in Sources */,
 				A1659B20292F4A4500C36B3B /* MyPlacePhotoDetailVC.swift in Sources */,
 				A1659A9E292F4A4400C36B3B /* DisplayHomeDataModels.swift in Sources */,
-				426ACA6D2A24AA60001317EF /* HomeScreenTabBarVC.swift in Sources */,
 				A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */,
 				ED3B3A5B26428F1600A03D85 /* DisplaysNearByVC.swift in Sources */,
 				4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */,
 				ED67958A246A5C9C008FAEED /* RegionVC.swift in Sources */,
 				A1659AF6292F4A4500C36B3B /* MyPlaceStoredPhotoInfo+CoreDataClass.swift in Sources */,
 				EDC62A36246C122C00608E52 /* MyPlacePackages+CoreDataProperties.swift in Sources */,
-				426ACA6B2A24AA60001317EF /* Tabbarscreens.swift in Sources */,
 				ED487BD3242CAD8100907BE1 /* MyCollectionSurveyVC.swift in Sources */,
 				EDA2A93025025007005FCEF9 /* HeaderBreadCrumpCV.swift in Sources */,
 				D188C6232424D37600DFE678 /* AppThemeColors.swift in Sources */,
@@ -3087,7 +2938,6 @@
 				D188C62D2424D37600DFE678 /* UserPreferenceVC.swift in Sources */,
 				ED99C3F924615E5F008BB421 /* AppManager.swift in Sources */,
 				ED3143A624C6A1EF00F048D2 /* HomeLandPopupVC.swift in Sources */,
-				426ACA702A24AA60001317EF /* HomeCareHeaderView.swift in Sources */,
 				A1659B00292F4A4500C36B3B /* SWRevealViewController.m in Sources */,
 				A1659970292F32BB00C36B3B /* FinanceCVCell2.swift in Sources */,
 				42B69F2D29DABA43002A0700 /* ImageSliderCVCell.swift in Sources */,
@@ -3126,7 +2976,6 @@
 				ED487BCD242C8EDC00907BE1 /* MyStyleVC.swift in Sources */,
 				ED57A02F245FDAF800C24039 /* DateExtension.swift in Sources */,
 				ED51DEA024BDD406008681C0 /* HomeDesignFeature.swift in Sources */,
-				426ACA6F2A24AA60001317EF /* HomeCareBaseProfileVC.swift in Sources */,
 				ED74EEC72490AF0800E77CF9 /* EnquireNowVC.swift in Sources */,
 				ED5965CF24FFC75A0066896F /* LocationServices.swift in Sources */,
 				ED57A030245FDAF800C24039 /* TableViewExtension.swift in Sources */,
@@ -3144,7 +2993,6 @@
 				A1659AEE292F4A4500C36B3B /* ARSPopover.m in Sources */,
 				A1659B2C292F4A4500C36B3B /* ProgressStatusDetailVC.swift in Sources */,
 				A165996B292F32BB00C36B3B /* InfoCVC.swift in Sources */,
-				A18F34952A30829800C44822 /* LoggedissuesVC.swift in Sources */,
 				D188C6222424D37600DFE678 /* ServiceAPI.swift in Sources */,
 				A165997B292F32BB00C36B3B /* PhotosListVC.swift in Sources */,
 				A1659B2F292F4A4500C36B3B /* MyPlacePhotosVC.swift in Sources */,
@@ -3165,7 +3013,6 @@
 				A1659982292F32BB00C36B3B /* CoBurbankVC.swift in Sources */,
 				A1659B33292F4A4500C36B3B /* SetCentralPasswordVC.swift in Sources */,
 				ED9A832D24DACF4600D85E17 /* MyPlace3DVC.swift in Sources */,
-				426ACA682A24AA60001317EF /* DashBoardImageCVC.swift in Sources */,
 				EDC7701D24349A3700BB9707 /* ProfileCollectionTVCell.swift in Sources */,
 				ED8C3C5324BECD3E00364CA4 /* AlfrescoVC.swift in Sources */,
 				EDC83DCF26453040000E3343 /* DisplaysMapDetailCell.swift in Sources */,
@@ -3242,7 +3089,6 @@
 				A165995D292F32BA00C36B3B /* ImagePickeredView.swift in Sources */,
 				ED3B39DF2641232300A03D85 /* DesignsDetailsVC.swift in Sources */,
 				ED4B23CF24371FF300899114 /* HomeLandDetailsVC.swift in Sources */,
-				4212CFCF2A2757D400A098B2 /* LogIssueVC.swift in Sources */,
 				A1659972292F32BB00C36B3B /* FinanceCVCell.swift in Sources */,
 				A1659B11292F4A4500C36B3B /* HomesDetailsVC.swift in Sources */,
 				D200D6C32696F4E900B43C51 /* DisplayHomesDetailsVC.swift in Sources */,
@@ -3268,7 +3114,6 @@
 				A1659957292F32BA00C36B3B /* ContactUsNewMsgPopupVC.swift in Sources */,
 				A1659958292F32BA00C36B3B /* InfoCentreDetailsVC.swift in Sources */,
 				ED3B3A0C26415C4800A03D85 /* DisplaysCVCell.swift in Sources */,
-				426ACA6C2A24AA60001317EF /* HMCPDFViewerVC.swift in Sources */,
 				A1659AA6292F4A4400C36B3B /* MyPlace.swift in Sources */,
 				A1659ADF292F4A4500C36B3B /* BurbankDataModel.xcdatamodeld in Sources */,
 				A165998F292F32BB00C36B3B /* ValidateEmailVC.swift in Sources */,
@@ -3465,7 +3310,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyPlace/MyPlace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Y988XRR8UK;
 				ENABLE_BITCODE = NO;
@@ -3481,7 +3326,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3502,7 +3347,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyPlace/MyPlace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Y988XRR8UK;
 				ENABLE_BITCODE = NO;
@@ -3518,7 +3363,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 3.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

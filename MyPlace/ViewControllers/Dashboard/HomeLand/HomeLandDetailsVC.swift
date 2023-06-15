@@ -328,6 +328,7 @@ class HomeLandDetailsVC: HeaderVC {
             
             viewMapExpanded.isHidden = false
             self.view.bringSubviewToFront(viewMapExpanded)
+            
         }
     }
     
@@ -336,6 +337,8 @@ class HomeLandDetailsVC: HeaderVC {
         
         viewMapExpanded.isHidden = true
         self.view.sendSubviewToBack(viewMapExpanded)
+//        let window = UIApplication.shared.keyWindow!
+//        self.viewMapExpanded.removeFromSuperview()
         
     }
     
