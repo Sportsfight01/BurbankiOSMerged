@@ -194,9 +194,9 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
         self.contactArr = tempDataSource
         self.tableDataSource = tempDataSource
-        DispatchQueue.main.async {
-            self.setupUI()
-        }
+//        DispatchQueue.main.async {
+//            self.setupUI()
+//        }
         
         
     }
@@ -207,18 +207,12 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
 extension ContactUsVC : UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableDataSource?.count == 0 {
-            tableView.setEmptyMessage("No records found")
-        }else{
-            tableView.restore()
-        }
-        return tableDataSource?.count ?? 0
-
+        return self.tableDataSource?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
-        cell.setup(model : tableDataSource?[indexPath.row])
+        cell.setup(model : self.tableDataSource?[indexPath.row])
         return cell
     }
 //
@@ -235,7 +229,7 @@ extension ContactUsVC : UITableViewDelegate, UITableViewDataSource, UISearchBarD
                 return (note.authorname?.lc.contains(searchText.lc) ?? false) || (note.subject?.lc.contains(searchText.lc) ?? false) ||
                 (note.displayDate?.contains(searchText.lc) ?? false)
             })
-            
+            self.tableView.reloadData()
         }
       
     }
