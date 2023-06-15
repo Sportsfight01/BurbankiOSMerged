@@ -39,6 +39,8 @@ class ProfileHeaderView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth,
             .flexibleHeight]
+        let image = UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        contactUsBtn.setImage(image ?? UIImage(named: "Top Menu Icons_Chat"), for: .normal)
         titleLb.font = FONT_LABEL_BODY(size: FONT_22)
         helpTextLb.font = FONT_LABEL_BODY(size: FONT_11)
         secondHelpTextLb.font = FONT_LABEL_BODY(size: FONT_11)

@@ -153,10 +153,29 @@ struct MyNotesStruct : Codable, Hashable
     {
         return notedate?.components(separatedBy: ".").first?.getDate() ?? Date()
     }
-    
+    var displayDate : String? {
+        if let notedate = notedate?.components(separatedBy: ".").first{
+            return dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
+        }
+        return nil
+    }
     struct ReplyTo : Codable
     {
         let noteId : Int?
     }
         
+}
+func dateFormatter(dateStr : String , currentFormate : String , requiredFormate : String) -> String?
+{
+    let dateFormatterGet = DateFormatter()
+    dateFormatterGet.dateFormat = currentFormate
+    
+    let dateFormatterPrint = DateFormatter()
+    dateFormatterPrint.dateFormat = requiredFormate
+    
+    if let date = dateFormatterGet.date(from: dateStr) {
+        return dateFormatterPrint.string(from: date)
+    } else {
+        return nil
+    }
 }

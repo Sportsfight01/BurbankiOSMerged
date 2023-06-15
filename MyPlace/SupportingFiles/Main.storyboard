@@ -2014,7 +2014,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Home Designs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gC1-JM-AIB">
-                                                <rect key="frame" x="30.333333333333329" y="107.33333333333331" width="72.000000000000014" height="13.333333333333329"/>
+                                                <rect key="frame" x="30.333333333333329" y="107.33333333333331" width="72" height="13.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="11"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -3109,10 +3109,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-qJ-fFm">
-                                <rect key="frame" x="15" y="192" width="398" height="690"/>
+                                <rect key="frame" x="5" y="47" width="418" height="835"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYk-nu-AtZ" customClass="MyPlaceMap" customModule="BurbankApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="690"/>
+                                        <rect key="frame" x="0.0" y="-194" width="418" height="1029"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
                                             <outlet property="delegate" destination="wrO-OY-wjd" id="ajV-PC-CGS"/>
@@ -3136,7 +3136,7 @@
                                     <constraint firstItem="5dj-J6-8n2" firstAttribute="top" secondItem="5vR-qJ-fFm" secondAttribute="top" constant="10" id="L9p-8L-Pu6"/>
                                     <constraint firstItem="5dj-J6-8n2" firstAttribute="leading" secondItem="5vR-qJ-fFm" secondAttribute="leading" constant="10" id="Tqo-Bs-5zU"/>
                                     <constraint firstItem="bYk-nu-AtZ" firstAttribute="leading" secondItem="5vR-qJ-fFm" secondAttribute="leading" id="dGy-25-i00"/>
-                                    <constraint firstItem="bYk-nu-AtZ" firstAttribute="top" secondItem="5vR-qJ-fFm" secondAttribute="top" id="dYi-dR-lMu"/>
+                                    <constraint firstItem="bYk-nu-AtZ" firstAttribute="top" secondItem="5vR-qJ-fFm" secondAttribute="top" constant="-194" id="dYi-dR-lMu"/>
                                     <constraint firstAttribute="trailing" secondItem="bYk-nu-AtZ" secondAttribute="trailing" id="o4o-rc-Jz2"/>
                                 </constraints>
                             </view>
@@ -3595,15 +3595,15 @@
                         <color key="backgroundColor" name="Body_BG_3"/>
                         <constraints>
                             <constraint firstItem="IEr-x9-xCg" firstAttribute="top" secondItem="xLM-he-POC" secondAttribute="top" constant="135" id="55D-ca-fIn"/>
+                            <constraint firstItem="5vR-qJ-fFm" firstAttribute="top" secondItem="xLM-he-POC" secondAttribute="top" id="6JV-fs-EFs"/>
                             <constraint firstItem="0Kf-yN-9Zu" firstAttribute="height" secondItem="aZN-Wq-uQg" secondAttribute="height" multiplier="0.15" id="Ew4-tH-zbV"/>
                             <constraint firstItem="2Gv-zG-NLO" firstAttribute="height" secondItem="aZN-Wq-uQg" secondAttribute="height" id="HHc-mx-ax4"/>
                             <constraint firstItem="YV0-ac-uJI" firstAttribute="height" secondItem="aZN-Wq-uQg" secondAttribute="height" multiplier="0.25" id="QLC-D8-WMh"/>
                             <constraint firstItem="5vR-qJ-fFm" firstAttribute="bottom" secondItem="xLM-he-POC" secondAttribute="bottom" constant="-10" id="ThO-Sy-zsn"/>
-                            <constraint firstItem="xLM-he-POC" firstAttribute="trailing" secondItem="5vR-qJ-fFm" secondAttribute="trailing" constant="15" id="X2T-mO-RaS"/>
+                            <constraint firstItem="xLM-he-POC" firstAttribute="trailing" secondItem="5vR-qJ-fFm" secondAttribute="trailing" constant="5" id="X2T-mO-RaS"/>
                             <constraint firstItem="IEr-x9-xCg" firstAttribute="trailing" secondItem="xLM-he-POC" secondAttribute="trailing" id="gbU-pd-Tme"/>
-                            <constraint firstItem="5vR-qJ-fFm" firstAttribute="leading" secondItem="xLM-he-POC" secondAttribute="leading" constant="15" id="hI5-en-EIm"/>
+                            <constraint firstItem="5vR-qJ-fFm" firstAttribute="leading" secondItem="xLM-he-POC" secondAttribute="leading" constant="5" id="hI5-en-EIm"/>
                             <constraint firstItem="xLM-he-POC" firstAttribute="bottom" secondItem="IEr-x9-xCg" secondAttribute="bottom" id="scV-Zm-nnH"/>
-                            <constraint firstItem="5vR-qJ-fFm" firstAttribute="top" secondItem="IEr-x9-xCg" secondAttribute="top" constant="10" id="vw6-eE-TT6"/>
                             <constraint firstItem="IEr-x9-xCg" firstAttribute="leading" secondItem="xLM-he-POC" secondAttribute="leading" id="zyA-ix-Vbu"/>
                         </constraints>
                     </view>
@@ -4325,11 +4325,11 @@
         <scene sceneID="t0d-PX-lQC">
             <objects>
                 <viewController storyboardIdentifier="DesignsDetailsVC" id="fSy-JK-Qfa" customClass="DesignsDetailsVC" customModule="BurbankApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="kUv-Z2-S7n">
+                    <view key="view" contentMode="scaleToFill" id="kUv-Z2-S7n">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mkL-XA-Cyx">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkL-XA-Cyx">
                                 <rect key="frame" x="0.0" y="182" width="428" height="710"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69t-te-GH2">
@@ -5966,10 +5966,10 @@
             <objects>
                 <viewController storyboardIdentifier="TopViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7J9-f6-6Yx" customClass="PriceRangeVC" customModule="BurbankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8h1-aW-eLY">
-                        <rect key="frame" x="0.0" y="0.0" width="378" height="246.33333333333334"/>
+                        <rect key="frame" x="0.0" y="0.0" width="378" height="245.33333333333334"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbw-if-Wzo">
-                                <rect key="frame" x="0.0" y="0.0" width="378" height="246.33333333333334"/>
+                                <rect key="frame" x="0.0" y="0.0" width="378" height="245.33333333333334"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7a-la-ioE">
                                         <rect key="frame" x="0.0" y="5" width="378" height="30"/>
@@ -5979,13 +5979,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price range" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMa-O8-vdP">
-                                        <rect key="frame" x="10" y="45" width="358" height="51"/>
+                                        <rect key="frame" x="10" y="45" width="358" height="50.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0DY-7P-fRh">
-                                        <rect key="frame" x="5" y="106.00000000000001" width="368" height="140.33333333333337"/>
+                                        <rect key="frame" x="5" y="105.66666666666667" width="368" height="139.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fT2-sf-00I">
                                             <size key="itemSize" width="50" height="50"/>
@@ -11284,7 +11284,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="308" height="31.666666030883789"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksv-b3-xuS">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksv-b3-xuS">
                                                             <rect key="frame" x="5" y="5" width="298" height="21.666666666666668"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -14514,7 +14514,7 @@ Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm | Mon: 12pm - 5p
     <inferredMetricsTieBreakers>
         <segue reference="Kcg-4A-8pR"/>
         <segue reference="GL8-Rz-ZUX"/>
-        <segue reference="5hr-w0-YnI"/>
+        <segue reference="mHW-r3-k9A"/>
         <segue reference="XLK-Lu-xSd"/>
         <segue reference="mUn-gE-koJ"/>
         <segue reference="09S-UG-oLh"/>

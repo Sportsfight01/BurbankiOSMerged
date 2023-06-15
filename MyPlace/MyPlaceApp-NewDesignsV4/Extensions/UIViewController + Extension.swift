@@ -77,7 +77,8 @@ extension UIViewController {
         //notification button
         let btn2 = UIButton(type: .custom)
         //  btn1.backgroundColor = UIColor.blue
-        btn2.setImage(UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        let image = UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        btn2.setImage(image ?? UIImage(named: "Top Menu Icons_Chat"), for: .normal)
         btn2.tintColor = .white
         btn2.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         btn2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

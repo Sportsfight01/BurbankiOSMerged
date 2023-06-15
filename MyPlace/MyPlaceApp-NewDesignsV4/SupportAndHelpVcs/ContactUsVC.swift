@@ -10,16 +10,18 @@ import UIKit
 import MessageUI
 
 class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
-    
+    static var updateNoteData : Bool = false
     //MARK: - Properties
     
-    @IBOutlet weak var newMsgBtnWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var newMessageBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    private var tableDataSource : [MyNotesStruct]?
-    private var contactArr : [MyNotesStruct]?
     @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
-    private var newMsgBtnPropertyAnimator : UIViewPropertyAnimator!
+    private var tableDataSource : [MyNotesStruct]?
+    {
+        didSet{   setupUI()   }
+    }
+    private var contactArr : [MyNotesStruct]?
+   // private lazy var dataSource : UITableViewDiffableDataSource<Int,MyNotesStruct>! = makeDataSource()
     
     @IBOutlet weak var searchBar: UISearchBar!
     {
@@ -43,12 +45,11 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tableView.separatorColor = .clear
         searchBar.delegate = self
         searchBarHeight.constant = 0
-        //setupAnimation()
       
-        //let gesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
-        //newMessageBtn.addGestureRecognizer(gesture)
-      
-        //  navigationController?.setNavigationBarHidden(true, animated: true)
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
+        newMessageBtn.addGestureRecognizer(gesture)
+        getAPIData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,25 +57,56 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         setupNavigationBarButtons(shouldShowNotification: false)
         searchBar.text?.removeAll()
         searchBar.resignFirstResponder()
-        getAPIData()
+        if ContactUsVC.updateNoteData{
+            getAPIData()
+            ContactUsVC.updateNoteData = false
+        }
+        
         
     }
+//     //MARK: - TableViewDiffableDataSource
+//    private func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
+//    {
+//        let dataSource = UITableViewDiffableDataSource<Int, MyNotesStruct>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
+//            cell.setup(model : itemIdentifier)
+//            return cell
+//        }
+//        return dataSource
+//    }
+//
+//    private func applySnapShot()
+//    {
+//        var snapShot = NSDiffableDataSourceSnapshot<Int, MyNotesStruct>()
+//        snapShot.appendSections([0])
+//        snapShot.appendItems(tableDataSource ?? [])
+//        dataSource.apply(snapShot, animatingDifferences: true)
+//    }
     
-    private func setupAnimation()
+    
+    @objc func panGestureAction(_ gesture : UIPanGestureRecognizer)
     {
-        newMsgBtnPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut, animations: {
-            self.newMessageBtn.frame.size.width = 250
-        })
-    }
-    @objc func panGestureAction(_ sender : UIPanGestureRecognizer)
-    {
-        let translation = sender.translation(in: newMessageBtn.superview)
-        debugPrint(translation.x)
-        if translation.x > 0{
-            newMsgBtnPropertyAnimator.fractionComplete = translation.x
-            
+        // let translation = gesture.translation(in: newMessageBtn.superview)
+        //debugPrint(translation.x)
+        switch gesture.state
+        {
+        case .changed:
+            let translation = gesture.translation(in: self.view)
+            debugPrint(translation.x)
+            guard translation.x > 0 && translation.x < SCREEN_WIDTH * 0.4 else {return}
+            newMessageBtn.transform = CGAffineTransform(translationX: translation.x, y: 0)
+        case .ended:
+            newMessageBtn.transform = .identity
+            self.didTappedOnNewMsg(newMessageBtn)
+        default:
+            debugPrint("default")
         }
+        UIView.animate(withDuration: 0.250, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+        
     }
+
 
     
     //MARK: - IBActions
@@ -133,6 +165,9 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             {
                 self.tableView.setEmptyMessage("No records found")
             }else {
+               // self.tableView.reloadData()
+                self.tableView.restore()
+//                self.applySnapShot()
                 self.tableView.reloadData()
             }
         }
@@ -169,7 +204,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
 }
 //MARK: - Tableview Delegate && Datasource
-extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarDelegate
+extension ContactUsVC : UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableDataSource?.count == 0 {
@@ -178,54 +213,31 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
             tableView.restore()
         }
         return tableDataSource?.count ?? 0
-        
+
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
-        cell.authorNameLb.text = tableDataSource?[indexPath.row].authorname ?? "--"
-        cell.subjectLb.text = tableDataSource?[indexPath.row].subject ?? "--"
-        cell.bodyLb.text = tableDataSource?[indexPath.row].body ?? "--"
-        if let noteId = tableDataSource?[indexPath.row].noteId
-        {
-            let jobNum = CurrentUser.jobNumber ?? ""
-            if let isRead = UserDefaults.standard.value(forKey: "\(jobNum)_\(noteId)_isRead") as? Bool , isRead == true
-            {
-                cell.circlelb.isHidden = true
-            }
-            else {
-                cell.circlelb.isHidden = false
-            }
-        }
-        if let notedate = tableDataSource?[indexPath.row].notedate?.components(separatedBy: ".").first
-        {
-            cell.noteDateLb.isHidden = false
-            let notedated = dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
-            cell.noteDateLb.text = notedated
-        }
-        else {
-            cell.noteDateLb.isHidden = true
-        }
-        
+        cell.setup(model : tableDataSource?[indexPath.row])
         return cell
     }
-    
+//
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count == 0
         {
-            tableDataSource = contactArr
+            self.tableDataSource = contactArr
             self.searchBar.endEditing(true)
             
         }
         else {
-            tableDataSource = contactArr?.filter({ note in
-                let displaydate = note.notedate?.components(separatedBy: "T").first
-                let notedated = dateFormatter(dateStr: displaydate ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "dd/MM/yyyy")
-                return (note.authorname?.lowercased().contains(searchText.lowercased()) ?? false) || (note.subject?.lowercased().contains(searchText.lowercased()) ?? false) ||
-                (notedated?.contains(searchText.lowercased()) ?? false)
+            self.tableDataSource = contactArr?.filter({ note in
+          
+                return (note.authorname?.lc.contains(searchText.lc) ?? false) || (note.subject?.lc.contains(searchText.lc) ?? false) ||
+                (note.displayDate?.contains(searchText.lc) ?? false)
             })
+            
         }
-        tableView.reloadData()
+      
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
@@ -243,35 +255,6 @@ extension ContactUsVC : UITableViewDelegate , UITableViewDataSource,UISearchBarD
     }
     
     
-}
-
-
-
-func createEmailUrl(to: String, subject: String, body: String) -> URL? {
-    let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    
-    let gmailUrl = URL(string: "googlegmail://co?to=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
-    let outlookUrl = URL(string: "ms-outlook://compose?to=\(to)&subject=\(subjectEncoded)")
-    let yahooMail = URL(string: "ymail://mail/compose?to=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
-    let sparkUrl = URL(string: "readdle-spark://compose?recipient=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
-    let defaultUrl = URL(string: "mailto:\(to)?subject=\(subjectEncoded)&body=\(bodyEncoded)")
-    
-    if let gmailUrl = gmailUrl, UIApplication.shared.canOpenURL(gmailUrl) {
-        return gmailUrl
-    } else if let outlookUrl = outlookUrl, UIApplication.shared.canOpenURL(outlookUrl) {
-        return outlookUrl
-    } else if let yahooMail = yahooMail, UIApplication.shared.canOpenURL(yahooMail) {
-        return yahooMail
-    } else if let sparkUrl = sparkUrl, UIApplication.shared.canOpenURL(sparkUrl) {
-        return sparkUrl
-    }
-    
-    return defaultUrl
-}
-
-func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-    controller.dismiss(animated: true)
 }
 
 extension ContactUsVC

@@ -74,7 +74,7 @@ class MyProgressVC: BaseProfileVC {
         profileView.profilePicImgView.tintColor = .darkGray
         profileView.titleLb.textColor = .black
         profileView.helpTextLb.textColor = .black
-        profileView.profilePicImgView.borderColor = .darkGray
+        profileView.profilePicImgView.borderColor = APPCOLORS_3.GreyTextFont
         [profileView.menubtn,profileView.contactUsBtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
     }
     

@@ -13,6 +13,10 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
      //MARK: - Properties
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var inboxButton: UIButton!
+    
     @IBOutlet weak var descriptionLb: UILabel!
     @IBOutlet weak var contactUsHdrLBL: UILabel!
     @IBOutlet weak var subjectLBL: UILabel!
@@ -31,6 +35,10 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tableView.separatorColor = UIColor.clear
         tableView.allowsSelection = false
         showData()
+        let pan1 = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
+        let pan2 = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
+        inboxButton.addGestureRecognizer(pan1)
+        replyButton.addGestureRecognizer(pan2)
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -51,14 +59,52 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
 
     }
+    
+    @objc func panGestureAction(_ gesture : UIPanGestureRecognizer)
+    {
+        switch gesture.state
+        {
+        case .changed:
+            let translation = gesture.translation(in: self.view)
+            debugPrint(translation.x)
+            if gesture.view?.tag == 100 { // Inbox
+                guard translation.x > 0 && translation.x < SCREEN_WIDTH * 0.4 else {return}
+                inboxButton.transform = CGAffineTransform(translationX: translation.x, y: 0)
+               
+            }else // reply btn
+            {
+                guard translation.x < 0 else {return}
+                replyButton.transform = CGAffineTransform(translationX: translation.x, y: 0)
+               
+            }
+        case .ended:
+            gesture.view?.transform = .identity
+            if gesture.view?.tag == 100 { // Inbox
+                self.didTappedOnInbox(inboxButton)
+            }else {
+                self.didTappedOnReplay(replyButton)
+            }
+        default:
+            debugPrint("default")
+        }
+        UIView.animate(withDuration: 0.250, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
 
      //MARK: - HelperMethods
     func applySnapShot()
     {
+        var animation : Bool = false
+        if #available(iOS 15.0, *){
+            animation = true
+        }
+        
         var snapShot = NSDiffableDataSourceSnapshot<Int, MyNotesStruct>()
         snapShot.appendSections([0])
         snapShot.appendItems(tableDataSource ?? [])
-        dataSource.apply(snapShot, animatingDifferences: true)
+        dataSource.apply(snapShot, animatingDifferences: animation)
         
     }
     func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
@@ -121,7 +167,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
         vc.screenData = (sub : subject,to : recipientEmail ,from : self.contactDetails?.authorname ?? "" )
         vc.noteId = contactDetails?.noteId
-        vc.modalTransitionStyle = .coverVertical
+        vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         vc.isFromNewMessage = false
         vc.completion = { [weak self](success) in
@@ -144,6 +190,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
             guard let self else { return }
             switch result{
             case .success(let notes):
+                ContactUsVC.updateNoteData = true
                 DispatchQueue.main.async {
                     self.setupSerivceData(notes: notes)
                 }

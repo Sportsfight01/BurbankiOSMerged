@@ -28,5 +28,26 @@ class ContactUsTVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setup(model : MyNotesStruct?)
+    {
+       guard let model else {return}
+       authorNameLb.text = model.authorname ?? "--"
+       subjectLb.text = model.subject ?? "--"
+       bodyLb.text = model.body ?? "--"
+        if let noteId = model.noteId
+        {
+            let jobNum = CurrentUser.jobNumber ?? ""
+            if let isRead = UserDefaults.standard.value(forKey: "\(jobNum)_\(noteId)_isRead") as? Bool , isRead == true
+            {
+                circlelb.isHidden = true
+            }
+            else {
+                circlelb.isHidden = false
+            }
+        }
+        noteDateLb.text = model.displayDate
+        
+    }
 
 }
