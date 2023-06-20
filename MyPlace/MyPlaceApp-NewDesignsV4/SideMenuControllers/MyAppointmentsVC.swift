@@ -26,6 +26,9 @@ class MyAppointmentsVC: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         getAppointments()
+        tableView.addRefressControl {[weak self] in
+            self?.getAppointments()
+        }
        // setupProfile()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +73,7 @@ class MyAppointmentsVC: UIViewController {
         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
         let auth = jobAndAuth.auth
 
+       
         NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
             switch result
             {
@@ -83,6 +87,11 @@ class MyAppointmentsVC: UIViewController {
                     self?.showAlert(message: err.localizedDescription)
                 }
             }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+            
         }
         
     }

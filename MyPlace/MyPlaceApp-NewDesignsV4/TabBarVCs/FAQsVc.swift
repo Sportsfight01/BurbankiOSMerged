@@ -34,6 +34,9 @@ class FAQsVc: UIViewController {
           tableView.sectionHeaderTopPadding = 0.0
         }
         getFaqs()
+        tableView.addRefressControl {[weak self] in
+            self?.getFaqs()
+        }
         
     }
     
@@ -50,6 +53,7 @@ class FAQsVc: UIViewController {
         NetworkRequest.makeRequest(type: FAQStruct.self, urlRequest: Router.faqsQuestionAndAnswers) { [weak self] result in
             switch result
             {
+                
             case .success(let faqs):
                // print(faqs)
                 
@@ -85,6 +89,10 @@ class FAQsVc: UIViewController {
                 
             case .failure(let err):
                 print("error :- \(err.localizedDescription)")
+            }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.tableView.refreshControl?.endRefreshing()
             }
         }
     }

@@ -23,6 +23,9 @@ class MyHistoryVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         getAPIData()
+        tableView.addRefressControl {[weak self] in
+            self?.getAPIData()
+        }
     
     }
  
@@ -88,6 +91,10 @@ class MyHistoryVC: UIViewController {
                     self.showAlert(message: err.description)
                     return}
                 }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self.tableView.refreshControl?.endRefreshing()
+            }
             }
         
     }

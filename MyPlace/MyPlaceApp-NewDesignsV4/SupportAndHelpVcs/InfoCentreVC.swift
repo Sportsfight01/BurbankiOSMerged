@@ -53,6 +53,9 @@ class InfoCentreVC: UIViewController {
         //
         
         getIfocentreDetails()
+        resultCollection.addRefressControl {[weak self] in
+            self?.getIfocentreDetails()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -99,7 +102,13 @@ class InfoCentreVC: UIViewController {
         
         case.failure(let err):
           print(err.localizedDescription)
+            
+          
         }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.resultCollection.refreshControl?.endRefreshing()
+            }
       }
     }
     override func viewWillAppear(_ animated: Bool) {

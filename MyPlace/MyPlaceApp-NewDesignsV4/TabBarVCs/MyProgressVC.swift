@@ -22,13 +22,13 @@ enum StageName : String {
 }
 
 
-class MyProgressVC: BaseProfileVC {
+class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
     
     //MARK: - Properties
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressBar: HorizontalProgressBar!
     @IBOutlet weak var yourOverallProgressLb: UILabel!
-    
+
     //Variables
     var progressColors : [UIColor] = [
         APPCOLORS_3.Orange_BG,
@@ -59,6 +59,7 @@ class MyProgressVC: BaseProfileVC {
       
         profileView.notificationCountLb.isHidden = appDelegate.notificationCount == 0 ? true : false
         
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -76,6 +77,12 @@ class MyProgressVC: BaseProfileVC {
         profileView.helpTextLb.textColor = .black
         profileView.profilePicImgView.borderColor = APPCOLORS_3.GreyTextFont
         [profileView.menubtn,profileView.contactUsBtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerTapped))
+        panGestureRecognizer.minimumNumberOfTouches = 1
+        panGestureRecognizer.delegate = self
+        view.addGestureRecognizer(panGestureRecognizer)
+        view.isUserInteractionEnabled = true
     }
     
     func setupUI()
@@ -91,7 +98,21 @@ class MyProgressVC: BaseProfileVC {
         view.insertSubview(imgeView, at: 0)
         yourOverallProgressLb.font = FONT_LABEL_BODY(size: FONT_12)
         
+       
+        
     }
+    
+    @objc func panGestureRecognizerTapped(sender: UIPanGestureRecognizer) {
+          
+        if sender.state == UIGestureRecognizer.State.ended {
+            print("Pan Gesture Recognizer ended")
+            setupUI()
+            
+            
+        }
+       }
+    
+   
     
     func setupMultipleJobVc()
     {
@@ -268,7 +289,8 @@ class MyProgressVC: BaseProfileVC {
             let totalTasks = stagesDictionary[key]!.count // total records in particular stage
             let progress =  Double(completedTasks ?? 0)/Double(totalTasks) // progress of particular stage
             
-            //print("Key :- \(key.rawValue) progress :- \(progress)")
+            print("Key :- \(key.rawValue) progress :- \(progress)")
+//            self.clItems = []
             switch key
             {
             case .administration:
@@ -301,8 +323,13 @@ class MyProgressVC: BaseProfileVC {
         let totalHomeProgress = Double(clItems.compactMap({$0.progress}).reduce(0.0, +)) / 6.0
         
         let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100).rounded(.toNearestOrAwayFromZero))
+        
         let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: CGFloat(Double(totalHomeProgressPercentage)/100.0), progressDetails: nil)
-        clItems.insert(newClItem, at: 0)
+        if !clItems.contains(where: {$0.title == "Your New Home" }){
+            print("Added your new home")
+            clItems.insert(newClItem, at: 0)
+        }
+        
         progressBar.progress = CGFloat(totalHomeProgress)
         
         let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
