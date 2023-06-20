@@ -10,8 +10,8 @@ import UIKit
 import PhotosUI
 
 class LogIssueVC: UIViewController {
-    @IBOutlet weak var logIssueBTN: UIButton!
     
+    @IBOutlet weak var logIssueBTN: UIButton!
     @IBOutlet weak var saveEditBTN: UIButton!
     @IBOutlet weak var deleteBTN: UIButton!
     @IBOutlet weak var cancelBTN: UIButton!

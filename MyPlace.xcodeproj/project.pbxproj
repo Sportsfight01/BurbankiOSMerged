@@ -520,6 +520,25 @@
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
+		42FA74272A416974000E82D1 /* HomeCareConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareConstants.swift; sourceTree = "<group>"; };
+		42FA74292A416974000E82D1 /* HomaeCareAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomaeCareAssets.xcassets; sourceTree = "<group>"; };
+		42FA742D2A416974000E82D1 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
+		42FA742E2A416974000E82D1 /* HomeCareMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeCareMain.storyboard; sourceTree = "<group>"; };
+		42FA74302A416974000E82D1 /* DashBoardImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardImageCVC.swift; sourceTree = "<group>"; };
+		42FA74322A416974000E82D1 /* HomeCareDashBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareDashBoardVC.swift; sourceTree = "<group>"; };
+		42FA74342A416974000E82D1 /* SelectIssueTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIssueTypeVC.swift; sourceTree = "<group>"; };
+		42FA74352A416974000E82D1 /* PreviewEditIssuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewEditIssuesVC.swift; sourceTree = "<group>"; };
+		42FA74362A416974000E82D1 /* LogIssueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIssueVC.swift; sourceTree = "<group>"; };
+		42FA74372A416974000E82D1 /* LoggedissuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedissuesVC.swift; sourceTree = "<group>"; };
+		42FA74382A416974000E82D1 /* ReportIssueHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueHomeVC.swift; sourceTree = "<group>"; };
+		42FA74392A416974000E82D1 /* HomeCareBaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareBaseProfileVC.swift; sourceTree = "<group>"; };
+		42FA743A2A416974000E82D1 /* Tabbarscreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbarscreens.swift; sourceTree = "<group>"; };
+		42FA743B2A416974000E82D1 /* HMCPDFViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMCPDFViewerVC.swift; sourceTree = "<group>"; };
+		42FA743C2A416974000E82D1 /* HomeScreenTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTabBarVC.swift; sourceTree = "<group>"; };
+		42FA743F2A416974000E82D1 /* HomeCareFilesTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCareFilesTVC.xib; sourceTree = "<group>"; };
+		42FA74402A416974000E82D1 /* HomeCareHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCareHeaderView.xib; sourceTree = "<group>"; };
+		42FA74412A416974000E82D1 /* HomeCareHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareHeaderView.swift; sourceTree = "<group>"; };
+		42FA74422A416974000E82D1 /* HomeCareFilesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareFilesTVC.swift; sourceTree = "<group>"; };
 		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBC195AC9DDB9C68F5CDD05 /* Pods-BurbankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.release.xcconfig"; sourceTree = "<group>"; };
 		6EA4C7D2432698A18CEE720A /* Pods-BurbankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.debug.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1052,6 +1071,120 @@
 				42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		42FA74242A416973000E82D1 /* HomeCare */ = {
+			isa = PBXGroup;
+			children = (
+				42FA74252A416974000E82D1 /* ViewModels */,
+				42FA74262A416974000E82D1 /* Uitilities */,
+				42FA74282A416974000E82D1 /* Resources */,
+				42FA742A2A416974000E82D1 /* Models */,
+				42FA742B2A416974000E82D1 /* Views */,
+			);
+			path = HomeCare;
+			sourceTree = "<group>";
+		};
+		42FA74252A416974000E82D1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		42FA74262A416974000E82D1 /* Uitilities */ = {
+			isa = PBXGroup;
+			children = (
+				42FA74272A416974000E82D1 /* HomeCareConstants.swift */,
+			);
+			path = Uitilities;
+			sourceTree = "<group>";
+		};
+		42FA74282A416974000E82D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42FA74292A416974000E82D1 /* HomaeCareAssets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		42FA742A2A416974000E82D1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		42FA742B2A416974000E82D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				42FA742C2A416974000E82D1 /* StoryBoards */,
+				42FA742F2A416974000E82D1 /* Cells */,
+				42FA74312A416974000E82D1 /* ViewControllers */,
+				42FA743D2A416974000E82D1 /* CustomViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		42FA742C2A416974000E82D1 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				42FA742D2A416974000E82D1 /* Report.storyboard */,
+				42FA742E2A416974000E82D1 /* HomeCareMain.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		42FA742F2A416974000E82D1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				42FA74302A416974000E82D1 /* DashBoardImageCVC.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		42FA74312A416974000E82D1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				42FA74322A416974000E82D1 /* HomeCareDashBoardVC.swift */,
+				42FA74332A416974000E82D1 /* ReportIssue */,
+				42FA74392A416974000E82D1 /* HomeCareBaseProfileVC.swift */,
+				42FA743A2A416974000E82D1 /* Tabbarscreens.swift */,
+				42FA743B2A416974000E82D1 /* HMCPDFViewerVC.swift */,
+				42FA743C2A416974000E82D1 /* HomeScreenTabBarVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		42FA74332A416974000E82D1 /* ReportIssue */ = {
+			isa = PBXGroup;
+			children = (
+				42FA74342A416974000E82D1 /* SelectIssueTypeVC.swift */,
+				42FA74352A416974000E82D1 /* PreviewEditIssuesVC.swift */,
+				42FA74362A416974000E82D1 /* LogIssueVC.swift */,
+				42FA74372A416974000E82D1 /* LoggedissuesVC.swift */,
+				42FA74382A416974000E82D1 /* ReportIssueHomeVC.swift */,
+			);
+			path = ReportIssue;
+			sourceTree = "<group>";
+		};
+		42FA743D2A416974000E82D1 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				42FA743E2A416974000E82D1 /* Xibs */,
+				42FA74412A416974000E82D1 /* HomeCareHeaderView.swift */,
+				42FA74422A416974000E82D1 /* HomeCareFilesTVC.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		42FA743E2A416974000E82D1 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				42FA743F2A416974000E82D1 /* HomeCareFilesTVC.xib */,
+				42FA74402A416974000E82D1 /* HomeCareHeaderView.xib */,
+			);
+			path = Xibs;
 			sourceTree = "<group>";
 		};
 		5E07D3469B1301EA23F9E75C /* Pods */ = {
@@ -1777,6 +1910,7 @@
 				EDAB55A02449B59D0052B251 /* Service Layer */,
 				D188C60F2424D37500DFE678 /* SupportingFiles */,
 				A16599B6292F4A4300C36B3B /* OLDCode */,
+				42FA74242A416973000E82D1 /* HomeCare */,
 				A1659902292F32B900C36B3B /* MyPlaceApp-NewDesignsV4 */,
 			);
 			path = MyPlace;
