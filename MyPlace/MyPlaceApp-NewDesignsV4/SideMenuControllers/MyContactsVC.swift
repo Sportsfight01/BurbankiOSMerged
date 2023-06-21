@@ -17,7 +17,7 @@ class MyContactsVC: BaseProfileVC {
     {
         case SiteSupervisor = 0, CRO, SalesConsultant, ElecticalConsultant, ColorConsultant, StaffManager
     }
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var tableView: UITableView!
     var namesarray = ["Site Supervisor","New Home Coordinator","Interior Designer", "Electical Designer", "New Home Consultant"]
     var jobContacts : ContactDetailsStruct?
@@ -32,6 +32,9 @@ class MyContactsVC: BaseProfileVC {
         tableView.rowHeight = UITableView.automaticDimension
         
          checkUserLogin1()
+        tableView.addRefressControl {[weak self] in
+            self?.checkUserLogin1()
+        }
     }
    
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +90,12 @@ class MyContactsVC: BaseProfileVC {
                 print("JSON serialization failed:  \(error)")
                 #endif
          }
+         guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again");
+             DispatchQueue.main.async {
+                       appDelegate.hideActivity()
+                 self.tableView.refreshControl?.endRefreshing()
+             }
+             return}
          tableView.showAnimatedGradientSkeleton()
          URLSession.shared.dataTask(with: urlRequest, completionHandler: { [weak self](data, response, error) in
 
@@ -109,9 +118,14 @@ class MyContactsVC: BaseProfileVC {
                      };return}
                  
                  self?.getContacts()
-                 
+                
                  
              }
+             DispatchQueue.main.async {
+                       appDelegate.hideActivity()
+                 self?.tableView.refreshControl?.endRefreshing()
+             }
+             
          }).resume()
      }
    func getContacts()
@@ -143,6 +157,7 @@ class MyContactsVC: BaseProfileVC {
                    self?.showAlert(message: "No Data Found")
                }
            }
+           
        }
    }
     

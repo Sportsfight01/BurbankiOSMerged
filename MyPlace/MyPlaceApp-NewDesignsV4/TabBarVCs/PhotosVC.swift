@@ -38,7 +38,10 @@ class PhotosVC: BaseProfileVC {
         addGradientLayer()
         getPhotos()
         setupTitles()
-       
+        collectionView.addRefressControl {[weak self] in
+            self?.getPhotos()
+        }
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -135,11 +138,15 @@ class PhotosVC: BaseProfileVC {
                 }; return}
                 
                 self.setupServiceData(documentList)
-                
-                
+               
             case.failure(let err):
                 print(err.localizedDescription)
             }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+            
         }
     }
     

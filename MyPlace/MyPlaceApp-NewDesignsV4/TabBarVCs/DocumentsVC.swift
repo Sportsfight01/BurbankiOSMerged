@@ -19,7 +19,7 @@ class DocumentsVC: BaseProfileVC {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewFavouritesContainerView: UIView!
 
-    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+//    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     var documentList : [DocumentsDetailsStruct]?
     var tableDataSource : [DocumentsDetailsStruct]?
     { didSet { handleTableViewEmptyState() } }
@@ -31,6 +31,9 @@ class DocumentsVC: BaseProfileVC {
         super.viewDidLoad()
         setupUI()
         getDocumentDetails()
+        tableView.addRefressControl {[weak self] in
+            self?.getDocumentDetails()
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -147,6 +150,10 @@ class DocumentsVC: BaseProfileVC {
                 self?.tableView.stopSkeletonAnimation()
                 self?.view.hideSkeleton()
             }
+            DispatchQueue.main.async {
+            appDelegate.hideActivity()
+                self?.tableView.refreshControl?.endRefreshing()
+            }
       
             switch result
             {
@@ -166,6 +173,8 @@ class DocumentsVC: BaseProfileVC {
             case.failure(let err):
                 print(err.localizedDescription)
             }
+            
+            
         }
     }
     func getPdfDataAt(rowNo : Int)
