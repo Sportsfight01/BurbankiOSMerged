@@ -273,7 +273,7 @@ class ServiceSession: NSObject
         
         appDelegate.checkInternetConnection()
         
-        if appDelegate.netAvailability == false
+        if isNetworkReachable == false
         {
             AlertManager.sharedInstance.alert("Internet Connection Not Available")
             

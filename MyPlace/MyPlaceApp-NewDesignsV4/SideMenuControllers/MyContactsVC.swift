@@ -90,11 +90,13 @@ class MyContactsVC: BaseProfileVC {
                 print("JSON serialization failed:  \(error)")
                 #endif
          }
-         guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again");
+         guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again") {[weak self] _ in
              DispatchQueue.main.async {
-                       appDelegate.hideActivity()
-                 self.tableView.refreshControl?.endRefreshing()
+                appDelegate.hideActivity()
+                 self?.tableView.refreshControl?.endRefreshing()
              }
+         }
+        
              return}
          tableView.showAnimatedGradientSkeleton()
          URLSession.shared.dataTask(with: urlRequest, completionHandler: { [weak self](data, response, error) in
@@ -122,7 +124,7 @@ class MyContactsVC: BaseProfileVC {
                  
              }
              DispatchQueue.main.async {
-                       appDelegate.hideActivity()
+                appDelegate.hideActivity()
                  self?.tableView.refreshControl?.endRefreshing()
              }
              

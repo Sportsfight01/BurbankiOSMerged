@@ -40,6 +40,9 @@ class DocumentsVC: BaseProfileVC {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.backgroundColor = .systemGray6
         searchBar.resignFirstResponder()
+        self.tableView.stopSkeletonAnimation()
+        self.view.hideSkeleton()
+       
     }
     //MARK: - IBActions
     

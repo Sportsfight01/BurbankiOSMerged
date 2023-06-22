@@ -52,6 +52,8 @@ class PhotosVC: BaseProfileVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.collectionView.stopSkeletonAnimation()
+        self.view.hideSkeleton()
        
         
     }
@@ -112,6 +114,14 @@ class PhotosVC: BaseProfileVC {
     //MARK: - Service Calls
     func getPhotos()
     {
+
+        guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again") {[weak self] _ in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+        };return
+        }
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
         let auth = jobAndAuth.auth
