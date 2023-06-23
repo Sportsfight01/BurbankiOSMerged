@@ -49,7 +49,9 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
         newMessageBtn.addGestureRecognizer(gesture)
         getAPIData()
-        
+        tableView.addRefressControl {[weak self] in
+            self?.getAPIData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +65,10 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         }
         
         
+    }
+    
+    deinit {
+        debugPrint("ContactUS Deinitialized")
     }
 //     //MARK: - TableViewDiffableDataSource
 //    private func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
@@ -137,10 +143,16 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     //MARK: - Service Calls
     func getAPIData()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }; return}
         appDelegate.showActivity()
         APIManager.shared.getNotes {[weak self] result in
             DispatchQueue.main.async {
                 appDelegate.hideActivity()
+                self?.tableView.refreshControl?.endRefreshing()
             }
             guard let self else { return }
             switch result{
@@ -155,6 +167,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                     return}
                 }
             }
+        
         
     }
     //MARK: - HelperMethods
@@ -171,6 +184,10 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 self.tableView.reloadData()
             }
         }
+    }
+    @objc private func refreshControlAction()
+    {
+        self.getAPIData()
     }
     func setupSerivceData(notes : [MyNotesStruct])
     {

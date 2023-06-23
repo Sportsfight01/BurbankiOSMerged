@@ -16,14 +16,6 @@ class FAQsVc: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let rowData = ["I have received a stage invoice, what do I do?" , "What is a Protection Works Notice?" , "What is a Soil report?", "What is a Feature Survey?", "What is a Building Regulation?" , "What is a Build over Easement?" , "What is a Re-Establishment Survey?" , "What is a Building Contract? When will I receiv..."]
-//        tableDataSource = [Section(title: "Building Process", rowsData: rowData),
-//                           Section(title: "Documentation", rowsData: rowData),
-//                           Section(title: "Permits", rowsData: rowData),
-//                           Section(title: "Builder Terminology (Glossary)", rowsData: rowData),
-//                           Section(title: "Building Costs", rowsData: rowData),
-//                           Section(title: "Design / Edge Studio", rowsData: rowData)
-      //  ]
         
         tableView.tableFooterView = UIView()
         //To Stop Floating headerView
@@ -34,6 +26,9 @@ class FAQsVc: UIViewController {
           tableView.sectionHeaderTopPadding = 0.0
         }
         getFaqs()
+        tableView.addRefressControl {[weak self] in
+            self?.getFaqs()
+        }
         
     }
     
@@ -47,12 +42,18 @@ class FAQsVc: UIViewController {
     //MARK: - Service Call
     func getFaqs()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }; return}
         NetworkRequest.makeRequest(type: FAQStruct.self, urlRequest: Router.faqsQuestionAndAnswers) { [weak self] result in
             switch result
             {
+                
             case .success(let faqs):
                // print(faqs)
-                
+                self?.tableDataSource.removeAll()
                 var listOfFaqs =  [LstFAQ]()
                
                 var currenUserJobDetails : MyPlaceDetails?
@@ -85,6 +86,10 @@ class FAQsVc: UIViewController {
                 
             case .failure(let err):
                 print("error :- \(err.localizedDescription)")
+            }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.tableView.refreshControl?.endRefreshing()
             }
         }
     }

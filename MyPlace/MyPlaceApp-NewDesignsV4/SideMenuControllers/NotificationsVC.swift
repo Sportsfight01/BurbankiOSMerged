@@ -28,6 +28,10 @@ class NotificationsVC: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         getNotifications()
+        tableView.addRefressControl {[weak self] in
+            self?.getNotifications()
+        }
+    
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +47,11 @@ class NotificationsVC: UIViewController {
     //MARK: - Service Calls
     func getNotifications()
     {
-//        appDelegate.showActivity()
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }; return}
         tableView.showAnimatedGradientSkeleton()
         APIManager.shared.getUserSelectedNotificationTypes {[weak self] notificationTypes in
             DispatchQueue.main.async {

@@ -35,7 +35,7 @@ class ServiceSession: NSObject
         
         if appDelegate.netAvailability == false
         {
-            AlertManager.sharedInstance.alert("Internet Connection Not Available")
+            AlertManager.sharedInstance.alert("Internet not available, Please connect to Internet")
             
             return
         }
@@ -273,9 +273,9 @@ class ServiceSession: NSObject
         
         appDelegate.checkInternetConnection()
         
-        if appDelegate.netAvailability == false
+        if isNetworkReachable == false
         {
-            AlertManager.sharedInstance.alert("Internet Connection Not Available")
+            AlertManager.sharedInstance.alert("Internet not available, Please connect to Internet")
             
             return false
         }

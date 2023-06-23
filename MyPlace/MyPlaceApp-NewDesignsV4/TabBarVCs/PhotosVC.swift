@@ -20,7 +20,10 @@ class PhotosVC: BaseProfileVC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var seeAllPhotosBtn : UIButton!
     {
-        didSet{ seeAllPhotosBtn.titleLabel?.font = FONT_LABEL_BODY(size: FONT_16) }
+        didSet{
+            seeAllPhotosBtn.titleLabel?.font = FONT_LABEL_BODY(size: FONT_16)
+            seeAllPhotosBtn.isHidden = true
+        }
     }
 
     var collectionDataSource : [PhotoItem]?
@@ -38,7 +41,10 @@ class PhotosVC: BaseProfileVC {
         addGradientLayer()
         getPhotos()
         setupTitles()
-       
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
+        swipeDownGesture.direction = .down
+        view.addGestureRecognizer(swipeDownGesture)
+        view.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -49,6 +55,8 @@ class PhotosVC: BaseProfileVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.collectionView.stopSkeletonAnimation()
+        self.collectionView.refreshControl?.endRefreshing()
        
         
     }
@@ -57,7 +65,13 @@ class PhotosVC: BaseProfileVC {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     //MARK: - Helper Funcs
-    
+    @objc func handleSwipeGestue(_ sender : UISwipeGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            self.getPhotos()
+        }
+    }
     func setupTitles()
     {
         profileView.titleLb.text = "MyPhotos"
@@ -109,6 +123,14 @@ class PhotosVC: BaseProfileVC {
     //MARK: - Service Calls
     func getPhotos()
     {
+
+        guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again") {[weak self] _ in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+        };return
+        }
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
         let auth = jobAndAuth.auth
@@ -128,18 +150,19 @@ class PhotosVC: BaseProfileVC {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
                         self.profileView.helpTextLb.text = "No photos available for this job number."
-                        self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
-//                     self.showAlert(message: "No photos found") { _ in
-//                        // self.backButtonPressed()
-//                    }
+
                 }; return}
-                
+                self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
                 self.setupServiceData(documentList)
-                
-                
+               
             case.failure(let err):
                 print(err.localizedDescription)
             }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+            
         }
     }
     

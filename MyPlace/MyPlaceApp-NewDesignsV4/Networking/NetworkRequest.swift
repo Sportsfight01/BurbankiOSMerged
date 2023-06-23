@@ -22,6 +22,13 @@ class NetworkRequest
                 appDelegate.showActivity()
             }
         }
+        if !isNetworkReachable{
+            showAlert("Check your internet and pull to refresh again")
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+//            return
+        }
         AF.request(urlRequest).responseData { (response) in
             #if DEDEBUG
              response.debugPrintReqResponse()
@@ -56,6 +63,13 @@ class NetworkRequest
             DispatchQueue.main.async {
                 appDelegate.showActivity()
             }
+        }
+        if !isNetworkReachable{
+            showAlert("Check your internet and pull to refresh again")
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+//            return
         }
         AF.request(urlRequest).responseData { (response) in
             #if DEDEBUG

@@ -19,7 +19,7 @@ class DocumentsVC: BaseProfileVC {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewFavouritesContainerView: UIView!
 
-    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+//    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     var documentList : [DocumentsDetailsStruct]?
     var tableDataSource : [DocumentsDetailsStruct]?
     { didSet { handleTableViewEmptyState() } }
@@ -31,12 +31,19 @@ class DocumentsVC: BaseProfileVC {
         super.viewDidLoad()
         setupUI()
         getDocumentDetails()
+        tableView.addRefressControl {[weak self] in
+            self?.getDocumentDetails()
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.backgroundColor = .systemGray6
         searchBar.resignFirstResponder()
+        self.tableView.stopSkeletonAnimation()
+        self.tableView.refreshControl?.endRefreshing()
+       
+       
     }
     //MARK: - IBActions
     
@@ -136,6 +143,11 @@ class DocumentsVC: BaseProfileVC {
     
     func getDocumentDetails()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }; return}
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
         let auth = jobAndAuth.auth
@@ -146,6 +158,10 @@ class DocumentsVC: BaseProfileVC {
             DispatchQueue.main.async {
                 self?.tableView.stopSkeletonAnimation()
                 self?.view.hideSkeleton()
+            }
+            DispatchQueue.main.async {
+            appDelegate.hideActivity()
+                self?.tableView.refreshControl?.endRefreshing()
             }
       
             switch result
@@ -166,6 +182,8 @@ class DocumentsVC: BaseProfileVC {
             case.failure(let err):
                 print(err.localizedDescription)
             }
+            
+            
         }
     }
     func getPdfDataAt(rowNo : Int)

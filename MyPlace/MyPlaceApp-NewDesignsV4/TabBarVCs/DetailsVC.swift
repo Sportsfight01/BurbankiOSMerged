@@ -18,26 +18,24 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var profileImgView: UIImageView!
     //ProfileDetails
     @IBOutlet weak var emailLb: UILabel!
-    // @IBOutlet weak var workLb: UILabel!
-    //@IBOutlet weak var mobileLb: UILabel!
     @IBOutlet weak var phoneLb: UILabel!
     @IBOutlet weak var nameLb: UILabel!
     //My Build Details
     @IBOutlet weak var jobNumberLb: UILabel!
     @IBOutlet weak var fullJobAddressLb: UILabel!
-    // @IBOutlet weak var lotAddressLb: UILabel!
     @IBOutlet weak var homeDesignLb: UILabel!
     @IBOutlet weak var facadeNameLb: UILabel!
-    //My Contract Details
-    //@IBOutlet weak var contractStatusLb: UILabel!
     @IBOutlet weak var contractValueLb: UILabel!
     @IBOutlet weak var superVisorLb: UILabel!
     @IBOutlet weak var newHomeConsultant: UILabel!
-    //@IBOutlet weak var siteStartDateLb: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getContractDetails()
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
+        swipeDownGesture.direction = .down
+        view.addGestureRecognizer(swipeDownGesture)
+        view.isUserInteractionEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,6 +50,14 @@ class DetailsVC: UIViewController {
       //  self.navigationController?.navigationBar.isHidden = false
     }
 
+    //MARK: - Helper Methods
+    @objc func handleSwipeGestue(_ sender : UISwipeGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            self.getContractDetails()
+        }
+    }
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill
@@ -114,6 +120,7 @@ class DetailsVC: UIViewController {
     //MARK:- Service Calls
     func getContractDetails()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh); return}
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
         let auth = jobAndAuth.auth

@@ -23,6 +23,9 @@ class MyHistoryVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         getAPIData()
+        tableView.addRefressControl {[weak self] in
+            self?.getAPIData()
+        }
     
     }
  
@@ -70,6 +73,11 @@ class MyHistoryVC: UIViewController {
     //MARK: - Service Calls
     func getAPIData()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }; return}
         appDelegate.showActivity()
         APIManager.shared.getNotes {[weak self] result in
             DispatchQueue.main.async {
@@ -88,6 +96,10 @@ class MyHistoryVC: UIViewController {
                     self.showAlert(message: err.description)
                     return}
                 }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self.tableView.refreshControl?.endRefreshing()
+            }
             }
         
     }
