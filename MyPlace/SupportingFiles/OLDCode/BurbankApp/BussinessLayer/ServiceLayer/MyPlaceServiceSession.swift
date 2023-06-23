@@ -177,7 +177,7 @@ class MyPlaceServiceSession
         
         if appDelegate.netAvailability == false
         {
-            AlertManager.sharedInstance.alert("Internet Connection Not Available")
+            AlertManager.sharedInstance.alert("Internet not available, Please connect to Internet")
             
             return false
         }

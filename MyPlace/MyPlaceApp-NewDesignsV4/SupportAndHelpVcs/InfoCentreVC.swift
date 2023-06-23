@@ -73,6 +73,11 @@ class InfoCentreVC: UIViewController {
 //
     func getIfocentreDetails()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.resultCollection.refreshControl?.endRefreshing()
+            }
+        }; return}
         NetworkRequest.makeRequest(type: InfoCentreStruct.self, urlRequest: Router.infoCentreDetails) { [weak self](result) in
         switch result
         {

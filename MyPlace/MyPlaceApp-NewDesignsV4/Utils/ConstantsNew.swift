@@ -83,7 +83,7 @@ struct CurrentUser
     static var jobNumber : String?
 }
 let somethingWentWrong = "Something went wrong, Please try again later"
-
+let checkInternetPullRefresh = "Check your internet and pull to refresh again"
 public var currentWindow : UIWindow = {
     
     if #available(iOS 13.0, *) {

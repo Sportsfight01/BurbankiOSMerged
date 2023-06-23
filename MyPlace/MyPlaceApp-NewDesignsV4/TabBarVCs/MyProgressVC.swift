@@ -78,15 +78,15 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         profileView.profilePicImgView.borderColor = APPCOLORS_3.GreyTextFont
         [profileView.menubtn,profileView.contactUsBtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerTapped))
-        panGestureRecognizer.minimumNumberOfTouches = 1
-        panGestureRecognizer.delegate = self
+        let panGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(panGestureRecognizerTapped))
+        panGestureRecognizer.direction = .down
         view.addGestureRecognizer(panGestureRecognizer)
         view.isUserInteractionEnabled = true
     }
     
     func setupUI()
     {
+        guard isNetworkReachable else { self.showAlert(message: checkInternetPullRefresh); return }
         setupCollectionView()
         getProgressDetails()
         getUserProfile()
@@ -102,18 +102,15 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         
     }
     
-    @objc func panGestureRecognizerTapped(sender: UIPanGestureRecognizer) {
-          
-        if sender.state == UIGestureRecognizer.State.ended {
-            print("Pan Gesture Recognizer ended")
+    @objc func panGestureRecognizerTapped(sender: UISwipeGestureRecognizer) {
+        
+        if sender.state == .ended{
             setupUI()
-            
-            
         }
-       }
-    
-   
-    
+        if sender.state == .began{
+            appDelegate.showActivity()
+        }
+    }
     func setupMultipleJobVc()
     {
         
@@ -168,6 +165,8 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         }
         if showFinanceTab
         {
+            /// add financeTab only if it not added
+            guard self.tabBarController?.viewControllers?.count == 4 else {return}
             let vc = UINavigationController(rootViewController: FinanceVC.instace())
             vc.tabBarItem = UITabBarItem(title: "FINANCE", image: UIImage(named : "Finance_grey") , selectedImage: UIImage(named : "Finance_orange"))
             

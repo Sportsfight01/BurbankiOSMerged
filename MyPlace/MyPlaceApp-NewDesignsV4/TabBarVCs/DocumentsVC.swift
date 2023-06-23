@@ -41,7 +41,8 @@ class DocumentsVC: BaseProfileVC {
         tableView.backgroundColor = .systemGray6
         searchBar.resignFirstResponder()
         self.tableView.stopSkeletonAnimation()
-        self.view.hideSkeleton()
+        self.tableView.refreshControl?.endRefreshing()
+       
        
     }
     //MARK: - IBActions
@@ -142,6 +143,11 @@ class DocumentsVC: BaseProfileVC {
     
     func getDocumentDetails()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }; return}
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
         let auth = jobAndAuth.auth

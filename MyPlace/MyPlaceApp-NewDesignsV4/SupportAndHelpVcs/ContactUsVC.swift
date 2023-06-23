@@ -143,6 +143,11 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     //MARK: - Service Calls
     func getAPIData()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }; return}
         appDelegate.showActivity()
         APIManager.shared.getNotes {[weak self] result in
             DispatchQueue.main.async {

@@ -38,10 +38,10 @@ class PhotosVC: BaseProfileVC {
         addGradientLayer()
         getPhotos()
         setupTitles()
-        collectionView.addRefressControl {[weak self] in
-            self?.getPhotos()
-        }
-        
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
+        swipeDownGesture.direction = .down
+        view.addGestureRecognizer(swipeDownGesture)
+        view.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -53,7 +53,7 @@ class PhotosVC: BaseProfileVC {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.collectionView.stopSkeletonAnimation()
-        self.view.hideSkeleton()
+        self.collectionView.refreshControl?.endRefreshing()
        
         
     }
@@ -62,7 +62,13 @@ class PhotosVC: BaseProfileVC {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     //MARK: - Helper Funcs
-    
+    @objc func handleSwipeGestue(_ sender : UISwipeGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            self.getPhotos()
+        }
+    }
     func setupTitles()
     {
         profileView.titleLb.text = "MyPhotos"
