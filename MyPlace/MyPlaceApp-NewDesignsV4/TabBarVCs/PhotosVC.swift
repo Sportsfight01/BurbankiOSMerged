@@ -20,7 +20,10 @@ class PhotosVC: BaseProfileVC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var seeAllPhotosBtn : UIButton!
     {
-        didSet{ seeAllPhotosBtn.titleLabel?.font = FONT_LABEL_BODY(size: FONT_16) }
+        didSet{
+            seeAllPhotosBtn.titleLabel?.font = FONT_LABEL_BODY(size: FONT_16)
+            seeAllPhotosBtn.isHidden = true
+        }
     }
 
     var collectionDataSource : [PhotoItem]?
@@ -147,12 +150,9 @@ class PhotosVC: BaseProfileVC {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
                         self.profileView.helpTextLb.text = "No photos available for this job number."
-                        self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
-//                     self.showAlert(message: "No photos found") { _ in
-//                        // self.backButtonPressed()
-//                    }
+
                 }; return}
-                
+                self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
                 self.setupServiceData(documentList)
                
             case.failure(let err):

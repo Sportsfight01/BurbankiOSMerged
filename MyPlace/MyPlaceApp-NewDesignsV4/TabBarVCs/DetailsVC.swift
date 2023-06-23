@@ -32,6 +32,10 @@ class DetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getContractDetails()
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
+        swipeDownGesture.direction = .down
+        view.addGestureRecognizer(swipeDownGesture)
+        view.isUserInteractionEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,6 +50,14 @@ class DetailsVC: UIViewController {
       //  self.navigationController?.navigationBar.isHidden = false
     }
 
+    //MARK: - Helper Methods
+    @objc func handleSwipeGestue(_ sender : UISwipeGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            self.getContractDetails()
+        }
+    }
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill

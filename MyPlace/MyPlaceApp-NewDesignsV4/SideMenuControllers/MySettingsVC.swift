@@ -13,6 +13,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     
     //MARK: - Properties
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var myProgressLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet var notificationTypeBtns: [UIButton]!
@@ -56,6 +57,10 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         privacyPolicyView.addGestureRecognizer(tapGesture3)
         shareapartnerView.addGestureRecognizer(tapGesture4)
         setupProfile()
+        
+        scrollView.addRefressControl {[weak  self] in
+            self?.getUserProfile()
+        }
   
     }
     
@@ -373,9 +378,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     //MARK: - Service Calls
     func updateProfilePic(imageContent : String)
     {
-
-//
-//
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh);return}
         let userID = appDelegate.currentUser?.userDetailsArray?[0].id
         
         let params = ["UserId":userID!, "ImageContent": imageContent] as [String : Any]
@@ -396,9 +399,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         }
     }
     func postDataToServerForUpdatingUserProfile() {
-        
-//        let urlString = String(format: "userProfile/UpdateUserProfile")
-//        print(notificationArray)
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh);return}
+
         var notificationArrayStr = [[String : Any]]()
         
         for notification in notificationArray!
@@ -406,11 +408,6 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
            let dict = notification.dictionary
             notificationArrayStr.append(dict)
         }
-//        let compressedImageData = UIImage().compressImage(image: profileImage.image!)
-//
-//        Base64.initialize()
-//
-//        let imageBaseString = Base64.encode(compressedImageData as Data)
   
         let userID = appDelegate.currentUser?.userDetailsArray?[0].id
         let parameters : [String : Any] = ["UserName": userNameLb.text ?? "", "Email": emailLb.text ?? "", "UserId": userID!, "NotificationTypes": notificationArrayStr]
@@ -439,10 +436,19 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     
     func getUserProfile()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.scrollView.refreshControl?.endRefreshing()
+            }
+        }; return}
     
         let userID = appDelegate.currentUser?.userDetailsArray?.first?.id
         let parameters : [String : Any] = ["Id" : userID as Any]
-        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters)) { [weak self]result in
+        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters)) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.scrollView.refreshControl?.endRefreshing()
+            }
+            
             switch result
             {
             case .success(let data):
