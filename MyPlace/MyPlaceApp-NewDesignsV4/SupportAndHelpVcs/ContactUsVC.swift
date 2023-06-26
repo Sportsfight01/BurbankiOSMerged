@@ -126,6 +126,10 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         }
     }
     @IBAction func didTappedOnNewMsg(_ sender: UIButton) {
+        
+        
+        sender.shake()
+        
         let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
 
         vc.modalTransitionStyle = .coverVertical
