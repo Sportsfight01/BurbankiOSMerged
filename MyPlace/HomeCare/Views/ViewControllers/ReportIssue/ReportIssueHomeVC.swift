@@ -23,6 +23,7 @@ class ReportIssueHomeVC: HomeCareBaseProfileVC {
         profileBaseView.baseImageView.image = nil
         profileBaseView.contentView.backgroundColor = AppColors.AppGray
         profileBaseView.navigationView.backgroundColor = AppColors.AppGray
+        profileBaseView.titleLBL.text = "MyReports"
         //addScrollView()
     }
     

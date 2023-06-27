@@ -299,6 +299,12 @@
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
 		A18F34952A30829800C44822 /* LoggedissuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34942A30829800C44822 /* LoggedissuesVC.swift */; };
 		A18F34972A3082DB00C44822 /* PreviewEditIssuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */; };
+		A19BE1282A4958300071063E /* HomeCareIssueStatusTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BE1262A4958300071063E /* HomeCareIssueStatusTVC.swift */; };
+		A19BE1292A4958300071063E /* HomeCareIssueStatusTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19BE1272A4958300071063E /* HomeCareIssueStatusTVC.xib */; };
+		A19BE12B2A495BA50071063E /* SubmittedIsuuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BE12A2A495BA50071063E /* SubmittedIsuuesVC.swift */; };
+		A19BE12D2A4988260071063E /* SubmittedIssueListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BE12C2A4988260071063E /* SubmittedIssueListVC.swift */; };
+		A19BE12F2A4988580071063E /* SubmittedIssueDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BE12E2A4988580071063E /* SubmittedIssueDetailsVC.swift */; };
+		A19BE1312A499ADB0071063E /* CompleteAndLodgePopUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BE1302A499ADB0071063E /* CompleteAndLodgePopUPVC.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
@@ -810,6 +816,12 @@
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		A18F34942A30829800C44822 /* LoggedissuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedissuesVC.swift; sourceTree = "<group>"; };
 		A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewEditIssuesVC.swift; sourceTree = "<group>"; };
+		A19BE1262A4958300071063E /* HomeCareIssueStatusTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareIssueStatusTVC.swift; sourceTree = "<group>"; };
+		A19BE1272A4958300071063E /* HomeCareIssueStatusTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCareIssueStatusTVC.xib; sourceTree = "<group>"; };
+		A19BE12A2A495BA50071063E /* SubmittedIsuuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittedIsuuesVC.swift; sourceTree = "<group>"; };
+		A19BE12C2A4988260071063E /* SubmittedIssueListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittedIssueListVC.swift; sourceTree = "<group>"; };
+		A19BE12E2A4988580071063E /* SubmittedIssueDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittedIssueDetailsVC.swift; sourceTree = "<group>"; };
+		A19BE1302A499ADB0071063E /* CompleteAndLodgePopUPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteAndLodgePopUPVC.swift; sourceTree = "<group>"; };
 		A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLabsImageSlider.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1E4543829EFB0D9006B531B /* MultipleJobNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleJobNumberVC.swift; sourceTree = "<group>"; };
@@ -1092,6 +1104,7 @@
 			children = (
 				4212CFC32A27134D00A098B2 /* HomeCareHeaderView.xib */,
 				4273AB8B2A2712730042E590 /* HomeCareFilesTVC.xib */,
+				A19BE1272A4958300071063E /* HomeCareIssueStatusTVC.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1133,6 +1146,9 @@
 				4212CFCE2A2757D400A098B2 /* LogIssueVC.swift */,
 				A18F34942A30829800C44822 /* LoggedissuesVC.swift */,
 				A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */,
+				A19BE12A2A495BA50071063E /* SubmittedIsuuesVC.swift */,
+				A19BE12C2A4988260071063E /* SubmittedIssueListVC.swift */,
+				A19BE12E2A4988580071063E /* SubmittedIssueDetailsVC.swift */,
 			);
 			path = ReportIssue;
 			sourceTree = "<group>";
@@ -1191,6 +1207,8 @@
 				426ACA632A24AA60001317EF /* HomeCareHeaderView.swift */,
 				426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */,
 				422CEDF42A498BBA0062CA2A /* ImagePickerCollectionView.swift */,
+				A19BE1262A4958300071063E /* HomeCareIssueStatusTVC.swift */,
+				A19BE1302A499ADB0071063E /* CompleteAndLodgePopUPVC.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -2626,6 +2644,7 @@
 				D16FE4782428EF6F0082DECF /* Mark Simonson - Proxima Nova Semibold-webfont.ttf in Resources */,
 				A1659AEB292F4A4500C36B3B /* DataViewController.xib in Resources */,
 				A1659AC8292F4A4500C36B3B /* MyriadPro-SemiboldIt.otf in Resources */,
+				A19BE1292A4958300071063E /* HomeCareIssueStatusTVC.xib in Resources */,
 				D16FE4862428EF6F0082DECF /* Proxima Nova Regular Italic.otf in Resources */,
 				A1659AD0292F4A4500C36B3B /* MyriadPro-Cond.otf in Resources */,
 				D16FE4642428EF6F0082DECF /* Proxima Nova Light.otf in Resources */,
@@ -2958,6 +2977,7 @@
 				422CEDF52A498BBA0062CA2A /* ImagePickerCollectionView.swift in Sources */,
 				A1659B4A292F4A4500C36B3B /* SettingsCell.swift in Sources */,
 				A1659962292F32BA00C36B3B /* UIImage + Extensions.swift in Sources */,
+				A19BE12B2A495BA50071063E /* SubmittedIsuuesVC.swift in Sources */,
 				428227402A3085C900FD237B /* ContactUsReplyTBCell.swift in Sources */,
 				A1659B3F292F4A4500C36B3B /* FilterDBManagar.swift in Sources */,
 				A1659B0D292F4A4500C36B3B /* MyPlaceFavPhotosVC.swift in Sources */,
@@ -2998,6 +3018,7 @@
 				ED8C3C5524BECD5E00364CA4 /* StorageVC.swift in Sources */,
 				ED67958D246A5C9C008FAEED /* DashboardVC.swift in Sources */,
 				A1659AF7292F4A4500C36B3B /* CustomNSManagedObjectClass.swift in Sources */,
+				A19BE1312A499ADB0071063E /* CompleteAndLodgePopUPVC.swift in Sources */,
 				ED1E952B2500E89000343B10 /* NotificationServices.swift in Sources */,
 				D16FE372242881F30082DECF /* ImageDownloader.m in Sources */,
 				A1659B0A292F4A4500C36B3B /* AppDelegate.swift in Sources */,
@@ -3158,6 +3179,7 @@
 				A1659B12292F4A4500C36B3B /* MyPlaceMoreOptionsVC.swift in Sources */,
 				A1659B1F292F4A4500C36B3B /* MyPlaceMyAppointmentsVC.swift in Sources */,
 				A1659968292F32BB00C36B3B /* DocumentsTBCell.swift in Sources */,
+				A19BE12D2A4988260071063E /* SubmittedIssueListVC.swift in Sources */,
 				ED557BD224AE09E200444C2B /* MyPlaceMaps.swift in Sources */,
 				ED487BD9242CD1F400907BE1 /* UserData.swift in Sources */,
 				D188C6342424D37600DFE678 /* ActivityManager.swift in Sources */,
@@ -3165,6 +3187,7 @@
 				A1659B2C292F4A4500C36B3B /* ProgressStatusDetailVC.swift in Sources */,
 				A165996B292F32BB00C36B3B /* InfoCVC.swift in Sources */,
 				A18F34952A30829800C44822 /* LoggedissuesVC.swift in Sources */,
+				A19BE12F2A4988580071063E /* SubmittedIssueDetailsVC.swift in Sources */,
 				D188C6222424D37600DFE678 /* ServiceAPI.swift in Sources */,
 				A165997B292F32BB00C36B3B /* PhotosListVC.swift in Sources */,
 				A1659B2F292F4A4500C36B3B /* MyPlacePhotosVC.swift in Sources */,
@@ -3265,6 +3288,7 @@
 				ED4B23CF24371FF300899114 /* HomeLandDetailsVC.swift in Sources */,
 				4212CFCF2A2757D400A098B2 /* LogIssueVC.swift in Sources */,
 				A1659972292F32BB00C36B3B /* FinanceCVCell.swift in Sources */,
+				A19BE1282A4958300071063E /* HomeCareIssueStatusTVC.swift in Sources */,
 				A1659B11292F4A4500C36B3B /* HomesDetailsVC.swift in Sources */,
 				D200D6C32696F4E900B43C51 /* DisplayHomesDetailsVC.swift in Sources */,
 				ED7369F424F639A40008B5E5 /* H&LPriceCVCell.swift in Sources */,

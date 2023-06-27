@@ -10,6 +10,7 @@ import UIKit
 
 class SelectIssueTypeVC: HomeCareBaseProfileVC {
 
+    @IBOutlet weak var closeBTN: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -18,7 +19,6 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
 
     
     //MARK: - ButtonActions
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -37,16 +37,22 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
         {
         case 1://product warranty
             debugPrint("Product warranty btn tapped")
+            let vc = LogIssueVC.instace(sb: .reports)
+            self.navigationController?.pushViewController(vc, animated: true)
           //  fallthrough
             
         case 2://structural issue
             debugPrint("structural issue btn tapped")
+            let vc = LogIssueVC.instace(sb: .reports)
+            self.navigationController?.pushViewController(vc, animated: true)
            // fallthrough
             
         case 3://Other issues
             debugPrint("other issues btn tapped")
             let vc = LogIssueVC.instace(sb: .reports)
             self.navigationController?.pushViewController(vc, animated: true)
+        case 5://close BTN
+            self.navigationController?.popViewController(animated: true)
         default:
             debugPrint("default")
         }

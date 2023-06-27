@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoggedissuesVC: UIViewController {
+class LoggedissuesVC: UIViewController,UIPopoverPresentationControllerDelegate,didTappedOncomplete {
 
     @IBOutlet weak var tableview: UITableView!
     
@@ -34,7 +34,25 @@ class LoggedissuesVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func didTappedOnCompleteAndLodgeBTN() {
+        let vc = SubmittedIsuuesVC.instace(sb: .reports)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func didTappedOnAddNewIssue(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func didTappedOnCompleteAndLodge(_ sender: UIButton) {
+        let storyboard : UIStoryboard = UIStoryboard(name: "Report", bundle: nil)
+        let popupVC = storyboard.instantiateViewController(withIdentifier: "CompleteAndLodgePopUPVC") as! CompleteAndLodgePopUPVC
+        popupVC.modalPresentationStyle = .overCurrentContext
+        popupVC.modalTransitionStyle = .crossDissolve
+        popupVC.delegate = self
+//        self.tabBarController?.present(popupVC, animated: true)
+        present(popupVC, animated: true, completion: nil)
+    }
+    
 }
 extension LoggedissuesVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
