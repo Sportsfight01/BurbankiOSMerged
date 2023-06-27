@@ -31,6 +31,9 @@
 		4223782329F6642800CDD69D /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4223782229F6642800CDD69D /* ProfileHeaderView.xib */; };
 		4223782529F6677400CDD69D /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782429F6677400CDD69D /* ProfileHeaderView.swift */; };
 		4223782729F679E000CDD69D /* BaseProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223782629F679E000CDD69D /* BaseProfileVC.swift */; };
+		422CEDF52A498BBA0062CA2A /* ImagePickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CEDF42A498BBA0062CA2A /* ImagePickerCollectionView.swift */; };
+		422CEDF72A49BD860062CA2A /* UIAlertController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CEDF62A49BD860062CA2A /* UIAlertController + Extension.swift */; };
+		422CEDF92A49BD940062CA2A /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CEDF82A49BD940062CA2A /* UIImage + Extension.swift */; };
 		426ACA672A24AA60001317EF /* HomeCareFilesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */; };
 		426ACA682A24AA60001317EF /* DashBoardImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */; };
 		426ACA6A2A24AA60001317EF /* HomeCareDashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ACA5C2A24AA60001317EF /* HomeCareDashBoardVC.swift */; };
@@ -524,6 +527,9 @@
 		4223782229F6642800CDD69D /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		4223782429F6677400CDD69D /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		4223782629F679E000CDD69D /* BaseProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileVC.swift; sourceTree = "<group>"; };
+		422CEDF42A498BBA0062CA2A /* ImagePickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCollectionView.swift; sourceTree = "<group>"; };
+		422CEDF62A49BD860062CA2A /* UIAlertController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + Extension.swift"; sourceTree = "<group>"; };
+		422CEDF82A49BD940062CA2A /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareFilesTVC.swift; sourceTree = "<group>"; };
 		426ACA592A24AA5F001317EF /* DashBoardImageCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardImageCVC.swift; sourceTree = "<group>"; };
 		426ACA5C2A24AA60001317EF /* HomeCareDashBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCareDashBoardVC.swift; sourceTree = "<group>"; };
@@ -1066,6 +1072,8 @@
 			isa = PBXGroup;
 			children = (
 				426ACA732A24ABCA001317EF /* HomeCareConstants.swift */,
+				422CEDF62A49BD860062CA2A /* UIAlertController + Extension.swift */,
+				422CEDF82A49BD940062CA2A /* UIImage + Extension.swift */,
 			);
 			path = Uitilities;
 			sourceTree = "<group>";
@@ -1182,6 +1190,7 @@
 				4212CFC52A27138B00A098B2 /* Xibs */,
 				426ACA632A24AA60001317EF /* HomeCareHeaderView.swift */,
 				426ACA582A24AA5F001317EF /* HomeCareFilesTVC.swift */,
+				422CEDF42A498BBA0062CA2A /* ImagePickerCollectionView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -2946,6 +2955,7 @@
 			files = (
 				A1659987292F32BB00C36B3B /* AboutBurbankWebVC.swift in Sources */,
 				D188C6282424D37600DFE678 /* LoginDataManagement.swift in Sources */,
+				422CEDF52A498BBA0062CA2A /* ImagePickerCollectionView.swift in Sources */,
 				A1659B4A292F4A4500C36B3B /* SettingsCell.swift in Sources */,
 				A1659962292F32BA00C36B3B /* UIImage + Extensions.swift in Sources */,
 				428227402A3085C900FD237B /* ContactUsReplyTBCell.swift in Sources */,
@@ -2957,6 +2967,7 @@
 				42B1D6442A45A42E00D6821E /* ContactUsReplyTBCell.swift in Sources */,
 				A1659AED292F4A4500C36B3B /* UIView+IBInspectable.swift in Sources */,
 				ED632C6F2645206700B214FA /* DisplaysRegionsMapDetailVC.swift in Sources */,
+				422CEDF72A49BD860062CA2A /* UIAlertController + Extension.swift in Sources */,
 				ED93136B24B830D300C1F10F /* ShareVC.swift in Sources */,
 				ED487BDD242CD21F00907BE1 /* MyCollection.swift in Sources */,
 				A1659B1A292F4A4500C36B3B /* MyPlaceTabbarDetailVC.swift in Sources */,
@@ -3193,6 +3204,7 @@
 				ED57A02B245FDAF800C24039 /* ViewExtension.swift in Sources */,
 				ED57A02E245FDAF800C24039 /* TextFieldExtension.swift in Sources */,
 				A1659B44292F4A4500C36B3B /* RegionSelectTV.swift in Sources */,
+				422CEDF92A49BD940062CA2A /* UIImage + Extension.swift in Sources */,
 				A1659993292F32BB00C36B3B /* LaunchVCNew.swift in Sources */,
 				A1659B02292F4A4500C36B3B /* Constants_Burbank.swift in Sources */,
 				A1659AFA292F4A4500C36B3B /* NotificationTypes+CoreDataClass.swift in Sources */,
