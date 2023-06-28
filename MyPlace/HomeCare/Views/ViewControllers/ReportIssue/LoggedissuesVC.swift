@@ -70,7 +70,8 @@ extension LoggedissuesVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PreviewEditIssuesVC.instace(sb: .reports)
+        let vc = LogIssueVC.instace(sb: .reports)
+        vc.isEditIssueScreen = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
