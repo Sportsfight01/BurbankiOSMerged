@@ -219,10 +219,10 @@ extension ImagePickerCollectionView:  UICollectionViewDataSource, UICollectionVi
             #endif
             self.collectionDataSource.remove(at: indexPath.item)
         }
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertVc.addAction(okAction)
-        okAction.setValue(UIColor.systemBlue, forKey: "titleTextColor")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        cancelAction.setValue(UIColor.systemBlue, forKey: "titleTextColor")
         alertVc.addAction(deleteAction)
+        alertVc.addAction(cancelAction)
         self.parentContainerViewController()?.present(alertVc, animated: true)
     }
 }
