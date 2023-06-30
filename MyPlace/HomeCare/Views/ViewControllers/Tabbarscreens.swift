@@ -26,7 +26,6 @@ class Tabbarscreens: HomeCareBaseProfileVC {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         setUpProfileView()
         
-        print("-------======",self.navigationController?.tabBarItem.title)
     }
     
     func setUpProfileView(){

@@ -17,31 +17,8 @@ class HomeScreenTabBarVC: UITabBarController {
     var selectedTab  = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        debugPrint("TabBarController", #function)
-//        getProgressData()
         setupUI()
-        
-        if let viewControllers = viewControllers {
-            for viewController in viewControllers {
-                _ = viewController.view
-            }
-        }
-        
-     
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        var tabFrame = self.tabBar.frame
-//        tabFrame.size.height = HEIGHT_TAB_BAR
-//        tabFrame.origin.y = self.view.frame.size.height - HEIGHT_TAB_BAR
-//        self.tabBar.frame = tabFrame
-//        tabBar.itemWidth = 20
-//        tabBar.itemSpacing = 10
-        
-       
-    }
-   
-    
     //MARK: - Helper Methods
     func setupUI()
     {
@@ -49,15 +26,29 @@ class HomeScreenTabBarVC: UITabBarController {
         //Tint COLOR
         self.tabBar.unselectedItemTintColor = UIColor.darkGray
         self.tabBar.tintColor = APPCOLORS_3.Black_BG
+        
+        let appearance = UITabBarAppearance()
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.font : mediumFontWith(size: 11)]
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.font : regularFontWith(size: 10)]
+        tabBar.standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            tabBar.scrollEdgeAppearance = appearance
+        }
         //CARD VIEW
-        tabBar.layer.shadowColor = UIColor.darkGray.cgColor
-        tabBar.layer.shadowOpacity = 0.7
-        tabBar.layer.shadowOffset = CGSize.zero
-        tabBar.layer.shadowRadius = 5
-        tabBar.backgroundColor = UIColor.white
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().backgroundImage = UIImage()
+        tabBarShadowSetup()
         setupViewControllers()
+        
+        ///adding shadow to tabbar
+        func tabBarShadowSetup()
+        {
+            tabBar.layer.shadowColor = UIColor.darkGray.cgColor
+            tabBar.layer.shadowOpacity = 0.7
+            tabBar.layer.shadowOffset = CGSize.zero
+            tabBar.layer.shadowRadius = 5
+            tabBar.backgroundColor = UIColor.white
+            UITabBar.appearance().shadowImage = UIImage()
+            UITabBar.appearance().backgroundImage = UIImage()
+        }
         
     }
     

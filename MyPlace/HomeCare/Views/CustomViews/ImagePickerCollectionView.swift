@@ -77,39 +77,8 @@ class ImagePickerCollectionView : UIView
         let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
         return layout
     }
-//     //MARK: - CollectionView Snapshot
-//
-//    private func makeDataSource() -> UICollectionViewDiffableDataSource<Int,UIImage> {
-//        let dataSource = UICollectionViewDiffableDataSource<Int,UIImage>(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
-//            if #available(iOS 14.0, *) {
-//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
-//                cell.imageView.image = itemIdentifier
-//                cell.deleteImgBTN.tag = indexPath.item
-//                cell.deleteBtnAction = { [weak self] index in
-//                    debugPrint("indexOfPhoto :- \(index)")
-//                    if index < self?.collectionDataSource.count ?? 0 {
-//                        self?.collectionDataSource.remove(at: index)
-//                        self?.applySnapShot()
-//                    }
-//                }
-//                return cell
-//            } else {
-//                // Fallback on earlier versions
-//                return UICollectionViewCell()
-//            }
-//        }
-//        return dataSource
-//    }
-//    private func applySnapShot()
-//    {
-//        var snapShot = NSDiffableDataSourceSnapshot<Int, UIImage>()
-//        snapShot.appendSections([0])
-//        snapShot.appendItems(collectionDataSource)
-//        dataSource.apply(snapShot,animatingDifferences: true)
-//        //dataSource = makeDataSource()
-//    }
     
-     //MARK: - Camera & Photo Album Options
+    //MARK: - Camera & Photo Album Options
     func showOptions()
     {
         if let maxPhotosCount
@@ -234,13 +203,6 @@ extension ImagePickerCollectionView:  UICollectionViewDataSource, UICollectionVi
         if #available(iOS 14.0, *) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
             cell.imageView.image = collectionDataSource[indexPath.item]
-            cell.imageView.layer.cornerRadius = 4
-            cell.imageView.clipsToBounds = true
-            cell.imageView.tag = indexPath.item
-//            cell.deleteBtnAction = { [weak self] index in
-//                self?.collectionDataSource.remove(at: index)
-//               // self?.collectionView.reload
-//            }
             return cell
         } else {
             // Fallback on earlier versions
@@ -269,7 +231,7 @@ extension ImagePickerCollectionView:  UICollectionViewDataSource, UICollectionVi
 class ImageCell : UICollectionViewCell
 {
     var imageView : UIImageView!
-    var deleteImgBTN : UIButton!
+    var deleteImgBTN : UIImageView!
     var deleteBtnAction : ((_ index : Int)->())?
      //MARK: - LifeCycle
     override init(frame: CGRect) {
@@ -281,9 +243,9 @@ class ImageCell : UICollectionViewCell
         imageView.layer.borderWidth = 1
         imageView.layer.cornerRadius = 4
         imageView.clipsToBounds = true
-//        imageView.clipsToBounds = true
         contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        ///Layout of ImageView
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -291,25 +253,17 @@ class ImageCell : UICollectionViewCell
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         
         ])
-        let closeImage  = UIImage(systemName: "xmark.circle.fill")
-        deleteImgBTN = UIButton(frame: .zero)
-        deleteImgBTN.setImage(closeImage, for: .normal)
-//        let action = UIAction { [weak self] action in
-//            self?.deleteBtnAction?(self?.deleteImgBTN.tag ?? 0)
-//        }
-//        deleteImgBTN.addAction(action, for: .touchUpInside)
-        deleteImgBTN.tintColor = .white
-        deleteImgBTN.layer.cornerRadius = 10
-        deleteImgBTN.backgroundColor = .orange
+        ///Delete Button
+        let closeIcon = UIImage(systemName: "xmark.circle.fill")
+        deleteImgBTN = UIImageView(image: closeIcon)
+        deleteImgBTN.tintColor = .orange
         self.contentView.addSubview(deleteImgBTN)
         deleteImgBTN.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            deleteImgBTN.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 2),
-            deleteImgBTN.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -2),
+            deleteImgBTN.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 1),
+            deleteImgBTN.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -1),
             deleteImgBTN.heightAnchor.constraint(equalToConstant: 15),
             deleteImgBTN.widthAnchor.constraint(equalToConstant: 15)
-        
-        
         ])
         
        
