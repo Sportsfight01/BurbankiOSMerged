@@ -31,10 +31,12 @@ class ContactUsTVC: UITableViewCell {
     
     func setup(model : MyNotesStruct?)
     {
-       guard let model else {return}
-       authorNameLb.text = model.authorname ?? "--"
-       subjectLb.text = model.subject ?? "--"
-       bodyLb.text = model.body ?? "--"
+        guard let model else {return}
+        // - not getting 'unknownAuthor' key for all the records. So replacing this value with userdetails fullName from getUserDetails api data
+        //authorNameLb.text = model.authorname ?? "--"
+        authorNameLb.text = appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--"
+        subjectLb.text = model.subject?.trim() ?? "--"
+        bodyLb.text = model.body?.trim() ?? "--"
         if let noteId = model.noteId
         {
             let jobNum = CurrentUser.jobNumber ?? ""

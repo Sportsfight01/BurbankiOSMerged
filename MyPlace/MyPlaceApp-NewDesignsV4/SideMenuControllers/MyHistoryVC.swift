@@ -124,7 +124,10 @@ extension MyHistoryVC : UITableViewDelegate, UITableViewDataSource
         cell.subjectLb.text = history?.subject ?? "--"
         let noteDate = dateFormatter(dateStr: history?.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
         cell.noteDateLb.text = noteDate ?? "--"
-        cell.authorNameLb.text =  "By " + (history?.authorname ?? "--")
+        // - not getting 'unknownAuthor' key for all the records. So replacing this value with userdetails fullName from getUserDetails api data
+        //authorNameLb.text = model.authorname ?? "--"
+        let authorname = appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--"
+        cell.authorNameLb.text =  "By " + (authorname)
         // cell.authorNameLb.text =  "By " + (history?.authorname ?? "") + " on " + noteDate
         cell.bodyLb.text = history?.body ?? "--"
         return cell
