@@ -37,7 +37,8 @@ class Tabbarscreens: HomeCareBaseProfileVC {
         profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")
         profileBaseView.titleLBL.textColor = .black
         profileBaseView.titleLBL.text = "My" + (self.navigationController?.tabBarItem.title?.capitalized ?? "")
-        profileBaseView.baseImageView.image = UIImage(named: "welcome")
+        profileBaseView.baseImageView.image = UIImage(named: "")
+        profileBaseView.baseImageView.backgroundColor = AppColors.AppGray
 //        profileBaseView.menuAndBackBtn.setImage(UIImage(systemName:"arrow.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
 //        getTabBardetail()
        

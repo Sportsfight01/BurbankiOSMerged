@@ -72,19 +72,19 @@ class LogIssueVC: UIViewController {
     @IBAction func didTappedOnIssues(_ sender: UIButton) {
         
         switch sender.tag {
-        case 0:
-            print("log issues")
         case 1:
             print("log issues")
-           
+            let vc = LoggedissuesVC.instace(sb: .reports)
+            self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             print("save & edit issues")
-
+            self.navigationController?.popViewController(animated: true)
         case 3:
             print("Delete issues")
-            
+            self.navigationController?.popViewController(animated: true)
         case 4:
             print("Cancel")
+            self.navigationController?.popViewController(animated: true)
         default:
             print("log issues")
         }

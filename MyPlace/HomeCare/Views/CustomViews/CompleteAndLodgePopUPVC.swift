@@ -26,6 +26,9 @@ class CompleteAndLodgePopUPVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setStatusBarColor(color: AppColors.AppGray)
     }
+    @IBAction func didTappedOnCheckBox(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
     
     @IBAction func didTappedOnCompleteAndLodge(_ sender: UIButton) {
         

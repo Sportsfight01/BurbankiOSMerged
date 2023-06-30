@@ -48,6 +48,11 @@ class SubmittedIsuuesVC: HomeCareBaseProfileVC{
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    override func viewDidDisappear(_ animated: Bool)
+    {
+        super.viewDidDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     
     @IBAction func didTappedOnReportOtherIsuues(_ sender: UIButton) {
