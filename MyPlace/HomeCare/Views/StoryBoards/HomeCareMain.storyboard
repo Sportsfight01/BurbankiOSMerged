@@ -43,14 +43,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7Ak-Vv-C7c">
-                                <rect key="frame" x="0.0" y="270" width="375" height="508"/>
+                                <rect key="frame" x="0.0" y="320" width="375" height="458"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y7W-gr-x7a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7Ak-Vv-C7c" firstAttribute="top" secondItem="y7W-gr-x7a" secondAttribute="top" constant="220" id="3sX-FQ-A9t"/>
+                            <constraint firstItem="7Ak-Vv-C7c" firstAttribute="top" secondItem="y7W-gr-x7a" secondAttribute="top" constant="270" id="3sX-FQ-A9t"/>
                             <constraint firstItem="y7W-gr-x7a" firstAttribute="trailing" secondItem="7Ak-Vv-C7c" secondAttribute="trailing" id="avx-TF-Xbk"/>
                             <constraint firstItem="7Ak-Vv-C7c" firstAttribute="leading" secondItem="y7W-gr-x7a" secondAttribute="leading" id="pgj-o2-E2R"/>
                             <constraint firstItem="y7W-gr-x7a" firstAttribute="bottom" secondItem="7Ak-Vv-C7c" secondAttribute="bottom" id="vv1-ga-FW3"/>
@@ -94,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sba-8I-Kc9">
-                                <rect key="frame" x="0.0" y="314" width="375" height="2"/>
+                                <rect key="frame" x="0.0" y="364" width="375" height="2"/>
                                 <color key="backgroundColor" name="AppOrange"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="QTb-HV-gDp"/>
@@ -104,7 +104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="17p-zk-Dxf">
-                                <rect key="frame" x="0.0" y="316" width="375" height="361"/>
+                                <rect key="frame" x="0.0" y="366" width="375" height="311"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tAn-L3-vaE">
                                     <size key="itemSize" width="393" height="412"/>
@@ -234,7 +234,7 @@
                                     <tabBarItem tag="3" title="REPORT" image="Ico-Report" id="Qet-cd-z8O">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="4" title="MY SUPPORT" image="Ico-Help" id="F50-g3-Yiq">
+                                    <tabBarItem tag="4" title="SUPPORT" image="Ico-Help" id="F50-g3-Yiq">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -258,7 +258,7 @@
                             <constraint firstItem="qzA-FN-brQ" firstAttribute="bottom" secondItem="rKD-2g-X6L" secondAttribute="bottom" id="iN7-Qf-X8C"/>
                             <constraint firstItem="rKD-2g-X6L" firstAttribute="top" secondItem="Khh-vn-MPA" secondAttribute="bottom" id="lCG-Wb-rNu"/>
                             <constraint firstItem="qzA-FN-brQ" firstAttribute="trailing" secondItem="Sba-8I-Kc9" secondAttribute="trailing" id="u1N-Ae-vTY"/>
-                            <constraint firstItem="Sba-8I-Kc9" firstAttribute="top" secondItem="qzA-FN-brQ" secondAttribute="top" constant="220" id="ybx-br-3hy"/>
+                            <constraint firstItem="Sba-8I-Kc9" firstAttribute="top" secondItem="qzA-FN-brQ" secondAttribute="top" constant="270" id="ybx-br-3hy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tEn-If-bzJ"/>
@@ -297,7 +297,7 @@
         <image name="Ico-Report" width="24" height="24"/>
         <image name="Ico-Warranties" width="24" height="24"/>
         <image name="doc" catalog="system" width="115" height="128"/>
-        <image name="welcome" width="360.33334350585938" height="351.33334350585938"/>
+        <image name="welcome" width="1028.6666259765625" height="1075.6666259765625"/>
         <namedColor name="AppOrange">
             <color red="0.9649999737739563" green="0.54500001668930054" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

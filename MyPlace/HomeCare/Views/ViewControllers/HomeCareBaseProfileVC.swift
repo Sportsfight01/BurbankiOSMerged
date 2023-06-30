@@ -34,7 +34,7 @@ class HomeCareBaseProfileVC: UIViewController {
             profileBaseView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileBaseView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileBaseView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileBaseView.heightAnchor.constraint(equalToConstant: 200)
+            profileBaseView.heightAnchor.constraint(equalToConstant: 250)
         
         ])
         

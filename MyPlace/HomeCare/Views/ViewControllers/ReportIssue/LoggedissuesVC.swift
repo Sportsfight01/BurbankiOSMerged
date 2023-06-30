@@ -40,7 +40,7 @@ class LoggedissuesVC: UIViewController,UIPopoverPresentationControllerDelegate,d
     }
     
     @IBAction func didTappedOnAddNewIssue(_ sender: UIButton) {
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func didTappedOnCompleteAndLodge(_ sender: UIButton) {

@@ -17,6 +17,9 @@ class SubmittedIssueDetailsVC: UIViewController {
     }
     
 
+    @IBAction func didTappedOnViewAllIssues(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 

@@ -60,7 +60,7 @@ class HomeScreenTabBarVC: UITabBarController {
             TabBarItemStruct(viewController: Tabbarscreens.self, title: "DOCUMENTS", selectedItemImage: "Ico-DocumentsBlack", unSelectedItemImage: "Ico-DocumentsHC"),
             TabBarItemStruct(viewController: Tabbarscreens.self, title: "WARRANTIES", selectedItemImage: "Ico-WarrantiesBlack", unSelectedItemImage: "Ico-Warranties"),
             TabBarItemStruct(viewController: ReportIssueHomeVC.self,storyboard : .reports, title: "REPORT", selectedItemImage: "Ico-ReportBlack", unSelectedItemImage: "Ico-Report"),
-            TabBarItemStruct(viewController: Tabbarscreens.self, title: "HELP SECTION", selectedItemImage: "Ico-HelpBlack", unSelectedItemImage: "Ico-Help"),
+            TabBarItemStruct(viewController: Tabbarscreens.self, title: "SUPPORT", selectedItemImage: "Ico-HelpBlack", unSelectedItemImage: "Ico-Help"),
         ]
         self.viewControllers = tabBarItems.map { item in
             let storyBoard : AppStoryBoards = item.storyboard ?? .homeScreenSb
