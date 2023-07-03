@@ -36,7 +36,16 @@ class CustomersUserpreferrenceVC: UIViewController {
     }
     
     @IBAction func didTappedOnHomeCare(_ sender: UIButton) {
-        CodeManager.sharedInstance.handleUserHomecareModule(user: appDelegate.currentUser!, In: self)
+        let isLoggedIssueCompleted = UserDefaults.standard.string(forKey: "issueLoged")
+        if isLoggedIssueCompleted == "1"{
+            CodeManager.sharedInstance.handleLoggedUserHomecare(user: appDelegate.currentUser!, In: self)
+            UserDefaults.standard.set("0", forKey: "issueLoged")
+            
+        }else{
+            CodeManager.sharedInstance.handleUserHomecareModule(user: appDelegate.currentUser!, In: self)
+        }
+        
+        
     }
  
 }

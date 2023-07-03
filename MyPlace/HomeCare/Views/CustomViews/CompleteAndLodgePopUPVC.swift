@@ -16,6 +16,7 @@ class CompleteAndLodgePopUPVC: UIViewController {
     var delegate : didTappedOncomplete? = nil
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.9)
    // Do any additional setup after loading the view.
