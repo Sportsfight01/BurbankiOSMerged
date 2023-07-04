@@ -32,9 +32,10 @@ class ContactUsTVC: UITableViewCell {
     func setup(model : MyNotesStruct?)
     {
         guard let model else {return}
+       
+        authorNameLb.text = model.authorname ?? "--"
         // - not getting 'unknownAuthor' key for all the records. So replacing this value with userdetails fullName from getUserDetails api data
-        //authorNameLb.text = model.authorname ?? "--"
-        authorNameLb.text = appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--"
+       // authorNameLb.text = appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--"
         subjectLb.text = model.subject?.trim() ?? "--"
         bodyLb.text = model.body?.trim() ?? "--"
         if let noteId = model.noteId
@@ -48,7 +49,12 @@ class ContactUsTVC: UITableViewCell {
                 circlelb.isHidden = false
             }
         }
-        noteDateLb.text = model.displayDate
+        if model.replies?.count ?? 0 > 0
+        {
+            noteDateLb.text = "Replied on \(model.replies?.first?.displayDate ?? "--")"
+        }else {
+            noteDateLb.text = "Created on \(model.displayDate ?? "--")"
+        }
         
     }
 
