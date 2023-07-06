@@ -11,12 +11,16 @@ import SideMenu
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var chanePhaseUnderline: UILabel!
+    @IBOutlet weak var changePhaseBTN: UIButton!
     @IBOutlet weak var notificationCountLBL: UILabel!
     @IBOutlet var profileImgView: UIImageView!
     @IBOutlet weak var yourhomecurrentbuildLb: UILabel!
     @IBOutlet weak var usernameLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var tableDataSource : [SideMenuItem] = SideMenuItem.allCases
+    var isMenuOpenedFromHomeCare : Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +74,11 @@ class MenuViewController: UIViewController {
         
 
     }
+    @IBAction func didTappedOnChangePhse(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+       let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     @IBAction func closeBtnClicked(_ sender: UIButton) {
         
@@ -95,6 +104,17 @@ class MenuViewController: UIViewController {
         
         setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(CurrentUser.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
+        if isMenuOpenedFromHomeCare{
+            usernameLb.text = appDelegate.currentUser?.userDetailsArray?[0].fullName
+            let yourHomeBuild = "Home Care \(appDelegate.currentUser?.jobNumber ?? "")"
+            setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Home Care" , "\(appDelegate.currentUser?.jobNumber ?? "")"], colors: [.white,APPCOLORS_3.Orange_BG,], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_10),FONT_LABEL_SUB_HEADING(size: FONT_10)], alignmentCenter: false)
+            
+            changePhaseBTN.isHidden = false
+            chanePhaseUnderline.isHidden = false
+        }else{
+            changePhaseBTN.isHidden = true
+            chanePhaseUnderline.isHidden = true
+        }
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)
         
@@ -203,4 +223,19 @@ extension MenuViewController
         }
     }
     
+}
+
+
+class UnderlinedLabel: UILabel {
+
+override var text: String? {
+    didSet {
+        guard let text = text else { return }
+        let textRange = NSMakeRange(0, text.count)
+        let attributedText = NSMutableAttributedString(string: text)
+        attributedText.addAttribute(NSAttributedString.Key.underlineStyle , value: NSUnderlineStyle.single.rawValue, range: textRange)
+        // Add other attributes if needed
+        self.attributedText = attributedText
+        }
+    }
 }

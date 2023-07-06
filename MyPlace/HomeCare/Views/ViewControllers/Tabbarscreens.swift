@@ -38,6 +38,10 @@ class Tabbarscreens: HomeCareBaseProfileVC {
         profileBaseView.titleLBL.text = "My" + (self.navigationController?.tabBarItem.title?.capitalized ?? "")
         profileBaseView.baseImageView.image = UIImage(named: "")
         profileBaseView.baseImageView.backgroundColor = AppColors.AppGray
+//        profileBaseView.descriptionLBL.text = "Congratualtions on the completion of your new Burbank home. (\(appDelegate.currentUser?.jobNumber ?? ""))"
+        
+        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Congratualtions on the completion of your new Burbank home. (\(appDelegate.currentUser?.jobNumber ?? ""))", rangeStrings: ["Congratualtions on the completion of your new Burbank home. ", "(\(appDelegate.currentUser?.jobNumber ?? ""))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_SUB_HEADING (size: FONT_12), FONT_LABEL_SUB_HEADING (size: FONT_12)], alignmentCenter: false)
+        
 //        profileBaseView.menuAndBackBtn.setImage(UIImage(systemName:"arrow.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
 //        getTabBardetail()
        
@@ -53,8 +57,21 @@ extension Tabbarscreens : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCareFilesTVC", for: indexPath) as! HomeCareFilesTVC
         
-        if self.navigationController?.tabBarItem.title == "manual"{
-            
+        switch self.navigationController?.tabBarItem.title {
+        case "MANUALS":
+            cell.imageCategory.image = UIImage(named: "Ico-ManualCircle")
+            break
+        case "DOCUMENTS":
+            cell.imageCategory.image = UIImage(named: "Ico-DocumentCircle")
+            break
+        case "WARRANTIES":
+            cell.imageCategory.image = UIImage(named: "Ico-WarrantiesCircle")
+            break
+        case "SUPPORT":
+            cell.imageCategory.image = UIImage(named: "Ico-HelpBlack")
+            break
+        default:
+            break
         }
         return cell
     }

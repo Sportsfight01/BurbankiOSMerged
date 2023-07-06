@@ -60,11 +60,9 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
         profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")
         profileBaseView.baseImageView.image = UIImage(named: "")
         profileBaseView.baseImageView.backgroundColor = .clear
-        
         profileBaseView.titleLBL.textColor = .black
         profileBaseView.titleLBL.text = "MyHomeCare"
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-       
         tabBar.tintColor = .gray
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_LIGHT (size: FONT_20))
         setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_BODY (size: FONT_10))
@@ -96,8 +94,7 @@ extension HomeCareDashBoardVC : UICollectionViewDelegate,UICollectionViewDataSou
         cell.detailViewDescriptionLBL.text = dashBoardDataArr[indexPath.item].description
         cell.detailViewBTN.tag = indexPath.item
         cell.detailViewBTN.addTarget(self, action: #selector(didTappedOnDetailsBTN), for: .touchUpInside)
-        
-                return cell
+        return cell
     }
     
    

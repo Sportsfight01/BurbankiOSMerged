@@ -63,8 +63,10 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             getAPIData()
             ContactUsVC.updateNoteData = false
         }
-        
-        
+        if (tableDataSource?.count ?? 0) > 0{
+            tableView.reloadData()
+        }
+    
     }
     
     deinit {

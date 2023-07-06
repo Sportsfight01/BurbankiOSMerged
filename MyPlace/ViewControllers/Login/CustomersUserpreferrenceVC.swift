@@ -10,6 +10,7 @@ import UIKit
 class CustomersUserpreferrenceVC: UIViewController {
    
     
+    @IBOutlet weak var jobnNumberBTN: UIButton!
     @IBOutlet weak var nameLBL: UILabel!
     @IBOutlet weak var helloLBL: UILabel!
     
@@ -23,7 +24,11 @@ class CustomersUserpreferrenceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if userData != nil{
+            self.jobnNumberBTN.setTitle("  \(userData.jobNumber ?? "")", for: .normal)
+        }else{
+            self.jobnNumberBTN.setTitle("  \(appDelegate.currentUser?.jobNumber ?? "")", for: .normal)
+        }
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +38,47 @@ class CustomersUserpreferrenceVC: UIViewController {
 
     @IBAction func didTappedOnBuildProgress(_ sender: UIButton) {
         CodeManager.sharedInstance.handleUserLoginSuccess(user: appDelegate.currentUser!, In: self)
+    }
+    
+    @IBAction func didTappedOnJobNumber(_ sender: UIButton) {
+        setupMultipleJobVc()
+    }
+    func setupMultipleJobVc()
+    {
+        
+        var myplaceDetailsArray = [MyPlaceDetails]()
+        
+        if userData != nil{
+            myplaceDetailsArray = (userData.userDetailsArray?.first!.myPlaceDetailsArray)!
+        }else{
+            myplaceDetailsArray = (appDelegate.currentUser?.userDetailsArray?.first!.myPlaceDetailsArray)!
+        }
+        //*** Users With Multiple Job Numbers ***//
+        if (myplaceDetailsArray.count ?? 0) > 1
+        {// user has multiple job numbers
+            let selectedJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
+            
+                self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                let vc = MultipleJobNumberVC.instace()
+            vc.tableDataSource = myplaceDetailsArray.compactMap({$0.jobNumber}) ?? []
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.modalTransitionStyle = .coverVertical
+                //*if user loggedIn with Job Number show jobNumber as selected in multipleJobNumbers List
+                if !isEmail(){
+                    if selectedJobNum != nil{
+                        vc.previousJobNum = selectedJobNum
+                    }else{
+                        vc.previousJobNum = appDelegate.enteredEmailOrJob
+                    }
+                   
+                }
+                vc.selectionClosure = {[weak self] selectedJobNumber in
+                    UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
+                    self?.tabBarController?.tabBar.isUserInteractionEnabled = true
+                    self?.jobnNumberBTN.setTitle("  \(selectedJobNumber )", for: .normal)
+                }
+                self.present(vc, animated: true)
+        }
     }
     
     @IBAction func didTappedOnHomeCare(_ sender: UIButton) {

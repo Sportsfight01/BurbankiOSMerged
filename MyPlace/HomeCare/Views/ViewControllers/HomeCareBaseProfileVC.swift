@@ -34,7 +34,7 @@ class HomeCareBaseProfileVC: UIViewController {
             profileBaseView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileBaseView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileBaseView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileBaseView.heightAnchor.constraint(equalToConstant: 250)
+            profileBaseView.heightAnchor.constraint(equalToConstant: 260)
         
         ])
         
@@ -52,6 +52,7 @@ class HomeCareBaseProfileVC: UIViewController {
     }
     func setupProfile()
     {
+       
         profileBaseView.profileView.contentMode = .scaleToFill
         profileBaseView.profileView.clipsToBounds = true
         profileBaseView.profileView.layer.cornerRadius = profileBaseView.profileView.bounds.width/2
@@ -85,6 +86,7 @@ class HomeCareBaseProfileVC: UIViewController {
         //sideMenuVc.isHomecareSideMenu = true
         menu = SideMenuNavigationController(rootViewController: sideMenuVc)
         menu.leftSide = true
+        sideMenuVc.isMenuOpenedFromHomeCare = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
         menu.presentationStyle = .menuSlideIn
         menu.presentationStyle.onTopShadowColor = .darkGray

@@ -59,6 +59,7 @@ class BaseProfileVC: UIViewController {
     {
         let sideMenuVc = MenuViewController.instace(sb: .newDesignV4)
         menu = SideMenuNavigationController(rootViewController: sideMenuVc)
+        sideMenuVc.isMenuOpenedFromHomeCare = false
         menu.leftSide = true
         menu.menuWidth = 0.8 * UIScreen.main.bounds.width
         menu.presentationStyle = .menuSlideIn
