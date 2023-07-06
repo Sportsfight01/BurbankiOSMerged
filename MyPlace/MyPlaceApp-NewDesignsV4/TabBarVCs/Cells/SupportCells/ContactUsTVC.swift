@@ -36,7 +36,7 @@ class ContactUsTVC: UITableViewCell {
         authorNameLb.text = model.authorname ?? "--"
         // - not getting 'unknownAuthor' key for all the records. So replacing this value with userdetails fullName from getUserDetails api data
        // authorNameLb.text = appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--"
-        subjectLb.text = model.subject?.trim() ?? "--"
+        subjectLb.text = (model.subject?.trim() ?? "--") + " (\(model.noteId ?? 0))"
         bodyLb.text = model.body?.trim() ?? "--"
         if let noteId = model.noteId
         {

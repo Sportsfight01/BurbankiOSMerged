@@ -187,6 +187,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 self.tableView.restore()
 //                self.applySnapShot()
                 self.tableView.reloadData()
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             }
         }
     }
@@ -217,7 +218,8 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             note.replies = note.replies?.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
             tempDataSource.append(note)
         }
-        // tempDataSource = tableData
+        
+        // - Sorting of tableDataSource
         tempDataSource = tempDataSource.sorted { note1, note2 in
             
             // - sorting with possible conditions based on replies available for note

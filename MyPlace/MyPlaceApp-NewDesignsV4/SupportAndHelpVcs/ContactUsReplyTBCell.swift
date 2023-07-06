@@ -26,7 +26,7 @@ class ContactUsReplyTBCell: UITableViewCell {
     func setup(model : MyNotesStruct?)
     {
         guard let data = model else {return}
-        replyTitleLb.text = data.body ?? "--"
+        replyTitleLb.text = (data.body ?? "--") + " (\(data.noteId ?? 0))"
         
         let notedate = dateFormatter(dateStr: data.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
         timeStampLb.text = notedate

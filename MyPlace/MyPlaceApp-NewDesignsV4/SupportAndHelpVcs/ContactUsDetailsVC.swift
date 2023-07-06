@@ -134,7 +134,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     func showData(){
         
-        subjectLBL.text =  "Subject: \(self.contactDetails?.subject ?? "")"
+        subjectLBL.text =  "Subject: \(self.contactDetails?.subject ?? "") (\(self.contactDetails?.noteId ?? 0))"
         //toLBL.text = "To : \(self.contactDetails?.authorname ?? "")"
        // fromLBL.text =  "From : " + (appDelegate.currentUser?.userDetailsArray?[0].fullName)!
         descriptionLb.text = self.contactDetails?.body ?? ""
