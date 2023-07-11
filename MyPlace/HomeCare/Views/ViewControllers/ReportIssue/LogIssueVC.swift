@@ -16,6 +16,7 @@ class LogIssueVC: UIViewController {
     @IBOutlet weak var deleteBTN: UIButton!
     @IBOutlet weak var cancelBTN: UIButton!
     
+    @IBOutlet weak var newIssueLBL: UILabel!
     
     //MARK: - Properties
     @IBOutlet weak var addImagesView: UIView!
@@ -64,6 +65,7 @@ class LogIssueVC: UIViewController {
         imagesPickerColectionView.isHidden = true
         if isEditIssueScreen{
             [logIssueBTN].forEach({$0?.isHidden = true})
+            self.newIssueLBL.text = "EDIT ISSUE"
         }else{
             [saveEditBTN,deleteBTN,cancelBTN].forEach({$0?.isHidden = true})
         }

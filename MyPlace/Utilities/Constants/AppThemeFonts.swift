@@ -85,6 +85,9 @@ func boldFontWith (size: CGFloat) -> UIFont {
     return  UIFont(name: "Montserrat-Bold", size: size)!
 }
 
+func semiboldFontWith (size: CGFloat) -> UIFont {
+    return  UIFont(name: "Montserrat-SemiBold", size: size)!
+}
 
 func extraBoldFontWith (size: CGFloat) -> UIFont {
     return UIFont(name: "Montserrat-ExtraBold", size: size)!
@@ -106,6 +109,9 @@ func FONT_LABEL_BODY (size: CGFloat = FONT_12) -> UIFont {
 
 func FONT_LABEL_LIGHT (size: CGFloat = FONT_12) -> UIFont {
    return lightFontWith(size: size)
+}
+func FONT_LABEL_SEMI_BOLD (size: CGFloat = FONT_12) -> UIFont {
+   return semiboldFontWith(size: size)
 }
 
 

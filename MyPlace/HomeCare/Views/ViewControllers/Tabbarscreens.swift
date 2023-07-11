@@ -40,7 +40,7 @@ class Tabbarscreens: HomeCareBaseProfileVC {
         profileBaseView.baseImageView.backgroundColor = AppColors.AppGray
 //        profileBaseView.descriptionLBL.text = "Congratualtions on the completion of your new Burbank home. (\(appDelegate.currentUser?.jobNumber ?? ""))"
         
-        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Congratualtions on the completion of your new Burbank home. (\(CurrentUser.jobNumber ?? ""))", rangeStrings: ["Congratualtions on the completion of your new Burbank home. ", "(\(CurrentUser.jobNumber ?? ""))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_11), FONT_LABEL_BODY (size: FONT_11)], alignmentCenter: false)
+        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "All the guides to the great appliances and services in your new home. (\(CurrentUser.jobNumber ?? ""))", rangeStrings: ["All the guides to the great appliances and services in your new home.", "(\(CurrentUser.jobNumber ?? ""))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_11), FONT_LABEL_SEMI_BOLD (size: FONT_11)], alignmentCenter: false)
         
 //        profileBaseView.menuAndBackBtn.setImage(UIImage(systemName:"arrow.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
 //        getTabBardetail()

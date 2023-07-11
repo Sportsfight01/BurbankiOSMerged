@@ -40,7 +40,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Izy-pa-Dze">
                     <rect key="frame" x="0.0" y="59" width="514" height="368"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="documents" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOy-h4-ax9">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOy-h4-ax9">
                             <rect key="frame" x="0.0" y="60" width="514" height="308"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
@@ -99,12 +99,12 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-eQ-nqu">
-                            <rect key="frame" x="16" y="90" width="482" height="248"/>
+                            <rect key="frame" x="16" y="75" width="482" height="278"/>
                             <subviews>
                                 <visualEffectView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcg-Yv-zaL">
-                                    <rect key="frame" x="0.0" y="0.0" width="482" height="248"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="482" height="278"/>
                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6bE-oT-14d">
-                                        <rect key="frame" x="0.0" y="0.0" width="482" height="248"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="482" height="278"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -112,14 +112,14 @@
                                     <blurEffect style="light"/>
                                 </visualEffectView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BurbankLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Thv-Vs-4Oy">
-                                    <rect key="frame" x="10" y="94" width="60" height="60"/>
+                                    <rect key="frame" x="10" y="109" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="hpy-qo-iFW"/>
                                         <constraint firstAttribute="width" constant="60" id="kba-Zy-v64"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mC-cP-5xJ">
-                                    <rect key="frame" x="48" y="98" width="22" height="22"/>
+                                    <rect key="frame" x="48" y="113" width="22" height="22"/>
                                     <color key="backgroundColor" name="Orange_BG_3"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="22" id="cgW-yr-uBg"/>
@@ -134,8 +134,8 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H2c-Mt-xwZ">
-                                    <rect key="frame" x="85" y="84" width="387" height="96"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="H2c-Mt-xwZ">
+                                    <rect key="frame" x="85" y="104" width="387" height="65"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyManuals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-jq-yp6">
                                             <rect key="frame" x="0.0" y="0.0" width="387" height="30"/>
@@ -146,10 +146,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTb-c6-DNH">
-                                            <rect key="frame" x="0.0" y="30" width="387" height="66"/>
-                                            <string key="text">Congratualtions on the completion of your new Burbank home.
-</string>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratualtions on the completion of your new Burbank home." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTb-c6-DNH">
+                                            <rect key="frame" x="0.0" y="35" width="387" height="30"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -159,13 +157,12 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="H2c-Mt-xwZ" firstAttribute="centerY" secondItem="MwY-eQ-nqu" secondAttribute="centerY" constant="8" id="3vR-hw-OAF"/>
                                 <constraint firstAttribute="trailing" secondItem="fcg-Yv-zaL" secondAttribute="trailing" id="5kb-gj-sjh"/>
                                 <constraint firstAttribute="bottom" secondItem="fcg-Yv-zaL" secondAttribute="bottom" id="Qjv-E8-9kR"/>
                                 <constraint firstItem="H2c-Mt-xwZ" firstAttribute="leading" secondItem="Thv-Vs-4Oy" secondAttribute="trailing" constant="15" id="Si9-dt-kpL"/>
                                 <constraint firstItem="Thv-Vs-4Oy" firstAttribute="leading" secondItem="MwY-eQ-nqu" secondAttribute="leading" constant="10" id="XQA-1a-VOG"/>
                                 <constraint firstItem="4mC-cP-5xJ" firstAttribute="top" secondItem="Thv-Vs-4Oy" secondAttribute="top" constant="4" id="a7m-G4-7PB"/>
-                                <constraint firstItem="H2c-Mt-xwZ" firstAttribute="top" secondItem="Thv-Vs-4Oy" secondAttribute="top" constant="-10" id="bPv-Nx-rMh"/>
+                                <constraint firstItem="H2c-Mt-xwZ" firstAttribute="top" secondItem="Thv-Vs-4Oy" secondAttribute="top" constant="-5" id="bPv-Nx-rMh"/>
                                 <constraint firstItem="fcg-Yv-zaL" firstAttribute="top" secondItem="MwY-eQ-nqu" secondAttribute="top" id="dGi-Zv-c9S"/>
                                 <constraint firstAttribute="trailing" secondItem="H2c-Mt-xwZ" secondAttribute="trailing" constant="10" id="k6B-GU-Hho"/>
                                 <constraint firstItem="H2c-Mt-xwZ" firstAttribute="leading" secondItem="4mC-cP-5xJ" secondAttribute="trailing" constant="15" id="mSz-7X-s48"/>
@@ -184,12 +181,12 @@
                         <constraint firstItem="df8-fe-pLn" firstAttribute="leading" secondItem="Izy-pa-Dze" secondAttribute="leading" id="Htr-gM-lim"/>
                         <constraint firstAttribute="trailing" secondItem="IOy-h4-ax9" secondAttribute="trailing" id="LLn-DQ-kvG"/>
                         <constraint firstAttribute="trailing" secondItem="df8-fe-pLn" secondAttribute="trailing" id="NaO-Gj-3DL"/>
-                        <constraint firstItem="MwY-eQ-nqu" firstAttribute="top" secondItem="df8-fe-pLn" secondAttribute="bottom" constant="30" id="QXC-sp-eTM"/>
+                        <constraint firstItem="MwY-eQ-nqu" firstAttribute="top" secondItem="df8-fe-pLn" secondAttribute="bottom" constant="15" id="QXC-sp-eTM"/>
                         <constraint firstItem="df8-fe-pLn" firstAttribute="top" secondItem="Izy-pa-Dze" secondAttribute="top" id="QZc-hb-nT9"/>
                         <constraint firstItem="IOy-h4-ax9" firstAttribute="leading" secondItem="Izy-pa-Dze" secondAttribute="leading" id="S1b-64-YOO"/>
                         <constraint firstAttribute="trailing" secondItem="MwY-eQ-nqu" secondAttribute="trailing" constant="16" id="SIY-5N-VK8"/>
                         <constraint firstItem="IOy-h4-ax9" firstAttribute="top" secondItem="df8-fe-pLn" secondAttribute="bottom" id="XaQ-Ok-Rfb"/>
-                        <constraint firstAttribute="bottom" secondItem="MwY-eQ-nqu" secondAttribute="bottom" constant="30" id="Z6d-5Z-VWq"/>
+                        <constraint firstAttribute="bottom" secondItem="MwY-eQ-nqu" secondAttribute="bottom" constant="15" id="Z6d-5Z-VWq"/>
                         <constraint firstItem="MwY-eQ-nqu" firstAttribute="leading" secondItem="Izy-pa-Dze" secondAttribute="leading" constant="16" id="eGR-9p-bMP"/>
                         <constraint firstAttribute="bottom" secondItem="IOy-h4-ax9" secondAttribute="bottom" id="t0K-Fu-aAF"/>
                     </constraints>
@@ -215,7 +212,6 @@
     <resources>
         <image name="BurbankLogo" width="512" height="512"/>
         <image name="Top Menu Icon_ButbankMyplace" width="971.5" height="153.5"/>
-        <image name="documents" width="275" height="183"/>
         <image name="ellipsis.message" catalog="system" width="128" height="116"/>
         <image name="icon_Menu" width="36" height="36"/>
         <namedColor name="AppGray">

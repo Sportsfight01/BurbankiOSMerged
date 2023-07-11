@@ -45,7 +45,7 @@ class CompleteAndLodgePopUPVC: UIViewController {
             completeAndLodgeBTN.setTitle("Dismiss", for: .normal)
         }else{
             titleLBL.text = "IMPORTANT INFORMATION"
-            descriptionLBL.text = "our warranty issues must be logged Can’t stop the tap from dripping in the master bedro... including all issues you need to be action. DO NOT LODGE if you have more issues to add. If you have questions about this, Can’t stop the tap from dripping in the master bedro... please call our Home Care team on 13 2872"
+            descriptionLBL.text = "Your warranty issues must be logged including all issues you need to be action.DO NOT LODGE if you have more issues to add. If you have questions about this, please call our Home Care team on 13 2872"
             addMoreIssueBTN.isHidden =  false
             checkBoxBTN.isHidden =  false
             conditionLBL.isHidden =  false

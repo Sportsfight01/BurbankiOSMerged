@@ -67,8 +67,14 @@ class MenuViewController: UIViewController {
         vc.selectionClosure = { selectedJobNumber in
             CurrentUser.jobNumber = selectedJobNumber
             UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
-            kWindow.rootViewController = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateInitialViewController()
-            kWindow.makeKeyAndVisible()
+            if !self.isMenuOpenedFromHomeCare{
+                kWindow.rootViewController = UIStoryboard(name: "NewDesignsV4", bundle: nil).instantiateInitialViewController()
+                kWindow.makeKeyAndVisible()
+            }else{
+                kWindow.rootViewController = UIStoryboard(name: AppStoryBoards.homeScreenSb.rawValue , bundle: nil).instantiateInitialViewController()
+                kWindow.makeKeyAndVisible()
+            }
+            
         }
         kWindow.rootViewController?.present(vc, animated: true)
         
@@ -107,8 +113,8 @@ class MenuViewController: UIViewController {
         
         if isMenuOpenedFromHomeCare{
             usernameLb.text = appDelegate.currentUser?.userDetailsArray?[0].fullName
-            let yourHomeBuild = "Home Care \(appDelegate.currentUser?.jobNumber ?? "")"
-            setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Home Care" , "\(appDelegate.currentUser?.jobNumber ?? "")"], colors: [.white,APPCOLORS_3.Orange_BG,], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_10),FONT_LABEL_SUB_HEADING(size: FONT_10)], alignmentCenter: false)
+            let yourHomeBuild = "Home Care \(CurrentUser.jobNumber ?? "")"
+            setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Home Care" , "\(CurrentUser.jobNumber ?? "")"], colors: [.white,APPCOLORS_3.Orange_BG,], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_10),FONT_LABEL_SEMI_BOLD(size: FONT_10)], alignmentCenter: false)
             
             changePhaseBTN.isHidden = false
             chanePhaseUnderline.isHidden = false

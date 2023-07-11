@@ -725,9 +725,7 @@ class LoginVCNew: BurbankAppVC {
                             {
                                 CodeManager.sharedInstance.handleUserLoginSuccess(user: user, In: self)
                             }
-                        }
-                        
-                        
+                        }                        
                     }
                 })
             

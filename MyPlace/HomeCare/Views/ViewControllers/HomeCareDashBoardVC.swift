@@ -67,7 +67,7 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_LIGHT (size: FONT_20))
         setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_BODY (size: FONT_10))
         setStatusBarColor(color: AppColors.AppGray)
-        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Congratualtions on the completion of your new Burbank home. (\(appDelegate.currentUser?.jobNumber ?? ""))", rangeStrings: ["Congratualtions on the completion of your new Burbank home. ", "(\(appDelegate.currentUser?.jobNumber ?? ""))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_10), FONT_LABEL_BODY (size: FONT_11)], alignmentCenter: false)
+        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Congratualtions on the completion of your new Burbank home. (\(CurrentUser.jobNumber ?? ""))", rangeStrings: ["Congratualtions on the completion of your new Burbank home. ", "(\(CurrentUser.jobNumber ?? ""))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_10), FONT_LABEL_SEMI_BOLD (size: FONT_11)], alignmentCenter: false)
     }
     
 
@@ -95,7 +95,7 @@ extension HomeCareDashBoardVC : UICollectionViewDelegate,UICollectionViewDataSou
         cell.detailViewDescriptionLBL.text = dashBoardDataArr[indexPath.item].description
         cell.detailViewBTN.tag = indexPath.item
         cell.detailViewBTN.addTarget(self, action: #selector(didTappedOnDetailsBTN), for: .touchUpInside)
-        setAttributetitleFor(view: cell.detailViewDescriptionLBL, title: "Introduction on how to use the app. Lorem ipsum dolor sit amet, consectetuer adipiscing elitsed", rangeStrings: ["Introduction on how to use the app. Lorem ipsum dolor sit amet, consectetuer adipiscing elitsed"], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY (size: FONT_12)], alignmentCenter: false)
+        setAttributetitleFor(view: cell.detailViewDescriptionLBL, title: "Congratulations, your home is now complete. These tools will assist you with your home care needs including manuals, warranties and FAQs.", rangeStrings: ["Congratulations, your home is now complete. These tools will assist you with your home care needs including manuals, warranties and FAQs."], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY (size: FONT_9)], alignmentCenter: false)
         
         return cell
     }
