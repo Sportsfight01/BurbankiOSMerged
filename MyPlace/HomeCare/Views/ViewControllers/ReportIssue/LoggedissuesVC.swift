@@ -49,6 +49,7 @@ class LoggedissuesVC: UIViewController,UIPopoverPresentationControllerDelegate,d
         popupVC.modalPresentationStyle = .overCurrentContext
         popupVC.modalTransitionStyle = .crossDissolve
         popupVC.delegate = self
+        popupVC.isPopUpFromHomeScreen = false
         UserDefaults.standard.set("1", forKey: "issueLoged")
 //        self.tabBarController?.present(popupVC, animated: true)
         present(popupVC, animated: true, completion: nil)

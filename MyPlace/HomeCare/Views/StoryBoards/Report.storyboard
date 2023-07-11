@@ -1304,7 +1304,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSF-re-ZsW">
-                                <rect key="frame" x="16" y="221.66666666666666" width="335" height="384.66666666666674"/>
+                                <rect key="frame" x="16" y="227" width="335" height="374"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Alert" translatesAutoresizingMaskIntoConstraints="NO" id="xgl-gM-uFG">
                                         <rect key="frame" x="132" y="10" width="70" height="70"/>
@@ -1314,13 +1314,13 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ct2-v3-NKT">
-                                        <rect key="frame" x="0.0" y="95.000000000000043" width="335" height="185.66666666666663"/>
+                                        <rect key="frame" x="5" y="95" width="325" height="175"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="zDi-nE-9PO">
-                                                <rect key="frame" x="2" y="0.0" width="331" height="148.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="138"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMPORTANT INFORMATION" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9p-dr-Tnd">
-                                                        <rect key="frame" x="45.333333333333329" y="0.0" width="240.66666666666669" height="24"/>
+                                                        <rect key="frame" x="42.333333333333329" y="0.0" width="240.66666666666669" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="roh-rP-i7V"/>
                                                         </constraints>
@@ -1329,7 +1329,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEc-tI-3RZ">
-                                                        <rect key="frame" x="0.0" y="27.000000000000007" width="331" height="121.66666666666669"/>
+                                                        <rect key="frame" x="0.0" y="27" width="325" height="111"/>
                                                         <string key="text">our warranty issues must be logged Can’t stop the tap from dripping in the master bedro... including all issues you need to be action. DO NOT LODGE if you have more issues to add. If you have questions about this, Can’t stop the tap from dripping in the master bedro... please call our Home Care team on 13 2872</string>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                                         <color key="textColor" name="GreyTextFont_3"/>
@@ -1338,7 +1338,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E0l-EK-Dqf">
-                                                <rect key="frame" x="41.333333333333329" y="156.66666666666663" width="252.33333333333337" height="29"/>
+                                                <rect key="frame" x="36.333333333333329" y="146" width="252.33333333333337" height="29"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qs-wQ-SlV">
                                                         <rect key="frame" x="0.0" y="0.0" width="25" height="29"/>
@@ -1369,7 +1369,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IZf-dW-Akd">
-                                        <rect key="frame" x="65" y="295.66666666666674" width="205" height="77"/>
+                                        <rect key="frame" x="65" y="285" width="205" height="77"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5g-02-4xi">
                                                 <rect key="frame" x="0.0" y="0.0" width="205" height="36"/>
@@ -1425,11 +1425,11 @@
                                     <constraint firstItem="IZf-dW-Akd" firstAttribute="top" secondItem="ct2-v3-NKT" secondAttribute="bottom" constant="15" id="C65-4M-0KT"/>
                                     <constraint firstItem="ct2-v3-NKT" firstAttribute="top" secondItem="xgl-gM-uFG" secondAttribute="bottom" constant="15" id="CJH-QL-is1"/>
                                     <constraint firstItem="xgl-gM-uFG" firstAttribute="leading" secondItem="eSF-re-ZsW" secondAttribute="leading" constant="132" id="KVn-Jy-L6D"/>
-                                    <constraint firstAttribute="trailing" secondItem="ct2-v3-NKT" secondAttribute="trailing" id="Rcq-wF-Yyk"/>
+                                    <constraint firstAttribute="trailing" secondItem="ct2-v3-NKT" secondAttribute="trailing" constant="5" id="Rcq-wF-Yyk"/>
                                     <constraint firstAttribute="trailing" secondItem="IZf-dW-Akd" secondAttribute="trailing" constant="65" id="SgA-oQ-f5z"/>
                                     <constraint firstItem="xgl-gM-uFG" firstAttribute="top" secondItem="eSF-re-ZsW" secondAttribute="top" constant="10" id="d6o-uR-2PN"/>
                                     <constraint firstAttribute="bottom" secondItem="IZf-dW-Akd" secondAttribute="bottom" constant="12" id="fYT-7m-Elu"/>
-                                    <constraint firstItem="ct2-v3-NKT" firstAttribute="leading" secondItem="eSF-re-ZsW" secondAttribute="leading" id="gcW-df-1a5"/>
+                                    <constraint firstItem="ct2-v3-NKT" firstAttribute="leading" secondItem="eSF-re-ZsW" secondAttribute="leading" constant="5" id="gcW-df-1a5"/>
                                     <constraint firstItem="IZf-dW-Akd" firstAttribute="leading" secondItem="eSF-re-ZsW" secondAttribute="leading" constant="65" id="paU-lE-TIo"/>
                                     <constraint firstItem="IZf-dW-Akd" firstAttribute="centerX" secondItem="eSF-re-ZsW" secondAttribute="centerX" id="wKE-G3-Cq4"/>
                                     <constraint firstAttribute="width" constant="335" id="xcS-jM-sdp"/>
@@ -1445,11 +1445,18 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eSF-re-ZsW" firstAttribute="centerY" secondItem="UXp-JA-d3U" secondAttribute="centerY" id="MnH-ni-fzZ"/>
-                            <constraint firstItem="eSF-re-ZsW" firstAttribute="top" secondItem="UXp-JA-d3U" secondAttribute="top" constant="171.66666666666663" id="Zux-94-etd"/>
                             <constraint firstItem="eSF-re-ZsW" firstAttribute="leading" secondItem="UXp-JA-d3U" secondAttribute="leading" constant="16" id="oIh-us-dFU"/>
                             <constraint firstItem="UXp-JA-d3U" firstAttribute="trailing" secondItem="eSF-re-ZsW" secondAttribute="trailing" constant="24" id="q2s-hf-3ft"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addMoreIssueBTN" destination="u5g-02-4xi" id="4cn-cu-5py"/>
+                        <outlet property="checkBoxBTN" destination="5Qs-wQ-SlV" id="ehn-Zp-7BI"/>
+                        <outlet property="completeAndLodgeBTN" destination="q5a-fh-9Xd" id="Ric-6a-3Iy"/>
+                        <outlet property="conditionLBL" destination="Ffa-36-bAV" id="Pbw-sZ-cT3"/>
+                        <outlet property="descriptionLBL" destination="CEc-tI-3RZ" id="3Vy-k0-kfr"/>
+                        <outlet property="titleLBL" destination="O9p-dr-Tnd" id="oQ4-3u-ru3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxn-KE-igk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

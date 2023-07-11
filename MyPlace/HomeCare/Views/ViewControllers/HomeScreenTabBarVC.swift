@@ -8,7 +8,9 @@
 
 import UIKit
 
-class HomeScreenTabBarVC: UITabBarController {
+class HomeScreenTabBarVC: UITabBarController, didTappedOncomplete {
+    
+    
     
     let HEIGHT_TAB_BAR = 70.0
     
@@ -63,6 +65,16 @@ class HomeScreenTabBarVC: UITabBarController {
             TabBarItemStruct(viewController: Tabbarscreens.self, title: "SUPPORT", selectedItemImage: "Ico-HelpBlack", unSelectedItemImage: "Ico-Help"),
         ]
         self.viewControllers = tabBarItems.map { item in
+//            if item.title == "REPORT"{
+//                let storyboard : UIStoryboard = UIStoryboard(name: "Report", bundle: nil)
+//                let popupVC = storyboard.instantiateViewController(withIdentifier: "CompleteAndLodgePopUPVC") as! CompleteAndLodgePopUPVC
+//                popupVC.modalPresentationStyle = .overCurrentContext
+//                popupVC.modalTransitionStyle = .crossDissolve
+//                popupVC.delegate = self
+//                popupVC.isPopUpFromHomeScreen = true
+//                present(popupVC, animated: true, completion: nil)
+//            }
+            
             let storyBoard : AppStoryBoards = item.storyboard ?? .homeScreenSb
             let vc = UINavigationController(rootViewController: item.viewController.instace(sb: storyBoard))
             vc.setNavigationBarHidden(true, animated: true)
@@ -74,20 +86,23 @@ class HomeScreenTabBarVC: UITabBarController {
         self.selectedIndex = selectedTab
        
     }
-    
+    func didTappedOnCompleteAndLodgeBTN() {
+        print(log: "close")
+    }
 
 }
 extension HomeScreenTabBarVC : UITabBarControllerDelegate
 {
-//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
-//        print(self.selectedIndex)
-//        print(self.selectedViewController)
-//        if let vc = self.selectedViewController as? HomeCareDashBoardScreenVC{
-//            vc.selectedTabBar = self.selectedIndex
-//        }
-//
-//        rootView.popViewController(animated: false)
-//
-//    }
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("---===---===---===---===--",item.title as Any)
+        if item.title! == "REPORT"{
+            let storyboard : UIStoryboard = UIStoryboard(name: "Report", bundle: nil)
+            let popupVC = storyboard.instantiateViewController(withIdentifier: "CompleteAndLodgePopUPVC") as! CompleteAndLodgePopUPVC
+            popupVC.modalPresentationStyle = .overCurrentContext
+            popupVC.modalTransitionStyle = .crossDissolve
+            popupVC.delegate = self
+            popupVC.isPopUpFromHomeScreen = true
+            present(popupVC, animated: true, completion: nil)
+        }
+    }
 }

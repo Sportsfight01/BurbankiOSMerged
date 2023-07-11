@@ -67,6 +67,7 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_LIGHT (size: FONT_20))
         setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_BODY (size: FONT_10))
         setStatusBarColor(color: AppColors.AppGray)
+        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Congratualtions on the completion of your new Burbank home. (\(appDelegate.currentUser?.jobNumber ?? ""))", rangeStrings: ["Congratualtions on the completion of your new Burbank home. ", "(\(appDelegate.currentUser?.jobNumber ?? ""))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_10), FONT_LABEL_BODY (size: FONT_11)], alignmentCenter: false)
     }
     
 
@@ -94,6 +95,8 @@ extension HomeCareDashBoardVC : UICollectionViewDelegate,UICollectionViewDataSou
         cell.detailViewDescriptionLBL.text = dashBoardDataArr[indexPath.item].description
         cell.detailViewBTN.tag = indexPath.item
         cell.detailViewBTN.addTarget(self, action: #selector(didTappedOnDetailsBTN), for: .touchUpInside)
+        setAttributetitleFor(view: cell.detailViewDescriptionLBL, title: "Introduction on how to use the app. Lorem ipsum dolor sit amet, consectetuer adipiscing elitsed", rangeStrings: ["Introduction on how to use the app. Lorem ipsum dolor sit amet, consectetuer adipiscing elitsed"], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY (size: FONT_12)], alignmentCenter: false)
+        
         return cell
     }
     
@@ -116,13 +119,32 @@ extension HomeCareDashBoardVC : UICollectionViewDelegate,UICollectionViewDataSou
 
 
 
-extension HomeCareDashBoardVC{
+extension HomeCareDashBoardVC: didTappedOncomplete {
+    
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
         let vc = HomeScreenTabBarVC.instace(sb: .homeScreenSb)
         vc.selectedTab = item.tag
         self.navigationController?.pushViewController(vc, animated: true)
         
-       }
+        
+        if item.tag == 3{
+            let storyboard : UIStoryboard = UIStoryboard(name: "Report", bundle: nil)
+            let popupVC = storyboard.instantiateViewController(withIdentifier: "CompleteAndLodgePopUPVC") as! CompleteAndLodgePopUPVC
+            popupVC.modalPresentationStyle = .overCurrentContext
+            popupVC.modalTransitionStyle = .crossDissolve
+            popupVC.delegate = self
+            popupVC.isPopUpFromHomeScreen = true
+            present(popupVC, animated: true, completion: nil)
+        }
+          
+    }
+    
+    
+    func didTappedOnCompleteAndLodgeBTN() {
+        print(log: "close")
+    }
 }
 
 

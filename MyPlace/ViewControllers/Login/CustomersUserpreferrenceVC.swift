@@ -24,12 +24,22 @@ class CustomersUserpreferrenceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if userData != nil{
-            self.jobnNumberBTN.setTitle("  \(userData.jobNumber ?? "")", for: .normal)
+        
+        setupUI()
+       
+        
+    }
+    
+    func setupUI(){
+        
+        if let selectedJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String{
+            self.jobnNumberBTN.setTitle("  \(selectedJobNum )", for: .normal)
         }else{
             self.jobnNumberBTN.setTitle("  \(appDelegate.currentUser?.jobNumber ?? "")", for: .normal)
         }
-        // Do any additional setup after loading the view.
+        
+        setupMultipleJobVc()
+        nameLBL.text = appDelegate.currentUser?.userDetailsArray?.first?.firstName ?? ""
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -76,8 +86,12 @@ class CustomersUserpreferrenceVC: UIViewController {
                     UserDefaults.standard.set(selectedJobNumber, forKey: "selectedJobNumber")
                     self?.tabBarController?.tabBar.isUserInteractionEnabled = true
                     self?.jobnNumberBTN.setTitle("  \(selectedJobNumber )", for: .normal)
+                    CurrentUser.jobNumber = selectedJobNumber
+
                 }
                 self.present(vc, animated: true)
+        }else{
+            CurrentUser.jobNumber = appDelegate.currentUser?.jobNumber
         }
     }
     

@@ -76,6 +76,7 @@ class MenuViewController: UIViewController {
     }
     @IBAction func didTappedOnChangePhse(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        
        let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
         self.navigationController?.pushViewController(vc, animated: true)
     }
