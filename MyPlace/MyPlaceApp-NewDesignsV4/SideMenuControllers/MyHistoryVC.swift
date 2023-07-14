@@ -151,18 +151,20 @@ struct MyNotesStruct : Codable, Hashable
     
     var authorname : String?
     var body : String?
+    var createdInMyHome : Bool?
     var notedate : String?
     var noteId : Int?
     var replies : [MyNotesStruct]?
     var replyTo : ReplyTo?
     var subject : String?
     var byclient : Bool?
+    var isFromAdmin : Bool = false
     var conversations : Conversations?
     
     enum CodingKeys : String, CodingKey
     {
         case authorname = "unknownAuthor"
-        case body, noteId, replies, replyTo, subject, byclient,conversations
+        case body, noteId, replies, replyTo, subject, byclient,conversations,createdInMyHome
         case notedate = "activityDate"
         
     }

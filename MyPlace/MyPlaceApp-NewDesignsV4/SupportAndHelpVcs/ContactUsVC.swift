@@ -211,9 +211,15 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 note.replies = replies
             }
             // - replies from portal get added to conversation key. so add it to replies if this key present in json
-            if let conversations = item.conversations
+            if let conversations = item.conversations // admin conversations
             {
-                note.replies?.append(contentsOf: conversations.list ?? [])
+                let adminReplies = conversations.list?.map({ reply in
+                    var adminReply = reply
+                    adminReply.isFromAdmin = true
+                    return adminReply
+                })
+                
+                note.replies?.append(contentsOf: adminReplies ?? [])
             }
             note.replies = note.replies?.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
             tempDataSource.append(note)

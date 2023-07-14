@@ -32,12 +32,29 @@ class ContactUsTVC: UITableViewCell {
     func setup(model : MyNotesStruct?)
     {
         guard let model else {return}
-       
-        authorNameLb.text = model.authorname ?? "--"
+        let authorValue = (model.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : model.authorname ?? "--"
+        let subject = "\(model.subject?.trim() ?? "--")"
+        let body = "\(model.body?.trim() ?? "--")"
+
+        authorNameLb.text = authorValue
+        subjectLb.text = subject
+        bodyLb.text = body
+        bodyLb.numberOfLines = 1
+        
+//        let author = "Author - \(authorValue)"
+//        let attAuthor = setAttributetitleFor(view: authorNameLb, title: author, rangeStrings: ["Author -",authorValue], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG], fonts: [mediumFontWith(size: 14.0),mediumFontWith(size: 14.0)], alignmentCenter: false)
+//        authorNameLb.attributedText = attAuthor
+//        authorNameLb.text = "Author - \(model.authorname ?? " ")"
         // - not getting 'unknownAuthor' key for all the records. So replacing this value with userdetails fullName from getUserDetails api data
-       // authorNameLb.text = appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--"
-        subjectLb.text = (model.subject?.trim() ?? "--") + " (\(model.noteId ?? 0))"
-        bodyLb.text = model.body?.trim() ?? "--"
+        
+//        let attSubject = setAttributetitleFor(view: subjectLb, title: subject, rangeStrings: ["Subject -",model.subject?.trim() ?? " "], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG], fonts: [mediumFontWith(size: 14.0),mediumFontWith(size: 14.0)], alignmentCenter: false)
+//        subjectLb.attributedText = attSubject
+     
+      //  subjectLb.text = "MyPlace App Message - \(model.subject?.trim() ?? "--")"
+        
+//        let attBody = setAttributetitleFor(view: bodyLb, title: body, rangeStrings: ["MyPlace App Message - ",model.body?.trim() ?? " "], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG], fonts: [mediumFontWith(size: 14.0),mediumFontWith(size: 14.0)], alignmentCenter: false)
+    
+        
         if let noteId = model.noteId
         {
             let jobNum = CurrentUser.jobNumber ?? ""

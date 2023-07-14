@@ -14,6 +14,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
      //MARK: - Properties
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var authorLb: UILabel!
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var inboxButton: UIButton!
     
@@ -93,7 +94,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         
     }
 
-     //MARK: - HelperMethods
+     //MARK: - TableView Diffable Datasource
     func applySnapShot()
     {
         var animation : Bool = false
@@ -134,9 +135,9 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     func showData(){
         
-        subjectLBL.text =  "Subject: \(self.contactDetails?.subject ?? "") (\(self.contactDetails?.noteId ?? 0))"
-        //toLBL.text = "To : \(self.contactDetails?.authorname ?? "")"
-       // fromLBL.text =  "From : " + (appDelegate.currentUser?.userDetailsArray?[0].fullName)!
+        subjectLBL.text =  "MyPlace App Message: \(self.contactDetails?.subject ?? "") (\(self.contactDetails?.noteId ?? 0))"
+        let authorValue = (self.contactDetails?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : self.contactDetails?.authorname ?? " "
+        authorLb.text = "\(authorValue)"
         descriptionLb.text = self.contactDetails?.body ?? ""
         self.tableDataSource = contactDetails?.replies //All replies
         setupUI()
@@ -220,7 +221,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 }
 
 
-//MARK: - Tableview Delegate & Datasource
+//MARK: - Tableview Delegate
 extension ContactUsDetailsVC : UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

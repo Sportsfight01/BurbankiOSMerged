@@ -6,6 +6,8 @@
 //  Copyright © 2021 DMSS. All rights reserved.
 //
 
+
+
 import UIKit
 import Alamofire
 import SideMenu
@@ -45,12 +47,13 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
     var cellSpacing = (1/16) * UIScreen.main.bounds.width
- 
+    var vm = MyProgressVM()
     //MARK: - LifeCycleMethods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMultipleJobVc()
         setupTitles()
+        vm.getProgressData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -217,6 +220,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
             CLItem(title: "Fixing Stage", imageName: "icon_Fixout",detailText: "All the internal design features will now be fitted into your home."),
             CLItem(title: "Finishing Stage", imageName: "icon_Complete", detailText: "As the name suggests, we’re almost there.")
         ]
+        
     }
     
     
@@ -224,8 +228,6 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
     func setupProgressDetails(progressData : [ProgressStruct])
     {
         var stagesDictionary : [StageName : [ProgressStruct]] = [:]
-        
-        
         for item in progressData
         {
             if item.phasecode == "Presite" // AdminStage
@@ -281,7 +283,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
                 }
             }
         }
-        
+    
         for key in stagesDictionary.keys
         {
             let completedTasks = stagesDictionary[key]?.filter({$0.status == "Completed"}).count //completed tasks count in particular stage(ex: BaseStage 11/13 tasks completed)
