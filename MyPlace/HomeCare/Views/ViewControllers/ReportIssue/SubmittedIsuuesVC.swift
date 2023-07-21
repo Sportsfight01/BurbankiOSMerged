@@ -56,7 +56,7 @@ class SubmittedIsuuesVC: HomeCareBaseProfileVC{
     
     
     @IBAction func didTappedOnReportOtherIsuues(_ sender: UIButton) {
-        let vc = LogIssueVC.instace(sb: .reports)
+        let vc = LoggedissuesVC.instace(sb: .reports)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -79,6 +79,7 @@ extension SubmittedIsuuesVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCareIssueStatusTVC", for: indexPath) as! HomeCareIssueStatusTVC
         cell.statusLBL.textColor = APPCOLORS_3.Orange_BG
+        cell.statusLBL.isHidden = true
         return cell
     }
     

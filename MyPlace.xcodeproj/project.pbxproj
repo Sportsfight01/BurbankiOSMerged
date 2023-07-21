@@ -297,6 +297,7 @@
 		A1659B52292F4A4500C36B3B /* MenuCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */; };
 		A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */; };
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
+		A18C7D092A5FBC3B008095E1 /* BurbankVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A18C7D082A5FBC3B008095E1 /* BurbankVideo.mp4 */; };
 		A18F34952A30829800C44822 /* LoggedissuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34942A30829800C44822 /* LoggedissuesVC.swift */; };
 		A18F34972A3082DB00C44822 /* PreviewEditIssuesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */; };
 		A19BE1282A4958300071063E /* HomeCareIssueStatusTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BE1262A4958300071063E /* HomeCareIssueStatusTVC.swift */; };
@@ -814,6 +815,7 @@
 		A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCVCell.swift; sourceTree = "<group>"; };
 		A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOptionsCVCell.swift; sourceTree = "<group>"; };
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		A18C7D082A5FBC3B008095E1 /* BurbankVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = BurbankVideo.mp4; sourceTree = "<group>"; };
 		A18F34942A30829800C44822 /* LoggedissuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedissuesVC.swift; sourceTree = "<group>"; };
 		A18F34962A3082DB00C44822 /* PreviewEditIssuesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewEditIssuesVC.swift; sourceTree = "<group>"; };
 		A19BE1262A4958300071063E /* HomeCareIssueStatusTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareIssueStatusTVC.swift; sourceTree = "<group>"; };
@@ -1113,6 +1115,7 @@
 			isa = PBXGroup;
 			children = (
 				426ACA652A24AA60001317EF /* HomaeCareAssets.xcassets */,
+				A18C7D082A5FBC3B008095E1 /* BurbankVideo.mp4 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2678,6 +2681,7 @@
 				D16FE4662428EF6F0082DECF /* Proxima Nova Extra Condensed Regular.otf in Resources */,
 				D16FE4762428EF6F0082DECF /* Proxima Nova Light Italic.otf in Resources */,
 				426ACA722A24AA60001317EF /* HomeCareMain.storyboard in Resources */,
+				A18C7D092A5FBC3B008095E1 /* BurbankVideo.mp4 in Resources */,
 				A1659AD2292F4A4500C36B3B /* CommonOLD.xcassets in Resources */,
 				A1659ABC292F4A4400C36B3B /* Privacy Policy.html in Resources */,
 				ED8E040825384E39000FCFED /* GoogleService-MyPlace-burbank-Info.plist in Resources */,
@@ -3526,7 +3530,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3563,7 +3567,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = 4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

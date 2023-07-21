@@ -10,6 +10,7 @@ import UIKit
 
 class HomeCareIssueStatusTVC: UITableViewCell {
 
+    @IBOutlet weak var statusLBLRight: UILabel!
     @IBOutlet weak var statusCOLORLBL: UILabel!
     @IBOutlet weak var statusLBL: UILabel!
     @IBOutlet weak var statusdetailsLBL: UILabel!

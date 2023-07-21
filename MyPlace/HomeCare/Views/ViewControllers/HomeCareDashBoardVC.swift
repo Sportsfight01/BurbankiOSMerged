@@ -24,7 +24,6 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
    
     var dashBoardDataArr : [HomeCareDashBoard] = []
 //    var menu : SideMenuNavigationController!
-    var imagesArr = ["welcome","welcome","welcome","welcome","welcome","welcome"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +42,9 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
 
     func setupDataArr(){
         self.dashBoardDataArr.removeAll()
-        self.dashBoardDataArr = [HomeCareDashBoard(title: "WelCome", description: "Introduction on how to use the app. Lorem ipsum dolor sit amet, consectetuer adipiscing elitsed", image: "welcome")        ]
+        self.dashBoardDataArr = [HomeCareDashBoard(title: "Welcome", description: "Introduction on how to use the app. Lorem ipsum dolor sit amet, consectetuer adipiscing elitsed", image: "welcome")        ]
         self.collectionView.reloadData()
+        self.collectionView.isScrollEnabled = false
     }
 
     @IBAction func didTappedOnDetailsBTN(_ sender: UIButton) {
@@ -64,10 +64,10 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
         profileBaseView.titleLBL.text = "MyHomeCare"
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         tabBar.tintColor = .gray
-        setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_LIGHT (size: FONT_20))
-        setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_BUTTON_BODY (size: FONT_10))
+        setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_22))
+        setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_10))
         setStatusBarColor(color: AppColors.AppGray)
-        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Congratualtions on the completion of your new Burbank home. (\(CurrentUser.jobNumber ?? ""))", rangeStrings: ["Congratualtions on the completion of your new Burbank home. ", "(\(CurrentUser.jobNumber ?? ""))"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_10), FONT_LABEL_SEMI_BOLD (size: FONT_11)], alignmentCenter: false)
+        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Congratulations on the completion of your new Burbank home \(CurrentUser.jobNumber ?? "").", rangeStrings: ["Congratulations on the completion of your new Burbank home ", "\(CurrentUser.jobNumber ?? "")."], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_9), FONT_LABEL_SEMI_BOLD (size: FONT_9)], alignmentCenter: false)
     }
     
 

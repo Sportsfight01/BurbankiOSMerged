@@ -11,18 +11,18 @@ class ImagePickerCollectionView : UIView
     //MARK: - Propeties
 
     var imagesSelectionClosure : ((_ count : Int)->())?
-    var collectionDataSource : [UIImage] = []
+    var collectionDataSource : [UIImage?] = [UIImage?](repeating: nil, count: 6)
     {
         didSet {
-            collectionView.reloadSections([0])
+            collectionView.reloadData()
             imagesSelectionClosure?(collectionDataSource.count)
         }
     }
-    var maxPhotosCount : Int?
+    var maxPhotosCount : Int = 0
     private var collectionView : UICollectionView!
    // private lazy var dataSource : UICollectionViewDiffableDataSource<Int,UIImage> = makeDataSource()
      //MARK: - Life Cycle
-    
+    var isDeleteEnabled : Bool = false
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -50,7 +50,7 @@ class ImagePickerCollectionView : UIView
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
+//        collectionView.showsHorizontalScrollIndicator = true
         self.addSubview(collectionView)
         
         ///LayoutSetup
@@ -81,12 +81,12 @@ class ImagePickerCollectionView : UIView
     //MARK: - Camera & Photo Album Options
     func showOptions()
     {
-        if let maxPhotosCount
+        if collectionDataSource.compactMap({$0}).count >= maxPhotosCount
         {
-            if collectionDataSource.count == maxPhotosCount {
+//            if collectionDataSource.count == maxPhotosCount {
                  showAlert("maximum photos selected")
                  return
-            }
+//            }
         }
         let actionSheet = UIAlertController(title: "Choose Option", message: nil, preferredStyle : .actionSheet)
         let camera = UIAlertAction(title: "Camera", style: .default) { [weak self] action in
@@ -114,6 +114,10 @@ class ImagePickerCollectionView : UIView
      //MARK: - Camera Options
     private func openCamera()
     {
+        if  collectionDataSource.filter({$0 == nil}).count == 0{
+            showAlert("maximum photos selected")
+            return
+        }
         let imageController = UIImagePickerController()
         imageController.sourceType = .camera
         if UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -134,9 +138,9 @@ class ImagePickerCollectionView : UIView
     private func openPhotoAlbum()
     {
         var photoConfig = PHPickerConfiguration()
-        if let maxPhotosCount {
-            photoConfig.selectionLimit = maxPhotosCount - collectionDataSource.count
-        }
+//        if let maxPhotosCount {
+            photoConfig.selectionLimit =  collectionDataSource.filter({$0 == nil}).count
+//        }
         photoConfig.filter = .images
         if #available(iOS 15.0, *) {
             photoConfig.selection = .ordered
@@ -155,7 +159,8 @@ extension ImagePickerCollectionView: UIImagePickerControllerDelegate, UINavigati
         picker.dismiss(animated: true)
         if let image = info[.originalImage] as? UIImage
         {
-            collectionDataSource.append(image)
+            let index = collectionDataSource.firstIndex(where: {$0 == nil})
+            collectionDataSource[index!] = image
         }
     }
 }
@@ -170,12 +175,13 @@ extension ImagePickerCollectionView : PHPickerViewControllerDelegate
             .filter { $0.canLoadObject(ofClass: UIImage.self) } // filter for possible UIImages
         
         let dispatchGroup = DispatchGroup()
-        var images = [UIImage]()
+        var images = [UIImage?]()
         for imageItem in imageItems {
             dispatchGroup.enter() // signal IN
             imageItem.loadObject(ofClass: UIImage.self) { image, _ in
                 if let image = image as? UIImage {
                     images.append(image)
+                    
                 }
                 dispatchGroup.leave() // signal OUT
             }
@@ -185,7 +191,14 @@ extension ImagePickerCollectionView : PHPickerViewControllerDelegate
             #if DEBUG
             debugPrint(images.count)
             #endif
-            self.collectionDataSource.append(contentsOf: images)
+            if images.count <= 0{
+                return
+            }
+            guard let index : Int = self.collectionDataSource.firstIndex(where: {$0 == nil}) else { return }
+            
+            self.collectionDataSource[index...(index + images.count - 1)] = images[images.indices]
+           
+//            self.collectionDataSource.append(contentsOf: images)
             
         }
     }
@@ -202,7 +215,17 @@ extension ImagePickerCollectionView:  UICollectionViewDataSource, UICollectionVi
 
         if #available(iOS 14.0, *) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
-            cell.imageView.image = collectionDataSource[indexPath.item]
+            if collectionDataSource[indexPath.item] == nil{
+                cell.imageView.image = UIImage(named: "imageAdd")?.withTintColor(APPCOLORS_3.GreyTextFont, renderingMode: .alwaysTemplate)
+                cell.imageView.tintColor = APPCOLORS_3.GreyTextFont
+                cell.deleteImgBTN.isHidden = true
+            }else{
+                cell.imageView.image = collectionDataSource[indexPath.item]
+                cell.deleteImgBTN.isHidden = false
+            }
+            if isDeleteEnabled{
+                cell.deleteImgBTN.isHidden = true
+            }
             return cell
         } else {
             // Fallback on earlier versions
@@ -211,13 +234,21 @@ extension ImagePickerCollectionView:  UICollectionViewDataSource, UICollectionVi
 
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isDeleteEnabled || collectionDataSource[indexPath.item] == nil {
+            maxPhotosCount = 6
+            showOptions()
+            return 
+        }
         let alertVc = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        alertVc.addImage(image: collectionDataSource[indexPath.item])
+        
+        alertVc.addImage(image: collectionDataSource[indexPath.item]!)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
             #if DEBUG
             debugPrint("Delete tapped")
             #endif
             self.collectionDataSource.remove(at: indexPath.item)
+            self.collectionDataSource.append(nil)
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         cancelAction.setValue(UIColor.systemBlue, forKey: "titleTextColor")
@@ -254,13 +285,14 @@ class ImageCell : UICollectionViewCell
         
         ])
         ///Delete Button
-        let closeIcon = UIImage(systemName: "xmark.circle.fill")
+//        let closeIcon = UIImage(systemName: "xmark.circle.fill")
+        let closeIcon = UIImage(named: "Ico-Remove")
         deleteImgBTN = UIImageView(image: closeIcon)
         deleteImgBTN.tintColor = .orange
         self.contentView.addSubview(deleteImgBTN)
         deleteImgBTN.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            deleteImgBTN.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 1),
+            deleteImgBTN.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0),
             deleteImgBTN.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -1),
             deleteImgBTN.heightAnchor.constraint(equalToConstant: 15),
             deleteImgBTN.widthAnchor.constraint(equalToConstant: 15)

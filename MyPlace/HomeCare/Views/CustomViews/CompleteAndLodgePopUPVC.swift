@@ -38,19 +38,28 @@ class CompleteAndLodgePopUPVC: UIViewController {
     func setUpUI(){
         if isPopUpFromHomeScreen{
             titleLBL.text = "FOR EMERGENCY REPAIRS"
-            descriptionLBL.text = "For urgent repairs such as flooding, weatherproofing, electrical failures etc, Please call 13 2872 to get immediate action."
+//            descriptionLBL.text = "For urgent repairs such as flooding, weatherproofing, electrical failures etc, Please call 13 2872 to get immediate action."
+           
+            setAttributetitleFor(view: descriptionLBL, title: "For urgent repairs such as flooding, weather proofing, electrical failures etc, Please call 13 2872 to get immediate action.", rangeStrings: ["For urgent repairs such as flooding, weather proofing, electrical failures etc, Please call ", "13 2872 ", "to get immediate action."], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY (size: FONT_10), FONT_LABEL_SEMI_BOLD (size: FONT_10),FONT_LABEL_BODY (size: FONT_10)], alignmentCenter: false)
+            
             addMoreIssueBTN.isHidden =  true
             checkBoxBTN.isHidden =  true
             conditionLBL.isHidden =  true
-            completeAndLodgeBTN.setTitle("Dismiss", for: .normal)
+            completeAndLodgeBTN.setTitle("DISMISS", for: .normal)
         }else{
             titleLBL.text = "IMPORTANT INFORMATION"
-            descriptionLBL.text = "Your warranty issues must be logged including all issues you need to be action.DO NOT LODGE if you have more issues to add. If you have questions about this, please call our Home Care team on 13 2872"
+//            descriptionLBL.text = "Your warranty issues must be logged including all issues you need to be action.DO NOT LODGE if you have more issues to add. If you have questions about this, please call our Home Care team on 13 2872"
+            
+            setAttributetitleFor(view: descriptionLBL, title: "Your warranty issues must be logged including all issues you need to be action. DO NOT LODGE if you have more issues to add. If you have questions about this, please call our Home Care team on 13 2872", rangeStrings: ["Your warranty issues must be logged including all issues you need to be action. ","DO NOT LODGE"," if you have more issues to add. If you have questions about this, please call our Home Care team on ", "13 2872"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY (size: FONT_10), FONT_LABEL_SEMI_BOLD (size: FONT_10),FONT_LABEL_BODY (size: FONT_10),FONT_LABEL_SEMI_BOLD (size: FONT_10)], alignmentCenter: false)
+            
+            
             addMoreIssueBTN.isHidden =  false
             checkBoxBTN.isHidden =  false
             conditionLBL.isHidden =  false
             completeAndLodgeBTN.setTitle("COMPLETE & LODGE", for: .normal)
         }
+        
+        descriptionLBL.numberOfLines = 0
     }
     
     @IBAction func didTappedOnAddMoreIssues(_ sender: Any) {
@@ -61,6 +70,12 @@ class CompleteAndLodgePopUPVC: UIViewController {
     }
     @IBAction func didTappedOnCheckBox(_ sender: UIButton) {
         sender.isSelected.toggle()
+        if sender.isSelected{
+            sender.tintColor = APPCOLORS_3.EnabledOrange_BG
+        }else{
+            sender.tintColor = APPCOLORS_3.GreyTextFont
+        }
+        
     }
     
     @IBAction func didTappedOnCompleteAndLodge(_ sender: UIButton) {

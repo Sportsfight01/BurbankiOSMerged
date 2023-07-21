@@ -8,17 +8,23 @@
 
 import UIKit
 import PhotosUI
+import GrowingTextView
 
 class LogIssueVC: UIViewController {
+    
+    //MARK: - Properties
+    
+    @IBOutlet weak var titleOfIssueTF: UITextField!
+    @IBOutlet weak var roomInHouseTF : UITextField!
+    @IBOutlet weak var detailsTF     : GrowingTextView!
+    
+    
     
     @IBOutlet weak var logIssueBTN: UIButton!
     @IBOutlet weak var saveEditBTN: UIButton!
     @IBOutlet weak var deleteBTN: UIButton!
     @IBOutlet weak var cancelBTN: UIButton!
-    
     @IBOutlet weak var newIssueLBL: UILabel!
-    
-    //MARK: - Properties
     @IBOutlet weak var addImagesView: UIView!
     @IBOutlet weak var TopFlagView: UIView!
     
@@ -34,9 +40,7 @@ class LogIssueVC: UIViewController {
         } else {
             // Fallback on earlier versions
         }
-        setUpUI()
-       
-    
+        setUpUI()    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,23 +55,29 @@ class LogIssueVC: UIViewController {
     {
         imagesPickerColectionView.maxPhotosCount = 6 // max 6 can be selecteed
         imagesPickerColectionView.showOptions()
-        imagesPickerColectionView.imagesSelectionClosure = { [weak self] photosCount in
-            self?.imagesPickerColectionView.isHidden = photosCount > 0 ? false : true
-            UIView.animate(withDuration: 0.250, delay: 0) {
-                self?.view.layoutIfNeeded()
-            }
-        }
+//        imagesPickerColectionView.imagesSelectionClosure = { [weak self] photosCount in
+//            self?.imagesPickerColectionView.isHidden = photosCount > 0 ? false : true
+//            UIView.animate(withDuration: 0.250, delay: 0) {
+//                self?.view.layoutIfNeeded()
+//            }
+//        }
         
     }
     
 
     func setUpUI(){
-        imagesPickerColectionView.isHidden = true
         if isEditIssueScreen{
             [logIssueBTN].forEach({$0?.isHidden = true})
             self.newIssueLBL.text = "EDIT ISSUE"
+            titleOfIssueTF.text = "Hall"
+            roomInHouseTF.text  = "3"
+            detailsTF.text      = "Can’t stop the tap from dripping in the master bedroom, Has been running for a few days now and wasting. a lot of water. Concerned about water bills and flooding if something else goes wrong."
+            
         }else{
             [saveEditBTN,deleteBTN,cancelBTN].forEach({$0?.isHidden = true})
+            titleOfIssueTF.text = ""
+            roomInHouseTF.text  = ""
+            detailsTF.text      = ""
         }
     }
     
@@ -83,7 +93,14 @@ class LogIssueVC: UIViewController {
             self.navigationController?.popViewController(animated: true)
         case 3:
             print("Delete issues")
-            self.navigationController?.popViewController(animated: true)
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: LoggedissuesVC.self) {
+                    self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+            
+//            self.navigationController?.popToViewController(<#T##UIViewController#>, animated: <#T##Bool#>)
         case 4:
             print("Cancel")
             self.navigationController?.popViewController(animated: true)

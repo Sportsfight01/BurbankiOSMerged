@@ -91,19 +91,20 @@ class CustomersUserpreferrenceVC: UIViewController {
                 }
                 self.present(vc, animated: true)
         }else{
+            self.jobnNumberBTN.isEnabled = false
             CurrentUser.jobNumber = appDelegate.currentUser?.jobNumber
         }
     }
     
     @IBAction func didTappedOnHomeCare(_ sender: UIButton) {
-        let isLoggedIssueCompleted = UserDefaults.standard.string(forKey: "issueLoged")
-        if isLoggedIssueCompleted == "1"{
-            CodeManager.sharedInstance.handleLoggedUserHomecare(user: appDelegate.currentUser!, In: self)
-            UserDefaults.standard.set("0", forKey: "issueLoged")
-            
-        }else{
+//        let isLoggedIssueCompleted = UserDefaults.standard.string(forKey: "issueLoged")
+//        if isLoggedIssueCompleted == "1"{
+//            CodeManager.sharedInstance.handleUserHomecareModule(user: appDelegate.currentUser!, In: self)
+//            UserDefaults.standard.set("0", forKey: "issueLoged")
+//
+//        }else{
             CodeManager.sharedInstance.handleUserHomecareModule(user: appDelegate.currentUser!, In: self)
-        }
+//        }
         
         
     }

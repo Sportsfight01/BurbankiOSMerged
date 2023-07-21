@@ -49,7 +49,9 @@ extension SubmittedIssueListVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCareIssueStatusTVC", for: indexPath) as! HomeCareIssueStatusTVC
         cell.statusLBL.textColor = APPCOLORS_3.Orange_BG
+        cell.issueTypeimage.image = UIImage(named: "Ico-SearchCircle")
         cell.statusdetailsLBL.text = ""
+        cell.statusLBLRight.isHidden = true
         return cell
     }
     

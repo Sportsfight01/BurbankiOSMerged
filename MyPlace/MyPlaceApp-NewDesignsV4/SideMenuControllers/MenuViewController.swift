@@ -116,11 +116,11 @@ class MenuViewController: UIViewController {
             let yourHomeBuild = "Home Care \(CurrentUser.jobNumber ?? "")"
             setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Home Care" , "\(CurrentUser.jobNumber ?? "")"], colors: [.white,APPCOLORS_3.Orange_BG,], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_10),FONT_LABEL_SEMI_BOLD(size: FONT_10)], alignmentCenter: false)
             
-            changePhaseBTN.isHidden = false
-            chanePhaseUnderline.isHidden = false
+//            changePhaseBTN.isHidden = false
+//            chanePhaseUnderline.isHidden = false
         }else{
-            changePhaseBTN.isHidden = true
-            chanePhaseUnderline.isHidden = true
+//            changePhaseBTN.isHidden = true
+//            chanePhaseUnderline.isHidden = true
         }
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)

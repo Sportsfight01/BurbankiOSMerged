@@ -29,6 +29,11 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
         profileBaseView.contentView.backgroundColor = AppColors.AppGray
         profileBaseView.navigationView.backgroundColor = AppColors.AppGray
         profileBaseView.titleLBL.text = "Report Issue"
+        profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")
+
+        
+        setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_22))
+        setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "All the guides to the great appliances and services in your new home \(CurrentUser.jobNumber ?? "").", rangeStrings: ["All the guides to the great appliances and services in your new home ", "\(CurrentUser.jobNumber ?? "")."], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_9), FONT_LABEL_SEMI_BOLD (size: FONT_9)], alignmentCenter: false)
         //addScrollView()
     }
     

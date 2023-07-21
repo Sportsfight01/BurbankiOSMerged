@@ -17,6 +17,9 @@ class SubmittedIssueDetailsVC: UIViewController {
     }
     
 
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBarButtons()
+    }
     @IBAction func didTappedOnViewAllIssues(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
