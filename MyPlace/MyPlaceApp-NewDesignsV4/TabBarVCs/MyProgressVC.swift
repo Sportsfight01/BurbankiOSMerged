@@ -9,8 +9,6 @@
 
 
 import UIKit
-import Alamofire
-import SideMenu
 import SkeletonView
 
 enum StageName : String {
@@ -47,13 +45,13 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
     var cellWidth = (3/4) * UIScreen.main.bounds.width
     var spacing = (1/8) * UIScreen.main.bounds.width
     var cellSpacing = (1/16) * UIScreen.main.bounds.width
-    var vm = MyProgressVM()
+  //  var vm = MyProgressVM()
     //MARK: - LifeCycleMethods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMultipleJobVc()
         setupTitles()
-        vm.getProgressData()
+       // vm.getProgressData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +117,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         
         let myplaceDetailsArray = appDelegate.currentUser?.userDetailsArray?.first?.myPlaceDetailsArray
         //*** Users With Multiple Job Numbers ***//
+        guard myplaceDetailsArray?.isEmpty == false else { return }
         if (myplaceDetailsArray?.count ?? 0) > 1
         {// user has multiple job numbers
             let selectedJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String
@@ -326,6 +325,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100).rounded(.toNearestOrAwayFromZero))
         
         let newClItem = CLItem(title: "Your New Home", imageName: "icon_house", progress: CGFloat(Double(totalHomeProgressPercentage)/100.0), progressDetails: nil)
+        // - add Your new home in first place only when it is not present in list
         if !clItems.contains(where: {$0.title == "Your New Home" }){
             print("Added your new home")
             clItems.insert(newClItem, at: 0)
@@ -349,6 +349,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
     
     func getProgressDetails()
     {
+        
         
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
         self.collectionView.showAnimatedGradientSkeleton()

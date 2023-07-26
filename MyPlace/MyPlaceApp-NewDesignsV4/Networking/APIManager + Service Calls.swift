@@ -35,7 +35,7 @@ class APIManager{
     private init() { self.getJobNumberAndAuthorization()}
     
 
-    func getProgressDetails(showActivity : Bool = false, onSuccess : (([ProgressStruct])->())?)
+    func getProgressDetails(showActivity : Bool = false, completion : ((Result<[ProgressStruct],APIError>)->())?)
     {
         guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
         let auth = APIManager.shared.getJobNumberAndAuthorization().auth
@@ -51,7 +51,7 @@ class APIManager{
                 let requiredProgressData = data.filter {
                    requiredStages.contains($0.stageName?.lowercased() ?? "") || $0.phasecode?.lc.contains("presite") ?? false
                 }
-                onSuccess?(requiredProgressData)
+                completion?(.success(requiredProgressData))
             case .failure(let err):
                 #if DEBUG
                 debugPrint("ERROR OCCURED")
@@ -59,6 +59,7 @@ class APIManager{
                 DispatchQueue.main.async {
                     AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
                 }
+                completion?(.failure(.other(err: err.localizedDescription)))
             }
         }
     }

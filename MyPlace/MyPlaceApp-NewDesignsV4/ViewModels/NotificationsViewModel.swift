@@ -37,25 +37,32 @@ class NotificationsViewModel
             let group = DispatchGroup()
 
                 group.enter()
-                APIManager.shared.getProgressDetails { progressArray in
+                APIManager.shared.getProgressDetails { result in
                     defer { group.leave() }
-                    let serviceCompletedStages = progressArray.filter({$0.status?.lc == "completed"})
-                    let localCompletedStages = LocalStorageNotifications.filter({$0.isPhoto == false})
-                    //add new progress data came from service
-                    if serviceCompletedStages.count > localCompletedStages.count
+                    switch result
                     {
-                        //Looping through every stages
-                        for serviceItem in serviceCompletedStages {
-                            if localCompletedStages.contains(where: { $0.taskName == serviceItem.name }) { continue }
-                            self.createAndAddRealmObject(
-                                taskName: serviceItem.name ?? "--",
-                                taskId: serviceItem.taskid ?? 0,
-                                photoURL: nil, date: serviceItem.date,
-                                isPhoto: false, stageName: serviceItem.stageName)
+                    case .success(let progressArray):
+                        let serviceCompletedStages = progressArray.filter({$0.status?.lc == "completed"})
+                        let localCompletedStages = LocalStorageNotifications.filter({$0.isPhoto == false})
+                        //add new progress data came from service
+                        if serviceCompletedStages.count > localCompletedStages.count
+                        {
+                            //Looping through every stages
+                            for serviceItem in serviceCompletedStages {
+                                if localCompletedStages.contains(where: { $0.taskName == serviceItem.name }) { continue }
+                                self.createAndAddRealmObject(
+                                    taskName: serviceItem.name ?? "--",
+                                    taskId: serviceItem.taskid ?? 0,
+                                    photoURL: nil, date: serviceItem.date,
+                                    isPhoto: false, stageName: serviceItem.stageName)
+                                
+                            }
                             
-                        }
-                        
-                }
+                    }
+                    case .failure(let err):
+                        debugPrint(err.localizedDescription)
+                    }
+         
             }
                 //add photos
                 group.enter()

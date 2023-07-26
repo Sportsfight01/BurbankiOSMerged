@@ -110,7 +110,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     }
     func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
     {
-        let dataSource = UITableViewDiffableDataSource<Int, MyNotesStruct>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+        let dataSource = UITableViewDiffableDataSource<Int, MyNotesStruct>(tableView: tableView) {[weak self] tableView, indexPath, itemIdentifier in
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContactUsReplyTBCell
             cell.setup(model: itemIdentifier)
 
@@ -135,8 +135,8 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     func showData(){
         
-        subjectLBL.text =  "MyPlace App Message: \(self.contactDetails?.subject ?? "") (\(self.contactDetails?.noteId ?? 0))"
-        let authorValue = (self.contactDetails?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : self.contactDetails?.authorname ?? " "
+        subjectLBL.text =  "\(self.contactDetails?.subject ?? "") (\(self.contactDetails?.noteId ?? 0))"
+        let authorValue = (self.contactDetails?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? " " : self.contactDetails?.authorname ?? " "
         authorLb.text = "\(authorValue)"
         descriptionLb.text = self.contactDetails?.body ?? ""
         self.tableDataSource = contactDetails?.replies //All replies

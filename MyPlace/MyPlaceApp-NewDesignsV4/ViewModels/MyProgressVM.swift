@@ -9,35 +9,44 @@
 import Foundation
 class MyProgressVM
 {
-    func getProgressData()
+    func getProgressData(completion : @escaping(Result<[ProgressItem],Error>)->())
     {
-        APIManager.shared.getProgressDetails { progressData in            
-            /// - Grouping the data with stages
-            let stageGroup = Dictionary(grouping: progressData) { pr in
-                if pr.phasecode == "Presite" { return "Admin Stage" }
-                else if pr.stageName == "Completion" || pr.stageName == "Handover" { return "Finishing Stage"}
-                else if pr.stageName == "Fixout Stage" { return "Fixing Stage" }
-                return pr.stageName?.capitalized ?? "none"
+        APIManager.shared.getProgressDetails { result in
+            switch result
+            {
+            case .success(let progressData):
+                /// - Grouping the data with stages
+                let stageGroup = Dictionary(grouping: progressData) { pr in
+                    if pr.phasecode == "Presite" { return "Admin Stage" }
+                    else if pr.stageName == "Completion" || pr.stageName == "Handover" { return "Finishing Stage"}
+                    else if pr.stageName == "Fixout Stage" { return "Fixing Stage" }
+                    return pr.stageName?.capitalized ?? "none"
+                }
+                /// - Transforming data for display
+                let clItems = stageGroup.map { (key: String, value: [ProgressStruct]) in
+                    let completedTasksCount = value.filter({$0.status == "Completed"}).count //completed tasks
+                    let totalTasks = value.count // total records in stage
+                    let progress =  Double(completedTasksCount )/Double(totalTasks) // progress of stage
+                    let stage = Stage(rawValue: key)
+                    let clItem = ProgressItem(stage: stage,
+                                        imageName: stage?.icon ?? "",
+                                        progress: progress,
+                                        progressDetails: value,
+                                        detailText: stage?.detailedText)
+                    return clItem
+                }
+                let sortedItems = clItems.sorted(by: {$0.stage?.order ?? 0 < $1.stage?.order ?? 0})
+                completion(.success(sortedItems))
+                
+            case .failure(let err):
+                completion(.failure(err))
             }
-            /// - Transforming data for display
-            let clItems = stageGroup.map { (key: String, value: [ProgressStruct]) in
-                let completedTasksCount = value.filter({$0.status == "Completed"}).count //completed tasks
-                let totalTasks = value.count // total records in stage
-                let progress =  Double(completedTasksCount )/Double(totalTasks)
-                let stage = Stage(rawValue: key)
-                let clItem = ProgressItem(title: stage,
-                                    imageName: stage?.icon ?? "",
-                                    progress: progress,
-                                    progressDetails: value,
-                                    detailText: stage?.detailedText)
-                return clItem
-            }
-            let sortedItems = clItems.sorted(by: {$0.title?.order ?? 0 < $1.title?.order ?? 0})
+       
         }
     }
     struct ProgressItem
     {
-        let title : Stage?
+        let stage : Stage?
         let imageName : String
         var progress : CGFloat?
         var progressDetails : [ProgressStruct]?
