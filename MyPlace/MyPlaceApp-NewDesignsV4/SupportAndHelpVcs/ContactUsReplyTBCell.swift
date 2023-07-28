@@ -11,6 +11,7 @@ import UIKit
 class ContactUsReplyTBCell: UITableViewCell {
 
     @IBOutlet weak var replyTitleLb: UILabel!    
+    @IBOutlet weak var authorLb: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var timeStampLb: UILabel!
     override func awakeFromNib() {
@@ -26,11 +27,25 @@ class ContactUsReplyTBCell: UITableViewCell {
     func setup(model : MyNotesStruct?)
     {
         guard let data = model else {return}
-        replyTitleLb.text = data.body ?? "--"
-        
+        let authorValue = (model?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : model?.authorname ?? "--"
+//        if let body = data.body , body.trim().count > 0
+//        {
+//            if data.isFromAdmin == false { // reply from mobile(customer)
+//                let fromMessage = (model?.authorname == nil ? "" : " - Message from \(authorValue)")
+//                let replyTitle = "\(body)  " + fromMessage
+//                setAttributetitleFor(view: replyTitleLb, title: replyTitle, rangeStrings: [body,fromMessage], colors: [.label,.label], fonts: [regularFontWith(size: 14.0), regularFontWith(size: 14)], alignmentCenter: false)
+//            }else // it is from admin
+//            {
+//                replyTitleLb.text = body
+//            }
+//
+//        }
+        replyTitleLb.text = data.body
         let notedate = dateFormatter(dateStr: data.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
         timeStampLb.text = notedate
         //containerView.cardView()
+       
+        authorLb.text = authorValue
         cardView()
         
     }

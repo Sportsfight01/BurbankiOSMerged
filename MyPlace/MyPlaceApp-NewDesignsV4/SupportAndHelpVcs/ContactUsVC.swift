@@ -59,6 +59,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         setupNavigationBarButtons(shouldShowNotification: false)
         searchBar.text?.removeAll()
         searchBar.resignFirstResponder()
+        tableView.reloadData()
         if ContactUsVC.updateNoteData{
             getAPIData()
             ContactUsVC.updateNoteData = false
@@ -67,6 +68,10 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             tableView.reloadData()
         }
     
+    }
+    
+    deinit {
+        debugPrint("ContactUS Deinitialized")
     }
     
     deinit {
@@ -188,6 +193,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 self.tableView.restore()
 //                self.applySnapShot()
                 self.tableView.reloadData()
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             }
         }
     }
@@ -210,17 +216,39 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             {
                 note.replies = replies
             }
+            // - replies from portal get added to conversation key. so add it to replies if this key present in json
+            if let conversations = item.conversations // admin conversations
+            {
+                let adminReplies = conversations.list?.map({ reply in
+                    var adminReply = reply
+                    adminReply.isFromAdmin = true
+                    return adminReply
+                })
+                
+                note.replies?.append(contentsOf: adminReplies ?? [])
+            }
+            note.replies = note.replies?.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
             tempDataSource.append(note)
         }
-        // tempDataSource = tableData
         
-        tempDataSource = tempDataSource.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        // - Sorting of tableDataSource
+        tempDataSource = tempDataSource.sorted { note1, note2 in
+            
+            // - sorting with possible conditions based on replies available for note
+            switch (note1.replies, note2.replies)
+            {
+            case (.some(let reply1), nil):
+                return reply1.first?.date.compare(note2.date) == .orderedDescending
+            case (nil, .some(let reply2)):
+                return note1.date.compare(reply2.first!.date) == .orderedDescending
+            case (.none, .none): //when replies not present
+                return note1.date.compare(note2.date) == .orderedDescending
+            case (.some(let reply1 ), .some(let reply2)):
+                return reply1.first?.date.compare(reply2.first!.date) == .orderedDescending
+            }
+        }
         self.contactArr = tempDataSource
         self.tableDataSource = tempDataSource
-//        DispatchQueue.main.async {
-//            self.setupUI()
-//        }
-        
         
     }
     

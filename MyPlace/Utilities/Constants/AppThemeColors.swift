@@ -23,11 +23,13 @@ struct APPCOLORS_3
     static let LightGreyDisabled_BG = UIColor.hexCode("#D1D3D4")
     static let GreyTextFont =  UIColor.hexCode("#5C5E5E")
     static let DarkGrey_BG = UIColor.hexCode("#A7A9AC")
-    static let Orange_BG = UIColor.hexCode("#F6891F")
-    static let EnabledOrange_BG = UIColor.hexCode("#F7AE71")
+    //    static let Orange_BG = UIColor.hexCode("#F6891F")
+    static let Orange_BG = UIColor.hexCode("#FF6224")
+    //    static let EnabledOrange_BG = UIColor.hexCode("#F7AE71")
+    static let EnabledOrange_BG = UIColor.hexCode("#FAB282")    
     static let Black_BG = UIColor.hexCode("#000000")
     static let DisabledFooterIconGrey = UIColor.hexCode("#A2A2A1")
-
+    
 }
 
 let COLOR_CUSTOM_VIEWS_OVERLAY = UIColor.init(red: 98.0/255.0, green: 98.0/255.0, blue: 98.0/255.0, alpha: 0.8)

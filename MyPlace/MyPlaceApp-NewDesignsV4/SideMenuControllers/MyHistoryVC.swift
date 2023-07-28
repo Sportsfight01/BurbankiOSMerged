@@ -24,7 +24,7 @@ class MyHistoryVC: UIViewController {
         tableView.dataSource = self
         getAPIData()
         tableView.addRefressControl {[weak self] in
-            self?.getAPIData()
+            self?.getAPIData(showSpinner: false)
         }
     
     }
@@ -71,14 +71,17 @@ class MyHistoryVC: UIViewController {
     }
     
     //MARK: - Service Calls
-    func getAPIData()
+    func getAPIData(showSpinner : Bool = true )
     {
         guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.refreshControl?.endRefreshing()
             }
         }; return}
-        appDelegate.showActivity()
+
+        if showSpinner {
+            appDelegate.showActivity()
+        }
         APIManager.shared.getNotes {[weak self] result in
             DispatchQueue.main.async {
                 appDelegate.hideActivity()
@@ -124,8 +127,10 @@ extension MyHistoryVC : UITableViewDelegate, UITableViewDataSource
         cell.subjectLb.text = history?.subject ?? "--"
         let noteDate = dateFormatter(dateStr: history?.notedate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
         cell.noteDateLb.text = noteDate ?? "--"
-        cell.authorNameLb.text =  "By " + (history?.authorname ?? "--")
-        // cell.authorNameLb.text =  "By " + (history?.authorname ?? "") + " on " + noteDate
+        // - not getting 'unknownAuthor' key for all the records. So replacing this value with userdetails fullName from getUserDetails api data
+//        let authorname = appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--"
+//        cell.authorNameLb.text =  "By " + (authorname)
+         cell.authorNameLb.text =  "By " + (history?.authorname ?? "--")
         cell.bodyLb.text = history?.body ?? "--"
         return cell
     }
@@ -147,17 +152,20 @@ struct MyNotesStruct : Codable, Hashable
     
     var authorname : String?
     var body : String?
+    var createdInMyHome : Bool?
     var notedate : String?
     var noteId : Int?
     var replies : [MyNotesStruct]?
     var replyTo : ReplyTo?
     var subject : String?
     var byclient : Bool?
+    var isFromAdmin : Bool = false
+    var conversations : Conversations?
     
     enum CodingKeys : String, CodingKey
     {
         case authorname = "unknownAuthor"
-        case body, noteId, replies, replyTo, subject, byclient
+        case body, noteId, replies, replyTo, subject, byclient,conversations,createdInMyHome
         case notedate = "activityDate"
         
     }
@@ -174,6 +182,10 @@ struct MyNotesStruct : Codable, Hashable
     struct ReplyTo : Codable
     {
         let noteId : Int?
+    }
+    struct Conversations : Codable
+    {
+        var list : [MyNotesStruct]?
     }
         
 }

@@ -7,32 +7,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9591FAB5-9065-4AD0-8BAE-67DA134618FE"
+            uuid = "FE80867A-D5A9-4ED9-9E76-76C7AA934459"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Extensions/UIViewController + Extension.swift"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/MyProgressVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "addContactUsButton()"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "setupBinding()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "89EF48F3-2F28-4898-8244-11EA5F58CB6B"
+            uuid = "76721D5F-54F3-4CAE-812B-F6F633B1AB7E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/SupportAndHelpVcs/ContactUsDetailsVC.swift"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/ViewModels/MyProgressVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "panGestureAction(_:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "groupProgressDataWithStage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75CEC729-0B53-4A1B-8991-0B68ECD9A0E3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/ViewModels/MyProgressVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "transformStageGroup(stageGroup:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "75CEC729-0B53-4A1B-8991-0B68ECD9A0E3 - d210d45bbf92378f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.MyProgressVM.transformStageGroup(stageGroup: Swift.Dictionary&lt;Swift.String, Swift.Array&lt;BurbankApp.ProgressStruct&gt;&gt;) -&gt; Swift.Array&lt;BurbankApp.MyProgressVM.ProgressItem&gt;"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nareshbanavath/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/ViewModels/MyProgressVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "181">
+               </Location>
+               <Location
+                  uuid = "75CEC729-0B53-4A1B-8991-0B68ECD9A0E3 - d4eaa3e9de690ae0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (BurbankApp.MyProgressVM.ProgressItem, BurbankApp.MyProgressVM.ProgressItem) -&gt; Swift.Bool in BurbankApp.MyProgressVM.transformStageGroup(stageGroup: Swift.Dictionary&lt;Swift.String, Swift.Array&lt;BurbankApp.ProgressStruct&gt;&gt;) -&gt; Swift.Array&lt;BurbankApp.MyProgressVM.ProgressItem&gt;"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nareshbanavath/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/ViewModels/MyProgressVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58DAAF25-9E32-43B7-B55E-A35C88EC7228"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/ViewModels/MyProgressVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "transformStageGroup(stageGroup:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

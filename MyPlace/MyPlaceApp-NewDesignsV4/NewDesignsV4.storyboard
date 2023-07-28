@@ -2017,13 +2017,13 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqk-u5-1sw">
-                                                    <rect key="frame" x="0.0" y="5" width="414" height="357"/>
+                                                    <rect key="frame" x="6" y="6" width="402" height="355"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YPZ-5K-DC2">
-                                                            <rect key="frame" x="20" y="30" width="374" height="56"/>
+                                                            <rect key="frame" x="20" y="30" width="362" height="56"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR NEW HOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHT-qI-Kw6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="33.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="362" height="33.666666666666664"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -2032,7 +2032,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Update 24/12/2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MS1-iS-4lj">
-                                                                    <rect key="frame" x="0.0" y="41.666666666666671" width="374" height="14.333333333333336"/>
+                                                                    <rect key="frame" x="0.0" y="41.666666666666671" width="362" height="14.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -2046,7 +2046,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fv-Yw-Lfy">
-                                                            <rect key="frame" x="135.66666666666669" y="105.99999999999999" width="142.66666666666669" height="142.66666666666663"/>
+                                                            <rect key="frame" x="130" y="106" width="142" height="142"/>
                                                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="4fv-Yw-Lfy" secondAttribute="height" id="IYx-bO-Aqe"/>
@@ -2056,10 +2056,10 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-ot-pla">
-                                                            <rect key="frame" x="20" y="260.66666666666669" width="374" height="71.666666666666686"/>
+                                                            <rect key="frame" x="20" y="260" width="362" height="71.666666666666686"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxi-Dz-5DZ">
-                                                                    <rect key="frame" x="54.333333333333343" y="0.0" width="265.66666666666663" height="33.666666666666664"/>
+                                                                    <rect key="frame" x="48.333333333333343" y="0.0" width="265.66666666666663" height="33.666666666666664"/>
                                                                     <string key="text">Lorem ipsum dolor sit amet, consectetuer
 adipiscing elitsed</string>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
@@ -2070,7 +2070,7 @@ adipiscing elitsed</string>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLc-GL-E8X">
-                                                                    <rect key="frame" x="149.66666666666666" y="41.666666666666629" width="75" height="30"/>
+                                                                    <rect key="frame" x="143.66666666666666" y="41.666666666666686" width="75" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                                     <state key="normal" title="SEE MORE">
                                                                         <color key="titleColor" name="AppOrange"/>
@@ -2109,10 +2109,10 @@ adipiscing elitsed</string>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Wqk-u5-1sw" secondAttribute="bottom" constant="5" id="ANO-ko-eMy"/>
-                                                <constraint firstAttribute="trailing" secondItem="Wqk-u5-1sw" secondAttribute="trailing" id="T2B-nL-Wh5"/>
-                                                <constraint firstItem="Wqk-u5-1sw" firstAttribute="leading" secondItem="zmb-nm-N5o" secondAttribute="leading" id="oEt-6b-THa"/>
-                                                <constraint firstItem="Wqk-u5-1sw" firstAttribute="top" secondItem="zmb-nm-N5o" secondAttribute="top" constant="5" id="zIp-rN-Uwn"/>
+                                                <constraint firstAttribute="bottom" secondItem="Wqk-u5-1sw" secondAttribute="bottom" constant="6" id="ANO-ko-eMy"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wqk-u5-1sw" secondAttribute="trailing" constant="6" id="T2B-nL-Wh5"/>
+                                                <constraint firstItem="Wqk-u5-1sw" firstAttribute="leading" secondItem="zmb-nm-N5o" secondAttribute="leading" constant="6" id="oEt-6b-THa"/>
+                                                <constraint firstItem="Wqk-u5-1sw" firstAttribute="top" secondItem="zmb-nm-N5o" secondAttribute="top" constant="6" id="zIp-rN-Uwn"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -2124,6 +2124,7 @@ adipiscing elitsed</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="containerView" destination="Wqk-u5-1sw" id="Qn2-gn-NW2"/>
                                             <outlet property="detailLb" destination="Dxi-Dz-5DZ" id="dAi-9b-guQ"/>
                                             <outlet property="lastUpdatedLb" destination="MS1-iS-4lj" id="iCj-dy-4RV"/>
                                             <outlet property="progressView" destination="4fv-Yw-Lfy" id="B8Q-sb-PZA"/>
@@ -4579,7 +4580,7 @@ adipiscing elitsed</string>
             <color red="0.25499999523162842" green="0.25099998712539673" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AppOrange">
-            <color red="0.9649999737739563" green="0.54500001668930054" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey_BG_3">
             <color red="0.65499997138977051" green="0.66299998760223389" blue="0.67500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4594,7 +4595,7 @@ adipiscing elitsed</string>
             <color red="0.81999999284744263" green="0.82700002193450928" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange_BG_3">
-            <color red="0.9649999737739563" green="0.53700000047683716" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="orangeColor">
             <color red="0.25499999523162842" green="0.25099998712539673" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

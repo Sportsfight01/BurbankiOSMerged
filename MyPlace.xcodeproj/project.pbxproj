@@ -19,6 +19,7 @@
 		4212CFCB2A27315700A098B2 /* ReportIssueHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212CFCA2A27315700A098B2 /* ReportIssueHomeVC.swift */; };
 		4212CFCD2A27538400A098B2 /* SelectIssueTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212CFCC2A27538400A098B2 /* SelectIssueTypeVC.swift */; };
 		4212CFCF2A2757D400A098B2 /* LogIssueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212CFCE2A2757D400A098B2 /* LogIssueVC.swift */; };
+		42018CD52A5FD71000EF4A6A /* MyProgressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42018CD42A5FD71000EF4A6A /* MyProgressVM.swift */; };
 		4212D5FC2938A8EE00855CDC /* HomeAndLandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */; };
 		4212D5FD2938A8EE00855CDC /* DisplayHomesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */; };
 		4212D5FE2938A8EE00855CDC /* DisplayHomesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4212D5F52938A8EE00855CDC /* DisplayHomesTVC.xib */; };
@@ -522,6 +523,7 @@
 		4212CFCA2A27315700A098B2 /* ReportIssueHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueHomeVC.swift; sourceTree = "<group>"; };
 		4212CFCC2A27538400A098B2 /* SelectIssueTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIssueTypeVC.swift; sourceTree = "<group>"; };
 		4212CFCE2A2757D400A098B2 /* LogIssueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIssueVC.swift; sourceTree = "<group>"; };
+		42018CD42A5FD71000EF4A6A /* MyProgressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressVM.swift; sourceTree = "<group>"; };
 		4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAndLandTVC.swift; sourceTree = "<group>"; };
 		4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayHomesTVC.swift; sourceTree = "<group>"; };
 		4212D5F52938A8EE00855CDC /* DisplayHomesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayHomesTVC.xib; sourceTree = "<group>"; };
@@ -1220,6 +1222,7 @@
 			isa = PBXGroup;
 			children = (
 				42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */,
+				42018CD42A5FD71000EF4A6A /* MyProgressVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -3179,6 +3182,7 @@
 				A1659B19292F4A4500C36B3B /* MyPlaceDashBoardVC+MyPlaceServiceCalls.swift in Sources */,
 				A1659AA2292F4A4400C36B3B /* SuburbEstateList.swift in Sources */,
 				A165995F292F32BA00C36B3B /* String + Extensions.swift in Sources */,
+				42018CD52A5FD71000EF4A6A /* MyProgressVM.swift in Sources */,
 				A1659B31292F4A4500C36B3B /* MyPhotosNotesVC.swift in Sources */,
 				A1659B12292F4A4500C36B3B /* MyPlaceMoreOptionsVC.swift in Sources */,
 				A1659B1F292F4A4500C36B3B /* MyPlaceMyAppointmentsVC.swift in Sources */,

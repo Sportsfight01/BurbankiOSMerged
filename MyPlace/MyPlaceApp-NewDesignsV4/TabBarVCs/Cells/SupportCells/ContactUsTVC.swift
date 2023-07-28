@@ -31,10 +31,16 @@ class ContactUsTVC: UITableViewCell {
     
     func setup(model : MyNotesStruct?)
     {
-       guard let model else {return}
-       authorNameLb.text = model.authorname ?? "--"
-       subjectLb.text = model.subject ?? "--"
-       bodyLb.text = model.body ?? "--"
+        guard let model else {return}
+        let authorValue = (model.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : model.authorname ?? "--"
+        let subject = "\(model.subject?.trim() ?? "--")"
+        let body = "\(model.body?.trim() ?? "--")"
+
+        authorNameLb.text = authorValue
+        subjectLb.text = subject
+        bodyLb.text = body
+        bodyLb.numberOfLines = 1
+    
         if let noteId = model.noteId
         {
             let jobNum = CurrentUser.jobNumber ?? ""
@@ -46,7 +52,12 @@ class ContactUsTVC: UITableViewCell {
                 circlelb.isHidden = false
             }
         }
-        noteDateLb.text = model.displayDate
+        if model.replies?.count ?? 0 > 0
+        {
+            noteDateLb.text = "Replied on \(model.replies?.first?.displayDate ?? "--")"
+        }else {
+            noteDateLb.text = "Created on \(model.displayDate ?? "--")"
+        }
         
     }
 

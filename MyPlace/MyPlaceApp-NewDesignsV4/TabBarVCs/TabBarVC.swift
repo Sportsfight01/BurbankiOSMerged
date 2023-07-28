@@ -45,6 +45,7 @@ class TabBarVC: UITabBarController {
         //Tint COLOR
         self.tabBar.unselectedItemTintColor = UIColor.darkGray
         self.tabBar.tintColor = AppColors.appOrange
+    
         //CARD VIEW
         tabBar.layer.shadowColor = UIColor.darkGray.cgColor
         tabBar.layer.shadowOpacity = 0.7
@@ -88,6 +89,12 @@ extension TabBarVC : UITabBarControllerDelegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
         rootView.popToRootViewController(animated: false)
+//        let hapticGenerator = UISelectionFeedbackGenerator()
+//        hapticGenerator.prepare()
+//        hapticGenerator.selectionChanged()
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.prepare()
+        generator.impactOccurred()
         
     }
 }

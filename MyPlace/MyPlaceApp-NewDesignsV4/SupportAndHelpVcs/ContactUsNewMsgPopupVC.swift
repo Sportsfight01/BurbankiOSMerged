@@ -90,15 +90,17 @@ class ContactUsNewMsgPopupVC: UIViewController {
         
 
         var parameters : [String : Any] = [:]
-
+        var body = replyTextView.text.trim()
+        let authorValue = appDelegate.currentUser?.userDetailsArray?.first?.fullName
+        if let authorValue {  body.append(" - Message from \(authorValue)") }
         if isFromNewMessage
         {
-            parameters = ["replytoid" : NSNull() , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : replyTextView.text.trim() ]
+            parameters = ["replytoid" : NSNull() , "subject" : "MyPlace App Message: " + (subjectTf.text?.trim() ?? ""), "stepid" : 0, "body" : body]
         }
         else//reply
         {
             if let noteId = noteId {
-                parameters = ["replytoid" : noteId , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : replyTextView.text.trim() ]
+                parameters = ["replytoid" : noteId , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : body]
             }
             
         }

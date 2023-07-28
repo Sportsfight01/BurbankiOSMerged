@@ -35,30 +35,31 @@ class APIManager{
     private init() { self.getJobNumberAndAuthorization()}
     
 
-    func getProgressDetails(onSuccess : (([ProgressStruct])->())?)
+    func getProgressDetails(showActivity : Bool = false, completion : ((Result<[ProgressStruct],APIError>)->())?)
     {
         guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
         let auth = APIManager.shared.getJobNumberAndAuthorization().auth
-        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { result in
+        if showActivity { appDelegate.showActivity() }
+        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber), showActivity: showActivity) { result in
+            DispatchQueue.main.async { appDelegate.hideActivity() }
             switch result
             {
             case .success(let data):
         
-                let progressKeyWords = ["frame stage", "lockup stage","fixout stage","completion","base stage","handover"]
-                var requiredProgressData : [ProgressStruct] = []
-                for item in data
-                {
-                    if progressKeyWords.contains(item.stageName?.lowercased() ?? "") || item.phasecode?.lc.contains("presite") ?? false
-                    {
-                        requiredProgressData.append(item)
-                    }
+                let requiredStages = ["frame stage", "lockup stage","fixout stage","completion","base stage","handover"]
+                /// - We need data from api whose stageNames fall under requiredStages or phasecode == "presite"(for admin stage)
+                let requiredProgressData = data.filter {
+                   requiredStages.contains($0.stageName?.lowercased() ?? "") || $0.phasecode?.lc.contains("presite") ?? false
                 }
-                
-//                let requiredProgressData = data.filter( { progressKeyWords.contains($0.stageName?.lowercased() ?? "") || $0.phasecode?.contains("presite") ?? false } )
-                onSuccess?(requiredProgressData)
+                completion?(.success(requiredProgressData))
             case .failure(let err):
+                #if DEBUG
                 debugPrint("ERROR OCCURED")
-                AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
+                #endif
+                DispatchQueue.main.async {
+                    AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
+                }
+                completion?(.failure(.other(err: err.localizedDescription)))
             }
         }
     }
