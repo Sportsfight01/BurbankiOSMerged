@@ -64,6 +64,8 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
         profileBaseView.titleLBL.text = "MyHomeCare"
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         tabBar.tintColor = .gray
+        UITabBar.appearance().shadowImage = UIImage.colorForNavBar(color: .red)
+
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_22))
         setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_10))
         setStatusBarColor(color: AppColors.AppGray)
@@ -95,7 +97,7 @@ extension HomeCareDashBoardVC : UICollectionViewDelegate,UICollectionViewDataSou
         cell.detailViewDescriptionLBL.text = dashBoardDataArr[indexPath.item].description
         cell.detailViewBTN.tag = indexPath.item
         cell.detailViewBTN.addTarget(self, action: #selector(didTappedOnDetailsBTN), for: .touchUpInside)
-        setAttributetitleFor(view: cell.detailViewDescriptionLBL, title: "Congratulations, your home is now complete. These tools will assist you with your home care needs including manuals, warranties and FAQs.", rangeStrings: ["Congratulations, your home is now complete. These tools will assist you with your home care needs including manuals, warranties and FAQs."], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY (size: FONT_9)], alignmentCenter: false)
+        setAttributetitleFor(view: cell.detailViewDescriptionLBL, title: "Congratulations, your home is now complete. These tools will assist you with your home care needs including manuals, warranties and FAQs.", rangeStrings: ["Congratulations, your home is now complete. These tools will assist you with your home care needs including manuals, warranties and FAQs."], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY (size: FONT_10)], alignmentCenter: false)
         
         return cell
     }

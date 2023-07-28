@@ -217,7 +217,7 @@ extension ImagePickerCollectionView:  UICollectionViewDataSource, UICollectionVi
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
             if collectionDataSource[indexPath.item] == nil{
                 cell.imageView.image = UIImage(named: "imageAdd")?.withTintColor(APPCOLORS_3.GreyTextFont, renderingMode: .alwaysTemplate)
-                cell.imageView.tintColor = APPCOLORS_3.GreyTextFont
+                cell.imageView.tintColor = APPCOLORS_3.LightGreyDisabled_BG
                 cell.deleteImgBTN.isHidden = true
             }else{
                 cell.imageView.image = collectionDataSource[indexPath.item]
@@ -270,7 +270,7 @@ class ImageCell : UICollectionViewCell
         ///ImageView
         imageView = UIImageView(frame: contentView.frame)
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.borderColor = APPCOLORS_3.GreyTextFont.cgColor
+        imageView.layer.borderColor = APPCOLORS_3.LightGreyDisabled_BG.cgColor
         imageView.layer.borderWidth = 1
         imageView.layer.cornerRadius = 4
         imageView.clipsToBounds = true

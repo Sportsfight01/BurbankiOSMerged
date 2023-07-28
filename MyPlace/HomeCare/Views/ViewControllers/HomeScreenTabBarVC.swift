@@ -48,8 +48,10 @@ class HomeScreenTabBarVC: UITabBarController, didTappedOncomplete {
             tabBar.layer.shadowOffset = CGSize.zero
             tabBar.layer.shadowRadius = 5
             tabBar.backgroundColor = UIColor.white
-            UITabBar.appearance().shadowImage = UIImage()
+//            UITabBar.appearance().shadowImage = UIImage()
             UITabBar.appearance().backgroundImage = UIImage()
+            UITabBar.appearance().shadowImage = UIImage.colorForNavBar(color: .red)
+
         }
         
     }
@@ -104,5 +106,20 @@ extension HomeScreenTabBarVC : UITabBarControllerDelegate
             popupVC.isPopUpFromHomeScreen = true
             present(popupVC, animated: true, completion: nil)
         }
+    }
+}
+extension UIImage {
+    class func colorForNavBar(color: UIColor) -> UIImage {
+        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
+
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage() }
+        UIGraphicsEndImageContext()
+
+        return image
     }
 }

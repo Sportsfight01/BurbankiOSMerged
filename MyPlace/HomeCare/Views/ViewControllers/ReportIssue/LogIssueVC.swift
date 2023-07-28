@@ -45,7 +45,7 @@ class LogIssueVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        TopFlagView.addBorder()
+        TopFlagView.addBorder(color: APPCOLORS_3.LightGreyDisabled_BG)
         self.setupNavigationBarButtons()
     }
     

@@ -114,7 +114,7 @@
                                     <constraint firstAttribute="height" constant="2" id="QTb-HV-gDp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="AppOrange"/>
+                                <color key="textColor" name="Orange_BG_3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="17p-zk-Dxf">
@@ -138,26 +138,29 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="412"/>
                                                 </imageView>
                                                 <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cK6-0M-Wfs">
-                                                    <rect key="frame" x="35.333333333333343" y="206" width="322.33333333333326" height="186"/>
+                                                    <rect key="frame" x="35.333333333333343" y="175" width="322.33333333333326" height="217"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ENW-bM-W1x">
-                                                            <rect key="frame" x="10" y="20" width="302.33333333333331" height="151"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ENW-bM-W1x">
+                                                            <rect key="frame" x="10" y="20" width="302.33333333333331" height="182"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObO-sL-eky">
-                                                                    <rect key="frame" x="98" y="0.0" width="106.33333333333331" height="30.666666666666668"/>
+                                                                    <rect key="frame" x="98" y="0.0" width="106.33333333333331" height="35"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="35" id="dHZ-XT-nX7"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="22"/>
                                                                     <color key="textColor" name="Orange_BG_3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjj-bu-3hO">
-                                                                    <rect key="frame" x="2.3333333333333144" y="34.666666666666679" width="298" height="77.333333333333314"/>
+                                                                    <rect key="frame" x="9" y="40" width="284.33333333333331" height="102"/>
                                                                     <string key="text">Congratulations, your home is now complete. These tools will assist you with your home care needs including manuals, warranties and FAQs.</string>
-                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                     <color key="textColor" name="Black_BG_3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2f4-Di-1Yj">
-                                                                    <rect key="frame" x="76.333333333333343" y="116" width="150" height="35"/>
+                                                                    <rect key="frame" x="76.333333333333343" y="147" width="150" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="eNs-Yd-KJE"/>
                                                                         <constraint firstAttribute="width" constant="150" id="m7G-EC-538"/>
@@ -181,7 +184,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="HeaderFooter_BG_3"/>
                                                     <constraints>
                                                         <constraint firstItem="ENW-bM-W1x" firstAttribute="leading" secondItem="cK6-0M-Wfs" secondAttribute="leading" constant="10" id="AdK-hL-fSp"/>
                                                         <constraint firstAttribute="bottom" secondItem="ENW-bM-W1x" secondAttribute="bottom" constant="15" id="N9h-cg-VqJ"/>
@@ -191,6 +194,12 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -223,7 +232,7 @@
                                     <constraint firstAttribute="height" constant="2" id="cQ4-Ka-xeW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="AppOrange"/>
+                                <color key="textColor" name="Orange_BG_3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKD-2g-X6L">
@@ -311,13 +320,16 @@
         <image name="Ico-Warranties" width="24" height="24"/>
         <image name="welcome" width="1028.6666259765625" height="1075.6666259765625"/>
         <namedColor name="AppOrange">
-            <color red="0.9649999737739563" green="0.54500001668930054" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Black_BG_3">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="HeaderFooter_BG_3">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Orange_BG_3">
-            <color red="0.9649999737739563" green="0.53700000047683716" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

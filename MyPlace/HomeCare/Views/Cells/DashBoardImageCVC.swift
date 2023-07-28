@@ -21,6 +21,8 @@ class DashBoardImageCVC: UICollectionViewCell {
         // Initialization code
         setAppearanceFor(view: detailViewTitleLBL, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SEMI_BOLD(size: FONT_18))
         setAppearanceFor(view: detailViewBTN, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SEMI_BOLD(size: FONT_10))
+        detailsView.borderColor = .white
+        detailsView.borderWidth = 3
         
     }
 

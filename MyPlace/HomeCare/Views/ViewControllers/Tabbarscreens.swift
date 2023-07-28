@@ -38,6 +38,8 @@ class Tabbarscreens: HomeCareBaseProfileVC {
         profileBaseView.titleLBL.text = "My" + (self.navigationController?.tabBarItem.title?.capitalized ?? "")
         profileBaseView.baseImageView.image = UIImage(named: "")
         profileBaseView.baseImageView.backgroundColor = AppColors.AppGray
+        profileBaseView.profileBaseView.backgroundColor = AppColors.AppGray.withAlphaComponent(0.6)
+        
 //        profileBaseView.descriptionLBL.text = "Congratualtions on the completion of your new Burbank home. (\(appDelegate.currentUser?.jobNumber ?? ""))"
         
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_22))
