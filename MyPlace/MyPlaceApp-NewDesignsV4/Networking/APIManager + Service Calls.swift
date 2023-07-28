@@ -40,7 +40,7 @@ class APIManager{
         guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
         let auth = APIManager.shared.getJobNumberAndAuthorization().auth
         if showActivity { appDelegate.showActivity() }
-        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { result in
+        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber), showActivity: showActivity) { result in
             DispatchQueue.main.async { appDelegate.hideActivity() }
             switch result
             {
