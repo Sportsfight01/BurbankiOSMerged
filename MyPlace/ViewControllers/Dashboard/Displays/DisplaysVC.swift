@@ -13,13 +13,9 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
         print("sort action")
     }
     
-//
     @IBOutlet weak var topOptionsView : UIView!
-
     @IBOutlet weak var displaysCollectionView : UICollectionView!
-
     @IBOutlet weak var childVCsView : UIView!
-
     @IBOutlet weak var nearbyVCContainerView : UIView!
     @IBOutlet weak var designsVCContainerView : UIView!
     @IBOutlet weak var regionsVCContainerView : UIView!
@@ -209,28 +205,28 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
             
             nearbyVCContainerView.isHidden = false
             self.addBreadCrumb(from: "Check out the displays that are near you right now")
-            nearbyIcon.tintColor = .orange
-            nearByBTN.setTitleColor(.orange, for: .normal)
+            nearbyIcon.tintColor = APPCOLORS_3.Orange_BG
+            nearByBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
             NotificationCenter.default.post(name: NSNotification.Name("tappedOnNearBy"), object: nil, userInfo: nil)
             CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_TappedOn_NearBy)
         }else if sender.tag == 12 {
             designsVCContainerView.isHidden = false
             self.addBreadCrumb(from: "Are you looking for a specific design?")
-            designIcon.tintColor = .orange
-            designBTN.setTitleColor(.orange, for: .normal)
+            designIcon.tintColor = APPCOLORS_3.Orange_BG
+            designBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
             NotificationCenter.default.post(name: NSNotification.Name("tappedOnPopularHomeDesigns"), object: nil, userInfo: ["Key":false])
             CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_TappedOn_Display_Design)
         }else if sender.tag == 13 {
             regionsVCContainerView.isHidden = false
             addBreadCrumb(from: "Choose the region you're interested in")
-            regionIcon.tintColor = .orange
-            regionBTN.setTitleColor(.orange, for: .normal)
+            regionIcon.tintColor = APPCOLORS_3.Orange_BG
+            regionBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
             CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_TappedOn_Display_Regions)
         }else if sender.tag == 14 {
             mapVCContainerView.isHidden = false
             self.addBreadCrumb(from: "See one of our display homes")
-            mapIcon.tintColor = .orange
-            mapBTN.setTitleColor(.orange, for: .normal)
+            mapIcon.tintColor = APPCOLORS_3.Orange_BG
+            mapBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
             NotificationCenter.default.post(name: NSNotification.Name("tappedOnSuggestedHomes"), object: nil, userInfo: ["Key":false])
             CodeManager.sharedInstance.sendScreenName(burbank_DisplayHomes_TappedOn_Display_Maps)
         }
