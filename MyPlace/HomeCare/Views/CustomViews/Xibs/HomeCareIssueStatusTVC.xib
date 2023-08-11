@@ -54,7 +54,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4GZ-dl-aNt">
-                                <rect key="frame" x="184.33333333333337" y="21" width="146.66666666666663" height="12"/>
+                                <rect key="frame" x="167.33333333333337" y="15" width="146.66666666666663" height="12"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUBMITTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-4j-Dce">
                                         <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="12"/>
@@ -79,7 +79,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUBMITTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro8-bs-nfn">
-                                        <rect key="frame" x="84.333333333333343" y="0.0" width="62.333333333333343" height="12"/>
+                                        <rect key="frame" x="84.333333333333314" y="0.0" width="62.333333333333343" height="12"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="10"/>
                                         <color key="textColor" name="Orange_BG_3"/>
                                         <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FST-W8-g2m">
-                                <rect key="frame" x="0.0" y="79.666666666666671" width="339" height="0.3333333333333286"/>
+                                <rect key="frame" x="20" y="79.666666666666671" width="299" height="0.3333333333333286"/>
                                 <color key="backgroundColor" name="GreyTextFont_3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="two-xs-gUa"/>
@@ -99,9 +99,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4GZ-dl-aNt" firstAttribute="top" secondItem="EvT-FW-UaV" secondAttribute="top" constant="21" id="Cbb-Ux-gaw"/>
+                            <constraint firstItem="4GZ-dl-aNt" firstAttribute="top" secondItem="EvT-FW-UaV" secondAttribute="top" constant="15" id="Cbb-Ux-gaw"/>
                             <constraint firstAttribute="bottom" secondItem="FST-W8-g2m" secondAttribute="bottom" id="XpF-CX-LOt"/>
-                            <constraint firstAttribute="trailing" secondItem="4GZ-dl-aNt" secondAttribute="trailing" constant="8" id="a2q-Kq-uY9"/>
+                            <constraint firstAttribute="trailing" secondItem="4GZ-dl-aNt" secondAttribute="trailing" constant="25" id="a2q-Kq-uY9"/>
                             <constraint firstItem="RNR-RO-vvY" firstAttribute="leading" secondItem="EvT-FW-UaV" secondAttribute="leading" constant="15" id="d6K-fI-lF3"/>
                             <constraint firstItem="bd3-Hl-gCH" firstAttribute="centerY" secondItem="EvT-FW-UaV" secondAttribute="centerY" id="m2C-Tc-2ld"/>
                             <constraint firstItem="RNR-RO-vvY" firstAttribute="centerY" secondItem="EvT-FW-UaV" secondAttribute="centerY" id="r0A-SS-ReZ"/>
@@ -113,9 +113,9 @@
                 <constraints>
                     <constraint firstItem="EvT-FW-UaV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MJy-Ks-XUh"/>
                     <constraint firstAttribute="bottom" secondItem="EvT-FW-UaV" secondAttribute="bottom" id="apc-Xv-xAa"/>
-                    <constraint firstAttribute="trailing" secondItem="FST-W8-g2m" secondAttribute="trailing" id="caC-mR-8ZV"/>
+                    <constraint firstAttribute="trailing" secondItem="FST-W8-g2m" secondAttribute="trailing" constant="20" id="caC-mR-8ZV"/>
                     <constraint firstAttribute="trailing" secondItem="EvT-FW-UaV" secondAttribute="trailing" id="ipG-55-lRn"/>
-                    <constraint firstItem="FST-W8-g2m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nlG-AC-oYh"/>
+                    <constraint firstItem="FST-W8-g2m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nlG-AC-oYh"/>
                     <constraint firstItem="EvT-FW-UaV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="y6N-IY-2eW"/>
                 </constraints>
             </tableViewCellContentView>
@@ -139,7 +139,7 @@
             <color red="0.36100000143051147" green="0.36899998784065247" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange_BG_3">
-            <color red="0.9649999737739563" green="0.53700000047683716" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

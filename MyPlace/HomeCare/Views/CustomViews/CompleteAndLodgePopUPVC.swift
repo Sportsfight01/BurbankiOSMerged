@@ -72,7 +72,7 @@ class CompleteAndLodgePopUPVC: UIViewController {
     @IBAction func didTappedOnCheckBox(_ sender: UIButton) {
         sender.isSelected.toggle()
         if sender.isSelected{
-            sender.tintColor = APPCOLORS_3.EnabledOrange_BG
+            sender.tintColor = APPCOLORS_3.Orange_BG
         }else{
             sender.tintColor = APPCOLORS_3.GreyTextFont
         }

@@ -40,22 +40,21 @@ class HomeScreenTabBarVC: UITabBarController, didTappedOncomplete {
         tabBarShadowSetup()
         setupViewControllers()
         
-        ///adding shadow to tabbar
-        func tabBarShadowSetup()
-        {
-            tabBar.layer.shadowColor = UIColor.darkGray.cgColor
-            tabBar.layer.shadowOpacity = 0.7
-            tabBar.layer.shadowOffset = CGSize.zero
-            tabBar.layer.shadowRadius = 5
-            tabBar.backgroundColor = UIColor.white
-//            UITabBar.appearance().shadowImage = UIImage()
-            UITabBar.appearance().backgroundImage = UIImage()
-            UITabBar.appearance().shadowImage = UIImage.colorForNavBar(color: .red)
-
-        }
+        
         
     }
-    
+    //adding shadow to tabbar
+    func tabBarShadowSetup()
+    {
+        tabBar.layer.shadowColor = UIColor.darkGray.cgColor
+        tabBar.layer.shadowOpacity = 0.9
+        tabBar.layer.shadowOffset = CGSize.zero
+        tabBar.layer.shadowRadius = 5
+        tabBar.backgroundColor = UIColor.white
+        addTopBordertoTabBar(vc: self)
+        
+
+    }
     func setupViewControllers()
     {
         self.tabBarItems.removeAll()
@@ -105,6 +104,7 @@ extension HomeScreenTabBarVC : UITabBarControllerDelegate
             popupVC.delegate = self
             popupVC.isPopUpFromHomeScreen = true
             present(popupVC, animated: true, completion: nil)
+            
         }
     }
 }

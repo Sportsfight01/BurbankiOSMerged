@@ -70,13 +70,6 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     }
     
-    deinit {
-        debugPrint("ContactUS Deinitialized")
-    }
-    
-    deinit {
-        debugPrint("ContactUS Deinitialized")
-    }
 //     //MARK: - TableViewDiffableDataSource
 //    private func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
 //    {

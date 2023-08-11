@@ -109,14 +109,12 @@ class MyPlaceTabbarDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionVie
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tabbarMenuCV.isHidden = true
         contactsTable.isHidden = true
         setUpCustomView()
         setUpSurveyImageView()
         setUpCustomLabel()
         surveyImageView.alpha = 0
-        
         setAppearanceFor(view: headerNameLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
     }
     

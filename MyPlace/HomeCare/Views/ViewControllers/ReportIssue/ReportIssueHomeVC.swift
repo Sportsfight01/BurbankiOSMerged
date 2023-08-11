@@ -61,6 +61,8 @@ class ReportIssueHomeVC: HomeCareBaseProfileVC {
         if isLoggedIssueCompleted == "1"{
             UserDefaults.standard.set("0", forKey: "issueLoged")
             self.submittedIssuesBaseView.isHidden = false
+           
+            setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Your guide to issue reporting with you new Burbank home \(CurrentUser.jobNumber ?? "").", rangeStrings: ["Your guide to issue reporting with you new Burbank home ", "\(CurrentUser.jobNumber ?? "")."], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_9), FONT_LABEL_SEMI_BOLD (size: FONT_9)], alignmentCenter: false)
         }
         tableView.delegate = self
         tableView.dataSource = self
@@ -68,11 +70,14 @@ class ReportIssueHomeVC: HomeCareBaseProfileVC {
         //addScrollView()
     }
     
+    
+    
     //MARK: - Button Actions
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.playBTNBaseView.isHidden = false
+        addTopBordertoTabBar(vc: self)
     }
     override func viewWillDisappear(_ animated: Bool) {
         let isLoggedIssueCompleted = UserDefaults.standard.string(forKey: "issueLoged")

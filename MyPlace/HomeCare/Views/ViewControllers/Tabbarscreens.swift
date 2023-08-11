@@ -25,6 +25,7 @@ class Tabbarscreens: HomeCareBaseProfileVC {
        // profileView.notificationCountLb.isHidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         setUpProfileView()
+        addTopBordertoTabBar(vc: self)
         
     }
     
@@ -39,9 +40,6 @@ class Tabbarscreens: HomeCareBaseProfileVC {
         profileBaseView.baseImageView.image = UIImage(named: "")
         profileBaseView.baseImageView.backgroundColor = AppColors.AppGray
         profileBaseView.profileBaseView.backgroundColor = AppColors.AppGray.withAlphaComponent(0.6)
-        
-//        profileBaseView.descriptionLBL.text = "Congratualtions on the completion of your new Burbank home. (\(appDelegate.currentUser?.jobNumber ?? ""))"
-        
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_22))
         setAppearanceFor(view: profileBaseView.descriptionLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY (size: FONT_10))
         

@@ -48,7 +48,7 @@ class TabBarVC: UITabBarController {
     
         //CARD VIEW
         tabBar.layer.shadowColor = UIColor.darkGray.cgColor
-        tabBar.layer.shadowOpacity = 0.7
+        tabBar.layer.shadowOpacity = 0.9
         tabBar.layer.shadowOffset = CGSize.zero
         tabBar.layer.shadowRadius = 5
         tabBar.backgroundColor = UIColor.white

@@ -159,6 +159,18 @@ extension UIViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    
+    func addTopBordertoTabBar(vc : UIViewController){
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        //Then, add the custom top line view with custom color. And set the default background color of tabbar
+        let lineView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 2))
+        lineView.backgroundColor = APPCOLORS_3.Orange_BG
+        vc.tabBarController?.tabBar.addSubview(lineView)
+        
+    }
+    
 }
 //MARK: - ViewController Instance Creation
 extension UIViewController
