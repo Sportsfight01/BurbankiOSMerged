@@ -149,7 +149,7 @@ extension MenuViewController
 {
     enum SideMenuItem : String, CaseIterable
     {
-        case changeJobNumber = "MyJobNumber"
+        case changeJobNumber = "MyHomes"
         case appointment     = "MyAppointments"
         case history         = "MyHistory"
         case details         = "MyDetails"

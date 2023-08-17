@@ -74,16 +74,33 @@ extension UIViewController {
     }
     func addContactUsButton()
     {
+        // - Dot View
+        let dotView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 7, height: 7)))
+        dotView.cornerRadius = 4
+        dotView.backgroundColor = APPCOLORS_3.Orange_BG
+        dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
         //notification button
-        let btn2 = UIButton(type: .custom)
+        let contactUsBtn = UIButton(type: .custom)
         //  btn1.backgroundColor = UIColor.blue
         let image = UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-        btn2.setImage(image ?? UIImage(named: "Top Menu Icons_Chat"), for: .normal)
-        btn2.tintColor = .white
-        btn2.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        btn2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        btn2.addTarget(self, action: #selector(contactUsbtnClicked), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
+        contactUsBtn.setImage(image ?? UIImage(named: "Top Menu Icons_Chat"), for: .normal)
+        contactUsBtn.tintColor = .white
+        contactUsBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        contactUsBtn.addSubview(dotView)
+        contactUsBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        contactUsBtn.addTarget(self, action: #selector(contactUsbtnClicked), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: contactUsBtn)
+        // - Constraints for DotView
+        
+        dotView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dotView.topAnchor.constraint(equalTo: contactUsBtn.topAnchor, constant: 3),
+            dotView.trailingAnchor.constraint(equalTo: contactUsBtn.trailingAnchor, constant: 0),
+            dotView.heightAnchor.constraint(equalToConstant: 8),
+            dotView.widthAnchor.constraint(equalToConstant: 8)
+
+        ])
+  
     }
     
     //MARK: - Navigation Btn Action Methods

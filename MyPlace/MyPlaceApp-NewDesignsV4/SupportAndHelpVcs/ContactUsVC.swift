@@ -201,6 +201,15 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         //Note with "replyTo" key means it is reply to a note in the list
         var tempDataSource : [MyNotesStruct] = []
         let mainNotes = notes.filter({$0.replyTo == nil})
+        
+        // - Code for making all notes read unread functionality
+        let maped = mainNotes.map { note in
+            UserDefaults.standard.value(forKey: "\(CurrentUser.jobNumber ?? "")_\(note.noteId ?? 0)_isRead") as? Bool
+        }
+        CurrentUser.notesUnReadCount = maped.filter({$0 == nil}).count
+        
+        // -
+        
         for item in mainNotes
         {
             var note = item
@@ -213,13 +222,17 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             // - replies from portal get added to conversation key. so add it to replies if this key present in json
             if let conversations = item.conversations // admin conversations
             {
-                let adminReplies = conversations.list?.map({ reply in
+                guard let adminReplies = conversations.list?.map({ reply in
                     var adminReply = reply
                     adminReply.isFromAdmin = true
                     return adminReply
-                })
-                
-                note.replies?.append(contentsOf: adminReplies ?? [])
+                }) else { continue }
+                if note.replies == nil
+                {
+                    note.replies = adminReplies
+                }else {
+                    note.replies?.append(contentsOf: adminReplies )
+                }
             }
             note.replies = note.replies?.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
             tempDataSource.append(note)

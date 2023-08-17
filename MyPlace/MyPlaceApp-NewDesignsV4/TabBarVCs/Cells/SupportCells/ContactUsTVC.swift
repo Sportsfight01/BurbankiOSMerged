@@ -50,6 +50,7 @@ class ContactUsTVC: UITableViewCell {
             }
             else {
                 circlelb.isHidden = false
+                
             }
         }
         if model.replies?.count ?? 0 > 0

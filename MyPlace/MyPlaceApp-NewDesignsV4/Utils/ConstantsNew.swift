@@ -81,6 +81,7 @@ struct CurrentUser
     static var email : String?
     static var mobileNo : String?
     static var jobNumber : String?
+    static var notesUnReadCount : Int = 0
 }
 let somethingWentWrong = "Something went wrong, Please try again later"
 let checkInternetPullRefresh = "Check your internet and pull to refresh again"
