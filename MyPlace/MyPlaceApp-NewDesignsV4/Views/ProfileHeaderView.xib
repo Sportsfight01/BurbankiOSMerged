@@ -20,6 +20,7 @@
             <connections>
                 <outlet property="contactUsBtn" destination="3tl-yq-wHd" id="7z8-oq-7v5"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="WXW-on-go2"/>
+                <outlet property="dotView" destination="oXa-TV-g1f" id="ygg-mp-hdO"/>
                 <outlet property="helpTextLb" destination="0q1-JM-MOA" id="5Xa-mr-wug"/>
                 <outlet property="menubtn" destination="cWz-hL-9Be" id="AQa-Zl-rsN"/>
                 <outlet property="navBarTitleImg" destination="ecE-sx-yif" id="8j2-cG-HCo"/>
@@ -65,17 +66,32 @@
                                         <imageReference key="image" image="ellipsis.message" catalog="system" symbolScale="large"/>
                                     </state>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXa-TV-g1f">
+                                    <rect key="frame" x="427" y="27" width="8" height="8"/>
+                                    <color key="backgroundColor" name="Orange_BG_3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="8" id="iWF-0G-ugw"/>
+                                        <constraint firstAttribute="width" constant="8" id="kUP-19-9Uy"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="cWz-hL-9Be" firstAttribute="centerY" secondItem="SHR-LO-WP0" secondAttribute="centerY" id="1uF-A8-qaa"/>
                                 <constraint firstItem="ecE-sx-yif" firstAttribute="width" secondItem="SHR-LO-WP0" secondAttribute="width" multiplier="0.5" id="6hZ-Xd-0AM"/>
+                                <constraint firstItem="oXa-TV-g1f" firstAttribute="trailing" secondItem="3tl-yq-wHd" secondAttribute="trailing" constant="-5" id="8qV-Ep-LGg"/>
                                 <constraint firstItem="cWz-hL-9Be" firstAttribute="leading" secondItem="SHR-LO-WP0" secondAttribute="leading" constant="16" id="9D7-Ib-fqm"/>
                                 <constraint firstItem="ecE-sx-yif" firstAttribute="centerX" secondItem="SHR-LO-WP0" secondAttribute="centerX" id="AUa-dc-Rza"/>
                                 <constraint firstAttribute="height" constant="80" id="Pim-0R-xmE"/>
                                 <constraint firstItem="3tl-yq-wHd" firstAttribute="centerY" secondItem="ecE-sx-yif" secondAttribute="centerY" id="UlZ-bv-yKu"/>
                                 <constraint firstItem="ecE-sx-yif" firstAttribute="centerY" secondItem="cWz-hL-9Be" secondAttribute="centerY" id="dfQ-Kh-QEL"/>
                                 <constraint firstAttribute="trailing" secondItem="3tl-yq-wHd" secondAttribute="trailing" constant="16" id="jpe-QT-aoS"/>
+                                <constraint firstItem="oXa-TV-g1f" firstAttribute="top" secondItem="3tl-yq-wHd" secondAttribute="top" constant="5" id="ngf-S0-hg1"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Bwv-TD-VPX">
@@ -186,7 +202,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange_BG_3">
-            <color red="0.9649999737739563" green="0.53700000047683716" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

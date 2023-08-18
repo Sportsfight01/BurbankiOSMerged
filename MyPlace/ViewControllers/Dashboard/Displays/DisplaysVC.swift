@@ -13,13 +13,9 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
         print("sort action")
     }
     
-//
     @IBOutlet weak var topOptionsView : UIView!
-
     @IBOutlet weak var displaysCollectionView : UICollectionView!
-
     @IBOutlet weak var childVCsView : UIView!
-
     @IBOutlet weak var nearbyVCContainerView : UIView!
     @IBOutlet weak var designsVCContainerView : UIView!
     @IBOutlet weak var regionsVCContainerView : UIView!

@@ -21,6 +21,7 @@ class BaseProfileVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileView.profilePicImgView.superview?.addGestureRecognizer(tap)
         profileView.contactUsBtn.addTarget(self, action: #selector(contactUsBtnTapped), for: .touchUpInside)
+        //getNotes()
       
         
         
@@ -32,13 +33,35 @@ class BaseProfileVC: UIViewController {
         profileView.contentView.backgroundColor = .clear
        // setupNavigationItems()
        // self.view.backgroundColor = APPCOLORS_3.GreyTextFont
-    
+        self.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+        getNotes()
     }
     
-    
-    
+ 
     //MARK: - Helper Methods
-    
+    private func getNotes()
+    {
+        APIManager.shared.getNotes {[weak self] result in
+            guard let self else { return }
+            switch result{
+            case .success(let notes):
+                let mainNotes = notes.filter({$0.replyTo == nil})
+                let maped = mainNotes.map { note in
+                    UserDefaults.standard.value(forKey: "\(CurrentUser.jobNumber ?? "")_\(note.noteId ?? 0)_isRead") as? Bool
+                }
+                CurrentUser.notesUnReadCount = maped.filter({$0 == nil}).count
+                DispatchQueue.main.async {[weak self] in
+                    self?.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+                }
+            case .failure(let err):
+                debugPrint(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message: err.description)
+                    return}
+                }
+            }
+        
+    }
     func addProfileHeaderView()
     {
         self.profileView = ProfileHeaderView(frame: .zero)

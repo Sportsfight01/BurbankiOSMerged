@@ -78,7 +78,6 @@ class MyHistoryVC: UIViewController {
                 self?.tableView.refreshControl?.endRefreshing()
             }
         }; return}
-
         if showSpinner {
             appDelegate.showActivity()
         }

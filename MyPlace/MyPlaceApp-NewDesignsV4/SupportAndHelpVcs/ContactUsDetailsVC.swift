@@ -129,6 +129,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
             let key = "\(jobNum ?? "")_\(noteId)_isRead"
             print("key :- \(key)")
             UserDefaults.standard.set(true, forKey: key )
+            CurrentUser.notesUnReadCount -= 1
         }
         
     }
@@ -210,9 +211,29 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
         
         //Note without "replyTo" key goes to MainNotes
         //Note with "replyTo" key means it is reply to a note in the list
-        let noteId = contactDetails?.noteId
-        let replies = notes.filter({ noteId == $0.replyTo?.noteId})
-        self.tableDataSource = replies.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        let currentNoteId = contactDetails?.noteId
+        
+        // - Replies from mobile
+        var replies : [MyNotesStruct]? = notes.filter({ currentNoteId == $0.replyTo?.noteId})
+        
+        // - Replies from admin portal
+        if let conversations = notes.filter({$0.noteId == currentNoteId}).first?.conversations // admin conversations
+        {
+            if let adminReplies = conversations.list?.map({ reply in
+                var adminReply = reply
+                adminReply.isFromAdmin = true
+                return adminReply
+            }){
+                if replies == nil
+                {
+                    replies = adminReplies
+                }else {
+                    replies?.append(contentsOf: adminReplies )
+                }
+            }
+        }
+        // - Sorting all replies of current note
+        self.tableDataSource = replies?.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
         self.setupUI()
         
     }

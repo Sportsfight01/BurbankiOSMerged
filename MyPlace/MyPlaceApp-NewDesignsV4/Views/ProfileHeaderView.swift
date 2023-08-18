@@ -12,6 +12,7 @@ class ProfileHeaderView: UIView {
 
     //MARK: - Properties
     
+    @IBOutlet weak var dotView: UIView!
     @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var contentView: UIView!    
     @IBOutlet weak var navBarTitleImg: UIImageView!
@@ -45,6 +46,7 @@ class ProfileHeaderView: UIView {
         helpTextLb.font = FONT_LABEL_BODY(size: FONT_11)
         secondHelpTextLb.font = FONT_LABEL_BODY(size: FONT_11)
         notificationCountLb.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
+        dotView.isHidden = true
     }
     
     @IBAction func menuBtnAction(_ sender: UIButton) {
