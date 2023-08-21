@@ -417,6 +417,7 @@ class LoginVCNew: BurbankAppVC {
                         if user.isSuccess == true
                         {
                             // let userID = user.userDetailsArray?[0].id ?? -1
+                            self.appDelegate.currentUser = user
                             let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
                             vc.userData = user
                             self.navigationController?.pushViewController(vc, animated: true)

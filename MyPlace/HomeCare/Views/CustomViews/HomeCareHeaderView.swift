@@ -10,7 +10,9 @@ import UIKit
 
 class HomeCareHeaderView: UIView {
 
+    
     //MARK: - Properties
+    @IBOutlet weak var dotView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var burbankLogoBTN: UIButton!
     @IBOutlet weak var baseImageView: UIImageView!
@@ -38,6 +40,7 @@ class HomeCareHeaderView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth,
             .flexibleHeight]
+        dotView.isHidden = true
     }
     
 

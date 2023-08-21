@@ -43,11 +43,16 @@ class CustomersUserpreferrenceVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setStatusBarColor(color: .white)
+        setStatusBarColor(color: .clear)
+        UIApplication.shared.statusBarView?.backgroundColor = .clear
+
     }
 
     @IBAction func didTappedOnBuildProgress(_ sender: UIButton) {
         CodeManager.sharedInstance.handleUserLoginSuccess(user: appDelegate.currentUser!, In: self)
+    }
+    @IBAction func didTappedOnHomeCare(_ sender: UIButton) {
+        CodeManager.sharedInstance.handleUserHomecareModule(user: appDelegate.currentUser!, In: self)
     }
     
     @IBAction func didTappedOnJobNumber(_ sender: UIButton) {
@@ -96,17 +101,6 @@ class CustomersUserpreferrenceVC: UIViewController {
         }
     }
     
-    @IBAction func didTappedOnHomeCare(_ sender: UIButton) {
-//        let isLoggedIssueCompleted = UserDefaults.standard.string(forKey: "issueLoged")
-//        if isLoggedIssueCompleted == "1"{
-//            CodeManager.sharedInstance.handleUserHomecareModule(user: appDelegate.currentUser!, In: self)
-//            UserDefaults.standard.set("0", forKey: "issueLoged")
-//
-//        }else{
-            CodeManager.sharedInstance.handleUserHomecareModule(user: appDelegate.currentUser!, In: self)
-//        }
-        
-        
-    }
+
  
 }

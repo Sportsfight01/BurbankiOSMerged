@@ -39,9 +39,21 @@ class ReportIssueHomeVC: HomeCareBaseProfileVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.playBTNBaseView.isHidden = false
+        addTopBordertoTabBar(vc: self)
+        setupUI()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        let isLoggedIssueCompleted = UserDefaults.standard.string(forKey: "issueLoged")
+        if isLoggedIssueCompleted == "1"{
+            self.navigationController?.navigationBar.isHidden = false
+        }
+    }
+    
     func setupUI()
     {
         //profileSetup
@@ -50,6 +62,7 @@ class ReportIssueHomeVC: HomeCareBaseProfileVC {
         profileBaseView.navigationView.backgroundColor = AppColors.AppGray
         profileBaseView.titleLBL.text = "Report Issue"
         profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")
+        profileBaseView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
 
         
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_22))
@@ -73,18 +86,6 @@ class ReportIssueHomeVC: HomeCareBaseProfileVC {
     
     
     //MARK: - Button Actions
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.playBTNBaseView.isHidden = false
-        addTopBordertoTabBar(vc: self)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        let isLoggedIssueCompleted = UserDefaults.standard.string(forKey: "issueLoged")
-        if isLoggedIssueCompleted == "1"{
-            self.navigationController?.navigationBar.isHidden = false
-        }
-    }
     @IBAction func reportMinorDefectsBtnAction(_ sender: UIButton) {
         let vc = LogIssueVC.instace(sb: .reports)
         self.navigationController?.pushViewController(vc, animated: true)

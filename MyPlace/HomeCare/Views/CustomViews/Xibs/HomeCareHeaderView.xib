@@ -28,6 +28,7 @@
                 <outlet property="contactUsBtn" destination="LVv-Zc-hts" id="IxA-vL-93D"/>
                 <outlet property="contentView" destination="N8L-aF-yQY" id="qZk-0I-Qdk"/>
                 <outlet property="descriptionLBL" destination="jTb-c6-DNH" id="Lt6-Vd-yaf"/>
+                <outlet property="dotView" destination="IsU-5W-dE3" id="Dvf-nb-gel"/>
                 <outlet property="menuAndBackBtn" destination="uBc-PH-6ic" id="4YX-3g-NYK"/>
                 <outlet property="navigationView" destination="df8-fe-pLn" id="5KZ-ad-Tdm"/>
                 <outlet property="notificationCountLBL" destination="4mC-cP-5xJ" id="vXn-Mq-isa"/>
@@ -69,7 +70,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVv-Zc-hts">
-                                    <rect key="frame" x="437.66666666666669" y="17" width="68.333333333333314" height="26.333333333333329"/>
+                                    <rect key="frame" x="455.66666666666669" y="17" width="28.333333333333314" height="26.333333333333329"/>
                                     <color key="tintColor" name="HeaderFooter_BG_3"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal">
@@ -80,11 +81,24 @@
                                     <rect key="frame" x="128.66666666666663" y="15" width="257" height="30"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IsU-5W-dE3">
+                                    <rect key="frame" x="474" y="19" width="8" height="8"/>
+                                    <color key="backgroundColor" name="Orange_BG_3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="8" id="lJE-DV-NfF"/>
+                                        <constraint firstAttribute="height" constant="8" id="z5M-uK-q5w"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" name="AppGray"/>
                             <constraints>
+                                <constraint firstItem="IsU-5W-dE3" firstAttribute="top" secondItem="LVv-Zc-hts" secondAttribute="top" constant="2" id="1zI-Rh-T0p"/>
                                 <constraint firstItem="gAn-8s-4PL" firstAttribute="top" secondItem="ypK-2C-ubN" secondAttribute="top" id="7cI-gv-jYQ"/>
-                                <constraint firstItem="LVv-Zc-hts" firstAttribute="leading" secondItem="ypK-2C-ubN" secondAttribute="trailing" constant="52" id="AQN-56-YJD"/>
                                 <constraint firstItem="LVv-Zc-hts" firstAttribute="centerY" secondItem="ypK-2C-ubN" secondAttribute="centerY" id="Bgz-2i-YOk"/>
                                 <constraint firstItem="uBc-PH-6ic" firstAttribute="centerY" secondItem="df8-fe-pLn" secondAttribute="centerY" id="DsD-Kw-70c"/>
                                 <constraint firstItem="gAn-8s-4PL" firstAttribute="leading" secondItem="ypK-2C-ubN" secondAttribute="leading" id="DvF-6R-37q"/>
@@ -97,8 +111,9 @@
                                 <constraint firstItem="uBc-PH-6ic" firstAttribute="leading" secondItem="df8-fe-pLn" secondAttribute="leading" constant="16" id="UNf-BD-Lei"/>
                                 <constraint firstItem="gAn-8s-4PL" firstAttribute="bottom" secondItem="ypK-2C-ubN" secondAttribute="bottom" id="Xbf-8O-F9k"/>
                                 <constraint firstItem="ypK-2C-ubN" firstAttribute="centerX" secondItem="df8-fe-pLn" secondAttribute="centerX" id="YwU-RM-duy"/>
+                                <constraint firstItem="IsU-5W-dE3" firstAttribute="trailing" secondItem="LVv-Zc-hts" secondAttribute="trailing" constant="-2" id="de8-vM-UUE"/>
                                 <constraint firstItem="6h5-by-yfC" firstAttribute="trailing" secondItem="ypK-2C-ubN" secondAttribute="trailing" id="igV-AZ-7Rq"/>
-                                <constraint firstAttribute="trailing" secondItem="LVv-Zc-hts" secondAttribute="trailing" constant="8" id="nyE-Ls-b4J"/>
+                                <constraint firstAttribute="trailing" secondItem="LVv-Zc-hts" secondAttribute="trailing" constant="30" id="nyE-Ls-b4J"/>
                                 <constraint firstItem="6h5-by-yfC" firstAttribute="top" secondItem="ypK-2C-ubN" secondAttribute="top" id="qa7-bO-xEA"/>
                             </constraints>
                         </view>

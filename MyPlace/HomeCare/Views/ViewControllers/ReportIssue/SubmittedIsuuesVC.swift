@@ -35,7 +35,8 @@ class SubmittedIsuuesVC: HomeCareBaseProfileVC{
         profileBaseView.baseImageView.image = UIImage(named: "")
         profileBaseView.baseImageView.backgroundColor = AppColors.AppGray
          profileBaseView.backgroundColor = AppColors.AppGray
-        
+         profileBaseView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+
         profileBaseView.titleLBL.textColor = .black
         profileBaseView.titleLBL.text = "Report Issue"
         self.navigationController?.setNavigationBarHidden(true, animated: true)

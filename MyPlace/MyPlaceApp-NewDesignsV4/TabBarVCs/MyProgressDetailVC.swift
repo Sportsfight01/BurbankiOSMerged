@@ -74,7 +74,6 @@ class MyProgressDetailVC: UIViewController {
 
         setupdescriptionText()
         
-        
     }
     func setupFonts()
     {

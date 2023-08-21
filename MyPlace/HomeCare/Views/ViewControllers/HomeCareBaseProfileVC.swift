@@ -22,7 +22,35 @@ class HomeCareBaseProfileVC: UIViewController {
         sideMenuSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.profileBaseView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+        getNotes()
+    }
+    
     //MARK: - Helper Methods
+    func getNotes()
+    {
+        APIManager.shared.getNotes {[weak self] result in
+            guard let self else { return }
+            switch result{
+            case .success(let notes):
+                let mainNotes = notes.filter({$0.replyTo == nil})
+                let maped = mainNotes.map { note in
+                    UserDefaults.standard.value(forKey: "\(CurrentUser.jobNumber ?? "")_\(note.noteId ?? 0)_isRead") as? Bool
+                }
+                CurrentUser.notesUnReadCount = maped.filter({$0 == nil}).count
+                DispatchQueue.main.async {[weak self] in
+                    self?.profileBaseView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+                }
+            case .failure(let err):
+                debugPrint(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message: err.description)
+                    return}
+                }
+            }
+        
+    }
     
     func addProfileHeaderView()
     {

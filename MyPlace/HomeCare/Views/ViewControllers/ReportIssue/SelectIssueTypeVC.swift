@@ -11,9 +11,9 @@ import UIKit
 class SelectIssueTypeVC: HomeCareBaseProfileVC {
 
     @IBOutlet weak var closeBTN: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +21,8 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
     //MARK: - ButtonActions
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setupUI()
+
     }
     func setupUI()
     {
@@ -30,8 +32,8 @@ class SelectIssueTypeVC: HomeCareBaseProfileVC {
         profileBaseView.navigationView.backgroundColor = AppColors.AppGray
         profileBaseView.titleLBL.text = "Report Issue"
         profileBaseView.profileView.image = UIImage(named: "BurbankLogo_Black")
+        profileBaseView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
 
-        
         setAppearanceFor(view: profileBaseView.titleLBL, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_22))
         setAttributetitleFor(view: profileBaseView.descriptionLBL, title: "Your guide to issue reporting with you new Burbank home \(CurrentUser.jobNumber ?? "").", rangeStrings: ["Your guide to issue reporting with you new Burbank home ", "\(CurrentUser.jobNumber ?? "")."], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Orange_BG], fonts: [FONT_LABEL_BODY (size: FONT_9), FONT_LABEL_SEMI_BOLD (size: FONT_9)], alignmentCenter: false)
         //addScrollView()

@@ -176,12 +176,24 @@ extension UIViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func addTopBordertoTabBar(vc : UIViewController){
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        //Then, add the custom top line view with custom color. And set the default background color of tabbar
+        let lineView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 2))
+        lineView.backgroundColor = APPCOLORS_3.Orange_BG
+        vc.tabBarController?.tabBar.addSubview(lineView)
+        
+    }
+    
 }
 //MARK: - ViewController Instance Creation
 extension UIViewController
 {
     #warning("must provide proper storyboard name to create viewcontroller instance")
-    static func instace(sb : StoryBoard = .newDesignV4) -> Self{
+    static func instace(sb : AppStoryBoards = .newDesignV4) -> Self {
+
         
         let instance = UIStoryboard(name: sb.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: self)) as! Self
         return instance
@@ -192,6 +204,9 @@ extension UIViewController
         case newDesignV4 = "NewDesignsV4"
         case supportAndHelp = "SupportAndHelp"
         case myPlaceLogin = "MyPlaceLogin"
+        case homeScreenSb = "HomeCareMain"
+        case reports = "Report"
+        case storyBoard = "Main"
     }
 }
 
@@ -220,3 +235,5 @@ extension UIViewController
         return leadingConstant
     }
 }
+
+
