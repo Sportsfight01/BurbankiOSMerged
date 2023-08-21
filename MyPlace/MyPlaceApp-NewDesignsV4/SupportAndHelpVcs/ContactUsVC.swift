@@ -67,30 +67,6 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         
         
     }
-    
-    deinit {
-        debugPrint("ContactUS Deinitialized")
-    }
-//     //MARK: - TableViewDiffableDataSource
-//    private func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
-//    {
-//        let dataSource = UITableViewDiffableDataSource<Int, MyNotesStruct>(tableView: tableView) { tableView, indexPath, itemIdentifier in
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
-//            cell.setup(model : itemIdentifier)
-//            return cell
-//        }
-//        return dataSource
-//    }
-//
-//    private func applySnapShot()
-//    {
-//        var snapShot = NSDiffableDataSourceSnapshot<Int, MyNotesStruct>()
-//        snapShot.appendSections([0])
-//        snapShot.appendItems(tableDataSource ?? [])
-//        dataSource.apply(snapShot, animatingDifferences: true)
-//    }
-    
-    
     @objc func panGestureAction(_ gesture : UIPanGestureRecognizer)
     {
         // let translation = gesture.translation(in: newMessageBtn.superview)
@@ -210,16 +186,18 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         
         // -
         
+        /// - Here we are gathering replies and adding them to mainNote
         for item in mainNotes
         {
             var note = item
             let noteId = item.noteId
+            /// - STEP 1 - replies from mobile
             let replies = notes.filter({ noteId == $0.replyTo?.noteId})
             if replies.count > 0//replies found
             {
                 note.replies = replies
             }
-            // - replies from portal get added to conversation key. so add it to replies if this key present in json
+            /// -  STEP 2 - replies from portal get added to conversation key. so add it to replies if this key present in json
             if let conversations = item.conversations // admin conversations
             {
                 guard let adminReplies = conversations.list?.map({ reply in
@@ -238,10 +216,10 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             tempDataSource.append(note)
         }
         
-        // - Sorting of tableDataSource
+        /// - Sorting of tableDataSource
         tempDataSource = tempDataSource.sorted { note1, note2 in
             
-            // - sorting with possible conditions based on replies available for note
+            /// - sorting with possible conditions based on replies available for note
             switch (note1.replies, note2.replies)
             {
             case (.some(let reply1), nil):
