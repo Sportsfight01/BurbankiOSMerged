@@ -19,7 +19,7 @@ class MyPlaceTabbarDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionVie
     
     var menuarray : NSMutableArray!
     
-    var namesarray = ["Site Supervisor","New Home Coordinator","Interior Designer", "Electical Designer", "New Home Consultant"]
+    var namesarray = ["Site Manager","Customer Care Coordinator","Interior Designer", "Electrical Designer", "New Home Consultant"]
     
     var selectedTag : Int!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate

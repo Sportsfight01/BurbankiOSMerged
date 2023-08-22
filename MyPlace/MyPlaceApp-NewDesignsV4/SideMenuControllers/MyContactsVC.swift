@@ -19,7 +19,7 @@ class MyContactsVC: BaseProfileVC {
     }
 //    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var tableView: UITableView!
-    var namesarray = ["Site Supervisor","New Home Coordinator","Interior Designer", "Electical Designer", "New Home Consultant"]
+    var namesarray = ["Site Manager","Customer Care Coordinator","Interior Designer", "Electrical Designer", "New Home Consultant"]
     var jobContacts : ContactDetailsStruct?
     
    // var menu : SideMenuNavigationController!
