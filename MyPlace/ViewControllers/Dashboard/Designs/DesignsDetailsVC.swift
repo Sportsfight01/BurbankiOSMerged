@@ -288,6 +288,7 @@ class DesignsDetailsVC: HeaderVC {
         if let designDetails = self.homeDesignDetails {
             
             arrScrollImageUrls.removeAll()
+            validFacadeNamesArray.removeAll()
             
             if let imageurl = designDetails.lsthouses?.facadeLargeImageUrls {
                 for imagURL in imageurl {
@@ -371,6 +372,7 @@ class DesignsDetailsVC: HeaderVC {
     
 
     func bannerImageScroll(_ arrImageUrls: [String]) {
+        self.imageScrollView.reloadInputViews()
         
         self.imageScrollView.frame = CGRect(x:0, y:0, width:self.plotView.frame.width, height:self.plotView.frame.height)
         

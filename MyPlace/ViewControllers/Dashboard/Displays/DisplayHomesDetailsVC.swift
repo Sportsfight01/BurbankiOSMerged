@@ -255,7 +255,8 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         if let designDetails = self.homeDesignDetails {
 
             arrScrollImageUrls.removeAll()
-
+            validFacadeNamesArray.removeAll()
+            
             if let imageurl = designDetails.lsthouses?.facadeLargeImageUrls {
                 for imagURL in imageurl {
                     let imageArr = imagURL.components(separatedBy: "_")

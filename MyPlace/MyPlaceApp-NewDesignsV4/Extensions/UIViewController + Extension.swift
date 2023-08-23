@@ -104,9 +104,36 @@ extension UIViewController {
     }
     
     //MARK: - Navigation Btn Action Methods
-    @objc func backButtonClicked()
+    @IBAction func backButtonClicked()
     {
-        dismiss(animated: true, completion: nil)
+        
+       let isChanged = UserDefaults.standard.bool(forKey: "isChanged")
+        if isChanged{
+            print("changed Functions +=====++++=======")
+            let alertController = UIAlertController(title: "", message: "Do you wish to save the changes to your notifications?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                UserDefaults.standard.set(false, forKey: "isChanged")
+                NotificationCenter.default.post(name: NSNotification.Name("isChangedNotifications"), object: nil, userInfo: nil)
+
+                self.dismiss(animated: true, completion: nil)
+                return
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                UserDefaults.standard.set(false, forKey: "isChanged")
+                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }
+            alertController.addAction(cancelAction)
+            cancelAction.setValue( APPCOLORS_3.Black_BG, forKey: "titleTextColor")
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            
+        }
+        
         guard let navController = self.navigationController else {return}
         if navController.viewControllers.count == 1
         {
@@ -123,6 +150,8 @@ extension UIViewController {
         }
         
     }
+    
+    
     
     @objc func contactUsbtnClicked()
     {
@@ -194,7 +223,6 @@ extension UIViewController
     #warning("must provide proper storyboard name to create viewcontroller instance")
     static func instace(sb : AppStoryBoards = .newDesignV4) -> Self {
 
-        
         let instance = UIStoryboard(name: sb.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: self)) as! Self
         return instance
     }

@@ -90,7 +90,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
 //        dataSource.apply(snapShot, animatingDifferences: true)
 //    }
     
-    
+
     @objc func panGestureAction(_ gesture : UIPanGestureRecognizer)
     {
         // let translation = gesture.translation(in: newMessageBtn.superview)
@@ -209,17 +209,19 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         CurrentUser.notesUnReadCount = maped.filter({$0 == nil}).count
         
         // -
-        
+        /// - Here we are gathering replies and adding them to mainNote
         for item in mainNotes
         {
             var note = item
             let noteId = item.noteId
+            /// - STEP 1 - replies from mobile
             let replies = notes.filter({ noteId == $0.replyTo?.noteId})
             if replies.count > 0//replies found
             {
                 note.replies = replies
             }
             // - replies from portal get added to conversation key. so add it to replies if this key present in json
+            /// -  STEP 2 - replies from portal get added to conversation key. so add it to replies if this key present in json
             if let conversations = item.conversations // admin conversations
             {
                 guard let adminReplies = conversations.list?.map({ reply in
@@ -242,6 +244,10 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tempDataSource = tempDataSource.sorted { note1, note2 in
             
             // - sorting with possible conditions based on replies available for note
+        /// - Sorting of tableDataSource
+        tempDataSource = tempDataSource.sorted { note1, note2 in
+            
+            /// - sorting with possible conditions based on replies available for note
             switch (note1.replies, note2.replies)
             {
             case (.some(let reply1), nil):

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,28 +49,56 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Admin-Stage-Image" translatesAutoresizingMaskIntoConstraints="NO" id="ftt-GY-mXB">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="509.33333333333331"/>
                                             </imageView>
-                                            <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrH-BP-Mw5">
-                                                <rect key="frame" x="366" y="237.33333333333331" width="40" height="35"/>
+                                            <button opaque="NO" alpha="0.75" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrH-BP-Mw5">
+                                                <rect key="frame" x="376" y="239.66666666666663" width="30" height="30"/>
+                                                <color key="backgroundColor" name="HeaderFooter_BG_3"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="KMY-P9-fQF"/>
-                                                    <constraint firstAttribute="width" constant="40" id="qCk-dh-IIH"/>
+                                                    <constraint firstAttribute="height" constant="30" id="KMY-P9-fQF"/>
+                                                    <constraint firstAttribute="width" constant="30" id="qCk-dh-IIH"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="chevron.right" catalog="system"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="chevron.right" catalog="system" symbolScale="medium"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="HeaderFooter_BG_3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="previousNextAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Z9F-tu-699"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8Y-Zk-mVn">
-                                                <rect key="frame" x="8" y="237.33333333333331" width="40" height="35"/>
+                                            <button opaque="NO" alpha="0.75" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8Y-Zk-mVn">
+                                                <rect key="frame" x="8" y="239.66666666666663" width="30" height="30"/>
+                                                <color key="backgroundColor" name="HeaderFooter_BG_3"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="C3D-zo-The"/>
-                                                    <constraint firstAttribute="width" constant="40" id="jk2-Bc-sUk"/>
+                                                    <constraint firstAttribute="height" constant="30" id="C3D-zo-The"/>
+                                                    <constraint firstAttribute="width" constant="30" id="jk2-Bc-sUk"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="chevron.left" catalog="system"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="HeaderFooter_BG_3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="previousNextAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Ueb-oS-TNn"/>
                                                 </connections>
@@ -125,6 +155,9 @@
         <image name="Admin-Stage-Image" width="1920" height="1080"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <namedColor name="HeaderFooter_BG_3">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

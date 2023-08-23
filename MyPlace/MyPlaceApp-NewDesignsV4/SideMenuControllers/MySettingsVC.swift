@@ -11,6 +11,8 @@ import RealmSwift
 
 class MySettingsVC: UIViewController, profileScreenProtocol {
     
+    
+    
     //MARK: - Properties
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -35,7 +37,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     var oldPassword : String = ""
     
     var notificationArray : [GetUserProfileStruct.Result.NotificationType]?
-    
+    var defaultNotificationArray : [GetUserProfileStruct.Result.NotificationType]?
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
             self?.getUserProfile()
         }
   
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("isChangedNotifications"), object: nil, queue: nil, using:updateNotifications)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,9 +77,14 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        UserDefaults.standard.set(false, forKey: "isChanged")
+        UserDefaults.standard.removeObject(forKey: "isChanged")
     }
     
+    deinit {
+         print("Remove NotificationCenter Deinit")
+            NotificationCenter.default.removeObserver(self)
+     }
     //MARK: - Helper Funcs
     
     func setupUI()
@@ -200,8 +208,35 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
             notificationArray?[2].isUserOpted = sender.isSelected
         default:
             print("default");
-                    
         }
+        
+        var photoAdded = false
+        var stageCompletion = false
+        var stageChange = false
+        
+        if notificationArray?[0].isUserOpted != defaultNotificationArray?[0].isUserOpted{
+            photoAdded = true
+        }
+        if notificationArray?[1].isUserOpted != defaultNotificationArray?[1].isUserOpted{
+         stageCompletion = true
+        }
+        if notificationArray?[2].isUserOpted != defaultNotificationArray?[2].isUserOpted{
+         stageChange = true
+        }
+
+        if stageChange || stageCompletion || photoAdded{
+            print("true++++++++============")
+            UserDefaults.standard.set(true, forKey: "isChanged")
+        }else{
+            print("false-----")
+            UserDefaults.standard.set(false, forKey: "isChanged")
+        }
+
+    }
+    
+    func updateNotifications(notification:Notification) -> Void  {
+        
+        postDataToServerForUpdatingUserProfile()
     }
     
     @IBAction func logOutClicked(_ sender: UIButton) {
@@ -419,10 +454,9 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
                 print(data)
                 if data.Status == true
                 {
+                    NotificationCenter.default.removeObserver(self!)
+                    self?.getUserProfile()
                     self?.showAlert(message: data.Message ?? "something went wrong")
-                    {_ in
-                        self?.getUserProfile()
-                    }
                 }
                 else {
                     self?.showAlert(message: data.Message ?? "something went wrong", okCompletion: nil)
@@ -459,6 +493,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
                     };return}
                 self?.profileData = data
                 self?.notificationArray = data.result?.notificationTypes
+                self?.defaultNotificationArray = data.result?.notificationTypes
                 self?.setupUI()
           
                 

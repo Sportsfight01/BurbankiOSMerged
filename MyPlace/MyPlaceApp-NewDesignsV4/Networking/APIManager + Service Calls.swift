@@ -129,7 +129,8 @@ class APIManager{
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
+//                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
+                completion(.success(false))
                 return}
            // debugPrint("contactUsLoginSuccessFull")
             //Get Notes service
@@ -161,7 +162,8 @@ class APIManager{
             //debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
+                completion(.success([]))
+//                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
                 return}
             guard let data else {
                 completion(.failure(.other(err: error?.localizedDescription)))
