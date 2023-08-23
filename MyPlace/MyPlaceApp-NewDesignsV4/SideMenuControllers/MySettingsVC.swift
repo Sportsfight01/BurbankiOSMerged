@@ -77,9 +77,14 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        UserDefaults.standard.set(false, forKey: "isChanged")
+        UserDefaults.standard.removeObject(forKey: "isChanged")
     }
     
+    deinit {
+         print("Remove NotificationCenter Deinit")
+            NotificationCenter.default.removeObserver(self)
+     }
     //MARK: - Helper Funcs
     
     func setupUI()
@@ -203,8 +208,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
             notificationArray?[2].isUserOpted = sender.isSelected
         default:
             print("default");
-                    
         }
+        
         var photoAdded = false
         var stageCompletion = false
         var stageChange = false
@@ -449,10 +454,9 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
                 print(data)
                 if data.Status == true
                 {
+                    NotificationCenter.default.removeObserver(self!)
+                    self?.getUserProfile()
                     self?.showAlert(message: data.Message ?? "something went wrong")
-                    {_ in
-                        self?.getUserProfile()
-                    }
                 }
                 else {
                     self?.showAlert(message: data.Message ?? "something went wrong", okCompletion: nil)

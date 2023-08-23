@@ -125,9 +125,10 @@ extension UIViewController {
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
             }
-            alertController.addAction(okAction)
             alertController.addAction(cancelAction)
             cancelAction.setValue( APPCOLORS_3.Black_BG, forKey: "titleTextColor")
+            alertController.addAction(okAction)
+            
             self.present(alertController, animated: true, completion: nil)
         }else{
             
