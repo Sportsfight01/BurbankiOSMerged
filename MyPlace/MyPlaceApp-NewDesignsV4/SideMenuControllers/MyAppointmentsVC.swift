@@ -38,6 +38,7 @@ class MyAppointmentsVC: UIViewController {
         headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
         
     }
+
     func setupProfile()
     {
         profileImgView.contentMode = .scaleToFill

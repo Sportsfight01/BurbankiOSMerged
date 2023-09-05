@@ -74,7 +74,6 @@ class MenuViewController: UIViewController {
                 kWindow.rootViewController = UIStoryboard(name: AppStoryBoards.homeScreenSb.rawValue , bundle: nil).instantiateInitialViewController()
                 kWindow.makeKeyAndVisible()
             }
-            
         }
         kWindow.rootViewController?.present(vc, animated: true)
         
@@ -84,6 +83,7 @@ class MenuViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         
        let vc = CustomersUserpreferrenceVC.instace(sb: .myPlaceLogin)
+        vc.isFromMenu = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -107,9 +107,14 @@ class MenuViewController: UIViewController {
         }
         usernameLb.text = CurrentUser.userName
         
-        let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(CurrentUser.currentHomeBuildProgress ?? "0%") completed"
+        // asPer V4.0 Design we changed this
         
-        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(CurrentUser.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+     /*   let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(CurrentUser.currentHomeBuildProgress ?? "0%") completed"
+        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(CurrentUser.currentHomeBuildProgress ?? "0%")" , "completed"], colors: [.white,APPCOLORS_3.Orange_BG,.white,.white,.white], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false) */
+   
+        let yourHomeBuild = "BuildProgress \(CurrentUser.jobNumber ?? "")"
+
+        setAttributetitleFor(view: yourhomecurrentbuildLb, title: yourHomeBuild, rangeStrings: ["Build Progress" , "\(CurrentUser.jobNumber ?? "")"], colors: [.white,APPCOLORS_3.Orange_BG,], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_10),FONT_LABEL_SEMI_BOLD(size: FONT_10)], alignmentCenter: false)
         
         if isMenuOpenedFromHomeCare{
             usernameLb.text = appDelegate.currentUser?.userDetailsArray?[0].fullName

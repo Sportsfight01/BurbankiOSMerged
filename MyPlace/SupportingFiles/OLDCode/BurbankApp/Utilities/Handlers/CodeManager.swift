@@ -318,10 +318,10 @@ class CodeManager: NSObject, UIScrollViewDelegate {
         UserDefaults.standard.set(appDelegate.enteredEmailOrJob, forKey: "EnteredEmailOrJob")
         
         saveUserInUserDefaults(user)
-        let rootVc = UIStoryboard(name : AppStoryBoards.homeScreenSb.rawValue, bundle : nil).instantiateInitialViewController()
-        
+      
+        guard let rootVc = UIStoryboard(name : AppStoryBoards.homeScreenSb.rawValue, bundle : nil).instantiateInitialViewController() else { return }
         //viewController.performSegue(withIdentifier: "showMyPlaceDashboardVC", sender: nil)
-        
+//        let navController = UINavigationController(rootViewController: rootVc)
         appDelegate.currentUser = user //Need To Check whethere we need to fill user data here or not
         
         //Need to Place here before set the key "EnteredEmailOrJob"

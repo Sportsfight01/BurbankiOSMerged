@@ -559,6 +559,22 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc6-Ts-2bb">
+                                                        <rect key="frame" x="40" y="8" width="22" height="22"/>
+                                                        <color key="backgroundColor" name="Orange_BG_3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="22" id="9OL-ZO-8pG"/>
+                                                            <constraint firstAttribute="width" constant="22" id="L8T-F3-V1C"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="11"/>
+                                                        <color key="textColor" name="HeaderFooter_BG_3"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="11"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -570,7 +586,9 @@
                                                     <constraint firstItem="1cs-Cd-aEE" firstAttribute="leading" secondItem="iAv-Yz-bcQ" secondAttribute="trailing" constant="26" id="V8G-lJ-3vu"/>
                                                     <constraint firstItem="iAv-Yz-bcQ" firstAttribute="leading" secondItem="qCT-yE-nYS" secondAttribute="leading" constant="10" id="VsY-8d-RHZ"/>
                                                     <constraint firstItem="Azv-SN-BXw" firstAttribute="leading" secondItem="qCT-yE-nYS" secondAttribute="leading" id="a5G-YD-4MF"/>
+                                                    <constraint firstItem="oc6-Ts-2bb" firstAttribute="leading" secondItem="iAv-Yz-bcQ" secondAttribute="trailing" constant="-20" id="aLz-V2-7Hx"/>
                                                     <constraint firstItem="1cs-Cd-aEE" firstAttribute="top" secondItem="iAv-Yz-bcQ" secondAttribute="top" id="duw-QA-Xwr"/>
+                                                    <constraint firstItem="iAv-Yz-bcQ" firstAttribute="top" secondItem="oc6-Ts-2bb" secondAttribute="bottom" constant="-20" id="mkk-bu-0l5"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ekq-O1-d1j">
@@ -626,7 +644,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="Vi9-uo-rHd"/>
                                                                 </constraints>
-                                                                <string key="text">Can’t stop the tap from dripping in the master bedroom, Has been running for a few days now and wasting a lot of water. Concerned about water bills and flooding if something else goes wrong...........
+                                                                <string key="text">Can’t stop the tap from dripping in the master bedroom, Has been running for a few days now and wasting alot of water. Concerned about water bills and flooding if something else goes wrong...........
 </string>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
@@ -839,8 +857,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4Q-be-wLu">
                                 <rect key="frame" x="0.0" y="50" width="375" height="120"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-ReportOrange" translatesAutoresizingMaskIntoConstraints="NO" id="RVm-KB-Y3I">
-                                        <rect key="frame" x="10" y="35" width="50" height="50"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Ico-ReportOrange" translatesAutoresizingMaskIntoConstraints="NO" id="RVm-KB-Y3I">
+                                        <rect key="frame" x="10" y="37" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MYz-lG-dUn"/>
                                             <constraint firstAttribute="width" constant="50" id="nNE-9t-SmV"/>
@@ -851,6 +869,22 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spl-9d-8Yd">
+                                        <rect key="frame" x="42" y="32" width="22" height="22"/>
+                                        <color key="backgroundColor" name="Orange_BG_3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="4ku-iZ-IC2"/>
+                                            <constraint firstAttribute="width" constant="22" id="ZDk-r4-ikS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="11"/>
+                                        <color key="textColor" name="HeaderFooter_BG_3"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="11"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bhO-Ia-3wh">
                                         <rect key="frame" x="86" y="40" width="279" height="45.666666666666657"/>
                                         <subviews>
@@ -871,6 +905,8 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="bhO-Ia-3wh" firstAttribute="leading" secondItem="RVm-KB-Y3I" secondAttribute="trailing" constant="26" id="4WV-Ng-r7S"/>
+                                    <constraint firstItem="RVm-KB-Y3I" firstAttribute="top" secondItem="Spl-9d-8Yd" secondAttribute="bottom" constant="-17" id="KYk-kw-98L"/>
+                                    <constraint firstItem="Spl-9d-8Yd" firstAttribute="leading" secondItem="RVm-KB-Y3I" secondAttribute="trailing" constant="-18" id="N7v-U3-95X"/>
                                     <constraint firstAttribute="trailing" secondItem="bhO-Ia-3wh" secondAttribute="trailing" constant="10" id="Pny-bY-CDo"/>
                                     <constraint firstItem="Zj2-M8-Vub" firstAttribute="top" secondItem="RVm-KB-Y3I" secondAttribute="top" constant="5" id="Zvt-iQ-PoL"/>
                                     <constraint firstItem="RVm-KB-Y3I" firstAttribute="centerY" secondItem="v4Q-be-wLu" secondAttribute="centerY" id="dBb-6u-BQD"/>
@@ -1220,7 +1256,7 @@
                                             <constraint firstAttribute="width" constant="63" id="x31-lc-7qg"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 MONTH MAINTAINANCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9S-uf-iw5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 MONTH MAINTENANCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9S-uf-iw5">
                                         <rect key="frame" x="103" y="42" width="207" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="1hF-9q-Xf8"/>
@@ -1248,6 +1284,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94J-tg-Kns">
+                                        <rect key="frame" x="59" y="42" width="22" height="22"/>
+                                        <color key="backgroundColor" name="Orange_BG_3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="1QE-rb-fwU"/>
+                                            <constraint firstAttribute="width" constant="22" id="o11-Ds-I2K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="11"/>
+                                        <color key="textColor" name="HeaderFooter_BG_3"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="11"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1257,6 +1309,7 @@
                                     <constraint firstItem="sne-nh-CO9" firstAttribute="top" secondItem="Z9S-uf-iw5" secondAttribute="bottom" constant="-3" id="FAD-lP-qhC"/>
                                     <constraint firstItem="kla-JV-RrE" firstAttribute="top" secondItem="wOg-df-DlJ" secondAttribute="top" constant="42" id="Jam-Jf-ow6"/>
                                     <constraint firstAttribute="trailing" secondItem="Z9S-uf-iw5" secondAttribute="trailing" constant="65" id="Lan-ht-d8B"/>
+                                    <constraint firstItem="kla-JV-RrE" firstAttribute="top" secondItem="94J-tg-Kns" secondAttribute="bottom" constant="-22" id="MpO-0X-FdP"/>
                                     <constraint firstItem="Z9S-uf-iw5" firstAttribute="leading" secondItem="kla-JV-RrE" secondAttribute="trailing" constant="20" id="aIl-oY-iaA"/>
                                     <constraint firstItem="sne-nh-CO9" firstAttribute="leading" secondItem="Z9S-uf-iw5" secondAttribute="leading" id="ePz-FD-O63"/>
                                     <constraint firstItem="g13-1P-dTs" firstAttribute="leading" secondItem="wOg-df-DlJ" secondAttribute="leading" id="gLu-1f-zPh"/>
@@ -1266,6 +1319,7 @@
                                     <constraint firstAttribute="trailing" secondItem="g13-1P-dTs" secondAttribute="trailing" id="n4y-bV-RbQ"/>
                                     <constraint firstItem="g13-1P-dTs" firstAttribute="top" secondItem="kla-JV-RrE" secondAttribute="bottom" constant="29" id="u3c-d2-S2m"/>
                                     <constraint firstItem="kla-JV-RrE" firstAttribute="leading" secondItem="wOg-df-DlJ" secondAttribute="leading" constant="20" symbolic="YES" id="wEW-b4-EAC"/>
+                                    <constraint firstItem="94J-tg-Kns" firstAttribute="leading" secondItem="kla-JV-RrE" secondAttribute="trailing" constant="-24" id="xSm-iM-0Gl"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1368,7 +1422,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9Q-zL-wsA">
                                 <rect key="frame" x="30" y="180" width="323" height="58.666666666666657"/>
-                                <string key="text">Can’t stop the tap from dripping in the master bedroom, Has been running for a few days now and wasting. a lot of water. Concerned about water bills and flooding if something else goes wrong.</string>
+                                <string key="text">Can’t stop the tap from dripping in the master bedroom, Has been running for a few days now and wasting alot of water. Concerned about water bills and flooding if something else goes wrong.</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

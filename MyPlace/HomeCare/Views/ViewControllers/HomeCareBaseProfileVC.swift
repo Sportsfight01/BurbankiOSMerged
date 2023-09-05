@@ -25,6 +25,7 @@ class HomeCareBaseProfileVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.profileBaseView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
         getNotes()
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     //MARK: - Helper Methods
@@ -42,6 +43,7 @@ class HomeCareBaseProfileVC: UIViewController {
                 DispatchQueue.main.async {[weak self] in
                     self?.profileBaseView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
                 }
+                
             case .failure(let err):
                 debugPrint(err.localizedDescription)
                 DispatchQueue.main.async {

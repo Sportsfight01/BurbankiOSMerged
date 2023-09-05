@@ -38,7 +38,9 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpProfileView()
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
 
     func setupDataArr(){
         self.dashBoardDataArr.removeAll()
@@ -50,7 +52,7 @@ class HomeCareDashBoardVC: HomeCareBaseProfileVC,UITabBarDelegate {
     @IBAction func didTappedOnDetailsBTN(_ sender: UIButton) {
         let vc =  HomeScreenTabBarVC.instace(sb: .homeScreenSb)
         if sender.tag != 0{
-            vc.selectedTab = sender.tag - 1
+//            vc.selectedTab = sender.tag - 1
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -125,10 +127,19 @@ extension HomeCareDashBoardVC: didTappedOncomplete {
     
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
+    
         let vc = HomeScreenTabBarVC.instace(sb: .homeScreenSb)
-        vc.selectedTab = item.tag
-        self.navigationController?.pushViewController(vc, animated: true)
+//        vc.navigationController?.setNavigationBarHidden(true, animated: true)
+//        vc.selectedTab = item.tag
+        
+        let navController = UINavigationController(rootViewController: vc)
+
+        kWindow.rootViewController = vc
+        kWindow.makeKeyAndVisible()
+        
+        
+
+//        self.navigationController?.pushViewController(vc, animated: true)
         
         
         if item.tag == 3{

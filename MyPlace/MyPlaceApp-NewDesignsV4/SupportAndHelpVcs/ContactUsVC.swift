@@ -21,7 +21,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         didSet{   setupUI()   }
     }
     private var contactArr : [MyNotesStruct]?
-   // private lazy var dataSource : UITableViewDiffableDataSource<Int,MyNotesStruct>! = makeDataSource()
+    // private lazy var dataSource : UITableViewDiffableDataSource<Int,MyNotesStruct>! = makeDataSource()
     
     @IBOutlet weak var searchBar: UISearchBar!
     {
@@ -45,7 +45,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tableView.separatorColor = .clear
         searchBar.delegate = self
         searchBarHeight.constant = 0
-      
+        
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
         newMessageBtn.addGestureRecognizer(gesture)
         getAPIData()
@@ -71,26 +71,26 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     deinit {
         debugPrint("ContactUS Deinitialized")
     }
-//     //MARK: - TableViewDiffableDataSource
-//    private func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
-//    {
-//        let dataSource = UITableViewDiffableDataSource<Int, MyNotesStruct>(tableView: tableView) { tableView, indexPath, itemIdentifier in
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
-//            cell.setup(model : itemIdentifier)
-//            return cell
-//        }
-//        return dataSource
-//    }
-//
-//    private func applySnapShot()
-//    {
-//        var snapShot = NSDiffableDataSourceSnapshot<Int, MyNotesStruct>()
-//        snapShot.appendSections([0])
-//        snapShot.appendItems(tableDataSource ?? [])
-//        dataSource.apply(snapShot, animatingDifferences: true)
-//    }
+    //     //MARK: - TableViewDiffableDataSource
+    //    private func makeDataSource() -> UITableViewDiffableDataSource<Int, MyNotesStruct>
+    //    {
+    //        let dataSource = UITableViewDiffableDataSource<Int, MyNotesStruct>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+    //            let cell = tableView.dequeueReusableCell(withIdentifier: "ContactUsTVC") as! ContactUsTVC
+    //            cell.setup(model : itemIdentifier)
+    //            return cell
+    //        }
+    //        return dataSource
+    //    }
+    //
+    //    private func applySnapShot()
+    //    {
+    //        var snapShot = NSDiffableDataSourceSnapshot<Int, MyNotesStruct>()
+    //        snapShot.appendSections([0])
+    //        snapShot.appendItems(tableDataSource ?? [])
+    //        dataSource.apply(snapShot, animatingDifferences: true)
+    //    }
     
-
+    
     @objc func panGestureAction(_ gesture : UIPanGestureRecognizer)
     {
         // let translation = gesture.translation(in: newMessageBtn.superview)
@@ -113,8 +113,8 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         }
         
     }
-
-
+    
+    
     
     //MARK: - IBActions
     @IBAction func didTappedOnSearch(_ sender: UIButton) {
@@ -132,7 +132,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         sender.shake()
         
         let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
-
+        
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .overCurrentContext
         vc.isFromNewMessage = true
@@ -140,7 +140,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             self?.getAPIData()
         }
         self.present(vc, animated: false)
-
+        
     }
     
     
@@ -170,8 +170,8 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 DispatchQueue.main.async {
                     self.showAlert(message: err.description)
                     return}
-                }
             }
+        }
         
         
     }
@@ -183,9 +183,9 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             {
                 self.tableView.setEmptyMessage("No records found")
             }else {
-               // self.tableView.reloadData()
+                // self.tableView.reloadData()
                 self.tableView.restore()
-//                self.applySnapShot()
+                //                self.applySnapShot()
                 self.tableView.reloadData()
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             }
@@ -241,9 +241,9 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         }
         
         // - Sorting of tableDataSource
-        tempDataSource = tempDataSource.sorted { note1, note2 in
-            
-            // - sorting with possible conditions based on replies available for note
+        //        tempDataSource = tempDataSource.sorted { note1, note2 in
+        
+        // - sorting with possible conditions based on replies available for note
         /// - Sorting of tableDataSource
         tempDataSource = tempDataSource.sorted { note1, note2 in
             

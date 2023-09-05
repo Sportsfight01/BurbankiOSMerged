@@ -71,7 +71,7 @@ class LogIssueVC: UIViewController {
             self.newIssueLBL.text = "EDIT ISSUE"
             titleOfIssueTF.text = "Hall"
             roomInHouseTF.text  = "3"
-            detailsTF.text      = "Can’t stop the tap from dripping in the master bedroom, Has been running for a few days now and wasting. a lot of water. Concerned about water bills and flooding if something else goes wrong."
+            detailsTF.text      = "Can’t stop the tap from dripping in the master bedroom, Has been running for a few days now and wasting alot of water. Concerned about water bills and flooding if something else goes wrong."
             
         }else{
             [saveEditBTN,deleteBTN,cancelBTN].forEach({$0?.isHidden = true})

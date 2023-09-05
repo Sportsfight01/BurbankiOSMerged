@@ -9,6 +9,7 @@ import UIKit
 
 class CustomersUserpreferrenceVC: UIViewController {
    
+    @IBOutlet weak var downArrowOnIMG: UIImageView!
     
     @IBOutlet weak var jobnNumberBTN: UIButton!
     @IBOutlet weak var nameLBL: UILabel!
@@ -21,13 +22,16 @@ class CustomersUserpreferrenceVC: UIViewController {
     @IBOutlet weak var homeCareBTN: UIButton!
 
     var userData : User!
+    var isFromMenu = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-       
-        
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
+
     }
     
     func setupUI(){
@@ -35,16 +39,36 @@ class CustomersUserpreferrenceVC: UIViewController {
         if let selectedJobNum = UserDefaults.standard.value(forKey: "selectedJobNumber") as? String{
             self.jobnNumberBTN.setTitle("  \(selectedJobNum )", for: .normal)
         }else{
-            self.jobnNumberBTN.setTitle("  \(appDelegate.currentUser?.jobNumber ?? "")", for: .normal)
+            if isEmail(){
+                self.jobnNumberBTN.setTitle("  \(CurrentUser.jobNumber ?? "")", for: .normal)
+            }else{
+                self.jobnNumberBTN.setTitle("  \(appDelegate.currentUser?.jobNumber ?? "")", for: .normal)
+            }
+        }
+        var myplaceDetailsArray = [MyPlaceDetails]()
+        
+        if userData != nil{
+            myplaceDetailsArray = (userData.userDetailsArray?.first!.myPlaceDetailsArray)!
+        }else{
+            myplaceDetailsArray = (appDelegate.currentUser?.userDetailsArray?.first!.myPlaceDetailsArray)!
+        }
+        //*** Users With Multiple Job Numbers ***//
+        if (myplaceDetailsArray.count ?? 0) < 1
+        {
+            self.downArrowOnIMG.isHidden = true
+            self.jobnNumberBTN.contentHorizontalAlignment = .center
         }
         
-        setupMultipleJobVc()
+        if !isFromMenu{
+            setupMultipleJobVc()
+        }
+        
         nameLBL.text = appDelegate.currentUser?.userDetailsArray?.first?.firstName ?? ""
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        setStatusBarColor(color: .clear)
-        UIApplication.shared.statusBarView?.backgroundColor = .clear
+        setStatusBarColor(color: .white)
+        UIApplication.shared.statusBarView?.backgroundColor = .white
 
     }
 
@@ -97,7 +121,13 @@ class CustomersUserpreferrenceVC: UIViewController {
                 self.present(vc, animated: true)
         }else{
             self.jobnNumberBTN.isEnabled = false
-            CurrentUser.jobNumber = appDelegate.currentUser?.jobNumber
+            CurrentUser.jobNumber = myplaceDetailsArray[0].jobNumber
+            if isEmail(){
+                self.jobnNumberBTN.setTitle("  \(myplaceDetailsArray[0].jobNumber ?? "")", for: .normal)
+            }
+            
+            self.downArrowOnIMG.isHidden = true
+            self.jobnNumberBTN.contentHorizontalAlignment = .center
         }
     }
     

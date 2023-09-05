@@ -23,8 +23,6 @@ class BaseProfileVC: UIViewController {
         profileView.contactUsBtn.addTarget(self, action: #selector(contactUsBtnTapped), for: .touchUpInside)
         //getNotes()
       
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
