@@ -103,7 +103,6 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
             {
                 self.yourOverallProgressLb.text = MyProgressCVCell.setupLastUpdateDate(progressData: clItems?[currentIndex].progressDetails).overallProgress
             }
-           
             self.setupCurrentIndex(contentoffset: contentOffset)
         }
         let layout = UICollectionViewCompositionalLayout(section: section)

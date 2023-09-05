@@ -151,10 +151,10 @@ class APIManager{
          {
              "Notes": {
                "List": {
-                    "author" : {
-                            "fullUser" : {}
-         },
-                 "MetaData": {}
+                "author" : {
+                        "fullUser" : {}
+                        },
+                    "MetaData": {}
                }
              }
          }

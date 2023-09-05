@@ -174,6 +174,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         }
         
         
+        
     }
     //MARK: - HelperMethods
     func setupUI()
@@ -209,6 +210,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         CurrentUser.notesUnReadCount = maped.filter({$0 == nil}).count
         
         // -
+
         /// - Here we are gathering replies and adding them to mainNote
         for item in mainNotes
         {
