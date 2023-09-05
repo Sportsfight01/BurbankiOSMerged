@@ -151,7 +151,10 @@ class APIManager{
          {
              "Notes": {
                "List": {
-                 "MetaData": {}
+                "author" : {
+                        "fullUser" : {}
+                        },
+                    "MetaData": {}
                }
              }
          }
@@ -179,6 +182,9 @@ class APIManager{
             }
             
             do {
+                let json = try JSONSerialization.jsonObject(with: jsonData)
+                print(log: json)
+                
                 let tableData = try JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
                 completion(.success(tableData))
                 
