@@ -136,8 +136,9 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     func showData(){
         
-        subjectLBL.text =  "\(self.contactDetails?.subject ?? "") (\(self.contactDetails?.noteId ?? 0))"
-        let authorValue = (self.contactDetails?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? " " : self.contactDetails?.author?.fullName  ?? " "
+        subjectLBL.text =  "\(self.contactDetails?.subject ?? "")"
+        let fullName = "\(self.contactDetails?.author?.fullName  ?? " ") - Burbank Homes"
+        let authorValue = (self.contactDetails?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? " " :  fullName
         authorLb.text = "\(authorValue)"
         descriptionLb.text = self.contactDetails?.body ?? ""
         self.tableDataSource = contactDetails?.replies //All replies
