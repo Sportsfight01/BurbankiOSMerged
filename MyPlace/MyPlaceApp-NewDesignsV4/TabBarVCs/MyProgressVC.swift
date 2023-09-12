@@ -86,30 +86,11 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         section.orthogonalScrollingBehavior = .groupPagingCentered
         section.interGroupSpacing = 16.0
         section.visibleItemsInvalidationHandler = { [unowned self](visibleItems,contentOffset,layoutEnvironment) in
-            debugPrint(contentOffset)
-            let cellWidth = (0.75 * self.collectionView.frame.width)
-            let spaceFromLeftSide = (self.collectionView.frame.width - cellWidth)/2
-            let offSet = contentOffset.x + spaceFromLeftSide + 1
-            print("offset : - \(offSet), cellWidth : \(cellWidth)")
-            let index =  offSet / cellWidth
-            let currentIndex : Int = Int(abs(index.rounded(.toNearestOrAwayFromZero)))
-            debugPrint("currentIndex : \(currentIndex)")
-            guard (0...6).contains(currentIndex) else {return}
-            if currentIndex == 0
-            {
-                self.yourOverallProgressLb.text = "YOUR OVERALL PROGRESS"
-            }
-            else
-            {
-                self.yourOverallProgressLb.text = MyProgressCVCell.setupLastUpdateDate(progressData: clItems?[currentIndex].progressDetails).overallProgress
-            }
             self.setupCurrentIndex(contentoffset: contentOffset)
         }
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    //MARK: - Bindings
-
     private func setupCurrentIndex(contentoffset : CGPoint)
     {
         debugPrint(contentoffset)

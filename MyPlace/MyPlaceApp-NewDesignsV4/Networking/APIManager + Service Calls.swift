@@ -182,8 +182,9 @@ class APIManager{
             }
             
             do {
-                let json = try? JSONSerialization.jsonObject(with: jsonData)
+                let json = try JSONSerialization.jsonObject(with: jsonData)
                 print(log: json)
+                
                 let tableData = try JSONDecoder().decode([MyNotesStruct].self, from: jsonData)
                 completion(.success(tableData))
                 
