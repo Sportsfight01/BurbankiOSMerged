@@ -27,7 +27,7 @@ class ContactUsReplyTBCell: UITableViewCell {
     func setup(model : MyNotesStruct?)
     {
         guard let data = model else {return}
-        let authorValue = (model?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : model?.authorname ?? "--"
+        let authorValue = (model?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : model?.author?.fullName ?? "--"
 //        if let body = data.body , body.trim().count > 0
 //        {
 //            if data.isFromAdmin == false { // reply from mobile(customer)
