@@ -32,7 +32,8 @@ class ContactUsTVC: UITableViewCell {
     func setup(model : MyNotesStruct?)
     {
         guard let model else {return}
-        let authorValue = (model.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : model.author?.fullName ?? "--"
+        let fullName = "\(model.author?.fullName ?? " ") - Burbank Homes"
+        let authorValue = (model.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? "--" : fullName
         let subject = "\(model.subject?.trim() ?? "--")"
         let body = "\(model.body?.trim() ?? "--")"
 

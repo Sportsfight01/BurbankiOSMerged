@@ -40,14 +40,6 @@ extension UIView {
         
     }
     
-    func addBorder(color : UIColor)
-    {
-      let borderLayer = CAShapeLayer()
-        borderLayer.backgroundColor = color.cgColor
-        borderLayer.frame = CGRect(x: 0, y: self.bounds.height - 1, width: self.bounds.width, height: 1)
-        self.layer.addSublayer(borderLayer)
-    }
-    
     
 }
 extension UIView {
