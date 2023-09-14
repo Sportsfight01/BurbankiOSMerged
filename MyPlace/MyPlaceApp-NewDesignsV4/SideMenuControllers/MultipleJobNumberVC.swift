@@ -59,7 +59,7 @@ class MultipleJobNumberVC: UIViewController {
             selectionClosure?(previousJobNum ?? "")
             self.dismiss(animated: true)
         }else{
-            showToast("Please Select Jobnumber", self, .bottom)
+            showToast("Please select jobnumber", self, .bottom)
         }
     }
     

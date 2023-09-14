@@ -118,7 +118,8 @@ class APIManager{
         guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
         let url = "\(clickHomeV3BaseURL)Accounts/Login"
         let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
-
+        print(url)
+        print(postDict)
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -160,6 +161,8 @@ class APIManager{
          }
          """.data(using: .utf8)
         urlRequest.httpBody = json
+        print(url)
+        print(json)
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             //Validation
             //debugPrint(response.debugDescription)
