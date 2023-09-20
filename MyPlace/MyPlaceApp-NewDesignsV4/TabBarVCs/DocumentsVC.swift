@@ -168,7 +168,8 @@ class DocumentsVC: BaseProfileVC {
             {
             case .success(let data):
                 
-                self?.documentList = data.filter( { !($0.type!.lc.contains("jpg"))}).filter( { !($0.type!.lc.contains("png")) })
+                self?.documentList = data.filter( { !($0.type!.lc.contains("jpg"))}).filter( { !($0.type!.lc.contains("png")) }).filter({ !($0.type!.lc.contains("eml")) })
+                print(self?.documentList)
                 //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {
                     self?.documentList = self?.documentList?.sorted(by: {$0.date > $1.date})

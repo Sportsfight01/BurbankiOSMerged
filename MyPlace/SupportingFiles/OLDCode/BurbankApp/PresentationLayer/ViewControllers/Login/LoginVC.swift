@@ -90,7 +90,7 @@ class LoginVC: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
         setAppearanceFor(view: jobNumberTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
 
         
-        setAppearanceFor(view: btnLogin, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnLogin, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
         setAppearanceFor(view: forgotPasswordButton, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: touchIDButton, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
 

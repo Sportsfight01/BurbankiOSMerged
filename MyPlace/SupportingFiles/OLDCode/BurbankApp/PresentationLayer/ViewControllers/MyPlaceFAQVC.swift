@@ -66,7 +66,7 @@ class MyPlaceFAQVC: BurbankAppVC, UITableViewDelegate,UITableViewDataSource {
         setAppearanceFor(view: popUpQuestionLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
 
         setAppearanceFor(view: nextBtn, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: previousBtn, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: previousBtn, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
 
         setAppearanceFor(view: popUpAnswerTextView, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
         
