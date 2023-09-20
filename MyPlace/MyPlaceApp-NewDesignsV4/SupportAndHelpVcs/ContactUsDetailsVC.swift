@@ -136,7 +136,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
     
     func showData(){
         
-        subjectLBL.text =  "\(self.contactDetails?.subject ?? "")"
+        subjectLBL.text =  "\(self.contactDetails?.subject ?? "") (\(self.contactDetails?.noteId ?? 0))"
         let fullName = "\(self.contactDetails?.author?.fullName  ?? " ") - Burbank Homes"
         let authorValue = (self.contactDetails?.createdInMyHome ?? true) ? appDelegate.currentUser?.userDetailsArray?.first?.fullName ?? " " :  fullName
         authorLb.text = "\(authorValue)"
@@ -164,7 +164,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
     @IBAction func didTappedOnReplay(_ sender: UIButton) {
         let recipientEmail = "srikanth.vunyala@digitalminds.solutions"
-        let subject = "Re: \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0)"
+        let subject = "Re: \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0) (MyPlace App Message)"
        // let body = ""
         
         let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)

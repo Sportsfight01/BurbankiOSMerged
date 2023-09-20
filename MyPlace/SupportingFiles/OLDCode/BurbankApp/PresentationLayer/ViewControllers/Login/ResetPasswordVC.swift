@@ -178,7 +178,7 @@ class ResetPasswordVC: BurbankAppVC {
         setAppearanceFor(view: confirmPasswordTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
 
         
-        setAppearanceFor(view: btnSubmit, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnSubmit, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_15))
         
         
         emailTextField.superview?.layer.cornerRadius = radius_5

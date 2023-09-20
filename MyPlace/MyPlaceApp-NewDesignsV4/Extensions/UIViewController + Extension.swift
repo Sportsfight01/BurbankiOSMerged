@@ -223,7 +223,6 @@ extension UIViewController
 {
     #warning("must provide proper storyboard name to create viewcontroller instance")
     static func instace(sb : AppStoryBoards = .newDesignV4) -> Self{
-        
         let instance = UIStoryboard(name: sb.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: self)) as! Self
         return instance
     }
