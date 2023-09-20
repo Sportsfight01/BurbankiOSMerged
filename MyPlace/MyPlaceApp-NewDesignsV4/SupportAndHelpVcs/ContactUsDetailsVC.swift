@@ -164,7 +164,7 @@ class ContactUsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
     @IBAction func didTappedOnReplay(_ sender: UIButton) {
         let recipientEmail = "srikanth.vunyala@digitalminds.solutions"
-        let subject = "Re: \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0)"
+        let subject = "Re: \(contactDetails?.subject ?? "") \(contactDetails?.noteId ?? 0) (MyPlace App Message)"
        // let body = ""
         
         let vc = ContactUsNewMsgPopupVC.instace(sb: .supportAndHelp)
