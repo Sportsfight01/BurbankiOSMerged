@@ -25,7 +25,6 @@ enum APIError : Error, Equatable
             return err ?? somethingWentWrong
         }
     }
-    
 }
 class APIManager{
     
@@ -129,6 +128,7 @@ class APIManager{
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+                // popUp showing everytime in screens so removed completion logic
 //                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
                 completion(.success(false))
                 return}
@@ -199,23 +199,27 @@ class APIManager{
 
     func getNotes(completion : @escaping (Result<[MyNotesStruct], APIError>) ->()){
         
+        
         self.contactUSLogin { result in
             switch result{
-                
-            case .success(_):
+            case .success(let istrue):
                 debugPrint("ContactUsloginAPISuccessful")
-                self.getNotesList { result in
-                    switch result{
-                    case .success(let notes):
-                        debugPrint("notes api got successful results")
-                        completion(.success(notes))
-                    case .failure(let err):
-                        debugPrint(err.localizedDescription)
-                        completion(.failure(err))
+                if istrue{
+                    self.getNotesList { result in
+                        switch result{
+                        case .success(let notes):
+                            debugPrint("notes api got successful results")
+                            completion(.success(notes))
+                        case .failure(let err):
+                            debugPrint(err.localizedDescription)
+                            completion(.failure(err))
+                        }
+                 
                     }
-             
+                }else{
+                    completion(.success([]))
                 }
-            case .failure(let err):
+                case .failure(let err):
                 debugPrint("ContactUsloginAPIFailed")
                 completion(.failure(err))
             }
