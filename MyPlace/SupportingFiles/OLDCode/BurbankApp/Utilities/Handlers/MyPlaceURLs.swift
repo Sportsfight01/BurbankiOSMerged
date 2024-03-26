@@ -43,6 +43,9 @@ let clickHomeBaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3
 let myPlaceVICBaseURL = "https://www.burbank.com.au/victoria/myplace/api/"
 
 
+let clickHomeV2BaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/V2"
+
+
 
 //let checkUserLoginurl = String(format: "%@login/CheckUserlogin",getMyPlaceURL())//http://nationalclickhome.burbankgroup.com.au/clickhome3webservice/ClickHome.myhome/v2/clientlogin
 
@@ -61,15 +64,16 @@ func  myPlaceProgressDetailsURLString() -> String
 }
 func myPlaceDocumentsDetailsURLString() -> String
 {
-    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)documents/GetAllDocuments?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())" : "\(clickHomeBaseURL)/documents"
+    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)documents/GetAllDocuments?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())" : "\(clickHomeBaseURL)documents"
 }
 func  myPlaceContractDetailsURLString() -> String
 {
-    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contract/GetContract?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())&region=VIC" : "\(clickHomeBaseURL)job"
+    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contract/GetContract?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())&region=VIC" : "\(clickHomeV3BaseURL)job"
 }
 func  myPlaceNotesURLString() -> String
 {
-    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contact/GetContact?constructionTicketID=\(selectedJobconstrucntionID())&region=VIC" : "\(clickHomeBaseURL)notes"
+    let selctedID = APIManager.shared.selectedContractIDForV3
+    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contact/GetContact?constructionTicketID=\(selectedJobconstrucntionID())&region=VIC" : "\(clickHomeV3BaseURL)Contracts/\(selctedID)/AddNote"
 }
 func myPlaceFinanceDetailsURLString() -> String
 {

@@ -95,12 +95,18 @@ class ContactUsNewMsgPopupVC: UIViewController {
         if let authorValue {  body.append(" - Message from \(authorValue)") }
         if isFromNewMessage
         {
-            parameters = ["replytoid" : NSNull() , "subject" : "MyPlace App Message: " + (subjectTf.text?.trim() ?? ""), "stepid" : 0, "body" : body]
+//            parameters = ["replytoid" : NSNull() , "subject" : "MyPlace App Message: " + (subjectTf.text?.trim() ?? ""), "stepid" : 0, "body" : body]    For v2 Service
+            
+            parameters = [ "subject" : "MyPlace App Message: " + (subjectTf.text?.trim() ?? ""), "body" : body,"noteType" : "N"]
         }
         else//reply
         {
             if let noteId = noteId {
-                parameters = ["replytoid" : noteId , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : body]
+//                parameters = ["replytoid" : noteId , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : body]  For V2 service
+                
+                let rplyTo = ["noteId" :  noteId, "noteType" : "N"] as [String : Any]
+                
+                parameters = ["replyTo" : rplyTo , "subject" : subjectTf.text?.trim() ?? "", "body" : body, "noteType" : "N"]
             }
             
         }

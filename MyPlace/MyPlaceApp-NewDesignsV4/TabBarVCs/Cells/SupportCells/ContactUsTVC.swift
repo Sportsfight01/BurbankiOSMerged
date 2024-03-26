@@ -14,7 +14,6 @@ class ContactUsTVC: UITableViewCell {
     @IBOutlet weak var bodyLb: UILabel!
     @IBOutlet weak var subjectLb: UILabel!
     @IBOutlet weak var authorNameLb: UILabel!
-    
     @IBOutlet weak var circlelb: UILabel!
     
     

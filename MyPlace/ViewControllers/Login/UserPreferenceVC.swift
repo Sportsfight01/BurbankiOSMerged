@@ -204,7 +204,7 @@ class UserPreferenceVC: UIViewController {
     @IBAction func handleSelectionButton (sender: UIButton) {
         
 //        fatalError()
-          
+        
         selectedModule = sender == btnLookingSelection ? 1 : sender == btnDepositedSelection ? 2 : 0
 
         

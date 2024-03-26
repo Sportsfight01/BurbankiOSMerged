@@ -321,3 +321,20 @@ class MyPlaceEmails: NSObject,NSCoding
         self.init(dic: detailsDic)
     }
 }
+
+
+struct myContractJobDetailsV3 : Codable{
+    let myHomeUsername : String
+    let clientTitle : String
+    let letterTitle : String
+    let myHomeUserName : String
+    let myHomePassword : String
+    let contactDetails : ContactDetailsOfV3
+    
+    
+}
+
+struct ContactDetailsOfV3 : Codable{
+    let mobilePhone : String
+    let emailAddress : String
+}

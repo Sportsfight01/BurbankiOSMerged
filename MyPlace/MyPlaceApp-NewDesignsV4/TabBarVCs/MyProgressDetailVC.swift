@@ -174,7 +174,6 @@ extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
         //font setup
         cell.progressNameLb.font = FONT_LABEL_BODY(size: FONT_10)
         cell.dateLb.font = FONT_LABEL_SUB_HEADING(size: FONT_10)
-        //
         cell.progressNameLb.text = item.name
         cell.checkMarkImage.tintColor = progressData?.stage?.progressColor
         if item.status?.lowercased() == "completed"{

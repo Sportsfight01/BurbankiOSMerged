@@ -81,7 +81,7 @@ class MyCollectionSurveyVC: HeaderVC {
     self.btnDesignsCount.setTitle("", for: .normal)
     
     
-    checkForRecentSearchData ()
+//    checkForRecentSearchData ()
     
     viewRecentSearch.isHidden = true
       
@@ -1101,6 +1101,7 @@ extension MyCollectionSurveyVC {
         
       }
       
+        self.checkForRecentSearchData () // for v3.6 calling one service after another
     }, errorblock: { (error, isJSONerror) in
       
       if isJSONerror { }

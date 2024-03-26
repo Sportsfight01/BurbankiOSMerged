@@ -68,7 +68,6 @@ class MyContactsVC: BaseProfileVC {
     //MARK: - Service Calls
    func checkUserLogin1()
      {
-     
          let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
          guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
          let password = APIManager.shared.currentJobDetails?.password ?? ""
@@ -120,9 +119,7 @@ class MyContactsVC: BaseProfileVC {
                      };return}
                  
                  self?.getContacts()
-                
-                 
-             }
+            }
              DispatchQueue.main.async {
                 appDelegate.hideActivity()
                  self?.tableView.refreshControl?.endRefreshing()

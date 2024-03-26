@@ -28,13 +28,13 @@ class MyProgressVM
     }
     
     //MARK: - ServiceCalls
-    func getProgressData(completion : @escaping(Result<[ProgressItem],Error>)->())
-    {
-        APIManager.shared.getProgressDetails {[weak self] result in
+    func getProgressDataV3(completion : @escaping(Result<[ProgressItem],Error>)->()){
+        APIManager.shared.getProgressV3{ [weak self] result in
             guard let self else { return }
             switch result
             {
-            case .success(let progressData):
+            case .success(let progressData) :
+                print(log: progressData)
                 self.progressData = progressData
                 /// - Grouping the data with stages in Dictionary
                 let stageGroup = self.groupProgressDataWithStage()
@@ -44,21 +44,50 @@ class MyProgressVM
                 completion(.success(sortedItems))
                 
             case .failure(let err):
+                print(log: "failed")
                 completion(.failure(err))
             }
             
         }
     }
+    
+    
+    
+//    func getProgressData(completion : @escaping(Result<[ProgressItem],Error>)->())
+//    {
+//        APIManager.shared.getProgressDetails {[weak self] result in
+//            guard let self else { return }
+//            switch result
+//            {
+//            case .success(let progressData):
+//                self.progressData = progressData
+//                /// - Grouping the data with stages in Dictionary
+//                let stageGroup = self.groupProgressDataWithStage()
+//                /// - Transforming data for display
+//                let sortedItems = self.transformStageGroup(stageGroup: stageGroup)
+//                
+//                completion(.success(sortedItems))
+//                
+//            case .failure(let err):
+//                completion(.failure(err))
+//            }
+//            
+//        }
+//    }
     private func groupProgressDataWithStage() -> Dictionary<String,[ProgressStruct]>
     {
         guard let progressData else { return [:] }
         let stageGroup = Dictionary(grouping: progressData) { item in
             let phacecode = item.phasecode?.trim().lc
+            /// - Taking presite stage name for all precontract construction data
+            
             if phacecode == "presite" { return "Admin Stage" }
             
             let stageName = item.stageName?.trim().lc
             switch stageName
             {
+                /// - completion and handover are taking as finishing stage
+                /// removing "All Stages" and "Administration" from contact construction data
             case "completion","handover" : return "Finishing Stage"
             case "fixout stage" : return "Fixing Stage"
             default:
@@ -110,6 +139,9 @@ enum Stage : String
     case fixing      = "Fixing Stage"
     case finishing   = "Finishing Stage"
     case yourNewHome = "Your New Home"
+//    case allStages   = "All Stages"
+//    case handover    = "Handover"
+    
     
     var order : Int
     {
@@ -127,6 +159,10 @@ enum Stage : String
             return 5
         case .finishing:
             return 6
+//        case .allStages:
+//            return 7
+//        case .handover:
+//            return 8
         default:// Your New Home
             return 0
         }
@@ -148,6 +184,10 @@ enum Stage : String
             return "icon_Fixout"
         case .finishing:
             return "icon_Complete"
+//        case .allStages:
+//            return "icon_house"
+//        case .handover:
+//            return "icon_house"
         default: // your new home
             return "icon_house"
         }
@@ -168,6 +208,10 @@ enum Stage : String
             return "All the internal design features will now be fitted into your home."
         case .finishing:
             return "As the name suggests, we’re almost there."
+//        case .allStages:
+//            return "As the name suggests, we’re almost there."
+//        case .handover:
+//            return "As the name suggests, we’re almost there."
         default: // your new home
             return "We're now on the way to building your new home. All you have to do is swipe to see your build progress."
         }
@@ -188,6 +232,10 @@ enum Stage : String
             return AppColors.StageColors.fixing
         case .finishing:
             return AppColors.StageColors.finishing
+//        case .handover:
+//            return AppColors.StageColors.admin
+//        case .allStages:
+//            return AppColors.StageColors.frame
         default: // your new home
             return APPCOLORS_3.Orange_BG
         }

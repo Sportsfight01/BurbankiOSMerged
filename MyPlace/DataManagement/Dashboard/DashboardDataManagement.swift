@@ -28,6 +28,7 @@ class DashboardDataManagement: NSObject {
         }
         
         
+        
         let datatask = Networking.shared.POST_request(url: ServiceAPI.shared.URL_HomeLandAllPackages(kUserID, NSNumber(value: state).stringValue, page: 0), parameters: NSDictionary(), userInfo: nil, success: { (json, response) in
             
             if let result: AnyObject = json {

@@ -58,7 +58,6 @@ class TabBarVC: UITabBarController {
    
             self.setupViewControllers()
         
-       
     }
     
     func setupViewControllers()
@@ -74,11 +73,9 @@ class TabBarVC: UITabBarController {
             let vc = UINavigationController(rootViewController: item.viewController.instace())
             vc.setNavigationBarHidden(true, animated: true)
             vc.tabBarItem = UITabBarItem(title: item.title, image: UIImage(named : item.unSelectedItemImage) , selectedImage: UIImage(named : item.selectedItemImage))
-            
             return vc
             
         }
-       
     }
     
     

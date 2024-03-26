@@ -125,7 +125,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         guard isNetworkReachable else { self.showAlert(message: checkInternetPullRefresh); return }
         getProgressDetails()
         getUserProfile()
-        getNotification()
+//        getNotification()
     }
     /// - PullToRefress Action
     @objc func panGestureRecognizerAction(sender: UISwipeGestureRecognizer) {
@@ -181,15 +181,20 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
     
     func showFinanceTab()
     {
-            /// - add financeTab only if it not added
+        /// - add financeTab only if it not added
+        DispatchQueue.main.async {
             guard self.tabBarController?.viewControllers?.count == 4 else {return}
             let vc = UINavigationController(rootViewController: FinanceVC.instace())
             vc.tabBarItem = UITabBarItem(title: "FINANCE", image: UIImage(named : "Finance_grey") , selectedImage: UIImage(named : "Finance_orange"))
             self.tabBarController?.viewControllers?.append(vc)
+        }
+           
+           
     }
 
     func setupDataForCollectionView()
     {
+        
         /// - Calculating whole home progress
         guard let clItems else { return }
         let totalHomeProgress = Double(clItems.compactMap({$0.progress}).reduce(0.0, +)) / 6.0
@@ -201,16 +206,18 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
             print("Added your new home")
             self.clItems?.insert(newClItem, at: 0)
         }
-        
+        DispatchQueue.main.async {
         /// - add data to UI Elements
-        progressBar.progress = CGFloat(totalHomeProgress)
+            self.progressBar.progress = CGFloat(totalHomeProgress)
         let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
-        setAttributetitleFor(view: profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+            setAttributetitleFor(view: self.profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
         
-        collectionView.reloadData()
-        collectionView.contentSize.width = collectionView.contentSize.width + 50 // to make last item of collectionView visible properly
-        CurrentUser.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"
+            self.collectionView.reloadData()
+            self.collectionView.contentSize.width = self.collectionView.contentSize.width + 50 // to make last item of collectionView visible properly
+            CurrentUser.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"
+        }
+        
         
     }
     
@@ -218,8 +225,10 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
     //MARK: - Service Calls
     func getProgressDetails()
     {
-        self.collectionView.showAnimatedGradientSkeleton()
-        viewModel.getProgressData {[weak self] result in
+        DispatchQueue.main.async{
+            self.collectionView.showAnimatedGradientSkeleton()
+        }
+        viewModel.getProgressDataV3 {[weak self] result in
             DispatchQueue.main.async{
                 self?.collectionView.stopSkeletonAnimation()
                 self?.view.hideSkeleton()
@@ -234,6 +243,21 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
                 AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
             }
         }
+//        viewModel.getProgressData {[weak self] result in
+//            DispatchQueue.main.async{
+//                self?.collectionView.stopSkeletonAnimation()
+//                self?.view.hideSkeleton()
+//            }
+//            switch result
+//            {
+//            case .success(let ProgressItems):
+//                self?.clItems = ProgressItems
+//                self?.setupDataForCollectionView()
+//                break
+//            case .failure(let err):
+//                AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
+//            }
+//        }
     }
     
     func getUserProfile()

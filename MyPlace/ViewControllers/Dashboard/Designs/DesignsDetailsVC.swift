@@ -397,8 +397,8 @@ class DesignsDetailsVC: HeaderVC {
             ImageDownloader.downloadImage(withUrl: ServiceAPI.shared.URL_imageUrl(imageUrl), withFilePath: nil, with: { (image, success, error) in
                 
                 imgOne.hideActivityIndicator()
-                var imageHeight = (image?.size.height)!
-                var imageWidth = (image?.size.width)!
+                var imageHeight = (image?.size.height) ?? 0
+                var imageWidth = (image?.size.width) ?? 0
                 var plotViewWidth = self.plotView.frame.width
                 var plotViewHeight = self.plotView.frame.height
                 var imageRatio = imageWidth/imageHeight

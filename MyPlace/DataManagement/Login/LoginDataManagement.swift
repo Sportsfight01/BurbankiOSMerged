@@ -341,65 +341,130 @@ extension LoginDataManagement {
     //MARK: - API
         
     func handleDefaultLoginforToken (_ noparamsBlock: noParamsBlock?) {
-            
-            let params = ["Username" : defaultLoginEmail, "Password" : defaultLoginPassword]
-            
-            
-            let _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_userLogin, parameters: params as NSDictionary, userInfo: nil, success: { (json, response) in
-                
-                if let result: AnyObject = json {
-                    
-                    let result = result as! NSDictionary
-                    
-                    if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
-                        
-    //                    appDelegate.userData?.user?.userID = String.checkNumberNull(result.value(forKey: "Userid") as Any)
-    //
-    //                    if (appDelegate.userData?.user?.userID?.count)! > 0 {
-    //
-    //                        appDelegate.userData?.user?.userEmail = email
-    //                        appDelegate.userData?.user?.userPassword = password
-    //                    }else {
-    //                        assertionFailure("UserID shouldn't empty")
-    //                    }
-    //
-    //                    print(log: appDelegate.userData?.user?.userID! ?? "0")
-    //                    print(log: "\(appDelegate.userData?.user?.userID ?? "0")")
-                        
-                        appDelegate.guestUserAccessToken = String.checkNullValue(result.value(forKey: "token") as Any)
-                        
-//                        appDelegate.userData?.saveUserDetails()
+//        let params = """
+//         {    "Username": "burbank_minad"
+//                 "Password" : "401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429090fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1"
+//         }
+//         """.data(using: .utf8)
+        
+        let params1 = [
+            "Username": "burbank_minad",
+            "Password": "401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429090fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1"
+          ]
+        print("userdetails :------  ",params1)
+        let urls =  URL(string: ServiceAPI.shared.URl_authanticate)!
+        var request = URLRequest(url:urls)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if params1.count > 0 {
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: params1, options: [])
+
+                if let bodyData = request.httpBody {
+                    print(log: "WEBURL ==\n\n" + ServiceAPI.shared.URl_authanticate + String.init(data: bodyData, encoding: .utf8)! + "\n")
+                }
+            }catch let jsonError {
+                print(log: "jsonError: " + jsonError.localizedDescription)
+            }
+        }
+        
+//        request.httpBody = params
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            // Check for errors
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+            // Check if there's data
+            guard let jsonData = data else {
+                print("No data received")
+                return
+            }
+            do {
+                if let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                    print("-------Json Data For auth Key",json)
+                    DispatchQueue.main.async {
+                        appDelegate.guestUserAccessToken = json["Token"] as? String ?? ""
                         
                         if let bloc = noparamsBlock {
                             bloc ()
-                        }                        
-//                        showToast("Logged in Successfully")
-                    }else {
-                        
-                        if (result.value(forKey: "message") ?? "") as! String == "Email or Password is incorrect" {
-                            
-                            showToast(kuserNamePasswordNotMatched)
-                        }else {
-                            
-                            showToast((result.value(forKey: "message") ?? "") as! String)
                         }
+                           
                     }
-                }else {
                     
                 }
-                
-            }, errorblock: { (error, isJSONerror)  in
-                
-                if isJSONerror {
-                    
-                }else {
-                    
-                    alert.showAlert("Error", error?.localizedDescription ?? knoResponseMessage)
-                }
-                
-            }, progress: nil)
-            
+            } catch {
+                print("Error deserializing JSON: \(error)")
+            }
+        }
+        task.resume()
             
         }
+            
+//            let params = ["Username" : defaultLoginEmail, "Password" : defaultLoginPassword]
+            
+//        let params = ["Username" : "burbank_minad", "Password" : "401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429090fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1"]
+//        
+//            let _ = Networking.shared.POST_request(url: ServiceAPI.shared.URl_authanticate, parameters: params as NSDictionary, userInfo: nil, success: { (json, response) in
+//                
+//                if let result: AnyObject = json {
+//                    
+//                    let result = result as! NSDictionary
+//                    
+////                    if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+//                        
+//    //                    appDelegate.userData?.user?.userID = String.checkNumberNull(result.value(forKey: "Userid") as Any)
+//    //
+//    //                    if (appDelegate.userData?.user?.userID?.count)! > 0 {
+//    //
+//    //                        appDelegate.userData?.user?.userEmail = email
+//    //                        appDelegate.userData?.user?.userPassword = password
+//    //                    }else {
+//    //                        assertionFailure("UserID shouldn't empty")
+//    //                    }
+//    //
+////                        print("------Token", result)
+////                    print("88888**************", String.checkNullValue(result.value(forKey: "Token") as Any))
+////                        
+//                        appDelegate.guestUserAccessToken = String.checkNullValue(result.value(forKey: "Token") as Any)
+//                        
+////                        appDelegate.userData?.saveUserDetails()
+//                        
+//                        if let bloc = noparamsBlock {
+//                            bloc ()
+//                        }                        
+////                        showToast("Logged in Successfully")
+////                    }else {
+////                        
+////                        if (result.value(forKey: "message") ?? "") as! String == "Email or Password is incorrect" {
+////                            
+////                            showToast(kuserNamePasswordNotMatched)
+////                        }else {
+////                            
+////                            showToast((result.value(forKey: "message") ?? "") as! String)
+////                        }
+////                    }
+//                }else {
+//                    
+//                }
+//                
+//            }, errorblock: { (error, isJSONerror)  in
+//                
+//                if isJSONerror {
+//                    
+//                }else {
+//                    
+//                    alert.showAlert("Error", error?.localizedDescription ?? knoResponseMessage)
+//                }
+//                
+//            }, progress: nil)
+//            
+//            
+//        }
     
+    
+    
+
 }

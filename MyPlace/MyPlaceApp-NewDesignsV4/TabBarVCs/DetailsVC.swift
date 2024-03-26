@@ -29,9 +29,12 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var superVisorLb: UILabel!
     @IBOutlet weak var newHomeConsultant: UILabel!
 
+    
+    var contactDetialsData : ContactDetialsV3?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getContractDetails()
+        getContractDetailsV3()
         let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
         swipeDownGesture.direction = .down
         view.addGestureRecognizer(swipeDownGesture)
@@ -55,7 +58,7 @@ class DetailsVC: UIViewController {
     {
         if sender.state == .ended
         {
-            self.getContractDetails()
+            self.getContractDetailsV3()
         }
     }
     func setupProfile()
@@ -70,15 +73,18 @@ class DetailsVC: UIViewController {
             profileImgView.image = imgURlStr
         }
         //        profileImgView.addBadge(number: appDelegate.notificationCount)
-        nameLb.text = CurrentUser.userName
+       
+        let contactDetialsData = APIManager.shared.currentJobDetailsV3
+        nameLb.text = contactDetialsData?.clientTitle ?? ""
+        
         let emailFirstStr = NSMutableAttributedString(string: "Email ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let emailAttrStr = NSAttributedString(string: "\(CurrentUser.email ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let emailAttrStr = NSAttributedString(string: "\(contactDetialsData?.contactDetails.emailAddress ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         emailFirstStr.append(emailAttrStr)
         // emailLb.lineBreakMode = .byWordWrapping
         emailLb.attributedText = emailFirstStr
         
         let phoneFirstStr = NSMutableAttributedString(string: "Phone ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let phoneAttrStr = NSAttributedString(string: "\(appDelegate.currentUser?.userDetailsArray?.first?.mobile ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let phoneAttrStr = NSAttributedString(string: "\(contactDetialsData?.contactDetails.mobilePhone ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         phoneFirstStr.append(phoneAttrStr)
         phoneLb.attributedText = phoneFirstStr
         if appDelegate.notificationCount == 0{
@@ -96,19 +102,19 @@ class DetailsVC: UIViewController {
         
     }
     //MARK:- Helper Methods
-    func setupData(data : ContractDetailsStruct)
+    func setupData(data : ContactDetialsV3)
     {
         
         
         //My Build Details
-        jobNumberLb.text = "\(data.job ?? "--")"
+        jobNumberLb.text = "\(data.contractNumber ?? "--")"
         //  print(data.lotaddress)
-        fullJobAddressLb.text = data.lotaddress?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: " ")
-        homeDesignLb.text = "\(data.housetype ?? "--")"
-        facadeNameLb.text = "\(data.facade ?? "--")"
-        contractValueLb.text = dollarCurrencyFormatter(value: Double(data.contractvalue ?? 0))
-        superVisorLb.text = data.supervisor ?? "--"
-        newHomeConsultant.text = data.clientliaison ?? "--"
+        fullJobAddressLb.text = data.lotAddress.address.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: " ")
+        homeDesignLb.text = "\(data.houseType.houseName)"
+        facadeNameLb.text = "\(data.facade.packageName )"
+//        contractValueLb.text = dollarCurrencyFormatter(value: Double(data.contractvalue ?? 0))
+//        superVisorLb.text = data.supervisor ?? "--"
+//        newHomeConsultant.text = data.clientliaison ?? "--"
         //        siteStartDateLb.text = data.sitestartdate
     }
 
@@ -118,6 +124,36 @@ class DetailsVC: UIViewController {
     }
     
     //MARK:- Service Calls
+    func getContractDetailsV3(){
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            
+        }; return}
+        appDelegate.showActivity()
+        APIManager.shared.getMyDetails {[weak self] result in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+            guard let self else { return }
+            switch result{
+            case .success(let myDetails):
+                DispatchQueue.main.async {
+                    self.contactDetialsData = myDetails
+                    self.setupData(data: myDetails)
+//                    self.setupSerivceData(notes: notes)
+                }
+            case .failure(let err):
+                debugPrint(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message: err.description)
+                    return}
+                }
+            }
+        
+        
+    }
+    
+    
+    
     func getContractDetails()
     {
         guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh); return}
@@ -127,8 +163,8 @@ class DetailsVC: UIViewController {
         
         NetworkRequest.makeRequest(type: ContractDetailsStruct.self, urlRequest: Router.contractDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
             switch result{
-            case .success(let data):
-                self?.setupData(data: data)
+            case .success(let data): break
+//                self?.setupData(data: data)
             case .failure(let err):
                 print(err.localizedDescription)
             }
@@ -170,4 +206,29 @@ struct SalesContact: Codable {
 // MARK: - ProfilePhoto
 struct ProfilePhoto: Codable {
     let original, thumb: String?
+}
+
+
+// MARK: - Contact Details Struct for V3
+
+struct ContactDetialsV3 : Codable{
+    let contractNumber : String
+    let facade : facadeDetails
+    let lotAddress : LotDetails
+    let houseType : houseTypeDetails
+}
+struct houseTypeDetails : Codable{
+    let houseName : String
+}
+struct facadeDetails : Codable{
+    let packageName : String
+}
+struct LotDetails : Codable{
+    let lotNo : String
+    let streetNo : String
+    let address : String
+    let street1 : String
+    let suburb : String
+    let state : String
+    let postCode : String
 }

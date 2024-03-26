@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -276,6 +276,7 @@
 		A1659B52292F4A4500C36B3B /* MenuCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */; };
 		A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */; };
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
+		A19452292BB1308000C63F36 /* InterceptorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19452282BB1308000C63F36 /* InterceptorClass.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
@@ -764,6 +765,7 @@
 		A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCVCell.swift; sourceTree = "<group>"; };
 		A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOptionsCVCell.swift; sourceTree = "<group>"; };
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		A19452282BB1308000C63F36 /* InterceptorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterceptorClass.swift; sourceTree = "<group>"; };
 		A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLabsImageSlider.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1E4543829EFB0D9006B531B /* MultipleJobNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleJobNumberVC.swift; sourceTree = "<group>"; };
@@ -1819,6 +1821,7 @@
 			children = (
 				D188C5F42424D37500DFE678 /* Networking.swift */,
 				EDC62A37246C267900608E52 /* NetworkingManager.swift */,
+				A19452282BB1308000C63F36 /* InterceptorClass.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -2834,6 +2837,7 @@
 				A1659AF3292F4A4500C36B3B /* MyPlacePhotoNote+CoreDataClass.swift in Sources */,
 				A1659AA5292F4A4400C36B3B /* FilterOptions.swift in Sources */,
 				EDC83DD42645307B000E3343 /* DisplaysMapDetailExpandedCell.swift in Sources */,
+				A19452292BB1308000C63F36 /* InterceptorClass.swift in Sources */,
 				D188C6292424D37600DFE678 /* HeaderVC.swift in Sources */,
 				ED7E41F825303D23004377BE /* AppleSignIn.swift in Sources */,
 				A1583504291BB9CA0089133D /* SeperateLivingAreaVC.swift in Sources */,

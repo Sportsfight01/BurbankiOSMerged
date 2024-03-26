@@ -85,7 +85,7 @@ class MyProgressCVCell: UICollectionViewCell {
         circleBar.progress = progress
         circleBar.image = cicleImage
         let progressInt = Int(progress * 100)
-        //  print("progress Int :- \(progressInt)")
+         print("progress Int :- \(progressInt)")
         if progressInt == 0
         {
             circleBar.labelText = "PENDING"

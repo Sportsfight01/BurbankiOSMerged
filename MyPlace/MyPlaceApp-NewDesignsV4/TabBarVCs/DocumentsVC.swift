@@ -20,8 +20,8 @@ class DocumentsVC: BaseProfileVC {
     @IBOutlet weak var viewFavouritesContainerView: UIView!
 
 //    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-    var documentList : [DocumentsDetailsStruct]?
-    var tableDataSource : [DocumentsDetailsStruct]?
+    var documentList : [DocumentsDetailsStructV3]?
+    var tableDataSource : [DocumentsDetailsStructV3]?
     { didSet { handleTableViewEmptyState() } }
     var currentFilePath : String!
     lazy var dataSource = makeDataSource()
@@ -113,9 +113,9 @@ class DocumentsVC: BaseProfileVC {
         }
     }
 
-    func makeDataSource() -> UITableViewDiffableDataSource<Int,DocumentsDetailsStruct>
+    func makeDataSource() -> UITableViewDiffableDataSource<Int,DocumentsDetailsStructV3>
     {
-        let dataSource = UITableViewDiffableDataSource<Int,DocumentsDetailsStruct>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+        let dataSource = UITableViewDiffableDataSource<Int,DocumentsDetailsStructV3>(tableView: tableView) { tableView, indexPath, itemIdentifier in
             self.getTableCell(indexPath: indexPath)
         }
         
@@ -123,7 +123,7 @@ class DocumentsVC: BaseProfileVC {
     }
     func applySnapshot()
     {
-        var snapShot = NSDiffableDataSourceSnapshot<Int, DocumentsDetailsStruct>()
+        var snapShot = NSDiffableDataSourceSnapshot<Int, DocumentsDetailsStructV3>()
         snapShot.appendSections([0])
         snapShot.appendItems(tableDataSource ?? [])
         dataSource.apply(snapShot, animatingDifferences: true)
@@ -148,50 +148,99 @@ class DocumentsVC: BaseProfileVC {
                 self?.tableView.refreshControl?.endRefreshing()
             }
         }; return}
-        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
-        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
-        let auth = jobAndAuth.auth
-        //show skeleton
-        tableView.showAnimatedGradientSkeleton()        
-        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: auth, contractNo: jobNumber), showActivity: false) { [weak self](result) in
-            //hide skeleton
+        appDelegate.showActivity()
+        APIManager.shared.getMyDocuments(isDocuments: true) {[weak self] result in
             DispatchQueue.main.async {
-                self?.tableView.stopSkeletonAnimation()
-                self?.view.hideSkeleton()
-            }
-            DispatchQueue.main.async {
-            appDelegate.hideActivity()
+                appDelegate.hideActivity()
                 self?.tableView.refreshControl?.endRefreshing()
             }
-      
-            switch result
-            {
-            case .success(let data):
-                
-                self?.documentList = data.filter( { !($0.type!.lc.contains("jpg"))}).filter( { !($0.type!.lc.contains("png")) }).filter({ !($0.type!.lc.contains("eml")) })
-                print(self?.documentList)
+            guard let self else { return }
+            switch result{
+            case .success(let notes):
+                //hide skeleton
+                DispatchQueue.main.async {
+                    self.tableView.stopSkeletonAnimation()
+                    self.view.hideSkeleton()
+                }
+                DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+                self.documentList = notes.filter( { !($0.type!.lc.contains("jpg"))}).filter( { !($0.type!.lc.contains("png")) }).filter({ !($0.type!.lc.contains("eml")) }).filter({ !($0.type!.lc.contains("txt")) })
+                print(self.documentList)
                 //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {
-                    self?.documentList = self?.documentList?.sorted(by: {$0.date > $1.date})
-                    self?.tableDataSource = self?.documentList
-                    self?.viewFavouritesContainerView.isHidden = self?.tableDataSource?.count == 0 ? true : false
+                    self.documentList = self.documentList?.sorted(by: {$0.metaData.createdOn! > $1.metaData.createdOn!})
+                    self.tableDataSource = self.documentList
+                    self.viewFavouritesContainerView.isHidden = self.tableDataSource?.count == 0 ? true : false
                    // self?.tableView.reloadData()
-                    self?.applySnapshot()
+                    self.applySnapshot()
                         
                 }
-                
-            case.failure(let err):
-                print(err.localizedDescription)
+
+          
+            case .failure(let err):
+                debugPrint(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message: err.description)
+                    return}
+                }
             }
-            
-            
-        }
+        
+        
     }
+    
+//    func getDocumentDetails()
+//    {
+//        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+//            DispatchQueue.main.async {
+//                self?.tableView.refreshControl?.endRefreshing()
+//            }
+//        }; return}
+//        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+//        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+//        let auth = jobAndAuth.auth
+//        //show skeleton
+//        tableView.showAnimatedGradientSkeleton()        
+//        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: auth, contractNo: jobNumber), showActivity: false) { [weak self](result) in
+//            //hide skeleton
+//            DispatchQueue.main.async {
+//                self?.tableView.stopSkeletonAnimation()
+//                self?.view.hideSkeleton()
+//            }
+//            DispatchQueue.main.async {
+//            appDelegate.hideActivity()
+//                self?.tableView.refreshControl?.endRefreshing()
+//            }
+//      
+//            switch result
+//            {
+//            case .success(let data):
+//                
+//                self?.documentList = data.filter( { !($0.type!.lc.contains("jpg"))}).filter( { !($0.type!.lc.contains("png")) }).filter({ !($0.type!.lc.contains("eml")) })
+//                print(self?.documentList)
+//                //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
+//                DispatchQueue.main.async {
+//                    self?.documentList = self?.documentList?.sorted(by: {$0.date > $1.date})
+//                    self?.tableDataSource = self?.documentList
+//                    self?.viewFavouritesContainerView.isHidden = self?.tableDataSource?.count == 0 ? true : false
+//                   // self?.tableView.reloadData()
+//                    self?.applySnapshot()
+//                        
+//                }
+//                
+//            case.failure(let err):
+//                print(err.localizedDescription)
+//            }
+//            
+//            
+//        }
+//    }
     func getPdfDataAt(rowNo : Int)
     {
         guard let url = tableDataSource?[rowNo].url, let type = tableDataSource?[rowNo].type?.trim(), let title = tableDataSource?[rowNo].title else {return}
         let fileName = "\(title).\(type)"
-        let documentURL = "\(clickHomeBaseImageURL)\(url)"
+        let documentURL = "\(url)"
         if type.contains("eml")
         {
             openSafariVC(url: documentURL)
@@ -230,7 +279,7 @@ extension DocumentsVC : UISearchBarDelegate
         else {
             tableDataSource = documentList?.filter({ doc in
                 
-                guard let title = doc.title, let docDate = doc.docdate else {return false}
+                guard let title = doc.title, let docDate = doc.metaData.createdOn else {return false}
                 let displayDate = docDate.components(separatedBy: ".").first ?? ""
                 let notedated = dateFormatter(dateStr: displayDate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM, yyyy, hh:mm a") ?? ""
                 let filter = (title.lc.contains(searchText.lc) || notedated.lc.contains(searchText.lc))
@@ -301,4 +350,23 @@ struct DocumentsDetailsStruct: Decodable , Hashable{
     }
 }
 
+struct DocumentsDetailsStructV3: Decodable , Hashable{
+    let title: String?
+    let documentId: Int?
+    let type, url: String?
+////    let externalUrls: [String]?
+    var metaData : metadataDoc
+    enum CodingKeys: String, CodingKey {
+        case title,url,metaData,documentId
+        case type = "extension"
+    }
+   
+   
+}
+struct metadataDoc : Decodable,Hashable{
+    var createdOn : String?
+    var date : Date {
+        return createdOn?.components(separatedBy: ".").first?.getDate() ?? Date()
+    }
+}
 

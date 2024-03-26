@@ -26,7 +26,6 @@ class MyHistoryVC: UIViewController {
         tableView.addRefressControl {[weak self] in
             self?.getAPIData(showSpinner: false)
         }
-    
     }
  
     override func viewWillAppear(_ animated: Bool) {
@@ -157,7 +156,7 @@ struct MyNotesStruct : Codable, Hashable
     var replies : [MyNotesStruct]?
     var replyTo : ReplyTo?
     var subject : String?
-    var byclient : Bool?
+//    var byclient : Bool?
     var isFromAdmin : Bool = false
     var conversations : Conversations?
     var author : Author?
@@ -165,7 +164,7 @@ struct MyNotesStruct : Codable, Hashable
     enum CodingKeys : String, CodingKey
     {
         case authorname = "unknownAuthor"
-        case body, noteId, replies, replyTo, subject, byclient,conversations,createdInMyHome,author
+        case body, noteId, replies, replyTo, subject,conversations,createdInMyHome,author
         case notedate = "activityDate"
         
     }
@@ -175,7 +174,7 @@ struct MyNotesStruct : Codable, Hashable
     }
     var displayDate : String? {
         if let notedate = notedate?.components(separatedBy: ".").first{
-            return dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
+            return dateFormatter(dateStr: notedate,  currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM yyyy, hh:mm a")
         }
         return nil
     }

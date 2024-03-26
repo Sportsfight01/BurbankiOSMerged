@@ -23,7 +23,7 @@ class ZoomImageVC: UIViewController,imageSliderDelegate {
     var currentPhotoIndex : Int = 0
     var imageData : UIImage?
     
-    var collectionOfPhotoItemArr : [DocumentsDetailsStruct]!
+    var collectionOfPhotoItemArr : [DocumentsDetailsStructV3]!
     @IBOutlet weak var imageSlider: CLabsImageSlider!
     //MARK: - Life Cycle Methods
     
@@ -46,7 +46,7 @@ class ZoomImageVC: UIViewController,imageSliderDelegate {
 
         collectionOfPhotoItemArr  = collectionDatasource.compactMap({$0.rowData}).flatMap({$0})
         
-        imageURlsArray = collectionDatasource.compactMap({$0.rowData}).flatMap({$0}).map({"\(clickHomeBaseImageURL)/\($0.url ?? "")"})
+        imageURlsArray = collectionDatasource.compactMap({$0.rowData}).flatMap({$0}).map({"\($0.url ?? "")"})
         loadTitleName(index: currentPhotoIndex)
         
 //        self.imageSlider.currentIndex = currentPhotoIndex
@@ -55,7 +55,7 @@ class ZoomImageVC: UIViewController,imageSliderDelegate {
     
     
     func loadTitleName(index : Int){
-        let date = dateFormatter(dateStr: collectionOfPhotoItemArr[index].docdate ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
+        let date = dateFormatter(dateStr: collectionOfPhotoItemArr[index].metaData.createdOn ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss.SSS", requiredFormate: "EEEE, dd/MM/yy")
         titleLb.text = "\(collectionOfPhotoItemArr[index].title ?? "") , \(date ?? "")"
        
         
