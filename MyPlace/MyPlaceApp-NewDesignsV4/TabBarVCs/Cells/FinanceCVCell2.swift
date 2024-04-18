@@ -148,7 +148,7 @@ extension FinanceCVCell2 : UITableViewDelegate , UITableViewDataSource
                     if view2.tag == 100 // titleLb
                     {
                         let lb = view2 as! UILabel
-                        lb.font = FONT_LABEL_BODY(size: FONT_12)
+                        lb.font = FONT_LABEL_LIGHT(size: FONT_12)
                         lb.text = tableDataSource?[indexPath.row].financeDescription
                     }
                     else if view2.tag == 101 // detailLb

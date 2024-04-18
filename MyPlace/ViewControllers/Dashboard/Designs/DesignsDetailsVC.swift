@@ -135,8 +135,6 @@ class DesignsDetailsVC: HeaderVC {
         
         if let design = homeDesign {
             fillAllDetails ()
-            
-            getDesignDetails(design)
         }
         
         if isFromFavorites {
@@ -185,7 +183,6 @@ class DesignsDetailsVC: HeaderVC {
                     selectedDesignCount = selectedDesignCount - 1
                     if let design = homeDesign {
                         fillAllDetails ()
-                        getDesignDetails(design)
                     }
                 }
                 
@@ -200,7 +197,6 @@ class DesignsDetailsVC: HeaderVC {
                     selectedDesignCount = selectedDesignCount + 1
                     if let design = homeDesign {
                         fillAllDetails ()
-                        getDesignDetails(design)
                     }
                     
                 }
@@ -283,45 +279,52 @@ class DesignsDetailsVC: HeaderVC {
      
 
         enquireView.isHidden = arrOnDisplay.count == 0
-        
-        
-        if let designDetails = self.homeDesignDetails {
-            
-            arrScrollImageUrls.removeAll()
-            validFacadeNamesArray.removeAll()
-            
-            if let imageurl = designDetails.lsthouses?.facadeLargeImageUrls {
-                for imagURL in imageurl {
-                    let imageArr = imagURL.components(separatedBy: "_")
-                    let imageName = imageArr[1].replacingOccurrences(of: ".jpg", with: "")
-                    print("--=-=---=-=-=-=-=-: ",imageName)
-                    validFacadeNamesArray.append(imageName )
-                    arrScrollImageUrls.append(imagURL)
-                    bannerImageScroll (arrScrollImageUrls)
-                }
-            }
-            
-            if let floorplanURL = designDetails.lsthouses?.homePlan?.floorPlanImageURLMobile {
-                
-                self.imageHouseDesign.showActivityIndicator()
-                
-                ImageDownloader.downloadImage(withUrl: floorplanURL, withFilePath: nil, with: { (image, success, error) in
+        if let design = homeDesign {
+            getDesignDetails(design, completion: { designDeti in
+                self.homeDesignDetails = designDeti
+                if let designDetails = self.homeDesignDetails {
                     
-                    self.imageHouseDesign.hideActivityIndicator()
+                    self.arrScrollImageUrls.removeAll()
+                    self.validFacadeNamesArray.removeAll()
                     
-                    if success, let img = image {
-                        // processpixels method used to change image colors --> black to white
-                        self.imageHouseDesign.image = processPixels(in: img)
-                        let scrollView = self.scrollViewHouseDesign
-                        scrollView?.delegate = self
-                        scrollView?.minimumZoomScale = 1.0
-                        scrollView?.maximumZoomScale = 10.0
+                    if let imageurl = designDetails.lsthouses?.facadeLargeImageUrls {
+                        for imagURL in imageurl {
+                            let imageArr = imagURL.components(separatedBy: "_")
+                            let imageName = imageArr[1].replacingOccurrences(of: ".jpg", with: "")
+                            print("--=-=---=-=-=-=-=-: ",imageName)
+                            self.validFacadeNamesArray.append(imageName )
+                            self.arrScrollImageUrls.append(imagURL)
+                            self.bannerImageScroll (self.arrScrollImageUrls)
+                        }
                     }
                     
-                }, withProgress: nil)
-            }
-            
+                    if let floorplanURL = designDetails.lsthouses?.homePlan?.floorPlanImageURLMobile {
+                        
+                        self.imageHouseDesign.showActivityIndicator()
+                        
+                        ImageDownloader.downloadImage(withUrl: floorplanURL, withFilePath: nil, with: { (image, success, error) in
+                            
+                            self.imageHouseDesign.hideActivityIndicator()
+                            
+                            if success, let img = image {
+                                // processpixels method used to change image colors --> black to white
+                                self.imageHouseDesign.image = processPixels(in: img)
+                                let scrollView = self.scrollViewHouseDesign
+                                scrollView?.delegate = self
+                                scrollView?.minimumZoomScale = 1.0
+                                scrollView?.maximumZoomScale = 10.0
+                            }
+                            
+                        }, withProgress: nil)
+                    }
+                    
+                }
+
+            })
         }
+        
+       
+        
         
         if let subViews3D = self.btnMyPlace.superview?.subviews {
             for vi in subViews3D {
@@ -517,7 +520,7 @@ class DesignsDetailsVC: HeaderVC {
             selectedDesignCount = selectedDesignCount - 1
             if let design = homeDesign {
                 fillAllDetails ()
-                getDesignDetails(design)
+              
             }
         }
         
@@ -541,7 +544,7 @@ class DesignsDetailsVC: HeaderVC {
             if let design = homeDesign {
                 fillAllDetails ()
                 
-                getDesignDetails(design)
+                
             }
             
         }
@@ -853,11 +856,11 @@ extension DesignsDetailsVC {
     
     //MARK: - APIs
     
-    func getDesignDetails (_ design: HomeDesigns) {
+    func getDesignDetails (_ design: HomeDesigns, completion : @escaping (HomeDesignDetails) -> Void ) {
         
         _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_HomeDesignDetails(kUserState, design.houseName ?? "", design.houseSize ?? ""), userInfo: nil, success: { (data, response) in
             
-            if (response as! HTTPURLResponse).statusCode == 200, let jsonData = data as? Data {
+            if let jsonData = data as? Data {
                 
                 if let jsonObj: AnyObject = Networking.shared.jsonResponse(jsonData) {
                     if jsonObj is Error {
@@ -868,20 +871,21 @@ extension DesignsDetailsVC {
                             
                             do {
                                 self.homeDesignDetails = try JSONDecoder().decode(HomeDesignDetails.self, from: jsonData)
-                                
-                                self.fillAllDetails()
-                                
+                                if let homeDesignDet = self.homeDesignDetails{
+                                    completion(homeDesignDet)
+                                    
+                                }
                             } catch let jsonError {
                                 print(log: jsonError)
                             }
                         }
                     }
                 }
-                
             }
             
         }, errorblock: { (error, isJSONerror) in
             
+            print("-------------",error)
             
         }, progress: nil, showActivity: true, returnJSON: false)
         

@@ -165,7 +165,7 @@ extension FinanceDetailVC : UITableViewDelegate, UITableViewDataSource
     //Label
     let label = UILabel()
     label.text = sectionTitles[section]
-    label.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
+    label.font = FONT_LABEL_BODY(size: FONT_14)
     label.textColor =  AppColors.appOrange
     view.addSubview(label)
     label.translatesAutoresizingMaskIntoConstraints = false

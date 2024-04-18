@@ -65,6 +65,11 @@ extension Networking {
             if showActivity { showAlert(knetworkErrorMessage) }
             return nil
         }
+        let client = NetworkClient()
+        let loggingInterceptor = LoggingInterceptor()
+        let authorizationInterceptor = AuthorizationInterceptor()
+        loggingInterceptor.nextinterceptor = authorizationInterceptor
+        client.interceptor = authorizationInterceptor
         
         let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         guard let _ = URL(string: urlString) else { return nil }
@@ -112,11 +117,6 @@ extension Networking {
                                 
                                 if jsonObj is Error {
                                     if self.isSessionExpired(data as AnyObject, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
                                             if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
                                                 success(jsonObj, response as! HTTPURLResponse)
@@ -129,11 +129,6 @@ extension Networking {
                                     else { errorblock(jsonObj as? Error, true) }
                                 }else {
                                     if self.isSessionExpired(jsonObj, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
                                             if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
                                                 success(jsonObj, response as! HTTPURLResponse)
@@ -155,13 +150,8 @@ extension Networking {
                                 
                                 if jsonObj is Error {
                                     if self.isSessionExpired(data as AnyObject, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
-                                            if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
+                                            if let jsonObj: AnyObject = data{
                                                 success(jsonObj, response as! HTTPURLResponse)
                                             }
                                         }, errorblock: {error,jsonError in
@@ -171,13 +161,8 @@ extension Networking {
                                     else { errorblock(jsonObj as? Error, true) }
                                 }else {
                                     if self.isSessionExpired(data as AnyObject, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
-                                            if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
+                                            if let jsonObj: AnyObject = data{
                                                 success(jsonObj, response as! HTTPURLResponse)
                                             }
                                         }, errorblock: {error,jsonError in
@@ -204,7 +189,11 @@ extension Networking {
     
     func POST_request (url: String, parameters: NSDictionary, userInfo: NSDictionary?, success: @escaping successBlock, errorblock: @escaping errorBlock, progress: progressBlock?, showActivity: Bool = true, returnJSON: Bool = true)  -> Any? {
         
-       
+        let client = NetworkClient()
+        let loggingInterceptor = LoggingInterceptor()
+        let authorizationInterceptor = AuthorizationInterceptor()
+        loggingInterceptor.nextinterceptor = authorizationInterceptor
+        client.interceptor = authorizationInterceptor
         
         if url.trim().count == 0 {
             assertionFailure("url shouldn't empty")
@@ -272,11 +261,6 @@ extension Networking {
                                 
                                 if jsonObj is Error {
                                     if self.isSessionExpired(data as AnyObject, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
                                             if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
                                                 success(jsonObj, response as! HTTPURLResponse)
@@ -287,11 +271,6 @@ extension Networking {
                                     }else { errorblock(jsonObj as? Error, true) }
                                 }else {
                                     if self.isSessionExpired(data as AnyObject, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
                                             if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
                                                 success(jsonObj, response as! HTTPURLResponse)
@@ -314,13 +293,8 @@ extension Networking {
                                 print(log: jsonObj)
                                 if jsonObj is Error {
                                     if self.isSessionExpired(data as AnyObject, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
-                                            if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
+                                            if let jsonObj: AnyObject = data{
                                                 success(jsonObj, response as! HTTPURLResponse)
                                             }
                                         }, errorblock: {error,jsonError in
@@ -330,13 +304,8 @@ extension Networking {
                                     else { errorblock(jsonObj as? Error, true) }
                                 }else {
                                     if self.isSessionExpired(jsonObj, response: response) {
-                                        let client = NetworkClient()
-                                        let loggingInterceptor = LoggingInterceptor()
-                                        let authorizationInterceptor = AuthorizationInterceptor()
-                                        loggingInterceptor.nextinterceptor = authorizationInterceptor
-                                        client.interceptor = authorizationInterceptor
                                         client.sendRequest(request, success: {data,response in
-                                            if let jsonObj: AnyObject = self.jsonResponse(data as? Data){
+                                            if let jsonObj: AnyObject = data{
                                                 success(jsonObj, response as! HTTPURLResponse)
                                             }
                                         }, errorblock: {error,jsonError in

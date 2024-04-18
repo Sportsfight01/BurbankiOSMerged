@@ -329,6 +329,7 @@ struct myContractJobDetailsV3 : Codable{
     let letterTitle : String
     let myHomeUserName : String
     let myHomePassword : String
+    let masterContractId : Int
     let contactDetails : ContactDetailsOfV3
     
     

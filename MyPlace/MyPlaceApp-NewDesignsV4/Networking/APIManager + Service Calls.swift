@@ -121,6 +121,9 @@ class APIManager{
     //MARK: - clickHomeV2Login Service Calls
     private func clickHomeV2Login(completion : @escaping (Result<Bool,APIError>) ->())
     {
+        guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
+        let auth = APIManager.shared.getJobNumberAndAuthorization().auth
+        
         guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
         let url = "\(clickHomeV2BaseURL)/Login"
 //        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
@@ -149,8 +152,9 @@ class APIManager{
     
     private func getJobStepsList(completion : @escaping(Result<[ProgressStruct],APIError>) -> ())
     {
-        guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
-        let url = "\(clickHomeV2BaseURL)/MasterContracts/223421"
+        guard let currentJobDetails = APIManager.shared.currentJobDetailsV3 else {debugPrint("currentJobDetailsNotAvailable");return}
+        let url = "\(clickHomeV2BaseURL)/MasterContracts/\(currentJobDetails.masterContractId)"
+        print(url)
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -260,28 +264,34 @@ class APIManager{
     
     // for getting Job steps we are calling click home v2 login and master contract....
     func getProgressV3(completion : @escaping (Result<[ProgressStruct], APIError>) ->()){
-        
-        self.clickHomeV2Login { result in
+        self.myHomeV3Login { result in
             switch result{
-                
-            case .success(_):
-                debugPrint("clickHomev2LoginAPISuccessful")
-                self.getJobStepsList { result in
+            case .success(_) :
+                self.clickHomeV2Login { result in
                     switch result{
-                    case .success(let notes):
-                        debugPrint("JobstepsV2 api got successful results")
-                        completion(.success(notes))
+                    case .success(_):
+                        debugPrint("clickHomev2LoginAPISuccessful")
+                        self.getJobStepsList { result in
+                            switch result{
+                            case .success(let notes):
+                                debugPrint("JobstepsV2 api got successful results")
+                                completion(.success(notes))
+                            case .failure(let err):
+                                debugPrint(err.localizedDescription)
+                                completion(.failure(err))
+                            }
+                     
+                        }
                     case .failure(let err):
-                        debugPrint(err.localizedDescription)
+                        debugPrint("clickHomev2LoginAPIFailed")
                         completion(.failure(err))
                     }
-             
+                
                 }
             case .failure(let err):
-                debugPrint("clickHomev2LoginAPIFailed")
+                debugPrint("clickHomev3LoginAPIFailed")
                 completion(.failure(err))
             }
-        
         }
 
     }
@@ -292,12 +302,15 @@ class APIManager{
     
     
     //MARK: - ContactUS Service Calls
-    private func contactUSLogin(completion : @escaping (Result<Bool,APIError>) ->())
+    private func myHomeV3Login(completion : @escaping (Result<Bool,APIError>) ->())
     {
+        guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
+        let auth = APIManager.shared.getJobNumberAndAuthorization().auth
+        
         guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
         let url = "\(clickHomeV3BaseURL)Accounts/Login"
-        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
-
+        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ?? "" ,"password": currentJobDetails.password ?? ""]
+        print(postDict)
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -411,7 +424,7 @@ class APIManager{
     // getting contact us and Notes list
     func getNotes(completion : @escaping (Result<[MyNotesStruct], APIError>) ->()){
         
-        self.contactUSLogin { result in
+        self.myHomeV3Login { result in
             switch result{
                 
             case .success(_):
@@ -438,7 +451,7 @@ class APIManager{
     // for my details
     func getMyDetails(completion : @escaping (Result<ContactDetialsV3, APIError>) ->()){
         
-        self.contactUSLogin { result in
+        self.myHomeV3Login { result in
             switch result{
                 
             case .success(_):
@@ -525,21 +538,26 @@ class APIManager{
     // for my Documents
     func getMyDocuments(isDocuments : Bool, completion : @escaping (Result<[DocumentsDetailsStructV3], APIError>) ->()){
         
-        self.contactUSLogin { result in
+        self.myHomeV3Login { result in
             switch result{
                 
-            case .success(_):
+            case .success(let status):
                 debugPrint("loginAPISuccessful")
-                self.getMyDocumentsAPI(isDocuments: isDocuments) { result in
-                    switch result{
-                    case .success(let myDetails):
-                        debugPrint("my details api got successful results")
-                        completion(.success(myDetails))
-                    case .failure(let err):
-                        debugPrint(err.localizedDescription)
-                        completion(.failure(err))
-                    }
-                 }
+                if status{
+                    self.getMyDocumentsAPI(isDocuments: isDocuments) { result in
+                        switch result{
+                        case .success(let myDetails):
+                            debugPrint("my details api got successful results")
+                            completion(.success(myDetails))
+                        case .failure(let err):
+                            debugPrint(err.localizedDescription)
+                            completion(.failure(err))
+                        }
+                     }
+                }else{
+                    completion(.success([]))
+                }
+               
             case .failure(let err):
                 debugPrint("ContactUsloginAPIFailed")
                 completion(.failure(err))
@@ -570,7 +588,6 @@ class APIManager{
                                  }
                               }
                          }
-
          }
          """.data(using: .utf8)
         urlRequest.httpBody = json

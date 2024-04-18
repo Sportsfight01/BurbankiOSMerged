@@ -146,7 +146,8 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         let arr = collectionDataSource[indexPath.section].rowData
         //      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
         cell.imView.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")")
+        
+        let imgURL = URL(string:"\(arr[indexPath.item].url ?? "")")
         cell.imView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.imView.sd_imageIndicator?.indicatorView.tintColor = APPCOLORS_3.Orange_BG
         //  cell.imView.sd_setImage(with: imgURL)

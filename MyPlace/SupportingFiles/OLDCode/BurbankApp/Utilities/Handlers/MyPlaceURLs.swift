@@ -123,10 +123,10 @@ func getMyPlaceURL(isContactUs : Bool = false) -> String
 //MARK: - infoCentre Url
 
 func getInfoCentreDetails() -> String{
-    return BaseURL + "myplace/infocentre"
+    return "https://www.burbank.com.au/api/api/myplace/infocentre"
 }
 
 //MARK: - FAQ'S Url
 func getFaq() -> String{
-    return BaseURL + "myplace/faq"
+    return "https://www.burbank.com.au/api/api/myplace/faq"
 }

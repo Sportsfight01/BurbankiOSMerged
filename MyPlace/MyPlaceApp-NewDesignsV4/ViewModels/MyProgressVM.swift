@@ -107,10 +107,11 @@ class MyProgressVM
             let progress =  Double(completedTasksCount )/Double(totalTasks) // progress of stage
             let stage = Stage(rawValue: key)
             let clItem = ProgressItem(stage: stage,
-                                      imageName: stage?.icon ?? "",
-                                      progress: progress,
-                                      progressDetails: value,
-                                      detailText: stage?.detailedText)
+                                          imageName: stage?.icon ?? "",
+                                          progress: progress,
+                                          progressDetails: value,
+                                          detailText: stage?.detailedText)
+            
             return clItem
         }
         let sortedItems = clItems.sorted(by: {$0.stage?.order ?? 0 < $1.stage?.order ?? 0})

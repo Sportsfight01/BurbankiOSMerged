@@ -69,6 +69,12 @@ struct ServiceAPI {
         if imagePath.contains("https://www.burbank.com.au"){
             print(imagePath)
             return imagePath
+        }else if imagePath.contains(Base) {
+            
+//            print(log: Base + imagePath.replacingOccurrences(of: "~", with: ""))
+            print(log:  imagePath.replacingOccurrences(of: "~", with: ""))
+//            return Base + imagePath.replacingOccurrences(of: "~", with: "")
+            return  imagePath.replacingOccurrences(of: "~", with: "") // v3.6 complete url coming from server no need to add Base URL Agian
         }else{
             print(log: Base + imagePath.replacingOccurrences(of: "~", with: ""))
             return Base + imagePath.replacingOccurrences(of: "~", with: "")

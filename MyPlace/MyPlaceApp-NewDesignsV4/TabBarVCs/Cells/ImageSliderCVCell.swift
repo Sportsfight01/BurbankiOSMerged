@@ -51,7 +51,7 @@ class ImageSliderCVCell: UICollectionViewCell {
         
         //imageView
         imageView.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(item.url)")
+        let imgURL = URL(string:"\(item.url)")
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
 
         imageView.sd_setImage(with: imgURL, placeholderImage: nil) {[weak self] _, _, _, _ in

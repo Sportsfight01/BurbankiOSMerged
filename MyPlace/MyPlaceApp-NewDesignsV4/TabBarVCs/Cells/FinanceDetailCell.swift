@@ -53,7 +53,7 @@ class FinanceDetailCell: UITableViewCell {
         //valuesLbs
         [approvedVariationsLb,adjustedContractValueLb,totalAmountClaimedLb, totalAmountReceivedLb,financeAmountLb].forEach({
             
-            $0?.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
+            $0?.font = FONT_LABEL_BODY(size: FONT_12)
         })
     }
     
