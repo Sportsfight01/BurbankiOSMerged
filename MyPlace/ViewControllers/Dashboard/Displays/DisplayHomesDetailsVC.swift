@@ -656,15 +656,18 @@ extension DisplayHomesDetailsVC: UITableViewDelegate, UITableViewDataSource{
             let pageWidth:CGFloat = scrollView.frame.width
             let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
             // Change the indicator
-          self.lBFacadeName.text = self.validFacadeNamesArray[Int(currentPage)]
-          
-          if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
-  //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
-            lBFacadeName.text = (lBFacadeName.text ?? "") + " Facade"
-            
-            
-          }
-            self.pageControl.currentPage = Int(currentPage);
+            if validFacadeNamesArray.count > Int(currentPage){
+                self.lBFacadeName.text = self.validFacadeNamesArray[Int(currentPage)]
+                
+                if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
+        //            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
+                  lBFacadeName.text = (lBFacadeName.text ?? "") + " Facade"
+                  
+                  
+                }
+                  self.pageControl.currentPage = Int(currentPage);
+            }
+         
         }
         
     }

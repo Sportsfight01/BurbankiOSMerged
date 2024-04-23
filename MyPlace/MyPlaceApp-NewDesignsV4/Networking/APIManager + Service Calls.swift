@@ -194,12 +194,13 @@ class APIManager{
                 completion(.failure(.other(err: "Json Serialization Failed")))
                 return}
             print("MasterContract Json Data : ", jsonDict)
+            
             guard let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any], let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
-                completion(.failure(.other(err: "Json Serialization Failed")))
+//                completion(.failure(.other(err: "Json Serialization Failed")))
                 return
             }
             guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
-                completion(.failure(.other(err: "Json Serialization Failed")))
+//                completion(.failure(.other(err: "Json Serialization Failed")))
                 return
             }
            
@@ -228,7 +229,7 @@ class APIManager{
                         status = "Completed"
 //                        print("admin stage task completion :------- ",status)
                     }
-                    let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String)
+                    let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String, customMessage: data["customMessage"] as? String, completedDate: data["completedDate"] as? String)
                     
                     progressdataArr.append(progressdata)
                 }
@@ -242,7 +243,7 @@ class APIManager{
 //                        print("remaining stages task completion :------- ",status)
                     }
                     if stageData["stageName"] as? String != "All Stages" &&  stageData["stageName"] as? String != "Administration"{
-                        let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String)
+                        let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String,customMessage: data["customMessage"] as? String, completedDate: data["completedDate"] as? String)
                         
                         progressdataArr.append(progressdata)
                     }

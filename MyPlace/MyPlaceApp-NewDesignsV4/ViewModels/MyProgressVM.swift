@@ -21,9 +21,15 @@ class MyProgressVM
         guard let adminData else { return }
         let contracts = ["Sign Building Contract", "Contract Signed"].map({$0.trim().lc})
         let isFinanceVisible = !adminData.filter({
+//            changed logic for v3
+            
+//            (contracts.contains($0.name?.trim().lc ?? "") == true) &&
+//            ($0.status?.trim().lc.contains("completed") == true)
             (contracts.contains($0.name?.trim().lc ?? "") == true) &&
-            ($0.status?.trim().lc.contains("completed") == true)
+            ($0.completedDate != "")
+            
         }).isEmpty
+        print("isFinanceVisible : ",isFinanceVisible)
         financeVisibilityPublisher.send(isFinanceVisible)
     }
     
@@ -47,7 +53,6 @@ class MyProgressVM
                 print(log: "failed")
                 completion(.failure(err))
             }
-            
         }
     }
     
@@ -81,6 +86,8 @@ class MyProgressVM
             let phacecode = item.phasecode?.trim().lc
             /// - Taking presite stage name for all precontract construction data
             
+            
+            
             if phacecode == "presite" { return "Admin Stage" }
             
             let stageName = item.stageName?.trim().lc
@@ -88,10 +95,10 @@ class MyProgressVM
             {
                 /// - completion and handover are taking as finishing stage
                 /// removing "All Stages" and "Administration" from contact construction data
-            case "completion","handover" : return "Finishing Stage"
-            case "fixout stage" : return "Fixing Stage"
+            case "completion","handover","140 frame & truss" : return "Finishing Stage"
+            case "fixout stage","miscellaneous" : return "Fixing Stage"
             default:
-                return item.stageName?.capitalized ?? "none"
+                return  item.stageName?.capitalized ?? "none"
             }
         }
         debugPrint("all keys : \(stageGroup.keys)")
@@ -106,6 +113,7 @@ class MyProgressVM
             let totalTasks = value.count // total records in stage
             let progress =  Double(completedTasksCount )/Double(totalTasks) // progress of stage
             let stage = Stage(rawValue: key)
+            
             let clItem = ProgressItem(stage: stage,
                                           imageName: stage?.icon ?? "",
                                           progress: progress,
@@ -255,9 +263,11 @@ struct ProgressStruct: Codable, Equatable {
     let forclient: Bool?
     let stageID: Int?
     let stageName: String?
+    let customMessage : String?
+    let completedDate : String?
     
     enum CodingKeys: String, CodingKey {
-        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient
+        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient,customMessage,completedDate
         case stageID = "stageId"
         case stageName
     }
