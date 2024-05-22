@@ -171,6 +171,7 @@ class ServiceSession: NSObject
                 
                 DispatchQueue.main.async(execute: {
                     appDelegate.hideActivity()
+                    print(response)
                 })
                 
                 if error != nil

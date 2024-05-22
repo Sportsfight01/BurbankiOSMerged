@@ -15,7 +15,6 @@ class MyProgressVM
     private(set) var financeVisibilityPublisher = PassthroughSubject<Bool,Never>()
     
     //MARK: - Helper Methods
-    
     private func checkForFinanceVisibility(adminData : [ProgressStruct]?)
     {
         guard let adminData else { return }
@@ -46,7 +45,7 @@ class MyProgressVM
                 let stageGroup = self.groupProgressDataWithStage()
                 /// - Transforming data for display
                 let sortedItems = self.transformStageGroup(stageGroup: stageGroup)
-                
+//                self.getAppointmentData(stages: progressData)
                 completion(.success(sortedItems))
                 
             case .failure(let err):
@@ -105,6 +104,54 @@ class MyProgressVM
         self.checkForFinanceVisibility(adminData: stageGroup["Admin Stage"])
         return stageGroup
     }
+    // Appiointments Grouping
+    
+//    func getAppointmentData(stages : [ProgressStruct]?){
+//        guard let currentJobDetails = APIManager.shared.currentJobDetails?.region else {debugPrint("currentJobDetailsNotAvailable");return}
+//       print("---888888888888 UserState",currentJobDetails)
+//        
+//        switch currentJobDetails {
+//        case "VIC","QLD","SA":
+//            let contracts = ["Colour Selection", "Sign Building Contract","PC Inspection"].map({$0.trim().lc})
+//            if let edgeInspec =  stages?.filter({$0.name == "Colour Selection"}){
+//                appDelegate.appointmentData.append(appointmentsData(name: edgeInspec.first?.name, dateSTR: edgeInspec.first?.completedDate))
+//            }else{
+//                appDelegate.appointmentData.append(appointmentsData(name: "Edge Inspector", dateSTR: " "))
+//            }
+//            if let signBuildingContract =  stages?.filter({$0.name == "Sign Building Contract"}){
+//                appDelegate.appointmentData.append(appointmentsData(name: signBuildingContract.first?.name, dateSTR: signBuildingContract.first?.completedDate))
+//            }else{
+//                appDelegate.appointmentData.append(appointmentsData(name: "Sign Building Contract", dateSTR: " "))
+//            }
+//            if let pcInspection =  stages?.filter({$0.name == "PC Inspection"}){
+//                appDelegate.appointmentData.append(appointmentsData(name: pcInspection.first?.name, dateSTR: pcInspection.first?.completedDate))
+//            }else{
+//                appDelegate.appointmentData.append(appointmentsData(name: "PC Inspection", dateSTR: " "))
+//            }
+//              
+//        default:
+//            if let edgeInspec =  stages?.filter({$0.name == "Selection appointments complete" }){
+//                appDelegate.appointmentData.append(appointmentsData(name: edgeInspec.first?.name, dateSTR: edgeInspec.first?.completedDate))
+//            }else{
+//                appDelegate.appointmentData.append(appointmentsData(name: "Edge Inspector", dateSTR: " "))
+//            }
+//            if let signBuildingContract =  stages?.filter({$0.name == "Contract Presented"}){
+//                appDelegate.appointmentData.append(appointmentsData(name: signBuildingContract.first?.name, dateSTR: signBuildingContract.first?.completedDate))
+//            }else{
+//                appDelegate.appointmentData.append(appointmentsData(name: "Sign Building Contract", dateSTR: " "))
+//            }
+//            if let pcInspection =  stages?.filter({$0.name == "PC Inspection"}){
+//                appDelegate.appointmentData.append(appointmentsData(name: pcInspection.first?.name, dateSTR: pcInspection.first?.completedDate))
+//            }else{
+//                appDelegate.appointmentData.append(appointmentsData(name: "PC Inspection", dateSTR: " "))
+//            }
+//            
+//        }
+//        print(appDelegate.appointmentData)
+//        
+//    }
+    
+    
     /// - transforming stageGroup to required ProgressItem Array to display data conveniently on MyProgressVC
     private func transformStageGroup(stageGroup : [String : [ProgressStruct]]) -> [ProgressItem]
     {
@@ -277,5 +324,14 @@ struct ProgressStruct: Codable, Equatable {
     var dateWithoutTime : Date
     {
         return dateactual?.components(separatedBy: "T").first?.getDate("yyyy-MM-dd") ?? Date()
+    }
+}
+
+
+struct appointmentsData {
+    var name : String?
+    var dateSTR : String?
+    var dateFrmt : Date {
+        return dateSTR?.components(separatedBy: "T").first?.getDate("yyyy-MM-dd") ?? Date()
     }
 }

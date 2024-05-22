@@ -60,6 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var myPlaceStatusDetails: MyPlaceStatusDetails?//storing myPlaceStatusDetails to write logic for getting url for different Regions
     var jobContacts: JobContacts? //for displaying contacts in menu bar
     
+//    for myAppointments
+    var appointmentData = [appointmentsData]()
+ 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        // Thread.sleep(forTimeInterval: 5.0)
         

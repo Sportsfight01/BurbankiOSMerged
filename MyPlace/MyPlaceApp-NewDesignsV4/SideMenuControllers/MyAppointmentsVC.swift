@@ -17,6 +17,8 @@ class MyAppointmentsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var namesarray = ["Edge Appointment","Electrical Selection","Sign Building Contract","Tender Presentation","PC Inspection"]
     var appointmentDates = ["- -","- -","- -","- -","- -"]
+    var appointmentsValues = [appointmentsData]()
+    private var viewModel = MyProgressVM()
     override func viewDidLoad() {
         super.viewDidLoad()
       //  self.view.backgroundColor = .blue
@@ -25,9 +27,11 @@ class MyAppointmentsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        getAppointments()
+//        getAppointments()
+        self.appointmentsValues = appDelegate.appointmentData ?? []
         tableView.addRefressControl {[weak self] in
-            self?.getAppointments()
+//            self?.getAppointments()
+            self?.appointmentsValues = appDelegate.appointmentData ?? []
         }
        // setupProfile()
     }
@@ -133,28 +137,28 @@ class MyAppointmentsVC: UIViewController {
 extension MyAppointmentsVC : UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return namesarray.count
+        return appointmentsValues.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {return UITableViewCell()}
         let containerView = cell.contentView.viewWithTag(100)
         if let appointmentTypelb = containerView?.viewWithTag(101) as? UILabel
         {
-            appointmentTypelb.text = namesarray[indexPath.row]
+            appointmentTypelb.text = appointmentsValues[indexPath.row].name == "Colour Selection" ? "Edge Appointment" :  appointmentsValues[indexPath.row].name
         }
         if let appointmentDatelb = containerView?.viewWithTag(102) as? UILabel
         {
-            let date = dateFormatter(dateStr: appointmentDates[indexPath.row].components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "d MMMM, yyyy")
+            let date = dateFormatter(dateStr: appointmentsValues[indexPath.row].dateSTR?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "d MMMM, yyyy")
             appointmentDatelb.text = date ?? "- -"
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 1 || indexPath.row == 3
-        {
-            return 0
-        }
+//        if indexPath.row == 1 || indexPath.row == 3
+//        {
+//            return 0
+//        }
         return 65
     }
 }

@@ -119,7 +119,7 @@ class APIManager{
     
     
     //MARK: - clickHomeV2Login Service Calls
-    private func clickHomeV2Login(completion : @escaping (Result<Bool,APIError>) ->())
+     func clickHomeV2Login(completion : @escaping (Result<Bool,APIError>) ->())
     {
         guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
         let auth = APIManager.shared.getJobNumberAndAuthorization().auth
@@ -150,8 +150,9 @@ class APIManager{
 
     }
     
-    private func getJobStepsList(completion : @escaping(Result<[ProgressStruct],APIError>) -> ())
+     func getJobStepsList(completion : @escaping(Result<[ProgressStruct],APIError>) -> ())
     {
+        guard let currentJobregion = APIManager.shared.currentJobDetails?.region else {debugPrint("currentJobDetailsNotAvailable");return}
         guard let currentJobDetails = APIManager.shared.currentJobDetailsV3 else {debugPrint("currentJobDetailsNotAvailable");return}
         let url = "\(clickHomeV2BaseURL)/MasterContracts/\(currentJobDetails.masterContractId)"
         print(url)
@@ -201,7 +202,7 @@ class APIManager{
             }
             guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
 //                completion(.failure(.other(err: "Json Serialization Failed")))
-                return
+                return 
             }
            
            
@@ -219,7 +220,7 @@ class APIManager{
                 })
                 var progressdataArr = [ProgressStruct]()
                 
-               
+                appDelegate.appointmentData = []
                 
                 for i in 0..<preconstructionContractArr.count{
                     var status = ""
@@ -230,7 +231,19 @@ class APIManager{
 //                        print("admin stage task completion :------- ",status)
                     }
                     let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String, customMessage: data["customMessage"] as? String, completedDate: data["completedDate"] as? String)
-                    
+                   
+                    switch currentJobregion {
+                    case "VIC","QLD","SA":
+                        if progressdata.name == "Colour Selection" || progressdata.name == "Sign Building Contract"  {
+                            appDelegate.appointmentData.append(appointmentsData(name: progressdata.name, dateSTR: progressdata.completedDate))
+                            print("-----====== Colour Selection & Sign Building Contract", appDelegate.appointmentData)
+                        }
+                       
+                    default:
+                        if progressdata.name == "Selection appointments complete" || progressdata.name == "Contract Presented"  {
+                            appDelegate.appointmentData.append(appointmentsData(name: progressdata.name, dateSTR: progressdata.completedDate))
+                        }
+                    }
                     progressdataArr.append(progressdata)
                 }
                 
@@ -244,12 +257,22 @@ class APIManager{
                     }
                     if stageData["stageName"] as? String != "All Stages" &&  stageData["stageName"] as? String != "Administration"{
                         let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String,customMessage: data["customMessage"] as? String, completedDate: data["completedDate"] as? String)
+                       
+                        
                         
                         progressdataArr.append(progressdata)
                     }
-                   
+                    let pc = data["taskName"] as! String
+                    if pc.lc == "pc inspection"{
+                        appDelegate.appointmentData.append(appointmentsData(name: data["taskName"] as? String, dateSTR: data["completedDate"] as? String))
+                        print("-----====== PC Inspection", appDelegate.appointmentData)
+                    }
+                    
                 }
                 
+              
+                
+              
 //                let tableData = try JSONDecoder().decode([ProgressStruct].self, from: jsonData)
                 completion(.success(progressdataArr))
                 
@@ -267,27 +290,31 @@ class APIManager{
     func getProgressV3(completion : @escaping (Result<[ProgressStruct], APIError>) ->()){
         self.myHomeV3Login { result in
             switch result{
-            case .success(_) :
-                self.clickHomeV2Login { result in
-                    switch result{
-                    case .success(_):
-                        debugPrint("clickHomev2LoginAPISuccessful")
-                        self.getJobStepsList { result in
-                            switch result{
-                            case .success(let notes):
-                                debugPrint("JobstepsV2 api got successful results")
-                                completion(.success(notes))
-                            case .failure(let err):
-                                debugPrint(err.localizedDescription)
-                                completion(.failure(err))
+            case .success(let isDataAvlbl) :
+                if isDataAvlbl{
+                    self.clickHomeV2Login { result in
+                        switch result{
+                        case .success(_):
+                            debugPrint("clickHomev2LoginAPISuccessful")
+                            self.getJobStepsList { result in
+                                switch result{
+                                case .success(let notes):
+                                    debugPrint("JobstepsV2 api got successful results")
+                                    completion(.success(notes))
+                                case .failure(let err):
+                                    debugPrint(err.localizedDescription)
+                                    completion(.failure(err))
+                                }
+                                
                             }
-                     
+                        case .failure(let err):
+                            debugPrint("clickHomev2LoginAPIFailed")
+                            completion(.failure(err))
                         }
-                    case .failure(let err):
-                        debugPrint("clickHomev2LoginAPIFailed")
-                        completion(.failure(err))
+                        
                     }
-                
+                }else{
+                    
                 }
             case .failure(let err):
                 debugPrint("clickHomev3LoginAPIFailed")
@@ -323,7 +350,7 @@ class APIManager{
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
 //                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
-                
+                self.currentJobDetailsV3 = nil
                 completion(.success(false))
                 return}
             guard let data else {
@@ -570,7 +597,7 @@ class APIManager{
     
     
     
-    private func getMyDocumentsAPI(isDocuments : Bool,completion : @escaping(Result<[DocumentsDetailsStructV3],APIError>) -> ())
+    func getMyDocumentsAPI(isDocuments : Bool,completion : @escaping(Result<[DocumentsDetailsStructV3],APIError>) -> ())
     {
         let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
         var urlRequest = URLRequest(url: URL(string: url)!)
@@ -620,9 +647,80 @@ class APIManager{
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: jsonData)
-//                print(log: json)
+                print(log: json)
                 
                 let tableData = try JSONDecoder().decode([DocumentsDetailsStructV3].self, from: jsonData)
+                print(tableData)
+                completion(.success(tableData))
+               
+                
+            }catch let err {
+                completion(.failure(.decodingError(err: err.localizedDescription)))
+            }
+         
+        }.resume()
+
+        
+    }
+    
+    func getMyDocumentsAndPhotosForNotificationsAPI(completion : @escaping(Result<[DocumentsDetailsStructV3],APIError>) -> ())
+    {
+        let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        //Post Data
+        var keyForDocAndPhotos = ""
+        
+        let json = """
+         {    "documents": {
+                     "list": {
+                                 "url": true,
+                                 "thumbnailUrl": true,
+                                 "metaData": {
+                                 }
+                              }
+                         }
+         }
+         """.data(using: .utf8)
+        urlRequest.httpBody = json
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            //Validation
+            //debugPrint(response.debugDescription)
+            let httpResp = response as? HTTPURLResponse
+            guard let httpResp, (200...299).contains(httpResp.statusCode) else {
+//                completion(.success(ContactDetialsV3.self))
+                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
+                return}
+            guard let data else {
+                completion(.failure(.other(err: error?.localizedDescription)))
+                return }
+            //:End Of Validation
+            
+            guard let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
+                completion(.failure(.other(err: "Json Serialization Failed")))
+                return}
+           
+          
+            guard let docList = jsonDict.value(forKeyPath: "documents.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: docList) else {
+                completion(.failure(.other(err: "Json Serialization Failed")))
+                return
+            }
+            guard let photoList = jsonDict.value(forKeyPath: "photos.list") as? [[String : Any]], let jsonData1 = try? JSONSerialization.data(withJSONObject: photoList) else {
+                completion(.failure(.other(err: "Json Serialization Failed")))
+                return
+            }
+            let jsonCombData = docList + photoList
+            guard let jsonData1 = try? JSONSerialization.data(withJSONObject: jsonCombData) else{
+                return
+            }
+            print("Docs And Photos Count : ", jsonCombData.count)
+            do {
+                let json = try JSONSerialization.jsonObject(with: jsonData1)
+                print("-------json Data of combi : ",json)
+                
+                let tableData = try JSONDecoder().decode([DocumentsDetailsStructV3].self, from: jsonData1)
                 completion(.success(tableData))
                 
             }catch let err {
@@ -633,6 +731,7 @@ class APIManager{
 
         
     }
+
     
 }
 

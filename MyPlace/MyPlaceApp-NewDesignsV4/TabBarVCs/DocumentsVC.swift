@@ -166,7 +166,7 @@ class DocumentsVC: BaseProfileVC {
                 appDelegate.hideActivity()
                     self.tableView.refreshControl?.endRefreshing()
                 }
-                self.documentList = notes.filter( { !($0.type!.lc.contains("jpg"))}).filter( { !($0.type!.lc.contains("png")) }).filter({ !($0.type!.lc.contains("eml")) }).filter({ !($0.type!.lc.contains("txt")) })
+                self.documentList = notes.filter( { (($0.type?.lc.contains("jpg")) == nil)}).filter( { (($0.type?.lc.contains("png")) == nil) }).filter({ (($0.type?.lc.contains("eml")) == nil) }).filter({ (($0.type?.lc.contains("txt")) == nil) })
                 print(self.documentList)
                 //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {
@@ -353,7 +353,8 @@ struct DocumentsDetailsStruct: Decodable , Hashable{
 struct DocumentsDetailsStructV3: Decodable , Hashable{
     let title: String?
     let documentId: Int?
-    let type, url: String?
+    let type : String?
+    let url : String?
 ////    let externalUrls: [String]?
     var metaData : metadataDoc
     enum CodingKeys: String, CodingKey {

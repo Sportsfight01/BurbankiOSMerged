@@ -125,7 +125,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         guard isNetworkReachable else { self.showAlert(message: checkInternetPullRefresh); return }
         getProgressDetails()
         getUserProfile()
-//        getNotification()
+        
     }
     /// - PullToRefress Action
     @objc func panGestureRecognizerAction(sender: UISwipeGestureRecognizer) {
@@ -198,7 +198,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         /// - Calculating whole home progress
         guard let clItems else { return }
         let totalHomeProgress = Double(clItems.compactMap({$0.progress}).reduce(0.0, +)) / 6.0
-        let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100).rounded(.toNearestOrAwayFromZero))
+        let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100))
         
         let newClItem = MyProgressVM.ProgressItem(stage: Stage(rawValue: "Your New Home"), imageName: "icon_house", progress: totalHomeProgress,progressDetails: nil)
         /// - add Your new home in first place only when it is not present in list
@@ -238,6 +238,9 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
             case .success(let ProgressItems):
                 self?.clItems = ProgressItems
                 self?.setupDataForCollectionView()
+                DispatchQueue.main.async{
+                    self?.getNotification()
+                }
                 break
             case .failure(let err):
                 AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)

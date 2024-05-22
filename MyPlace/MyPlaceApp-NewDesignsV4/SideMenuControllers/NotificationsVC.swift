@@ -147,14 +147,7 @@ extension NotificationsVC : UITableViewDelegate, SkeletonTableViewDataSource
             kWindow.rootViewController = tabbar
             kWindow.makeKeyAndVisible()
         }
-        
-        
-        
     }
-    
-
-    
-    
     
 }
 
