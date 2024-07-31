@@ -166,7 +166,7 @@ class DocumentsVC: BaseProfileVC {
                 appDelegate.hideActivity()
                     self.tableView.refreshControl?.endRefreshing()
                 }
-                self.documentList = notes.filter( { (($0.type?.lc.contains("jpg")) == nil)}).filter( { (($0.type?.lc.contains("png")) == nil) }).filter({ (($0.type?.lc.contains("eml")) == nil) }).filter({ (($0.type?.lc.contains("txt")) == nil) })
+                self.documentList = notes.filter( { (($0.type?.lc.contains("jpeg")) == nil)}).filter( { (($0.type?.lc.contains("jpg")) == nil)}).filter( { (($0.type?.lc.contains("png")) == nil) }).filter({ (($0.type?.lc.contains("eml")) == nil) }).filter({ (($0.type?.lc.contains("txt")) == nil) })
                 print(self.documentList)
                 //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {

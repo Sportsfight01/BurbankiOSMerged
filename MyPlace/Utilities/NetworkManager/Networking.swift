@@ -410,7 +410,6 @@ extension Networking {
         if params1.count > 0 {
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: params1, options: [])
-
                 if let bodyData = request.httpBody {
 //                    print(log: "WEBURL ==\n\n" + ServiceAPI.shared.URl_authanticate + String.init(data: bodyData, encoding: .utf8)! + "\n")
                 }

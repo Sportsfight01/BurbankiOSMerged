@@ -36,6 +36,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         profileView.notificationCountLb.isHidden = appDelegate.notificationCount == 0 ? true : false
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -101,7 +102,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         let index =  offSet / cellWidth
         let currentIndex : Int = Int(abs(index.rounded(.toNearestOrAwayFromZero)))
         debugPrint("currentIndex : \(currentIndex)")
-        guard (0...6).contains(currentIndex) else {return}
+        guard (0...5).contains(currentIndex) else {return}
         if currentIndex == 0
         {
             self.yourOverallProgressLb.text = "YOUR OVERALL PROGRESS"
@@ -243,7 +244,9 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
                 }
                 break
             case .failure(let err):
-                AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
+                DispatchQueue.main.async{
+                    AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
+                }
             }
         }
 //        viewModel.getProgressData {[weak self] result in
@@ -282,7 +285,6 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
                 self?.profileView.profilePicImgView.downloaded(from: data.result?.profilePicPath ?? "")
                 
                 self?.setupProfile()
-                
             case .failure(let err):
                 print(err.localizedDescription)
                 DispatchQueue.main.async {
@@ -299,7 +301,9 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         viewModel.setupLocalStorageForNotification { [weak self] localNotificationsCount in
             appDelegate.notificationCount = localNotificationsCount
             DispatchQueue.main.async {
-                self?.profileView.notificationCountLb.text = "\(localNotificationsCount)"
+//                self?.profileView.notificationCountLb.text = "\(localNotificationsCount)"
+                // changed large count to 99+ in v3.5 version on 29/Jul
+                self?.profileView.notificationCountLb.text =  localNotificationsCount > 100 ? "99+" : "\(localNotificationsCount)"
                 self?.profileView.notificationCountLb.isHidden = localNotificationsCount == 0 ? true : false
             }
         }

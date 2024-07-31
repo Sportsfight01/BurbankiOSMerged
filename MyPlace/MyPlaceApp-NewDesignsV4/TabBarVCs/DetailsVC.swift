@@ -78,19 +78,21 @@ class DetailsVC: UIViewController {
         nameLb.text = contactDetialsData?.clientTitle ?? ""
         
         let emailFirstStr = NSMutableAttributedString(string: "Email ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let emailAttrStr = NSAttributedString(string: "\(contactDetialsData?.contactDetails.emailAddress ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let emailAttrStr = NSAttributedString(string: "\(contactDetialsData?.contactDetails?.emailAddress ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         emailFirstStr.append(emailAttrStr)
         // emailLb.lineBreakMode = .byWordWrapping
         emailLb.attributedText = emailFirstStr
         
         let phoneFirstStr = NSMutableAttributedString(string: "Phone ", attributes: [.foregroundColor : UIColor(red: 209/255, green: 211/255, blue: 212/255, alpha: 1.0)])
-        let phoneAttrStr = NSAttributedString(string: "\(contactDetialsData?.contactDetails.mobilePhone ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
+        let phoneAttrStr = NSAttributedString(string: "\(contactDetialsData?.contactDetails?.homePhone ?? "")" , attributes: [.foregroundColor : UIColor.white , .font : UIFont.systemFont(ofSize: 13, weight: .semibold)])
         phoneFirstStr.append(phoneAttrStr)
         phoneLb.attributedText = phoneFirstStr
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+//            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            notificationCountLBL.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
         }
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
         profileImgView.addGestureRecognizer(tap)
@@ -109,9 +111,9 @@ class DetailsVC: UIViewController {
         //My Build Details
         jobNumberLb.text = "\(data.contractNumber ?? "--")"
         //  print(data.lotaddress)
-        fullJobAddressLb.text = data.lotAddress.address.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: " ")
-        homeDesignLb.text = "\(data.houseType.houseName)"
-        facadeNameLb.text = "\(data.facade.packageName )"
+        fullJobAddressLb.text = data.lotAddress?.address?.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: " ")
+        homeDesignLb.text = "\(data.houseType?.houseName ?? "")"
+        facadeNameLb.text = "\(data.facade?.packageName  ?? "")"
 //        contractValueLb.text = dollarCurrencyFormatter(value: Double(data.contractvalue ?? 0))
 //        superVisorLb.text = data.supervisor ?? "--"
 //        newHomeConsultant.text = data.clientliaison ?? "--"
@@ -212,23 +214,23 @@ struct ProfilePhoto: Codable {
 // MARK: - Contact Details Struct for V3
 
 struct ContactDetialsV3 : Codable{
-    let contractNumber : String
-    let facade : facadeDetails
-    let lotAddress : LotDetails
-    let houseType : houseTypeDetails
+    let contractNumber : String?
+    let facade : facadeDetails?
+    let lotAddress : LotDetails?
+    let houseType : houseTypeDetails?
 }
 struct houseTypeDetails : Codable{
-    let houseName : String
+    let houseName : String?
 }
 struct facadeDetails : Codable{
-    let packageName : String
+    let packageName : String?
 }
 struct LotDetails : Codable{
-    let lotNo : String
-    let streetNo : String
-    let address : String
-    let street1 : String
-    let suburb : String
-    let state : String
-    let postCode : String
+    let lotNo : String?
+//    let streetNo : String?
+    let address : String?
+    let street1 : String?
+    let suburb : String?
+    let state : String?
+    let postCode : String?
 }

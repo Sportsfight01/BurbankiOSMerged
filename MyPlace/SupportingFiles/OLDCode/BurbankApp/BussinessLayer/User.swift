@@ -324,18 +324,18 @@ class MyPlaceEmails: NSObject,NSCoding
 
 
 struct myContractJobDetailsV3 : Codable{
-    let myHomeUsername : String
-    let clientTitle : String
-    let letterTitle : String
-    let myHomeUserName : String
-    let myHomePassword : String
-    let masterContractId : Int
-    let contactDetails : ContactDetailsOfV3
-    
-    
+    let myHomeUsername : String?
+    let clientTitle : String?
+    let letterTitle : String?
+    let myHomeUserName : String?
+    let myHomePassword : String?
+    let masterContractId : Int?
+    let contactDetails : ContactDetailsOfV3?
+ 
 }
 
 struct ContactDetailsOfV3 : Codable{
-    let mobilePhone : String
-    let emailAddress : String
+    let mobilePhone : String?
+    let emailAddress : String?
+    let homePhone : String?
 }

@@ -90,7 +90,7 @@ class MyProgressCVCell: UICollectionViewCell {
         {
             circleBar.labelText = "PENDING"
         }
-        else if progressInt == 100
+        else if progressInt >= 100
         {
             circleBar.labelText = "COMPLETE"
         }

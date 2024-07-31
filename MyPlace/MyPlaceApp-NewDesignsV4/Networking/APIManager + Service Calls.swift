@@ -154,7 +154,7 @@ class APIManager{
     {
         guard let currentJobregion = APIManager.shared.currentJobDetails?.region else {debugPrint("currentJobDetailsNotAvailable");return}
         guard let currentJobDetails = APIManager.shared.currentJobDetailsV3 else {debugPrint("currentJobDetailsNotAvailable");return}
-        let url = "\(clickHomeV2BaseURL)/MasterContracts/\(currentJobDetails.masterContractId)"
+        let url = "\(clickHomeV2BaseURL)/MasterContracts/\(currentJobDetails.masterContractId ?? 0)"
         print(url)
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "POST"
@@ -230,7 +230,7 @@ class APIManager{
                         status = "Completed"
 //                        print("admin stage task completion :------- ",status)
                     }
-                    let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String, customMessage: data["customMessage"] as? String, completedDate: data["completedDate"] as? String)
+                    let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String, /*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
                    
                     switch currentJobregion {
                     case "VIC","QLD","SA":
@@ -256,7 +256,7 @@ class APIManager{
 //                        print("remaining stages task completion :------- ",status)
                     }
                     if stageData["stageName"] as? String != "All Stages" &&  stageData["stageName"] as? String != "Administration"{
-                        let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String,customMessage: data["customMessage"] as? String, completedDate: data["completedDate"] as? String)
+                        let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String,/*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
                        
                         
                         
@@ -337,6 +337,7 @@ class APIManager{
         
         guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
         let url = "\(clickHomeV3BaseURL)Accounts/Login"
+        print(url)
         let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ?? "" ,"password": currentJobDetails.password ?? ""]
         print(postDict)
         var urlRequest = URLRequest(url: URL(string: url)!)
@@ -361,7 +362,7 @@ class APIManager{
                 return}
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-//                print(log: json)
+                print(log: json)
                 
                 self.currentJobDetailsV3 = try JSONDecoder().decode(myContractJobDetailsV3.self, from: data)
                 completion(.success(true))
@@ -377,6 +378,7 @@ class APIManager{
     private func getNotesList(completion : @escaping(Result<[MyNotesStruct],APIError>) -> ())
     {
         let url = "\(clickHomeV3BaseURL)MasterContracts/Get"
+        
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -396,6 +398,7 @@ class APIManager{
          }
          """.data(using: .utf8)
         urlRequest.httpBody = json
+        print(url)
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             //Validation
             //debugPrint(response.debugDescription)
@@ -547,7 +550,7 @@ class APIManager{
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-//                print(log: json)
+                print(log: json)
                 
                 let tableData = try JSONDecoder().decode(ContactDetialsV3.self, from: data)
                 completion(.success(tableData))

@@ -26,7 +26,6 @@ class MyProgressVM
 //            ($0.status?.trim().lc.contains("completed") == true)
             (contracts.contains($0.name?.trim().lc ?? "") == true) &&
             ($0.completedDate != "")
-            
         }).isEmpty
         print("isFinanceVisible : ",isFinanceVisible)
         financeVisibilityPublisher.send(isFinanceVisible)
@@ -94,7 +93,7 @@ class MyProgressVM
             {
                 /// - completion and handover are taking as finishing stage
                 /// removing "All Stages" and "Administration" from contact construction data
-            case "completion","handover","140 frame & truss" : return "Finishing Stage"
+            case "completion","handover","140 frame & truss","lockup stage","220 Fit Off" : return "Finishing Stage"
             case "fixout stage","miscellaneous" : return "Fixing Stage"
             default:
                 return  item.stageName?.capitalized ?? "none"
@@ -310,13 +309,12 @@ struct ProgressStruct: Codable, Equatable {
     let forclient: Bool?
     let stageID: Int?
     let stageName: String?
-    let customMessage : String?
+//    let customMessage : String?
     let completedDate : String?
     
     enum CodingKeys: String, CodingKey {
-        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient,customMessage,completedDate
+        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient, /*customMessage*/ completedDate, stageName
         case stageID = "stageId"
-        case stageName
     }
     var date : Date {
         return dateactual?.components(separatedBy: ".").first?.getDate() ?? Date()

@@ -138,7 +138,9 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+//            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            notificationCountLBL.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
         }
         //        profileImgView.addBadge(number: appDelegate.notificationCount)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))

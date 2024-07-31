@@ -238,10 +238,11 @@ class HomeLandVC: HeaderVC {
         let extent = 0.002
         
         if arrHomeLand.count > 0 {
-            
             let package = arrHomeLand[0]
             let list = arrHomeLand.filter { $0.latitude != "" }
-            print(list[0])
+            guard list.count > 0 else {
+                return
+            }
             self.mapViewGoogle.setMapPosition(with: list[0])
             
             

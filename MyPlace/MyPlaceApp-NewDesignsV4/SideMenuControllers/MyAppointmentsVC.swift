@@ -56,7 +56,9 @@ class MyAppointmentsVC: UIViewController {
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+//            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            notificationCountLBL.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
         }
         //        profileImgView.addBadge(number: appDelegate.notificationCount)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
@@ -71,66 +73,66 @@ class MyAppointmentsVC: UIViewController {
     }
     //MARK: - Service Calls
     
-    func getAppointments()
-    {
-        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
-            DispatchQueue.main.async {
-                self?.tableView.refreshControl?.endRefreshing()
-            }
-        }; return}
-        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
-        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
-        let auth = jobAndAuth.auth
-
-       
-        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
-            switch result
-            {
-            case .success(let data):
-                print(data)
-                self?.setupAppointments(progressData: data)
-                
-            case.failure(let err):
-                print(err.localizedDescription)
-                DispatchQueue.main.async {
-                    self?.showAlert(message: err.localizedDescription)
-                }
-            }
-            DispatchQueue.main.async {
-                appDelegate.hideActivity()
-                self?.tableView.refreshControl?.endRefreshing()
-            }
-            
-        }
-        
-    }
+//    func getAppointments()
+//    {
+//        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+//            DispatchQueue.main.async {
+//                self?.tableView.refreshControl?.endRefreshing()
+//            }
+//        }; return}
+//        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+//        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+//        let auth = jobAndAuth.auth
+//
+//       
+//        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
+//            switch result
+//            {
+//            case .success(let data):
+//                print(data)
+//                self?.setupAppointments(progressData: data)
+//                
+//            case.failure(let err):
+//                print(err.localizedDescription)
+//                DispatchQueue.main.async {
+//                    self?.showAlert(message: err.localizedDescription)
+//                }
+//            }
+//            DispatchQueue.main.async {
+//                appDelegate.hideActivity()
+//                self?.tableView.refreshControl?.endRefreshing()
+//            }
+//            
+//        }
+//        
+//    }
     
     //MARK: - Helper Methods
     
-    func setupAppointments(progressData : [ProgressStruct])
-    {
-        for progress in progressData
-        {
-            switch progress.name
-            {
-            case "Edge Appointment" , "Colour Selection":
-                appointmentDates[0] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "Electrical Selection":
-                appointmentDates[1] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "Sign Building Contract":
-                appointmentDates[2] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "Tender Presentation":
-                appointmentDates[3] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "PC INSPECTION":
-                appointmentDates[4] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            default:
-                break;
-                
-            }
-        }
-        print(appointmentDates)
-        tableView.reloadData()
-    }
+//    func setupAppointments(progressData : [ProgressStruct])
+//    {
+//        for progress in progressData
+//        {
+//            switch progress.name
+//            {
+//            case "Edge Appointment" , "Colour Selection":
+//                appointmentDates[0] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "Electrical Selection":
+//                appointmentDates[1] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "Sign Building Contract":
+//                appointmentDates[2] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "Tender Presentation":
+//                appointmentDates[3] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "PC INSPECTION":
+//                appointmentDates[4] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            default:
+//                break;
+//                
+//            }
+//        }
+//        print(appointmentDates)
+//        tableView.reloadData()
+//    }
 
 }
 //MARK: - TableView Delegate & Datasource

@@ -108,9 +108,11 @@ class BaseProfileVC: UIViewController {
         if appDelegate.notificationCount == 0{
             profileView.notificationCountLb.isHidden = true
         }else{
-            profileView.notificationCountLb.text = "\(appDelegate.notificationCount)"
+//            profileView.notificationCountLb.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            profileView.notificationCountLb.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
+
         }
-     
         
     }
     
