@@ -430,7 +430,7 @@ extension DisplaysRegionsMapDetailVC: UITableViewDelegate, UITableViewDataSource
     }
 
     @IBAction func didTappedOnGetDirections (_ sender: UIButton) {
-        guard houseDetailsByHouseTypeArr.count >= 0 else {
+        guard houseDetailsByHouseTypeArr.count > 0 else {
            showAlert(message: "Something went terribly wrong. Please come back later.")
            return
          }
@@ -506,8 +506,11 @@ extension DisplaysRegionsMapDetailVC{
                                 
                             }}else { print(log:  "No HouseDetail found") }
                         DispatchQueue.main.async {
-                            self.displayDetailsCard.isHidden = false
-                            self.layoutTable ()
+                            if  self.houseDetailsByHouseTypeArr.count > 0{
+                                self.displayDetailsCard.isHidden = false
+                                self.layoutTable ()
+                            }
+                            
                         }
                     }else {
                         

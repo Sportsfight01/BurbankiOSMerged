@@ -143,12 +143,12 @@ class DesignsDetailsVC: HeaderVC {
             addHeaderOptions(sort: false, map: false, favourites: true, howWorks: false, reset: true,totalCount: true,  delegate: self)
         }
         
-        if selectedDesignCount >= arrHomeDesignsDetails.count - 1{
+        if selectedDesignCount == arrHomeDesignsDetails.count - 1{
            
             self.nextDesignBTN2.isHidden = true
         }else{
            
-            self.nextDesignBTN2.isHidden = true
+            self.nextDesignBTN2.isHidden = false
         }
         if selectedDesignCount <= 0{
            

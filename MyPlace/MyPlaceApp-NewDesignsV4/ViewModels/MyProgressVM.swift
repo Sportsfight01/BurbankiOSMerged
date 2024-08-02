@@ -93,7 +93,7 @@ class MyProgressVM
             {
                 /// - completion and handover are taking as finishing stage
                 /// removing "All Stages" and "Administration" from contact construction data
-            case "completion","handover","140 frame & truss","lockup stage","220 Fit Off" : return "Finishing Stage"
+            case "completion","handover","140 frame & truss","lockup stage","220 fit off" : return "Finishing Stage"
             case "fixout stage","miscellaneous" : return "Fixing Stage"
             default:
                 return  item.stageName?.capitalized ?? "none"
