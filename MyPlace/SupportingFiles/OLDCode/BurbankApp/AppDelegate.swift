@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        // Thread.sleep(forTimeInterval: 5.0)
         
-        IQKeyboardManager.shared.toolbarTintColor = APPCOLORS_3.Orange_BG
+        IQKeyboardManager.shared.toolbarConfiguration.tintColor = APPCOLORS_3.Orange_BG
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = APPCOLORS_3.Orange_BG
       ApplicationDelegate.shared.application(
                 application,

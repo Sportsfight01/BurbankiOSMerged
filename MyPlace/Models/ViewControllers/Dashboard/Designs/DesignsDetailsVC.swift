@@ -302,6 +302,8 @@ class DesignsDetailsVC: HeaderVC {
                         
                         self.imageHouseDesign.showActivityIndicator()
                         
+                    
+                        
                         ImageDownloader.downloadImage(withUrl: floorplanURL, withFilePath: nil, with: { (image, success, error) in
                             
                             self.imageHouseDesign.hideActivityIndicator()

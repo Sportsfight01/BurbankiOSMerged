@@ -551,7 +551,6 @@ class APIManager{
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
                 print(log: json)
-                
                 let tableData = try JSONDecoder().decode(ContactDetialsV3.self, from: data)
                 completion(.success(tableData))
                 
