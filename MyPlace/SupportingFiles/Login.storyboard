@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q4J-VK-jZl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q4J-VK-jZl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -62,7 +62,7 @@
                                             <constraint firstAttribute="height" constant="1" id="raM-18-cK0"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5A-mH-TkP">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5A-mH-TkP">
                                         <rect key="frame" x="318" y="66" width="88" height="25"/>
                                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                                         <constraints>
@@ -93,7 +93,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-ZY-P4W">
-                                <rect key="frame" x="0.0" y="192" width="414" height="325"/>
+                                <rect key="frame" x="0.0" y="192" width="414" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAz-MN-8Vd">
                                         <rect key="frame" x="30" y="35" width="75" height="30"/>
@@ -115,7 +115,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-Ti-r60">
-                                        <rect key="frame" x="30" y="291" width="154" height="30"/>
+                                        <rect key="frame" x="30" y="186" width="154" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7WG-GG-cGP"/>
@@ -129,11 +129,8 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLq-Jr-W5C">
-                                        <rect key="frame" x="30" y="141" width="354" height="150"/>
-                                        <string key="text">Find your perfect home on Burbank Homes app. If you are looking to build your dream home or invest in home building in Australia, this property finder app will simplify your property search.
-
-Whether you’re looking at building or are already building with us, the MyPlace app will help you either find the best design for you or take you through your building journey with us.
-</string>
+                                        <rect key="frame" x="30" y="141" width="354" height="45"/>
+                                        <string key="text">Designed to keep you on track every step of the way. Streamline your build journey, with all of your essential information and updates in one place - MyPlace.</string>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -154,42 +151,42 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-Un-YRH">
-                                <rect key="frame" x="0.0" y="517" width="414" height="345"/>
+                                <rect key="frame" x="0.0" y="422" width="414" height="440"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-JF-Oig">
-                                        <rect key="frame" x="27" y="0.0" width="357" height="165.5"/>
+                                        <rect key="frame" x="137" y="0.0" width="140" height="165.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-Wd-ydt">
-                                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="165.5"/>
+                                            <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-Wd-ydt">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="165.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5S-fh-39H">
-                                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="165.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="165.5"/>
                                                         <connections>
                                                             <action selector="handleSelectionButtonWithSender:" destination="c2u-DG-9SO" eventType="touchUpInside" id="14x-XK-kJk"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Uncheckd" translatesAutoresizingMaskIntoConstraints="NO" id="zBM-hh-PLR">
-                                                        <rect key="frame" x="152" y="5" width="16.5" height="16.5"/>
+                                                        <rect key="frame" x="18.5" y="5" width="16.5" height="16.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="zBM-hh-PLR" secondAttribute="height" multiplier="1:1" id="0i8-9X-MuS"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Looking" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-5A-dEP">
-                                                        <rect key="frame" x="66" y="40" width="41.5" height="41.5"/>
+                                                        <rect key="frame" x="-0.5" y="40" width="41" height="41.5"/>
                                                         <color key="tintColor" name="darkGray"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="rjJ-5A-dEP" secondAttribute="height" multiplier="1:1" id="fCC-XJ-KXj"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="JUST LOOKING" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-lg-NJL">
-                                                        <rect key="frame" x="5" y="93.5" width="163.5" height="15"/>
+                                                        <rect key="frame" x="5" y="93.5" width="30" height="59"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am shopping around" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-ea-G6L">
-                                                        <rect key="frame" x="20" y="116.5" width="133.5" height="12.5"/>
+                                                        <rect key="frame" x="20" y="160.5" width="0.0" height="12.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -224,35 +221,35 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="Iwx-fM-upu">
-                                                <rect key="frame" x="183.5" y="0.0" width="173.5" height="165.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="165.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2h-t8-ZQx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="165.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="165.5"/>
                                                         <connections>
                                                             <action selector="handleSelectionButtonWithSender:" destination="c2u-DG-9SO" eventType="touchUpInside" id="wY8-Wa-42N"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Checked" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-OX-bgH">
-                                                        <rect key="frame" x="152" y="5" width="16.5" height="16.5"/>
+                                                        <rect key="frame" x="118.5" y="5" width="16.5" height="16.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="jPq-OX-bgH" secondAttribute="height" multiplier="1:1" id="I7Y-3I-6yR"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Customers" translatesAutoresizingMaskIntoConstraints="NO" id="bcD-yR-SoS">
-                                                        <rect key="frame" x="62" y="36" width="49.5" height="49.5"/>
+                                                        <rect key="frame" x="45" y="36" width="50" height="49.5"/>
                                                         <color key="tintColor" name="DarkGrey_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="bcD-yR-SoS" secondAttribute="height" multiplier="1:1" id="PZI-cu-zk5"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="CUSTOMER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-Hs-uqN">
-                                                        <rect key="frame" x="5" y="93.5" width="163.5" height="15"/>
+                                                        <rect key="frame" x="5" y="93.5" width="130" height="15"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="I am building with Burbank" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6u-rO-tQa">
-                                                        <rect key="frame" x="5" y="116.5" width="163.5" height="12.5"/>
+                                                        <rect key="frame" x="5" y="116.5" width="130" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -287,7 +284,7 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="iyy-0E-QDd">
-                                                <rect key="frame" x="357" y="0.0" width="10" height="165.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="10" height="165.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8a-8b-6bB">
                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="165.5"/>
@@ -342,9 +339,12 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="ggU-IY-EcG"/>
+                                        </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-k2-3yC">
-                                        <rect key="frame" x="15" y="267.5" width="384" height="52.5"/>
+                                        <rect key="frame" x="15" y="348" width="384" height="67"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.5450980392" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Extrabld" family="Proxima Nova" pointSize="17"/>
                                         <state key="normal" title="Continue">
@@ -362,8 +362,8 @@ Whether you’re looking at building or are already building with us, the MyPlac
                                     <constraint firstAttribute="trailing" secondItem="Xmd-k2-3yC" secondAttribute="trailing" constant="15" id="Jl1-um-h4Z"/>
                                     <constraint firstItem="HS6-JF-Oig" firstAttribute="height" secondItem="4Yc-Un-YRH" secondAttribute="width" multiplier="0.4" id="YgM-SK-p9D"/>
                                     <constraint firstItem="Xmd-k2-3yC" firstAttribute="leading" secondItem="4Yc-Un-YRH" secondAttribute="leading" constant="15" id="guw-xg-E0n"/>
+                                    <constraint firstItem="HS6-JF-Oig" firstAttribute="centerX" secondItem="4Yc-Un-YRH" secondAttribute="centerX" id="pAW-rx-nQI"/>
                                     <constraint firstAttribute="bottom" secondItem="Xmd-k2-3yC" secondAttribute="bottom" constant="25" id="tO2-Ew-YfW"/>
-                                    <constraint firstAttribute="trailing" secondItem="HS6-JF-Oig" secondAttribute="trailing" constant="30" id="tQ0-jR-8TD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -377,10 +377,9 @@ Whether you’re looking at building or are already building with us, the MyPlac
                             <constraint firstItem="7je-Bc-QGY" firstAttribute="trailing" secondItem="Joa-4m-dVm" secondAttribute="trailing" id="Jd8-q1-hol"/>
                             <constraint firstItem="4Yc-Un-YRH" firstAttribute="bottom" secondItem="Joa-4m-dVm" secondAttribute="bottom" id="NnI-IC-ynC"/>
                             <constraint firstItem="4Yc-Un-YRH" firstAttribute="leading" secondItem="Joa-4m-dVm" secondAttribute="leading" id="R4H-ym-N0f"/>
-                            <constraint firstItem="4Yc-Un-YRH" firstAttribute="top" secondItem="QXd-ZY-P4W" secondAttribute="bottom" id="ab3-xv-a2M"/>
+                            <constraint firstItem="4Yc-Un-YRH" firstAttribute="top" secondItem="QXd-ZY-P4W" secondAttribute="bottom" constant="10" id="ab3-xv-a2M"/>
                             <constraint firstItem="QXd-ZY-P4W" firstAttribute="trailing" secondItem="Joa-4m-dVm" secondAttribute="trailing" id="daB-3k-CgM"/>
                             <constraint firstItem="4Yc-Un-YRH" firstAttribute="trailing" secondItem="Joa-4m-dVm" secondAttribute="trailing" id="lU3-vY-rZQ"/>
-                            <constraint firstItem="HS6-JF-Oig" firstAttribute="leading" secondItem="W5A-EQ-7UN" secondAttribute="leading" id="pjR-PU-3h1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zdj-Ei-L6I"/>
@@ -9028,16 +9027,16 @@ BosGAAaLEwAGixgABosgAAaLIwAGiygABoswAAAAAAAABAEAAAAAAAAAaAAAAAAAAAAAAAAAAAAGizM
             <color red="0.25499999523162842" green="0.25099998712539673" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
