@@ -113,7 +113,7 @@ class FinanceVC: BaseProfileVC {
             switch result
             {
             case .success(let data):
-                //print(data)
+                print(data)
                 // let contractPrice =  String(format: "%.2f",data.contractPrice)
                 self?.financeDetails = data
                 self?.setupUI()

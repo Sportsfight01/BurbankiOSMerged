@@ -99,19 +99,27 @@ extension NotificationsVC : UITableViewDelegate, SkeletonTableViewDataSource
         if item.isPhoto == true // stage complete
         {
             cell.imgView.image = UIImage(systemName: "photo.circle.fill",withConfiguration: UIImage.SymbolConfiguration(scale: .large)) ?? UIImage(named: "Ico-ImageNotify")
-            cell.title.text = "Check out the new photos added on \(dateStr)"
+//            cell.title.text = "Check out the new photos added on \(dateStr)"
+            setAttributetitleFor(view: cell.title, title: "Check out the new photos added on \n\(dateStr)", rangeStrings: ["Check out the new photos added on \n\(dateStr)"], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_11)], alignmentCenter: false)
         }else {
-            cell.title.text = "\(item.taskName!) Completed on \(dateStr)"
+            setAttributetitleFor(view: cell.title, title: "\(item.taskName!) Completed on \n\(dateStr)", rangeStrings: ["\(item.taskName!)"," Completed on \n\(dateStr)"], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_11),FONT_LABEL_BODY(size: FONT_11)], alignmentCenter: false)
+            
+//            cell.title.text = "\(item.taskName!) Completed on \(dateStr)"
             cell.imgView.image = UIImage(systemName: "bell.circle.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         }
         
-        let formatter = RelativeDateTimeFormatter()
-        //formatter.unitsStyle = .full
-        formatter.dateTimeStyle = .numeric
-
-        // get relative date to the current date
-        let relativeDate = formatter.localizedString(for: item.date, relativeTo: Date())
-        cell.subTitleLb.text = relativeDate
+//        let formatter = RelativeDateTimeFormatter()
+//        formatter.unitsStyle = .full
+//        formatter.dateTimeStyle = .numeric
+//
+//        // get relative date to the current date
+//        let relativeDate = formatter.localizedString(for: item.date, relativeTo: Date())
+        
+//        print(item.date.getElapsedInterval())
+        
+        setAttributetitleFor(view: cell.subTitleLb, title: item.date.getElapsedInterval(), rangeStrings: [item.date.getElapsedInterval()], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+        
+//        cell.subTitleLb.text = item.date.getElapsedInterval() + "."
         return cell
     }
     
