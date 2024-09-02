@@ -14,7 +14,7 @@ class VideoPlayerView: UIView {
     
     //Activity Indicater
     let activityIndicatorView: UIActivityIndicatorView = {
-        let aiv = UIActivityIndicatorView(style: .whiteLarge)
+        let aiv = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         aiv.translatesAutoresizingMaskIntoConstraints = false
         aiv.startAnimating()
         return aiv

@@ -151,25 +151,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return onError(true)
             }
             do {
-                let data = try Data(contentsOf: url)
-                guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
-                   return onError(true)
-                }
-                if let result = (json["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String{
-                    DispatchQueue.main.async {
-                        
-                        print("version in app store", appStoreVersion," current Version ",curentVersion);
-                        let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
-                        
-                        if versionCompare == .orderedSame {
-                            onSuccess(false)
-                        } else if versionCompare == .orderedAscending {
-                            onSuccess(true)
-                            // 2.0.0 to 3.0.0 is ascending order, so ask user to update
+                
+//                let data = try Data(contentsOf: url)
+                let session = URLSession.shared
+                // Create the data task
+                let task = session.dataTask(with: url) { data, response, error in
+                    // Check for errors
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                        onError(true)
+                        return
+                    }
+                    
+                    // Check for valid response
+                    guard let httpResponse = response as? HTTPURLResponse,
+                          (200...299).contains(httpResponse.statusCode) else {
+                        print("Invalid response")
+                        onError(true)
+                        return
+                    }
+                    
+                    // Check for data
+                    if let data = data {
+                        do {
+                            // Parse the data (assuming JSON)
+                            guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
+                               return onError(true)
+                            }
+                            if let result = (json["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String{
+                                DispatchQueue.main.async {
+                                    
+                                    print("version in app store", appStoreVersion," current Version ",curentVersion);
+                                    let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
+                                    
+                                    if versionCompare == .orderedSame {
+                                        onSuccess(false)
+                                    } else if versionCompare == .orderedAscending {
+                                        onSuccess(true)
+                                        // 2.0.0 to 3.0.0 is ascending order, so ask user to update
+                                    }
+                                    
+                                }
+                            }
+                            
+                            
+                        } catch {
+                            onError(true)
+                            print("JSON parsing error: \(error.localizedDescription)")
                         }
-                        
                     }
                 }
+
+                // Start the task
+                task.resume()
+                
+                
+              
             } catch {
                 onError(true)
             }

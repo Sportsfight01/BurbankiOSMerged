@@ -23,7 +23,7 @@ class BasicVC: BurbankAppVC
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "Ico-Back"), for: .normal)
-        button.addTarget(self, action: #selector(handelBackButtonTapped), for: .touchDown)
+        button.addTarget(BasicVC.self, action: #selector(handelBackButtonTapped), for: .touchDown)
         return button
     }()
     

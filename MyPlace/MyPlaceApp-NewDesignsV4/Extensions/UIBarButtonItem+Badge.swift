@@ -75,7 +75,7 @@ extension UIView {
     }
 }
 
-protocol BadgeContainer: class {
+protocol BadgeContainer: AnyObject {
     var badgeView: UIView? { get set }
     var badgeLabel: UILabel? { get set }
     func showBadge(blink: Bool, text: String?)
