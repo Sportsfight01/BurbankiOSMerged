@@ -243,28 +243,39 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.emailTF.text = appDelegate.userData?.user?.userEmail ?? ""
         self.mobileNumberTF.text = appDelegate.userData?.user?.userPhone ?? ""
         
-        if self.lastNameTF.text != "" {
-         setAppearanceFor(view: lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-         self.lastNameTF.isUserInteractionEnabled = false
-        }else{
-         self.lastNameTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: lastNameTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+        [lastNameTF,firstNameTF,emailTF].forEach{ txtFld in
+            if (txtFld!).text != "" {
+                setAppearanceFor(view: txtFld ?? UITextField(), backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+                txtFld?.isUserInteractionEnabled = false
+            }else{
+                txtFld?.isUserInteractionEnabled = true
+                setAppearanceFor(view: txtFld ?? UITextField(), backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+            }
+            
         }
         
-        if self.firstNameTF.text != "" {
-            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-         self.firstNameTF.isUserInteractionEnabled = false
-        }else{
-         self.firstNameTF.isUserInteractionEnabled = true
-            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        }
-        
-        if self.emailTF.text != "" {
-         setAppearanceFor(view: emailTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        }else{
-         self.emailTF.isUserInteractionEnabled = true
-         setAppearanceFor(view: emailTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-        }
+//        if self.lastNameTF.text != "" {
+//         setAppearanceFor(view: lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//         self.lastNameTF.isUserInteractionEnabled = false
+//        }else{
+//         self.lastNameTF.isUserInteractionEnabled = true
+//         setAppearanceFor(view: lastNameTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        }
+//        
+//        if self.firstNameTF.text != "" {
+//            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//         self.firstNameTF.isUserInteractionEnabled = false
+//        }else{
+//         self.firstNameTF.isUserInteractionEnabled = true
+//            setAppearanceFor(view: firstNameTF, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        }
+//        
+//        if self.emailTF.text != "" {
+//         setAppearanceFor(view: emailTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        }else{
+//         self.emailTF.isUserInteractionEnabled = true
+//         setAppearanceFor(view: emailTF, backgroundColor:  APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
+//        }
 //        if self.mobileNumberTF.text != "" {
 //         setAppearanceFor(view: mobileNumberTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
 //        }else{

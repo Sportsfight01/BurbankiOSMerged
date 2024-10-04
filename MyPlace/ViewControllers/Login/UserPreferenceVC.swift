@@ -156,6 +156,7 @@ class UserPreferenceVC: UIViewController {
         
         
         btnContinue.layer.cornerRadius = radius_5
+        lbWelcomeDescription.text = "Whether you’re currently building with Burbank or starting to explore your options, the MyPlace app streamlines your experience and keeps you informed.  \n\nDesigned to keep you on track every step of the way. Simplify your home building journey, with all of your information in one place – MyPlace."
         
     }
     

@@ -64,6 +64,7 @@ class ImageSliderVC: UIViewController {
     }
   
     //MARK: - CollectionView Layout & Datasource
+    
     func createCompositionalLayout() -> UICollectionViewLayout
     {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))

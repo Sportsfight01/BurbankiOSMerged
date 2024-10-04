@@ -129,10 +129,9 @@ class MyContactsVC: BaseProfileVC {
            switch result
            {
            case .success(let data):
-              // print(data)
+               print(data)
                self?.jobContacts = data
                DispatchQueue.main.async {
-                   
                    self?.tableView.reloadData()
                    
                }

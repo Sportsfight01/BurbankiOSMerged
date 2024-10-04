@@ -121,14 +121,6 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         [frstNameTF,lastNameTF,emailTF,phoneTF,whatToBuildTF,textViewMessage,whereWouldYouLiveTF].forEach { textField in
             setAppearanceFor(view: textField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         }
-//        setAppearanceFor(view: emailTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-//        setAppearanceFor(view: lastNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-//        setAppearanceFor(view: frstNameTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-//        setAppearanceFor(view: phoneTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-//        setAppearanceFor(view: whatToBuildTF, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-//
-//
-//        setAppearanceFor(view: textViewMessage, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         setAppearanceFor(view: textViewPlaceholder, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.LightGreyDisabled_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
         
         
@@ -136,17 +128,6 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         setAppearanceFor(view: btnEnquire, backgroundColor: AppColors.appOrange, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
         
         setAppearanceFor(view: acceptHint, backgroundColor: .clear, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
-        
-        
-//        viewEmailText.layer.cornerRadius = radius_5
-//        viewFirstNameText.layer.cornerRadius = radius_5
-//        viewLastNameText.layer.cornerRadius = radius_5
-//        viewPhoneText.layer.cornerRadius = radius_5
-//        viewWhatToBuildText.layer.cornerRadius = radius_5
-//        whereWouldYouLiveTF.superview?.layer.cornerRadius = radius_5
-//
-//        viewMessage.layer.cornerRadius = radius_5
-        
         whereWouldYouLiveTF.attributedPlaceholder = NSAttributedString(string: "Where would you like to live?", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
         
         
@@ -191,7 +172,6 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
              setAppearanceFor(view: frstNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
              setAppearanceFor(view: self.viewFirstNameText, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
             }
-            
            if self.lastNameTF.text != "" {
             setAppearanceFor(view: lastNameTF, backgroundColor: .clear, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
             setAppearanceFor(view: viewLastNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
