@@ -401,8 +401,8 @@ extension DisplayHomesDetailsVC{
                 
                 imgOne.hideActivityIndicator()
                 
-                var imageHeight = (image?.size.height)!
-                var imageWidth = (image?.size.width)!
+                var imageHeight = (image?.size.height) ?? 0
+                var imageWidth = (image?.size.width) ?? 0
                 var plotViewWidth = self.plotView.frame.width
                 var plotViewHeight = self.plotView.frame.height
                 var imageRatio = imageWidth/imageHeight
@@ -796,6 +796,12 @@ extension DisplayHomesDetailsVC {
                             } catch let jsonError {
                                 print(log: jsonError)
                             }
+                        }else{
+                            let msg = (jsonObj as! NSDictionary).value(forKey: "message") as? String ?? ""
+                            self.showAlert(message: msg) { Str in
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                            print((jsonObj as! NSDictionary).value(forKey: "status") as? Bool)
                         }
                     }
                 }

@@ -427,8 +427,11 @@ extension HomeLandVC: ChildVCDelegate {
             }
             if online {
                 self.page = 1
-                self.dataFromFilter()
-                loadPackages ()
+                DispatchQueue.main.async {
+                    self.dataFromFilter()
+                    self.loadPackages ()
+                }
+                
             }
         }
         

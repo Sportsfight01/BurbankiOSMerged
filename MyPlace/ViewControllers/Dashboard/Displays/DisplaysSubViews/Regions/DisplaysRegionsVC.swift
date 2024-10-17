@@ -19,7 +19,7 @@ class DisplaysRegionsVC: UIViewController {
     var previousRegion: RegionMyPlace?
     
     var regionsMapVC: DisplaysRegionsMapDetailVC?
-    var selectedIndex = 0
+    var selectedIndex : Int?
     
     //MARK: - ViewLifecycle
     override func viewDidLoad() {

@@ -285,8 +285,8 @@ extension DisplayHomesFavouritesVC : UITableViewDelegate,UITableViewDataSource{
           
             if let imageurl : String? = displaydata.facadePermanentUrl {
                 ImageDownloader.downloadImage(withUrl: ServiceAPI.shared.URL_imageUrl(imageurl ?? ""), withFilePath: nil, with: { (image, success, error) in
-                    var imageHeight = (image?.size.height)!
-                    var imageWidth = (image?.size.width)!
+                    var imageHeight = (image?.size.height) ?? 0
+                    var imageWidth = (image?.size.width) ?? 0
                     var plotViewWidth = cell.homeIMG.frame.width
                     var plotViewHeight = cell.homeIMG.frame.height
                     var imageRatio = imageWidth/imageHeight

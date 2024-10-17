@@ -153,13 +153,16 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
            
             
             if #available(iOS 13.0, *) {
-//                setAppearanceFor(view: viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
-//                setAppearanceFor(view: self.viewWhatToBuildText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
-            setAppearanceFor(view: self.viewEmailText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
-            setAppearanceFor(view: self.viewLastNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
-            setAppearanceFor(view: self.viewFirstNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
-            setAppearanceFor(view: self.frstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
-            setAppearanceFor(view: self.lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+                [self.viewEmailText,self.viewLastNameText,self.viewFirstNameText,self.frstNameTF,self.lastNameTF].forEach({ vie in
+                    setAppearanceFor(view: vie, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+                })
+                
+//            setAppearanceFor(view: self.viewLastNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+//            setAppearanceFor(view: self.viewFirstNameText, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+//            setAppearanceFor(view: self.frstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+//            setAppearanceFor(view: self.lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+                
+                
             setAppearanceFor(view: lastNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
             setAppearanceFor(view: frstNameTF, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
             

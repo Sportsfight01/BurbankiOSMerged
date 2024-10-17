@@ -198,7 +198,7 @@ class HeaderVC: UIViewController {
         profileImage.setImage(UIImage(named: "BurbankLogo"), for: .normal)
         
         hideProfileView()
-        hideSortFilterView()
+//        hideSortFilterView()
         
         if updated == false {
             updateTopConstraint()
@@ -385,8 +385,8 @@ class HeaderVC: UIViewController {
         
         // add child view controller view to container
         
-        viewContro.addChild(sortFilterView)
-        //            addChildViewController(controller)
+//        viewContro.addChild(sortFilterView)    this code causing tabbar issue adding another tab bar Item with sortview Screen
+        
         sortFilterView.view.translatesAutoresizingMaskIntoConstraints = false
         containerViewSortFilter!.addSubview(sortFilterView.view)
         

@@ -243,7 +243,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.emailTF.text = appDelegate.userData?.user?.userEmail ?? ""
         self.mobileNumberTF.text = appDelegate.userData?.user?.userPhone ?? ""
         
-        [lastNameTF,firstNameTF,emailTF].forEach{ txtFld in
+[lastNameTF,firstNameTF,emailTF].forEach{ txtFld in
             if (txtFld!).text != "" {
                 setAppearanceFor(view: txtFld ?? UITextField(), backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_13))
                 txtFld?.isUserInteractionEnabled = false

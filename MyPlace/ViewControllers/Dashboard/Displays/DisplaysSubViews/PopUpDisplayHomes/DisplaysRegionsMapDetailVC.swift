@@ -183,7 +183,6 @@ class DisplaysRegionsMapDetailVC: UIViewController {
             
             self.regionTableHeight.constant = self.tableView.contentSize.height
             self.tableView.isScrollEnabled = true
-            
                     if  self.houseDetailsByHouseTypeArr.count > 1 {
                         if self.tableViewContentHeight > Int(self.tableView.contentSize.height){
                             self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
@@ -191,7 +190,6 @@ class DisplaysRegionsMapDetailVC: UIViewController {
                             self.tableViewContentHeight = Int(self.tableView.contentSize.height)
                             self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
                         }
-            
                     }else if self.houseDetailsByHouseTypeArr.count == 1 {
                         self.tableViewContentHeight = Int(self.tableView.contentSize.height)
                         self.regionTableHeight.constant = CGFloat(self.tableViewContentHeight)
