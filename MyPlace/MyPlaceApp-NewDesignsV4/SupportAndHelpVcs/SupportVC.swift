@@ -18,9 +18,9 @@ class SupportVC: UIViewController {
     @IBOutlet weak var wholeView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    var titleText = ["Info Centre","FAQs",/*"Contact Us"*/]
+    var titleText = ["Info Centre","FAQs","Contact Us"]
 
-    var subjectText = ["Helpful videos and information to explain some of the stages in your build and what you need to know.","Find answers to our most Frequently Asked Questions.",/*"Or simply get in touch here so we can help you directly."*/]
+    var subjectText = ["Helpful videos and information to explain some of the stages in your build and what you need to know.","Find answers to our most Frequently Asked Questions.","Or simply get in touch here so we can help you directly."]
  
 
     override func viewDidLoad() {
@@ -60,7 +60,9 @@ class SupportVC: UIViewController {
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+//            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            notificationCountLBL.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
         }
         ///Gesture for ImageView to go to NotificationScreen
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))

@@ -58,7 +58,7 @@ class CoBurbankListVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
         
      setAppearanceFor(view: titleLabel, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_HEADING(size: FONT_18))
 
-     setAppearanceFor(view: inviteButton, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+     setAppearanceFor(view: inviteButton, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
 
         
         
@@ -67,7 +67,7 @@ class CoBurbankListVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
         
         
         setAppearanceFor(view: inviteButtonSubmit, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
-        setAppearanceFor(view: inviteButtonCancel, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: inviteButtonCancel, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
 
     }
     

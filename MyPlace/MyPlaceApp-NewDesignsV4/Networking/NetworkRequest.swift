@@ -22,6 +22,13 @@ class NetworkRequest
                 appDelegate.showActivity()
             }
         }
+        if !isNetworkReachable{
+            showAlert("Check your internet and pull to refresh again")
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+//            return
+        }
         AF.request(urlRequest).responseData { (response) in
             #if DEDEBUG
              response.debugPrintReqResponse()
@@ -57,6 +64,13 @@ class NetworkRequest
                 appDelegate.showActivity()
             }
         }
+        if !isNetworkReachable{
+            showAlert("Check your internet and pull to refresh again")
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
+//            return
+        }
         AF.request(urlRequest).responseData { (response) in
             #if DEDEBUG
              response.debugPrintReqResponse()
@@ -72,6 +86,9 @@ class NetworkRequest
                 return
             }
             do {
+                
+                 let jsonData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print(jsonData)
                 let modelData = try JSONDecoder().decode([T].self, from: data)
                 completion(.success(modelData))
             } catch let err{

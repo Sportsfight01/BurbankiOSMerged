@@ -38,9 +38,12 @@ let clickHomeBaseImageURLForTesting = "http://10.6.45.14:8085/getattachment/"
 let clickHomeBaseImageURLForLive = "https://www.burbank.com.au/getattachment/"
 
 
-
-let clickHomeBaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/ClickHome.myhome/v2/"
+let clickHomeV3BaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/myhome/V3/"
+let clickHomeBaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/ClickHome.myhome/v3/"
 let myPlaceVICBaseURL = "https://www.burbank.com.au/victoria/myplace/api/"
+
+
+let clickHomeV2BaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/V2"
 
 
 
@@ -61,15 +64,16 @@ func  myPlaceProgressDetailsURLString() -> String
 }
 func myPlaceDocumentsDetailsURLString() -> String
 {
-    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)documents/GetAllDocuments?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())" : "\(clickHomeBaseURL)/documents"
+    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)documents/GetAllDocuments?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())" : "\(clickHomeBaseURL)documents"
 }
 func  myPlaceContractDetailsURLString() -> String
 {
-    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contract/GetContract?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())&region=VIC" : "\(clickHomeBaseURL)job"
+    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contract/GetContract?constructionTicketID=\(selectedJobconstrucntionID())&officeTicketID=\(selectedJobOfficeID())&region=VIC" : "\(clickHomeV3BaseURL)job"
 }
 func  myPlaceNotesURLString() -> String
 {
-    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contact/GetContact?constructionTicketID=\(selectedJobconstrucntionID())&region=VIC" : "\(clickHomeBaseURL)notes"
+    let selctedID = APIManager.shared.selectedContractIDForV3
+    return selectedJobNumberRegion == .OLD ? "\(myPlaceVICBaseURL)contact/GetContact?constructionTicketID=\(selectedJobconstrucntionID())&region=VIC" : "\(clickHomeV3BaseURL)Contracts/\(selctedID)/AddNote"
 }
 func myPlaceFinanceDetailsURLString() -> String
 {
@@ -119,10 +123,10 @@ func getMyPlaceURL(isContactUs : Bool = false) -> String
 //MARK: - infoCentre Url
 
 func getInfoCentreDetails() -> String{
-    return BaseURL + "myplace/infocentre"
+    return "https://www.burbank.com.au/api/api/myplace/infocentre"
 }
 
 //MARK: - FAQ'S Url
 func getFaq() -> String{
-    return BaseURL + "myplace/faq"
+    return "https://www.burbank.com.au/api/api/myplace/faq"
 }

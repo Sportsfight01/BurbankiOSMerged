@@ -17,9 +17,9 @@ class MyContactsVC: BaseProfileVC {
     {
         case SiteSupervisor = 0, CRO, SalesConsultant, ElecticalConsultant, ColorConsultant, StaffManager
     }
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var tableView: UITableView!
-    var namesarray = ["Site Supervisor","New Home Coordinator","Interior Designer", "Electical Designer", "New Home Consultant"]
+    var namesarray = ["Site Manager","Customer Care Coordinator","Interior Designer", "Electrical Designer", "New Home Consultant"]
     var jobContacts : ContactDetailsStruct?
     
    // var menu : SideMenuNavigationController!
@@ -32,6 +32,9 @@ class MyContactsVC: BaseProfileVC {
         tableView.rowHeight = UITableView.automaticDimension
         
          checkUserLogin1()
+        tableView.addRefressControl {[weak self] in
+            self?.checkUserLogin1()
+        }
     }
    
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +68,6 @@ class MyContactsVC: BaseProfileVC {
     //MARK: - Service Calls
    func checkUserLogin1()
      {
-     
          let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
          guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
          let password = APIManager.shared.currentJobDetails?.password ?? ""
@@ -87,6 +89,14 @@ class MyContactsVC: BaseProfileVC {
                 print("JSON serialization failed:  \(error)")
                 #endif
          }
+         guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again") {[weak self] _ in
+             DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                 self?.tableView.refreshControl?.endRefreshing()
+             }
+         }
+        
+             return}
          tableView.showAnimatedGradientSkeleton()
          URLSession.shared.dataTask(with: urlRequest, completionHandler: { [weak self](data, response, error) in
 
@@ -109,9 +119,12 @@ class MyContactsVC: BaseProfileVC {
                      };return}
                  
                  self?.getContacts()
-                 
-                 
+            }
+             DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                 self?.tableView.refreshControl?.endRefreshing()
              }
+             
          }).resume()
      }
    func getContacts()
@@ -143,6 +156,7 @@ class MyContactsVC: BaseProfileVC {
                    self?.showAlert(message: "No Data Found")
                }
            }
+           
        }
    }
     
@@ -223,24 +237,30 @@ extension MyContactsVC : UITableViewDelegate, SkeletonTableViewDataSource
         cell.fullNameLabel.text = data.contactName.trim() == "" ? "NA" : data.contactName
         cell.emailLabel.text = data.contactEmail
         cell.mobileLabel.text = data.contactPhone
-        
-        cell.emailBackGroundView.alpha = 1.0
-        cell.emailBackGroundView.isUserInteractionEnabled = true
-        
-        cell.callBackGroundView.alpha = 1.0
-        cell.callBackGroundView.isUserInteractionEnabled = true
+        [cell.emailBackGroundView.subviews.first, cell.callBackGroundView.subviews.first].forEach { view in
+            view?.isUserInteractionEnabled = true
+            view?.tintColor = APPCOLORS_3.Orange_BG
+        }
+//        cell.emailBackGroundView.alpha = 1.0
+//        cell.emailBackGroundView.isUserInteractionEnabled = true
+//
+//        cell.callBackGroundView.alpha = 1.0
+//        cell.callBackGroundView.isUserInteractionEnabled = true
         
         if data.contactEmail == "NA" || data.contactEmail == "" {
-            cell.emailBackGroundView.alpha = 0.5
+            cell.emailBackGroundView.subviews.first?.tintColor = APPCOLORS_3.LightGreyDisabled_BG
             cell.emailBackGroundView.isUserInteractionEnabled = false
         }
         
         if data.contactPhone == "NA" || data.contactPhone == "" {
-            cell.callBackGroundView.alpha = 0.5
+            cell.callBackGroundView.subviews.first?.tintColor = APPCOLORS_3.LightGreyDisabled_BG
             cell.callBackGroundView.isUserInteractionEnabled = false
         }
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 // MARK: - ContactDetails

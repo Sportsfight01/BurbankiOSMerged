@@ -21,12 +21,11 @@ extension UIViewController {
         self.addLogoToNavigationBarItem()
        
         ///Adding ContactUs Btn
-//        if shouldShowNotification{
-//            self.addContactUsButton()
-//        }else {
-//            self.navigationItem.rightBarButtonItem = nil
-//        }
-        //to remove navigation separation line
+        if shouldShowNotification{
+            self.addContactUsButton()
+        }else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
         
     }
     //MARK: - NavigationBtnSetup Functions
@@ -75,21 +74,66 @@ extension UIViewController {
     }
     func addContactUsButton()
     {
+        // - Dot View
+        let dotView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 7, height: 7)))
+        dotView.cornerRadius = 4
+        dotView.backgroundColor = APPCOLORS_3.Orange_BG
+        dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
         //notification button
-        let btn2 = UIButton(type: .custom)
+        let contactUsBtn = UIButton(type: .custom)
         //  btn1.backgroundColor = UIColor.blue
-        btn2.setImage(UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
-        btn2.tintColor = .white
-        btn2.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        btn2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        btn2.addTarget(self, action: #selector(contactUsbtnClicked), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn2)
+        let image = UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        contactUsBtn.setImage(image ?? UIImage(named: "Top Menu Icons_Chat"), for: .normal)
+        contactUsBtn.tintColor = .white
+        contactUsBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        contactUsBtn.addSubview(dotView)
+        contactUsBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        contactUsBtn.addTarget(self, action: #selector(contactUsbtnClicked), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: contactUsBtn)
+        // - Constraints for DotView
+        
+        dotView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dotView.topAnchor.constraint(equalTo: contactUsBtn.topAnchor, constant: 3),
+            dotView.trailingAnchor.constraint(equalTo: contactUsBtn.trailingAnchor, constant: 0),
+            dotView.heightAnchor.constraint(equalToConstant: 8),
+            dotView.widthAnchor.constraint(equalToConstant: 8)
+
+        ])
+  
     }
     
     //MARK: - Navigation Btn Action Methods
-    @objc func backButtonClicked()
+    @IBAction func backButtonClicked()
     {
-        dismiss(animated: true, completion: nil)
+        
+       let isChanged = UserDefaults.standard.bool(forKey: "isChanged")
+        if isChanged{
+            print("changed Functions +=====++++=======")
+            let alertController = UIAlertController(title: "", message: "Do you wish to save the changes to your notifications?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                UserDefaults.standard.set(false, forKey: "isChanged")
+                NotificationCenter.default.post(name: NSNotification.Name("isChangedNotifications"), object: nil, userInfo: nil)
+
+                self.dismiss(animated: true, completion: nil)
+                return
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                UserDefaults.standard.set(false, forKey: "isChanged")
+                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }
+            alertController.addAction(cancelAction)
+            cancelAction.setValue( APPCOLORS_3.Black_BG, forKey: "titleTextColor")
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            
+        }
+        
         guard let navController = self.navigationController else {return}
         if navController.viewControllers.count == 1
         {
@@ -106,6 +150,8 @@ extension UIViewController {
         }
         
     }
+    
+    
     
     @objc func contactUsbtnClicked()
     {
@@ -163,7 +209,7 @@ extension UIViewController {
 //MARK: - ViewController Instance Creation
 extension UIViewController
 {
-    #warning("Storyboard ID must be same as ViewController Name to utilize below method")
+    #warning("must provide proper storyboard name to create viewcontroller instance")
     static func instace(sb : StoryBoard = .newDesignV4) -> Self{
         
         let instance = UIStoryboard(name: sb.rawValue, bundle: nil).instantiateViewController(withIdentifier: String(describing: self)) as! Self

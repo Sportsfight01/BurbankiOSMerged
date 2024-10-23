@@ -20,7 +20,10 @@ class PhotosVC: BaseProfileVC {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var seeAllPhotosBtn : UIButton!
     {
-        didSet{ seeAllPhotosBtn.titleLabel?.font = FONT_LABEL_BODY(size: FONT_16) }
+        didSet{
+            seeAllPhotosBtn.titleLabel?.font = FONT_LABEL_BODY(size: FONT_16)
+            seeAllPhotosBtn.isHidden = true
+        }
     }
 
     var collectionDataSource : [PhotoItem]?
@@ -38,7 +41,10 @@ class PhotosVC: BaseProfileVC {
         addGradientLayer()
         getPhotos()
         setupTitles()
-       
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
+        swipeDownGesture.direction = .down
+        view.addGestureRecognizer(swipeDownGesture)
+        view.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -49,6 +55,8 @@ class PhotosVC: BaseProfileVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.collectionView.stopSkeletonAnimation()
+        self.collectionView.refreshControl?.endRefreshing()
        
         
     }
@@ -57,7 +65,13 @@ class PhotosVC: BaseProfileVC {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     //MARK: - Helper Funcs
-    
+    @objc func handleSwipeGestue(_ sender : UISwipeGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            self.getPhotos()
+        }
+    }
     func setupTitles()
     {
         profileView.titleLb.text = "MyPhotos"
@@ -78,23 +92,23 @@ class PhotosVC: BaseProfileVC {
         
     }
     
-    func setupServiceData(_ PhotosList : [DocumentsDetailsStruct])
+    func setupServiceData(_ PhotosList : [DocumentsDetailsStructV3])
     {
         
         let groupedDict = Dictionary.init(grouping: PhotosList, by: {$0.title!.components(separatedBy: " ")[0]})
         self.collectionDataSource = []
-        groupedDict.forEach { (key: String, value: [DocumentsDetailsStruct]) in
+        groupedDict.forEach { (key: String, value: [DocumentsDetailsStructV3]) in
             let sortedValue = value.sorted(by: { item1 , item2 in
-                let date1 = item1.date
-                let date2 = item2.date
+                let date1 = item1.metaData.date
+                let date2 = item2.metaData.date
                 return date1.compare(date2) == .orderedDescending
             })
          //   print("beforeSorting : \(value.map({$0.docdate})) after sorting : \(sortedValue.map({$0.docdate}))")
             self.collectionDataSource?.append(PhotoItem(title: key, rowData: sortedValue))
         }
         self.collectionDataSource = collectionDataSource?.sorted(by: { item1 , item2 in
-            guard let date1 = item1.rowData.first?.date,
-                  let date2 = item2.rowData.first?.date else {return false}
+            guard let date1 = item1.rowData.first?.metaData.date,
+                  let date2 = item2.rowData.first?.metaData.date else {return false}
             return date1.compare(date2) == .orderedDescending
         })
         DispatchQueue.main.async {
@@ -107,41 +121,100 @@ class PhotosVC: BaseProfileVC {
     
 
     //MARK: - Service Calls
-    func getPhotos()
-    {
-        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
-        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
-        let auth = jobAndAuth.auth
-        self.collectionView.showAnimatedGradientSkeleton()
-        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: auth, contractNo: jobNumber), showActivity: false) { [weak self](result) in
+    func getPhotos(){
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
             DispatchQueue.main.async {
-                self?.collectionView.stopSkeletonAnimation()
-                self?.view.hideSkeleton()
+                self?.collectionView.refreshControl?.endRefreshing()
             }
-            switch result
-            {
-            case .success(let data):
-                guard let self = self else {return}
+        }; return}
+        appDelegate.showActivity()
+        APIManager.shared.getMyDocuments(isDocuments: false) {[weak self] result in
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+            guard let self else { return }
+            switch result{
+            case .success(let photos):
+                //hide skeleton
+                DispatchQueue.main.async {
+                    self.collectionView.stopSkeletonAnimation()
+                    self.view.hideSkeleton()
+                }
+                DispatchQueue.main.async {
+                    appDelegate.hideActivity()
+                    self.collectionView.refreshControl?.endRefreshing()
+                }
+//                guard let self = self else {return}
                 let imageTypes = ["jpg", "png","jpeg"]
-                let documentList = data.filter( { imageTypes.contains( $0.type?.trim().lowercased() ?? "") } )
-                guard documentList.count > 0 else {
+                let documentList = photos.filter( { imageTypes.contains( $0.type?.trim().lowercased() ?? "") } )
+                guard photos.count > 0 else {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
                         self.profileView.helpTextLb.text = "No photos available for this job number."
-                        self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
-//                     self.showAlert(message: "No photos found") { _ in
-//                        // self.backButtonPressed()
-//                    }
-                }; return}
+                        
+                    }; return}
+                DispatchQueue.main.async {
+                    self.seeAllPhotosBtn.isHidden = photos.count == 0 ? true : false
+                    self.setupServiceData(photos)
+                }
                 
-                self.setupServiceData(documentList)
                 
                 
-            case.failure(let err):
-                print(err.localizedDescription)
+                
+            case .failure(let err):
+                debugPrint(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message: err.description)
+                    return}
             }
         }
+        
+        
     }
+//    {
+//
+//        guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again") {[weak self] _ in
+//            DispatchQueue.main.async {
+//                appDelegate.hideActivity()
+//                self?.collectionView.refreshControl?.endRefreshing()
+//            }
+//        };return
+//        }
+//        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+//        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+//        let auth = jobAndAuth.auth
+//        self.collectionView.showAnimatedGradientSkeleton()
+//        NetworkRequest.makeRequestArray(type: DocumentsDetailsStruct.self, urlRequest: Router.documentsDetails(auth: auth, contractNo: jobNumber), showActivity: false) { [weak self](result) in
+//            DispatchQueue.main.async {
+//                self?.collectionView.stopSkeletonAnimation()
+//                self?.view.hideSkeleton()
+//            }
+//            switch result
+//            {
+//            case .success(let data):
+//                guard let self = self else {return}
+//                let imageTypes = ["jpg", "png","jpeg"]
+//                let documentList = data.filter( { imageTypes.contains( $0.type?.trim().lowercased() ?? "") } )
+//                guard documentList.count > 0 else {
+//                    DispatchQueue.main.async {
+//                        self.collectionView.setEmptyMessage("No recent photos")
+//                        self.profileView.helpTextLb.text = "No photos available for this job number."
+//
+//                }; return}
+//                self.seeAllPhotosBtn.isHidden = documentList.count == 0 ? true : false
+//                self.setupServiceData(documentList)
+//               
+//            case.failure(let err):
+//                print(err.localizedDescription)
+//            }
+//            DispatchQueue.main.async {
+//                appDelegate.hideActivity()
+//                self?.collectionView.refreshControl?.endRefreshing()
+//            }
+//            
+//        }
+//    }
     
     
     //MARK:- Actions
@@ -181,7 +254,7 @@ extension PhotosVC : UICollectionViewDelegate, SkeletonCollectionViewDataSource
         cell.imageView.tintColor = .lightGray
         
         cell.imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
-        cell.imageView.sd_setImage(with: URL(string: "\(clickHomeBaseImageURL)/\(photoInfo?.url ?? "")"))
+        cell.imageView.sd_setImage(with: URL(string: "\(photoInfo?.url ?? "")"))
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

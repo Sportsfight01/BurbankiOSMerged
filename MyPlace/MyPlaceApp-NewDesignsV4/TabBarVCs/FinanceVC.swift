@@ -27,6 +27,11 @@ class FinanceVC: BaseProfileVC {
         collectionView.collectionViewLayout = layout
         setupTitles()
         checkUserLoginForFinance()
+        
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
+        swipeDownGesture.direction = .down
+        view.addGestureRecognizer(swipeDownGesture)
+        view.isUserInteractionEnabled = true
 
         // Do any additional setup after loading the view.
     }
@@ -47,7 +52,15 @@ class FinanceVC: BaseProfileVC {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    //MARK: - Helper Funcs
     
+    @objc func handleSwipeGestue(_ sender : UISwipeGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            self.checkUserLoginForFinance()
+        }
+    }
     func setupTitles()
     {
         profileView.titleLb.text = "MyFinance"
@@ -57,6 +70,7 @@ class FinanceVC: BaseProfileVC {
     
     func checkUserLoginForFinance()
     {
+        guard isNetworkReachable else { showAlert(message: "Check your internet and pull to refresh again"); return }
         self.collectionView.isSkeletonable = true
         self.collectionView.showAnimatedGradientSkeleton()
         let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()

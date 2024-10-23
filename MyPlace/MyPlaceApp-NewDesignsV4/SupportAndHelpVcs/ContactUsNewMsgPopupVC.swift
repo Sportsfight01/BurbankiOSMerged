@@ -11,6 +11,9 @@ import GrowingTextView
 class ContactUsNewMsgPopupVC: UIViewController {
 
     //MARK: - Properties
+    
+    @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var cancelBtb: UIButton!
     @IBOutlet weak var replyTextView: GrowingTextView!
     @IBOutlet weak var subjectTf: UITextField!
 //    @IBOutlet weak var toTf: UITextField!
@@ -31,17 +34,12 @@ class ContactUsNewMsgPopupVC: UIViewController {
         super.viewDidLoad()
         self.definesPresentationContext = true
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        
+        headerLb.font = FONT_LABEL_SUB_HEADING(size: FONT_15)
+        subjectTf.font = FONT_LABEL_BODY(size: FONT_13)
+        replyTextView.font = FONT_LABEL_BODY(size: FONT_13)
+        [cancelBtb, submitBtn].forEach({$0.titleLabel?.font =  FONT_LABEL_SUB_HEADING(size: FONT_14)} )
        // toTf.isUserInteractionEnabled = false
-        if !isFromNewMessage {
-            headerLb.text = "Reply Message"
-            // When clicked Reply
-            subjectTf.isUserInteractionEnabled = false
-            subjectTf.backgroundColor = .systemGray6
-            
-        }else {
-            headerLb.text = "New Message"
-        }
+      
     
         // Do any additional setup after loading the view.
         
@@ -51,17 +49,22 @@ class ContactUsNewMsgPopupVC: UIViewController {
        // fromLb.text = screenData?.to
        // toTf.text = screenData?.from
         subjectTf.text = screenData?.sub
-        replyTextView.layer.borderWidth = 1.0
-        replyTextView.layer.borderColor = UIColor.black.cgColor
-        replyTextView.backgroundColor = .white
-        replyTextView.layer.cornerRadius = 5.0
-//        if #available(iOS 13.0, *)
-//        {
-//            replyTextView.backgroundColor = .systemGray6
-//        }
-//        else {
-//        replyTextView.backgroundColor = .lightGray
-//        }
+        [subjectTf,replyTextView].forEach { tf in
+            tf.layer.borderWidth = 0.7
+            tf.layer.borderColor = UIColor.black.withAlphaComponent(0.7).cgColor
+            tf.backgroundColor = .white
+            tf.layer.cornerRadius = 5.0
+        }
+        if !isFromNewMessage {
+            headerLb.text = "Reply Message"
+            // When clicked Reply
+            subjectTf.isUserInteractionEnabled = false
+            subjectTf.backgroundColor = .systemGray6
+            
+        }else {
+            headerLb.text = "New Message"
+        }
+        
     }
     
     
@@ -71,7 +74,9 @@ class ContactUsNewMsgPopupVC: UIViewController {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        guard replyTextView.text.count > 10 else {self.showAlert(message: "Please Enter Minimum of 10 characters");return}
+        guard subjectTf.text?.trim().count ?? 0 > 0 else {self.showAlert(message: "Please enter subject");return}
+        guard replyTextView.text.trim().count > 0 else {self.showAlert(message: "Please enter message");return}
+        guard replyTextView.text.count > 10 else {self.showAlert(message: "Please enter minimum of 10 characters");return}
      
         postNote()
     }
@@ -85,15 +90,23 @@ class ContactUsNewMsgPopupVC: UIViewController {
         
 
         var parameters : [String : Any] = [:]
-
+        var body = replyTextView.text.trim()
+        let authorValue = appDelegate.currentUser?.userDetailsArray?.first?.fullName
+        if let authorValue {  body.append(" - Message from \(authorValue)") }
         if isFromNewMessage
         {
-            parameters = ["replytoid" : NSNull() , "subject" : subjectTf.text ?? "", "stepid" : 0, "body" : replyTextView.text ?? ""]
+//            parameters = ["replytoid" : NSNull() , "subject" : "MyPlace App Message: " + (subjectTf.text?.trim() ?? ""), "stepid" : 0, "body" : body]    For v2 Service
+            
+            parameters = [ "subject" : "MyPlace App Message: " + (subjectTf.text?.trim() ?? ""), "body" : body,"noteType" : "N"]
         }
         else//reply
         {
             if let noteId = noteId {
-                parameters = ["replytoid" : noteId , "subject" : subjectTf.text ?? "", "stepid" : 0, "body" : replyTextView.text ?? ""]
+//                parameters = ["replytoid" : noteId , "subject" : subjectTf.text?.trim() ?? "", "stepid" : 0, "body" : body]  For V2 service
+                
+                let rplyTo = ["noteId" :  noteId, "noteType" : "N"] as [String : Any]
+                
+                parameters = ["replyTo" : rplyTo , "subject" : subjectTf.text?.trim() ?? "", "body" : body, "noteType" : "N"]
             }
             
         }
@@ -195,3 +208,4 @@ class ContactUsNewMsgPopupVC: UIViewController {
 //    }
 
 }
+

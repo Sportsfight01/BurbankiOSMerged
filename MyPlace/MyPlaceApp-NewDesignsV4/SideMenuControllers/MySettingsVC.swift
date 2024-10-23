@@ -11,8 +11,11 @@ import RealmSwift
 
 class MySettingsVC: UIViewController, profileScreenProtocol {
     
+    
+    
     //MARK: - Properties
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var myProgressLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet var notificationTypeBtns: [UIButton]!
@@ -34,7 +37,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     var oldPassword : String = ""
     
     var notificationArray : [GetUserProfileStruct.Result.NotificationType]?
-    
+    var defaultNotificationArray : [GetUserProfileStruct.Result.NotificationType]?
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,22 +59,32 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         privacyPolicyView.addGestureRecognizer(tapGesture3)
         shareapartnerView.addGestureRecognizer(tapGesture4)
         setupProfile()
+        
+        scrollView.addRefressControl {[weak  self] in
+            self?.getUserProfile()
+        }
   
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("isChangedNotifications"), object: nil, queue: nil, using:updateNotifications)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        setupNavigationBarButtons(shouldShowNotification: true)
+        setupNavigationBarButtons(shouldShowNotification: false)
         myProgressLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
    
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        UserDefaults.standard.set(false, forKey: "isChanged")
+        UserDefaults.standard.removeObject(forKey: "isChanged")
     }
     
+    deinit {
+         print("Remove NotificationCenter Deinit")
+            NotificationCenter.default.removeObserver(self)
+     }
     //MARK: - Helper Funcs
     
     func setupUI()
@@ -125,7 +138,9 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+//            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            notificationCountLBL.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
         }
         //        profileImgView.addBadge(number: appDelegate.notificationCount)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
@@ -195,8 +210,35 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
             notificationArray?[2].isUserOpted = sender.isSelected
         default:
             print("default");
-                    
         }
+        
+        var photoAdded = false
+        var stageCompletion = false
+        var stageChange = false
+        
+        if notificationArray?[0].isUserOpted != defaultNotificationArray?[0].isUserOpted{
+            photoAdded = true
+        }
+        if notificationArray?[1].isUserOpted != defaultNotificationArray?[1].isUserOpted{
+         stageCompletion = true
+        }
+        if notificationArray?[2].isUserOpted != defaultNotificationArray?[2].isUserOpted{
+         stageChange = true
+        }
+
+        if stageChange || stageCompletion || photoAdded{
+            print("true++++++++============")
+            UserDefaults.standard.set(true, forKey: "isChanged")
+        }else{
+            print("false-----")
+            UserDefaults.standard.set(false, forKey: "isChanged")
+        }
+
+    }
+    
+    func updateNotifications(notification:Notification) -> Void  {
+        
+        postDataToServerForUpdatingUserProfile()
     }
     
     @IBAction func logOutClicked(_ sender: UIButton) {
@@ -373,9 +415,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     //MARK: - Service Calls
     func updateProfilePic(imageContent : String)
     {
-
-//
-//
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh);return}
         let userID = appDelegate.currentUser?.userDetailsArray?[0].id
         
         let params = ["UserId":userID!, "ImageContent": imageContent] as [String : Any]
@@ -396,9 +436,8 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
         }
     }
     func postDataToServerForUpdatingUserProfile() {
-        
-//        let urlString = String(format: "userProfile/UpdateUserProfile")
-//        print(notificationArray)
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh);return}
+
         var notificationArrayStr = [[String : Any]]()
         
         for notification in notificationArray!
@@ -406,11 +445,6 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
            let dict = notification.dictionary
             notificationArrayStr.append(dict)
         }
-//        let compressedImageData = UIImage().compressImage(image: profileImage.image!)
-//
-//        Base64.initialize()
-//
-//        let imageBaseString = Base64.encode(compressedImageData as Data)
   
         let userID = appDelegate.currentUser?.userDetailsArray?[0].id
         let parameters : [String : Any] = ["UserName": userNameLb.text ?? "", "Email": emailLb.text ?? "", "UserId": userID!, "NotificationTypes": notificationArrayStr]
@@ -422,10 +456,9 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
                 print(data)
                 if data.Status == true
                 {
+                    NotificationCenter.default.removeObserver(self!)
+                    self?.getUserProfile()
                     self?.showAlert(message: data.Message ?? "something went wrong")
-                    {_ in
-                        self?.getUserProfile()
-                    }
                 }
                 else {
                     self?.showAlert(message: data.Message ?? "something went wrong", okCompletion: nil)
@@ -439,10 +472,19 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
     
     func getUserProfile()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.scrollView.refreshControl?.endRefreshing()
+            }
+        }; return}
     
         let userID = appDelegate.currentUser?.userDetailsArray?.first?.id
         let parameters : [String : Any] = ["Id" : userID as Any]
-        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters)) { [weak self]result in
+        NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters)) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.scrollView.refreshControl?.endRefreshing()
+            }
+            
             switch result
             {
             case .success(let data):
@@ -453,6 +495,7 @@ class MySettingsVC: UIViewController, profileScreenProtocol {
                     };return}
                 self?.profileData = data
                 self?.notificationArray = data.result?.notificationTypes
+                self?.defaultNotificationArray = data.result?.notificationTypes
                 self?.setupUI()
           
                 

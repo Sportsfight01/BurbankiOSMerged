@@ -83,8 +83,8 @@ class MyPlaceContractVC: BurbankAppVC/*MyPlaceWithTabBarVC*/, UITableViewDataSou
             ["name" : "Facade Style", "value" : fecadeStyle],
 //            ["name" : "Home Status", "value" : contractStatus],
             ["name" : "Home Value", "value" : contractValue],
-            ["name" : "Site Supervisor", "value" : supervisor],
-            ["name" : "New Home Coordinator", "value" : liason]]
+            ["name" : "Site Manager", "value" : supervisor],
+            ["name" : "Customer Care Coordinator", "value" : liason]]
 //            ["name" : "Site Start Date", "value" : displayString]]    ---> changes by naveen on 26/May/2022
     }
     
@@ -122,8 +122,8 @@ class MyPlaceContractVC: BurbankAppVC/*MyPlaceWithTabBarVC*/, UITableViewDataSou
             ["name" : "Facade Style", "value" : fecadeStyle],
 //            ["name" : "Home Status", "value" : contractStatus],
             ["name" : "Home Value", "value" : contractValue],
-            ["name" : "Site Supervisor", "value" : supervisor],
-            ["name" : "New Home Coordinator", "value" : liason]]
+            ["name" : "Site Manager", "value" : supervisor],
+            ["name" : "Customer Care Coordinator", "value" : liason]]
 //            ["name" : "Site Start Date", "value" : startDate]]
     }
     // MARK: - Button Actions

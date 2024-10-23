@@ -28,6 +28,7 @@ class DashboardDataManagement: NSObject {
         }
         
         
+        
         let datatask = Networking.shared.POST_request(url: ServiceAPI.shared.URL_HomeLandAllPackages(kUserID, NSNumber(value: state).stringValue, page: 0), parameters: NSDictionary(), userInfo: nil, success: { (json, response) in
             
             if let result: AnyObject = json {
@@ -940,8 +941,17 @@ class DashboardDataManagement: NSObject {
                             if let succ = succe {
                                 succ(kGetEstateDetails)
                             }
-                            }else { print(log: "No HouseDetail found") }
-                        }else { print(log: "No HouseDetail found") }
+                            }else { 
+                                if let succ = succe {
+                                    succ([])
+                                }
+                                print(log: "No HouseDetail found") }
+                        }else {
+                            if let succ = succe {
+                                succ([])
+                            }
+                            
+                            print(log: "No HouseDetail found") }
                         
                     }else {
                         
@@ -957,238 +967,4 @@ class DashboardDataManagement: NSObject {
         
     }
 }
-
-
-    
-    
-//}
-
-
-/*
- //sample json data
- {
- ActualMaxHomeSize = 321;
- ActualMaxLotWidth = 13;
- ActualMaxPrice = 659000;
- ActualMinHomeSize = "160.38";
- ActualMinLotWidth = 8;
- ActualMinPrice = 385500;
- BathRoomFilters =         (
- {
- DisplayName = 2;
- IsChecked = 0;
- Value = 2;
- },
- {
- DisplayName = "3+";
- IsChecked = 0;
- Value = 3;
- }
- );
- BedRoomFilters =         (
- {
- DisplayName = 3;
- IsChecked = 0;
- Value = 3;
- },
- {
- DisplayName = "5+";
- IsChecked = 0;
- Value = 5;
- }
- );
- CarSpaces =         (
- {
- DisplayName = Single;
- IsChecked = 0;
- Value = 1;
- },
- {
- DisplayName = Double;
- IsChecked = 0;
- Value = 2;
- }
- );
- CollectionFilters =         (
- {
- CollectionImage = "<null>";
- DisplayName = Botanical;
- IsChecked = 0;
- Value = Botanical;
- }
- );
- Estates =         (
- "Aldinga Beach",
- Angus,
- Campbelltown,
- "Ferryden Park",
- "Happy Valley",
- "Kidman Park",
- Klemzig,
- "McCarron Estate",
- "Morphett Vale"
- );
- HouseNames =         (
- Bowden,
- Brompton,
- Prospect
- );
- IncludeSurroundingSuburbs =         {
- DisplayName = "<null>";
- IsChecked = 0;
- Value = 0;
- };
- MaxHomeSize = 321;
- MaxLotWidth = 13;
- MaxPrice = 659000;
- MinHomeSize = "160.38";
- MinLotWidth = 8;
- MinPrice = 385500;
- PageNo = 0;
- Regions = "<null>";
- SearchText = "<null>";
- SelectedEstates = "<null>";
- SelectedSuburbs = "<null>";
- SortBy = "<null>";
- StateId = 0;
- StoreyFilters =         (
- {
- DisplayName = Single;
- IsChecked = 0;
- Value = 1;
- },
- {
- DisplayName = Double;
- IsChecked = 0;
- Value = 2;
- }
- );
- Suburbs =         (
- "Aldinga Beach",
- Campbelltown,
- "Croydon Park",
- "Ferryden Park",
- "Happy Valley",
- "Kidman Park",
- Klemzig,
- "Mansfield Park",
- "Morphett Vale"
- );
- 
- */
-
-/*
- Filter =         {
- ActualMaxHomeSize = 300;
- ActualMaxLotWidth = 15;
- ActualMaxPrice = 477000;
- ActualMinHomeSize = "141.07";
- ActualMinLotWidth = 8;
- ActualMinPrice = 286900;
- BathRoomFilters =             (
- {
- DisplayName = 2;
- IsChecked = 0;
- Value = 2;
- },
- {
- DisplayName = "3+";
- IsChecked = 0;
- Value = 3;
- }
- );
- BedRoomFilters =             (
- {
- DisplayName = 3;
- IsChecked = 0;
- Value = 3;
- },
- {
- DisplayName = "4+";
- IsChecked = 0;
- Value = 4;
- }
- );
- CarSpaces =             (
- {
- DisplayName = Single;
- IsChecked = 0;
- Value = 1;
- },
- {
- DisplayName = Double;
- IsChecked = 0;
- Value = 2;
- }
- );
- CollectionFilters =             (
- {
- CollectionImage = "<null>";
- DisplayName = Botanical;
- IsChecked = 0;
- Value = Botanical;
- }
- );
- Estates =             (
- Aspire,
- "Christies Beach",
- Eyre,
- "Ferryden Park",
- Freeling,
- "Happy Valley",
- "Hepenstal Park",
- "Morphett Vale",
- "Sturt Ridge"
- );
- HouseNames =             (
- Brompton,
- Brooklyn,
- Medindie,
- Mitchell,
- Osmond,
- Prospect
- );
- IncludeSurroundingSuburbs =             {
- DisplayName = "<null>";
- IsChecked = 0;
- Value = 0;
- };
- MaxHomeSize = 300;
- MaxLotWidth = 15;
- MaxPrice = 477000;
- MinHomeSize = "141.07";
- MinLotWidth = 8;
- MinPrice = 286900;
- PageNo = 0;
- Regions = "<null>";
- SearchText = "<null>";
- SelectedEstates = "<null>";
- SelectedSuburbs = "<null>";
- SortBy = "<null>";
- StateId = 0;
- StoreyFilters =             (
- {
- DisplayName = Single;
- IsChecked = 0;
- Value = 1;
- },
- {
- DisplayName = Double;
- IsChecked = 0;
- Value = 2;
- }
- );
- Suburbs =             (
- "Christies Beach",
- Elizabeth,
- "Evanston South",
- "Ferryden Park",
- Freeling,
- Hackham,
- "Happy Valley",
- "Hindmarsh Island",
- "Morphett Vale"
- );
- }
- */
 

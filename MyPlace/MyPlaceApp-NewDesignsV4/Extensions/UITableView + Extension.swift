@@ -25,6 +25,23 @@ extension UITableView {
         
         self.backgroundView = messageLabel;
     }
+    
 
+
+}
+extension UIScrollView {
+    func addRefressControl(selector : @escaping() -> ())
+    {
+        let refreshControl = UIRefreshControl()
+        if #available(iOS 14.0, *) {
+            refreshControl.addAction(UIAction(handler: { action in
+                selector()
+            }), for: .valueChanged)
+        } else {
+            // Fallback on earlier versions
+        }
+      //  refreshControl.addTarget(target, action: selector, for: .valueChanged)
+        self.refreshControl = refreshControl
+    }
 
 }

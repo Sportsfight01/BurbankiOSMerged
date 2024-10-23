@@ -28,7 +28,7 @@ class ServiceSessionMyPlace: NSObject {
         
         if appDelegate.netAvailability == false
         {
-            let alert = UIAlertController(title: "Burbank", message: "Internet Connection Not Available", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Burbank", message: "Internet not available, Please connect to Internet", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
             kWindow.rootViewController!.present(alert, animated: true, completion: nil)
             

@@ -87,7 +87,9 @@ class MenuViewController: UIViewController {
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+//            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            notificationCountLBL.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
         }
         usernameLb.text = CurrentUser.userName
         
@@ -149,8 +151,9 @@ extension MenuViewController
 {
     enum SideMenuItem : String, CaseIterable
     {
-        case changeJobNumber = "MyJobNumber"
+        case changeJobNumber = "MyHomes"
         case appointment     = "MyAppointments"
+        case history         = "MyHistory"
         case details         = "MyDetails"
         case support         = "MySupport"
         case notifications   = "MyNotifications"
@@ -168,6 +171,8 @@ extension MenuViewController
                 return "icon_MyDetails"
             case .support:
                 return "icon_MySupport"
+            case .history:
+                return "icon_MyHistory"
             case .notifications:
                 return "Ico-Notification"
             case .settings:
@@ -188,6 +193,8 @@ extension MenuViewController
                 return DetailsVC.instace()
             case .support:
                 return SupportVC.instace(sb: .supportAndHelp)
+            case .history:
+                return MyHistoryVC.instace(sb: .newDesignV4)
             case .notifications:
                 return NotificationsVC.instace()
             case .settings:

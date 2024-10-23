@@ -23,9 +23,9 @@ let googleAPIKey = "AIzaSyAKYbO0DYZjyfxR2bwBd60L_tWjc0bF0cg"
 
 //AIzaSyCaFEITNNUYmiDTFaTGn8daR3sHxSevRhY
 var kToken: String {
-    if Int(kUserID)! > 0 {
-        return appDelegate.userData?.accessToken ?? ""
-    }
+//    if Int(kUserID)! > 0 {
+//        return appDelegate.userData?.accessToken ?? ""
+//    }
     return appDelegate.guestUserAccessToken ?? ""
 }
 

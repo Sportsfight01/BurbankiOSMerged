@@ -171,6 +171,7 @@ enum Router:URLRequestConvertible{
             {
                 urlRequest.addValue(auth, forHTTPHeaderField: "Authorization")
                 urlRequest.addValue(contractNo, forHTTPHeaderField: "ContractNumber")
+                urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
                 
             }
             urlRequest.httpMethod = method.rawValue

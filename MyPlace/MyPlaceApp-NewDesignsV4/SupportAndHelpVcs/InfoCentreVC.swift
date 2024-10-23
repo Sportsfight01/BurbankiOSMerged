@@ -53,6 +53,9 @@ class InfoCentreVC: UIViewController {
         //
         
         getIfocentreDetails()
+        resultCollection.addRefressControl {[weak self] in
+            self?.getIfocentreDetails()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -70,6 +73,11 @@ class InfoCentreVC: UIViewController {
 //
     func getIfocentreDetails()
     {
+        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.resultCollection.refreshControl?.endRefreshing()
+            }
+        }; return}
         NetworkRequest.makeRequest(type: InfoCentreStruct.self, urlRequest: Router.infoCentreDetails) { [weak self](result) in
         switch result
         {
@@ -99,7 +107,13 @@ class InfoCentreVC: UIViewController {
         
         case.failure(let err):
           print(err.localizedDescription)
+            
+          
         }
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+                self?.resultCollection.refreshControl?.endRefreshing()
+            }
       }
     }
     override func viewWillAppear(_ animated: Bool) {

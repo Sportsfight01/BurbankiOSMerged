@@ -12,7 +12,7 @@ import SDWebImage
 struct PhotoItem
 {
     let title : String
-    let rowData : [DocumentsDetailsStruct]
+    let rowData : [DocumentsDetailsStructV3]
 }
 
 
@@ -146,15 +146,14 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         let arr = collectionDataSource[indexPath.section].rowData
         //      CodeManager.sharedInstance.downloadandShowImageForNewFlow(arr[indexPath.row],cell.imView)
         cell.imView.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        let imgURL = URL(string:"\(clickHomeBaseImageURL)/\(arr[indexPath.item].url ?? "")")
+        
+        let imgURL = URL(string:"\(arr[indexPath.item].url ?? "")")
         cell.imView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.imView.sd_imageIndicator?.indicatorView.tintColor = APPCOLORS_3.Orange_BG
         //  cell.imView.sd_setImage(with: imgURL)
         cell.imView.sd_setImage(with: imgURL, placeholderImage: nil) { _, _, _, _ in
             cell.imView.backgroundColor = .white
         }
-        
-        
         
         return cell
     }
@@ -168,7 +167,7 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         let items = collectionDataSource
             .compactMap({$0.rowData})
             .flatMap({$0})
-            .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "EEEE, dd/MM/yy") ?? "", url: $0.url ?? "") })
+            .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.metaData.createdOn?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "EEEE, dd/MM/yy") ?? "", url: $0.url ?? "") })
         /*testing purpose to see exact time on photo
          //                .map({ImageSliderVC.SliderItem(title: $0.title ?? "", docDate: dateFormatter(dateStr: $0.docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy, HH:mm:ss") ?? "", url: $0.url ?? "") })*/
         imgVC.collectionDataSource = items
@@ -187,7 +186,7 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
       section.sectionTitleLb.font = ProximaNovaRegular(size: 15.0)
     
       
-      let date = dateFormatter(dateStr: collectionDataSource[indexPath.section].rowData.first?.docdate?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy")
+      let date = dateFormatter(dateStr: collectionDataSource[indexPath.section].rowData.first?.metaData.createdOn?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy")
       section.dateLb.font = ProximaNovaRegular(size: 14.0)
       section.dateLb.text = date
       

@@ -42,7 +42,7 @@ class AddJobNumberVC: UIViewController
         setAppearanceFor(view: passwordTextField, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_TEXTFIELD_BODY(size: FONT_12))
         
         
-        setAppearanceFor(view: btnCancel, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
+        setAppearanceFor(view: btnCancel, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
         setAppearanceFor(view: btnAdd, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_15))
         
         btnCancel.layer.cornerRadius = radius_5

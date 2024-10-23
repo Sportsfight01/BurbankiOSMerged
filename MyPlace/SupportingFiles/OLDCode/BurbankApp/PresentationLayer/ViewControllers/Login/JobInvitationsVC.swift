@@ -218,7 +218,7 @@ class JobInvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelega
         cell.statusMessage.text = coUser.statusMessage
         
         setAppearanceFor(view: cell.statusButton, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
-        setAppearanceFor(view: cell.rejectButton, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
+        setAppearanceFor(view: cell.rejectButton, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_12))
 
         
         cell.partnerButton.isHidden = true
@@ -230,7 +230,7 @@ class JobInvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelega
         {
             cell.partnerButton.setTitle("Partner", for: .normal)
             
-            setAppearanceFor(view: cell.partnerButton, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
+            setAppearanceFor(view: cell.partnerButton, backgroundColor: APPCOLORS_3.BTN_DarkGray, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
             
             cell.partnerButton.isHidden = false
             

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="129" id="KGk-i7-Jjw" customClass="TimingsAndDirectionTVC" customModule="BurbankApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6i-5G-Sot" userLabel="View1">
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="129"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-Hp-n85">
+                                <rect key="frame" x="10" y="5" width="409" height="74"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epm-uK-2hI">
+                                        <rect key="frame" x="10" y="5" width="389" height="64"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">TRADING HOURS
+Mon: 12pm - 5pm | Tue - Wed: 11am - 5pm | Sat - Sun: 10am - 5pm</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Downarrow-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vig-v4-YYn">
+                                        <rect key="frame" x="387" y="10" width="12" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="CFJ-Cl-8Zm"/>
+                                            <constraint firstAttribute="width" constant="12" id="Iia-Ja-uqj"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="epm-uK-2hI" secondAttribute="bottom" constant="5" id="49B-Iy-T4P"/>
+                                    <constraint firstItem="epm-uK-2hI" firstAttribute="leading" secondItem="8mC-Hp-n85" secondAttribute="leading" constant="10" id="5Y8-1A-PYo"/>
+                                    <constraint firstItem="Vig-v4-YYn" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="top" constant="10" id="Qdi-fl-Y4T"/>
+                                    <constraint firstAttribute="trailing" secondItem="epm-uK-2hI" secondAttribute="trailing" constant="10" id="iuW-aC-4uM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vig-v4-YYn" secondAttribute="trailing" constant="10" id="lFY-F6-sPC"/>
+                                    <constraint firstItem="epm-uK-2hI" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="top" constant="5" id="nMa-cn-Aft"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q4P-sF-qbB">
+                                <rect key="frame" x="53" y="84" width="323" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pZ-4M-4fq">
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="40"/>
+                                        <color key="backgroundColor" name="Orange_BG_3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <state key="normal" title="   GET DIRECTIONS   ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-uM-4oE">
+                                        <rect key="frame" x="141" y="0.0" width="182" height="40"/>
+                                        <color key="backgroundColor" name="Orange_BG_3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <state key="normal" title="   BOOK AN APPOINTMENT   ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6hz-aH-poU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Q4P-sF-qbB" secondAttribute="bottom" constant="5" id="9nv-Ya-bNF"/>
+                            <constraint firstItem="8mC-Hp-n85" firstAttribute="top" secondItem="o6i-5G-Sot" secondAttribute="top" constant="5" id="JjR-kN-ZE6"/>
+                            <constraint firstAttribute="trailing" secondItem="8mC-Hp-n85" secondAttribute="trailing" constant="10" id="SkI-zL-nue"/>
+                            <constraint firstItem="Q4P-sF-qbB" firstAttribute="top" secondItem="8mC-Hp-n85" secondAttribute="bottom" constant="5" id="gQv-la-I1I"/>
+                            <constraint firstItem="Q4P-sF-qbB" firstAttribute="centerX" secondItem="o6i-5G-Sot" secondAttribute="centerX" id="iz3-Px-jmu"/>
+                            <constraint firstItem="8mC-Hp-n85" firstAttribute="leading" secondItem="o6i-5G-Sot" secondAttribute="leading" constant="10" id="xmd-Zp-B7F"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="o6i-5G-Sot" secondAttribute="trailing" id="TOt-JK-1Z0"/>
+                    <constraint firstItem="o6i-5G-Sot" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aJm-gB-gMj"/>
+                    <constraint firstAttribute="bottom" secondItem="o6i-5G-Sot" secondAttribute="bottom" id="iXO-Bc-NgI"/>
+                    <constraint firstItem="o6i-5G-Sot" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ySn-XG-7zD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bookAnAppointmentBTN" destination="zLB-uM-4oE" id="zBJ-B3-kWj"/>
+                <outlet property="cardViewTwo" destination="8mC-Hp-n85" id="1q0-gq-ofP"/>
+                <outlet property="downArrowImage" destination="Vig-v4-YYn" id="0YT-C2-78G"/>
+                <outlet property="getDirectionBTN" destination="0pZ-4M-4fq" id="SEB-z6-2sz"/>
+                <outlet property="tradingHoursLBL" destination="epm-uK-2hI" id="D8J-23-TnD"/>
+            </connections>
+            <point key="canvasLocation" x="250" y="-26.658767772511847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Ico-Downarrow-1" width="20" height="11.333333015441895"/>
+        <namedColor name="Orange_BG_3">
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

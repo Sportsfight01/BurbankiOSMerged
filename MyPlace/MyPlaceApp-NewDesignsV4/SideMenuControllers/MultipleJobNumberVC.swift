@@ -111,7 +111,7 @@ extension MultipleJobNumberVC : UITableViewDelegate, UITableViewDataSource
         footerLabel.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
         footerLabel.textColor = APPCOLORS_3.GreyTextFont
         footerLabel.textAlignment = .center
-        footerLabel.text = "* Access other job numbers from menu option \"MyJobNumber\""
+        footerLabel.text = "* Access other job numbers from menu option \"MyHomes\""
         
         return footerLabel
     }

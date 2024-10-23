@@ -50,7 +50,7 @@ let kPost = "POST"
 
 
 //MARK: - Alert Messages
-let knetworkErrorMessage = "Internet Connection Not Available"
+let knetworkErrorMessage = "Internet not available, Please connect to Internet"
 let knoResponseMessage = "No response from server"
 
 //let kServerErrorMessage = "Something went wrong!! Please try again later"

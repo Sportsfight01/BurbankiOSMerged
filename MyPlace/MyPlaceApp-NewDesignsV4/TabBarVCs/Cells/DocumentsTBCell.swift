@@ -32,10 +32,10 @@ class DocumentsTBCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(model : DocumentsDetailsStruct)
+    func setup(model : DocumentsDetailsStructV3)
     {
         pdfNameLb.text = "\(model.title ?? "Title").\(model.type ?? "pdf")"
-        if let notedate = model.docdate?.components(separatedBy: ".").first
+        if let notedate = model.metaData.createdOn?.components(separatedBy: ".").first
         {
             let notedated = dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM, yyyy, hh:mm a")
             uploadedOnDateLb.text = "Uploaded on: \(notedated ?? "- -")"

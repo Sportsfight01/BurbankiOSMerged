@@ -11,7 +11,7 @@ import UIKit
 class FinanceDetailVC: UIViewController {
     
     //MARK: - Properties
-    
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var lb_lastUpdated: UILabel!
     {
         didSet
@@ -20,7 +20,7 @@ class FinanceDetailVC: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE, dd/MM/yyyy"
             let str = dateFormatter.string(from: currentDate)
-            lb_lastUpdated.font = FONT_LABEL_SUB_HEADING(size: FONT_12)
+            lb_lastUpdated.font = FONT_LABEL_SUB_HEADING(size: FONT_10)
             lb_lastUpdated.text = "Last Updated \(str)"
         }
     }
@@ -48,6 +48,7 @@ class FinanceDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupNavigationBarButtons()
+        headerLeadingConstraint.constant = self.getLeadingSpaceForNavigationTitleImage()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -164,7 +165,7 @@ extension FinanceDetailVC : UITableViewDelegate, UITableViewDataSource
     //Label
     let label = UILabel()
     label.text = sectionTitles[section]
-    label.font = FONT_LABEL_SUB_HEADING(size: FONT_14)
+    label.font = FONT_LABEL_BODY(size: FONT_14)
     label.textColor =  AppColors.appOrange
     view.addSubview(label)
     label.translatesAutoresizingMaskIntoConstraints = false

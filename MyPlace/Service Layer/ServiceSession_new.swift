@@ -343,7 +343,7 @@ class ServiceSession_new
             return true
         }else {
 
-            showAlert("Internet Connection Not Available")
+            showAlert("Internet not available, Please connect to Internet")
             return false
         }
         

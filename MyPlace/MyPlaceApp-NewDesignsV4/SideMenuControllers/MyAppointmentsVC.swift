@@ -17,6 +17,8 @@ class MyAppointmentsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var namesarray = ["Edge Appointment","Electrical Selection","Sign Building Contract","Tender Presentation","PC Inspection"]
     var appointmentDates = ["- -","- -","- -","- -","- -"]
+    var appointmentsValues = [appointmentsData]()
+    private var viewModel = MyProgressVM()
     override func viewDidLoad() {
         super.viewDidLoad()
       //  self.view.backgroundColor = .blue
@@ -25,7 +27,12 @@ class MyAppointmentsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        getAppointments()
+//        getAppointments()
+        self.appointmentsValues = appDelegate.appointmentData ?? []
+        tableView.addRefressControl {[weak self] in
+//            self?.getAppointments()
+            self?.appointmentsValues = appDelegate.appointmentData ?? []
+        }
        // setupProfile()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +56,9 @@ class MyAppointmentsVC: UIViewController {
         if appDelegate.notificationCount == 0{
             notificationCountLBL.isHidden = true
         }else{
-            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+//            notificationCountLBL.text = "\(appDelegate.notificationCount)"
+            // changed large count to 99+ in v3.5 version on 29/Jul
+            notificationCountLBL.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
         }
         //        profileImgView.addBadge(number: appDelegate.notificationCount)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileClick(recognizer:)))
@@ -64,83 +73,94 @@ class MyAppointmentsVC: UIViewController {
     }
     //MARK: - Service Calls
     
-    func getAppointments()
-    {
-        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
-        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
-        let auth = jobAndAuth.auth
-
-        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
-            switch result
-            {
-            case .success(let data):
-                print(data)
-                self?.setupAppointments(progressData: data)
-                
-            case.failure(let err):
-                print(err.localizedDescription)
-                DispatchQueue.main.async {
-                    self?.showAlert(message: err.localizedDescription)
-                }
-            }
-        }
-        
-    }
+//    func getAppointments()
+//    {
+//        guard isNetworkReachable else { showAlert(message: checkInternetPullRefresh) {[weak self] _ in
+//            DispatchQueue.main.async {
+//                self?.tableView.refreshControl?.endRefreshing()
+//            }
+//        }; return}
+//        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
+//        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
+//        let auth = jobAndAuth.auth
+//
+//       
+//        NetworkRequest.makeRequestArray(type: ProgressStruct.self, urlRequest: Router.progressDetails(auth: auth, contractNo: jobNumber)) { [weak self](result) in
+//            switch result
+//            {
+//            case .success(let data):
+//                print(data)
+//                self?.setupAppointments(progressData: data)
+//                
+//            case.failure(let err):
+//                print(err.localizedDescription)
+//                DispatchQueue.main.async {
+//                    self?.showAlert(message: err.localizedDescription)
+//                }
+//            }
+//            DispatchQueue.main.async {
+//                appDelegate.hideActivity()
+//                self?.tableView.refreshControl?.endRefreshing()
+//            }
+//            
+//        }
+//        
+//    }
     
     //MARK: - Helper Methods
     
-    func setupAppointments(progressData : [ProgressStruct])
-    {
-        for progress in progressData
-        {
-            switch progress.name
-            {
-            case "Edge Appointment" , "Colour Selection":
-                appointmentDates[0] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "Electrical Selection":
-                appointmentDates[1] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "Sign Building Contract":
-                appointmentDates[2] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "Tender Presentation":
-                appointmentDates[3] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            case "PC INSPECTION":
-                appointmentDates[4] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
-            default:
-                break;
-                
-            }
-        }
-        print(appointmentDates)
-        tableView.reloadData()
-    }
+//    func setupAppointments(progressData : [ProgressStruct])
+//    {
+//        for progress in progressData
+//        {
+//            switch progress.name
+//            {
+//            case "Edge Appointment" , "Colour Selection":
+//                appointmentDates[0] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "Electrical Selection":
+//                appointmentDates[1] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "Sign Building Contract":
+//                appointmentDates[2] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "Tender Presentation":
+//                appointmentDates[3] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            case "PC INSPECTION":
+//                appointmentDates[4] =  progress.status?.lowercased() == "completed" ? progress.dateactual ?? "- -" : "- -"
+//            default:
+//                break;
+//                
+//            }
+//        }
+//        print(appointmentDates)
+//        tableView.reloadData()
+//    }
 
 }
 //MARK: - TableView Delegate & Datasource
 extension MyAppointmentsVC : UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return namesarray.count
+        return appointmentsValues.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {return UITableViewCell()}
         let containerView = cell.contentView.viewWithTag(100)
         if let appointmentTypelb = containerView?.viewWithTag(101) as? UILabel
         {
-            appointmentTypelb.text = namesarray[indexPath.row]
+            appointmentTypelb.text = appointmentsValues[indexPath.row].name == "Colour Selection" ? "Edge Appointment" :  appointmentsValues[indexPath.row].name
         }
         if let appointmentDatelb = containerView?.viewWithTag(102) as? UILabel
         {
-            let date = dateFormatter(dateStr: appointmentDates[indexPath.row].components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "d MMMM, yyyy")
+            let date = dateFormatter(dateStr: appointmentsValues[indexPath.row].dateSTR?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "d MMMM, yyyy")
             appointmentDatelb.text = date ?? "- -"
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 1 || indexPath.row == 3
-        {
-            return 0
-        }
+//        if indexPath.row == 1 || indexPath.row == 3
+//        {
+//            return 0
+//        }
         return 65
     }
 }

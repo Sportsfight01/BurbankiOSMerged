@@ -52,8 +52,8 @@ class SettingsVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UII
         // Do any additional setup after loading the view.
         appDelegate=UIApplication.shared.delegate as? AppDelegate
         postDataToServerForGettingUserProfile()
-        
         viewSetUp()
+    
         
     }
     

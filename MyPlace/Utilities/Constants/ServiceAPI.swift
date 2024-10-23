@@ -19,8 +19,8 @@ let My_Place3DBASEURL = "https://www.burbank.com.au"
 
 //let Base = "http://dev.burbank.com.au" //Test
 
-let Base = "https://www.burbank.com.au"
-//let Base = "http://10.6.45.14:8085" // test
+//let Base = "https://www.burbank.com.au"
+let Base = "http://10.6.45.14:8085" // test
 //    "http://10.6.45.14:8081" //Test
 
 let BaseURL = Base + "/api/api/"
@@ -60,6 +60,7 @@ struct ServiceAPI {
     let URL_changePassword = BaseURL + "Account/ChangePassword"
     
     
+    let URl_authanticate = BaseURL + "Account/Authenticate"
     
     
     //MARK: - Dashboard
@@ -68,6 +69,12 @@ struct ServiceAPI {
         if imagePath.contains("https://www.burbank.com.au"){
             print(imagePath)
             return imagePath
+        }else if imagePath.contains(Base) {
+            
+//            print(log: Base + imagePath.replacingOccurrences(of: "~", with: ""))
+            print(log:  imagePath.replacingOccurrences(of: "~", with: ""))
+//            return Base + imagePath.replacingOccurrences(of: "~", with: "")
+            return  imagePath.replacingOccurrences(of: "~", with: "") // v3.6 complete url coming from server no need to add Base URL Agian
         }else{
             print(log: Base + imagePath.replacingOccurrences(of: "~", with: ""))
             return Base + imagePath.replacingOccurrences(of: "~", with: "")
@@ -202,7 +209,7 @@ struct ServiceAPI {
     
     //MARK: - Put it last
     func authorizationRequired (_ url: String) -> Bool {
-        if url == URL_userLogin /*|| url == URL_registration || url == URL_resetPassword || url == URL_changePassword*/ {
+        if url == URl_authanticate /*|| url == URL_registration || url == URL_resetPassword || url == URL_changePassword*/ {
             return false
         }
 //        if url.contains(URL_forgotPassword("")) {
