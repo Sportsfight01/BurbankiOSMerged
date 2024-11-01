@@ -33,8 +33,8 @@ class BaseProfileVC: UIViewController {
         profileView.contentView.backgroundColor = .clear
        // setupNavigationItems()
        // self.view.backgroundColor = APPCOLORS_3.GreyTextFont
-        self.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
-        getNotes()
+//        self.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+//        getNotes()
     }
     
  
@@ -51,7 +51,7 @@ class BaseProfileVC: UIViewController {
                 }
                 CurrentUser.notesUnReadCount = maped.filter({$0 == nil}).count
                 DispatchQueue.main.async {[weak self] in
-                    self?.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+//                    self?.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
                 }
             case .failure(let err):
                 debugPrint(err.localizedDescription)
@@ -105,14 +105,11 @@ class BaseProfileVC: UIViewController {
         {
             profileView.profilePicImgView.image = imgURlStr
         }
-        if appDelegate.notificationCount == 0{
-            profileView.notificationCountLb.isHidden = true
-        }else{
+        
 //            profileView.notificationCountLb.text = "\(appDelegate.notificationCount)"
             // changed large count to 99+ in v3.5 version on 29/Jul
             profileView.notificationCountLb.text =  appDelegate.notificationCount > 100 ? "99+" : "\(appDelegate.notificationCount)"
-
-        }
+            profileView.notificationCountLb.isHidden = appDelegate.notificationCount == 0 ? true : false
         
     }
     

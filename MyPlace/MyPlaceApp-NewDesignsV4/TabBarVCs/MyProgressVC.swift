@@ -61,10 +61,10 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         profileView.titleLb.text = "MyProgress"
         profileView.helpTextLb.text = "--"
         profileView.profilePicImgView.tintColor = .darkGray
-        profileView.titleLb.textColor = .black
-        profileView.helpTextLb.textColor = .black
+        profileView.titleLb.textColor = AppColors.appGray
+        profileView.helpTextLb.textColor = AppColors.appGray
         profileView.profilePicImgView.borderColor = APPCOLORS_3.GreyTextFont
-        [profileView.menubtn,profileView.contactUsBtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
+        [profileView.menubtn,/*profileView.contactUsBtn,*/profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
         
         let panGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
         panGestureRecognizer.direction = .down
@@ -211,7 +211,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         /// - add data to UI Elements
             self.progressBar.progress = CGFloat(totalHomeProgress)
         let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
-            setAttributetitleFor(view: self.profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Orange_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+            setAttributetitleFor(view: self.profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.GreyTextFont,APPCOLORS_3.Orange_BG,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
         
             self.collectionView.reloadData()

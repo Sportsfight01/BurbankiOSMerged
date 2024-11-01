@@ -22,7 +22,7 @@ extension UIViewController {
        
         ///Adding ContactUs Btn
         if shouldShowNotification{
-            self.addContactUsButton()
+//            self.addContactUsButton()
         }else {
             self.navigationItem.rightBarButtonItem = nil
         }

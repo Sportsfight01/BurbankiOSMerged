@@ -51,7 +51,7 @@ class MyProgressDetailVC: UIViewController {
         super.viewDidLayoutSubviews()
         
         let contentheight = tableView.contentSize.height
-        self.tableHeightConstraint.constant = contentheight + 120
+        self.tableHeightConstraint.constant = contentheight + 200
         tableView.isScrollEnabled = false
     }
     
@@ -105,7 +105,9 @@ class MyProgressDetailVC: UIViewController {
         }
         progressBar.progressTintColor = progressData?.stage?.progressColor
         
-        tableDataSource = completedTasks?.sorted(by: {$0.dateWithoutTime.compare($1.date) == .orderedDescending}) ?? []
+        tableDataSource = completedTasks?.sorted(by: {$0.date > $1.date}) ?? []
+       
+        
         if let unCompletedTasks = progressData?.progressDetails?.filter({$0.status?.lc != "completed"})
         {
             tableDataSource.append(contentsOf: unCompletedTasks)
@@ -177,9 +179,11 @@ extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
         cell.progressNameLb.text = item.name
         cell.checkMarkImage.tintColor = progressData?.stage?.progressColor
         if item.status?.lowercased() == "completed"{
-            let date = dateFormatter(dateStr: item.dateactual?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "dd/MM/yyyy")
+            let date = item.dateactual?.components(separatedBy: "T").first?.getDate("dd/MM/yyyy")
+            
+            dateFormatter(dateStr: item.dateactual?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "dd/MM/yyyy")
             cell.checkMarkImage.image = UIImage(named: "icon_Check")?.withRenderingMode(.alwaysTemplate)
-            cell.dateLb.text = date
+            cell.dateLb.text = "\(date ?? Date())"
         }else{
             cell.checkMarkImage.image = UIImage(named: "icon_UnCheck")
             cell.dateLb.text = "--"

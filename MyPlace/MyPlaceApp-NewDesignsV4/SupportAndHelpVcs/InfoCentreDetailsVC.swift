@@ -57,7 +57,8 @@ class InfoCentreDetailsVC: UIViewController {
 //
 //        webViewDescription.loadHTMLString(descriptiontext!, baseURL: nil)
        // textLBL.attr
-         textLBL.attributedText = descriptiontext
+            textLBL.textColor = APPCOLORS_3.GreyTextFont
+            textLBL.attributedText = descriptiontext
         
     }
     func addVideo()

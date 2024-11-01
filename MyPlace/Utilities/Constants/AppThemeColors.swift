@@ -22,6 +22,7 @@ struct APPCOLORS_3
     static let Body_BG = UIColor.hexCode("#F6F6F6")
     static let LightGreyDisabled_BG = UIColor.hexCode("#D1D3D4")
     static let GreyTextFont =  UIColor.hexCode("#5C5E5E")
+//    static let GreyTextFont =  UIColor.hexCode("#333333")
     static let DarkGrey_BG = UIColor.hexCode("#A7A9AC")
     //    static let Orange_BG = UIColor.hexCode("#F6891F")
     static let Orange_BG = UIColor.hexCode("#FF6224")

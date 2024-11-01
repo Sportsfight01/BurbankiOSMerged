@@ -166,7 +166,10 @@ class DocumentsVC: BaseProfileVC {
                 appDelegate.hideActivity()
                     self.tableView.refreshControl?.endRefreshing()
                 }
-                self.documentList = notes.filter( { (($0.type?.lc.contains("jpeg")) == nil)}).filter( { (($0.type?.lc.contains("jpg")) == nil)}).filter( { (($0.type?.lc.contains("png")) == nil) }).filter({ (($0.type?.lc.contains("eml")) == nil) }).filter({ (($0.type?.lc.contains("txt")) == nil) })
+                print(notes.filter({$0.type == ".pdf" }))
+                self.documentList = notes.filter({$0.type == ".pdf" })
+                
+//                notes.filter( { (($0.type?.lc.contains("jpeg")) == nil)}).filter( { (($0.type?.lc.contains("jpg")) == nil)}).filter( { (($0.type?.lc.contains("png")) == nil) }).filter({ (($0.type?.lc.contains("eml")) == nil) }).filter({ (($0.type?.lc.contains("txt")) == nil) })
                 print(self.documentList)
                 //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
                 DispatchQueue.main.async {
@@ -288,7 +291,7 @@ extension DocumentsVC : UISearchBarDelegate
             
         }
         self.applySnapshot()
-       // tableView.reloadData()
+        tableView.reloadData()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -299,7 +302,7 @@ extension DocumentsVC : UISearchBarDelegate
         if searchBar.searchTextField.text?.trim().count == 0
         {
             tableDataSource = documentList
-          //  tableView.reloadData()
+            tableView.reloadData()
             applySnapshot()
         }
         self.searchBar.endEditing(true)

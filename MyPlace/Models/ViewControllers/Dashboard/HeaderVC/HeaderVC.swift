@@ -385,7 +385,7 @@ class HeaderVC: UIViewController {
         
         // add child view controller view to container
         
-        viewContro.addChild(sortFilterView)
+//        viewContro.addChild(sortFilterView)
         //            addChildViewController(controller)
         sortFilterView.view.translatesAutoresizingMaskIntoConstraints = false
         containerViewSortFilter!.addSubview(sortFilterView.view)

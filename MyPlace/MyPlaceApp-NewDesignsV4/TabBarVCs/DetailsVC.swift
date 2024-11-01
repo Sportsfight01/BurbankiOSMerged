@@ -85,7 +85,7 @@ class DetailsVC: UIViewController {
         
         //Phone number not coming properly from v3 service, use which ever is coming from server
         var phoneNum = ""
-        if contactDetialsData?.contactDetails?.mobilePhone == ""{
+        if contactDetialsData?.contactDetails?.mobilePhone == ""  || contactDetialsData?.contactDetails?.mobilePhone == nil  {
             phoneNum = contactDetialsData?.contactDetails?.homePhone ?? ""
         }else{
             phoneNum = contactDetialsData?.contactDetails?.mobilePhone ?? ""

@@ -277,7 +277,7 @@ extension String {
         return date
     }
     
-    func getDate(_ dateFormat : String = "yyyy-MM-dd'T'HH:mm:ss.SSS") -> Date? {
+    func getDate(_ dateFormat : String = "yyyy-MM-dd'T'HH:mm:ss") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         dateFormatter.timeZone = TimeZone.current
