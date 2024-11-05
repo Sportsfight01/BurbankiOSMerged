@@ -146,8 +146,8 @@ class PhotosVC: BaseProfileVC {
                     self.collectionView.refreshControl?.endRefreshing()
                 }
 //                guard let self = self else {return}
-                let imageTypes = ["jpg", "png","jpeg"]
-                let documentList = photos.filter( { imageTypes.contains( $0.type?.trim().lowercased() ?? "") } )
+                let imageTypes = [".jpg", ".png",".jpeg"]
+                let photoList = photos.filter( { imageTypes.contains( $0.type?.trim().lowercased() ?? "") } )
                 guard photos.count > 0 else {
                     DispatchQueue.main.async {
                         self.collectionView.setEmptyMessage("No recent photos")
@@ -155,8 +155,8 @@ class PhotosVC: BaseProfileVC {
                         
                     }; return}
                 DispatchQueue.main.async {
-                    self.seeAllPhotosBtn.isHidden = photos.count == 0 ? true : false
-                    self.setupServiceData(photos)
+                    self.seeAllPhotosBtn.isHidden = photoList.count == 0 ? true : false
+                    self.setupServiceData(photoList)
                 }
                 
                 

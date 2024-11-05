@@ -339,16 +339,13 @@ class DesignsDetailsVC: HeaderVC {
             facadeTop1.isActive = false
 //            facadeTop2.isActive = true
         }
-        
-        lBFacadeName.text = self.validFacadeNamesArray.first
-        
-        if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
-//            lBFacadeName.text = (self.homeDesignDetails?.lsthouses?.facade ?? "") + " facade"
-            lBFacadeName.text = (self.validFacadeNamesArray.first ?? "").capitalized + " Facade"
-          
-          
+        if self.validFacadeNamesArray.count > 0{
+            lBFacadeName.text = self.validFacadeNamesArray[0].capitalized + " Facade"
+            if ((lBFacadeName.text?.lowercased().contains("facade") ?? false) == false) {
+                lBFacadeName.text = (self.validFacadeNamesArray.first ?? "").capitalized + " Facade"
+            }
         }
-     
+        
         self.previousDesignBTN2.tintColor = .darkGray
         self.nextDesignBTN2.tintColor = .darkGray
         

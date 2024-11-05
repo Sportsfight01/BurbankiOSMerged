@@ -199,7 +199,8 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         /// - Calculating whole home progress
         guard let clItems else { return }
         let totalHomeProgress = Double(clItems.compactMap({$0.progress}).reduce(0.0, +)) / 6.0
-        let totalHomeProgressPercentage = Int(Double(totalHomeProgress * 100))
+        let totalHomeProgressPercentage = totalHomeProgress * 100
+        let totalHomeProgressPercent = Int(totalHomeProgressPercentage.rounded(.toNearestOrAwayFromZero))
         
         let newClItem = MyProgressVM.ProgressItem(stage: Stage(rawValue: "Your New Home"), imageName: "icon_house", progress: totalHomeProgress,progressDetails: nil)
         /// - add Your new home in first place only when it is not present in list
@@ -210,13 +211,13 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         DispatchQueue.main.async {
         /// - add data to UI Elements
             self.progressBar.progress = CGFloat(totalHomeProgress)
-        let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(totalHomeProgressPercentage)% completed. Swipe to see your stages."
+        let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(totalHomeProgressPercent)% completed. Swipe to see your stages."
             setAttributetitleFor(view: self.profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.GreyTextFont,APPCOLORS_3.Orange_BG,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
         
             self.collectionView.reloadData()
             self.collectionView.contentSize.width = self.collectionView.contentSize.width + 50 // to make last item of collectionView visible properly
-            CurrentUser.currentHomeBuildProgress = "\(totalHomeProgressPercentage)%"
+            CurrentUser.currentHomeBuildProgress = "\(totalHomeProgressPercent)%"
         }
         
         

@@ -200,7 +200,7 @@ class APIManager{
 //                completion(.failure(.other(err: "Json Serialization Failed")))
                 return
             }
-            guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
+            guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks1") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
 //                completion(.failure(.other(err: "Json Serialization Failed")))
                 return 
             }

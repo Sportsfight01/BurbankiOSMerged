@@ -179,11 +179,11 @@ extension MyProgressDetailVC : UITableViewDelegate , UITableViewDataSource
         cell.progressNameLb.text = item.name
         cell.checkMarkImage.tintColor = progressData?.stage?.progressColor
         if item.status?.lowercased() == "completed"{
-            let date = item.dateactual?.components(separatedBy: "T").first?.getDate("dd/MM/yyyy")
+//            let date = item.dateactual?.components(separatedBy: "T").first?.getDate("dd/MM/yyyy")
             
-            dateFormatter(dateStr: item.dateactual?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "dd/MM/yyyy")
+            let date = dateFormatter(dateStr: item.dateactual?.components(separatedBy: "T").first ?? "", currentFormate: "yyyy-MM-dd", requiredFormate: "dd/MM/yyyy")
             cell.checkMarkImage.image = UIImage(named: "icon_Check")?.withRenderingMode(.alwaysTemplate)
-            cell.dateLb.text = "\(date ?? Date())"
+            cell.dateLb.text = "\(date ?? "--")"
         }else{
             cell.checkMarkImage.image = UIImage(named: "icon_UnCheck")
             cell.dateLb.text = "--"

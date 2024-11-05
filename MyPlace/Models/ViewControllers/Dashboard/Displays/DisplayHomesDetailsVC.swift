@@ -890,8 +890,8 @@ extension DisplayHomesDetailsVC {
 //                            homeLand.design = self.homeDesign
                             
                             homeLand.arrHomeLand = arrHomeLandPackages
-//                            self.tabBarController?.navigationController?.pushViewController(homeLand, animated: true)
-                            self.navigationController?.pushViewController(homeLand, animated: true)
+                            self.tabBarController?.navigationController?.pushViewController(homeLand, animated: true)
+//                            self.navigationController?.pushViewController(homeLand, animated: true)
                             
                         }else {
                             ActivityManager.showToast("No Packages found", self, .bottom)

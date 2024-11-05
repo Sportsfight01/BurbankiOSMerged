@@ -85,7 +85,7 @@ class MyProgressCVCell: UICollectionViewCell {
         circleBar.progress = progress
         circleBar.image = cicleImage
         let progressValu = progress * 100
-        let progressInt = Int(progressValu.rounded(.toNearestOrAwayFromZero))
+        let progressInt =  Int(progressValu.rounded(.toNearestOrAwayFromZero))
         print("progress value :- \(progressValu)")
          print("progress Int :- \(progressInt)")
         if progressInt == 0

@@ -259,7 +259,7 @@ extension PopupDisplayHomesVC  {
            return
          }
         
-        let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag]
+        let selectedDisplayHomeData = houseDetailsByHouseTypeArr[sender.tag - 1]
         let bookAppintmentV = DirctionsVC()
         bookAppintmentV.displayHomeData = houseDetailsByHouseTypeArr
         var latLong = "\(selectedDisplayHomeData.latitude)\(selectedDisplayHomeData.longitude)".whiteSpacesRemoved()
