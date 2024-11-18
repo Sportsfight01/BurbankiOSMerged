@@ -38,7 +38,6 @@ class MyProgressVM
             switch result
             {
             case .success(let progressData) :
-                print(log: progressData)
                 self.progressData = progressData
                 /// - Grouping the data with stages in Dictionary
                 let stageGroup = self.groupProgressDataWithStage()

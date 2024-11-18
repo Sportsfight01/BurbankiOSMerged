@@ -45,8 +45,6 @@ let myPlaceVICBaseURL = "https://www.burbank.com.au/victoria/myplace/api/"
 
 let clickHomeV2BaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhome3webservice/V2"
 
-
-
 //let checkUserLoginurl = String(format: "%@login/CheckUserlogin",getMyPlaceURL())//http://nationalclickhome.burbankgroup.com.au/clickhome3webservice/ClickHome.myhome/v2/clientlogin
 
 func  checkUserLoginurl() -> String

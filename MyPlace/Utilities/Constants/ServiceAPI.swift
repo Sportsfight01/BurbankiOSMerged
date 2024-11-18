@@ -19,8 +19,8 @@ let My_Place3DBASEURL = "https://www.burbank.com.au"
 
 //let Base = "http://dev.burbank.com.au" //Test
 
-//let Base = "https://www.burbank.com.au"
-let Base = "http://10.6.45.14:8085" // test
+let Base = "https://www.burbank.com.au"
+//let Base = "http://10.6.45.14:8085" // test
 //    "http://10.6.45.14:8081" //Test
 
 let BaseURL = Base + "/api/api/"

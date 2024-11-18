@@ -80,6 +80,7 @@ class FinanceVC: BaseProfileVC {
         let region = APIManager.shared.currentJobDetails?.region ?? ""
         let postDic =  ["Region": region, "JobNumber":jobNumber, "UserName":userName, "Password":password]
         //callMyPlaceLoginServie(myPlaceDetails)
+        
         let url = URL(string: checkUserLogin())
         var urlRequest = URLRequest(url: url!)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -109,7 +110,7 @@ class FinanceVC: BaseProfileVC {
             if let strData = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
             {
                 print(strData)
-                guard strData == "true" || strData.contains("true") else {return}
+                 guard strData == "true" || strData.contains("true") else {return}
                 self?.getFinanceData()
                 
                 

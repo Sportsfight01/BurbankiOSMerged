@@ -77,7 +77,7 @@ class NotificationsVC: UIViewController {
                     }else {
                         self?.tableView.reloadData()
                     }
-                  //  appDelegate.hideActivity()
+                    appDelegate.hideActivity()
                 }
             }
         }
@@ -112,14 +112,15 @@ extension NotificationsVC : UITableViewDelegate, SkeletonTableViewDataSource
             cell.title.text = "\(item.taskName!) Completed on \(dateStr)"
             cell.imgView.image = UIImage(systemName: "bell.circle.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         }
-        
-        let formatter = RelativeDateTimeFormatter()
-        //formatter.unitsStyle = .full
-        formatter.dateTimeStyle = .numeric
 
-        // get relative date to the current date
-        let relativeDate = formatter.localizedString(for: item.date, relativeTo: Date())
-        cell.subTitleLb.text = relativeDate
+        
+       
+        
+        setAttributetitleFor(view: cell.subTitleLb, title: item.date.getElapsedInterval(), rangeStrings: [item.date.getElapsedInterval()], colors: [APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+
+        
+      
+        
         return cell
     }
     

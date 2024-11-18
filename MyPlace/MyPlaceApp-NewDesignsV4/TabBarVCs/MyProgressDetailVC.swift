@@ -99,8 +99,8 @@ class MyProgressDetailVC: UIViewController {
             progressBar.progress = 0
             progressLb.text = "0%"
         }else{
-            let progressInt = Int(progressBarData * 100)
-            progressBar.progress = Float(progressBarData)
+            let progressInt = Int(Double(progressBarData * 100).rounded(.toNearestOrAwayFromZero))
+            progressBar.progress = Float(progressInt)
             progressLb.text = "\(progressInt)%"
         }
         progressBar.progressTintColor = progressData?.stage?.progressColor

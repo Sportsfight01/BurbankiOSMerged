@@ -124,7 +124,8 @@ class MyProgressCVCell: UICollectionViewCell {
         if totalTaks == completedTaks && totalTaks > 0
         {
            // yourOverallProgressLb.text = "COMPLETED STAGE"
-            let date = dateFormatter(dateStr: progressData?.last?.dateactual ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy")
+            let latestData = progressData?.sorted(by: {$0.date > $1.date}) ?? []
+            let date = dateFormatter(dateStr: latestData.first?.dateactual ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd/MM/yyyy")
             return (lastUpdate : "Completed \(date ?? "")" , overallProgress : "COMPLETED STAGE")
         }
         else if completedTaks == 0

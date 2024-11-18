@@ -212,7 +212,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         /// - add data to UI Elements
             self.progressBar.progress = CGFloat(totalHomeProgress)
         let yourHomeBuild = "Your home \(CurrentUser.jobNumber ?? "") is currently \(totalHomeProgressPercent)% completed. Swipe to see your stages."
-            setAttributetitleFor(view: self.profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercentage)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.GreyTextFont,APPCOLORS_3.Orange_BG,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
+            setAttributetitleFor(view: self.profileView.helpTextLb, title: yourHomeBuild, rangeStrings: ["Your home" , CurrentUser.jobNumber ?? "", "is currently", "\(totalHomeProgressPercent)%" , "completed. Swipe to see your stages."], colors: [APPCOLORS_3.GreyTextFont,APPCOLORS_3.Orange_BG,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont,APPCOLORS_3.GreyTextFont], fonts: [FONT_LABEL_BODY(size: FONT_10), boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10),boldFontWith(size: FONT_10),FONT_LABEL_BODY(size: FONT_10)], alignmentCenter: false)
         
         
             self.collectionView.reloadData()
@@ -340,6 +340,7 @@ extension MyProgressVC : UICollectionViewDelegate , SkeletonCollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyProgressCVCell", for: indexPath) as! MyProgressCVCell
         cell.delegate = self
         let model = clItems?[indexPath.row]
+        
         cell.setup(model: model, index : indexPath.row)
         return cell
     }

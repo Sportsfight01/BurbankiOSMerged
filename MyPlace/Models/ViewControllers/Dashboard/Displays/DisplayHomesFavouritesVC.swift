@@ -615,7 +615,7 @@ func makeDisplayHomeFavorite (_ favorite: Bool, _ design: houseDetailsByHouseTyp
 }
 
 @IBAction func didTappedOnGetDirections (_ sender: UIButton) {
-    guard houseDetailsByHouseTypeArr.count >= 0 else {
+    guard houseDetailsByHouseTypeArr.count > 0 else {
        showAlert(message: "Something went terribly wrong. Please come back later.")
        return
      }

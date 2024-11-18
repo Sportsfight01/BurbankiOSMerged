@@ -196,6 +196,7 @@ enum Router:URLRequestConvertible{
         case .getFinanceDetails(let jobNumber) , .getClientInfoForContractNumber(let jobNumber):
             let urlStr = path + jobNumber
             let url = URL(string: urlStr)
+            
             urlRequest = URLRequest(url: url!)
             urlRequest.httpMethod = method.rawValue
             urlRequest = try JSONEncoding.default.encode(urlRequest)

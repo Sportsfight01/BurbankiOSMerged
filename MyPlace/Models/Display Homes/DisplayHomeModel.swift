@@ -205,12 +205,8 @@ class PupularDisplays: NSObject {
         housePrice = (dict["HousePrice"] as? Int ?? 0)
         IsFav = (dict["IsFavourite"] as? Bool ?? false)
         let packagesResult1 = dict["DesignLocation"] as! [NSDictionary]
-//        print("----------------------*******---------------------------------------------------------")
         for package1: NSDictionary in packagesResult1 {
-           
-//            print(package1)
-            let designLocationData = designLocations(package1 as! [String : Any])
-//            print(designLocationData)
+        let designLocationData = designLocations(package1 as! [String : Any])
             locations.append(designLocationData)
 //            print("====_____+++++=====",locations)
 //            print("----------------------*******---------------------------------------------------------")

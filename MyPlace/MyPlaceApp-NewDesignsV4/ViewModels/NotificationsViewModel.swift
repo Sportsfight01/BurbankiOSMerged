@@ -75,8 +75,10 @@ class NotificationsViewModel
                 switch servicePhotosArray{
                 case .success(let notes):
                     DispatchQueue.main.async {
-                        let documentList = notes.filter({ !(($0.type?.lc.contains("eml")) != nil)}).filter({ !(($0.type?.lc.contains("txt")) != nil) })
-                        print("---------------- documentList :",documentList.count)
+                        print("---------------- documentList before filter :", notes.count)
+                        let documentList = notes.filter({ (($0.type?.lc.contains("pdf")) != nil)}).filter({ (($0.type?.lc.contains("jpg")) != nil) }).filter({ (($0.type?.lc.contains("png")) != nil) }).filter({ (($0.type?.lc.contains("jpeg")) != nil) })
+
+                        print("---------------- documentList after filter :",documentList.count)
                         
                         //Add New data came from service
                         
