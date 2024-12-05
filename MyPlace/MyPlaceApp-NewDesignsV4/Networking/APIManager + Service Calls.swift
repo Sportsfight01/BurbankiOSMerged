@@ -190,11 +190,12 @@ class APIManager{
             guard let data else {
                 completion(.failure(.other(err: error?.localizedDescription)))
                 return }
+            print(data.count.byteSize)
             //:End Of Validation
             guard let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
                 completion(.failure(.other(err: "Json Serialization Failed")))
                 return}
-            print("MasterContract Json Data : ", jsonDict)
+//            print("MasterContract Json Data : ", jsonDict)
             
             guard let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any], let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
 //                completion(.failure(.other(err: "Json Serialization Failed")))
@@ -207,9 +208,9 @@ class APIManager{
         
             do {
                 var jsonContract = try JSONSerialization.jsonObject(with: jsonData) as! [String : Any]
-//                print(log: jsonContract)
+                print( "constructionContract.tasks Data", jsonContract)
                 let jsonPrecon = try JSONSerialization.jsonObject(with: jsonDataForPreConst) as! [String : Any]
-//                print(log: jsonPrecon)
+                print( "preconstructionContract.tasks Data", jsonPrecon)
                 var constructionContractArr = jsonContract["list"] as? Array<[String : Any]>
                 let preconstructionContractArr = jsonPrecon["list"] as? Array<[String : Any]>
                 
@@ -234,7 +235,7 @@ class APIManager{
                     case "VIC","QLD","SA":
                         if progressdata.name == "Colour Selection" || progressdata.name == "Sign Building Contract"  {
                             appDelegate.appointmentData.append(appointmentsData(name: progressdata.name, dateSTR: progressdata.completedDate))
-                            print("-----====== Colour Selection & Sign Building Contract", appDelegate.appointmentData)
+//                            print("-----====== Colour Selection & Sign Building Contract", appDelegate.appointmentData)
                         }
                        
                     default:
@@ -263,7 +264,7 @@ class APIManager{
                     let pc = data["taskName"] as! String
                     if pc.lc == "pc inspection"{
                         appDelegate.appointmentData.append(appointmentsData(name: data["taskName"] as? String, dateSTR: data["completedDate"] as? String))
-                        print("-----====== PC Inspection", appDelegate.appointmentData)
+//                        print("-----====== PC Inspection", appDelegate.appointmentData)
                     }
                     
                 }
@@ -360,7 +361,7 @@ class APIManager{
                 return}
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-                print(log: json)
+//                print(log: json)
                 
                 self.currentJobDetailsV3 = try JSONDecoder().decode(myContractJobDetailsV3.self, from: data)
                 completion(.success(true))
@@ -770,5 +771,10 @@ extension Dictionary {
         for (k, v) in dict {
             updateValue(v, forKey: k)
         }
+    }
+}
+extension Int {
+    var byteSize: String {
+        return ByteCountFormatter().string(fromByteCount: Int64(self))
     }
 }

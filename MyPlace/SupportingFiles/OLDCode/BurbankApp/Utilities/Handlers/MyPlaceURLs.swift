@@ -108,6 +108,9 @@ func getMyPlaceURL(isContactUs : Bool = false) -> String
 //         //http://192.168.100.92:8989/api/contact/GetContactDetails?jobNumber=Q1410
         
         myPlaceURL = String(format: "https://www.burbank.com.au/myplace/api/")
+//    myPlaceURL = String(format: "http://10.6.45.14:8085/myplace/api/")
+    
+///finance/GetFinanceDetails?financialTicketId=182953&region=VIC
 //     https://www.burbank.com.au/myplace/api/finance/GetFinance?financialTicketId=130736
     
 //        myPlaceURL = String(format: "http://192.168.100.92:8989/api/")

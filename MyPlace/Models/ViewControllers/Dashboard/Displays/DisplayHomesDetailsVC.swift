@@ -800,7 +800,12 @@ extension DisplayHomesDetailsVC {
                             } catch let jsonError {
                                 print(log: jsonError)
                             }
-                        }
+                        }else{
+                            let message =  (jsonObj as! NSDictionary).value(forKey: "message") as? String ?? ""
+                            self.showAlert(message: message) { str in
+                                 self.navigationController?.popViewController(animated: true)
+                             }
+                         }
                     }
                 }
 

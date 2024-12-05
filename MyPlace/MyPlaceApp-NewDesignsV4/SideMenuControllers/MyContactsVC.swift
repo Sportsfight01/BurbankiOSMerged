@@ -30,10 +30,11 @@ class MyContactsVC: BaseProfileVC {
         tableView.isSkeletonable = true
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
-        
-         checkUserLogin1()
+        self.getContacts()
+//         checkUserLogin1()
         tableView.addRefressControl {[weak self] in
-            self?.checkUserLogin1()
+//            self?.checkUserLogin1()
+            self?.getContacts()
         }
     }
    
@@ -132,18 +133,20 @@ class MyContactsVC: BaseProfileVC {
        let jobAndAuth = APIManager.shared.getJobNumberAndAuthorization()
        guard let jobNumber = jobAndAuth.jobNumber else {debugPrint("Job Number is Null");return}
        
-       NetworkRequest.makeRequest(type: ContactDetailsStruct.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: jobNumber), showActivity: false) {[weak self] (result) in
+       NetworkRequest.makeRequest(type: contractData.self, urlRequest: Router.getClientInfoForContractNumber(jobNumber: jobNumber), showActivity: false) {[weak self] (result) in
            
            DispatchQueue.main.async {
                self?.tableView.stopSkeletonAnimation()
                self?.tableView.hideSkeleton()
+               appDelegate.hideActivity()
+                self?.tableView.refreshControl?.endRefreshing()
            }
            
            switch result
            {
            case .success(let data):
               // print(data)
-               self?.jobContacts = data
+               self?.jobContacts = data.surveyDetails
                DispatchQueue.main.async {
                    
                    self?.tableView.reloadData()
@@ -264,6 +267,11 @@ extension MyContactsVC : UITableViewDelegate, SkeletonTableViewDataSource
     }
 }
 // MARK: - ContactDetails
+
+struct contractData : Codable{
+    let status : Bool
+    let surveyDetails : ContactDetailsStruct
+}
 struct ContactDetailsStruct: Codable {
     let buyerType, homeType, propertyAddress, relocatingSuburb: String?
     let methodOfContact, siteSupervisor, cro, interiorDesigner: String?
@@ -279,18 +287,18 @@ struct ContactDetailsStruct: Codable {
 
     enum CodingKeys: String, CodingKey {
         case buyerType, homeType, propertyAddress, relocatingSuburb, methodOfContact, siteSupervisor
-        case cro = "CRO"
+        case cro = "cro"
         case interiorDesigner, electricalConsultant, newHomeConsultant, staffManager, mobileNumber, phoneNumber, email, colorDate, jobRegion, callback
-        case newHomeConsultantEmail = "NewHomeConsultantEmail"
-        case interiorDesignerEmail = "InteriorDesignerEmail"
-        case electricalConsultantEmail = "ElectricalConsultantEmail"
-        case siteSupervisorEmail = "SiteSupervisorEmail"
-        case croEmail = "CROEmail"
-        case newHomeConsultantPhone = "NewHomeConsultantPhone"
-        case electricalConsultantPhone = "ElectricalConsultantPhone"
-        case interiorDesignerPhone = "InteriorDesignerPhone"
-        case croPhone = "CROPhone"
-        case siteSupervisorPhone = "SiteSupervisorPhone"
+        case newHomeConsultantEmail = "newHomeConsultantEmail"
+        case interiorDesignerEmail = "interiorDesignerEmail"
+        case electricalConsultantEmail = "electricalConsultantEmail"
+        case siteSupervisorEmail = "siteSupervisorEmail"
+        case croEmail = "croEmail"
+        case newHomeConsultantPhone = "newHomeConsultantPhone"
+        case electricalConsultantPhone = "electricalConsultantPhone"
+        case interiorDesignerPhone = "interiorDesignerPhone"
+        case croPhone = "croPhone"
+        case siteSupervisorPhone = "siteSupervisorPhone"
         case contractName
     }
 }

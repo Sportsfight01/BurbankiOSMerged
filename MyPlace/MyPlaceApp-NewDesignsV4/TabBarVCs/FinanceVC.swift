@@ -26,7 +26,8 @@ class FinanceVC: BaseProfileVC {
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         setupTitles()
-        checkUserLoginForFinance()
+        self.getFinanceData()
+//        checkUserLoginForFinance()
         
         let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGestue))
         swipeDownGesture.direction = .down
@@ -58,7 +59,8 @@ class FinanceVC: BaseProfileVC {
     {
         if sender.state == .ended
         {
-            self.checkUserLoginForFinance()
+            self.getFinanceData()
+//            self.checkUserLoginForFinance()
         }
     }
     func setupTitles()
@@ -120,7 +122,10 @@ class FinanceVC: BaseProfileVC {
     func getFinanceData()
     {
         guard let jobNumber = APIManager.shared.currentJobDetails?.jobNumber else {print("jobNumber is Null"); return}
-        NetworkRequest.makeRequest(type: FinanceDetailsStruct.self, urlRequest: Router.getFinanceDetails(jobNumber: jobNumber), showActivity: false) {[weak self] (result) in
+        guard let jobRegion = APIManager.shared.currentJobDetails?.region else {print("region is Null"); return}
+       
+        
+        NetworkRequest.makeRequest(type: financeData.self, urlRequest: Router.getFinanceDetails(jobNumber: jobNumber, region: jobRegion), showActivity: false) {[weak self] (result) in
             DispatchQueue.main.async {
                 self?.collectionView.stopSkeletonAnimation()
                 self?.view.hideSkeleton()
@@ -130,7 +135,7 @@ class FinanceVC: BaseProfileVC {
             case .success(let data):
                 //print(data)
                 // let contractPrice =  String(format: "%.2f",data.contractPrice)
-                self?.financeDetails = data
+                self?.financeDetails = data.financeDatails
                 self?.setupUI()
                 
             case .failure(let err):
@@ -242,18 +247,24 @@ extension FinanceVC : UICollectionViewDelegateFlowLayout
   }
 }
 // MARK: - FinanceDetailsStruct
+struct financeData : Codable{
+    let status : Bool
+    let financeDatails : FinanceDetailsStruct
+}
+
 struct FinanceDetailsStruct: Codable {
+    
     let contractPrice: Int
     let financeVariations: [Finance]?
     let financeClaims, financeReceipts: [Finance]?
-    let id: Int
+//    let id: Int
 
     enum CodingKeys: String, CodingKey {
-        case contractPrice = "ContractPrice"
-        case financeVariations = "FinanceVariations"
-        case financeClaims = "FinanceClaims"
-        case financeReceipts = "FinanceReceipts"
-        case id = "Id"
+        case contractPrice = "contractPrice"
+        case financeVariations = "financeVariations"
+        case financeClaims = "financeClaims"
+        case financeReceipts = "financeReceipts"
+//        case id = "Id"
     }
 }
 
@@ -263,7 +274,7 @@ struct Finance: Codable {
     let financeDescription: String
 
     enum CodingKeys: String, CodingKey {
-        case amount = "Amount"
-        case financeDescription = "Description"
+        case amount = "amount"
+        case financeDescription = "description"
     }
 }

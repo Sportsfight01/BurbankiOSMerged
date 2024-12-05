@@ -333,7 +333,7 @@ class DesignsDetailsVC: HeaderVC {
         }
         
         if (enquireView.isHidden) {
-            facadeTop1.isActive = true
+          facadeTop1.isActive = true
 //            facadeTop2.isActive = false
         }else {
             facadeTop1.isActive = false
@@ -874,6 +874,11 @@ extension DesignsDetailsVC {
                                 }
                             } catch let jsonError {
                                 print(log: jsonError)
+                            }
+                        }else{
+                           let message =  (jsonObj as! NSDictionary).value(forKey: "message") as? String ?? ""
+                            self.showAlert(message: message) { str in
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }
                     }

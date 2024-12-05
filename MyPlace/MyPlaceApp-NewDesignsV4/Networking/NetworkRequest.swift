@@ -46,6 +46,8 @@ class NetworkRequest
                 return
             }
             do {
+                let jsonData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+               print(jsonData)
                 let modelData = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(modelData))
             } catch let err{

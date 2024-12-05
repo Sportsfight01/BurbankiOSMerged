@@ -36,7 +36,7 @@ enum Router:URLRequestConvertible{
     case documentsDetails(auth : String, contractNo : String)
     case getNotes(auth : String, contractNo : String)
     case postNotes(auth : String, contractNo : String, parameters : Parameters)
-    case getFinanceDetails(jobNumber : String)
+    case getFinanceDetails(jobNumber : String, region : String)
     case login(parameters : Parameters)
     case getUserProfile(parameters : Parameters)
     case updateUserProfile(parameters : Parameters)
@@ -90,12 +90,14 @@ enum Router:URLRequestConvertible{
         case .postNotes:
             return myPlaceNotesURLString()
         case .getFinanceDetails:
-            return "\(getMyPlaceURL())finance/GetFinance?financialTicketId="
+//            return "http://10.6.45.14:8085/myplace/api/finance/GetFinanceDetails?financialTicketId=182953&region=VIC"
+            return "\(getMyPlaceURL())finance/GetFinanceDetails?financialTicketId="
         case .infoCentreDetails:
             return getInfoCentreDetails()
         case .faqsQuestionAndAnswers:
             return getFaq()
         case .getClientInfoForContractNumber:
+//        http://10.6.45.14:8085/myplace/api/survey/GetClientInfoForContractNumber?jobNumber=200902
             return "\(getMyPlaceURL())survey/GetClientInfoForContractNumber?jobNumber="
         case .getCoBurbankInfo:
             return "coburbank/GetCoBurbanks"
@@ -193,7 +195,15 @@ enum Router:URLRequestConvertible{
             urlRequest = try JSONEncoding.default.encode(urlRequest)
             //  print(urlRequest)
             
-        case .getFinanceDetails(let jobNumber) , .getClientInfoForContractNumber(let jobNumber):
+        case .getFinanceDetails(let jobNumber, let stateID):
+            let urlStr = path + jobNumber + "&region=" + stateID
+//            let urlStr = path
+            let url = URL(string: urlStr)
+            urlRequest = URLRequest(url: url!)
+            urlRequest.httpMethod = method.rawValue
+            urlRequest = try JSONEncoding.default.encode(urlRequest)
+            
+        case .getClientInfoForContractNumber(let jobNumber):
             let urlStr = path + jobNumber
             let url = URL(string: urlStr)
             
