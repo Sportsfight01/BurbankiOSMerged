@@ -21,11 +21,13 @@ class MyProgressVM
         let contracts = ["Sign Building Contract", "Contract Signed"].map({$0.trim().lc})
         let isFinanceVisible = !adminData.filter({
 //            changed logic for v3
-            
+//            print($0.completedDate)
+//            print("\(contracts.contains($0.name?.trim().lc ?? "")) == \(($0.completedDate != "") && ($0.completedDate != nil))" )
+           
 //            (contracts.contains($0.name?.trim().lc ?? "") == true) &&
 //            ($0.status?.trim().lc.contains("completed") == true)
-            (contracts.contains($0.name?.trim().lc ?? "") == true) &&
-            ($0.completedDate != "")
+            return (contracts.contains($0.name?.trim().lc ?? "") == true) &&
+            (($0.completedDate != "") && ($0.completedDate != nil))
         }).isEmpty
         print("isFinanceVisible : ",isFinanceVisible)
         financeVisibilityPublisher.send(isFinanceVisible)
