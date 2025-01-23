@@ -197,22 +197,35 @@ class APIManager{
                 return}
 //            print("MasterContract Json Data : ", jsonDict)
             
-            guard let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any], let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
-//                completion(.failure(.other(err: "Json Serialization Failed")))
-                return
-            }
-            guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
-//                completion(.failure(.other(err: "Json Serialization Failed")))
-                return 
-            }
+//            guard let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any], let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
+////                completion(.failure(.other(err: "Json Serialization Failed")))
+//                
+//                return
+//            }
+//            guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
+////                completion(.failure(.other(err: "Json Serialization Failed")))
+//                return
+//            }
+            
+             let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any]
+//                    let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
+////                completion(.failure(.other(err: "Json Serialization Failed")))
+//                
+//                return
+//            }
+             let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any]
+//                 let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
+////                completion(.failure(.other(err: "Json Serialization Failed")))
+//                return 
+//            }
         
             do {
-                var jsonContract = try JSONSerialization.jsonObject(with: jsonData) as! [String : Any]
-                print( "constructionContract.tasks Data", jsonContract)
-                let jsonPrecon = try JSONSerialization.jsonObject(with: jsonDataForPreConst) as! [String : Any]
-                print( "preconstructionContract.tasks Data", jsonPrecon)
-                var constructionContractArr = jsonContract["list"] as? Array<[String : Any]>
-                let preconstructionContractArr = jsonPrecon["list"] as? Array<[String : Any]>
+//                var jsonContract = try JSONSerialization.jsonObject(with: jsonData) as! [String : Any]
+//                print( "constructionContract.tasks Data", jsonContract)
+//                let jsonPrecon = try JSONSerialization.jsonObject(with: jsonDataForPreConst) as! [String : Any]
+//                print( "preconstructionContract.tasks Data", jsonPrecon)
+                var constructionContractArr = constructionContractList?["list"] as? Array<[String : Any]>
+                let preconstructionContractArr = preconstructionContractList?["list"] as? Array<[String : Any]>
                 
                 let flattenArray = [constructionContractArr, preconstructionContractArr].flatMap({ (element: Array<[String : Any]>?) -> Array<[String : Any]>? in
                     return element

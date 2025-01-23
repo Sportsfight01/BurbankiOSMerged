@@ -166,8 +166,8 @@ class DocumentsVC: BaseProfileVC {
                 appDelegate.hideActivity()
                     self.tableView.refreshControl?.endRefreshing()
                 }
-                print(notes.filter({$0.type == ".pdf" }))
-                self.documentList = notes.filter({$0.type == ".pdf" })
+//                print(notes.filter({$0.type == ".pdf" }))
+                self.documentList = notes.filter( { !(($0.type?.lc.contains("jpeg")) != nil)}).filter( { !(($0.type?.lc.contains("jpg")) != nil)}).filter( { !(($0.type?.lc.contains("png")) != nil) }).filter({ !(($0.type?.lc.contains("eml")) != nil) }).filter({ !(($0.type?.lc.contains("txt")) != nil) })
                 
 //                notes.filter( { (($0.type?.lc.contains("jpeg")) == nil)}).filter( { (($0.type?.lc.contains("jpg")) == nil)}).filter( { (($0.type?.lc.contains("png")) == nil) }).filter({ (($0.type?.lc.contains("eml")) == nil) }).filter({ (($0.type?.lc.contains("txt")) == nil) })
                 print(self.documentList)
@@ -241,15 +241,17 @@ class DocumentsVC: BaseProfileVC {
 //    }
     func getPdfDataAt(rowNo : Int)
     {
-        guard let url = tableDataSource?[rowNo].url, let type = tableDataSource?[rowNo].type?.trim(), let title = tableDataSource?[rowNo].title else {return}
-        let fileName = "\(title).\(type)"
-        let documentURL = "\(url)"
-        if type.contains("eml")
+        let url = tableDataSource?[rowNo].url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let type = ".pdf"
+        let title = tableDataSource?[rowNo].title
+        let fileName = "\(title ?? "").\(type)"
+        let documentURL = "\(url ?? "")"
+        if type.contains("eml") || type.isEmpty
         {
             openSafariVC(url: documentURL)
         }else {
             //DocumentPreviewer
-            let documentPreviewer = DocumentPreviewer(fileName: fileName, url: documentURL)
+            let documentPreviewer = DocumentPreviewer(fileName: fileName, url: documentURL )
             documentPreviewer.parentViewController = self
             documentPreviewer.loadDocument()
         }

@@ -42,7 +42,7 @@ class ProfileHeaderView: UIView {
             .flexibleHeight]
         let image = UIImage(systemName: "ellipsis.message", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         contactUsBtn.setImage(image ?? UIImage(named: "Top Menu Icons_Chat"), for: .normal)
-        contactUsBtn.isHidden = true
+//        contactUsBtn.isHidden = true
         
         titleLb.font = FONT_LABEL_BODY(size: FONT_22)
         helpTextLb.font = FONT_LABEL_BODY(size: FONT_11)

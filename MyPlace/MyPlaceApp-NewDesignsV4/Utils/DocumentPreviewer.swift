@@ -52,10 +52,11 @@ class DocumentPreviewer : NSObject
                     self.saveDataToFileManager(fileURl: data)
                 }
             }
-            
+            DispatchQueue.main.async {
+                appDelegate.hideActivity()
+            }
             downloadTask.resume()
         }
-        
     }
     
     private func saveDataToFileManager(fileURl : Data)

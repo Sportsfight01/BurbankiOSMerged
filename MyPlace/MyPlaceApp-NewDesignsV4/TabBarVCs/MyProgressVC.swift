@@ -64,7 +64,7 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         profileView.titleLb.textColor = AppColors.appGray
         profileView.helpTextLb.textColor = AppColors.appGray
         profileView.profilePicImgView.borderColor = APPCOLORS_3.GreyTextFont
-        [profileView.menubtn,/*profileView.contactUsBtn,*/profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
+        [profileView.menubtn,profileView.contactUsBtn,profileView.navBarTitleImg].forEach({$0?.tintColor = .black})
         
         let panGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
         panGestureRecognizer.direction = .down
