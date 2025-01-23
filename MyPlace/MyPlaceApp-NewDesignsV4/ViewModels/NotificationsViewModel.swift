@@ -76,7 +76,8 @@ class NotificationsViewModel
                 case .success(let notes):
                     DispatchQueue.main.async {
                         print("---------------- documentList before filter :", notes.count)
-                        let documentList = notes.filter({ (($0.type?.lc.contains("pdf")) != nil)}).filter({ (($0.type?.lc.contains("jpg")) != nil) }).filter({ (($0.type?.lc.contains("png")) != nil) }).filter({ (($0.type?.lc.contains("jpeg")) != nil) })
+                        let documentList = notes
+//                        filter({ !(($0.type?.lc.contains("pdf")) != nil)}).filter({ !(($0.type?.lc.contains("jpg")) != nil) }).filter({ !(($0.type?.lc.contains("png")) != nil) }).filter({ !(($0.type?.lc.contains("jpeg")) != nil) })
 
                         print("---------------- documentList after filter :",documentList.count)
                         
@@ -97,12 +98,7 @@ class NotificationsViewModel
                     }
                 case .failure(let err) : break
                     
-                }
-                    
-                   
-                    
-                
-                  
+                }         
                 }
 
             group.notify(queue: .main)

@@ -90,6 +90,8 @@ class PhotosVC: BaseProfileVC {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        
+        
     }
     
     func setupServiceData(_ PhotosList : [DocumentsDetailsStructV3])
@@ -112,7 +114,7 @@ class PhotosVC: BaseProfileVC {
             return date1.compare(date2) == .orderedDescending
         })
         DispatchQueue.main.async {
-            //  print(self.documentList)
+              print(self.collectionDataSource)
             self.collectionView.reloadData()
           
             
@@ -155,8 +157,8 @@ class PhotosVC: BaseProfileVC {
                         
                     }; return}
                 DispatchQueue.main.async {
-                    self.seeAllPhotosBtn.isHidden = photoList.count == 0 ? true : false
-                    self.setupServiceData(photoList)
+                    self.seeAllPhotosBtn.isHidden = photos.count == 0 ? true : false
+                    self.setupServiceData(photos)
                 }
                 
                 
@@ -254,7 +256,10 @@ extension PhotosVC : UICollectionViewDelegate, SkeletonCollectionViewDataSource
         cell.imageView.tintColor = .lightGray
         
         cell.imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
-        cell.imageView.sd_setImage(with: URL(string: "\(photoInfo?.url ?? "")"))
+//        cell.imageView.sd_setImage(with: URL(string: "\(photoInfo?.url ?? "")"))
+        let photUrl  = photoInfo?.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        cell.imageView.sd_setImage(with: URL(string: photUrl), placeholderImage: UIImage(named: "BurbankLogo"), context: .none)
+//        CodeManager.sharedInstance.downloadAndShowImage("\(photoInfo?.url ?? "")", "", cell.imageView)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

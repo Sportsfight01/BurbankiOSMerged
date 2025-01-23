@@ -21,11 +21,13 @@ class MyProgressVM
         let contracts = ["Sign Building Contract", "Contract Signed"].map({$0.trim().lc})
         let isFinanceVisible = !adminData.filter({
 //            changed logic for v3
-            
+//            print($0.completedDate)
+//            print("\(contracts.contains($0.name?.trim().lc ?? "")) == \(($0.completedDate != "") && ($0.completedDate != nil))" )
+           
 //            (contracts.contains($0.name?.trim().lc ?? "") == true) &&
 //            ($0.status?.trim().lc.contains("completed") == true)
-            (contracts.contains($0.name?.trim().lc ?? "") == true) &&
-            ($0.completedDate != "")
+            return (contracts.contains($0.name?.trim().lc ?? "") == true) &&
+            (($0.completedDate != "") && ($0.completedDate != nil))
         }).isEmpty
         print("isFinanceVisible : ",isFinanceVisible)
         financeVisibilityPublisher.send(isFinanceVisible)
@@ -100,6 +102,10 @@ class MyProgressVM
                 return  ""
             }
         }
+        
+        
+       
+        
         debugPrint("all keys : \(stageGroup.keys)")
         debugPrint("all keys : \(stageGroup.filter({$0.key != ""}))")
         self.checkForFinanceVisibility(adminData: stageGroup["Admin Stage"])
@@ -261,6 +267,7 @@ enum Stage : String
 // MARK: - ProgressStruct
 struct ProgressStruct: Codable, Equatable {
     let taskid: Int?
+    let hidden: Bool?
     let resourcename, phasecode: String?
     let sequence: Int?
     let name, status, datedescription, dateactual: String?
@@ -272,7 +279,7 @@ struct ProgressStruct: Codable, Equatable {
     let completedDate : String?
     
     enum CodingKeys: String, CodingKey {
-        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient, /*customMessage*/ completedDate, stageName
+        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient, /*customMessage*/ completedDate, stageName,hidden
         case stageID = "stageId"
     }
     var date : Date {

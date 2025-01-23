@@ -166,12 +166,13 @@ class DocumentsVC: BaseProfileVC {
                 appDelegate.hideActivity()
                     self.tableView.refreshControl?.endRefreshing()
                 }
-//                print(notes.filter({$0.type == ".pdf" }))
-                self.documentList = notes.filter( { !(($0.type?.lc.contains("jpeg")) != nil)}).filter( { !(($0.type?.lc.contains("jpg")) != nil)}).filter( { !(($0.type?.lc.contains("png")) != nil) }).filter({ !(($0.type?.lc.contains("eml")) != nil) }).filter({ !(($0.type?.lc.contains("txt")) != nil) })
+                self.documentList = notes
                 
-//                notes.filter( { (($0.type?.lc.contains("jpeg")) == nil)}).filter( { (($0.type?.lc.contains("jpg")) == nil)}).filter( { (($0.type?.lc.contains("png")) == nil) }).filter({ (($0.type?.lc.contains("eml")) == nil) }).filter({ (($0.type?.lc.contains("txt")) == nil) })
-                print(self.documentList)
-                //self?.documentList = data.filter({$0.type?.lowercased() != "jpg"})
+                //Changed in V3.8 ---  before we used extension key for documents now we use isMyhome key, if the key is 1 show the documents or else dont show
+                
+                //notes.filter( { !(($0.type?.lc.contains("jpeg")) != nil)}).filter( { !(($0.type?.lc.contains("jpg")) != nil)}).filter( { !(($0.type?.lc.contains("png")) != nil) }).filter({ !(($0.type?.lc.contains("eml")) != nil) }).filter({ !(($0.type?.lc.contains("txt")) != nil) })
+                
+//                print(self.documentList)
                 DispatchQueue.main.async {
                     self.documentList = self.documentList?.sorted(by: {$0.metaData.createdOn! > $1.metaData.createdOn!})
                     self.tableDataSource = self.documentList
@@ -242,19 +243,19 @@ class DocumentsVC: BaseProfileVC {
     func getPdfDataAt(rowNo : Int)
     {
         let url = tableDataSource?[rowNo].url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let type = ".pdf"
+        let type = tableDataSource?[rowNo].type?.trim() ?? ""
         let title = tableDataSource?[rowNo].title
-        let fileName = "\(title ?? "").\(type)"
+        let fileName = "\(title ?? "").\(type )"
         let documentURL = "\(url ?? "")"
-        if type.contains("eml") || type.isEmpty
-        {
+//        if type.contains("eml") || type.isEmpty
+//        {
             openSafariVC(url: documentURL)
-        }else {
-            //DocumentPreviewer
-            let documentPreviewer = DocumentPreviewer(fileName: fileName, url: documentURL )
-            documentPreviewer.parentViewController = self
-            documentPreviewer.loadDocument()
-        }
+//        }else {
+//            //DocumentPreviewer
+//            let documentPreviewer = DocumentPreviewer(fileName: fileName, url: documentURL)
+//            documentPreviewer.parentViewController = self
+//            documentPreviewer.loadDocument()
+//        }
         
     }
     
@@ -360,12 +361,18 @@ struct DocumentsDetailsStructV3: Decodable , Hashable{
     let documentId: Int?
     let type : String?
     let url : String?
+//    let documentCategory : documentCat
 ////    let externalUrls: [String]?
     var metaData : metadataDoc
     enum CodingKeys: String, CodingKey {
-        case title,url,metaData,documentId
+        case title,url,metaData,documentId/*documentCategory*/
         case type = "extension"
     }
+   
+   
+}
+struct documentCat : Decodable,Hashable{
+    let isMyHome : Bool?
    
    
 }

@@ -34,7 +34,7 @@ class DocumentsTBCell: UITableViewCell {
     
     func setup(model : DocumentsDetailsStructV3)
     {
-        pdfNameLb.text = "\(model.title ?? "Title").\(model.type ?? "pdf")"
+        pdfNameLb.text = "\(model.title ?? "Title").\(model.type ?? " ")"
         if let notedate = model.metaData.createdOn?.components(separatedBy: ".").first
         {
             let notedated = dateFormatter(dateStr: notedate, currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "dd MMM, yyyy, hh:mm a")

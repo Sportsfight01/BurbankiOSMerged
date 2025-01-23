@@ -51,13 +51,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         
-        Harpy.sharedInstance()?.checkVersionDaily()
-        Harpy.sharedInstance()?.checkVersionWeekly()
+        //        checkVersionUpdate()
+        appDelegate.checkAppUpdateAvailability { (status, version ) in
+            //When status == true show popup.
+            if status{
+                showUpdatePopup(appStoreVersion: version)
+            }
+        } onError: { (status) in
+            // Handle error
+        }
         
         appDelegate.checkInternetConnection()
+#if DEDEBUG
+        print("is Enter Foreground called.....?/")
+#endif
         
         NotificationCenter.default.post(name: NSNotification.Name (rawValue: kLocationPermissionChanges), object: nil)
-
+        
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -70,6 +80,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to undo the changes made on entering the background.
         
         Harpy.sharedInstance()?.checkVersion()
+        
 
     }
 

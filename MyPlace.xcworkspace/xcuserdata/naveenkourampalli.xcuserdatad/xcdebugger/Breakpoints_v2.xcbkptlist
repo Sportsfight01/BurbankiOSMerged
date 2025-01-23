@@ -1417,22 +1417,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1857510A-7846-4C57-96AD-0D88112D85DE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyPlace/Models/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "886"
-            endingLineNumber = "886"
-            landmarkName = "getPackagesWithDesign(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "BAB2804A-183E-4BDB-8AE4-F63E4485A20B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1440,9 +1424,9 @@
             filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager + Service Calls.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
-            landmarkName = "getMyDetails(completion:)"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
+            landmarkName = "getNotes(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1577,102 +1561,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E6362150-6060-4F3D-B167-999929A59122"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyPlace/DataManagement/Dashboard/DashboardDataManagement.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "940"
-            endingLineNumber = "940"
-            landmarkName = "getestateDetailsData(stateId:estateName:showActivity:_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E6362150-6060-4F3D-B167-999929A59122 - dfc41df2ea1c07c2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;, __C.NSURLResponse) -&gt; () in BurbankApp.DashboardDataManagement.getestateDetailsData(stateId: Swift.String, estateName: Swift.String, showActivity: Swift.Bool, _: Swift.Optional&lt;(Swift.Optional&lt;Swift.Array&lt;BurbankApp.houseDetailsByHouseType&gt;&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/DataManagement/Dashboard/DashboardDataManagement.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "940"
-                  endingLineNumber = "940"
-                  offsetFromSymbolStart = "2332">
-               </Location>
-               <Location
-                  uuid = "E6362150-6060-4F3D-B167-999929A59122 - dfc41df2ea1c07c2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;, __C.NSURLResponse) -&gt; () in BurbankApp.DashboardDataManagement.getestateDetailsData(stateId: Swift.String, estateName: Swift.String, showActivity: Swift.Bool, _: Swift.Optional&lt;(Swift.Optional&lt;Swift.Array&lt;BurbankApp.houseDetailsByHouseType&gt;&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/DataManagement/Dashboard/DashboardDataManagement.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "940"
-                  endingLineNumber = "940"
-                  offsetFromSymbolStart = "2845">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1EEF4055-FCC5-4910-99E2-F0D21BCC77D3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyPlace/DataManagement/Dashboard/DashboardDataManagement.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "932"
-            endingLineNumber = "932"
-            landmarkName = "getestateDetailsData(stateId:estateName:showActivity:_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1EEF4055-FCC5-4910-99E2-F0D21BCC77D3 - dfc41df2ea1c06ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;, __C.NSURLResponse) -&gt; () in BurbankApp.DashboardDataManagement.getestateDetailsData(stateId: Swift.String, estateName: Swift.String, showActivity: Swift.Bool, _: Swift.Optional&lt;(Swift.Optional&lt;Swift.Array&lt;BurbankApp.houseDetailsByHouseType&gt;&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/DataManagement/Dashboard/DashboardDataManagement.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "932"
-                  endingLineNumber = "932"
-                  offsetFromSymbolStart = "224">
-               </Location>
-               <Location
-                  uuid = "1EEF4055-FCC5-4910-99E2-F0D21BCC77D3 - dfc41df2ea1c06ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;, __C.NSURLResponse) -&gt; () in BurbankApp.DashboardDataManagement.getestateDetailsData(stateId: Swift.String, estateName: Swift.String, showActivity: Swift.Bool, _: Swift.Optional&lt;(Swift.Optional&lt;Swift.Array&lt;BurbankApp.houseDetailsByHouseType&gt;&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/DataManagement/Dashboard/DashboardDataManagement.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "932"
-                  endingLineNumber = "932"
-                  offsetFromSymbolStart = "336">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E44D4C7F-12E0-4B5A-8890-C94ABEEF5B55"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1744,8 +1632,8 @@
             filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager + Service Calls.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "554"
-            endingLineNumber = "554"
+            startingLineNumber = "543"
+            endingLineNumber = "543"
             landmarkName = "getMyDetailsAPI(completion:)"
             landmarkType = "7">
             <Locations>
@@ -1762,10 +1650,10 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "547"
                   endingLineNumber = "547"
-                  offsetFromSymbolStart = "1652">
+                  offsetFromSymbolStart = "1062">
                </Location>
                <Location
-                  uuid = "960E7051-4BB7-4FF8-B734-DC24C2F21D55 - 54548d45b4274b8e"
+                  uuid = "960E7051-4BB7-4FF8-B734-DC24C2F21D55 - 54548d45b4274bcc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1775,12 +1663,12 @@
                   urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "547"
-                  endingLineNumber = "547"
+                  startingLineNumber = "545"
+                  endingLineNumber = "545"
                   offsetFromSymbolStart = "902">
                </Location>
                <Location
-                  uuid = "960E7051-4BB7-4FF8-B734-DC24C2F21D55 - 54548d45b42748b7"
+                  uuid = "960E7051-4BB7-4FF8-B734-DC24C2F21D55 - 54548d45b4274baf"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1790,30 +1678,60 @@
                   urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "554"
-                  endingLineNumber = "554"
+                  startingLineNumber = "546"
+                  endingLineNumber = "546"
+                  offsetFromSymbolStart = "1062">
+               </Location>
+               <Location
+                  uuid = "960E7051-4BB7-4FF8-B734-DC24C2F21D55 - 54548d45b427482b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDetailsAPI(completion: (Swift.Result&lt;BurbankApp.ContactDetialsV3, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "550"
+                  endingLineNumber = "550"
                   offsetFromSymbolStart = "902">
                </Location>
+               <Location
+                  uuid = "960E7051-4BB7-4FF8-B734-DC24C2F21D55 - 54548d45b427482b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDetailsAPI(completion: (Swift.Result&lt;BurbankApp.ContactDetialsV3, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "550"
+                  endingLineNumber = "550"
+                  offsetFromSymbolStart = "776">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0B081977-7330-4DE2-84BC-A2957404941F"
+            uuid = "89B1560A-E285-4D51-916E-3E6C640A5F8E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "getPdfDataAt(rowNo:)"
-            landmarkType = "7">
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "DocumentsVC"
+            landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "0B081977-7330-4DE2-84BC-A2957404941F - 75b0b09bc8cd5041"
+                  uuid = "89B1560A-E285-4D51-916E-3E6C640A5F8E - 75b0b09bc8cd5060"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1823,12 +1741,12 @@
                   urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "179">
+                  startingLineNumber = "245"
+                  endingLineNumber = "245"
+                  offsetFromSymbolStart = "240">
                </Location>
                <Location
-                  uuid = "0B081977-7330-4DE2-84BC-A2957404941F - 75b0b09bc8cd5041"
+                  uuid = "89B1560A-E285-4D51-916E-3E6C640A5F8E - 75b0b09bc8cd5060"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1838,12 +1756,12 @@
                   urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "535">
+                  startingLineNumber = "245"
+                  endingLineNumber = "245"
+                  offsetFromSymbolStart = "148">
                </Location>
                <Location
-                  uuid = "0B081977-7330-4DE2-84BC-A2957404941F - 75b0b09bc8cd5041"
+                  uuid = "89B1560A-E285-4D51-916E-3E6C640A5F8E - 75b0b09bc8cd5060"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1853,39 +1771,9 @@
                   urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "1012">
-               </Location>
-               <Location
-                  uuid = "0B081977-7330-4DE2-84BC-A2957404941F - 75b0b09bc8cd5041"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "159">
-               </Location>
-               <Location
-                  uuid = "0B081977-7330-4DE2-84BC-A2957404941F - 75b0b09bc8cd5041"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "156">
+                  startingLineNumber = "245"
+                  endingLineNumber = "245"
+                  offsetFromSymbolStart = "1385">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1893,107 +1781,77 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5D5A1004-36B4-4D82-99D7-12643377DB3F"
+            uuid = "AC51A8EA-4700-4A81-B16A-92CFEDDE03B3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "getPdfDataAt(rowNo:)"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "5D5A1004-36B4-4D82-99D7-12643377DB3F - 75b0b09bc8cd528f"
+                  uuid = "AC51A8EA-4700-4A81-B16A-92CFEDDE03B3 - 32a3ae072165bdfe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "2191">
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "4751">
                </Location>
                <Location
-                  uuid = "5D5A1004-36B4-4D82-99D7-12643377DB3F - 75b0b09bc8cd528f"
+                  uuid = "AC51A8EA-4700-4A81-B16A-92CFEDDE03B3 - 32a3ae072165bdfe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "2361">
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "3828">
                </Location>
                <Location
-                  uuid = "5D5A1004-36B4-4D82-99D7-12643377DB3F - 75b0b09bc8cd528f"
+                  uuid = "AC51A8EA-4700-4A81-B16A-92CFEDDE03B3 - 32a3ae072165bdfe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "2628">
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "4975">
                </Location>
                <Location
-                  uuid = "5D5A1004-36B4-4D82-99D7-12643377DB3F - 75b0b09bc8cd528f"
+                  uuid = "AC51A8EA-4700-4A81-B16A-92CFEDDE03B3 - 215921cef968c127"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "2828">
-               </Location>
-               <Location
-                  uuid = "5D5A1004-36B4-4D82-99D7-12643377DB3F - 75b0b09bc8cd528f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "2711">
-               </Location>
-               <Location
-                  uuid = "5D5A1004-36B4-4D82-99D7-12643377DB3F - 75b0b09bc8cd528f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentsVC.getPdfDataAt(rowNo: Swift.Int) -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "2187">
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "126">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2001,92 +1859,77 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "536E7128-C4AF-4F57-817D-E4B882DE174E"
+            uuid = "CCE05766-05CD-446B-BFD2-3A653C13B699"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "loadDocument()"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "536E7128-C4AF-4F57-817D-E4B882DE174E - 3ead9711f957f18d"
+                  uuid = "CCE05766-05CD-446B-BFD2-3A653C13B699 - 32a3ae072165bc4b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1392">
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "336">
                </Location>
                <Location
-                  uuid = "536E7128-C4AF-4F57-817D-E4B882DE174E - 3ead9711f957f18d"
+                  uuid = "CCE05766-05CD-446B-BFD2-3A653C13B699 - 32a3ae072165bc4b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1372">
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "468">
                </Location>
                <Location
-                  uuid = "536E7128-C4AF-4F57-817D-E4B882DE174E - 3ead9711f957f18d"
+                  uuid = "CCE05766-05CD-446B-BFD2-3A653C13B699 - 32a3ae072165bc4b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1375">
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "347">
                </Location>
                <Location
-                  uuid = "536E7128-C4AF-4F57-817D-E4B882DE174E - 3ead9711f957f18d"
+                  uuid = "CCE05766-05CD-446B-BFD2-3A653C13B699 - 32a3ae072165bc4b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
+                  symbolName = "BurbankApp.PhotosVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1436">
-               </Location>
-               <Location
-                  uuid = "536E7128-C4AF-4F57-817D-E4B882DE174E - 3ead9711f957f18d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1453">
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "528">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2094,79 +1937,799 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AFEB4D91-81F2-4E69-9B19-831C6AF2E3B3"
+            uuid = "6F521E42-E85E-4382-AAAA-2D6EA6F0187A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "loadDocument()"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "getPhotos()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "AFEB4D91-81F2-4E69-9B19-831C6AF2E3B3 - 3ead9711f957ce85"
+                  uuid = "6F521E42-E85E-4382-AAAA-2D6EA6F0187A - 976d3c7c1bdcc895"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "375">
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "2009">
                </Location>
                <Location
-                  uuid = "AFEB4D91-81F2-4E69-9B19-831C6AF2E3B3 - 3ead9711f957ce85"
+                  uuid = "6F521E42-E85E-4382-AAAA-2D6EA6F0187A - 976d3c7c1bdcc895"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "378">
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "1628">
                </Location>
                <Location
-                  uuid = "AFEB4D91-81F2-4E69-9B19-831C6AF2E3B3 - 3ead9711f957ce85"
+                  uuid = "6F521E42-E85E-4382-AAAA-2D6EA6F0187A - 1bee4d838b3989ad"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
+                  symbolName = "closure #5 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
                   moduleName = "BurbankApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "439">
-               </Location>
-               <Location
-                  uuid = "AFEB4D91-81F2-4E69-9B19-831C6AF2E3B3 - 3ead9711f957ce85"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BurbankApp.DocumentPreviewer.loadDocument() -&gt; ()"
-                  moduleName = "BurbankApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Utils/DocumentPreviewer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "436">
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0453E0F-A534-4324-A776-A7E38C785C1A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "getPhotos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E0453E0F-A534-4324-A776-A7E38C785C1A - 1bee4d838b3989f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "E0453E0F-A534-4324-A776-A7E38C785C1A - 1bee4d838b3989f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "E0453E0F-A534-4324-A776-A7E38C785C1A - 976d3c7c1bdccb2a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "2685">
+               </Location>
+               <Location
+                  uuid = "E0453E0F-A534-4324-A776-A7E38C785C1A - 1bee4d838b398a12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "604">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4A4DE58-6945-4191-8214-56A18A428BF6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "getPhotos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D4A4DE58-6945-4191-8214-56A18A428BF6 - ed237e7ce4402091"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  uuid = "D4A4DE58-6945-4191-8214-56A18A428BF6 - ed237e7ce4402091"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "D4A4DE58-6945-4191-8214-56A18A428BF6 - ed237e7ce4402091"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "305">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC2C52C9-FDA7-4904-9671-6AF390A52759"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "setupServiceData(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AC2C52C9-FDA7-4904-9671-6AF390A52759 - a41be8b895cd1850"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 @Swift.MainActor () -&gt; () in BurbankApp.PhotosVC.setupServiceData(Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  uuid = "AC2C52C9-FDA7-4904-9671-6AF390A52759 - a41be8b895cd1871"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 @Swift.MainActor () -&gt; () in BurbankApp.PhotosVC.setupServiceData(Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "AC2C52C9-FDA7-4904-9671-6AF390A52759 - a41be8b895cd1871"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 @Swift.MainActor () -&gt; () in BurbankApp.PhotosVC.setupServiceData(Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  uuid = "AC2C52C9-FDA7-4904-9671-6AF390A52759 - a41be8b895cd1837"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 @Swift.MainActor () -&gt; () in BurbankApp.PhotosVC.setupServiceData(Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "181">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1859F00D-3C56-4C2E-9B94-0FD4EEEA516B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "getPhotos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1859F00D-3C56-4C2E-9B94-0FD4EEEA516B - 976d3c7c1bdcc8b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "1432">
+               </Location>
+               <Location
+                  uuid = "1859F00D-3C56-4C2E-9B94-0FD4EEEA516B - 82c593fa4d0286b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (BurbankApp.DocumentsDetailsStructV3) -&gt; Swift.Bool in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "1859F00D-3C56-4C2E-9B94-0FD4EEEA516B - 976d3c7c1bdcc8b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "1796">
+               </Location>
+               <Location
+                  uuid = "1859F00D-3C56-4C2E-9B94-0FD4EEEA516B - 82c593fa4d0286b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (BurbankApp.DocumentsDetailsStructV3) -&gt; Swift.Bool in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "89">
+               </Location>
+               <Location
+                  uuid = "1859F00D-3C56-4C2E-9B94-0FD4EEEA516B - 976d3c7c1bdcc8b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "2431">
+               </Location>
+               <Location
+                  uuid = "1859F00D-3C56-4C2E-9B94-0FD4EEEA516B - 1bee4d838b3989ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 @Swift.MainActor () -&gt; () in closure #2 (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; () in BurbankApp.PhotosVC.getPhotos() -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/PhotosVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager + Service Calls.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "getMyDocumentsAPI(isDocuments:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d2e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "652"
+                  endingLineNumber = "652"
+                  offsetFromSymbolStart = "3335">
+               </Location>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "650"
+                  endingLineNumber = "650"
+                  offsetFromSymbolStart = "2326">
+               </Location>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "650"
+                  endingLineNumber = "650"
+                  offsetFromSymbolStart = "2745">
+               </Location>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d09"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "651"
+                  endingLineNumber = "651"
+                  offsetFromSymbolStart = "3335">
+               </Location>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "655"
+                  endingLineNumber = "655"
+                  offsetFromSymbolStart = "2326">
+               </Location>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "655"
+                  endingLineNumber = "655"
+                  offsetFromSymbolStart = "2745">
+               </Location>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "655"
+                  endingLineNumber = "655"
+                  offsetFromSymbolStart = "1848">
+               </Location>
+               <Location
+                  uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5 - b02057d6a1cc9d8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.APIManager.getMyDocumentsAPI(isDocuments: Swift.Bool, completion: (Swift.Result&lt;Swift.Array&lt;BurbankApp.DocumentsDetailsStructV3&gt;, BurbankApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager%20+%20Service%20Calls.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "655"
+                  endingLineNumber = "655"
+                  offsetFromSymbolStart = "2180">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84FE51C1-F64F-4433-BA71-6DBA3B777C5B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/Models/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
+            landmarkName = "handleHomeLandButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "84FE51C1-F64F-4433-BA71-6DBA3B777C5B - bf894846348b8f26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.DisplayHomesDetailsVC.handleHomeLandButton(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/Models/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "521"
+                  endingLineNumber = "521"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  uuid = "84FE51C1-F64F-4433-BA71-6DBA3B777C5B - bf894846348b8f26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.DisplayHomesDetailsVC.handleHomeLandButton(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/Models/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "521"
+                  endingLineNumber = "521"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5691A509-07BC-48CF-B2A7-1127D0C47DBF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/Models/ViewControllers/Dashboard/Displays/DisplayHomesDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34379391-EE9E-4C04-8464-BFC55B8D795B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "checkAppUpdateAvailability(onSuccess:onError:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "34379391-EE9E-4C04-8464-BFC55B8D795B - df23d2e01bf1be71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.AppDelegate.checkAppUpdateAvailability(onSuccess: (Swift.Bool) -&gt; (), onError: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "1500">
+               </Location>
+               <Location
+                  uuid = "34379391-EE9E-4C04-8464-BFC55B8D795B - df23d2e01bf1be33"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.AppDelegate.checkAppUpdateAvailability(onSuccess: (Swift.Bool) -&gt; (), onError: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "1500">
+               </Location>
+               <Location
+                  uuid = "34379391-EE9E-4C04-8464-BFC55B8D795B - 57b9265da3bd3732"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.AppDelegate.checkAppUpdateAvailability(onSuccess: (Swift.Bool, Swift.String) -&gt; (), onError: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "1728">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "44AC36C0-08FD-46E4-8981-142146A49639"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "checkAppUpdateAvailability(onSuccess:onError:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "44AC36C0-08FD-46E4-8981-142146A49639 - 9bbbd6b714b5ae3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.AppDelegate.checkAppUpdateAvailability(onSuccess: (Swift.Bool) -&gt; (), onError: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "223">
+               </Location>
+               <Location
+                  uuid = "44AC36C0-08FD-46E4-8981-142146A49639 - e3aa307dffa08864"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.AppDelegate.checkAppUpdateAvailability(onSuccess: (Swift.Bool) -&gt; (), onError: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "1455">
+               </Location>
+               <Location
+                  uuid = "44AC36C0-08FD-46E4-8981-142146A49639 - e3aa307dffa08864"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BurbankApp.AppDelegate.checkAppUpdateAvailability(onSuccess: (Swift.Bool) -&gt; (), onError: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "2478">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42E938B7-A8F8-4A54-8D86-C2C2D49D0A05"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/Models/ViewControllers/Dashboard/Profile/UserProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1176"
+            endingLineNumber = "1176"
+            landmarkName = "handleLogoutAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "42E938B7-A8F8-4A54-8D86-C2C2D49D0A05 - 83e7af8943401380"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BurbankApp.UserProfileVC.handleLogoutAction(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/Models/ViewControllers/Dashboard/Profile/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1176"
+                  endingLineNumber = "1176"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "42E938B7-A8F8-4A54-8D86-C2C2D49D0A05 - d3022dd594ab3846"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in BurbankApp.UserProfileVC.handleLogoutAction(__C.UIButton) -&gt; ()"
+                  moduleName = "BurbankApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/naveenkourampalli/Documents/GitHub/BurbankiOSMerged/MyPlace/Models/ViewControllers/Dashboard/Profile/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1178"
+                  endingLineNumber = "1178"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9AE2187B-105D-458B-B46B-C44FF8901B85"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/Models/ViewControllers/Dashboard/Profile/UserProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1174"
+            endingLineNumber = "1174"
+            landmarkName = "handleLogoutAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8460C599-972C-4C8C-A5BD-FAA237620331"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/SideMenuControllers/MySettingsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "logOutClicked(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
