@@ -102,6 +102,10 @@ class MyProgressVM
                 return  ""
             }
         }
+        
+        
+       
+        
         debugPrint("all keys : \(stageGroup.keys)")
         debugPrint("all keys : \(stageGroup.filter({$0.key != ""}))")
         self.checkForFinanceVisibility(adminData: stageGroup["Admin Stage"])
@@ -263,6 +267,7 @@ enum Stage : String
 // MARK: - ProgressStruct
 struct ProgressStruct: Codable, Equatable {
     let taskid: Int?
+    let hidden: Bool?
     let resourcename, phasecode: String?
     let sequence: Int?
     let name, status, datedescription, dateactual: String?
@@ -274,7 +279,7 @@ struct ProgressStruct: Codable, Equatable {
     let completedDate : String?
     
     enum CodingKeys: String, CodingKey {
-        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient, /*customMessage*/ completedDate, stageName
+        case taskid, resourcename, phasecode, sequence, name, status, datedescription, dateactual, comment, forclient, /*customMessage*/ completedDate, stageName,hidden
         case stageID = "stageId"
     }
     var date : Date {

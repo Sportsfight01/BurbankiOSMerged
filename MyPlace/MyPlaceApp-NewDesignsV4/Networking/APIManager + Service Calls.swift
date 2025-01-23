@@ -230,13 +230,15 @@ class APIManager{
                         status = "Completed"
 //                        print("admin stage task completion :------- ",status)
                     }
-                    let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String, /*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
+                    print(" preconstructionContract stages task hidden :------- ",data["hidden"] as? Bool, data["taskName"] as? String)
+                    
+                    let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, hidden: data["hidden"] as? Bool, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String, /*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
                    
                     switch currentJobregion {
                     case "VIC","QLD","SA":
                         if progressdata.name == "Colour Selection" || progressdata.name == "Sign Building Contract"  {
                             appDelegate.appointmentData.append(appointmentsData(name: progressdata.name, dateSTR: progressdata.completedDate))
-//                            print("-----====== Colour Selection & Sign Building Contract", appDelegate.appointmentData)
+                            print("-----====== Colour Selection & Sign Building Contract",currentJobregion, appDelegate.appointmentData)
                         }
                        
                     default:
@@ -244,7 +246,10 @@ class APIManager{
                             appDelegate.appointmentData.append(appointmentsData(name: progressdata.name, dateSTR: progressdata.completedDate))
                         }
                     }
-                    progressdataArr.append(progressdata)
+                    if progressdata.hidden == false{
+                        progressdataArr.append(progressdata)
+                    }
+                   
                 }
                 
                 for i in 0..<(constructionContractArr?.count ?? 0){
@@ -255,12 +260,15 @@ class APIManager{
                         status = "Completed"
 //                        print("remaining stages task completion :------- ",status)
                     }
+                    print(" stages task hidden :------- ",data["hidden"] as? Bool)
                     if stageData["stageName"] as? String != "All Stages" &&  stageData["stageName"] as? String != "Administration"{
-                        let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String,/*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
+                        let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, hidden: data["hidden"] as? Bool, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String,/*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
                        
                         
-                        
-                        progressdataArr.append(progressdata)
+                        if progressdata.hidden == false{
+                            progressdataArr.append(progressdata)
+                        }
+//                        progressdataArr.append(progressdata)
                     }
                     let pc = data["taskName"] as! String
                     if pc.lc == "pc inspection"{

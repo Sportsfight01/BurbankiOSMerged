@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 
 public typealias handler = (_ string: String) -> Void
@@ -21,7 +22,38 @@ func showAlert (_ message: String, _ vc: UIViewController = kWindow.rootViewCont
     alert.showAlert(kAPPNAME, message, vc, buttons, actionReturnHandler)
 }
 
+func showUpdatePopup(appStoreVersion: String) {
+    let alertController = UIAlertController(
+        title: "Update Available",
+        message: "A new version (\(appStoreVersion)) of the app is available. Please update to enjoy the latest features.",
+        preferredStyle: .alert
+    )
+    alertController.addAction(UIAlertAction(title: "Update", style: .default, handler: { _ in
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1437771849") {
+            UIApplication.shared.open(url)
+//            resetUserDefaultsForOlderVerion()
+            if let bundleID = Bundle.main.bundleIdentifier {
+                UserDefaults.standard.removePersistentDomain(forName: bundleID)
+            }
+            CurrentUser.profilePicUrl = nil
+            CurrentUser.userName = nil
+            CurrentUser.mobileNo = nil
+            CurrentUser.email = nil
+            CurrentUser.jobNumber = nil
+            appDelegate.notificationCount = 0
+            let realm = try! Realm()
+            try! realm.write {
+                realm.deleteAll()
+            }
+            
+        }
 
+        
+    }))
+    if let rootVC = UIApplication.shared.windows.first?.rootViewController {
+        rootVC.present(alertController, animated: true, completion: nil)
+    }
+}
 
 
 

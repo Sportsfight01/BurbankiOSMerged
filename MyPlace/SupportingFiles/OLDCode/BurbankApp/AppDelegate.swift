@@ -110,20 +110,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
 //        checkVersionUpdate()
-        checkAppUpdateAvailability { (status) in
-                    //When status == true show popup.
+        checkAppUpdateAvailability { (status, version ) in
+            //When status == true show popup.
             if status{
-                showAlert("Please Update the app ")
+                showUpdatePopup(appStoreVersion: version)
             }
-                } onError: { (status) in
-                    // Handle error
-                }
-        
-//        let login = kStoryboardLogin.instantiateInitialViewController()
-//        window.rootViewController = login
-//        window.makeKeyAndVisible()
-        
-        
+        } onError: { (status) in
+            // Handle error
+        }
         if #available(iOS 13.0, *) {
             // for above iOS 13 scenedelegate is calling
         } else {
@@ -148,35 +142,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
 }
     
-    func checkAppUpdateAvailability(onSuccess: @escaping (Bool) -> Void, onError: @escaping (Bool) -> Void) {
+    func checkAppUpdateAvailability(onSuccess: @escaping (Bool,String) -> Void, onError: @escaping (Bool) -> Void) {
             guard let info = Bundle.main.infoDictionary,
                   let curentVersion = info["CFBundleShortVersionString"] as? String,
-                  let url = URL(string: "https://apps.apple.com/us/app/burbank-myplace/id1437771849") else {
+                  let url = URL(string: "https://itunes.apple.com/au/lookup?id=1437771849") else {
                 return onError(true)
+            
+//            https://apps.apple.com/app/id1437771849
+//            https://apps.apple.com/us/app/burbank-myplace/id1437771849
+            
+                
             }
-            do {
-                let data = try Data(contentsOf: url)
-                guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
-                   return onError(true)
-                }
-                if let result = (json["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String{
-                    DispatchQueue.main.async {
-                        
-                        print("version in app store", appStoreVersion," current Version ",curentVersion);
-                        let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
-                        
-                        if versionCompare == .orderedSame {
-                            onSuccess(false)
-                        } else if versionCompare == .orderedAscending {
-                            onSuccess(true)
-                            // 2.0.0 to 3.0.0 is ascending order, so ask user to update
-                        }
-                        
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+              // Error handling...
+            guard let jsonDict = try? JSONSerialization.jsonObject(with: data!) as? NSDictionary else {
+                print(error)
+                
+                return onError(false)}
+            
+            if let result = (jsonDict["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String{
+                DispatchQueue.main.async {
+                    
+                    print("version in app store", appStoreVersion," current Version ",curentVersion);
+                    let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
+                    
+                    if versionCompare == .orderedSame {
+                        onSuccess(false, appStoreVersion)
+                    } else if versionCompare == .orderedAscending {
+                        onSuccess(true, appStoreVersion)
+                        // 2.0.0 to 3.0.0 is ascending order, so ask user to update
                     }
+                    
                 }
-            } catch {
-                onError(true)
             }
+            }.resume()
+        
+//            do {
+//                let data = try Data(contentsOf: url)
+//                guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
+//                   return onError(true)
+//                }
+//                if let result = (json["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String{
+//                    DispatchQueue.main.async {
+//                        
+//                        print("version in app store", appStoreVersion," current Version ",curentVersion);
+//                        let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
+//                        
+//                        if versionCompare == .orderedSame {
+//                            onSuccess(false)
+//                        } else if versionCompare == .orderedAscending {
+//                            onSuccess(true)
+//                            // 2.0.0 to 3.0.0 is ascending order, so ask user to update
+//                        }
+//                        
+//                    }
+//                }
+//            } catch {
+//                onError(true)
+//            }
         }
 //    func checkVersionUpdate() {
 //        
