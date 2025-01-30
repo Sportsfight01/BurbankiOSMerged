@@ -77,6 +77,17 @@ class SignInVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        APIManager.shared.getAppUpdateNotification{ (status, version ) in
+            //When status == true show popup.
+            if status{
+                showUpdatePopup(appStoreVersion: version)
+            }
+        } onError: { (status) in
+            // Handle error
+        }
+    }
     
     //MARK: - View
     

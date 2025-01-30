@@ -1773,7 +1773,7 @@
 				ED4B23CC24371EBD00899114 /* Info.plist */,
 				D188C6182424D37500DFE678 /* Launch */,
 				D188C6002424D37500DFE678 /* DataManagement */,
-				D188C61D2424D37500DFE678 /* Models */,
+				D188C61D2424D37500DFE678 /* JustLookingModels */,
 				ED99F8042431D2DC00FFDAEE /* ModalViews */,
 				D188C5F22424D37500DFE678 /* Utilities */,
 				EDAB55A02449B59D0052B251 /* Service Layer */,
@@ -1952,7 +1952,7 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
-		D188C61D2424D37500DFE678 /* Models */ = {
+		D188C61D2424D37500DFE678 /* JustLookingModels */ = {
 			isa = PBXGroup;
 			children = (
 				D188C6052424D37500DFE678 /* ViewControllers */,
@@ -1963,7 +1963,7 @@
 				ED4D1F432435E8C300D0206D /* SortFilterPlaces */,
 				ED487BDB242CD21500907BE1 /* MyCollection */,
 			);
-			path = Models;
+			path = JustLookingModels;
 			sourceTree = "<group>";
 		};
 		D219FF68267C707A007B52F2 /* MapDirections */ = {
@@ -3333,7 +3333,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.8;
+				MARKETING_VERSION = 3.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3371,7 +3371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.8;
+				MARKETING_VERSION = 3.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -66,7 +66,10 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         if let afterLoad = afterLoad {
             afterLoad ()
         }
+        
+        
     }
+    
 //    override func viewWillLayoutSubviews() {
 //          super.viewWillLayoutSubviews()
 //

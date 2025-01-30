@@ -114,6 +114,8 @@ class LoginVCNew: BurbankAppVC {
         CodeManager.sharedInstance.sendScreenName(login_screen_loading)
         //        pickerView.reloadAllComponents()
         
+        
+        
     }
     
     func updateLoginFields()

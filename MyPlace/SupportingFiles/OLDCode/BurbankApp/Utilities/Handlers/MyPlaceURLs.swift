@@ -47,6 +47,9 @@ let clickHomeV2BaseURL = "https://nationalclickhome.burbankgroup.com.au/clickhom
 
 //let checkUserLoginurl = String(format: "%@login/CheckUserlogin",getMyPlaceURL())//http://nationalclickhome.burbankgroup.com.au/clickhome3webservice/ClickHome.myhome/v2/clientlogin
 
+let appUpdateAPI = "https://www.burbank.com.au/api-v2/api/myplace/GetAppVersion"
+
+
 func  checkUserLoginurl() -> String
 {
     return selectedJobNumberRegion == .OLD ?  "\(myPlaceVICBaseURL)login/CheckUserlogin" : "\(clickHomeBaseURL)clientlogin"

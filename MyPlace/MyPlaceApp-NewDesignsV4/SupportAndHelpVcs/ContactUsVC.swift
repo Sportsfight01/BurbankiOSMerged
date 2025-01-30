@@ -223,13 +223,13 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             switch (note1.replies, note2.replies)
             {
             case (.some(let reply1), nil):
-                return reply1.first?.date.compare(note2.date) == .orderedAscending
+                return reply1.first?.date.compare(note2.date) == .orderedDescending
             case (nil, .some(let reply2)):
-                return note1.date.compare(reply2.first!.date) == .orderedAscending
+                return note1.date.compare(reply2.first!.date) == .orderedDescending
             case (.none, .none): //when replies not present
-                return note1.date.compare(note2.date) == .orderedAscending
+                return note1.date.compare(note2.date) == .orderedDescending
             case (.some(let reply1 ), .some(let reply2)):
-                return reply1.first?.date.compare(reply2.first!.date) == .orderedAscending
+                return reply1.first?.date.compare(reply2.first!.date) == .orderedDescending
             }
         }
         self.contactArr = tempDataSource

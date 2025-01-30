@@ -39,7 +39,7 @@ class APIManager{
     
     private init() { self.getJobNumberAndAuthorization()}
     
-
+    
     func getProgressDetails(showActivity : Bool = false, completion : ((Result<[ProgressStruct],APIError>)->())?)
     {
         guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
@@ -50,17 +50,17 @@ class APIManager{
             switch result
             {
             case .success(let data):
-        
+                
                 let requiredStages = ["frame stage", "lockup stage","fixout stage","completion","base stage","handover"]
                 /// - We need data from api whose stageNames fall under requiredStages or phasecode == "presite"(for admin stage)
                 let requiredProgressData = data.filter {
-                   requiredStages.contains($0.stageName?.lowercased() ?? "") || $0.phasecode?.lc.contains("presite") ?? false
+                    requiredStages.contains($0.stageName?.lowercased() ?? "") || $0.phasecode?.lc.contains("presite") ?? false
                 }
                 completion?(.success(requiredProgressData))
             case .failure(let err):
-                #if DEBUG
+#if DEBUG
                 debugPrint("ERROR OCCURED")
-                #endif
+#endif
                 DispatchQueue.main.async {
                     AlertManager.sharedInstance.showAlert(alertMessage: err.localizedDescription)
                 }
@@ -91,16 +91,16 @@ class APIManager{
     
     func getUserSelectedNotificationTypes(completion : @escaping(((photoAdd : Bool,stageCompleted : Bool, stageChange : Bool)) -> Void))
     {
-    
+        
         let userID = APIManager.shared.currentJobDetails?.userId
         let parameters : [String : Any] = ["Id" : userID as Any]
         NetworkRequest.makeRequest(type: GetUserProfileStruct.self, urlRequest: Router.getUserProfile(parameters: parameters), showActivity: false) { result in
             switch result
             {
             case .success(let data):
-               // print(data)
+                // print(data)
                 guard data.status == true else { return }
-              //  self?.profileData = data
+                //  self?.profileData = data
                 let notificationArray = data.result?.notificationTypes
                 let photoAdd = notificationArray?[0].isUserOpted ?? false
                 let stageCompleted = notificationArray?[1].isUserOpted ?? false
@@ -110,26 +110,26 @@ class APIManager{
                 
             case .failure(let err):
                 print(err.localizedDescription)
-//                DispatchQueue.main.async {
-//                    self?.showAlert(message: err.localizedDescription)
-//                }
+                //                DispatchQueue.main.async {
+                //                    self?.showAlert(message: err.localizedDescription)
+                //                }
             }
         }
     }
     
     
     //MARK: - clickHomeV2Login Service Calls
-     func clickHomeV2Login(completion : @escaping (Result<Bool,APIError>) ->())
+    func clickHomeV2Login(completion : @escaping (Result<Bool,APIError>) ->())
     {
         guard let jobNumber = APIManager.shared.getJobNumberAndAuthorization().jobNumber else {debugPrint("JobNumber of auth is Null");return}
         let auth = APIManager.shared.getJobNumberAndAuthorization().auth
         
         guard let currentJobDetails = APIManager.shared.currentJobDetails else {debugPrint("currentJobDetailsNotAvailable");return}
         let url = "\(clickHomeV2BaseURL)/Login"
-//        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
+        //        let postDict = ["contractNumber":currentJobDetails.jobNumber ?? "","userName":currentJobDetails.userName ,"password": currentJobDetails.password]
         // static data used with santhosh
         let postDict = ["username": "santhosh.rechintala","password": "Sa9030343907@#","rememberMe": false] as [String : Any]
-
+        
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -139,18 +139,18 @@ class APIManager{
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-//                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
+                //                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
                 completion(.success(false))
                 return}
-           // debugPrint("contactUsLoginSuccessFull")
+            // debugPrint("contactUsLoginSuccessFull")
             //Get Notes service
             completion(.success(true))
-              
+            
         }.resume()
-
+        
     }
     
-     func getJobStepsList(completion : @escaping(Result<[ProgressStruct],APIError>) -> ())
+    func getJobStepsList(completion : @escaping(Result<[ProgressStruct],APIError>) -> ())
     {
         guard let currentJobregion = APIManager.shared.currentJobDetails?.region else {debugPrint("currentJobDetailsNotAvailable");return}
         guard let currentJobDetails = APIManager.shared.currentJobDetailsV3 else {debugPrint("currentJobDetailsNotAvailable");return}
@@ -195,38 +195,38 @@ class APIManager{
             guard let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
                 completion(.failure(.other(err: "Json Serialization Failed")))
                 return}
-//            print("MasterContract Json Data : ", jsonDict)
+            //            print("MasterContract Json Data : ", jsonDict)
             
-//            guard let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any], let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
-////                completion(.failure(.other(err: "Json Serialization Failed")))
-//                return
-//            }
-//            guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
-////                completion(.failure(.other(err: "Json Serialization Failed")))
-//                return
-//            }
+            //            guard let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any], let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
+            ////                completion(.failure(.other(err: "Json Serialization Failed")))
+            //                return
+            //            }
+            //            guard let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any], let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
+            ////                completion(.failure(.other(err: "Json Serialization Failed")))
+            //                return
+            //            }
             
-//             let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any]
-//                    let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
-////                completion(.failure(.other(err: "Json Serialization Failed")))
-//                
-//                return
-//            }
-//             let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any]
-//                 let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
-////                completion(.failure(.other(err: "Json Serialization Failed")))
-//                return 
-//            }
-        
-//                return
-//            }
+            //             let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any]
+            //                    let jsonData = try? JSONSerialization.data(withJSONObject: constructionContractList) else {
+            ////                completion(.failure(.other(err: "Json Serialization Failed")))
+            //
+            //                return
+            //            }
+            //             let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any]
+            //                 let jsonDataForPreConst = try? JSONSerialization.data(withJSONObject: preconstructionContractList) else {
+            ////                completion(.failure(.other(err: "Json Serialization Failed")))
+            //                return
+            //            }
+            
+            //                return
+            //            }
             let constructionContractList = jsonDict.value(forKeyPath: "constructionContract.tasks") as? [String : Any]
             let preconstructionContractList = jsonDict.value(forKeyPath: "preconstructionContract.tasks") as? [String : Any]
             do {
-//                var jsonContract = try JSONSerialization.jsonObject(with: jsonData) as! [String : Any]
-//                print( "constructionContract.tasks Data", jsonContract)
-//                let jsonPrecon = try JSONSerialization.jsonObject(with: jsonDataForPreConst) as! [String : Any]
-//                print( "preconstructionContract.tasks Data", jsonPrecon)
+                //                var jsonContract = try JSONSerialization.jsonObject(with: jsonData) as! [String : Any]
+                //                print( "constructionContract.tasks Data", jsonContract)
+                //                let jsonPrecon = try JSONSerialization.jsonObject(with: jsonDataForPreConst) as! [String : Any]
+                //                print( "preconstructionContract.tasks Data", jsonPrecon)
                 var constructionContractArr = constructionContractList?["list"] as? Array<[String : Any]>
                 let preconstructionContractArr = preconstructionContractList?["list"] as? Array<[String : Any]>
                 
@@ -243,19 +243,19 @@ class APIManager{
                     let stageData = data["stage"] as! [String : Any]
                     if let completDate = data["completedDate"] as? String {
                         status = "Completed"
-//                        print("admin stage task completion :------- ",status)
+                        //                        print("admin stage task completion :------- ",status)
                     }
                     print(" preconstructionContract stages task hidden :------- ",data["hidden"] as? Bool, data["taskName"] as? String)
                     
                     let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, hidden: data["hidden"] as? Bool, resourcename: data["taskName"] as? String, phasecode:  "presite", sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String, /*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
-                   
+                    
                     switch currentJobregion {
                     case "VIC","QLD","SA":
                         if progressdata.name == "Colour Selection" || progressdata.name == "Sign Building Contract"  {
                             appDelegate.appointmentData.append(appointmentsData(name: progressdata.name, dateSTR: progressdata.completedDate))
                             print("-----====== Colour Selection & Sign Building Contract",currentJobregion, appDelegate.appointmentData)
                         }
-                       
+                        
                     default:
                         if progressdata.name == "Selection appointments complete" || progressdata.name == "Contract Presented"  {
                             appDelegate.appointmentData.append(appointmentsData(name: progressdata.name, dateSTR: progressdata.completedDate))
@@ -264,7 +264,7 @@ class APIManager{
                     if progressdata.hidden == false{
                         progressdataArr.append(progressdata)
                     }
-                   
+                    
                 }
                 
                 for i in 0..<(constructionContractArr?.count ?? 0){
@@ -273,38 +273,38 @@ class APIManager{
                     let stageData = data["stage"] as! [String : Any]
                     if let completDate = data["completedDate"] as? String {
                         status = "Completed"
-//                        print("remaining stages task completion :------- ",status)
+                        //                        print("remaining stages task completion :------- ",status)
                     }
                     print(" stages task hidden :------- ",data["hidden"] as? Bool)
                     if stageData["stageName"] as? String != "All Stages" &&  stageData["stageName"] as? String != "Administration"{
                         let progressdata = ProgressStruct(taskid: data["taskId"] as? Int, hidden: data["hidden"] as? Bool, resourcename: data["taskName"] as? String, phasecode:  stageData["stageName"] as? String, sequence: 0, name: data["taskName"] as? String, status: status, datedescription: "", dateactual: data["completedDate"] as? String, comment: "", forclient: false, stageID: stageData["stageId"] as? Int, stageName: stageData["stageName"] as? String,/*customMessage: data["customMessage"] as? String,*/ completedDate: data["completedDate"] as? String)
-                       
+                        
                         
                         if progressdata.hidden == false{
                             progressdataArr.append(progressdata)
                         }
-//                        progressdataArr.append(progressdata)
+                        //                        progressdataArr.append(progressdata)
                     }
                     let pc = data["taskName"] as! String
                     if pc.lc == "pc inspection"{
                         appDelegate.appointmentData.append(appointmentsData(name: data["taskName"] as? String, dateSTR: data["completedDate"] as? String))
-//                        print("-----====== PC Inspection", appDelegate.appointmentData)
+                        //                        print("-----====== PC Inspection", appDelegate.appointmentData)
                     }
                     
                 }
                 
-              
                 
-              
-//                let tableData = try JSONDecoder().decode([ProgressStruct].self, from: jsonData)
+                
+                
+                //                let tableData = try JSONDecoder().decode([ProgressStruct].self, from: jsonData)
                 completion(.success(progressdataArr))
                 
             }catch let err {
                 completion(.failure(.decodingError(err: err.localizedDescription)))
             }
-         
+            
         }.resume()
-
+        
         
     }
     
@@ -344,9 +344,9 @@ class APIManager{
                 completion(.failure(err))
             }
         }
-
-    }
         
+    }
+    
     //MARK: - ClickHomeV3 Service Calls
     
     
@@ -373,7 +373,7 @@ class APIManager{
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-//                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
+                //                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")));
                 self.currentJobDetailsV3 = nil
                 completion(.success(false))
                 return}
@@ -385,7 +385,7 @@ class APIManager{
                 return}
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-//                print(log: json)
+                //                print(log: json)
                 
                 self.currentJobDetailsV3 = try JSONDecoder().decode(myContractJobDetailsV3.self, from: data)
                 completion(.success(true))
@@ -393,10 +393,10 @@ class APIManager{
             }catch let err {
                 completion(.failure(.decodingError(err: err.localizedDescription)))
             }
-//            completion(.success(true))
-              
+            //            completion(.success(true))
+            
         }.resume()
-
+        
     }
     private func getNotesList(completion : @escaping(Result<[MyNotesStruct],APIError>) -> ())
     {
@@ -428,7 +428,7 @@ class APIManager{
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
                 completion(.success([]))
-//                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
+                //                completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
                 return}
             guard let data else {
                 completion(.failure(.other(err: error?.localizedDescription)))
@@ -445,15 +445,15 @@ class APIManager{
             
             if jsonDict.value(forKeyPath:"leadContract.contractStatus" )  != nil && jsonDict.value(forKeyPath:"leadContract.contractStatus" ) as! String != "\0" {
                 self.selectedContractIDForV3 = "\(jsonDict.value(forKeyPath:"leadContract.contractId" ) ?? "")"
-             }
+            }
             else if jsonDict.value(forKeyPath:"preconstructionContract.contractStatus" ) != nil && jsonDict.value(forKeyPath:"preconstructionContract.contractStatus" ) as! String != "\0" {
                 self.selectedContractIDForV3 = "\(jsonDict.value(forKeyPath:"preconstructionContract.contractId" ) ?? "")"
             }
-           else if jsonDict.value(forKeyPath:"constructionContract.contractStatus" ) != nil && jsonDict.value(forKeyPath:"constructionContract.contractStatus" ) as! String != "\0" {
-               
-               self.selectedContractIDForV3 = "\(jsonDict.value(forKeyPath:"constructionContract.contractId" ) ?? "")"
-
-
+            else if jsonDict.value(forKeyPath:"constructionContract.contractStatus" ) != nil && jsonDict.value(forKeyPath:"constructionContract.contractStatus" ) as! String != "\0" {
+                
+                self.selectedContractIDForV3 = "\(jsonDict.value(forKeyPath:"constructionContract.contractId" ) ?? "")"
+                
+                
             }
             
             do {
@@ -466,12 +466,12 @@ class APIManager{
             }catch let err {
                 completion(.failure(.decodingError(err: err.localizedDescription)))
             }
-         
+            
         }.resume()
-
+        
         
     }
-
+    
     
     
     
@@ -492,14 +492,14 @@ class APIManager{
                         debugPrint(err.localizedDescription)
                         completion(.failure(err))
                     }
-                 }
+                }
             case .failure(let err):
                 debugPrint("ContactUsloginAPIFailed")
                 completion(.failure(err))
             }
-        
+            
         }
-
+        
     }
     
     // for my details
@@ -519,14 +519,14 @@ class APIManager{
                         debugPrint(err.localizedDescription)
                         completion(.failure(err))
                     }
-                 }
+                }
             case .failure(let err):
                 debugPrint("ContactUsloginAPIFailed")
                 completion(.failure(err))
             }
-        
+            
         }
-
+        
     }
     
     
@@ -559,7 +559,7 @@ class APIManager{
             //debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-//                completion(.success(ContactDetialsV3.self))
+                //                completion(.success(ContactDetialsV3.self))
                 completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
                 return}
             guard let data else {
@@ -581,9 +581,9 @@ class APIManager{
             }catch let err {
                 completion(.failure(.decodingError(err: err.localizedDescription)))
             }
-         
+            
         }.resume()
-
+        
         
     }
     
@@ -607,18 +607,18 @@ class APIManager{
                             debugPrint(err.localizedDescription)
                             completion(.failure(err))
                         }
-                     }
+                    }
                 }else{
                     completion(.success([]))
                 }
-               
+                
             case .failure(let err):
                 debugPrint("ContactUsloginAPIFailed")
                 completion(.failure(err))
             }
-        
+            
         }
-
+        
     }
     
     
@@ -650,7 +650,7 @@ class APIManager{
             //debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-//                completion(.success(ContactDetialsV3.self))
+                //                completion(.success(ContactDetialsV3.self))
                 completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
                 return}
             guard let data else {
@@ -661,7 +661,7 @@ class APIManager{
             guard let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
                 completion(.failure(.other(err: "Json Serialization Failed")))
                 return}
-           
+            
             if isDocuments{
                 keyForDocAndPhotos = "documents.list"
             }else{
@@ -673,19 +673,19 @@ class APIManager{
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: jsonData)
-//                print(log: json)
+                //                print(log: json)
                 
                 let tableData = try JSONDecoder().decode([DocumentsDetailsStructV3].self, from: jsonData)
-//                print(tableData)
+                //                print(tableData)
                 completion(.success(tableData))
-               
+                
                 
             }catch let err {
                 completion(.failure(.decodingError(err: err.localizedDescription)))
             }
-         
+            
         }.resume()
-
+        
         
     }
     
@@ -716,7 +716,7 @@ class APIManager{
             //debugPrint(response.debugDescription)
             let httpResp = response as? HTTPURLResponse
             guard let httpResp, (200...299).contains(httpResp.statusCode) else {
-//                completion(.success(ContactDetialsV3.self))
+                //                completion(.success(ContactDetialsV3.self))
                 completion(.failure(.networkError(code: "\(httpResp?.statusCode ?? 400)")))
                 return}
             guard let data else {
@@ -727,8 +727,8 @@ class APIManager{
             guard let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary else {
                 completion(.failure(.other(err: "Json Serialization Failed")))
                 return}
-           
-          
+            
+            
             guard let docList = jsonDict.value(forKeyPath: "documents.list") as? [[String : Any]], let jsonData = try? JSONSerialization.data(withJSONObject: docList) else {
                 completion(.failure(.other(err: "Json Serialization Failed")))
                 return
@@ -752,12 +752,48 @@ class APIManager{
             }catch let err {
                 completion(.failure(.decodingError(err: err.localizedDescription)))
             }
-         
+            
         }.resume()
-
+        
         
     }
-
+    
+    
+    
+    func getAppUpdateNotification(onSuccess: @escaping (Bool,String) -> Void, onError: @escaping (Bool) -> Void){
+        _ = Networking.shared.GET_request(url: appUpdateAPI, userInfo: nil, success: {json,response in
+            if let result: AnyObject = json {
+                let result = result as! [NSDictionary]
+                print(log: result[0])
+                var appVersion = ""
+                if let appVersionData = (result as? [[String: Any]])?.first(where: { $0["AppType"] as? String == "IOS" }) {
+                    appVersion =  String(appVersionData["AppVersion"] as? String ?? "0.0")
+                }
+                
+                guard let info = Bundle.main.infoDictionary,
+                      let curentVersion = info["CFBundleShortVersionString"] as? String else {
+                    return }
+               
+//                let versionCompare = curentVersion.compare(appVersion, options: .numeric)
+                if curentVersion != appVersion {
+                    onSuccess(true, appVersion)
+                }else{
+                    onSuccess(false, appVersion)
+                }
+//                else if versionCompare == .orderedAscending {
+//                    onSuccess(true, appVersion)
+//                    // 2.0.0 to 3.0.0 is ascending order, so ask user to update
+//                }
+//                completion( .success(result[0].value(forKey: "AppVersion") as! String))
+            }
+        }, errorblock: {(error, isJSONerror) in
+            
+            if isJSONerror { }
+            else { }
+            
+        }, progress: nil)
+    }
+    
     
 }
 

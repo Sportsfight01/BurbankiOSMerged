@@ -87,7 +87,7 @@ func appStartUpSetup () {
     }
     
     
-    AppConfigurations.shared.getAppConfigurations()
+//    AppConfigurations.shared.getAppConfigurations()
     
 }
 

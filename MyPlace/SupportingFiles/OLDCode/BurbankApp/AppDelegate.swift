@@ -110,7 +110,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
 //        checkVersionUpdate()
-        checkAppUpdateAvailability { (status, version ) in
+//        checkAppUpdateAvailability { (status, version ) in
+//            //When status == true show popup.
+//            if status{
+//                showUpdatePopup(appStoreVersion: version)
+//            }
+//        } onError: { (status) in
+//            // Handle error
+//        }
+        
+        APIManager.shared.getAppUpdateNotification{ (status, version ) in
             //When status == true show popup.
             if status{
                 showUpdatePopup(appStoreVersion: version)
@@ -118,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } onError: { (status) in
             // Handle error
         }
+        
         if #available(iOS 13.0, *) {
             // for above iOS 13 scenedelegate is calling
         } else {
@@ -205,7 +215,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    func checkVersionUpdate() {
 //        
 //        Harpy.sharedInstance()?.presentingViewController = window?.rootViewController
-//        Harpy.sharedInstance()?.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
+//        Harpy.sharedInstance()?.showAlertAfterCurrentVersionHasBeenReOleasedForDays = 3
 //        Harpy.sharedInstance()?.alertControllerTintColor = UIColor.blue
 //        Harpy.sharedInstance()?.appName = "MyPlace"
 //        Harpy.sharedInstance()?.alertType = .skip

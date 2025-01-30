@@ -33,7 +33,7 @@ class BaseProfileVC: UIViewController {
         profileView.contentView.backgroundColor = .clear
        // setupNavigationItems()
        // self.view.backgroundColor = APPCOLORS_3.GreyTextFont
-//        self.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+        self.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
 //        getNotes()
     }
     
@@ -51,7 +51,7 @@ class BaseProfileVC: UIViewController {
                 }
                 CurrentUser.notesUnReadCount = maped.filter({$0 == nil}).count
                 DispatchQueue.main.async {[weak self] in
-//                    self?.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
+                    self?.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
                 }
             case .failure(let err):
                 debugPrint(err.localizedDescription)

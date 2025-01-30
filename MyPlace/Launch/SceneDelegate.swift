@@ -52,7 +52,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         
         //        checkVersionUpdate()
-        appDelegate.checkAppUpdateAvailability { (status, version ) in
+        
+        APIManager.shared.getAppUpdateNotification{ (status, version ) in
             //When status == true show popup.
             if status{
                 showUpdatePopup(appStoreVersion: version)
@@ -60,6 +61,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } onError: { (status) in
             // Handle error
         }
+   
+//        appDelegate.checkAppUpdateAvailability { (status, version ) in
+//            //When status == true show popup.
+//            if status{
+//                showUpdatePopup(appStoreVersion: version)
+//            }
+//        } onError: { (status) in
+//            // Handle error
+//        }
         
         appDelegate.checkInternetConnection()
 #if DEDEBUG
