@@ -44,7 +44,11 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
         tableView.dataSource = self
         tableView.separatorColor = .clear
         searchBar.delegate = self
-        searchBarHeight.constant = 0
+//        searchBar.showsCancelButton = true
+        searchBar.searchTextField.clearButtonMode = .never
+        searchBar.searchTextField.font = FONT_LABEL_BODY(size: 14)
+
+//        searchBarHeight.constant = 0
       
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction))
         newMessageBtn.addGestureRecognizer(gesture)
@@ -57,7 +61,7 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBarButtons(shouldShowNotification: false)
-        searchBar.text?.removeAll()
+//        searchBar.text?.removeAll()
         searchBar.resignFirstResponder()
         tableView.reloadData()
         if ContactUsVC.updateNoteData{
@@ -192,7 +196,8 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
             var note = item
             let noteId = item.noteId
             /// - STEP 1 - replies from mobile
-            let replies = notes.filter({ noteId == $0.replyTo?.noteId})
+            let replies = notes.filter({ noteId == $0.replyTo?.noteId}).filter({$0.replyTo?.isMyHomeVisible == true})
+            print(log: replies.count)
             if replies.count > 0//replies found
             {
                 note.replies = replies
@@ -209,11 +214,15 @@ class ContactUsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 {
                     note.replies = adminReplies
                 }else {
-                    note.replies?.append(contentsOf: adminReplies )
+                        note.replies?.append(contentsOf: adminReplies )
                 }
             }
             note.replies = note.replies?.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
-            tempDataSource.append(note)
+            if note.isMyHomeVisible {
+                tempDataSource.append(note)
+            }
+            print(log: tempDataSource.count)
+            
         }
         
         /// - Sorting of tableDataSource

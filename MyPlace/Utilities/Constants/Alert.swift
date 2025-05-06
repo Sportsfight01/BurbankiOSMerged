@@ -17,7 +17,7 @@ let alert = Alert()
 
 
 
-func showAlert (_ message: String, _ vc: UIViewController = kWindow.rootViewController!, _ buttons: [String] = ["OK"], _ actionReturnHandler: handler? = nil) {
+func showAlert (_ message: String, _ vc: UIViewController = kWindow.rootViewController ?? UIViewController(), _ buttons: [String] = ["OK"], _ actionReturnHandler: handler? = nil) {
 
     alert.showAlert(kAPPNAME, message, vc, buttons, actionReturnHandler)
 }

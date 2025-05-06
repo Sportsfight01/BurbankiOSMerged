@@ -119,7 +119,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            // Handle error
 //        }
         
-        APIManager.shared.getAppUpdateNotification{ (status, version ) in
+//        APIManager.shared.getAppUpdateNotification{ (status, version ) in
+//            //When status == true show popup.
+//            if status{
+//                showUpdatePopup(appStoreVersion: version)
+//            }
+//        } onError: { (status) in
+//            // Handle error
+//        }
+        
+        appDelegate.checkAppUpdateAvailability { (status, version ) in
             //When status == true show popup.
             if status{
                 showUpdatePopup(appStoreVersion: version)

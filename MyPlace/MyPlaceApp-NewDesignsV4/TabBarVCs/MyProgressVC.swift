@@ -38,7 +38,15 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         profileView.notificationCountLb.isHidden = appDelegate.notificationCount == 0 ? true : false
         self.profileView.dotView.isHidden = CurrentUser.notesUnReadCount > 0 ? false : true
 
-        APIManager.shared.getAppUpdateNotification{ (status, version ) in
+//        APIManager.shared.getAppUpdateNotification{ (status, version ) in
+//            //When status == true show popup.
+//            if status{
+//                showUpdatePopup(appStoreVersion: version)
+//            }
+//        } onError: { (status) in
+//            // Handle error
+//        }
+        appDelegate.checkAppUpdateAvailability { (status, version ) in
             //When status == true show popup.
             if status{
                 showUpdatePopup(appStoreVersion: version)
@@ -46,7 +54,6 @@ class MyProgressVC: BaseProfileVC,UIGestureRecognizerDelegate {
         } onError: { (status) in
             // Handle error
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

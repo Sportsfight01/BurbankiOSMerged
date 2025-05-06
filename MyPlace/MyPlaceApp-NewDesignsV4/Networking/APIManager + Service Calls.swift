@@ -780,7 +780,7 @@ class APIManager{
                 }else{
                     onSuccess(false, appVersion)
                 }
-//                else if versionCompare == .orderedAscending {
+//                 if versionCompare == .orderedAscending {
 //                    onSuccess(true, appVersion)
 //                    // 2.0.0 to 3.0.0 is ascending order, so ask user to update
 //                }

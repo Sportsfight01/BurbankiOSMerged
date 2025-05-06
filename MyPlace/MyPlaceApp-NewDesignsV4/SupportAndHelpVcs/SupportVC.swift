@@ -18,7 +18,7 @@ class SupportVC: UIViewController {
     @IBOutlet weak var wholeView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    var titleText = ["Info Centre","FAQs","Contact Us"]
+    var titleText = ["Info Centre","FAQs","MyPlace Inbox"]
 
     var subjectText = ["Helpful videos and information to explain some of the stages in your build and what you need to know.","Find answers to our most Frequently Asked Questions.","Or simply get in touch here so we can help you directly."]
  

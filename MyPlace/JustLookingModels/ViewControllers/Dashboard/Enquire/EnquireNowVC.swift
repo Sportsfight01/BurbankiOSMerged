@@ -8,12 +8,15 @@
 //
 
 import UIKit
+import WebKit
+
 
 class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , UIPickerViewDataSource {
     
     
     //MARK: - Properties
     
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var viewWhereWouldYouliketolive: UIView!
     @IBOutlet weak var titleLabel : UILabel!
     @IBOutlet weak var btnback : UIButton!
@@ -52,6 +55,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     var lastName = appDelegate.userData?.user?.userLastName ?? ""
     let pickerView = UIPickerView()
     var pickerViewDataSource : [String] = [""]
+    var buildAddress = ""
     
 //    var victoriaRegions = [
 //        "Not Sure Yet","West Region","North Region","South East Region","Regional South East","Geelong & Bellarine Region", "Ballarat Region","Bendigo Region"]
@@ -69,10 +73,14 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        
 
         if let _ = homeDesign {
             CodeManager.sharedInstance.sendScreenName(burbank_homeDesigns_detailView_enquire_screen_loading)
         }else if let _ = homelandPackage{
+            buildAddress = homelandPackage?.address ?? ""
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_detailView_enquire_screen_loading)
         }else if let _ = homeDesignDetails{
             self.navigationController?.navigationBar.isHidden = true
@@ -82,6 +90,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             
             pickerViewDataSource = nswRegions
             stateName = "nsw"
+           
             
         }else if kUserStateName.contains("South"){
             stateName = "south-australia"
@@ -94,7 +103,9 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             pickerViewDataSource = victoriaRegions
         }
         handleUISetup ()
-                
+       
+ 
+//        webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/16EIGnKc6ReGd8wXef5sASQr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&phone=\(self.phoneTF.text ?? "")&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=false")!))
         
     }
     
@@ -155,10 +166,16 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         
         if let _ = homelandPackage {
             self.whatToBuildTF.text = "\(self.homelandPackage?.houseName ?? "") \(self.homelandPackage?.houseSize ?? "")"
+            buildAddress = homelandPackage?.address ?? ""
+
         }else if let _ = homeDesign{
             self.whatToBuildTF.text = "\(self.homeDesign?.houseName ?? "") \(self.homeDesign?.houseSize ?? "")"
+            buildAddress = homeDesign?.address ?? ""
+
         }else if let _ = homeDesignDetails{
             self.whatToBuildTF.text = "\(self.homeDesignDetails?.lsthouses?.houseName ?? "") \(self.homeDesignDetails?.lsthouses?.houseSize ?? 0)"
+            buildAddress = ""
+
         }
         
     
@@ -227,6 +244,19 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         pickerView.delegate = self
         pickerView.dataSource = self
         
+        WebCacheCleaner.clean()
+        if kUserStateName.contains("NSW & ACT"){
+            webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1ncdi4qLFQBm_5tVINWrJEwr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_nsw_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+        }else if kUserStateName.contains("South"){
+            webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1wk-EWPRcQairXIbos5oM7Qr78x7?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_sa_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+        }else if kUserStateName.contains("Queensland"){
+            webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1xNYzAlZxSpqcpWbgAES5oAr78x7?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_qld_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App& &build_address=\(buildAddress)")!))
+
+        }else if kUserStateName.contains("Victoria"){
+            webView.load(URLRequest(url: URL(string:  "https://share.hsforms.com/16EIGnKc6ReGd8wXef5sASQr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.frstNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+        }
+    
+       
     }
     
     
@@ -665,4 +695,17 @@ extension EnquireNowVC: UITextViewDelegate {
         
     }
     
+}
+
+final class WebCacheCleaner {
+    class func clean() {
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        print("[WebCacheCleaner] All cookies deleted")
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                print("[WebCacheCleaner] Record \(record) deleted")
+            }
+        }
+    }
 }

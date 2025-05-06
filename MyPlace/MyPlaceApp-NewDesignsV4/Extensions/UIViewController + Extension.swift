@@ -221,6 +221,7 @@ extension UIViewController
         case newDesignV4 = "NewDesignsV4"
         case supportAndHelp = "SupportAndHelp"
         case myPlaceLogin = "MyPlaceLogin"
+        case main = "Main"
     }
 }
 

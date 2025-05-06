@@ -501,9 +501,9 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
 //        afternoonBTN.setTitleColor(APPCOLORS_3.Orange_BG, for: .normal)
                 
         
-        self.chooseDateAndTimeCard.isHidden = true
+        self.chooseDateAndTimeCard.isHidden = false
         self.dateCardView.isHidden = true
-        self.reqAppointmentCard.isHidden = false
+        self.reqAppointmentCard.isHidden = true
         self.successCard.isHidden = true
         self.timeLBL.text = sender.titleLabel?.text
         self.timeInSuccessCardLBL.text = sender.titleLabel?.text
@@ -512,6 +512,16 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         self.isSelectedTime = true
         if kUserID.toInt() > 0 {
 //            handleEmailTfUI()
+        }
+        
+        let vc = BookAnAppointmentWebViewVC.instace(sb: .main)
+        vc.prefferdTime = self.timeLBL.text ?? ""
+        vc.prefferedDate =  self.dateLBLInChooseDateCard.text ?? ""
+        vc.displayHomeData = displayHomeData
+        if let navigation = self.tabBarController?.navigationController {
+            navigation.pushViewController(vc, animated: true)
+        }else {
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

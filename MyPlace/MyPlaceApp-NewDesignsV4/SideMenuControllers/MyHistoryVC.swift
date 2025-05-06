@@ -164,11 +164,12 @@ struct MyNotesStruct : Codable, Hashable
     var isFromAdmin : Bool = false
     var conversations : Conversations?
     var author : Author?
+    var isMyHomeVisible : Bool = false
     
     enum CodingKeys : String, CodingKey
     {
         case authorname = "unknownAuthor"
-        case body, noteId, replies, replyTo, subject,conversations,createdInMyHome,author
+        case body, noteId, replies, replyTo, subject,conversations,createdInMyHome,author,isMyHomeVisible
         case notedate = "activityDate"
         
     }
@@ -185,6 +186,7 @@ struct MyNotesStruct : Codable, Hashable
     struct ReplyTo : Codable
     {
         let noteId : Int?
+        var isMyHomeVisible : Bool = false
     }
     struct Conversations : Codable
     {

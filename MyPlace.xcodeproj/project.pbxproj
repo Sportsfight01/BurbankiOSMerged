@@ -278,6 +278,7 @@
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
 		A19452292BB1308000C63F36 /* InterceptorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19452282BB1308000C63F36 /* InterceptorClass.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
+		A1D363872DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
 		D16FE371242881F30082DECF /* UIImage+TBTint.m in Sources */ = {isa = PBXBuildFile; fileRef = D16FE36B242881F30082DECF /* UIImage+TBTint.m */; };
@@ -767,6 +768,7 @@
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		A19452282BB1308000C63F36 /* InterceptorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterceptorClass.swift; sourceTree = "<group>"; };
 		A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLabsImageSlider.swift; sourceTree = "<group>"; };
+		A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAnAppointmentWebViewVC.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1E4543A29EFB0EB006B531B /* APIManager + Service Calls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIManager + Service Calls.swift"; sourceTree = "<group>"; };
 		A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -1978,6 +1980,7 @@
 			isa = PBXGroup;
 			children = (
 				D219FF6C267C806E007B52F2 /* BookAppointmentVC.swift */,
+				A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */,
 			);
 			path = BookAnAppointment;
 			sourceTree = "<group>";
@@ -2938,6 +2941,7 @@
 				ED487BD3242CAD8100907BE1 /* MyCollectionSurveyVC.swift in Sources */,
 				EDA2A93025025007005FCEF9 /* HeaderBreadCrumpCV.swift in Sources */,
 				D188C6232424D37600DFE678 /* AppThemeColors.swift in Sources */,
+				A1D363872DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift in Sources */,
 				ED679588246A5C9C008FAEED /* StateSelectionVC.swift in Sources */,
 				A165996E292F32BB00C36B3B /* ContactUsTVC.swift in Sources */,
 				D188C62D2424D37600DFE678 /* UserPreferenceVC.swift in Sources */,
@@ -3315,10 +3319,12 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MyPlace/MyPlace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Y988XRR8UK;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y988XRR8UK;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -3333,11 +3339,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.9;
+				MARKETING_VERSION = 3.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Burbank_App_2024_JUL10;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "GOOGLELOGS DEBUG DEDEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyPlace/Service Layer/MyPlace-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -3353,10 +3360,12 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MyPlace/MyPlace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Y988XRR8UK;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y988XRR8UK;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -3371,11 +3380,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.9;
+				MARKETING_VERSION = 3.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Burbank_App_2024_JUL10;
 				SWIFT_OBJC_BRIDGING_HEADER = "MyPlace/Service Layer/MyPlace-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

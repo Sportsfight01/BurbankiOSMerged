@@ -140,7 +140,16 @@ class MyPlaceHomeVC: UIViewController {
             print(log: "DisplayHomes Favourite COunt \(String(describing: favouritetCount))")
         }
         
-        APIManager.shared.getAppUpdateNotification{ (status, version ) in
+//        APIManager.shared.getAppUpdateNotification{ (status, version ) in
+//            //When status == true show popup.
+//            if status{
+//                showUpdatePopup(appStoreVersion: version)
+//            }
+//        } onError: { (status) in
+//            // Handle error
+//        }
+      
+        appDelegate.checkAppUpdateAvailability { (status, version ) in
             //When status == true show popup.
             if status{
                 showUpdatePopup(appStoreVersion: version)
@@ -148,7 +157,6 @@ class MyPlaceHomeVC: UIViewController {
         } onError: { (status) in
             // Handle error
         }
-      
     }
 
     override func viewDidAppear(_ animated: Bool) {
