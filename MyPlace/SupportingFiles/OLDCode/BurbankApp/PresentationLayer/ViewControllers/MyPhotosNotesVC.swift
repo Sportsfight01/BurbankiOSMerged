@@ -31,7 +31,7 @@ class MyPhotosNotesVC: UIViewController {
        // let imageID = selectedJobNumberRegion == .VLC ? imageIdForVLC : photoInfo.urlId
         let noteDescription = MyPlacePhotoNote.fetchPhotoNote("\(imageId)")?.noteDescription
         noteTextView.text = noteDescription
-        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +40,7 @@ class MyPhotosNotesVC: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.isEnabled = true
     }
     
     

@@ -306,31 +306,31 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
     func fillAllDisplayHomeDetails () {
         print(displayHomeData)
         NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"Book an Appointment"])
-        var streetNames =  [String]()
-        for i in 0..<(displayHomeData?.count)! {
-            let houseNames = displayHomeData?[i].houseName
-            let houseSize = displayHomeData?[i].houseSize
-            let house = "\(houseNames ?? "") \(houseSize ?? "")"
-            streetNames.append(house)
+        guard let displayHomeData = displayHomeData else {
+            return
         }
+        let streetNames = displayHomeData.map({ mappedData -> String in
+            return "\(mappedData.houseName) \(mappedData.houseSize)"
+                
+        })
         let joinedStreetNames = streetNames.joined(separator: ", ")
-        self.streetNameLBL.text = "\(displayHomeData?[0].street ?? ""), \n\(displayHomeData?[0].suburb ?? "")"
+        self.streetNameLBL.text = "\(displayHomeData[0].street), \n\(displayHomeData[0].suburb)"
         self.streetNameLBL.textColor = APPCOLORS_3.GreyTextFont
+       
         
         let font:UIFont? = FONT_LABEL_HEADING(size: FONT_11)
         let fontSuper:UIFont? = FONT_LABEL_SUB_HEADING(size: FONT_9)
         let boldFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: font]
         let normalFontAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: fontSuper]
-        let partOne = NSMutableAttributedString(string: displayHomeData?[0].displayEstateName.uppercased() ?? "" , attributes: boldFontAttributes as [NSAttributedString.Key : Any])
+        let partOne = NSMutableAttributedString(string: displayHomeData[0].displayEstateName.uppercased() , attributes: boldFontAttributes as [NSAttributedString.Key : Any])
         let partTwo = NSMutableAttributedString(string: "\nON DISPLAY: \(joinedStreetNames)", attributes: normalFontAttributes as [NSAttributedString.Key : Any])
         
         let combination = NSMutableAttributedString()
         
         combination.append(partOne)
         combination.append(partTwo)
-        
         self.titleNameLBL.attributedText = combination
-        self.estateNameLBL.text = displayHomeData?[0].displayEstateName.uppercased()
+        self.estateNameLBL.text = displayHomeData[0].displayEstateName.uppercased()
         
     }
     func showDatePicker() {
@@ -518,6 +518,7 @@ class BookAppointmentVC: HeaderVC,UITextViewDelegate,UIPickerViewDelegate,UIPick
         vc.prefferdTime = self.timeLBL.text ?? ""
         vc.prefferedDate =  self.dateLBLInChooseDateCard.text ?? ""
         vc.displayHomeData = displayHomeData
+       
         if let navigation = self.tabBarController?.navigationController {
             navigation.pushViewController(vc, animated: true)
         }else {

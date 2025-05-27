@@ -119,7 +119,11 @@ struct ServiceAPI {
     
     let URL_designsCount = BaseURL + "HomeAndLand/HomeAndLandQuiz"
 
+//    let URL_deleteAccount = BaseURL + "/Account/DeleteUser"
     
+    func URL_deleteAccount (_ userEmail: String) -> String {
+        return BaseURL + "Account/DeleteUser?emailId=" + userEmail
+    }
     
 //    POST /api/HomeAndLand/GetMinimumMaximumPrice
     

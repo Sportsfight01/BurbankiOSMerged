@@ -113,7 +113,7 @@ class SortFilterVC: UIViewController {
     //MARK: - View
     
     func pageUISetUp () {
-        IQKeyboardManager.shared.toolbarTintColor = APPCOLORS_3.Orange_BG
+        IQKeyboardManager.shared.toolbarConfiguration.tintColor = APPCOLORS_3.Orange_BG
         
         //        FONT_LABEL_LIGHT
         setAppearanceFor(view: lBPriceRange, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_14))

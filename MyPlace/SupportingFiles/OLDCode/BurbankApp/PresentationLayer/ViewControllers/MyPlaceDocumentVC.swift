@@ -89,11 +89,7 @@ class MyPlaceDocumentVC: BurbankAppVC/*MyPlaceWithTabBarVC*/, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         CodeManager.sharedInstance.sendScreenName(documents_viewed)
-        
-        
         func handleForVLC()
         {
             delegateDocVc.selectedDocument(indexPath.row)

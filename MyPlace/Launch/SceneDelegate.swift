@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import Harpy
 import FBSDKCoreKit
+import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -35,7 +36,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         window = UIWindow(windowScene: windowScene)
         UITabBarItem.appearance().setTitleTextAttributes([.font : FONT_LABEL_SUB_HEADING(size: FONT_8)], for: .normal)
-          
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.isEnabled = true
         appStartUpSetup()
         window?.makeKeyAndVisible()
         
@@ -88,9 +90,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        
-        Harpy.sharedInstance()?.checkVersion()
-        
+                
 
     }
 

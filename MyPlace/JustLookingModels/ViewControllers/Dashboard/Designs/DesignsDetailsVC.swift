@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseCore
 
 class DesignsDetailsVC: HeaderVC {
     
@@ -246,7 +247,7 @@ class DesignsDetailsVC: HeaderVC {
         
         self.lBPrice.isHidden = true // -------> v2.2 changes
       //CodeManager.sharedInstance.sendScreenName("BB_HomeDesign_NameAndSize_\(self.homeDesign?.houseName ?? "")_design,\(self.homeDesign?.houseSize ?? "")")
-        Analytics.logEvent("BB_profile_HomeDesign_NameAndSize", parameters: ["name" : self.homeDesign?.houseName ?? "","size" : self.homeDesign?.houseSize ?? "","jobID" : appDelegate.currentUser?.jobNumber ?? "0"])
+//        Analytics.logEvent("BB_profile_HomeDesign_NameAndSize", parameters: ["name" : self.homeDesign?.houseName ?? "","size" : self.homeDesign?.houseSize ?? "","jobID" : appDelegate.currentUser?.jobNumber ?? "0"])
         self.lBHouseName.text = (self.homeDesign?.houseName ?? "") + " " + (self.homeDesign?.houseSize ?? "")
         self.lBBedrooms.text = self.homeDesign!.bedRooms
         self.lBBathrooms.text = self.homeDesign!.bathRooms

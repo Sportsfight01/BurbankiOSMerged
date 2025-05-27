@@ -47,9 +47,10 @@ var isNetworkReachable: Bool {
 
 //MARK: - Window Activity
 
-func appStartUpSetup () {
+@MainActor func appStartUpSetup () {
     
-    IQKeyboardManager.shared.enable = true
+    
+//    IQKeyboardManagertool.shared.isEnabled = true
 
     appDelegate.userData = UserData()
     

@@ -12,6 +12,7 @@ import CoreLocation
 import GoogleMaps
 
 
+
 class HomeLandDetailsVC: HeaderVC {
 
     @IBOutlet weak var homeDetailView : UIView!
@@ -161,7 +162,7 @@ class HomeLandDetailsVC: HeaderVC {
     func fillPackageData () {
         
       //CodeManager.sharedInstance.sendScreenName("BB_HomeAndLand_NameAndSize_\(self.homeLand?.houseName ?? "")_design,\(self.homeLand?.houseSize ?? "")")
-        Analytics.logEvent("BB_HomeAndLand_NameAndSize_", parameters: ["name" : self.homeLand?.houseName ?? "","size" : self.homeLand?.houseSize ?? "","jobID" : appDelegate.currentUser?.jobNumber ?? "0"])
+//        Analytics.logEvent("BB_HomeAndLand_NameAndSize_", parameters: ["name" : self.homeLand?.houseName ?? "","size" : self.homeLand?.houseSize ?? "","jobID" : appDelegate.currentUser?.jobNumber ?? "0"])
         self.lBHouseName.text = (self.homeLand?.houseName ?? "") + " " + (self.homeLand?.houseSize ?? "")
         self.lBFacadeName.text = self.homeLand?.facade ?? ""
       self.lBAddress.text = self.homeLand?.address?.replacingOccurrences(of: " ,", with: ",").replacingOccurrences(of: " ,", with: ",").replacingOccurrences(of: " ,", with: ",").replacingOccurrences(of: " ,", with: ",") //replace " ," with "," until we remove 4 spaces infront of ","

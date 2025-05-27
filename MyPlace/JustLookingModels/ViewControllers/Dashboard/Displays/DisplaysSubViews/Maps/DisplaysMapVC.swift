@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import GoogleMaps
 import GoogleMapsUtils
-import GoogleUtilities
+//import GoogleUtilities
 
 class DisplaysMapVC: UIViewController {
     var getDisplayNearByHome = [DisplayHomeModel]()

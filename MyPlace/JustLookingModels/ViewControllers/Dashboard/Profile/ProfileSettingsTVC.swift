@@ -1,0 +1,121 @@
+//
+//  ProfileSettingsTVC.swift
+//  BurbankApp
+//
+//  Created by Naveen Kourampalli on 26/05/25.
+//  Copyright © 2025 Sreekanth tadi. All rights reserved.
+//
+
+import UIKit
+
+class ProfileSettingsTVC: UITableViewCell {
+    
+    @IBOutlet weak var backView: UIView!
+    
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var lBCount: UILabel!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var lBTitle: UILabel!
+    @IBOutlet weak var btnArrow: UIButton!
+
+    @IBOutlet weak var permissionsView: UIView!
+    
+    @IBOutlet weak var bottomView: UIView!
+    
+    @IBOutlet weak var lBHeading: UILabel!//services
+    @IBOutlet weak var lBNotifications: UILabel!
+    @IBOutlet weak var lBLocationServices: UILabel!
+    @IBOutlet weak var btnLogout: UIButton!
+
+    @IBOutlet weak var switchNotifications: UISwitch!
+    @IBOutlet weak var switchLocation: UISwitch!
+//    @IBOutlet weak var btnLogoutIcon: UIButton!
+
+    
+    @IBOutlet weak var lBLineHeading: UILabel!
+    @IBOutlet weak var lBLineNotifications: UILabel!
+    @IBOutlet weak var lBLineLocations: UILabel!
+//    @IBOutlet weak var lBLineLogout: UILabel!
+
+    @IBOutlet weak var btnDelete: UIButton!
+    
+    @IBOutlet weak var lBLine: UILabel!
+
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        setAppearanceFor(view: lBCount, backgroundColor: APPCOLORS_3.GreyTextFont, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_8))
+        setAppearanceFor(view: lBTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBLine, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_10))
+
+                
+        setAppearanceFor(view: lBHeading, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING (size: FONT_15))
+        setAppearanceFor(view: lBNotifications, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: lBLocationServices, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
+        setAppearanceFor(view: btnLogout, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: btnDelete, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
+
+
+//        btnLogoutIcon.setTitle("", for: .normal)
+//        btnLogoutIcon.setBackgroundImage(UIImage(named: "Ico-Settings"), for: .normal)
+        
+        permissionsView.cardView()
+        
+        selectionColorsForSwitch(switchService: switchNotifications)
+        selectionColorsForSwitch(switchService: switchLocation)
+
+        bottomView.layer.cornerRadius = radius_5 //5.0
+        //bottomView.layer.masksToBounds = true
+        
+        lBCount.layer.cornerRadius = lBCount.frame.size.height/2
+
+        
+        lBHeading.superview?.layer.cornerRadius = radius_5
+        
+        
+        lBCount.isHidden = false
+
+        lBCount.text = ""
+        btnArrow.tintColor = .gray
+        
+        
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+    
+    
+    @IBAction func handleServicesSwitch (_ sender: UISwitch) {
+    
+        if sender == switchNotifications {
+            //update service and store to defaluts of user and update it
+            
+            CodeManager.sharedInstance.sendScreenName(burbank_profile_appSettings_notification_switch_touch)
+            
+            sender.isOn == true ? NotificationServices.shared.onNotificationsServices() : NotificationServices.shared.offNotificationsServices()
+        }else {
+            
+            CodeManager.sharedInstance.sendScreenName (burbank_profile_appSettings_location_switch_touch)
+            DispatchQueue.main.async {
+                sender.isOn == true ? LocationServices.shared.onLocationService() : LocationServices.shared.offLocationServices()
+            }
+        }
+        
+        selectionColorsForSwitch(switchService: sender)
+    }
+    
+    
+    func selectionColorsForSwitch (switchService: UISwitch) {
+        
+        switchService.thumbTintColor = switchService.isOn ? APPCOLORS_3.Orange_BG : APPCOLORS_3.GreyTextFont
+    }
+    
+    
+}

@@ -9,10 +9,11 @@ import UIKit
 import MBProgressHUD
 import CoreData
 import Firebase
-import Harpy
 import FBSDKCoreKit
 import GoogleMaps                
 import IQKeyboardManagerSwift
+import FirebaseCore
+import IQKeyboardToolbarManager
 
 /**
  - important: Make sure you read this
@@ -65,8 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        // Thread.sleep(forTimeInterval: 5.0)
-        
-        IQKeyboardManager.shared.toolbarTintColor = APPCOLORS_3.Orange_BG
+//        IQKeyboardToolbarManager.shared.isEnabled = true
+        IQKeyboardManager.shared.toolbarConfiguration.tintColor = APPCOLORS_3.Orange_BG
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = APPCOLORS_3.Orange_BG
       ApplicationDelegate.shared.application(
                 application,
@@ -99,8 +100,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
          //To enable the IQKeyboard manager
-        IQKeyboardManager.shared.enable=true
- 
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.isEnabled = true
         //Rechability Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(checkInternetConnection), name: Notification.Name.reachabilityChanged, object: nil)
         reachability = Reachability(hostName: "www.apple.com")
@@ -289,15 +290,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("is Enter Foreground called.....?/")
         
         
-        Harpy.sharedInstance()?.checkVersion()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("is applicationDidBecomeActive.....?/")
         
-        Harpy.sharedInstance()?.checkVersionDaily()
-        Harpy.sharedInstance()?.checkVersionWeekly()
+      
         
         checkInternetConnection()
         

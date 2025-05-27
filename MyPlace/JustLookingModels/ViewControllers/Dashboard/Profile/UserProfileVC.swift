@@ -19,6 +19,7 @@ let iconMyDesign = UIImage(named: "Ico-HomeDesignRound")
 let iconShare = UIImage(named: "Ico-ShareRound")
 let iconProfile = UIImage(named: "Ico-ProfileRound")
 let iconSettings = UIImage(named: "Ico-Settings")
+let iconDelete = UIImage(named: "Ico-delete1")
 let iconDH = UIImage(named: "ico-DisplayHomeFooter")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
 var iconFav : UIImage
 {
@@ -41,6 +42,7 @@ let nameMyDetails = "MyDetails"
 let nameShare = "ShareAccount"
 let nameSettings = "AppSettings"
 let nameDisplayHomes = "DisplayHomes"
+let nameDeletAccount = "Account Settings"
 
 
 let rowHeight: CGFloat = 60
@@ -82,8 +84,8 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var profileViewBorder: UIView!
     
     
-    let arrIcons = [iconProfile, iconFav/*iconShare,, iconCollection, iconMyday, iconHL, iconMyDesign, iconDH*/, iconSettings]
-    let arrNames = [nameMyDetails, nameFavourites/*nameShare,, nameMyCollection, nameMyday, nameHL, nameMyDesign, nameDisplayHomes*/, nameSettings]
+    let arrIcons = [iconProfile, iconFav/*iconShare,, iconCollection, iconMyday, iconHL, iconMyDesign, iconDH*/, iconSettings,/*iconDelete*/]
+    let arrNames = [nameMyDetails, nameFavourites/*nameShare,, nameMyCollection, nameMyday, nameHL, nameMyDesign, nameDisplayHomes*/, nameSettings,/*nameDeletAccount*/]
     
     
     
@@ -140,7 +142,7 @@ class UserProfileVC: UIViewController {
         
         self.tableProfile.tableFooterView = UIView (frame: .zero)
         
-        
+        self.tableProfile.register(UINib(nibName: "ProfileSettingsTVC", bundle: nil), forCellReuseIdentifier: "ProfileSettingsTVC")
         CodeManager.sharedInstance.sendScreenName(burbank_profile_screen_loading)
     }
     
@@ -409,6 +411,10 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                // cell.lBCount.isHidden = true
                 cell.lBCount.text = ""
             }
+            else if name == nameDeletAccount {
+//                cell.lBCount.isHidden = true
+                cell.lBCount.text = ""
+            }
             else if name == nameFavourites {
                let totalCount = kDesignFavoritesCount + kHomeLandFavoritesCount + self.displayFavorites.count
               cell.lBCount.text = "\(totalCount)"
@@ -585,8 +591,9 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 
             }else if name == nameDisplayHomes {
                 
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHomeDesignTVCell", for: indexPath) as! ProfileHomeDesignTVCell
-                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayHomesTVC", for: indexPath) as! DisplayHomesTVC
+//                cell.icon.backgroundColor = .red
+                cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 cell.icon.tintColor = APPCOLORS_3.GreyTextFont
                 cell.lBTitle.text = arrNames[indexPath.row]
@@ -597,6 +604,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 cell.actionHandler = { (button) in
                     CodeManager.sharedInstance.sendScreenName(burbank_profile_displayHomes_savedDesigns_button_touch)
                     let designs = kStoryboardMain.instantiateViewController(withIdentifier: "DisplayHomesFavouritesVC") as! DisplayHomesFavouritesVC
+                   // designs.isFavoritesService = true
                     self.navigationController?.pushViewController(designs, animated: true)
                 }
                 
@@ -662,7 +670,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 
             }else if name == nameSettings {
                 
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSettingsTVCell", for: indexPath) as! ProfileSettingsTVCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSettingsTVC", for: indexPath) as! ProfileSettingsTVC
         
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
                 cell.icon.tintColor = APPCOLORS_3.GreyTextFont
@@ -681,6 +689,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 
                 
                 cell.btnLogout.addTarget(self, action: #selector(handleLogoutAction(_:)), for: .touchUpInside)
+                cell.btnDelete.addTarget(self, action: #selector(handleDeleteAction(_:)), for: .touchUpInside)
                 
                 return cell
                 
@@ -690,6 +699,30 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 cell.icon.tintColor = APPCOLORS_3.GreyTextFont
             cell.lBTitle.text = arrNames[indexPath.row]
+            return cell
+           }
+            else if name == nameDeletAccount{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayHomesTVC", for: indexPath) as! DisplayHomesTVC
+//                cell.icon.backgroundColor = .red
+                cell.icon.contentMode = .scaleToFill
+                cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+                cell.icon.tintColor = APPCOLORS_3.GreyTextFont
+                cell.lBTitle.text = arrNames[indexPath.row]
+                cell.btnSavedDesigns.setTitle("Delete Account", for: .normal)
+                
+                //                if displayFavorites.count
+//                cell.fillTheData1(diplayFaoritesCount: displayFavorites.count)
+                cell.lBCount.text = " "
+                cell.actionHandler = { (button) in
+                    
+                    BurbankApp.showAlert("Are you sure, you want to Delete Account?", self, ["NO", "YES"]) { (str) in
+                    
+                                        if str == "YES" {
+                                            logoutUser()
+                                        }
+                                    }
+                }
+//                cell.lBCount.text = ""
             return cell
            }
             
@@ -1009,8 +1042,18 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 
             }
             else if name == nameSettings {
-                selectedRowHeight = rowHeightSettings
+                selectedRowHeight = rowHeightSettings + 20
                 CodeManager.sharedInstance.sendScreenName(burbank_profile_appSettings_button_touch)
+            }else if name ==  nameDeletAccount{
+//                setHeightForViewBasedonRowsHeight()
+//                tableView.reloadData()
+                
+//                BurbankApp.showAlert("Are you sure, you want to Delete Account?", self, ["NO", "YES"]) { (str) in
+//                    
+//                    if str == "YES" {
+//                        logoutUser()
+//                    }
+//                }
             }
             
         }
@@ -1027,7 +1070,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             let name = arrNames[selectedIndex]
             
-            if name == nameShare || name == nameHL || name == nameMyCollection || name == nameMyDesign || name == nameDisplayHomes || name == nameMyDetails{
+            if name == nameShare || name == nameHL || name == nameMyCollection || name == nameMyDesign || name == nameDisplayHomes || name == nameMyDetails  {
                 
                 return UITableView.automaticDimension
             }
@@ -1042,7 +1085,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             let name = arrNames[selectedIndex]
             
-            if name == nameShare || name == nameHL || name == nameMyCollection || name == nameMyDesign || name == nameDisplayHomes {
+            if name == nameShare || name == nameHL || name == nameMyCollection || name == nameMyDesign || name == nameDisplayHomes  {
                 
                 return UITableView.automaticDimension
             }
@@ -1180,7 +1223,17 @@ extension UserProfileVC {
             }
         }
     }
-    
+    @IBAction func handleDeleteAction (_ sender: UIButton) {
+        
+        CodeManager.sharedInstance.sendScreenName(burbank_profile_appSettings_logout_button_touch)
+        
+        BurbankApp.showAlert("Are you sure, you want to Delete Account?", self, ["NO", "YES"]) { (str) in
+            
+            if str == "YES" {
+                self.deleteAccount(appDelegate.userData?.user?.userEmail ?? "")
+            }
+        }
+    }
     
     //MARK: Share Popup
     
@@ -1230,7 +1283,47 @@ extension UserProfileVC {
     
     
 }
+extension UserProfileVC{
+    
+    func deleteAccount (_ email: String) {
+        let params = NSMutableDictionary ()
+        params.setValue(email, forKey: "emailId")
+        
+        let _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_deleteAccount(email), parameters: params , userInfo: nil, success: { (json, response) in
 
+            if let result: AnyObject = json {
+                
+                let result = result as! NSDictionary
+                
+                if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+                    let message = result.value(forKey: "message") as? String ?? ""
+                    BurbankApp.showAlert(message, self, ["OK"]) { (str) in
+                        if str == "OK" {
+                            logoutUser()
+                        }
+                    }
+
+                   
+                }else {
+                    
+                    
+                }
+            }else {
+                
+            }
+            
+        }, errorblock: { (error, isJSONerror)  in
+            
+            if isJSONerror {
+                
+            }else {
+                
+            }
+            
+        }, progress: nil)
+        
+    }
+}
 
 extension UserProfileVC: CropViewControllerDelegate {
     

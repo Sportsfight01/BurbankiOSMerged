@@ -89,7 +89,7 @@ class SiteStatusVC: BurbankAppVC/*MyPlaceWithTabBarVC*/, UICollectionViewDataSou
         
         let url = URL(string: urlString)
         
-        cell.myImage.setImageWith(url!, placeholderImage: UIImage(named: ""))
+        cell.myImage.sd_setImage(with: url!, placeholderImage: UIImage(named: ""))
         
         
         if displayImageView.tag == indexPath.row {
@@ -195,7 +195,7 @@ class SiteStatusVC: BurbankAppVC/*MyPlaceWithTabBarVC*/, UICollectionViewDataSou
         
         let url = URL(string: urlString)
         
-        self.displayImageView.setImageWith(url!, placeholderImage: UIImage(named: ""))
+        self.displayImageView.sd_setImage(with: url!, placeholderImage: UIImage(named: ""))
         
         
         // Converting date format

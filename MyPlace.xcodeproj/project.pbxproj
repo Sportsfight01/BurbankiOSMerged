@@ -13,7 +13,7 @@
 		01762A282462997E00F66A64 /* NewForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01762A272462997E00F66A64 /* NewForgotPasswordVC.swift */; };
 		01762A2A2462999500F66A64 /* NewResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01762A292462999500F66A64 /* NewResetPasswordVC.swift */; };
 		017C6EA124C563FF005F6C45 /* HomeDesigns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C6EA024C563FF005F6C45 /* HomeDesigns.swift */; };
-		1BEBA0958985D5B3B9BBFEC0 /* Pods_BurbankApp_MyPlaceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */; };
+		1CA5835F9A48F6425F3715DB /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7BA9B72BC1484ACC9A21A7 /* Pods_BurbankApp.framework */; };
 		259621B9274C9F4A0085D46C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */; };
 		42018CD52A5FD71000EF4A6A /* MyProgressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42018CD42A5FD71000EF4A6A /* MyProgressVM.swift */; };
 		4212D5FC2938A8EE00855CDC /* HomeAndLandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */; };
@@ -49,11 +49,23 @@
 		42E6D7EB29349DB20038179F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E6D7EA29349DB10038179F /* Login.storyboard */; };
 		42EA224D29FA4B4800354DC6 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */; };
 		42EA225029FA74EF00354DC6 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */; };
-		5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */; };
-		6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */; };
+		6A74EC12F691ADE3FF1B289C /* Pods_BurbankApp_MyPlaceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86918730064F4296B35FBE09 /* Pods_BurbankApp_MyPlaceUITests.framework */; };
+		A107ACFC2DD317010041FCF0 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A107ACFB2DD317010041FCF0 /* SDWebImage */; };
+		A107ACFE2DD317010041FCF0 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A107ACFD2DD317010041FCF0 /* SDWebImageMapKit */; };
+		A1147B292DD21F6800667000 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A1147B282DD21F6800667000 /* IQKeyboardManagerSwift */; };
+		A1147B2D2DD21FEF00667000 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = A1147B2C2DD21FEF00667000 /* MBProgressHUD */; };
 		A144018F27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist in Resources */ = {isa = PBXBuildFile; fileRef = A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */; };
 		A148363F2907BDDA0008AF29 /* PopupDisplayHomesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148363E2907BDD90008AF29 /* PopupDisplayHomesVC.swift */; };
+		A15034932DD322B4008DD227 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A15034922DD322B4008DD227 /* IQKeyboardManagerSwift */; };
+		A15034952DD32698008DD227 /* realm-monorepo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15034942DD32698008DD227 /* realm-monorepo.xcframework */; };
+		A15034A12DD334D0008DD227 /* realm-monorepo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15034942DD32698008DD227 /* realm-monorepo.xcframework */; };
 		A1583504291BB9CA0089133D /* SeperateLivingAreaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1583503291BB9CA0089133D /* SeperateLivingAreaVC.swift */; };
+		A162C4DD2DD46AA50039519C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A162C4DC2DD46AA50039519C /* FirebaseAnalytics */; };
+		A162C4DF2DD46AA50039519C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A162C4DE2DD46AA50039519C /* FirebaseAuth */; };
+		A162C4E12DD46AA50039519C /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A162C4E02DD46AA50039519C /* FirebaseCore */; };
+		A162C4E32DD46AA50039519C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A162C4E22DD46AA50039519C /* FirebaseCrashlytics */; };
+		A162C4E52DD46AA50039519C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A162C4E42DD46AA50039519C /* FirebaseFirestore */; };
+		A162C4E72DD46AA50039519C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = A162C4E62DD46AA50039519C /* FirebaseMessaging */; };
 		A162E54B2908F81E009647AE /* TimingsAndDirectionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A162E5492908F81E009647AE /* TimingsAndDirectionTVC.swift */; };
 		A162E54C2908F81E009647AE /* TimingsAndDirectionTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A162E54A2908F81E009647AE /* TimingsAndDirectionTVC.xib */; };
 		A1659951292F32BA00C36B3B /* SupportAndHelp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1659903292F32B900C36B3B /* SupportAndHelp.storyboard */; };
@@ -276,11 +288,22 @@
 		A1659B52292F4A4500C36B3B /* MenuCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */; };
 		A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */; };
 		A16AE0392901300C0025547E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16AE0382901300C0025547E /* ButtonExtension.swift */; };
+		A16DC1312DD3144100A362C7 /* YoutubePlayer-in-WKWebView in Frameworks */ = {isa = PBXBuildFile; productRef = A16DC1302DD3144100A362C7 /* YoutubePlayer-in-WKWebView */; };
+		A17E1F4A2DD2225C0039C4E8 /* AFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F492DD2225C0039C4E8 /* AFNetworking */; };
+		A17E1F4D2DD2239F0039C4E8 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F4C2DD2239F0039C4E8 /* FacebookAEM */; };
+		A17E1F4F2DD2239F0039C4E8 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F4E2DD2239F0039C4E8 /* FacebookBasics */; };
+		A17E1F512DD2239F0039C4E8 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F502DD2239F0039C4E8 /* FacebookCore */; };
+		A17E1F532DD2239F0039C4E8 /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F522DD2239F0039C4E8 /* FacebookGamingServices */; };
+		A17E1F552DD2239F0039C4E8 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F542DD2239F0039C4E8 /* FacebookLogin */; };
+		A17E1F572DD2239F0039C4E8 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F562DD2239F0039C4E8 /* FacebookShare */; };
+		A1827CB02DE422D6004BDB2F /* ProfileSettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1827CAF2DE422D6004BDB2F /* ProfileSettingsTVC.xib */; };
+		A1827CB12DE422D6004BDB2F /* ProfileSettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1827CAE2DE422D6004BDB2F /* ProfileSettingsTVC.swift */; };
 		A19452292BB1308000C63F36 /* InterceptorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19452282BB1308000C63F36 /* InterceptorClass.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
 		A1D363872DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
+		BB6DC4081BD5F91F25A2F358 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8442C419DD5190E3506DBB19 /* Pods_MyPlaceTests.framework */; };
 		D16FE371242881F30082DECF /* UIImage+TBTint.m in Sources */ = {isa = PBXBuildFile; fileRef = D16FE36B242881F30082DECF /* UIImage+TBTint.m */; };
 		D16FE372242881F30082DECF /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D16FE36D242881F30082DECF /* ImageDownloader.m */; };
 		D16FE373242881F30082DECF /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D16FE36F242881F30082DECF /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
@@ -485,11 +508,9 @@
 		01762A272462997E00F66A64 /* NewForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewForgotPasswordVC.swift; sourceTree = "<group>"; };
 		01762A292462999500F66A64 /* NewResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewResetPasswordVC.swift; sourceTree = "<group>"; };
 		017C6EA024C563FF005F6C45 /* HomeDesigns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDesigns.swift; sourceTree = "<group>"; };
-		05637D2EAF6119743E688592 /* Pods-BurbankApp-MyPlaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp-MyPlaceUITests.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests.release.xcconfig"; sourceTree = "<group>"; };
-		09BF1694BB894E0B25CB81FE /* Pods-BurbankApp-MyPlaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp-MyPlaceUITests.debug.xcconfig"; path = "Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		0B16BDB4B1FE8F15AE78670B /* Pods-MyPlaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaceTests.release.xcconfig"; path = "Target Support Files/Pods-MyPlaceTests/Pods-MyPlaceTests.release.xcconfig"; sourceTree = "<group>"; };
+		0D2AD7E25A6CBE1253DDA342 /* Pods-BurbankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.debug.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.debug.xcconfig"; sourceTree = "<group>"; };
+		1EEDA2879A178B25F63A03DD /* Pods-BurbankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.release.xcconfig"; sourceTree = "<group>"; };
 		259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp_MyPlaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42018CD42A5FD71000EF4A6A /* MyProgressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressVM.swift; sourceTree = "<group>"; };
 		4212D5F32938A8EE00855CDC /* HomeAndLandTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAndLandTVC.swift; sourceTree = "<group>"; };
 		4212D5F42938A8EE00855CDC /* DisplayHomesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayHomesTVC.swift; sourceTree = "<group>"; };
@@ -524,12 +545,15 @@
 		42E6D7EA29349DB10038179F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		42EA224C29FA4B4800354DC6 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		42EA224F29FA74EF00354DC6 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
-		4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CBC195AC9DDB9C68F5CDD05 /* Pods-BurbankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.release.xcconfig"; sourceTree = "<group>"; };
-		6EA4C7D2432698A18CEE720A /* Pods-BurbankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp.debug.xcconfig"; path = "Target Support Files/Pods-BurbankApp/Pods-BurbankApp.debug.xcconfig"; sourceTree = "<group>"; };
-		9D1BB6C5638974769935335D /* Pods-MyPlaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaceTests.debug.xcconfig"; path = "Target Support Files/Pods-MyPlaceTests/Pods-MyPlaceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		55B43986AA8D99B04D870796 /* Pods-MyPlaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaceTests.debug.xcconfig"; path = "Target Support Files/Pods-MyPlaceTests/Pods-MyPlaceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E7AB989BE2EC79D74CB530A /* Pods-BurbankApp-MyPlaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp-MyPlaceUITests.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8442C419DD5190E3506DBB19 /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86918730064F4296B35FBE09 /* Pods_BurbankApp_MyPlaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp_MyPlaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-BurbankMyplace.plist"; sourceTree = "<group>"; };
 		A148363E2907BDD90008AF29 /* PopupDisplayHomesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDisplayHomesVC.swift; sourceTree = "<group>"; };
+		A15034942DD32698008DD227 /* realm-monorepo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "realm-monorepo.xcframework"; path = "Pods/Realm/core/realm-monorepo.xcframework"; sourceTree = "<group>"; };
+		A15034972DD326CD008DD227 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15034982DD326CD008DD227 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1583503291BB9CA0089133D /* SeperateLivingAreaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateLivingAreaVC.swift; sourceTree = "<group>"; };
 		A162E5492908F81E009647AE /* TimingsAndDirectionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingsAndDirectionTVC.swift; sourceTree = "<group>"; };
 		A162E54A2908F81E009647AE /* TimingsAndDirectionTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimingsAndDirectionTVC.xib; sourceTree = "<group>"; };
@@ -766,13 +790,18 @@
 		A1659A9A292F4A4400C36B3B /* MenuCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCVCell.swift; sourceTree = "<group>"; };
 		A1659A9B292F4A4400C36B3B /* FilterOptionsCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOptionsCVCell.swift; sourceTree = "<group>"; };
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		A1827CAE2DE422D6004BDB2F /* ProfileSettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsTVC.swift; sourceTree = "<group>"; };
+		A1827CAF2DE422D6004BDB2F /* ProfileSettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingsTVC.xib; sourceTree = "<group>"; };
 		A19452282BB1308000C63F36 /* InterceptorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterceptorClass.swift; sourceTree = "<group>"; };
 		A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLabsImageSlider.swift; sourceTree = "<group>"; };
+		A1A2CA662DD3035B00656C46 /* GoogleMaps.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMaps.xcframework; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.xcframework; sourceTree = "<group>"; };
+		A1A2CA672DD3035B00656C46 /* GoogleMapsBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMapsBase.xcframework; path = Pods/GoogleMaps/Base/Frameworks/GoogleMapsBase.xcframework; sourceTree = "<group>"; };
+		A1A2CA682DD3035B00656C46 /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMapsCore.xcframework; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMapsCore.xcframework; sourceTree = "<group>"; };
+		A1A2CA692DD3035B00656C46 /* GoogleMapsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleMapsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAnAppointmentWebViewVC.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1E4543A29EFB0EB006B531B /* APIManager + Service Calls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIManager + Service Calls.swift"; sourceTree = "<group>"; };
 		A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewLayout.swift; sourceTree = "<group>"; };
-		C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16FE36B242881F30082DECF /* UIImage+TBTint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TBTint.m"; sourceTree = "<group>"; };
 		D16FE36C242881F30082DECF /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		D16FE36D242881F30082DECF /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
@@ -855,6 +884,8 @@
 		D222585F269C2A7E0004C42F /* DisplayHomesFavouritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayHomesFavouritesVC.swift; sourceTree = "<group>"; };
 		D2225861269C2E640004C42F /* DisplyHomesFavouritesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplyHomesFavouritesTVC.swift; sourceTree = "<group>"; };
 		D28F895D2671D9AC00737035 /* DisplayHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayHomeModel.swift; sourceTree = "<group>"; };
+		D7A351AD6FD8C50E58EE62A2 /* Pods-BurbankApp-MyPlaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp-MyPlaceUITests.debug.xcconfig"; path = "Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF7BA9B72BC1484ACC9A21A7 /* Pods_BurbankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED1E952A2500E89000343B10 /* NotificationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServices.swift; sourceTree = "<group>"; };
 		ED3060BC2462796100C53DCD /* NVImageLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVImageLoader.framework; sourceTree = "<group>"; };
 		ED3143A524C6A1EF00F048D2 /* HomeLandPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLandPopupVC.swift; sourceTree = "<group>"; };
@@ -962,6 +993,7 @@
 		EDDA7DE524CEE7E300C7DA01 /* ProfileHomeDesignTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHomeDesignTVCell.swift; sourceTree = "<group>"; };
 		EDED6B98248E10D600BF2C96 /* ProfileDataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManagement.swift; sourceTree = "<group>"; };
 		EDF17B5824C9AA69009C1E7E /* HomeDesignsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDesignsDetails.swift; sourceTree = "<group>"; };
+		F9F158D88B3523F0D80709B8 /* Pods-MyPlaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaceTests.release.xcconfig"; path = "Target Support Files/Pods-MyPlaceTests/Pods-MyPlaceTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -969,9 +1001,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16DC1312DD3144100A362C7 /* YoutubePlayer-in-WKWebView in Frameworks */,
+				A17E1F572DD2239F0039C4E8 /* FacebookShare in Frameworks */,
+				A162C4E12DD46AA50039519C /* FirebaseCore in Frameworks */,
 				ED3060BD2462796200C53DCD /* NVImageLoader.framework in Frameworks */,
+				A17E1F512DD2239F0039C4E8 /* FacebookCore in Frameworks */,
+				A162C4E52DD46AA50039519C /* FirebaseFirestore in Frameworks */,
+				A17E1F552DD2239F0039C4E8 /* FacebookLogin in Frameworks */,
+				A162C4E72DD46AA50039519C /* FirebaseMessaging in Frameworks */,
+				A15034932DD322B4008DD227 /* IQKeyboardManagerSwift in Frameworks */,
 				259621B9274C9F4A0085D46C /* FBSDKCoreKit.framework in Frameworks */,
-				6721CD6A2439462C4DE2FDAA /* Pods_BurbankApp.framework in Frameworks */,
+				A1147B2D2DD21FEF00667000 /* MBProgressHUD in Frameworks */,
+				A17E1F4D2DD2239F0039C4E8 /* FacebookAEM in Frameworks */,
+				A107ACFE2DD317010041FCF0 /* SDWebImageMapKit in Frameworks */,
+				A107ACFC2DD317010041FCF0 /* SDWebImage in Frameworks */,
+				A17E1F532DD2239F0039C4E8 /* FacebookGamingServices in Frameworks */,
+				A15034952DD32698008DD227 /* realm-monorepo.xcframework in Frameworks */,
+				A15034A12DD334D0008DD227 /* realm-monorepo.xcframework in Frameworks */,
+				A1147B292DD21F6800667000 /* IQKeyboardManagerSwift in Frameworks */,
+				A17E1F4A2DD2225C0039C4E8 /* AFNetworking in Frameworks */,
+				A162C4E32DD46AA50039519C /* FirebaseCrashlytics in Frameworks */,
+				A17E1F4F2DD2239F0039C4E8 /* FacebookBasics in Frameworks */,
+				A162C4DD2DD46AA50039519C /* FirebaseAnalytics in Frameworks */,
+				A162C4DF2DD46AA50039519C /* FirebaseAuth in Frameworks */,
+				1CA5835F9A48F6425F3715DB /* Pods_BurbankApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,7 +1032,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ACF0D00FCF7CDB45B5045C9 /* Pods_MyPlaceTests.framework in Frameworks */,
+				BB6DC4081BD5F91F25A2F358 /* Pods_MyPlaceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,7 +1040,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BEBA0958985D5B3B9BBFEC0 /* Pods_BurbankApp_MyPlaceUITests.framework in Frameworks */,
+				6A74EC12F691ADE3FF1B289C /* Pods_BurbankApp_MyPlaceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,10 +1059,17 @@
 		0A45B49F6BAFF277E0767BB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A15034972DD326CD008DD227 /* Realm.framework */,
+				A15034982DD326CD008DD227 /* RealmSwift.framework */,
+				A15034942DD32698008DD227 /* realm-monorepo.xcframework */,
+				A1A2CA662DD3035B00656C46 /* GoogleMaps.xcframework */,
+				A1A2CA672DD3035B00656C46 /* GoogleMapsBase.xcframework */,
+				A1A2CA682DD3035B00656C46 /* GoogleMapsCore.xcframework */,
+				A1A2CA692DD3035B00656C46 /* GoogleMapsUtils.framework */,
 				259621B8274C9F4A0085D46C /* FBSDKCoreKit.framework */,
-				C5BC199C2B06CD12F0CA04EC /* Pods_BurbankApp.framework */,
-				25CE7BCC968D12BB5EF927B9 /* Pods_BurbankApp_MyPlaceUITests.framework */,
-				4967AC41627CB2920993FB5F /* Pods_MyPlaceTests.framework */,
+				DF7BA9B72BC1484ACC9A21A7 /* Pods_BurbankApp.framework */,
+				86918730064F4296B35FBE09 /* Pods_BurbankApp_MyPlaceUITests.framework */,
+				8442C419DD5190E3506DBB19 /* Pods_MyPlaceTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1063,12 +1123,12 @@
 		5E07D3469B1301EA23F9E75C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6EA4C7D2432698A18CEE720A /* Pods-BurbankApp.debug.xcconfig */,
-				4CBC195AC9DDB9C68F5CDD05 /* Pods-BurbankApp.release.xcconfig */,
-				09BF1694BB894E0B25CB81FE /* Pods-BurbankApp-MyPlaceUITests.debug.xcconfig */,
-				05637D2EAF6119743E688592 /* Pods-BurbankApp-MyPlaceUITests.release.xcconfig */,
-				9D1BB6C5638974769935335D /* Pods-MyPlaceTests.debug.xcconfig */,
-				0B16BDB4B1FE8F15AE78670B /* Pods-MyPlaceTests.release.xcconfig */,
+				0D2AD7E25A6CBE1253DDA342 /* Pods-BurbankApp.debug.xcconfig */,
+				1EEDA2879A178B25F63A03DD /* Pods-BurbankApp.release.xcconfig */,
+				D7A351AD6FD8C50E58EE62A2 /* Pods-BurbankApp-MyPlaceUITests.debug.xcconfig */,
+				6E7AB989BE2EC79D74CB530A /* Pods-BurbankApp-MyPlaceUITests.release.xcconfig */,
+				55B43986AA8D99B04D870796 /* Pods-MyPlaceTests.debug.xcconfig */,
+				F9F158D88B3523F0D80709B8 /* Pods-MyPlaceTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1997,6 +2057,8 @@
 			isa = PBXGroup;
 			children = (
 				ED913837243319AC005DD459 /* UserProfileVC.swift */,
+				A1827CAE2DE422D6004BDB2F /* ProfileSettingsTVC.swift */,
+				A1827CAF2DE422D6004BDB2F /* ProfileSettingsTVC.xib */,
 				ED5965CE24FFC75A0066896F /* LocationServices.swift */,
 				ED1E952A2500E89000343B10 /* NotificationServices.swift */,
 			);
@@ -2371,15 +2433,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D188C5E92424D2DA00DFE678 /* Build configuration list for PBXNativeTarget "BurbankApp" */;
 			buildPhases = (
-				CF293C421C93AE0F5D3FDAA1 /* [CP] Check Pods Manifest.lock */,
+				3A489C568121952E69607308 /* [CP] Check Pods Manifest.lock */,
 				D188C5BB2424D2D800DFE678 /* Sources */,
 				D188C5BC2424D2D800DFE678 /* Frameworks */,
 				D188C5BD2424D2D800DFE678 /* Resources */,
 				EDAB8DF925120F29004256A7 /* Run Script */,
 				EDAB8DFB25123CAE004256A7 /* DSYMs Script */,
 				A16CB85127D112DA001D2A47 /* ShellScript */,
-				8FF46357B93AB84AABE72D91 /* [CP] Embed Pods Frameworks */,
-				80E6C80B09C3D846F9AF34C5 /* [CP] Copy Pods Resources */,
+				709A640300E1BAAFE21FA05B /* [CP] Embed Pods Frameworks */,
+				145C9C182AB6CA0D143CB395 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2394,7 +2456,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D188C5EC2424D2DA00DFE678 /* Build configuration list for PBXNativeTarget "MyPlaceTests" */;
 			buildPhases = (
-				BF241E209E49CE8BF385F1D7 /* [CP] Check Pods Manifest.lock */,
+				EF263306598A99C02465CAA5 /* [CP] Check Pods Manifest.lock */,
 				D188C5D12424D2DA00DFE678 /* Sources */,
 				D188C5D22424D2DA00DFE678 /* Frameworks */,
 				D188C5D32424D2DA00DFE678 /* Resources */,
@@ -2413,12 +2475,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D188C5EF2424D2DA00DFE678 /* Build configuration list for PBXNativeTarget "MyPlaceUITests" */;
 			buildPhases = (
-				ACE1C8521A090435D1AB35C4 /* [CP] Check Pods Manifest.lock */,
+				E0657DAB7C27DD11E73A494B /* [CP] Check Pods Manifest.lock */,
 				D188C5DC2424D2DA00DFE678 /* Sources */,
 				D188C5DD2424D2DA00DFE678 /* Frameworks */,
 				D188C5DE2424D2DA00DFE678 /* Resources */,
-				F51AB931582313B440E617B6 /* [CP] Embed Pods Frameworks */,
-				0689EC1A2604B3AEC995190C /* [CP] Copy Pods Resources */,
+				99A63B54712D894B5843D802 /* [CP] Embed Pods Frameworks */,
+				11791353DBD6BAD511510D12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2462,6 +2524,15 @@
 				Base,
 			);
 			mainGroup = D188C5B62424D2D800DFE678;
+			packageReferences = (
+				A1147B2A2DD21F9A00667000 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				A1147B2B2DD21FEF00667000 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				A17E1F482DD2225C0039C4E8 /* XCRemoteSwiftPackageReference "AFNetworking" */,
+				A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				A16DC12F2DD3144100A362C7 /* XCRemoteSwiftPackageReference "YoutubePlayer-in-WKWebView" */,
+				A15034912DD322B4008DD227 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D188C5C02424D2D800DFE678 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2484,6 +2555,7 @@
 				D16FE4862428EF6F0082DECF /* Proxima Nova Regular Italic.otf in Resources */,
 				A1659AD0292F4A4500C36B3B /* MyriadPro-Cond.otf in Resources */,
 				D16FE4642428EF6F0082DECF /* Proxima Nova Light.otf in Resources */,
+				A1827CB02DE422D6004BDB2F /* ProfileSettingsTVC.xib in Resources */,
 				A1659AAB292F4A4400C36B3B /* AboutUS.html in Resources */,
 				D16FE4632428EF6F0082DECF /* Proxima Nova A W07 Medium.ttf in Resources */,
 				D16FE4772428EF6F0082DECF /* proxima-nova-593a418f8182c.otf in Resources */,
@@ -2605,7 +2677,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0689EC1A2604B3AEC995190C /* [CP] Copy Pods Resources */ = {
+		11791353DBD6BAD511510D12 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2613,16 +2685,20 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		80E6C80B09C3D846F9AF34C5 /* [CP] Copy Pods Resources */ = {
+		145C9C182AB6CA0D143CB395 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2630,94 +2706,20 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8FF46357B93AB84AABE72D91 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A16CB85127D112DA001D2A47 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"find ${DWARF_DSYM_FOLDER_PATH}\" -name \"*.dSYM\" | xargs -I \\{\\} \"$PODS_ROOT/FirebaseCrashlytics/upload-symbols\" -gsp \"$PODS_ROOT/../GoogleService-MyPlace-burbank-Info.plist\" -p ios \\{\\}\n\n";
-		};
-		ACE1C8521A090435D1AB35C4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BurbankApp-MyPlaceUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BF241E209E49CE8BF385F1D7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyPlaceTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF293C421C93AE0F5D3FDAA1 /* [CP] Check Pods Manifest.lock */ = {
+		3A489C568121952E69607308 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2739,9 +2741,90 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EDAB8DF925120F29004256A7 /* Run Script */ = {
+		709A640300E1BAAFE21FA05B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BurbankApp/Pods-BurbankApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99A63B54712D894B5843D802 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A16CB85127D112DA001D2A47 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"find ${DWARF_DSYM_FOLDER_PATH}\" -name \"*.dSYM\" | xargs -I \\{\\} \"$PODS_ROOT/FirebaseCrashlytics/upload-symbols\" -gsp \"$PODS_ROOT/../GoogleService-MyPlace-burbank-Info.plist\" -p ios \\{\\}\n\n";
+		};
+		E0657DAB7C27DD11E73A494B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BurbankApp-MyPlaceUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDAB8DF925120F29004256A7 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -2756,7 +2839,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "
 ";
@@ -2779,21 +2862,26 @@
 			shellPath = /bin/sh;
 			shellScript = "\"find ${DWARF_DSYM_FOLDER_PATH}\" -name \"*.dSYM\" | xargs -I \\{\\} \"$PODS_ROOT/FirebaseCrashlytics/upload-symbols\" -gsp \"$PODS_ROOT/../GoogleService-MyPlace-burbank-Info.plist\" -p ios \\{\\}\n";
 		};
-		F51AB931582313B440E617B6 /* [CP] Embed Pods Frameworks */ = {
+		EF263306598A99C02465CAA5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyPlaceTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3135,6 +3223,7 @@
 				ED4D1F412435C8A600D0206D /* ProfileDetailsTVCell.swift in Sources */,
 				A1659967292F32BB00C36B3B /* MyProgressCVCell.swift in Sources */,
 				ED3B3A6926428FF100A03D85 /* DisplaysRegionsVC.swift in Sources */,
+				A1827CB12DE422D6004BDB2F /* ProfileSettingsTVC.swift in Sources */,
 				A1659985292F32BB00C36B3B /* MyHistoryTBCell.swift in Sources */,
 				ED7369F224F639670008B5E5 /* H&LStoreysCVCell.swift in Sources */,
 				42C869BE2A0E368200DDA572 /* UIView + Extensions.swift in Sources */,
@@ -3231,6 +3320,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphone*]" = "i386 x86_64";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -3246,7 +3336,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = MyPlace/MyPlace/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3292,6 +3382,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphone*]" = "i386 x86_64";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -3301,9 +3392,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = MyPlace/MyPlace/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -3313,7 +3405,7 @@
 		};
 		D188C5EA2424D2DA00DFE678 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EA4C7D2432698A18CEE720A /* Pods-BurbankApp.debug.xcconfig */;
+			baseConfigurationReference = 0D2AD7E25A6CBE1253DDA342 /* Pods-BurbankApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -3327,24 +3419,27 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y988XRR8UK;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyPlace/SupportingFiles",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MyPlace/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "My Place";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.10;
+				MARKETING_VERSION = 3.11;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Burbank_App_2024_JUL10;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "GOOGLELOGS DEBUG DEDEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyPlace/Service Layer/MyPlace-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -3354,7 +3449,7 @@
 		};
 		D188C5EB2424D2DA00DFE678 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CBC195AC9DDB9C68F5CDD05 /* Pods-BurbankApp.release.xcconfig */;
+			baseConfigurationReference = 1EEDA2879A178B25F63A03DD /* Pods-BurbankApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -3368,24 +3463,28 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y988XRR8UK;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphone*]" = "i386 x86_64";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyPlace/SupportingFiles",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MyPlace/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "My Place";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.10;
+				MARKETING_VERSION = 3.11;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Burbank_App_2024_JUL10;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "MyPlace/Service Layer/MyPlace-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3394,7 +3493,7 @@
 		};
 		D188C5ED2424D2DA00DFE678 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D1BB6C5638974769935335D /* Pods-MyPlaceTests.debug.xcconfig */;
+			baseConfigurationReference = 55B43986AA8D99B04D870796 /* Pods-MyPlaceTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -3416,7 +3515,7 @@
 		};
 		D188C5EE2424D2DA00DFE678 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B16BDB4B1FE8F15AE78670B /* Pods-MyPlaceTests.release.xcconfig */;
+			baseConfigurationReference = F9F158D88B3523F0D80709B8 /* Pods-MyPlaceTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -3438,7 +3537,7 @@
 		};
 		D188C5F02424D2DA00DFE678 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09BF1694BB894E0B25CB81FE /* Pods-BurbankApp-MyPlaceUITests.debug.xcconfig */;
+			baseConfigurationReference = D7A351AD6FD8C50E58EE62A2 /* Pods-BurbankApp-MyPlaceUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -3458,7 +3557,7 @@
 		};
 		D188C5F12424D2DA00DFE678 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05637D2EAF6119743E688592 /* Pods-BurbankApp-MyPlaceUITests.release.xcconfig */;
+			baseConfigurationReference = 6E7AB989BE2EC79D74CB530A /* Pods-BurbankApp-MyPlaceUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -3516,6 +3615,171 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A1147B272DD21F6800667000 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.1;
+			};
+		};
+		A1147B2A2DD21F9A00667000 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.0;
+			};
+		};
+		A1147B2B2DD21FEF00667000 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+		A15034912DD322B4008DD227 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.1;
+			};
+		};
+		A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+		A16DC12F2DD3144100A362C7 /* XCRemoteSwiftPackageReference "YoutubePlayer-in-WKWebView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmhv/YoutubePlayer-in-WKWebView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.11;
+			};
+		};
+		A17E1F482DD2225C0039C4E8 /* XCRemoteSwiftPackageReference "AFNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AFNetworking/AFNetworking.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A107ACFB2DD317010041FCF0 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1147B2A2DD21F9A00667000 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		A107ACFD2DD317010041FCF0 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1147B2A2DD21F9A00667000 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		A1147B282DD21F6800667000 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1147B272DD21F6800667000 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		A1147B2C2DD21FEF00667000 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1147B2B2DD21FEF00667000 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+		A15034922DD322B4008DD227 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A15034912DD322B4008DD227 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		A162C4DC2DD46AA50039519C /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		A162C4DE2DD46AA50039519C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A162C4E02DD46AA50039519C /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		A162C4E22DD46AA50039519C /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		A162C4E42DD46AA50039519C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		A162C4E62DD46AA50039519C /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A162C4DB2DD46AA50039519C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		A16DC1302DD3144100A362C7 /* YoutubePlayer-in-WKWebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A16DC12F2DD3144100A362C7 /* XCRemoteSwiftPackageReference "YoutubePlayer-in-WKWebView" */;
+			productName = "YoutubePlayer-in-WKWebView";
+		};
+		A17E1F492DD2225C0039C4E8 /* AFNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17E1F482DD2225C0039C4E8 /* XCRemoteSwiftPackageReference "AFNetworking" */;
+			productName = AFNetworking;
+		};
+		A17E1F4C2DD2239F0039C4E8 /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		A17E1F4E2DD2239F0039C4E8 /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		A17E1F502DD2239F0039C4E8 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		A17E1F522DD2239F0039C4E8 /* FacebookGamingServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookGamingServices;
+		};
+		A17E1F542DD2239F0039C4E8 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		A17E1F562DD2239F0039C4E8 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17E1F4B2DD2239F0039C4E8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A16599F5292F4A4300C36B3B /* BurbankApp.xcdatamodeld */ = {

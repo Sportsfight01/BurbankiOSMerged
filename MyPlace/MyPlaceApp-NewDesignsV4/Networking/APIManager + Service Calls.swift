@@ -262,7 +262,10 @@ class APIManager{
                         }
                     }
                     if progressdata.hidden == false{
-                        progressdataArr.append(progressdata)
+                        if let name = progressdata.name, !name.starts(with: "ETS") {
+                                progressdataArr.append(progressdata)
+                            }
+                       
                     }
                     
                 }
@@ -281,7 +284,10 @@ class APIManager{
                         
                         
                         if progressdata.hidden == false{
-                            progressdataArr.append(progressdata)
+                            if let name = progressdata.name, !name.starts(with: "ETS") {
+                                    progressdataArr.append(progressdata)
+                                }
+//                            progressdataArr.append(progressdata)
                         }
                         //                        progressdataArr.append(progressdata)
                     }

@@ -186,7 +186,7 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
     
     func fillPackageData () {
         //CodeManager.sharedInstance.sendScreenName("BB_DisplayHomes_NameAndSize_\(self.homeDesignDetails?.lsthouses?.houseName ?? "")_design,\(self.homeDesignDetails?.lsthouses?.houseSize ?? 0)")
-        Analytics.logEvent("BB_DisplayHomes_NameAndSize_", parameters: ["name" : self.homeDesignDetails?.lsthouses?.houseName ?? "","size" : self.homeDesignDetails?.lsthouses?.houseSize ?? ""])
+//        Analytics.logEvent("BB_DisplayHomes_NameAndSize_", parameters: ["name" : self.homeDesignDetails?.lsthouses?.houseName ?? "","size" : self.homeDesignDetails?.lsthouses?.houseSize ?? ""])
 //        validFacadeNamesArray = homeDesignDetails?.lsthouses?.validFacades?.components(separatedBy: "|")
         if let imageurl = homeDesignDetails?.lsthouses?.facadePermanentURL {
             
