@@ -1,4 +1,4 @@
-                
+
 //  AppDelegate.swift
 //  BurbankApp
 //
@@ -10,21 +10,23 @@ import MBProgressHUD
 import CoreData
 import Firebase
 import FBSDKCoreKit
-import GoogleMaps                
+import GoogleMaps
 import IQKeyboardManagerSwift
 import FirebaseCore
 import IQKeyboardToolbarManager
-
+import FirebaseMessaging
+import FirebaseFirestore
+import FirebaseAuth
 /**
  - important: Make sure you read this
  - File:       AppDelegate
  - Contains:   Main app controller.
  
-  Here IQKeyboardManager, NotificationCenter, CoreData, CheckingInternetConnection , ActivityIndicator are also using which helps in various ways throughout the app.
+ Here IQKeyboardManager, NotificationCenter, CoreData, CheckingInternetConnection , ActivityIndicator are also using which helps in various ways throughout the app.
  */
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
+    
     var userData: UserData?
     var guestUserAccessToken: String?
     var userAuthToken : String?
@@ -44,8 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var selectedModuleName : String!
     
-//    var constructionID : String!
-//    var officeID : String!
+    //    var constructionID : String!
+    //    var officeID : String!
     
     var currentUser: User?
     var enteredEmailOrJob = ""
@@ -61,73 +63,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var myPlaceStatusDetails: MyPlaceStatusDetails?//storing myPlaceStatusDetails to write logic for getting url for different Regions
     var jobContacts: JobContacts? //for displaying contacts in menu bar
     
-//    for myAppointments
+    //    for myAppointments
     var appointmentData = [appointmentsData]()
- 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       // Thread.sleep(forTimeInterval: 5.0)
-//        IQKeyboardToolbarManager.shared.isEnabled = true
+        // Thread.sleep(forTimeInterval: 5.0)
+        //        IQKeyboardToolbarManager.shared.isEnabled = true
         IQKeyboardManager.shared.toolbarConfiguration.tintColor = APPCOLORS_3.Orange_BG
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = APPCOLORS_3.Orange_BG
-      ApplicationDelegate.shared.application(
-                application,
-                didFinishLaunchingWithOptions: launchOptions
-            )
-//        #if GOOGLELOGS
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+        //        #if GOOGLELOGS
         FirebaseConfiguration().setLoggerLevel(FirebaseLoggerLevel.min)
         //Configure Firebase
         
-        let googleServicesFileName = "GoogleService-Info-BurbankMyplace"
-//        "GoogleService-MyPlace-burbank-Info" //"GoogleService-MyPlace-Info"
+        let googleServicesFileName = "GoogleService-Info"
+//        "GoogleService-Info-BurbankMyplace"
+        //        "GoogleService-MyPlace-burbank-Info" //"GoogleService-MyPlace-Info"
         
         if let filePath = Bundle.main.path(forResource: googleServicesFileName, ofType: "plist") {
             if let options = FirebaseOptions (contentsOfFile: filePath) {
                 FirebaseApp.configure(options: options)
             }
         }
-//        FirebaseApp.configure(options: <#T##FirebaseOptions#>)
-//        #endif
-        //self.window = UIWindow(frame: UIScreen.main.bounds)
-        
         GMSServices.provideAPIKey(googleAPIKey)
-        
-        
-        
-        // $(MARKETING_VERSION)
-        // $(CURRENT_PROJECT_VERSION)
-        
-        // Override point for customization after application launch.
-        
-
-         //To enable the IQKeyboard manager
+        //To enable the IQKeyboard manager
         IQKeyboardManager.shared.isEnabled = true
         IQKeyboardToolbarManager.shared.isEnabled = true
         //Rechability Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(checkInternetConnection), name: Notification.Name.reachabilityChanged, object: nil)
         reachability = Reachability(hostName: "www.apple.com")
-        reachability?.startNotifier()        
+        reachability?.startNotifier()
         loginStatus = isUserLoggedIn()
         fillUserEmailOrJob()
         UIApplication.shared.statusBarStyle = .lightContent
-        
-//        checkVersionUpdate()
-//        checkAppUpdateAvailability { (status, version ) in
-//            //When status == true show popup.
-//            if status{
-//                showUpdatePopup(appStoreVersion: version)
-//            }
-//        } onError: { (status) in
-//            // Handle error
-//        }
-        
-//        APIManager.shared.getAppUpdateNotification{ (status, version ) in
-//            //When status == true show popup.
-//            if status{
-//                showUpdatePopup(appStoreVersion: version)
-//            }
-//        } onError: { (status) in
-//            // Handle error
-//        }
         
         appDelegate.checkAppUpdateAvailability { (status, version ) in
             //When status == true show popup.
@@ -145,37 +116,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appStartUpSetup()
         }
         
+        UNUserNotificationCenter.current().delegate = self
+        requestNotificationAuthorization()
+        application.registerForRemoteNotifications()
+        Messaging.messaging().delegate = self
+        Messaging.messaging().isAutoInitEnabled = true
+        
+        
         return true
     }
     
+    func requestNotificationAuthorization() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                print("Notification permission granted.")
+            } else if let error = error {
+                print("Notification permission error: \(error)")
+            }
+        }
+    }
 
-
-
-  func application(_ app: UIApplication,open url: URL,options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("Device Token: \(token)")
+        Messaging.messaging().apnsToken = deviceToken
+        // Send token to your server here
+    }
+    func application(_ application: UIApplication,
+                         didFailToRegisterForRemoteNotificationsWithError error: Error) {
+            print("Failed to register: \(error)")
+        }
     
-    ApplicationDelegate.shared.application(
-      app,
-      open: url,
-      sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-      annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-    )
-  
-}
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+    }
+    func application(_ app: UIApplication,open url: URL,options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+        
+    }
     
     func checkAppUpdateAvailability(onSuccess: @escaping (Bool,String) -> Void, onError: @escaping (Bool) -> Void) {
-            guard let info = Bundle.main.infoDictionary,
-                  let curentVersion = info["CFBundleShortVersionString"] as? String,
-                  let url = URL(string: "https://itunes.apple.com/au/lookup?id=1437771849") else {
-                return onError(true)
+        guard let info = Bundle.main.infoDictionary,
+              let curentVersion = info["CFBundleShortVersionString"] as? String,
+              let url = URL(string: "https://itunes.apple.com/au/lookup?id=1437771849") else {
+            return onError(true)
             
-//            https://apps.apple.com/app/id1437771849
-//            https://apps.apple.com/us/app/burbank-myplace/id1437771849
+            //            https://apps.apple.com/app/id1437771849
+            //            https://apps.apple.com/us/app/burbank-myplace/id1437771849
             
-                
-            }
+            
+        }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-              // Error handling...
+            // Error handling...
             guard let jsonDict = try? JSONSerialization.jsonObject(with: data!) as? NSDictionary else {
                 print(error)
                 
@@ -196,46 +197,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 }
             }
-            }.resume()
-        
-//            do {
-//                let data = try Data(contentsOf: url)
-//                guard let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] else {
-//                   return onError(true)
-//                }
-//                if let result = (json["results"] as? [Any])?.first as? [String: Any], let appStoreVersion = result["version"] as? String{
-//                    DispatchQueue.main.async {
-//                        
-//                        print("version in app store", appStoreVersion," current Version ",curentVersion);
-//                        let versionCompare = curentVersion.compare(appStoreVersion, options: .numeric)
-//                        
-//                        if versionCompare == .orderedSame {
-//                            onSuccess(false)
-//                        } else if versionCompare == .orderedAscending {
-//                            onSuccess(true)
-//                            // 2.0.0 to 3.0.0 is ascending order, so ask user to update
-//                        }
-//                        
-//                    }
-//                }
-//            } catch {
-//                onError(true)
-//            }
-        }
-//    func checkVersionUpdate() {
-//        
-//        Harpy.sharedInstance()?.presentingViewController = window?.rootViewController
-//        Harpy.sharedInstance()?.showAlertAfterCurrentVersionHasBeenReOleasedForDays = 3
-//        Harpy.sharedInstance()?.alertControllerTintColor = UIColor.blue
-//        Harpy.sharedInstance()?.appName = "MyPlace"
-//        Harpy.sharedInstance()?.alertType = .skip
-//        Harpy.sharedInstance()?.countryCode = "IN"
-//        Harpy.sharedInstance()?.forceLanguageLocalization = HarpyLanguageEnglish
-//        Harpy.sharedInstance()?.showAlertAfterCurrentVersionHasBeenReleasedForDays = 1
-//        Harpy.sharedInstance()?.checkVersion()
-//        
-//    }
-
+        }.resume()
+    }
+ 
+    
     func isUserLoggedIn() -> Bool
     {
         if let decoded  = UserDefaults.standard.object(forKey: "currentUser") as? NSData
@@ -248,7 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
             }
         }
-      
+        
         return false
     }
     func fillUserEmailOrJob()
@@ -263,18 +228,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         
-        #if DEDEBUG
+#if DEDEBUG
         print("is Enter Foreground called.....?/")
-        #endif
+#endif
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("is Enter background called.....?/")
         
         NotificationCenter.default.removeObserver(self, name: Notification.Name.reachabilityChanged, object: nil)
-       
+        
         if loginStatus == false
         {
             UserDefaults.standard.removeObject(forKey: "isFirstTimeShown")
@@ -284,29 +249,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.removeObject(forKey: "CurrentEstate")
         }
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         print("is Enter Foreground called.....?/")
         
         
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("is applicationDidBecomeActive.....?/")
         
-      
+        
         
         checkInternetConnection()
         
-        NotificationCenter.default.post(name: NSNotification.Name (rawValue: kLocationPermissionChanges), object: nil)        
+        NotificationCenter.default.post(name: NSNotification.Name (rawValue: kLocationPermissionChanges), object: nil)
     }
     
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-     
+        
     }
     
     /// Method for checking whether device has internet connection or not.
@@ -329,11 +294,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         showActivityManager ()
         
-//        DispatchQueue.main.async(execute: {
-//
-//            MBProgressHUD.showAdded(to: (self.window?.rootViewController?.view)!, animated: true)
-//            self.window?.rootViewController?.view.bringSubviewToFront(MBProgressHUD())
-//        })
+        //        DispatchQueue.main.async(execute: {
+        //
+        //            MBProgressHUD.showAdded(to: (self.window?.rootViewController?.view)!, animated: true)
+        //            self.window?.rootViewController?.view.bringSubviewToFront(MBProgressHUD())
+        //        })
     }
     
     /// Method for hiding activity indicator.
@@ -341,13 +306,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         hideActivityManager()
         
-//        DispatchQueue.main.async(execute: {
-//
-//            MBProgressHUD.hide(for: (self.window?.rootViewController?.view)!, animated: false)
-////            MBProgressHUD.hideAllHUDs(for: (self.window?.rootViewController?.view)!, animated: true)
-//        })
+        //        DispatchQueue.main.async(execute: {
+        //
+        //            MBProgressHUD.hide(for: (self.window?.rootViewController?.view)!, animated: false)
+        ////            MBProgressHUD.hideAllHUDs(for: (self.window?.rootViewController?.view)!, animated: true)
+        //        })
     }
-
+    
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -403,17 +368,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         return ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: nil)
         
-      
-           // return false;
+        
+        // return false;
     }
     
     /*
      private func application(application: UIApplication, openURL url: URL, options: [String: AnyObject]) -> Bool {
      
      /**
-     *  Asks the delegate to open a resource specified by a URL, and provides a dictionary of launch options.
-     true if the delegate successfully handled the request or false if the attempt to open the URL resource failed.
-     */
+      *  Asks the delegate to open a resource specified by a URL, and provides a dictionary of launch options.
+      true if the delegate successfully handled the request or false if the attempt to open the URL resource failed.
+      */
      
      if FBSDKApplicationDelegate.sharedInstance().application(application, open: url, options: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String) {
      return true
@@ -426,10 +391,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
      */
     ///Asks the delegate for the interface orientations to use for the view controllers in the specified window.
-//    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask
-//    {
-//        return UIInterfaceOrientationMask.portrait;
-//    }
+    //    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask
+    //    {
+    //        return UIInterfaceOrientationMask.portrait;
+    //    }
     
     /// MARK: - Core Data stack
     /// The directory the application uses to store the Core Data store file.
@@ -440,25 +405,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 }
-                // MARK: UISceneSession Lifecycle
-                
-                @available(iOS 13.0, *)
-                extension AppDelegate {
-                    
-                    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-                        // Called when a new scene session is being created.
-                        // Use this method to select a configuration to create the new scene with.
-                        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-                    }
-                    
-                    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-                        // Called when the user discards a scene session.
-                        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-                        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-                    }
-                }
+// MARK: UISceneSession Lifecycle
 
+@available(iOS 13.0, *)
+extension AppDelegate {
+    
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+    
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+}
+// MARK: Push Notifications Handling
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    // Called when a notification is delivered while app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound])
+    }
 
+    // Called when the user taps the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        print("Notification received with info: \(userInfo)")
+        completionHandler()
+    }
+}
+
+extension AppDelegate {
+   
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("📱 FCM Token: \(fcmToken ?? "")")
+      print("Firebase registration token: \(String(describing: fcmToken))")
+
+      let dataDict: [String: String] = ["token": fcmToken ?? ""]
+      NotificationCenter.default.post(
+        name: Notification.Name("FCMToken"),
+        object: nil,
+        userInfo: dataDict
+      )
+      // TODO: If necessary send token to application server.
+      // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+}
 
 //extension UIApplication {
 //

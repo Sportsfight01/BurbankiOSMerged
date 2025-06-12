@@ -1593,22 +1593,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0A8ECB66-F7FE-43AC-AAC0-9A1256C43DD5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager + Service Calls.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "654"
-            endingLineNumber = "654"
-            landmarkName = "getMyDocumentsAPI(isDocuments:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "84FE51C1-F64F-4433-BA71-6DBA3B777C5B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1648,8 +1632,8 @@
             filePath = "MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "checkAppUpdateAvailability(onSuccess:onError:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1897,16 +1881,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "43012767-3714-48DA-8FBB-0EE15D51CBC2"
+            uuid = "769746C7-0CB0-4E7B-BF50-3132D921D79D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyPlace/Utilities/NetworkManager/Networking.swift"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/Networking/APIManager + Service Calls.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "POST_request(url:parameters:userInfo:success:errorblock:progress:showActivity:returnJSON:)"
+            startingLineNumber = "681"
+            endingLineNumber = "681"
+            landmarkName = "getMyDocumentsAPI(isDocuments:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02D18C34-06E9-4D25-A2B3-447F7191DF9C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/MyPlaceApp-NewDesignsV4/TabBarVCs/DocumentsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "openSafariVC(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C576324-0972-4F78-B07E-EF6C5372DD31"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyPlace/SupportingFiles/OLDCode/BurbankApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

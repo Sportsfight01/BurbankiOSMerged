@@ -54,7 +54,6 @@
 		A107ACFE2DD317010041FCF0 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A107ACFD2DD317010041FCF0 /* SDWebImageMapKit */; };
 		A1147B292DD21F6800667000 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A1147B282DD21F6800667000 /* IQKeyboardManagerSwift */; };
 		A1147B2D2DD21FEF00667000 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = A1147B2C2DD21FEF00667000 /* MBProgressHUD */; };
-		A144018F27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist in Resources */ = {isa = PBXBuildFile; fileRef = A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */; };
 		A148363F2907BDDA0008AF29 /* PopupDisplayHomesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148363E2907BDD90008AF29 /* PopupDisplayHomesVC.swift */; };
 		A15034932DD322B4008DD227 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A15034922DD322B4008DD227 /* IQKeyboardManagerSwift */; };
 		A15034952DD32698008DD227 /* realm-monorepo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15034942DD32698008DD227 /* realm-monorepo.xcframework */; };
@@ -173,7 +172,6 @@
 		A1659ADD292F4A4500C36B3B /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1659A03292F4A4300C36B3B /* OpenSans-Regular.ttf */; };
 		A1659ADE292F4A4500C36B3B /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1659A04292F4A4300C36B3B /* OpenSans-BoldItalic.ttf */; };
 		A1659ADF292F4A4500C36B3B /* BurbankDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1659A05292F4A4300C36B3B /* BurbankDataModel.xcdatamodeld */; };
-		A1659AE0292F4A4500C36B3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1659A08292F4A4300C36B3B /* GoogleService-Info.plist */; };
 		A1659AE1292F4A4500C36B3B /* ImagesOLD.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1659A09292F4A4300C36B3B /* ImagesOLD.xcassets */; };
 		A1659AE2292F4A4500C36B3B /* LaunchScreen_OLD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1659A0A292F4A4300C36B3B /* LaunchScreen_OLD.storyboard */; };
 		A1659AE3292F4A4500C36B3B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1659A0F292F4A4300C36B3B /* MenuTableViewCell.swift */; };
@@ -298,6 +296,7 @@
 		A17E1F572DD2239F0039C4E8 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = A17E1F562DD2239F0039C4E8 /* FacebookShare */; };
 		A1827CB02DE422D6004BDB2F /* ProfileSettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1827CAF2DE422D6004BDB2F /* ProfileSettingsTVC.xib */; };
 		A1827CB12DE422D6004BDB2F /* ProfileSettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1827CAE2DE422D6004BDB2F /* ProfileSettingsTVC.swift */; };
+		A18CB3482DFB013200FDB49F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A18CB3472DFB013200FDB49F /* GoogleService-Info.plist */; };
 		A19452292BB1308000C63F36 /* InterceptorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19452282BB1308000C63F36 /* InterceptorClass.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
 		A1D363872DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */; };
@@ -428,7 +427,6 @@
 		ED67958C246A5C9C008FAEED /* MyPlaceHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED679586246A5C9C008FAEED /* MyPlaceHomeVC.swift */; };
 		ED67958D246A5C9C008FAEED /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED679587246A5C9C008FAEED /* DashboardVC.swift */; };
 		ED679590246A61E2008FAEED /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67958F246A61E2008FAEED /* Toast.swift */; };
-		ED67C5922510871A0078E6F9 /* GoogleService-MyPlace-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED67C5912510871A0078E6F9 /* GoogleService-MyPlace-Info.plist */; };
 		ED7369EE24F630550008B5E5 /* H&LQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7369ED24F630550008B5E5 /* H&LQuiz.swift */; };
 		ED7369F024F6391E0008B5E5 /* H&LRegionsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7369EF24F6391E0008B5E5 /* H&LRegionsCVCell.swift */; };
 		ED7369F224F639670008B5E5 /* H&LStoreysCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7369F124F639670008B5E5 /* H&LStoreysCVCell.swift */; };
@@ -549,7 +547,6 @@
 		6E7AB989BE2EC79D74CB530A /* Pods-BurbankApp-MyPlaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurbankApp-MyPlaceUITests.release.xcconfig"; path = "Target Support Files/Pods-BurbankApp-MyPlaceUITests/Pods-BurbankApp-MyPlaceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8442C419DD5190E3506DBB19 /* Pods_MyPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86918730064F4296B35FBE09 /* Pods_BurbankApp_MyPlaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurbankApp_MyPlaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-BurbankMyplace.plist"; sourceTree = "<group>"; };
 		A148363E2907BDD90008AF29 /* PopupDisplayHomesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDisplayHomesVC.swift; sourceTree = "<group>"; };
 		A15034942DD32698008DD227 /* realm-monorepo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "realm-monorepo.xcframework"; path = "Pods/Realm/core/realm-monorepo.xcframework"; sourceTree = "<group>"; };
 		A15034972DD326CD008DD227 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -792,6 +789,7 @@
 		A16AE0382901300C0025547E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		A1827CAE2DE422D6004BDB2F /* ProfileSettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsTVC.swift; sourceTree = "<group>"; };
 		A1827CAF2DE422D6004BDB2F /* ProfileSettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingsTVC.xib; sourceTree = "<group>"; };
+		A18CB3472DFB013200FDB49F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A19452282BB1308000C63F36 /* InterceptorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterceptorClass.swift; sourceTree = "<group>"; };
 		A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLabsImageSlider.swift; sourceTree = "<group>"; };
 		A1A2CA662DD3035B00656C46 /* GoogleMaps.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMaps.xcframework; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.xcframework; sourceTree = "<group>"; };
@@ -937,7 +935,6 @@
 		ED679586246A5C9C008FAEED /* MyPlaceHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaceHomeVC.swift; sourceTree = "<group>"; };
 		ED679587246A5C9C008FAEED /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		ED67958F246A61E2008FAEED /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		ED67C5912510871A0078E6F9 /* GoogleService-MyPlace-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-MyPlace-Info.plist"; sourceTree = "<group>"; };
 		ED7369ED24F630550008B5E5 /* H&LQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "H&LQuiz.swift"; sourceTree = "<group>"; };
 		ED7369EF24F6391E0008B5E5 /* H&LRegionsCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "H&LRegionsCVCell.swift"; sourceTree = "<group>"; };
 		ED7369F124F639670008B5E5 /* H&LStoreysCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "H&LStoreysCVCell.swift"; sourceTree = "<group>"; };
@@ -1995,9 +1992,8 @@
 				A1DB603C28FD1D1900E3322D /* Main.storyboard */,
 				ED51DE9924BDAF7E008681C0 /* HomeDesign.storyboard */,
 				ED8E4E2D24442B1F0010BF57 /* SortFilter.storyboard */,
-				ED67C5912510871A0078E6F9 /* GoogleService-MyPlace-Info.plist */,
+				A18CB3472DFB013200FDB49F /* GoogleService-Info.plist */,
 				ED8E040725384E39000FCFED /* GoogleService-MyPlace-burbank-Info.plist */,
-				A144018E27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist */,
 				ED3060BC2462796100C53DCD /* NVImageLoader.framework */,
 				D16FE37624288A830082DECF /* Fonts */,
 			);
@@ -2559,7 +2555,6 @@
 				A1659AAB292F4A4400C36B3B /* AboutUS.html in Resources */,
 				D16FE4632428EF6F0082DECF /* Proxima Nova A W07 Medium.ttf in Resources */,
 				D16FE4772428EF6F0082DECF /* proxima-nova-593a418f8182c.otf in Resources */,
-				A1659AE0292F4A4500C36B3B /* GoogleService-Info.plist in Resources */,
 				D16FE45F2428EF6F0082DECF /* Proxima Nova Extra Condensed Thin Italic.otf in Resources */,
 				D16FE47E2428EF6F0082DECF /* Proxima Nova Condensed Thin.otf in Resources */,
 				4298DBEF2A1CB81100109D6A /* Montserrat-SemiBold.ttf in Resources */,
@@ -2592,6 +2587,7 @@
 				A1659AE1292F4A4500C36B3B /* ImagesOLD.xcassets in Resources */,
 				A1659ADC292F4A4500C36B3B /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D16FE45D2428EF6F0082DECF /* Proxima Nova Black Italic.otf in Resources */,
+				A18CB3482DFB013200FDB49F /* GoogleService-Info.plist in Resources */,
 				A1659B3D292F4A4500C36B3B /* Filters.sqlite in Resources */,
 				A1659ADD292F4A4500C36B3B /* OpenSans-Regular.ttf in Resources */,
 				D16FE4732428EF6F0082DECF /* Proxima Nova Extra Condensed Extrabold Italic.otf in Resources */,
@@ -2624,7 +2620,6 @@
 				D16FE46D2428EF6F0082DECF /* Proxima Nova Extra Condensed Bold Italic.otf in Resources */,
 				A1659AEA292F4A4500C36B3B /* SwipeLR.png in Resources */,
 				D16FE4812428EF6F0082DECF /* Proxima Nova Condensed Regular.otf in Resources */,
-				A144018F27CF28BA004E7C6D /* GoogleService-Info-BurbankMyplace.plist in Resources */,
 				A1659AD5292F4A4500C36B3B /* OpenSans-Semibold.ttf in Resources */,
 				A1659B09292F4A4500C36B3B /* Info_old.plist in Resources */,
 				A1659ACD292F4A4500C36B3B /* MyriadPro-CondIt.otf in Resources */,
@@ -2639,7 +2634,6 @@
 				D16FE4852428EF6F0082DECF /* Proxima Nova Bold Italic.otf in Resources */,
 				A1659ACA292F4A4500C36B3B /* MyriadPro-Regular.otf in Resources */,
 				A1659AC9292F4A4500C36B3B /* MyriadPro-Semibold.otf in Resources */,
-				ED67C5922510871A0078E6F9 /* GoogleService-MyPlace-Info.plist in Resources */,
 				A1659ACE292F4A4500C36B3B /* MyriadPro-BoldIt.otf in Resources */,
 				A165998A292F32BB00C36B3B /* NewDesignsV4.storyboard in Resources */,
 				D16FE4692428EF6F0082DECF /* Proxima Nova Condensed Black.otf in Resources */,
