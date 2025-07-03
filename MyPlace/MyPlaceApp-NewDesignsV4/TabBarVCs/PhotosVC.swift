@@ -258,7 +258,7 @@ extension PhotosVC : UICollectionViewDelegate, SkeletonCollectionViewDataSource
         cell.imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
 //        cell.imageView.sd_setImage(with: URL(string: "\(photoInfo?.url ?? "")"))
         let photUrl  = photoInfo?.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        cell.imageView.sd_setImage(with: URL(string: photUrl), placeholderImage: UIImage(named: "BurbankLogo"), context: .none)
+        cell.imageView.sd_setImage(with: URL(string: photUrl), placeholderImage: UIImage(named: "Img-BB-Logo"), context: .none)
 //        CodeManager.sharedInstance.downloadAndShowImage("\(photoInfo?.url ?? "")", "", cell.imageView)
         return cell
     }
