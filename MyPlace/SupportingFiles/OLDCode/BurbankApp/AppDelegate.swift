@@ -66,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     //    for myAppointments
     var appointmentData = [appointmentsData]()
     
+    var pushnotificatonsData = pushNtfcnModelInfo()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Thread.sleep(forTimeInterval: 5.0)
         //        IQKeyboardToolbarManager.shared.isEnabled = true
@@ -168,11 +170,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
               let curentVersion = info["CFBundleShortVersionString"] as? String,
               let url = URL(string: "https://itunes.apple.com/au/lookup?id=1437771849") else {
             return onError(true)
-            
             //            https://apps.apple.com/app/id1437771849
             //            https://apps.apple.com/us/app/burbank-myplace/id1437771849
-            
-            
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -428,17 +427,86 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.banner, .sound])
+        completionHandler([.banner, .sound, .badge, .banner])
     }
-
+    
     // Called when the user taps the notification
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         print("Notification received with info: \(userInfo)")
+        
+        pushnotificatonsData.houseSize = userInfo["HouseSize"] as? String ?? ""
+        pushnotificatonsData.newHomesHouseId = userInfo["NewHomesHouseId"] as? String ?? ""
+        pushnotificatonsData.facade = userInfo["Facade"] as? String ?? ""
+        pushnotificatonsData.state = userInfo["State"] as? String ?? ""
+        pushnotificatonsData.displaysHouseId = userInfo["DisplaysHouseId"] as? String ?? ""
+        pushnotificatonsData.houseName = userInfo["HouseName"] as? String ?? ""
+        pushnotificatonsData.handLPackageId = userInfo["HandLPackageId"] as? String ?? ""
+        pushnotificatonsData.moduleType = userInfo["ModuleType"] as? String ?? ""
+        
+        handleNotificationNavigation(pushnotificatons: pushnotificatonsData)
+        
+        
         completionHandler()
     }
+    private func handleNotificationNavigation(pushnotificatons: pushNtfcnModelInfo) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first,
+              let rootVC = window.rootViewController else { return }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if pushnotificatons.moduleType == "NewHomes"{
+            
+            // Example: Navigate to `DetailViewController` with ID "DetailVC"
+            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
+                if let navVC = rootVC as? UINavigationController {
+                    targetVC.isFromProfile = false
+                    targetVC.isFromFavorites = false
+                    targetVC.homeDesignData?.houseName = pushnotificatons.houseName
+                    targetVC.homeDesignData?.houseSize = pushnotificatons.houseSize
+                    navVC.pushViewController(targetVC, animated: true)
+                } else {
+                    let nav = UINavigationController(rootViewController: targetVC)
+                    window.rootViewController = nav
+                }
+            }
+        }
+        else if pushnotificatons.moduleType == "HomeAndLand"{
+            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeLandDetailsVC") as? HomeLandDetailsVC {
+                if let navVC = rootVC as? UINavigationController {
+                    targetVC.isFromProfile = false
+                    targetVC.isFromFavorites = false
+                    //                    targetVC.designCount = arrHomeDesigns.count
+                    //                    targetVC.arrHomeDesignsDetails = arrHomeDesigns
+                    //                    targetVC.selectedDesignCount = indexPath.row
+                    navVC.pushViewController(targetVC, animated: true)
+                } else {
+                    let nav = UINavigationController(rootViewController: targetVC)
+                    window.rootViewController = nav
+                }
+            }
+            
+        }else{
+            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
+                if let navVC = rootVC as? UINavigationController {
+                    targetVC.isFromProfile = false
+                    targetVC.isFromFavorites = false
+                    targetVC.homeDesignData?.houseName = pushnotificatons.houseName
+                    targetVC.homeDesignData?.houseSize = pushnotificatons.houseSize
+                    navVC.pushViewController(targetVC, animated: true)
+                } else {
+                    let nav = UINavigationController(rootViewController: targetVC)
+                    window.rootViewController = nav
+                }
+            }
+            
+        }
+        
+        
+    }
+    
 }
 
 extension AppDelegate {
@@ -486,3 +554,16 @@ extension AppDelegate {
 //        return rootViewController
 //    }
 //}
+
+class pushNtfcnModelInfo {
+    var houseSize : String = ""
+    var newHomesHouseId : String  = ""
+    var facade : String  = ""
+    var state : String   = ""
+    var displaysHouseId : String  = ""
+    var houseName : String  = ""
+    var handLPackageId : String  = ""
+    var moduleType : String  = ""
+    
+    
+}

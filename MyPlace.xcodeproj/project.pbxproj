@@ -299,8 +299,10 @@
 		A18CB3482DFB013200FDB49F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A18CB3472DFB013200FDB49F /* GoogleService-Info.plist */; };
 		A19452292BB1308000C63F36 /* InterceptorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19452282BB1308000C63F36 /* InterceptorClass.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
+		A1AB08592E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB08582E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift */; };
 		A1D363872DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
+		A1E1102A2E1B9A7D00E4EE05 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E110292E1B9A7D00E4EE05 /* NotificationService.swift */; };
 		A1E4543D29EFB1D6006B531B /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */; };
 		BB6DC4081BD5F91F25A2F358 /* Pods_MyPlaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8442C419DD5190E3506DBB19 /* Pods_MyPlaceTests.framework */; };
 		D16FE371242881F30082DECF /* UIImage+TBTint.m in Sources */ = {isa = PBXBuildFile; fileRef = D16FE36B242881F30082DECF /* UIImage+TBTint.m */; };
@@ -796,8 +798,10 @@
 		A1A2CA672DD3035B00656C46 /* GoogleMapsBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMapsBase.xcframework; path = Pods/GoogleMaps/Base/Frameworks/GoogleMapsBase.xcframework; sourceTree = "<group>"; };
 		A1A2CA682DD3035B00656C46 /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMapsCore.xcframework; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMapsCore.xcframework; sourceTree = "<group>"; };
 		A1A2CA692DD3035B00656C46 /* GoogleMapsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleMapsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1AB08582E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDesignsAndDisplayHomeDetailsVC.swift; sourceTree = "<group>"; };
 		A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAnAppointmentWebViewVC.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A1E110292E1B9A7D00E4EE05 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		A1E4543A29EFB0EB006B531B /* APIManager + Service Calls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIManager + Service Calls.swift"; sourceTree = "<group>"; };
 		A1E4543C29EFB1D6006B531B /* PagingCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		D16FE36B242881F30082DECF /* UIImage+TBTint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TBTint.m"; sourceTree = "<group>"; };
@@ -1711,6 +1715,14 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
+		A1AB08572E276C88008A091E /* PushNotificationsVC */ = {
+			isa = PBXGroup;
+			children = (
+				A1AB08582E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift */,
+			);
+			path = PushNotificationsVC;
+			sourceTree = "<group>";
+		};
 		A1E4543E29EFB8EB006B531B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -1885,6 +1897,7 @@
 		D188C5F52424D37500DFE678 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				A1E110292E1B9A7D00E4EE05 /* NotificationService.swift */,
 				D188C5F62424D37500DFE678 /* Constants.swift */,
 				D188C5F72424D37500DFE678 /* ServiceAPI.swift */,
 				D188C5F82424D37500DFE678 /* AppThemeColors.swift */,
@@ -1936,6 +1949,7 @@
 		D188C6062424D37500DFE678 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				A1AB08572E276C88008A091E /* PushNotificationsVC */,
 				4212D5F22938A8EE00855CDC /* Favourites */,
 				EDC2E7AE2550531900C87498 /* YoutubeVideoPlayer */,
 				ED679585246A5C9C008FAEED /* Dasboard */,
@@ -3013,6 +3027,7 @@
 				EDC2E78225503D1900C87498 /* AppConfigurations.swift in Sources */,
 				A1659B48292F4A4500C36B3B /* RegionListTVCell.swift in Sources */,
 				A1659B20292F4A4500C36B3B /* MyPlacePhotoDetailVC.swift in Sources */,
+				A1E1102A2E1B9A7D00E4EE05 /* NotificationService.swift in Sources */,
 				A1659A9E292F4A4400C36B3B /* DisplayHomeDataModels.swift in Sources */,
 				A1659B53292F4A4500C36B3B /* FilterOptionsCVCell.swift in Sources */,
 				ED3B3A5B26428F1600A03D85 /* DisplaysNearByVC.swift in Sources */,
@@ -3124,6 +3139,7 @@
 				ED57A02E245FDAF800C24039 /* TextFieldExtension.swift in Sources */,
 				A1659B44292F4A4500C36B3B /* RegionSelectTV.swift in Sources */,
 				A1659993292F32BB00C36B3B /* LaunchVCNew.swift in Sources */,
+				A1AB08592E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift in Sources */,
 				A1659B02292F4A4500C36B3B /* Constants_Burbank.swift in Sources */,
 				A1659AFA292F4A4500C36B3B /* NotificationTypes+CoreDataClass.swift in Sources */,
 				A1659B51292F4A4500C36B3B /* MyPlaceContactsCell.swift in Sources */,

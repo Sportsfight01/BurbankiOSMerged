@@ -469,8 +469,10 @@ class LoginVC: BurbankAppVC,UIPickerViewDelegate,UIPickerViewDataSource {
                             {
                                 if let message = jsonDic["Message"] as? String
                                 {
-                                     AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
-                                     self.passwordTextField.becomeFirstResponder()
+                                    DispatchQueue.main.async {
+                                        AlertManager.sharedInstance.showAlert(alertMessage: message, title: "")
+                                        self.passwordTextField.becomeFirstResponder()
+                                    }
                                      return
                                 }
                             }
