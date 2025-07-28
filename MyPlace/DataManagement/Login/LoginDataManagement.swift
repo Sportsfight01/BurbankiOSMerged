@@ -36,7 +36,7 @@ class LoginDataManagement: NSObject {
     
     var viewContr: UIViewController?
     
-    
+    public let str = ""
     
     func handleGoogleSignIn () {
         
@@ -338,6 +338,9 @@ extension LoginDataManagement {
         
     }
     
+    
+    
+    
     //MARK: - API
         
     func handleDefaultLoginforToken (_ noparamsBlock: noParamsBlock?) {
@@ -402,6 +405,38 @@ extension LoginDataManagement {
         task.resume()
             
         }
+    
+    
+    
+    func saveDeviceDataForPushnotification() {
+        let params1 = [
+              "DeviceToken": fcmTokenID,
+              "IMEINumber": deviceUDID,
+              "DeviceType": "IOS"
+          ]
+        
+        let _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_saveDeviceDataForPushNotificaations, parameters: params1 as NSDictionary, userInfo: nil, success: { (json, response) in
+            if let result: AnyObject = json {
+                let result = result as! NSDictionary
+                if let _ = result.value(forKey: "Code"), (result.value(forKey: "Code") as? Bool) == true {
+                    print("DeviceData saved Successfully")
+                }else {
+                    }
+            }else {
+                
+            }
+            
+        }, errorblock: { (error, isJSONerror)  in
+            
+            if isJSONerror {
+                
+            }else {
+                
+                alert.showAlert("Error", error?.localizedDescription ?? knoResponseMessage)
+            }
+            
+        }, progress: nil)
+    }
             
 //            let params = ["Username" : defaultLoginEmail, "Password" : defaultLoginPassword]
             

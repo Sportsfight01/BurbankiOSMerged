@@ -117,12 +117,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             // Fallback on earlier versions
             appStartUpSetup()
         }
-        
-        UNUserNotificationCenter.current().delegate = self
-        requestNotificationAuthorization()
-        application.registerForRemoteNotifications()
-        Messaging.messaging().delegate = self
-        Messaging.messaging().isAutoInitEnabled = true
+//        UIApplication.shared.applicationIconBadgeNumber = 0
+
+        sleep(1)
+//        UNUserNotificationCenter.current().delegate = self
+//        requestNotificationAuthorization()
+//        application.registerForRemoteNotifications()
+//        Messaging.messaging().delegate = self
+//        Messaging.messaging().isAutoInitEnabled = true
         
         
         return true
@@ -130,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     func requestNotificationAuthorization() {
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        center.requestAuthorization(options: [.sound]) { granted, error in
             if granted {
                 print("Notification permission granted.")
             } else if let error = error {
@@ -427,7 +429,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.banner, .sound, .badge, .banner])
+        completionHandler(.sound)
     }
     
     // Called when the user taps the notification
@@ -445,75 +447,26 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         pushnotificatonsData.houseName = userInfo["HouseName"] as? String ?? ""
         pushnotificatonsData.handLPackageId = userInfo["HandLPackageId"] as? String ?? ""
         pushnotificatonsData.moduleType = userInfo["ModuleType"] as? String ?? ""
-        
-        handleNotificationNavigation(pushnotificatons: pushnotificatonsData)
+        pushnotificatonsData.isMultiple = userInfo["IsMultiple"] as? String ?? ""
+        loadDependencies{
+            handleNotificationNavigation(pushnotificatons: self.pushnotificatonsData)
+        }
+//        handleNotificationNavigation(pushnotificatons: pushnotificatonsData)
         
         
         completionHandler()
     }
-    private func handleNotificationNavigation(pushnotificatons: pushNtfcnModelInfo) {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first,
-              let rootVC = window.rootViewController else { return }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if pushnotificatons.moduleType == "NewHomes"{
-            
-            // Example: Navigate to `DetailViewController` with ID "DetailVC"
-            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
-                if let navVC = rootVC as? UINavigationController {
-                    targetVC.isFromProfile = false
-                    targetVC.isFromFavorites = false
-                    targetVC.homeDesignData?.houseName = pushnotificatons.houseName
-                    targetVC.homeDesignData?.houseSize = pushnotificatons.houseSize
-                    navVC.pushViewController(targetVC, animated: true)
-                } else {
-                    let nav = UINavigationController(rootViewController: targetVC)
-                    window.rootViewController = nav
-                }
-            }
-        }
-        else if pushnotificatons.moduleType == "HomeAndLand"{
-            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeLandDetailsVC") as? HomeLandDetailsVC {
-                if let navVC = rootVC as? UINavigationController {
-                    targetVC.isFromProfile = false
-                    targetVC.isFromFavorites = false
-                    //                    targetVC.designCount = arrHomeDesigns.count
-                    //                    targetVC.arrHomeDesignsDetails = arrHomeDesigns
-                    //                    targetVC.selectedDesignCount = indexPath.row
-                    navVC.pushViewController(targetVC, animated: true)
-                } else {
-                    let nav = UINavigationController(rootViewController: targetVC)
-                    window.rootViewController = nav
-                }
-            }
-            
-        }else{
-            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
-                if let navVC = rootVC as? UINavigationController {
-                    targetVC.isFromProfile = false
-                    targetVC.isFromFavorites = false
-                    targetVC.homeDesignData?.houseName = pushnotificatons.houseName
-                    targetVC.homeDesignData?.houseSize = pushnotificatons.houseSize
-                    navVC.pushViewController(targetVC, animated: true)
-                } else {
-                    let nav = UINavigationController(rootViewController: targetVC)
-                    window.rootViewController = nav
-                }
-            }
-            
-        }
-        
-        
-    }
     
 }
+
+
 
 extension AppDelegate {
    
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("📱 FCM Token: \(fcmToken ?? "")")
       print("Firebase registration token: \(String(describing: fcmToken))")
+        fcmTokenID = fcmToken ?? ""
 
       let dataDict: [String: String] = ["token": fcmToken ?? ""]
       NotificationCenter.default.post(
@@ -564,6 +517,6 @@ class pushNtfcnModelInfo {
     var houseName : String  = ""
     var handLPackageId : String  = ""
     var moduleType : String  = ""
-    
+    var isMultiple : String = ""
     
 }

@@ -86,7 +86,7 @@ class NotificationServices: NSObject {
         
         //        UNUserNotificationCenter.current().delegate = self
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             
             if granted { } else { return }
             

@@ -15,6 +15,9 @@ let kAPPNAME = "MyPlace"
 let IS_IPAD : Bool = UIDevice.current.userInterfaceIdiom == .pad
 let IS_IPHONE : Bool = UIDevice.current.userInterfaceIdiom == .phone
 
+let deviceUDID : String = UIDevice.current.identifierForVendor?.uuidString ?? " "
+var fcmTokenID = ""
+
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 var kWindow: UIWindow = currentWindow

@@ -299,6 +299,7 @@
 		A18CB3482DFB013200FDB49F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A18CB3472DFB013200FDB49F /* GoogleService-Info.plist */; };
 		A19452292BB1308000C63F36 /* InterceptorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19452282BB1308000C63F36 /* InterceptorClass.swift */; };
 		A1A0DC1729D2F5DA00E6A3F7 /* CLabsImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DC1629D2F5DA00E6A3F7 /* CLabsImageSlider.swift */; };
+		A1A608FC2E30BF44007DE642 /* HomeLandPushNotifiactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A608FB2E30BF43007DE642 /* HomeLandPushNotifiactionVC.swift */; };
 		A1AB08592E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB08582E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift */; };
 		A1D363872DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */; };
 		A1DB603D28FD1D1A00E3322D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1DB603C28FD1D1900E3322D /* Main.storyboard */; };
@@ -798,6 +799,7 @@
 		A1A2CA672DD3035B00656C46 /* GoogleMapsBase.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMapsBase.xcframework; path = Pods/GoogleMaps/Base/Frameworks/GoogleMapsBase.xcframework; sourceTree = "<group>"; };
 		A1A2CA682DD3035B00656C46 /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMapsCore.xcframework; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMapsCore.xcframework; sourceTree = "<group>"; };
 		A1A2CA692DD3035B00656C46 /* GoogleMapsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleMapsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1A608FB2E30BF43007DE642 /* HomeLandPushNotifiactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLandPushNotifiactionVC.swift; sourceTree = "<group>"; };
 		A1AB08582E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDesignsAndDisplayHomeDetailsVC.swift; sourceTree = "<group>"; };
 		A1D363862DC8922E0084B034 /* BookAnAppointmentWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAnAppointmentWebViewVC.swift; sourceTree = "<group>"; };
 		A1DB603C28FD1D1900E3322D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -1719,6 +1721,7 @@
 			isa = PBXGroup;
 			children = (
 				A1AB08582E276CC6008A091E /* HomeDesignsAndDisplayHomeDetailsVC.swift */,
+				A1A608FB2E30BF43007DE642 /* HomeLandPushNotifiactionVC.swift */,
 			);
 			path = PushNotificationsVC;
 			sourceTree = "<group>";
@@ -3023,6 +3026,7 @@
 				A1659AD1292F4A4500C36B3B /* BurbankApp.xcdatamodeld in Sources */,
 				4212D6022938A8EE00855CDC /* MyDesignsTVC.swift in Sources */,
 				ED7E41FD25304AD0004377BE /* LabelExtension.swift in Sources */,
+				A1A608FC2E30BF44007DE642 /* HomeLandPushNotifiactionVC.swift in Sources */,
 				A1659AE3292F4A4500C36B3B /* MenuTableViewCell.swift in Sources */,
 				EDC2E78225503D1900C87498 /* AppConfigurations.swift in Sources */,
 				A1659B48292F4A4500C36B3B /* RegionListTVCell.swift in Sources */,

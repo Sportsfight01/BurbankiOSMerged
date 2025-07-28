@@ -487,7 +487,7 @@ class HeaderVC: UIViewController {
         NSLayoutConstraint.activate([
             profileImage.trailingAnchor.constraint(equalTo: headerView_header.trailingAnchor, constant: -15),
             profileImage.topAnchor.constraint(equalTo: headerView_header.topAnchor, constant: statusBarHeight() + 15),
-            profileImage.heightAnchor.constraint(equalTo: headerView_header.widthAnchor, multiplier: 0.14),
+            profileImage.heightAnchor.constraint(equalTo: headerView_header.widthAnchor, multiplier: 0.12),
             profileImage.widthAnchor.constraint(equalTo: profileImage.heightAnchor, multiplier: 1)
         ])
         

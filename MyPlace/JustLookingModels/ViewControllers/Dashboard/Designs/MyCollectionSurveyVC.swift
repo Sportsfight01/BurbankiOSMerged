@@ -164,11 +164,17 @@ class MyCollectionSurveyVC: HeaderVC {
     
     if arrVCs.count == 0 {
       
-      if navigationController?.viewControllers.count == 1 {
-        self.tabBarController?.navigationController?.popViewController(animated: true)
-      }else {
-        self.navigationController?.popViewController(animated: true)
-      }
+        if navigationController?.viewControllers.count == 1 {
+            if let vc = kStoryboardMain.instantiateInitialViewController()
+            {
+                kWindow.rootViewController = vc
+                kWindow.makeKeyAndVisible()
+            }
+        }
+//        self.tabBarController?.navigationController?.popViewController(animated: true)
+//      }else {
+//        self.navigationController?.popViewController(animated: true)
+//      }
       
     }else {
       

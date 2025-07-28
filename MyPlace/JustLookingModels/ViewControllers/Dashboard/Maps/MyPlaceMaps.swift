@@ -15,6 +15,7 @@ import GoogleMapsUtils
 class MyPlaceMap: GMSMapView {
     
     var allMarkers = [MyPlaceMarker]()
+    var allMarkersForHLPushNotifiaction = [MyPlaceMarkerForPushNotifiaction]()
     var NearByallMarkers = [NearByPlaceMarkers]()
     var designLocationMarkers = [designLocationMark]()
     
@@ -202,6 +203,27 @@ class MyPlaceMap: GMSMapView {
         }
     }
     
+    func addMarkersForHomeLandPushNotifications (packages: [HomeLandPackageDetails]) {
+        
+        removeAllMarkers()
+        
+        for package in packages {
+//
+//            print(log: "latitude: \(package.latitude ?? "")")
+//            print(log: "longitude: \(package.longitude ?? "")")
+            
+            if let lat = package.packageDetails?.latitude {
+                if lat.count > 0 {
+                    let marker = MyPlaceMarkerForPushNotifiaction (package: package)
+                    marker.selected = true
+                    marker.map = self
+                    
+                    allMarkersForHLPushNotifiaction.append(marker)
+                }
+            }
+        }
+    }
+    
     func addMarkersTONearByPlaces (nearByPlaces: [DisplayHomeModel]) -> [GMSMarker] {
 
         removeAllMarkers1()
@@ -304,6 +326,37 @@ class MyPlaceMarker: GMSMarker {
         super.init()
         
         position = CLLocationCoordinate2D (latitude: (package.latitude! as NSString).doubleValue, longitude: (package.longitude! as NSString).doubleValue)
+        
+        selected = false
+        
+        icon = UIImage (named: "Ico-LocationDot")
+    }
+    
+    
+
+    
+}
+
+class MyPlaceMarkerForPushNotifiaction: GMSMarker {
+    
+    let homeLandPackage: HomeLandPackageDetails?
+    
+    var selected: Bool? {
+        didSet {
+            if selected == false {
+                self.icon = UIImage (named: "Ico-LocationDot")
+            }else {
+                icon = UIImage (named: "Ico-Location-2")
+            }
+        }
+    }
+    
+    
+    init(package: HomeLandPackageDetails) {
+        homeLandPackage = package
+        super.init()
+        
+        position = CLLocationCoordinate2D (latitude: Double(package.packageDetails?.latitude ?? "") ?? 0.0, longitude: Double(package.packageDetails?.longitude ?? "") ?? 0.0)
         
         selected = false
         

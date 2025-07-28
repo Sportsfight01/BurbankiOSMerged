@@ -402,7 +402,12 @@ class HomeLandVCSurvey: HeaderVC {
             if (btnDesignsCount.title(for: .normal) == "SKIP >") {
                 
                 if navigationController?.viewControllers.count == 1 {
-                    self.tabBarController?.navigationController?.popViewController(animated: true)
+//                    self.tabBarController?.navigationController?.popViewController(animated: true)
+                    if let vc = kStoryboardMain.instantiateInitialViewController()
+                    {
+                      kWindow.rootViewController = vc
+                      kWindow.makeKeyAndVisible()
+                    }
                 }else {
                     self.navigationController?.popViewController(animated: true)
                 }

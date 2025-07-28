@@ -134,7 +134,7 @@ class HomeDesignsAndDisplayHomeDetailsVC: HeaderVC {
                 btnBack.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
                 btnBackFull.addTarget(self, action: #selector(handleBackButton(_:)), for: .touchUpInside)
             }
-            if let designs = pushnotificatonsDetails{
+            if pushnotificatonsDetails != nil{
                 fillAllDetails ()
             }
              
@@ -249,32 +249,24 @@ class HomeDesignsAndDisplayHomeDetailsVC: HeaderVC {
             self.lBPrice.isHidden = true // -------> v2.2 changes
           //CodeManager.sharedInstance.sendScreenName("BB_HomeDesign_NameAndSize_\(self.homeDesign?.houseName ?? "")_design,\(self.homeDesign?.houseSize ?? "")")
     //        Analytics.logEvent("BB_profile_HomeDesign_NameAndSize", parameters: ["name" : self.homeDesign?.houseName ?? "","size" : self.homeDesign?.houseSize ?? "","jobID" : appDelegate.currentUser?.jobNumber ?? "0"])
-            self.lBHouseName.text = (self.homeDesignData?.houseName ?? "") + " " + (self.homeDesignData?.houseSize ?? "")
-            self.lBBedrooms.text = self.homeDesignData!.bedRooms
-            self.lBBathrooms.text = self.homeDesignData!.bathRooms
-            self.lBParking.text = self.homeDesignData!.carSpace
+           
             
-            if displayText == "Take a quick survey to find your perfect design"{
-    //        if Int(kUserID)! == 0{
-                self.addBreadCrumb (from: (self.homeDesignData?.houseName ?? "") + " " + (self.homeDesignData?.houseSize ?? ""))
-
-    //        }
-            }
+           
             
             
-            self.lBLotWidth.text = (self.homeDesignData?.minLotWidth?.trim() ?? "0") + "m"
+            
 
             
             self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
-            if Int(kUserID)! > 0 { // LoggedInUser
-                self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
-                self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
-                
-            }else { // Guest User
+//            if Int(kUserID)! > 0 { // LoggedInUser
+//                self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
+//                self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+//                
+//            }else { // Guest User
             
                 self.btnFavorite.setImage(imageUNFavorite, for: .normal)
                 self.btnSaveDesign.backgroundColor = APPCOLORS_3.Orange_BG
-            }
+//            }
             
            // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
             
@@ -282,47 +274,77 @@ class HomeDesignsAndDisplayHomeDetailsVC: HeaderVC {
 
             enquireView.isHidden = arrOnDisplay.count == 0
             if let design = pushnotificatonsDetails {
-                getDesignDetailsFromPushNotification(design, completion: { designDeti in
+                getDesignDetailsFromPushNotification(design) { [weak self] designDeti in
+                    guard let self = self else { return }
+                    
                     self.homeDesignDetails = designDeti
-                    if let designDetails = self.homeDesignDetails {
-                        
-                        self.arrScrollImageUrls.removeAll()
-                        self.validFacadeNamesArray.removeAll()
-                        
-                        if let imageurl = designDetails.lsthouses?.facadeLargeImageUrls {
-                            for imagURL in imageurl {
-                                let imageArr = imagURL.components(separatedBy: "_")
-                                let imageName = imageArr[1].replacingOccurrences(of: ".jpg", with: "")
-                                print("--=-=---=-=-=-=-=-: ",imageName)
-                                self.validFacadeNamesArray.append(imageName )
+                    let designDetails = designDeti
+                    guard let house = designDetails.lsthouses else {
+                        return
+                    }
+                   
+
+                    self.arrScrollImageUrls.removeAll()
+                    self.validFacadeNamesArray.removeAll()
+
+                    if let imageUrls = house.facadeLargeImageUrls {
+                        for imagURL in imageUrls {
+                            let components = imagURL.components(separatedBy: "_")
+                            if components.count > 1 {
+                                let name = components[1].replacingOccurrences(of: ".jpg", with: "")
+                                self.validFacadeNamesArray.append(name)
                                 self.arrScrollImageUrls.append(imagURL)
-                                self.bannerImageScroll (self.arrScrollImageUrls)
                             }
                         }
-                        
-                        if let floorplanURL = designDetails.lsthouses?.homePlan?.floorPlanImageURLMobile {
-                            
-                            self.imageHouseDesign.showActivityIndicator()
-                            
-                            ImageDownloader.downloadImage(withUrl: floorplanURL, withFilePath: nil, with: { (image, success, error) in
-                                
-                                self.imageHouseDesign.hideActivityIndicator()
-                                
-                                if success, let img = image {
-                                    // processpixels method used to change image colors --> black to white
-                                    self.imageHouseDesign.image = processPixels(in: img)
-                                    let scrollView = self.scrollViewHouseDesign
-                                    scrollView?.delegate = self
-                                    scrollView?.minimumZoomScale = 1.0
-                                    scrollView?.maximumZoomScale = 10.0
-                                }
-                                
-                            }, withProgress: nil)
-                        }
-                        
+                        self.bannerImageScroll(self.arrScrollImageUrls)
                     }
 
-                })
+                    if let floorplanURL = house.homePlan?.floorPlanImageURLMobile {
+                        self.imageHouseDesign.showActivityIndicator()
+
+                        ImageDownloader.downloadImage(
+                            withUrl: floorplanURL,
+                            withFilePath: nil,
+                            with: { [weak self] image, success, error in
+                                guard let self = self else { return }
+
+                                self.imageHouseDesign.hideActivityIndicator()
+
+                                if success, let img = image {
+                                    self.imageHouseDesign.image = processPixels(in: img)
+                                    if let scrollView = self.scrollViewHouseDesign {
+                                        scrollView.delegate = self
+                                        scrollView.minimumZoomScale = 1.0
+                                        scrollView.maximumZoomScale = 10.0
+                                    }
+                                }
+                            },
+                            withProgress: nil
+                        )
+                    }
+
+                    DispatchQueue.main.async {
+                        let name = house.houseName ?? ""
+                        let size = house.houseSize ?? 0
+                        let bed = house.bedRooms ?? 0
+                        let bath = house.bathRooms ?? 0
+                        let park = house.carSpace ?? 0
+                        let lotWidth = house.minLotWidth ?? 0.0
+
+                        self.lBHouseName.text = "\(name) \(size)"
+                        self.lBBedrooms.text = "\(bed)"
+                        self.lBBathrooms.text = "\(bath)"
+                        self.lBParking.text = "\(park)"
+                        self.lBLotWidth.text = "\(lotWidth)".trim() + "m"
+                        if self.displayText == "Take a quick survey to find your perfect design"{
+                //        if Int(kUserID)! == 0{
+                            self.addBreadCrumb (from: "\(name) \(size)")
+
+                //        }
+                        }
+                    }
+                }
+
             }
             
            
@@ -636,8 +658,14 @@ class HomeDesignsAndDisplayHomeDetailsVC: HeaderVC {
         //MARK: - Button Actions
         
         @IBAction func handleBackButton (_ sender: UIButton) {
-            
-            self.navigationController?.popViewController(animated: true)
+            if let vc = kStoryboardMain.instantiateInitialViewController()
+            {
+                kWindow.rootViewController = vc
+                kWindow.makeKeyAndVisible()
+                
+            }else{
+                self.navigationController?.popViewController(animated: true)
+            }
         }
         
         @IBAction func handlePreviousDesignButton (_ sender: UIButton) {

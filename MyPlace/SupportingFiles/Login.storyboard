@@ -523,7 +523,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="height" constant="18" id="T6G-br-OFU"/>
                                     <constraint firstAttribute="width" constant="10" id="Z9S-jC-dhu"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="KaO-vB-Or6" eventType="touchUpInside" id="P5Y-9x-eUe"/>
@@ -775,25 +775,25 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 <state key="normal" backgroundImage="Ico-BB-Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKC-os-uA7">
-                                <rect key="frame" x="60" y="242" width="50.666666666666657" height="25"/>
+                                <rect key="frame" x="60" y="308" width="50.666666666666657" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1G-2c-x4w">
-                                <rect key="frame" x="110.66666666666667" y="242" width="33.000000000000014" height="25"/>
+                                <rect key="frame" x="110.66666666666667" y="308" width="33.000000000000014" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out this form to save your progress" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAA-qv-0xh">
-                                <rect key="frame" x="60" y="277" width="330" height="14"/>
+                                <rect key="frame" x="60" y="343" width="330" height="14"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xXI-7S-hgx">
-                                <rect key="frame" x="40" y="321" width="350" height="290"/>
+                                <rect key="frame" x="40" y="387" width="350" height="290"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43v-om-fTI">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
@@ -931,7 +931,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="height" constant="18" id="3Dg-Ey-E4c"/>
                                     <constraint firstAttribute="width" constant="10" id="GJW-vl-gzO"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="Qok-7m-wjz" eventType="touchUpInside" id="KGc-9H-TjB"/>
@@ -948,12 +948,22 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <action selector="handleBackButtonAction:" destination="Qok-7m-wjz" eventType="touchUpInside" id="ued-Rb-knH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRg-kR-mw1">
+                                <rect key="frame" x="175" y="198" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="LCS-QX-npe"/>
+                                    <constraint firstAttribute="width" secondItem="LRg-kR-mw1" secondAttribute="height" multiplier="1:1" id="QJd-XF-Dho"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="BurbankLogo_Black"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZVZ-8K-fav"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="dBv-P0-dl7" firstAttribute="top" secondItem="OSe-GM-bhs" secondAttribute="bottom" constant="10" id="19D-dq-h8r"/>
+                            <constraint firstItem="LRg-kR-mw1" firstAttribute="centerX" secondItem="ZVZ-8K-fav" secondAttribute="centerX" id="1SV-SJ-yiE"/>
                             <constraint firstItem="dBv-P0-dl7" firstAttribute="height" secondItem="fsZ-ny-baU" secondAttribute="height" multiplier="0.057" id="1hE-9o-ybY"/>
+                            <constraint firstItem="LRg-kR-mw1" firstAttribute="top" secondItem="ZVZ-8K-fav" secondAttribute="top" constant="80" id="31b-Mk-QzN"/>
                             <constraint firstItem="TjX-8k-9WD" firstAttribute="leading" secondItem="ZVZ-8K-fav" secondAttribute="leading" constant="20" id="Al4-M5-T2B"/>
                             <constraint firstItem="dAA-qv-0xh" firstAttribute="bottom" secondItem="xXI-7S-hgx" secondAttribute="top" constant="-30" id="CGM-Qo-GnY"/>
                             <constraint firstItem="gfy-aH-eJa" firstAttribute="centerY" secondItem="OSe-GM-bhs" secondAttribute="centerY" id="Ir9-Bl-ZcC"/>
@@ -962,11 +972,11 @@ Designed to keep you on track every step of the way. Simplify your home building
                             <constraint firstItem="gfy-aH-eJa" firstAttribute="leading" secondItem="OSe-GM-bhs" secondAttribute="trailing" constant="5" id="XZE-Lv-aeB"/>
                             <constraint firstItem="uKC-os-uA7" firstAttribute="leading" secondItem="xXI-7S-hgx" secondAttribute="leading" constant="20" id="YdO-h1-nkH"/>
                             <constraint firstItem="ZVZ-8K-fav" firstAttribute="bottom" secondItem="dBv-P0-dl7" secondAttribute="bottom" constant="50" id="adP-lV-icH"/>
+                            <constraint firstItem="uKC-os-uA7" firstAttribute="top" secondItem="LRg-kR-mw1" secondAttribute="bottom" constant="30" id="apk-SR-YWc"/>
                             <constraint firstItem="ZVZ-8K-fav" firstAttribute="trailing" secondItem="4Qt-gt-V6l" secondAttribute="trailing" constant="20" id="bHF-rF-VEB"/>
                             <constraint firstItem="Y1G-2c-x4w" firstAttribute="leading" secondItem="uKC-os-uA7" secondAttribute="trailing" id="eu2-kM-jxl"/>
                             <constraint firstItem="ZVZ-8K-fav" firstAttribute="trailing" secondItem="xXI-7S-hgx" secondAttribute="trailing" constant="40" id="f2P-sl-nTF"/>
                             <constraint firstItem="dBv-P0-dl7" firstAttribute="leading" secondItem="ZVZ-8K-fav" secondAttribute="leading" constant="30" id="jcj-mH-UvT"/>
-                            <constraint firstItem="xXI-7S-hgx" firstAttribute="centerY" secondItem="fsZ-ny-baU" secondAttribute="centerY" id="jwt-QK-nyz"/>
                             <constraint firstItem="xXI-7S-hgx" firstAttribute="leading" secondItem="ZVZ-8K-fav" secondAttribute="leading" constant="40" id="keF-ur-Vlj"/>
                             <constraint firstItem="ZVZ-8K-fav" firstAttribute="trailing" secondItem="dBv-P0-dl7" secondAttribute="trailing" constant="30" id="lC4-SS-eOQ"/>
                             <constraint firstItem="dAA-qv-0xh" firstAttribute="leading" secondItem="xXI-7S-hgx" secondAttribute="leading" constant="20" id="nJ0-Ud-dBy"/>
@@ -1067,7 +1077,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="width" constant="10" id="9fS-96-2HL"/>
                                     <constraint firstAttribute="height" constant="18" id="q9u-rv-Y24"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="7S7-gz-k6K" eventType="touchUpInside" id="333-2t-n8n"/>
@@ -1086,7 +1096,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="height" constant="40" id="8J8-lh-qQz"/>
                                     <constraint firstAttribute="width" constant="40" id="KGe-n4-XIi"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="7S7-gz-k6K" eventType="touchUpInside" id="xrV-sa-MVP"/>
                                 </connections>
@@ -1103,9 +1113,9 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-pR-y5M">
-                                <rect key="frame" x="155" y="207.66666666666663" width="120" height="120"/>
+                                <rect key="frame" x="175" y="247.66666666666663" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="dZk-Uj-Dar"/>
+                                    <constraint firstAttribute="width" constant="80" id="dZk-Uj-Dar"/>
                                     <constraint firstAttribute="width" secondItem="dLn-pR-y5M" secondAttribute="height" multiplier="1:1" id="gIq-Tc-znf"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
@@ -1187,10 +1197,10 @@ Designed to keep you on track every step of the way. Simplify your home building
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7J-Wm-4Uy">
-                                <rect key="frame" x="165" y="211.66666666666663" width="100" height="100"/>
+                                <rect key="frame" x="175" y="231.66666666666663" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i7J-Wm-4Uy" secondAttribute="height" multiplier="1:1" id="cUX-bX-XRO"/>
-                                    <constraint firstAttribute="width" constant="100" id="drO-3j-4JR"/>
+                                    <constraint firstAttribute="width" constant="80" id="drO-3j-4JR"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
                             </button>
@@ -1258,7 +1268,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="width" constant="10" id="jnh-Cl-6AD"/>
                                     <constraint firstAttribute="height" constant="18" id="rrN-CB-6Mb"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="LBb-WF-NnM" eventType="touchUpInside" id="l8d-E6-3te"/>
@@ -1326,10 +1336,10 @@ Designed to keep you on track every step of the way. Simplify your home building
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lai-0I-ZWz">
-                                <rect key="frame" x="165" y="144" width="100" height="100"/>
+                                <rect key="frame" x="175" y="164" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lai-0I-ZWz" secondAttribute="height" multiplier="1:1" id="evf-o0-RBn"/>
-                                    <constraint firstAttribute="width" constant="100" id="zXT-UT-IlQ"/>
+                                    <constraint firstAttribute="width" constant="80" id="zXT-UT-IlQ"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
                             </button>
@@ -1457,7 +1467,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="height" constant="18" id="LQ4-SJ-K3B"/>
                                     <constraint firstAttribute="width" constant="10" id="seb-w9-4Mi"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="t8B-Tp-0js" eventType="touchUpInside" id="8Km-Yf-TEm"/>
@@ -1542,9 +1552,9 @@ Designed to keep you on track every step of the way. Simplify your home building
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbe-Ep-Bys">
-                                <rect key="frame" x="165" y="179" width="100" height="100"/>
+                                <rect key="frame" x="175" y="199" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="5K3-87-ObZ"/>
+                                    <constraint firstAttribute="width" constant="80" id="5K3-87-ObZ"/>
                                     <constraint firstAttribute="width" secondItem="Dbe-Ep-Bys" secondAttribute="height" id="fZU-wm-L6d"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
@@ -1629,7 +1639,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="height" constant="18" id="PFV-Pg-8AR"/>
                                     <constraint firstAttribute="width" constant="10" id="VEv-Av-lWX"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="iuU-WX-2kv" eventType="touchUpInside" id="4td-ke-pLF"/>
@@ -1775,7 +1785,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                     <constraint firstAttribute="width" constant="10" id="1sw-S9-OXb"/>
                                     <constraint firstAttribute="height" constant="18" id="nGw-Ry-UeT"/>
                                 </constraints>
-                                <color key="tintColor" name="GreyTextFont_3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Ico-Back1"/>
                                 <connections>
                                     <action selector="handleBackButtonAction:" destination="ubE-zN-PsI" eventType="touchUpInside" id="qlk-uF-JSR"/>
@@ -1839,8 +1849,8 @@ Designed to keep you on track every step of the way. Simplify your home building
         </scene>
     </scenes>
     <resources>
-        <image name="BurbankLogo" width="60" height="60"/>
-        <image name="BurbankLogo_Black" width="60" height="60"/>
+        <image name="BurbankLogo" width="512" height="512"/>
+        <image name="BurbankLogo_Black" width="512" height="512"/>
         <image name="Ico-BB-Black" width="64.333335876464844" height="64.333335876464844"/>
         <image name="Ico-Back1" width="18.666666030883789" height="24.333333969116211"/>
         <image name="Ico-Checked" width="24" height="24"/>

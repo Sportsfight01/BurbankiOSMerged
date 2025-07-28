@@ -125,6 +125,208 @@ func loadMainView () {
     
 }
 
+func loadDependencies(completion: @escaping () -> Void) {
+    LocationServices.shared.requestUsertoAllowLocationPermissions()
+    
+    
+    if kUserState == String.zero() || kUserState == String.empty() {
+        getStates ()
+    }else {
+        
+//        setRegionText() //state
+        
+        DashboardDataManagement.shared.getRegions(stateId: kUserState, showActivity: false) { (regions) in
+            
+        }
+    }
+    
+    
+    if (Int(kUserID) ?? 0) > 0 {
+        ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
+            //                            if let url = appDelegate.userData?.user?.userProfileImageURL {
+            //                                self.addProfileImage(url)
+            //                            }
+        }
+        
+        ProfileDataManagement.shared.getSearchTypes {
+            
+        }
+        
+    }
+    completion()
+}
+
+func getStates () {
+    
+    _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_states, userInfo: nil, success: { (json, response) in
+        
+        if let result: AnyObject = json {
+            
+            let result = result as! NSDictionary
+            
+            if let _ = result.value(forKey: "status"), (result.value(forKey: "status") as? Bool) == true {
+                
+                let resultStates = result.value(forKey: "States") as! [NSDictionary]
+                
+                saveStatestoDefaults(resultStates as NSArray)
+                
+//                if let states = kStatesMyPlace {
+//                    if states.count > 0 {
+//                        self.showStateSelectionView(states)
+//                    }
+//                }
+            }else {
+                print(log: "states not found")
+//                ActivityManager.showToast(result.value(forKey: "message") as? String ?? "", self)
+            }
+            
+        }else {
+            
+        }
+        
+    }, errorblock: { (error, isJSONerror)  in
+        
+        if isJSONerror {
+            
+        }else {
+            
+        }
+    }, progress: nil)
+    
+}
+
+
+func handleNotificationNavigation(pushnotificatons: pushNtfcnModelInfo) {
+    appDelegate.userData = UserData()
+    
+          let rootVC = currentWindow.rootViewController
+    
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    if pushnotificatons.isMultiple == "true"{
+        if pushnotificatons.moduleType == "NewHomes_Main"{
+            
+            // Example: Navigate to `DetailViewController` with ID "DetailVC"
+//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+//                if let navVC = rootVC as? UINavigationController {
+//                    (targetVC as UITabBarController).selectedIndex = 0
+//                    navVC.pushViewController(targetVC, animated: true)
+//                } else {
+//                    let nav = UINavigationController(rootViewController: targetVC)
+//                    currentWindow.rootViewController = nav
+//                }
+//            }
+            let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+            (targetVC as UITabBarController).selectedIndex = 0
+            let nav = UINavigationController(rootViewController: targetVC)
+            currentWindow.rootViewController = nav
+        }
+        else if pushnotificatons.moduleType == "HomeAndLand_Main"{
+//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+//                if let navVC = rootVC as? UINavigationController {
+//                    (targetVC as UITabBarController).selectedIndex = 1
+//                    navVC.pushViewController(targetVC, animated: true)
+//                } else {
+//                    let nav = UINavigationController(rootViewController: targetVC)
+//                    currentWindow.rootViewController = nav
+//                }
+//            }
+            let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+            (targetVC as UITabBarController).selectedIndex = 1
+            let nav = UINavigationController(rootViewController: targetVC)
+            currentWindow.rootViewController = nav
+            
+        }else{
+//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+//                if let navVC = rootVC as? UINavigationController {
+//                    (targetVC as UITabBarController).selectedIndex = 2
+//                    navVC.pushViewController(targetVC, animated: true)
+//                } else {
+//                    let nav = UINavigationController(rootViewController: targetVC)
+//                    currentWindow.rootViewController = nav
+//                }
+//            }
+            let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+            (targetVC as UITabBarController).selectedIndex = 2
+            let nav = UINavigationController(rootViewController: targetVC)
+            currentWindow.rootViewController = nav
+            
+        }
+    }else{
+        if pushnotificatons.moduleType == "NewHomes"{
+            
+            // Example: Navigate to `DetailViewController` with ID "DetailVC"
+//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
+//                if let navVC = rootVC as? UINavigationController {
+//                    targetVC.isFromProfile = false
+//                    targetVC.isFromFavorites = false
+//                    targetVC.pushnotificatonsDetails = pushnotificatons
+//                    navVC.pushViewController(targetVC, animated: true)
+//                } else {
+//                    let nav = UINavigationController(rootViewController: targetVC)
+//                    currentWindow.rootViewController = nav
+//                }
+//            }
+//            else{
+                let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as! HomeDesignsAndDisplayHomeDetailsVC
+            targetVC.isFromProfile = false
+            targetVC.isFromFavorites = false
+            targetVC.pushnotificatonsDetails = pushnotificatons
+            let nav = UINavigationController(rootViewController: targetVC)
+                nav.pushViewController(targetVC, animated: true)
+                currentWindow.rootViewController = targetVC
+//            }
+        }
+        else if pushnotificatons.moduleType == "HomeAndLand"{
+//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeLandDetailsVC") as? HomeLandDetailsVC {
+//                if let navVC = rootVC as? UINavigationController {
+//                    targetVC.isFromProfile = false
+//                    targetVC.isFromFavorites = false
+//                    //                    targetVC.designCount = arrHomeDesigns.count
+//                    //                    targetVC.arrHomeDesignsDetails = arrHomeDesigns
+//                    //                    targetVC.selectedDesignCount = indexPath.row
+//                    navVC.pushViewController(targetVC, animated: true)
+//                } else {
+//                    let nav = UINavigationController(rootViewController: targetVC)
+//                    currentWindow.rootViewController = nav
+//                }
+//            }else{
+                let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeLandPushNotifiactionVC") as? HomeLandPushNotifiactionVC
+                targetVC?.isFromProfile = false
+                targetVC?.isFromFavorites = false
+                targetVC?.packageIdFromNotifications = pushnotificatons.handLPackageId
+                let nav = UINavigationController(rootViewController: targetVC!)
+                currentWindow.rootViewController = nav
+//            }
+            
+        }else{
+//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
+//                if let navVC = rootVC as? UINavigationController {
+//                    targetVC.isFromProfile = false
+//                    targetVC.isFromFavorites = false
+//                    targetVC.pushnotificatonsDetails = pushnotificatons
+//                    navVC.pushViewController(targetVC, animated: true)
+//                } else {
+//                    let nav = UINavigationController(rootViewController: targetVC)
+//                    currentWindow.rootViewController = nav
+//                }
+//            }else{
+                let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC
+                targetVC?.isFromProfile = false
+                targetVC?.isFromFavorites = false
+                targetVC?.pushnotificatonsDetails = pushnotificatons
+                let nav = UINavigationController(rootViewController: targetVC!)
+                currentWindow.rootViewController = nav
+//            }
+            
+        }
+    }
+    
+    currentWindow.makeKeyAndVisible()
+    
+    
+}
+
+
 func setStatusBarColor (color: UIColor? = APPCOLORS_3.Orange_BG) {
     
     UIApplication.shared.statusBarView?.backgroundColor = color

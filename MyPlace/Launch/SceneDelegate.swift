@@ -15,6 +15,8 @@ import IQKeyboardToolbarManager
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var pushnotificatonsData = pushNtfcnModelInfo()
+    
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
       guard let url = URLContexts.first?.url else {
           return
@@ -38,10 +40,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([.font : FONT_LABEL_SUB_HEADING(size: FONT_8)], for: .normal)
         IQKeyboardManager.shared.isEnabled = true
         IQKeyboardToolbarManager.shared.isEnabled = true
-        appStartUpSetup()
-        window?.makeKeyAndVisible()
+       
+       
         
+        if let userActivity = connectionOptions.userActivities.first {
+            // Handle universal links if needed
+        }
+
+        if let notificationResponse = connectionOptions.notificationResponse {
+            let userInfo = notificationResponse.notification.request.content.userInfo
+            print("Notification received with info: \(userInfo)")
+            
+            pushnotificatonsData.houseSize = userInfo["HouseSize"] as? String ?? ""
+            pushnotificatonsData.newHomesHouseId = userInfo["NewHomesHouseId"] as? String ?? ""
+            pushnotificatonsData.facade = userInfo["Facade"] as? String ?? ""
+            pushnotificatonsData.state = userInfo["State"] as? String ?? ""
+            pushnotificatonsData.displaysHouseId = userInfo["DisplaysHouseId"] as? String ?? ""
+            pushnotificatonsData.houseName = userInfo["HouseName"] as? String ?? ""
+            pushnotificatonsData.handLPackageId = userInfo["HandLPackageId"] as? String ?? ""
+            pushnotificatonsData.moduleType = userInfo["ModuleType"] as? String ?? ""
+            pushnotificatonsData.isMultiple = userInfo["IsMultiple"] as? String ?? ""
+            loadDependencies{
+                handleNotificationNavigation(pushnotificatons: self.pushnotificatonsData)
+            }
+          
+        }else{
+            appStartUpSetup()
+        }
+        window?.makeKeyAndVisible()
     }
+   
+
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

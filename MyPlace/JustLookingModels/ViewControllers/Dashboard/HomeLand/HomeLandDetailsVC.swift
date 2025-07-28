@@ -83,6 +83,8 @@ class HomeLandDetailsVC: HeaderVC {
             
         }
     }
+    var isFromNotifications : Bool = false
+    var packageIdFromNotifications : String = ""
     
     //MARK: - ViewLife Cycle
 
@@ -110,7 +112,7 @@ class HomeLandDetailsVC: HeaderVC {
         if let package = homeLand {
             fillPackageData()
             
-            getPackageDetails(package)
+            getPackageDetails(package.packageId ?? "")
             
 //            mapViewGoogle.addZoomLevelButtons()
             mapViewGoogle.setMapPosition(with: package, zoomlevel: 12.0)
@@ -119,6 +121,8 @@ class HomeLandDetailsVC: HeaderVC {
         }
         
         viewMapExpanded.isHidden = true
+        
+       
         
     }
     
@@ -275,6 +279,8 @@ class HomeLandDetailsVC: HeaderVC {
                         
         }
        
+        
+        
     }
     
 //    func findColors(_ image: UIImage) -> [UIColor] {
@@ -442,7 +448,7 @@ extension HomeLandDetailsVC {
     
     //MARK: - getting package details APIs
     
-    func getPackageDetails (_ design: HomeLandPackage) {
+    func getPackageDetails (_ design: String) {
         
         _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_packageDetails(self.homeLand?.packageId_LandBank ?? ""), userInfo: nil, success: { (data, response) in
             
@@ -459,6 +465,7 @@ extension HomeLandDetailsVC {
                                 self.homeLandPackageDetails = try JSONDecoder().decode(HomeLandPackageDetails.self, from: jsonData)
                                 
                                 self.fillPackageData()
+                                
                                 
                             } catch let jsonError {
                                 print(log: jsonError)

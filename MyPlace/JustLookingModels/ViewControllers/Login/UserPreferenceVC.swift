@@ -87,6 +87,7 @@ class UserPreferenceVC: UIViewController {
         
      //   textViewWelcomeDescription.text = "Find your perfect home on Burbank Homes app - The only property app you need for your home purchase or property needs in Australia. If you are looking to build your dream home, buy a brand new house or invest in home building in Australia, this property finder app will simplify your property search.\nBurbank is proudly an Australian home builder, building homes in Victoria, New South Wales, Queensland and South Australia. "
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -271,6 +272,9 @@ class UserPreferenceVC: UIViewController {
                 self.navigationController?.pushViewController(UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateViewController(withIdentifier: "LaunchVCNew") as! LaunchVCNew, animated: true)
             }
         }
+        
+//        LoginDataManagement.shared.saveDeviceDataForPushnotification()
+
     }
     
     

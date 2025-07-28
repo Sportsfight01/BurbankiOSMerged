@@ -23,7 +23,7 @@ let Base = "https://www.burbank.com.au"
 //let Base = "http://10.6.45.14:8085" // test
 //    "http://10.6.45.14:8081" //Test
 
-//let BaseURL = Base + "/api/api/"  Used for velow v3.6 Versions
+//let BaseURL = Base + "/api/api/" // Used for velow v3.6 Versions
 
 let BaseURL = Base + "/api-v2/api/" // started using after v3.6 Versions
 
@@ -66,8 +66,9 @@ struct ServiceAPI {
     let URL_changePassword = BaseURL + "Account/ChangePassword"
     
     
-    let URl_authanticate = BaseURL + "Account/Authenticate"
-    
+    let URl_authanticate =  "https://www.burbank.com.au/api-v2/api/Account/Authenticate"
+  
+    let URL_saveDeviceDataForPushNotificaations = Base + "/api/api/notifications/SaveOrUpdateDeviceDetails"
     
     //MARK: - Dashboard
     

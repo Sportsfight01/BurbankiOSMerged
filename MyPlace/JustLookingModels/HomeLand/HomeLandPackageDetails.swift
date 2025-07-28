@@ -9,7 +9,7 @@ import Foundation
 struct HomeLandPackageDetails: Codable {
     
     let status: Bool?
-    let packageDetails: PackageDetails?
+    var packageDetails: PackageDetails?
 
     enum CodingKeys: String, CodingKey {
         case status = "status"
