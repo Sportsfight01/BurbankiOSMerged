@@ -16,6 +16,8 @@ class LocationServices: NSObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     var K_GETlocationCORD : CLLocationCoordinate2D?
     
+    private var completion: ((CLLocationCoordinate2D?) -> Void)?
+    
     override init() {
         super.init()
         
@@ -35,7 +37,7 @@ class LocationServices: NSObject, CLLocationManagerDelegate {
 
                 case .notDetermined:
                     print(log: "Not determined")
-                    self.requestUsertoAllowLocationPermissions()
+                    self.requestUsertoAllowLocationPermissions(completion: {_ in })
                     
                 default:
                     print(log: "Default")
@@ -69,6 +71,7 @@ class LocationServices: NSObject, CLLocationManagerDelegate {
                     print(log: "Access")
                     locationManager?.startUpdatingLocation()
                     locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+                  
                     return true
                 case .notDetermined:
                     print(log: "No access")
@@ -77,6 +80,7 @@ class LocationServices: NSObject, CLLocationManagerDelegate {
                     print(log: "No access")
                     return false
                 }
+                
             }else {
                 return false
             }
@@ -84,12 +88,13 @@ class LocationServices: NSObject, CLLocationManagerDelegate {
        
     }
     
-    func requestUsertoAllowLocationPermissions () {
+    func requestUsertoAllowLocationPermissions (completion: @escaping (CLLocationCoordinate2D?) -> Void) {
         
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
-        
+        locationManager?.startUpdatingLocation()
+        self.completion = completion
 
     }
     
@@ -117,7 +122,18 @@ class LocationServices: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
           let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: locationupdated), object: nil, userInfo: ["loc":locValue])
+        
+        guard let location = locations.last else {
+                  completion?(nil)
+                  return
+              }
+
+              let coordinate = location.coordinate
+              completion?(coordinate)
+        locationManager?.stopUpdatingLocation()
+        locationManager?.delegate = nil
+        
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: locationupdated), object: nil, userInfo: ["loc":locValue])
 
         self.K_GETlocationCORD = locValue
         print(self.K_GETlocationCORD as Any)

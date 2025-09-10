@@ -183,7 +183,12 @@ class MyCollectionSurveyVC: HeaderVC {
         if arrVCs[0].homeDesignFeature?.selectedAnswer == "" {
           
           if navigationController?.viewControllers.count == 1 {
-            self.tabBarController?.navigationController?.popViewController(animated: true)
+              if let vc = kStoryboardMain.instantiateInitialViewController()
+              {
+                  kWindow.rootViewController = vc
+                  kWindow.makeKeyAndVisible()
+              }
+//            self.tabBarController?.navigationController?.popViewController(animated: true)
           }else {
             self.navigationController?.popViewController(animated: true)
           }

@@ -532,7 +532,10 @@ extension DisplaysVC{
             print("\(LocationServices.shared.K_GETlocationCORD?.latitude ?? 0.0)")
             print("\(LocationServices.shared.K_GETlocationCORD?.longitude ?? 0.0)")
         }else{
-            LocationServices.shared.requestUsertoAllowLocationPermissions()
+            LocationServices.shared.requestUsertoAllowLocationPermissions(completion: { [self] coordinates in
+                latitude = "\(coordinates?.latitude ?? 0.0)"
+                longitude = "\(coordinates?.longitude ?? 0.0)"
+            })
         }
        
 
@@ -578,10 +581,11 @@ extension DisplaysVC{
                             }
                         }
                         self.addBreadCrumb(from: "See one of our display homes")
+                    }else {
+                        
                     }
-                    
-                    else {
-                    }
+                }else{
+                    self.showAlert(message: "no Homes found")
                 }
             }
         }, errorblock: { (error, isJSONerror) in

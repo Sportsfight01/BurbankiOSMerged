@@ -287,11 +287,6 @@ extension LoginDataManagement {
             params["ImageContent"] = ""
         }
         
-        
-       
-        
-        
-        
         let _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_registration, parameters: params as NSDictionary, userInfo: nil, success: { (json, response) in
             if let result: AnyObject = json {
                 let result = result as! NSDictionary
@@ -408,18 +403,24 @@ extension LoginDataManagement {
     
     
     
-    func saveDeviceDataForPushnotification() {
+    func saveDeviceDataForPushnotification(lat : String, long : String,fcmTokenID : String) {
         let params1 = [
               "DeviceToken": fcmTokenID,
               "IMEINumber": deviceUDID,
-              "DeviceType": "IOS"
+              "DeviceType": "IOS",
+              "Latitude" : lat,
+              "Longitude" : long,
+              "State" : ""
           ]
         
         let _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_saveDeviceDataForPushNotificaations, parameters: params1 as NSDictionary, userInfo: nil, success: { (json, response) in
+            print(log: response)
             if let result: AnyObject = json {
                 let result = result as! NSDictionary
                 if let _ = result.value(forKey: "Code"), (result.value(forKey: "Code") as? Bool) == true {
                     print("DeviceData saved Successfully")
+                    UserDefaults.standard.set(deviceUDID, forKey: "deviceUDID")
+                    
                 }else {
                     }
             }else {

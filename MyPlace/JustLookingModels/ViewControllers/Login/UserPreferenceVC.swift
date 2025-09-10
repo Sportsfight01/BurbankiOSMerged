@@ -272,8 +272,9 @@ class UserPreferenceVC: UIViewController {
                 self.navigationController?.pushViewController(UIStoryboard(name: "MyPlaceLogin", bundle: nil).instantiateViewController(withIdentifier: "LaunchVCNew") as! LaunchVCNew, animated: true)
             }
         }
+      
         
-//        LoginDataManagement.shared.saveDeviceDataForPushnotification()
+        
 
     }
     

@@ -68,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     var pushnotificatonsData = pushNtfcnModelInfo()
     
+    private var getFcmtokenCompletion: ((String?) -> Void)?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Thread.sleep(forTimeInterval: 5.0)
         //        IQKeyboardToolbarManager.shared.isEnabled = true
@@ -120,11 +122,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 //        UIApplication.shared.applicationIconBadgeNumber = 0
 
         sleep(1)
-//        UNUserNotificationCenter.current().delegate = self
-//        requestNotificationAuthorization()
-//        application.registerForRemoteNotifications()
-//        Messaging.messaging().delegate = self
-//        Messaging.messaging().isAutoInitEnabled = true
+        UNUserNotificationCenter.current().delegate = self
+        requestNotificationAuthorization()
+        application.registerForRemoteNotifications()
+        Messaging.messaging().delegate = self
+        Messaging.messaging().isAutoInitEnabled = true
         
         
         return true
@@ -429,7 +431,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.sound)
+        completionHandler([.banner, .sound])
     }
     
     // Called when the user taps the notification
@@ -448,8 +450,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         pushnotificatonsData.handLPackageId = userInfo["HandLPackageId"] as? String ?? ""
         pushnotificatonsData.moduleType = userInfo["ModuleType"] as? String ?? ""
         pushnotificatonsData.isMultiple = userInfo["IsMultiple"] as? String ?? ""
-        loadDependencies{
-            handleNotificationNavigation(pushnotificatons: self.pushnotificatonsData)
+        pushnotificatonsData.stateId = userInfo["StateId"] as? String ?? ""
+        
+        LoginDataManagement.shared.handleDefaultLoginforToken {
+            loadDependencies{
+                handleNotificationNavigation(pushnotificatons: self.pushnotificatonsData)
+            }
         }
 //        handleNotificationNavigation(pushnotificatons: pushnotificatonsData)
         
@@ -467,6 +473,8 @@ extension AppDelegate {
         print("📱 FCM Token: \(fcmToken ?? "")")
       print("Firebase registration token: \(String(describing: fcmToken))")
         fcmTokenID = fcmToken ?? ""
+       
+        
 
       let dataDict: [String: String] = ["token": fcmToken ?? ""]
       NotificationCenter.default.post(
@@ -474,8 +482,17 @@ extension AppDelegate {
         object: nil,
         userInfo: dataDict
       )
-      // TODO: If necessary send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
+        LocationServices.shared.requestUsertoAllowLocationPermissions(completion: { coordinates in
+            var lat = coordinates?.latitude ?? 0.0
+            var long = coordinates?.longitude  ?? 0.0
+            if deviceUDID == UserDefaults.standard.string(forKey: "deviceUDID") ?? "" {
+                lat = -20.9176
+                long = 142.7028
+            }
+            print("------Latitude : \(lat), ------Longtitude: \(long)")
+           
+            LoginDataManagement.shared.saveDeviceDataForPushnotification(lat: "\(lat)", long: "\(long)", fcmTokenID: fcmTokenID)
+        })
     }
 }
 
@@ -518,5 +535,5 @@ class pushNtfcnModelInfo {
     var handLPackageId : String  = ""
     var moduleType : String  = ""
     var isMultiple : String = ""
-    
+    var stateId : String = ""
 }

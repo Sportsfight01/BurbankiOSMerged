@@ -86,6 +86,7 @@
         var isFromNotifications : Bool = false
         var packageIdFromNotifications : String = ""
         
+        var pushnotificatonsDetails : pushNtfcnModelInfo?
         //MARK: - ViewLife Cycle
 
         override func viewDidLoad() {
@@ -120,7 +121,7 @@
 //                mapViewGoogle.addMarkers(packages: [package])
 //            }
 //            if isFromNotifications{
-                getPackageDetails(packageIdFromNotifications)
+            getPackageDetails(pushnotificatonsDetails?.handLPackageId ?? "")
 //            }
             viewMapExpanded.isHidden = true
             
@@ -134,33 +135,33 @@
                 headerLogoText = "MyFavourites"
             }
                                    
-            if let homeLand = homeLand {
+            if let homeLand = pushnotificatonsDetails {
                 
-                self.addBreadCrumb(from: (homeLand.houseName ?? "") + " " + (homeLand.houseSize ?? ""))
+                self.addBreadCrumb(from: (homeLand.houseName) + " " + (homeLand.houseSize))
             }
-            else {
-                if isFromHomeDesigns {
-                    
-                    if let houseName = self.design?.houseName {
-                        if houseName.count > 0 {
-                            self.addBreadCrumb(from: houseName + " " + (self.design?.houseSize ?? ""))
-                        }
-                    }
-                }else if isFromDisplayHomes{
-                    if let houseName = self.displayHomes?.houseName {
-                        if houseName.count > 0 {
-                            self.addBreadCrumb(from: houseName + " " + (self.displayHomes?.houseSize ?? ""))
-                        }
-                    }
-                }
-                else {
-                    guard let filter = myPlaceQuiz else {
-                        myPlaceQuiz = MyPlaceQuiz()
-                        return
-                    }
-                    self.addBreadCrumb(from: filter.filterStringDisplayHomes())
-                }
-            }
+//            else {
+//                if isFromHomeDesigns {
+//                    
+//                    if let houseName = self.design?.houseName {
+//                        if houseName.count > 0 {
+//                            self.addBreadCrumb(from: houseName + " " + (self.design?.houseSize ?? ""))
+//                        }
+//                    }
+//                }else if isFromDisplayHomes{
+//                    if let houseName = self.displayHomes?.houseName {
+//                        if houseName.count > 0 {
+//                            self.addBreadCrumb(from: houseName + " " + (self.displayHomes?.houseSize ?? ""))
+//                        }
+//                    }
+//                }
+//                else {
+//                    guard let filter = myPlaceQuiz else {
+//                        myPlaceQuiz = MyPlaceQuiz()
+//                        return
+//                    }
+//                    self.addBreadCrumb(from: filter.filterStringDisplayHomes())
+//                }
+//            }
             
         }
         
@@ -363,7 +364,7 @@
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_detailView_enquire_button_touch)
             
             let enquire = self.storyboard?.instantiateViewController(withIdentifier: "EnquireNowVC") as! EnquireNowVC
-            enquire.homelandPackage = self.homeLand!
+            enquire.homelandPackageDetls = self.homeLandPackageDetails
             
             if let navigation = self.tabBarController?.navigationController {
                 navigation.pushViewController(enquire, animated: true)
@@ -459,8 +460,8 @@
         
         func getPackageDetails (_ design: String) {
             
-            _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_packageDetails(self.homeLand?.packageId_LandBank ?? ""), userInfo: nil, success: { (data, response) in
-                
+            _ = Networking.shared.GET_request(url: ServiceAPI.shared.URL_packageDetails(pushnotificatonsDetails?.handLPackageId ?? ""), userInfo: nil, success: { (data, response) in
+                print(response)
                 if (response as! HTTPURLResponse).statusCode == 200, let jsonData = data as? Data {
                     
                     if let jsonObj: AnyObject = Networking.shared.jsonResponse(jsonData) {
@@ -479,7 +480,30 @@
                                 } catch let jsonError {
                                     print(log: jsonError)
                                 }
-                            }
+                            }else{
+                                let message =  (jsonObj as! NSDictionary).value(forKey: "message") as? String ?? ""
+                                 self.showAlert(message: message) { str in
+                                     if let vc = kStoryboardMain.instantiateInitialViewController()
+                                     {
+                                         kWindow.rootViewController = vc
+                                         kWindow.makeKeyAndVisible()
+                                         
+                                     }else{
+                                         self.navigationController?.popViewController(animated: true)
+                                     }
+                                 }
+                             }
+                        }
+                    }
+                }else{
+                    self.showAlert(message: "No House Found") { str in
+                        if let vc = kStoryboardMain.instantiateInitialViewController()
+                        {
+                            kWindow.rootViewController = vc
+                            kWindow.makeKeyAndVisible()
+                            
+                        }else{
+                            self.navigationController?.popViewController(animated: true)
                         }
                     }
                 }
@@ -499,7 +523,7 @@
             params.setValue(SearchType.shared.homeLand, forKey: "TypeId")
             params.setValue(appDelegate.userData?.user?.userID, forKey: "UserId")
             params.setValue(homeLand.packageId, forKey: "HouseId")
-            params.setValue(homeLand.stateId, forKey: "StateId")
+            params.setValue(pushnotificatonsDetails?.stateId, forKey: "StateId")
             params.setValue(favorite, forKey: "isfavourite")
             
                                 

@@ -126,7 +126,7 @@ func loadMainView () {
 }
 
 func loadDependencies(completion: @escaping () -> Void) {
-    LocationServices.shared.requestUsertoAllowLocationPermissions()
+//    LocationServices.shared.requestUsertoAllowLocationPermissions()
     
     
     if kUserState == String.zero() || kUserState == String.empty() {
@@ -201,50 +201,27 @@ func handleNotificationNavigation(pushnotificatons: pushNtfcnModelInfo) {
     
           let rootVC = currentWindow.rootViewController
     
+    appDelegate.userData?.user?.userDetails?.userStateId = pushnotificatons.stateId
+    appDelegate.userData?.user?.userDetails?.userState  = pushnotificatons.state
+    
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     if pushnotificatons.isMultiple == "true"{
         if pushnotificatons.moduleType == "NewHomes_Main"{
-            
-            // Example: Navigate to `DetailViewController` with ID "DetailVC"
-//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
-//                if let navVC = rootVC as? UINavigationController {
-//                    (targetVC as UITabBarController).selectedIndex = 0
-//                    navVC.pushViewController(targetVC, animated: true)
-//                } else {
-//                    let nav = UINavigationController(rootViewController: targetVC)
-//                    currentWindow.rootViewController = nav
-//                }
-//            }
+           
             let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
             (targetVC as UITabBarController).selectedIndex = 0
             let nav = UINavigationController(rootViewController: targetVC)
             currentWindow.rootViewController = nav
         }
         else if pushnotificatons.moduleType == "HomeAndLand_Main"{
-//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
-//                if let navVC = rootVC as? UINavigationController {
-//                    (targetVC as UITabBarController).selectedIndex = 1
-//                    navVC.pushViewController(targetVC, animated: true)
-//                } else {
-//                    let nav = UINavigationController(rootViewController: targetVC)
-//                    currentWindow.rootViewController = nav
-//                }
-//            }
+            
             let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
             (targetVC as UITabBarController).selectedIndex = 1
             let nav = UINavigationController(rootViewController: targetVC)
             currentWindow.rootViewController = nav
             
         }else{
-//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
-//                if let navVC = rootVC as? UINavigationController {
-//                    (targetVC as UITabBarController).selectedIndex = 2
-//                    navVC.pushViewController(targetVC, animated: true)
-//                } else {
-//                    let nav = UINavigationController(rootViewController: targetVC)
-//                    currentWindow.rootViewController = nav
-//                }
-//            }
+
             let targetVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
             (targetVC as UITabBarController).selectedIndex = 2
             let nav = UINavigationController(rootViewController: targetVC)
@@ -253,70 +230,31 @@ func handleNotificationNavigation(pushnotificatons: pushNtfcnModelInfo) {
         }
     }else{
         if pushnotificatons.moduleType == "NewHomes"{
-            
-            // Example: Navigate to `DetailViewController` with ID "DetailVC"
-//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
-//                if let navVC = rootVC as? UINavigationController {
-//                    targetVC.isFromProfile = false
-//                    targetVC.isFromFavorites = false
-//                    targetVC.pushnotificatonsDetails = pushnotificatons
-//                    navVC.pushViewController(targetVC, animated: true)
-//                } else {
-//                    let nav = UINavigationController(rootViewController: targetVC)
-//                    currentWindow.rootViewController = nav
-//                }
-//            }
-//            else{
-                let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as! HomeDesignsAndDisplayHomeDetailsVC
-            targetVC.isFromProfile = false
-            targetVC.isFromFavorites = false
-            targetVC.pushnotificatonsDetails = pushnotificatons
-            let nav = UINavigationController(rootViewController: targetVC)
-                nav.pushViewController(targetVC, animated: true)
-                currentWindow.rootViewController = targetVC
-//            }
+            let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC
+            targetVC?.isFromProfile = false
+            targetVC?.isFromFavorites = false
+            targetVC?.pushnotificatonsDetails = pushnotificatons
+            targetVC?.headerTitle = "HomeDesigns"
+            let nav = UINavigationController(rootViewController: targetVC!)
+            currentWindow.rootViewController = nav
         }
         else if pushnotificatons.moduleType == "HomeAndLand"{
-//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeLandDetailsVC") as? HomeLandDetailsVC {
-//                if let navVC = rootVC as? UINavigationController {
-//                    targetVC.isFromProfile = false
-//                    targetVC.isFromFavorites = false
-//                    //                    targetVC.designCount = arrHomeDesigns.count
-//                    //                    targetVC.arrHomeDesignsDetails = arrHomeDesigns
-//                    //                    targetVC.selectedDesignCount = indexPath.row
-//                    navVC.pushViewController(targetVC, animated: true)
-//                } else {
-//                    let nav = UINavigationController(rootViewController: targetVC)
-//                    currentWindow.rootViewController = nav
-//                }
-//            }else{
                 let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeLandPushNotifiactionVC") as? HomeLandPushNotifiactionVC
                 targetVC?.isFromProfile = false
                 targetVC?.isFromFavorites = false
+                targetVC?.pushnotificatonsDetails = pushnotificatons
                 targetVC?.packageIdFromNotifications = pushnotificatons.handLPackageId
                 let nav = UINavigationController(rootViewController: targetVC!)
                 currentWindow.rootViewController = nav
-//            }
             
         }else{
-//            if let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC {
-//                if let navVC = rootVC as? UINavigationController {
-//                    targetVC.isFromProfile = false
-//                    targetVC.isFromFavorites = false
-//                    targetVC.pushnotificatonsDetails = pushnotificatons
-//                    navVC.pushViewController(targetVC, animated: true)
-//                } else {
-//                    let nav = UINavigationController(rootViewController: targetVC)
-//                    currentWindow.rootViewController = nav
-//                }
-//            }else{
                 let targetVC = storyboard.instantiateViewController(withIdentifier: "HomeDesignsAndDisplayHomeDetailsVC") as? HomeDesignsAndDisplayHomeDetailsVC
                 targetVC?.isFromProfile = false
                 targetVC?.isFromFavorites = false
                 targetVC?.pushnotificatonsDetails = pushnotificatons
+                targetVC?.headerTitle = "DisplayHomes"
                 let nav = UINavigationController(rootViewController: targetVC!)
                 currentWindow.rootViewController = nav
-//            }
             
         }
     }

@@ -77,7 +77,9 @@ class MyPlaceHomeVC: UIViewController {
         // Do any additional setup after loading the view.
         handleUISetup()
         
-        LocationServices.shared.requestUsertoAllowLocationPermissions()
+        LocationServices.shared.requestUsertoAllowLocationPermissions(completion: {_ in 
+            
+        })
         
         
         if kUserState == String.zero() || kUserState == String.empty() {
@@ -340,7 +342,10 @@ class MyPlaceHomeVC: UIViewController {
     
     func setRegionText () {
         
-        let region = String(format: "%@         ", appDelegate.userData?.user?.userDetails?.userState ?? "")
+        var region = String(format: "%@         ", appDelegate.userData?.user?.userDetails?.userState ?? "")
+        if region.contains("NSW") {
+            region = "NSW & ACT          "
+        }
         
         btnState.setTitle(region, for: .normal)
         

@@ -1970,6 +1970,7 @@
 				ED1E952E250110E600343B10 /* RecentSearch */,
 				ED1E952D250110C300343B10 /* Enquire */,
 				ED93136924B830B700C1F10F /* Share */,
+				01762A272462997E00F66A64 /* NewForgotPasswordVC.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -1994,7 +1995,6 @@
 				D188C60B2424D37500DFE678 /* JobNumberVC.swift */,
 				01762A252462977E00F66A64 /* PasswordVC.swift */,
 				D188C60E2424D37500DFE678 /* CreateAccountVC.swift */,
-				01762A272462997E00F66A64 /* NewForgotPasswordVC.swift */,
 				01762A292462999500F66A64 /* NewResetPasswordVC.swift */,
 			);
 			path = Login;
@@ -3444,7 +3444,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.12;
+				MARKETING_VERSION = 3.13;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3489,7 +3489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.12;
+				MARKETING_VERSION = 3.13;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmss.burbankapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

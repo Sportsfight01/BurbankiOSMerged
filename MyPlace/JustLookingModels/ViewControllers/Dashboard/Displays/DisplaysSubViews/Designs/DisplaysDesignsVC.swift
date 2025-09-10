@@ -64,7 +64,6 @@ class DisplaysDesignsVC: UIViewController {
     }
     func updatedNotification(notification:Notification) -> Void  {
         guard let isTappedonPopularHomeDesigns = notification.userInfo!["Key"] else { return }
-        //        print("\(LocationServices.shared.K_GETlocationCORD?.latitude ?? 0.0)")
         print("-------\(isTappedonPopularHomeDesigns)")
         if isTappedonPopularHomeDesigns as! Bool {
             guard let popularHomeData : PupularDisplays = notification.userInfo!["PopularHomeData"] as? PupularDisplays else { return }

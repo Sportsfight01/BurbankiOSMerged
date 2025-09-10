@@ -38,20 +38,40 @@ class DirctionsVC: HeaderVC,GMSMapViewDelegate,MKMapViewDelegate {
     mapView1.delegate = self
     mapView1.showsUserLocation = true
     //        mapView.addZoomLevelButtons()
-    LocationServices.shared.requestUsertoAllowLocationPermissions()
+      LocationServices.shared.onLocationService()
+      LocationServices.shared.requestUsertoAllowLocationPermissions(completion: { [self] coordinate in
+          if let coordinate = coordinate {
+              print("Latitude: \(coordinate.latitude), Longitude: \(coordinate.longitude)")
+              let lat = Double(displayHomeData?[0].latitude ?? "0.0")
+              let long = Double(displayHomeData?[0].longitude ?? "0.0")!
+              let startPoint = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+              let destination = CLLocationCoordinate2D(latitude:lat ?? 0.0, longitude: long ?? 0.0)
+              
+              mapView1.showsUserLocation = true
+              
+              let annonation = MKPointAnnotation()
+              annonation.coordinate = destination
+              annonation.title = "\(estateName)"
+              annonation.subtitle = ""
+              mapView1.addAnnotation(annonation)
+              showRouteOnMap(pickupCoordinate: startPoint, destinationCoordinate: destination)
+              
+          } else {
+              print("Failed to get location")
+          }
+      })
     LocationServices.shared.locationManager?.startUpdatingLocation()
     
     NotificationCenter.default.post(name: NSNotification.Name("changeBreadCrumbs"), object: nil, userInfo: ["breadcrumb" :"See one of our display homes"])
     
-    if LocationServices.shared.isLocationServicesEnabled(){
+     
+                                                   
       
-    }else{
-      LocationServices.shared.requestUsertoAllowLocationPermissions()
-    }
-    NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: locationupdated),
-                                           object: nil,
-                                           queue: nil,
-                                           using:updatedNotification)
+   
+//    NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: locationupdated),
+//                                           object: nil,
+//                                           queue: nil,
+//                                           using:updatedNotification)
     
     
     
@@ -108,27 +128,7 @@ class DirctionsVC: HeaderVC,GMSMapViewDelegate,MKMapViewDelegate {
     self.navigationController?.popViewController(animated: true)
   }
   func updatedNotification(notification:Notification) -> Void {
-    guard let location = notification.userInfo!["loc"] else { return }
-    let locValue = location as! CLLocationCoordinate2D
-    let lat = Double(displayHomeData?[0].latitude ?? "0.0")
-    let long = Double(displayHomeData?[0].longitude ?? "0.0")!
-    let startPoint = CLLocationCoordinate2D(latitude: locValue.latitude, longitude: locValue.longitude)
-    let destination = CLLocationCoordinate2D(latitude:lat ?? 0.0, longitude: long ?? 0.0)
     
-    
-    
-    
-    //        let noLocation = CLLocationCoordinate2D()
-//    let viewRegion = MKCoordinateRegion(center: locValue, latitudinalMeters: 200, longitudinalMeters: 200)
-//    mapView1.setRegion(viewRegion, animated: false)
-    mapView1.showsUserLocation = true
-    
-    let annonation = MKPointAnnotation()
-    annonation.coordinate = destination
-    annonation.title = "\(estateName)"
-    annonation.subtitle = ""
-    mapView1.addAnnotation(annonation)
-    showRouteOnMap(pickupCoordinate: startPoint, destinationCoordinate: destination)
   }
   
   

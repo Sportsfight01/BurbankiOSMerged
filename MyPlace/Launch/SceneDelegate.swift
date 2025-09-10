@@ -60,8 +60,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             pushnotificatonsData.handLPackageId = userInfo["HandLPackageId"] as? String ?? ""
             pushnotificatonsData.moduleType = userInfo["ModuleType"] as? String ?? ""
             pushnotificatonsData.isMultiple = userInfo["IsMultiple"] as? String ?? ""
-            loadDependencies{
-                handleNotificationNavigation(pushnotificatons: self.pushnotificatonsData)
+            pushnotificatonsData.stateId = userInfo["StateId"] as? String ?? ""
+            
+            LoginDataManagement.shared.handleDefaultLoginforToken {
+                loadDependencies{
+                    handleNotificationNavigation(pushnotificatons: self.pushnotificatonsData)
+                }
             }
           
         }else{

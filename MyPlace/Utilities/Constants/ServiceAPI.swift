@@ -68,7 +68,7 @@ struct ServiceAPI {
     
     let URl_authanticate =  "https://www.burbank.com.au/api-v2/api/Account/Authenticate"
   
-    let URL_saveDeviceDataForPushNotificaations = Base + "/api/api/notifications/SaveOrUpdateDeviceDetails"
+    let URL_saveDeviceDataForPushNotificaations = BaseURL + "notifications/SaveOrUpdateDeviceDetails"
     
     //MARK: - Dashboard
     
@@ -187,6 +187,7 @@ struct ServiceAPI {
     //MARK: - Display Homes
     
     let locaValues = LocationServices.shared.K_GETlocationCORD
+    
     func URL_HomeDisplay (_ stateID :Int, _ lat : String, _ long : String, _ userid :Int, _ storey : String, _ houseName : String,_ houseSize : String) -> String {
         return BaseURL + "DisplayHomes/GetDisplaysByStateId?stateId=\(stateID)&latitude=\(lat)&longitude=\(long)&userId=\(userid)&storey=\(storey)&houseName=\(houseName)&houseSize=\(houseSize)"
     }

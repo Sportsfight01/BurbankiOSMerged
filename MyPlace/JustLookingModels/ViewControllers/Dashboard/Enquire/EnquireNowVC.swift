@@ -47,6 +47,8 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
     
     var homelandPackage: HomeLandPackage?
     
+    var homelandPackageDetls: HomeLandPackageDetails?
+    
     var homeDesignDetails: HomeDesignDetails?
     
     var acceptedTerms: Bool = false
@@ -82,11 +84,14 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         }else if let _ = homelandPackage{
             buildAddress = homelandPackage?.address ?? ""
             CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_detailView_enquire_screen_loading)
+        }else if let _ = homelandPackageDetls{
+            buildAddress = homelandPackageDetls?.packageDetails?.address ?? ""
+            CodeManager.sharedInstance.sendScreenName(burbank_homeAndLand_detailView_enquire_screen_loading)
         }else if let _ = homeDesignDetails{
             self.navigationController?.navigationBar.isHidden = true
         }
         stateName = kUserStateName.lowercased().trim().replacingOccurrences(of: " ", with: "-")
-        if kUserStateName.contains("NSW & ACT"){
+        if kUserStateName.contains("NSW"){
             
             pickerViewDataSource = nswRegions
             stateName = "nsw"
@@ -105,11 +110,16 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         handleUISetup ()
        
  
-//        webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/16EIGnKc6ReGd8wXef5sASQr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&phone=\(self.phoneTF.text ?? "")&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=false")!))
+//   webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/16EIGnKc6ReGd8wXef5sASQr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&phone=\(self.phoneTF.text ?? "")&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=false")!))
         
     }
-    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     func handleUISetup () {
         
        setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
@@ -168,7 +178,13 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
             self.whatToBuildTF.text = "\(self.homelandPackage?.houseName ?? "") \(self.homelandPackage?.houseSize ?? "")"
             buildAddress = homelandPackage?.address ?? ""
 
-        }else if let _ = homeDesign{
+        }
+        else if let _ = homelandPackageDetls {
+            self.whatToBuildTF.text = "\(self.homelandPackageDetls?.packageDetails?.houseName ?? "") \(self.homelandPackageDetls?.packageDetails?.houseSize ?? 0)"
+            buildAddress = homelandPackageDetls?.packageDetails?.address ?? ""
+
+        }
+        else if let _ = homeDesign{
             self.whatToBuildTF.text = "\(self.homeDesign?.houseName ?? "") \(self.homeDesign?.houseSize ?? "")"
             buildAddress = homeDesign?.address ?? ""
 
@@ -245,7 +261,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         pickerView.dataSource = self
         
         WebCacheCleaner.clean()
-        if kUserStateName.contains("NSW & ACT"){
+        if kUserStateName.contains("NSW"){
             webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1ewRKuUVHSDG1nbIfAUZrQgqcx0d?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_nsw_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
         }else if kUserStateName.contains("South"){
             webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1tVwIL7lISIigrybQm7kN9wqcx0d?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_sa_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
