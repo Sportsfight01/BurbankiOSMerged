@@ -36,7 +36,7 @@ class ValidateEmailVC: UIViewController {
     
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: AppColors.white)
+        setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
         
         setAppearanceFor(view: labelForgot, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))
         setAppearanceFor(view: labelPassword, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))

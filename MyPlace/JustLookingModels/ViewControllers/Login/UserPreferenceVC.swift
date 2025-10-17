@@ -115,7 +115,7 @@ class UserPreferenceVC: UIViewController {
         
         setAppearanceFor(view: labelWelcome, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lbWelcomeDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_12))
-        _ = setAttributetitleFor(view: lb_myPlace_heading, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.GreyTextFont ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: lb_myPlace_heading, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
 //        setAppearanceFor(view: lb_myPlace_heading, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray, textFont: FONT_LABEL_SUB_HEADING(size: FONT_12))
       //  setAppearanceFor(view: btnHowWorks, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
@@ -128,7 +128,7 @@ class UserPreferenceVC: UIViewController {
         setAppearanceFor(view: labelDepositedDescription, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY (size: FONT_12))
+        setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.Body_BG, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_BODY (size: FONT_12))
         btnMyProfile.layer.cornerRadius = 5.0
         
         
@@ -149,11 +149,12 @@ class UserPreferenceVC: UIViewController {
         viewLookingSelection.layer.cornerRadius = 10.0
         viewDepositedSelection.layer.cornerRadius = 10.0
         viewFinishedSelection.layer.cornerRadius = 5.0
-        
-        
-        setShadow(view: viewLookingSelection, color: UIColor.lightGray, shadowRadius: 10)
-        setShadow(view: viewDepositedSelection, color: UIColor.lightGray, shadowRadius: 10)
-        setShadow(view: viewFinishedSelection, color: UIColor.lightGray, shadowRadius: 10)
+       
+        setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
+        setAppearanceFor(view: topView, backgroundColor: APPCOLORS_3.Body_BG)
+//        setShadow(view: viewLookingSelection, color: UIColor.lightGray, shadowRadius: 10)
+//        setShadow(view: viewDepositedSelection, color: UIColor.lightGray, shadowRadius: 10)
+//        setShadow(view: viewFinishedSelection, color: UIColor.lightGray, shadowRadius: 10)
         
         
         btnContinue.layer.cornerRadius = radius_5

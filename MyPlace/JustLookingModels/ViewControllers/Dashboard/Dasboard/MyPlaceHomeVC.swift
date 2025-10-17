@@ -227,7 +227,7 @@ class MyPlaceHomeVC: UIViewController {
         
         setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
         setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
-        
+        self.view.backgroundColor = APPCOLORS_3.Body_BG
         //make card vuew
         
         viewHomeLand.cardView()

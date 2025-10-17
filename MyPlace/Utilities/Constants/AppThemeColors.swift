@@ -19,18 +19,27 @@ let COLOR_CLEAR = UIColor.clear
 struct APPCOLORS_3
 {
     static let HeaderFooter_white_BG = UIColor.hexCode("#FFFFFF")
-    static let Body_BG = UIColor.hexCode("#F6F6F6")
-    static let LightGreyDisabled_BG = UIColor.hexCode("#D1D3D4")
-    static let GreyTextFont =  UIColor.hexCode("#5C5E5E")
-//    static let GreyTextFont =  UIColor.hexCode("#333333")
-    static let DarkGrey_BG = UIColor.hexCode("#A7A9AC")
-    //    static let Orange_BG = UIColor.hexCode("#F6891F")
-    static let Orange_BG = UIColor.hexCode("#FF6224")
-    //    static let EnabledOrange_BG = UIColor.hexCode("#F7AE71")
-    static let EnabledOrange_BG = UIColor.hexCode("#FAB282")    
+    static let Body_BG = UIColor.hexCode("#F4F1EB") //V4.0  pale sandstrom
+    static let LightGreyDisabled_BG = UIColor.hexCode("#9B9A9B") //v4.0  Medium Gray
+    static let GreyTextFont =  UIColor.hexCode("#000000") // v4.0
+    static let DarkGrey_BG = UIColor.hexCode("#414042") // v4.0
+    static let Orange_BG = UIColor.hexCode("#F47948") // v4.0
+    static let EnabledOrange_BG = UIColor.hexCode("#F47948")
+    
     static let Black_BG = UIColor.hexCode("#000000")
     static let DisabledFooterIconGrey = UIColor.hexCode("#A2A2A1")
     static let BTN_DarkGray = UIColor.hexCode("#333333")
+    
+    
+    //    static let LightGreyDisabled_BG = UIColor.hexCode("#D1D3D4")
+    //    static let GreyTextFont =  UIColor.hexCode("#5C5E5E")
+    //    static let GreyTextFont =  UIColor.hexCode("#333333")
+    //    static let DarkGrey_BG = UIColor.hexCode("#A7A9AC")
+    //    static let Orange_BG = UIColor.hexCode("#F6891F")
+    //    static let Orange_BG = UIColor.hexCode("#FF6224")
+    //    static let EnabledOrange_BG = UIColor.hexCode("#F7AE71")
+    //    static let Body_BG = UIColor.hexCode("#F6F6F6")
+
     
 }
 

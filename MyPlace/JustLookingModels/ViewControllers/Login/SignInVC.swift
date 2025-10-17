@@ -195,7 +195,7 @@ class SignInVC: UIViewController {
 
     func handleUISetup () {
         
-        setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG)
+        setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
         
         
         setAppearanceFor(view: labelSign, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_30))

@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="162" width="430" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img-BB-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Op3-Dh-6E7">
-                                        <rect key="frame" x="30" y="20" width="150" height="50"/>
+                                        <rect key="frame" x="30" y="53" width="150" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="EOp-Sj-yS8"/>
@@ -57,21 +57,31 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xto-KD-hCn">
                                         <rect key="frame" x="0.0" y="99" width="430" height="1"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="Black_BG_3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="raM-18-cK0"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5A-mH-TkP">
                                         <rect key="frame" x="334" y="66" width="88" height="25"/>
-                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="VMu-T5-UHn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="   MY PROFILE   "/>
+                                        <state key="normal" title="   MY PROFILE   ">
+                                            <color key="titleColor" name="BTN_DarkGray_BG"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="GreyTextFont_3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnMyprofileClicked:" destination="c2u-DG-9SO" eventType="touchUpInside" id="1YG-SO-xn8"/>
                                         </connections>
@@ -87,16 +97,16 @@
                                     <constraint firstAttribute="trailing" secondItem="xto-KD-hCn" secondAttribute="trailing" id="d3B-JC-hnj"/>
                                     <constraint firstItem="KVB-uw-Fnf" firstAttribute="top" secondItem="7je-Bc-QGY" secondAttribute="top" constant="10" id="eUN-Cf-mgn"/>
                                     <constraint firstAttribute="height" constant="100" id="ei9-GP-teh"/>
-                                    <constraint firstItem="Op3-Dh-6E7" firstAttribute="top" secondItem="7je-Bc-QGY" secondAttribute="top" constant="20" id="geF-cz-Rgh"/>
+                                    <constraint firstItem="Op3-Dh-6E7" firstAttribute="top" secondItem="7je-Bc-QGY" secondAttribute="top" constant="53" id="geF-cz-Rgh"/>
                                     <constraint firstAttribute="trailing" secondItem="t5A-mH-TkP" secondAttribute="trailing" constant="8" id="o8d-Fj-4F6"/>
                                     <constraint firstAttribute="trailing" secondItem="KVB-uw-Fnf" secondAttribute="trailing" constant="20" id="yb0-S1-xnb"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXd-ZY-P4W">
-                                <rect key="frame" x="0.0" y="262" width="430" height="310"/>
+                                <rect key="frame" x="0.0" y="262" width="430" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAz-MN-8Vd">
-                                        <rect key="frame" x="30" y="35" width="75" height="30"/>
+                                        <rect key="frame" x="30" y="45" width="75" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Lpf-dA-9TB"/>
@@ -106,7 +116,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyPlace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5A-EQ-7UN">
-                                        <rect key="frame" x="27" y="73" width="222" height="60"/>
+                                        <rect key="frame" x="27" y="83" width="222" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="hcZ-6t-TEl"/>
                                         </constraints>
@@ -115,7 +125,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-Ti-r60">
-                                        <rect key="frame" x="30" y="276" width="154" height="30"/>
+                                        <rect key="frame" x="30" y="286" width="154" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7WG-GG-cGP"/>
@@ -129,7 +139,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLq-Jr-W5C">
-                                        <rect key="frame" x="30" y="141" width="370" height="135"/>
+                                        <rect key="frame" x="30" y="151" width="370" height="135"/>
                                         <string key="text">Whether you're currently building with Burbank or starting to explore your options, the MyPlace app streamlines your experience and keeps you informed.
 
 
@@ -143,7 +153,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstItem="bbG-Ti-r60" firstAttribute="top" secondItem="ZLq-Jr-W5C" secondAttribute="bottom" id="KWf-KM-Lpi"/>
-                                    <constraint firstItem="aAz-MN-8Vd" firstAttribute="top" secondItem="QXd-ZY-P4W" secondAttribute="top" constant="35" id="MmN-k9-90M"/>
+                                    <constraint firstItem="aAz-MN-8Vd" firstAttribute="top" secondItem="QXd-ZY-P4W" secondAttribute="top" constant="45" id="MmN-k9-90M"/>
                                     <constraint firstAttribute="bottom" secondItem="bbG-Ti-r60" secondAttribute="bottom" constant="4" id="UNf-ct-rF0"/>
                                     <constraint firstItem="W5A-EQ-7UN" firstAttribute="top" secondItem="aAz-MN-8Vd" secondAttribute="bottom" constant="8" id="Y2n-we-1QF"/>
                                     <constraint firstItem="ZLq-Jr-W5C" firstAttribute="leading" secondItem="aAz-MN-8Vd" secondAttribute="leading" id="aB9-Vv-SlC"/>
@@ -155,7 +165,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-Un-YRH">
-                                <rect key="frame" x="0.0" y="572" width="430" height="292"/>
+                                <rect key="frame" x="0.0" y="582" width="430" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-JF-Oig">
                                         <rect key="frame" x="27" y="0.0" width="373" height="172"/>
@@ -178,7 +188,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Looking" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-5A-dEP">
                                                         <rect key="frame" x="69.333333333333329" y="42.666666666666629" width="43" height="43"/>
-                                                        <color key="tintColor" name="darkGray"/>
+                                                        <color key="tintColor" name="Orange_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="rjJ-5A-dEP" secondAttribute="height" multiplier="1:1" id="fCC-XJ-KXj"/>
                                                         </constraints>
@@ -217,10 +227,10 @@ Designed to keep you on track every step of the way. Simplify your home building
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
+                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" systemColor="systemGray3Color"/>
+                                                        <color key="value" name="LightGreyDisabled_BG_3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -241,7 +251,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Customers" translatesAutoresizingMaskIntoConstraints="NO" id="bcD-yR-SoS">
                                                         <rect key="frame" x="64.666666666666657" y="38.333333333333371" width="51.666666666666657" height="51.333333333333343"/>
-                                                        <color key="tintColor" name="DarkGrey_BG_3"/>
+                                                        <color key="tintColor" name="Orange_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="bcD-yR-SoS" secondAttribute="height" multiplier="1:1" id="PZI-cu-zk5"/>
                                                         </constraints>
@@ -280,10 +290,10 @@ Designed to keep you on track every step of the way. Simplify your home building
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
+                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" systemColor="systemGray3Color"/>
+                                                        <color key="value" name="LightGreyDisabled_BG_3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -345,7 +355,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-k2-3yC">
-                                        <rect key="frame" x="15" y="222.66666666666663" width="400" height="44.333333333333314"/>
+                                        <rect key="frame" x="15" y="214" width="400" height="43"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.5450980392" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Extrabld" family="Proxima Nova" pointSize="17"/>
                                         <state key="normal" title="Continue">
@@ -358,25 +368,25 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
-                                    <constraint firstItem="Xmd-k2-3yC" firstAttribute="height" secondItem="4Yc-Un-YRH" secondAttribute="height" multiplier="0.152" id="2LS-f6-TYq"/>
+                                    <constraint firstItem="Xmd-k2-3yC" firstAttribute="height" secondItem="4Yc-Un-YRH" secondAttribute="height" multiplier="0.152" constant="-10.199999999999996" id="2LS-f6-TYq"/>
                                     <constraint firstItem="HS6-JF-Oig" firstAttribute="top" secondItem="4Yc-Un-YRH" secondAttribute="top" id="8Ct-7v-lAK"/>
                                     <constraint firstAttribute="trailing" secondItem="Xmd-k2-3yC" secondAttribute="trailing" constant="15" id="Jl1-um-h4Z"/>
                                     <constraint firstItem="HS6-JF-Oig" firstAttribute="height" secondItem="4Yc-Un-YRH" secondAttribute="width" multiplier="0.4" id="YgM-SK-p9D"/>
                                     <constraint firstItem="Xmd-k2-3yC" firstAttribute="leading" secondItem="4Yc-Un-YRH" secondAttribute="leading" constant="15" id="guw-xg-E0n"/>
-                                    <constraint firstAttribute="bottom" secondItem="Xmd-k2-3yC" secondAttribute="bottom" constant="25" id="tO2-Ew-YfW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xmd-k2-3yC" secondAttribute="bottom" constant="93" id="tO2-Ew-YfW"/>
                                     <constraint firstAttribute="trailing" secondItem="HS6-JF-Oig" secondAttribute="trailing" constant="30" id="tQ0-jR-8TD"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Joa-4m-dVm"/>
-                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7je-Bc-QGY" firstAttribute="top" secondItem="Joa-4m-dVm" secondAttribute="top" id="2bZ-Mh-jgj"/>
                             <constraint firstItem="QXd-ZY-P4W" firstAttribute="leading" secondItem="Joa-4m-dVm" secondAttribute="leading" id="2fJ-WW-Fs9"/>
                             <constraint firstItem="QXd-ZY-P4W" firstAttribute="top" secondItem="7je-Bc-QGY" secondAttribute="bottom" id="4YF-po-8eH"/>
                             <constraint firstItem="7je-Bc-QGY" firstAttribute="leading" secondItem="Joa-4m-dVm" secondAttribute="leading" id="GgH-wR-gft"/>
                             <constraint firstItem="7je-Bc-QGY" firstAttribute="trailing" secondItem="Joa-4m-dVm" secondAttribute="trailing" id="Jd8-q1-hol"/>
-                            <constraint firstItem="4Yc-Un-YRH" firstAttribute="bottom" secondItem="Joa-4m-dVm" secondAttribute="bottom" id="NnI-IC-ynC"/>
+                            <constraint firstItem="4Yc-Un-YRH" firstAttribute="bottom" secondItem="Joa-4m-dVm" secondAttribute="bottom" constant="68" id="NnI-IC-ynC"/>
                             <constraint firstItem="4Yc-Un-YRH" firstAttribute="leading" secondItem="Joa-4m-dVm" secondAttribute="leading" id="R4H-ym-N0f"/>
                             <constraint firstItem="4Yc-Un-YRH" firstAttribute="top" secondItem="QXd-ZY-P4W" secondAttribute="bottom" id="ab3-xv-a2M"/>
                             <constraint firstItem="QXd-ZY-P4W" firstAttribute="trailing" secondItem="Joa-4m-dVm" secondAttribute="trailing" id="daB-3k-CgM"/>
@@ -420,7 +430,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U84-LH-DMC" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417.3913043478262" y="109.82142857142857"/>
+            <point key="canvasLocation" x="1416.2790697674418" y="109.44206008583691"/>
         </scene>
         <!--Sign InVC-->
         <scene sceneID="TSN-Tc-oHP">
@@ -1028,7 +1038,7 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-ii-Mb6">
-                                <rect key="frame" x="100" y="372.66666666666669" width="21.666666666666671" height="25"/>
+                                <rect key="frame" x="100" y="372.66666666666669" width="20.666666666666671" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1205,13 +1215,13 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 <state key="normal" backgroundImage="BurbankLogo_Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEd-zg-iy4">
-                                <rect key="frame" x="50.000000000000007" y="356.66666666666669" width="75.666666666666686" height="25"/>
+                                <rect key="frame" x="49.999999999999993" y="356.66666666666669" width="75.333333333333314" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZa-Vg-nxl">
-                                <rect key="frame" x="125.66666666666669" y="356.66666666666669" width="110" height="25"/>
+                                <rect key="frame" x="125.33333333333331" y="356.66666666666669" width="110" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1730,13 +1740,13 @@ Designed to keep you on track every step of the way. Simplify your home building
                                 <state key="normal" backgroundImage="Ico-BB-Black"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHb-Zj-IVt">
-                                <rect key="frame" x="50.000000000000007" y="356.66666666666669" width="75.666666666666686" height="25"/>
+                                <rect key="frame" x="49.999999999999993" y="356.66666666666669" width="75.333333333333314" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azQ-kU-eej">
-                                <rect key="frame" x="125.66666666666669" y="356.66666666666669" width="110" height="25"/>
+                                <rect key="frame" x="125.33333333333331" y="356.66666666666669" width="110" height="25"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
                                 <color key="textColor" name="darkGray"/>
                                 <nil key="highlightedColor"/>
@@ -9030,11 +9040,14 @@ AAAAAAAAagAAAAAAAAAAAAAAAAAGi0M
         <namedColor name="BTN_DarkGray_BG">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="DarkGrey_BG_3">
-            <color red="0.65499997138977051" green="0.66299998760223389" blue="0.67500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Black_BG_3">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GreyTextFont_3">
             <color red="0.36100000143051147" green="0.36899998784065247" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGreyDisabled_BG_3">
+            <color red="0.81999999284744263" green="0.82700002193450928" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange_BG_3">
             <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -9042,17 +9055,11 @@ AAAAAAAAagAAAAAAAAAAAAAAAAAGi0M
         <namedColor name="darkGray">
             <color red="0.25499999523162842" green="0.25099998712539673" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

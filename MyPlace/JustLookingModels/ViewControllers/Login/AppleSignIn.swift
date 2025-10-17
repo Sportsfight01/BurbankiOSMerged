@@ -38,7 +38,7 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate, ASAuthorizat
   func signInWithAppleBtn() -> UIView{
     
     let view = UIView(frame: .zero)
-      view.backgroundColor = APPCOLORS_3.DisabledFooterIconGrey
+    view.backgroundColor = UIColor.hexCode("#BECE9C") // Pale Gray as per V4.0
     view.layer.cornerRadius = 5.0
     
     //imgView
