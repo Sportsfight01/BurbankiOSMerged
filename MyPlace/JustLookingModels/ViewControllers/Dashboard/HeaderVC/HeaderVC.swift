@@ -301,7 +301,7 @@ class HeaderVC: UIViewController {
     
      func addHeaderView () {
         
-         headerView_header.backgroundColor = AppColors.white
+         headerView_header.backgroundColor = APPCOLORS_3.Body_BG
         //headerView_header.tintColor = APPCOLORS_3.Orange_BG
         
         headerView_header.translatesAutoresizingMaskIntoConstraints = false
@@ -314,7 +314,8 @@ class HeaderVC: UIViewController {
             headerView_header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             headerView_header.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
         ])
-        
+    
+         
         headerView_header.layoutIfNeeded()
         
         addHeaderViewOptions()
@@ -417,7 +418,7 @@ class HeaderVC: UIViewController {
     
     private func addHeaderViewOptions () {
         
-        labelLine.backgroundColor = APPCOLORS_3.Body_BG
+        labelLine.backgroundColor = APPCOLORS_3.Black_BG
         headerView_header.addSubview(labelLine)
         
         
@@ -440,7 +441,7 @@ class HeaderVC: UIViewController {
         
         
         btnBack.setBackgroundImage(imageBack, for: .normal)
-        btnBack.tintColor = AppColors.darkGray
+        btnBack.tintColor = APPCOLORS_3.Black_BG
         btnBack.clipsToBounds = true
         btnBack.isHidden = true
         headerView_header.addSubview(btnBack)
@@ -452,6 +453,7 @@ class HeaderVC: UIViewController {
         
         
         btnBackProfile.setBackgroundImage(imageBack, for: .normal)
+        btnBackProfile.tintColor = APPCOLORS_3.Black_BG
         btnBackProfile.clipsToBounds = true
         btnBackProfile.isHidden = true
         headerView_header.addSubview(btnBackProfile)
@@ -473,12 +475,12 @@ class HeaderVC: UIViewController {
         NSLayoutConstraint.activate([
             labelLine.leadingAnchor.constraint(equalTo: headerView_header.leadingAnchor, constant: 0),
             labelLine.trailingAnchor.constraint(equalTo: headerView_header.trailingAnchor, constant: 0),
-            labelLine.topAnchor.constraint(equalTo: headerView_header.topAnchor, constant: statusBarHeight()),
-            labelLine.heightAnchor.constraint(equalToConstant: 0.5)
+            labelLine.bottomAnchor.constraint(equalTo: headerView_header.bottomAnchor, constant: 0),
+            labelLine.heightAnchor.constraint(equalToConstant: 1)
         ])
+//        
         
-        
-        labelLine.isHidden = true
+//        labelLine.isHidden = true
         
                         
         

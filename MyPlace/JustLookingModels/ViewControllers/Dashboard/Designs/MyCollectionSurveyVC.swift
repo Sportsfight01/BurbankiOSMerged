@@ -129,6 +129,7 @@ class MyCollectionSurveyVC: HeaderVC {
   //MARK: - View
   
   func pageUISetup () {
+      setAppearanceFor(view: view, backgroundColor: APPCOLORS_3.Body_BG)
     
       setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
     
@@ -771,19 +772,19 @@ class MyCollectionSurveyVC: HeaderVC {
     if (self.designsCount ?? 0) == 0 {
       
       self.btnDesignsCount.setTitle("NO DESIGNS", for: .normal)
-        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
+        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_LIGHT(size: FONT_14))
       
     }else if (self.designsCount ?? 0) == 1 {
       
-      self.btnDesignsCount.setTitle("SKIP TO 1 DESIGN >", for: .normal)
+      self.btnDesignsCount.setTitle("SKIP TO 1 DESIGN ", for: .normal)
       
-      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
       
     }else {
       
-      self.btnDesignsCount.setTitle("SKIP TO \(self.designsCount ?? 0) DESIGNS >", for: .normal)
+      self.btnDesignsCount.setTitle("SKIP TO \(self.designsCount ?? 0) DESIGNS ", for: .normal)
       
-      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+      setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
     }
     
   }

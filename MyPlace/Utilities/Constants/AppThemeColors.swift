@@ -29,6 +29,7 @@ struct APPCOLORS_3
     static let Black_BG = UIColor.hexCode("#000000")
     static let DisabledFooterIconGrey = UIColor.hexCode("#A2A2A1")
     static let BTN_DarkGray = UIColor.hexCode("#333333")
+//    static let White_Color = UIColor.hexCode("#333333")
     
     
     //    static let LightGreyDisabled_BG = UIColor.hexCode("#D1D3D4")

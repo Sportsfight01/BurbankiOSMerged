@@ -101,9 +101,9 @@ class HomeLandVCSurvey: HeaderVC {
                 
             }else {
                 
-                self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", packagesCount!, packagesCount! == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
+                self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ ", packagesCount!, packagesCount! == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
 
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
                 
               //  self.btnNext.superview!.alpha = 1.0
               //  self.btnNext.backgroundColor = APPCOLORS_3.EnabledOrange_BG
@@ -255,7 +255,7 @@ class HomeLandVCSurvey: HeaderVC {
                     }
                     else {
                         
-                        self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ >", self.priceRangeVC?.selectedBarValue ?? 0, self.priceRangeVC?.selectedBarValue == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
+                        self.btnDesignsCount.setTitle(String(format: "SKIP TO %d %@ ", self.priceRangeVC?.selectedBarValue ?? 0, self.priceRangeVC?.selectedBarValue == 1 ? "PACKAGE" : "PACKAGES"), for: .normal)
                     }
 
 
@@ -288,8 +288,8 @@ class HomeLandVCSurvey: HeaderVC {
         
         
         
-        btnDesignsCount.setTitle("SKIP >", for: .normal)
-        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
+        btnDesignsCount.setTitle("SKIP ", for: .normal)
+        setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
         
         setAppearanceFor(view: btnNext, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
         setAppearanceFor(view: btnPrevious, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_15))
@@ -399,7 +399,7 @@ class HomeLandVCSurvey: HeaderVC {
         
         if viewTag == 101 {
             
-            if (btnDesignsCount.title(for: .normal) == "SKIP >") {
+            if (btnDesignsCount.title(for: .normal) == "SKIP ") {
                 
                 if navigationController?.viewControllers.count == 1 {
 //                    self.tabBarController?.navigationController?.popViewController(animated: true)
@@ -425,8 +425,8 @@ class HomeLandVCSurvey: HeaderVC {
                 
             } else {
                 
-                btnDesignsCount.setTitle("SKIP >", for: .normal)
-                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
+                btnDesignsCount.setTitle("SKIP ", for: .normal)
+                setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_14))
                 self.btnNext.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG
                 
                 myPlaceQuiz.region = nil
@@ -827,7 +827,7 @@ class HomeLandVCSurvey: HeaderVC {
             
             if viewTag == 101 {
                 
-                if (btnDesignsCount.title(for: .normal) == "SKIP >") {
+                if (btnDesignsCount.title(for: .normal) == "SKIP ") {
                     
 //                    if navigationController?.viewControllers.count == 1 {
 //                        self.tabBarController?.navigationController?.popViewController(animated: true)
@@ -841,9 +841,9 @@ class HomeLandVCSurvey: HeaderVC {
                     
                 } else {
                     
-                    btnDesignsCount.setTitle("SKIP >", for: .normal)
+                    btnDesignsCount.setTitle("SKIP ", for: .normal)
                     btnDesignsCount.isUserInteractionEnabled = true
-                    setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont, textFont: FONT_BUTTON_BODY(size: FONT_14))
+                    setAppearanceFor(view: btnDesignsCount, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
                     
                     myPlaceQuiz.region = nil
                     filter.region = RegionMyPlace()

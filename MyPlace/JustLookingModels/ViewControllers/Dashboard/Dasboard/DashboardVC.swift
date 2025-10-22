@@ -26,14 +26,15 @@ class DashboardVC: UITabBarController, UITabBarControllerDelegate {
         
         
         self.tabBar.backgroundColor = AppColors.white
+        self.tabBar.tintColor = APPCOLORS_3.Orange_BG
+        self.tabBar.unselectedItemTintColor = APPCOLORS_3.Black_BG
         
         
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: APPCOLORS_3.Orange_BG, .font: FONT_LABEL_HEADING(size: FONT_8)], for: .selected)
         
-        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: AppColors.lightGray, .font: FONT_LABEL_BODY(size: FONT_8)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: APPCOLORS_3.Black_BG, .font: FONT_LABEL_BODY(size: FONT_8)], for: .normal)
       //  print(hasTopNotch)
-    
-                
+
 //        if UIDevice.current.hasNotch == false {
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: UIDevice.current.hasNotch ? 2 : -2)
 //        }
