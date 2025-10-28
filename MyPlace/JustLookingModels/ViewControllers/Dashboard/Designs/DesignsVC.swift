@@ -87,6 +87,9 @@ class DesignsVC: HeaderVC {
         } else {
             // Fallback on earlier versions
         }
+        setAppearanceFor(view: self.view, backgroundColor: APPCOLORS_3.Body_BG)
+        setAppearanceFor(view: self.searchResultsTable, backgroundColor: APPCOLORS_3.Body_BG)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -137,6 +137,7 @@ class DesignsDetailsVC: HeaderVC {
         
         if let design = homeDesignData {
             fillAllDetails ()
+           
         }
         
         
@@ -246,35 +247,25 @@ class DesignsDetailsVC: HeaderVC {
         }
         
 //        self.lBPrice.text = String.currencyFormate(Int32(self.homeDesign!.price!)!)  // -------> v2.2 changes 
-        
+        self.addBreadCrumb (from: (self.homeDesignData?.houseName ?? "") + " " + (self.homeDesignData?.houseSize ?? ""))
+
         self.lBPrice.isHidden = true // -------> v2.2 changes
-      //CodeManager.sharedInstance.sendScreenName("BB_HomeDesign_NameAndSize_\(self.homeDesign?.houseName ?? "")_design,\(self.homeDesign?.houseSize ?? "")")
-//        Analytics.logEvent("BB_profile_HomeDesign_NameAndSize", parameters: ["name" : self.homeDesign?.houseName ?? "","size" : self.homeDesign?.houseSize ?? "","jobID" : appDelegate.currentUser?.jobNumber ?? "0"])
         self.lBHouseName.text = (self.homeDesignData?.houseName ?? "") + " " + (self.homeDesignData?.houseSize ?? "")
         self.lBBedrooms.text = self.homeDesignData!.bedRooms
         self.lBBathrooms.text = self.homeDesignData!.bathRooms
         self.lBParking.text = self.homeDesignData!.carSpace
-        
-        if displayText == "Take a quick survey to find your perfect design"{
-//        if Int(kUserID)! == 0{
-            self.addBreadCrumb (from: (self.homeDesignData?.houseName ?? "") + " " + (self.homeDesignData?.houseSize ?? ""))
-
-//        }
-        }
-        
-        
         self.lBLotWidth.text = (self.homeDesignData?.minLotWidth?.trim() ?? "0") + "m"
 
         
         self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
         if Int(kUserID)! > 0 { // LoggedInUser
             self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
-            self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+            self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
             
         }else { // Guest User
         
             self.btnFavorite.setImage(imageUNFavorite, for: .normal)
-            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Orange_BG
+            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Black_BG
         }
         
        // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
@@ -393,26 +384,20 @@ class DesignsDetailsVC: HeaderVC {
                 self.lBBathrooms.text = self.homeDesignData!.bathRooms
                 self.lBParking.text = self.homeDesignData!.carSpace
                 
-                if displayText == "Take a quick survey to find your perfect design"{
-        //        if Int(kUserID)! == 0{
-                    self.addBreadCrumb (from: (self.homeDesignData?.houseName ?? "") + " " + (self.homeDesignData?.houseSize ?? ""))
-
-        //        }
-                }
-                
-                
+                self.addBreadCrumb (from: (self.homeDesignData?.houseName ?? "") + " " + (self.homeDesignData?.houseSize ?? ""))
+ 
                 self.lBLotWidth.text = (self.homeDesignData?.minLotWidth?.trim() ?? "0") + "m"
 
                 
                 self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
                 if Int(kUserID)! > 0 { // LoggedInUser
                     self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
-                    self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+                    self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
                     
                 }else { // Guest User
                 
                     self.btnFavorite.setImage(imageUNFavorite, for: .normal)
-                    self.btnSaveDesign.backgroundColor = APPCOLORS_3.Orange_BG
+                    self.btnSaveDesign.backgroundColor = APPCOLORS_3.Black_BG
                 }
                 
                // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
@@ -755,7 +740,7 @@ class DesignsDetailsVC: HeaderVC {
                     self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
                     
                     self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-                    self.btnSaveDesign.backgroundColor = (self.homeDesignData?.isFav ?? false) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+                    self.btnSaveDesign.backgroundColor = (self.homeDesignData?.isFav ?? false) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
                     
                     
                    // if self.homeDesign!.favouritedUser?.userID == kUserID {
@@ -958,17 +943,17 @@ extension DesignsDetailsVC {
         setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
         setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
 //        lBMyPlace.text = "Interactive \nHome Tour"
 //        lBHomeLand.text = "House & Land"
         
-        setAppearanceFor(view: btnMyPlace, backgroundColor: APPCOLORS_3.DarkGrey_BG)
-        setAppearanceFor(view: btnHomeLand, backgroundColor: APPCOLORS_3.DarkGrey_BG)
+        setAppearanceFor(view: btnMyPlace, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
+        setAppearanceFor(view: btnHomeLand, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
         
         
-        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
-        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG,APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_HEADING(size: FONT_16)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG,APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_HEADING(size: FONT_16)], alignmentCenter: false)
         
         
         

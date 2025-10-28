@@ -222,11 +222,11 @@ class DisplayHomesDetailsVC: HeaderVC,GMSMapViewDelegate {
         if Int(kUserID)! == 0 // Guest User
         {
             self.btnFavorite.setImage(imageUNFavorite, for: .normal)
-            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Orange_BG
+            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Black_BG
             
         }else { // User logged In
             self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
-            self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+            self.btnSaveDesign.backgroundColor = isFave == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
             
         }
         
@@ -569,7 +569,7 @@ extension DisplayHomesDetailsVC{
                     self.btnFavorite.setImage(self.isFave == true ? imageFavorite : imageUNFavorite, for: .normal)
                     
                    // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-                    self.btnSaveDesign.backgroundColor = (self.isFave ) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Orange_BG
+                    self.btnSaveDesign.backgroundColor = (self.isFave ) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
                     
                     
 //                    if self.homeDesignDetails?.userID == kUserID {
@@ -747,15 +747,15 @@ extension DisplayHomesDetailsVC {
         setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
         setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
         setAppearanceFor(view: backBTN, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
         
 //        lBMyPlace.text = "Interactive \nHome Tour"
 //        lBHomeLand.text = "House & Land"
         
-        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
-        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG,APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_16),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_HEADING(size: FONT_16)], alignmentCenter: false)
+        _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG,APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_HEADING(size: FONT_16)], alignmentCenter: false)
         
         
         lBLot.text = "LOT\nWIDTH"

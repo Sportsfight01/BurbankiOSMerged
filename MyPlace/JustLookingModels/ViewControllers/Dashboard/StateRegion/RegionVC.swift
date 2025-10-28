@@ -180,12 +180,12 @@ class RegionTableViewCell: UITableViewCell {
                 titleLabel.backgroundColor = APPCOLORS_3.Orange_BG
             }else {
                 titleLabel.textColor = APPCOLORS_3.Black_BG
-                titleLabel.backgroundColor = APPCOLORS_3.HeaderFooter_white_BG
+                titleLabel.backgroundColor = APPCOLORS_3.Body_BG
                 if #available(iOS 13.0, *) {
-                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.5, shadowColor: UIColor.systemGray2.cgColor)
+                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.5, shadowColor: UIColor.systemGray2.cgColor,backgroundColor: APPCOLORS_3.Body_BG)
                 } else {
                     // Fallback on earlier versions
-                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.3)
+                    titleLabel.cardView(cornerRadius: radius_10, shadowOpacity: 0.3,backgroundColor: APPCOLORS_3.Body_BG)
                 }
 
             }

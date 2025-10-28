@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -282,7 +282,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSq-ze-Rpv">
                                                 <rect key="frame" x="10" y="246" width="353" height="45"/>
-                                                <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="Orange_BG_3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="KB9-oi-s35"/>
                                                 </constraints>
@@ -352,8 +352,8 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="la7-GG-Vkm">
                                 <rect key="frame" x="15" y="425" width="398" height="1"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="LightGreyDisabled_BG_3"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="jgf-ub-ayi"/>
                                 </constraints>
@@ -432,13 +432,16 @@
             <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightGreyDisabled_BG_3">
-            <color red="0.81999999284744263" green="0.82700002193450928" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.60784313725490191" green="0.60392156862745094" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Orange_BG_3">
+            <color red="1" green="0.38431372549019605" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="darkGray">
             <color red="0.25499999523162842" green="0.25099998712539673" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

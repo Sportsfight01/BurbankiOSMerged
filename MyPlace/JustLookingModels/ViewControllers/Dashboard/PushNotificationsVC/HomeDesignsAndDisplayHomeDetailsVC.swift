@@ -949,8 +949,8 @@ class HomeDesignsAndDisplayHomeDetailsVC: HeaderVC {
             setAppearanceFor(view: btnHomeLand, backgroundColor: APPCOLORS_3.DarkGrey_BG)
             
             
-            _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
-            _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG,APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
+            _ = setAttributetitleFor(view: lBMyPlace, title: "Virtual Home Tour", rangeStrings: ["Virtual", "Home Tour"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_HEADING(size: FONT_16)], alignmentCenter: false)
+            _ = setAttributetitleFor(view: lBHomeLand, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.HeaderFooter_white_BG, APPCOLORS_3.HeaderFooter_white_BG,APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_HEADING(size: FONT_16), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_HEADING(size: FONT_16)], alignmentCenter: false)
             
             
             

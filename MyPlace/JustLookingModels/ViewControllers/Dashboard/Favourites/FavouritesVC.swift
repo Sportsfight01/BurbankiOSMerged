@@ -34,8 +34,8 @@ class FavouritesVC: HeaderVC {
 //        setShadowatBottom(view: profileViewBorder, color: APPCOLORS_3.Black_BG, shadowRadius: 5.0)
         
         
-        tableViewFvrts.backgroundColor = AppColors.white
-        view.backgroundColor = COLOR_CLEAR
+        tableViewFvrts.backgroundColor = APPCOLORS_3.Body_BG
+        view.backgroundColor = APPCOLORS_3.Body_BG
 //        profileViewBorder.backgroundColor = COLOR_CLEAR
         
         btnProfileImage.layer.cornerRadius = btnProfileImage.frame.size.height/2
@@ -203,7 +203,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
                 cell.btnSavedDesigns.setTitle("\(countText) SAVED \(designs)", for: .normal)
                 cell.btnSavedDesigns.backgroundColor = count == 0 ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
                 cell.btnSavedDesigns.isUserInteractionEnabled = count == 0 ? false : true
-                
+                setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
                 
             }
         }
@@ -221,6 +221,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             if name == nameMyDesign {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MyDesignsTVC", for: indexPath) as! MyDesignsTVC
+                setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
               //  cell.icon.backgroundColor = .red
                 cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
@@ -279,6 +280,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }else if name == nameDisplayHomes {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayHomesTVC", for: indexPath) as! DisplayHomesTVC
+                setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
 //                cell.icon.backgroundColor = .red
                 cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
@@ -299,6 +301,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }else if name == nameHL {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeAndLandTVC", for: indexPath) as! HomeAndLandTVC
+                setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
                 //                cell.icon.backgroundColor = .red
                 cell.icon.contentMode = .scaleToFill
                 cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
@@ -350,6 +353,7 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouritesTVCell", for: indexPath) as! FavouritesTVCell
+        setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
         cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(.alwaysTemplate)
         cell.icon.tintColor = APPCOLORS_3.GreyTextFont
         cell.iconWidthConstraint.constant = indexPath.row == 0 ? 25 : 32 // to look first image properly

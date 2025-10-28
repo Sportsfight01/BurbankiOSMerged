@@ -801,7 +801,7 @@ extension HeaderVC {
         //MyProfile favorites count label
 
         self.favCountLb.text = "\(totalFavCount)"
-        favCountLb.backgroundColor = .gray
+        favCountLb.backgroundColor = APPCOLORS_3.Black_BG
         favCountLb.textColor = .white
         favCountLb.font = FONT_LABEL_SUB_HEADING(size: 12.0)
         favCountLb.layer.cornerRadius = 9
@@ -948,7 +948,7 @@ extension HeaderVC {
         optionsView.addSubview(btnTotalCollectionCount)
         
         btnTotalCollectionCount.setTitle("    TOTAL DESIGNS    ", for: .normal)
-        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: APPCOLORS_3.DarkGrey_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
+        setAppearanceFor(view: btnTotalCollectionCount, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING  (size: FONT_11))
         //btnSortFilter.addTarget(self, action: #selector(handleSortFilterAction), for: .touchUpInside)
     }
 

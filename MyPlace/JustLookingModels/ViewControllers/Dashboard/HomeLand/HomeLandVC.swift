@@ -152,6 +152,8 @@ class HomeLandVC: HeaderVC {
             // Fallback on earlier versions
         }
         searchResultsTable.tableFooterView = UIView()
+        setAppearanceFor(view: self.view, backgroundColor: APPCOLORS_3.Body_BG)
+        setAppearanceFor(view: self.searchResultsTable, backgroundColor: APPCOLORS_3.Body_BG)
     }
     
     
