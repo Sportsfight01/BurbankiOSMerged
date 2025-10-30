@@ -62,7 +62,7 @@
                                         <state key="normal" backgroundImage="Ico-DownArrow"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="Body_BG_3"/>
                                 <constraints>
                                     <constraint firstItem="atu-pw-S3X" firstAttribute="centerY" secondItem="gMU-tJ-xGe" secondAttribute="centerY" id="2dS-M1-NUK"/>
                                     <constraint firstAttribute="height" constant="50" id="97H-1y-MFZ"/>
@@ -106,7 +106,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="Body_BG_3"/>
                         <constraints>
                             <constraint firstItem="23v-lw-3VA" firstAttribute="leading" secondItem="A00-IB-I1F" secondAttribute="leading" constant="35" id="1BR-Zu-TIy"/>
                             <constraint firstAttribute="trailing" secondItem="VtS-PQ-5Mn" secondAttribute="trailing" id="1Nv-H8-3na"/>
@@ -121,7 +121,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" name="Body_BG_3"/>
                 <constraints>
                     <constraint firstItem="A00-IB-I1F" firstAttribute="top" secondItem="Fl5-tm-7KV" secondAttribute="top" id="26T-Ee-XH8"/>
                     <constraint firstAttribute="bottom" secondItem="A00-IB-I1F" secondAttribute="bottom" id="Gog-dF-orK"/>
@@ -148,6 +148,9 @@
         <image name="Ico-DownArrow" width="18.666666030883789" height="10.666666984558105"/>
         <namedColor name="AppOrange">
             <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Body_BG_3">
+            <color red="0.9570000171661377" green="0.94499999284744263" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightGreyDisabled_BG_3">
             <color red="0.60784313725490191" green="0.60392156862745094" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

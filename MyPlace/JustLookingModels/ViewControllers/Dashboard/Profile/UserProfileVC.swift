@@ -119,7 +119,7 @@ class UserProfileVC: UIViewController {
         setShadowatBottom(view: profileViewBorder, color: APPCOLORS_3.Black_BG, shadowRadius: 5.0)
         
         
-        tableProfile.backgroundColor = AppColors.white
+        tableProfile.backgroundColor = APPCOLORS_3.Body_BG
         view.backgroundColor = COLOR_CLEAR
         profileViewBorder.backgroundColor = COLOR_CLEAR
         
@@ -195,7 +195,7 @@ class UserProfileVC: UIViewController {
     
     func addHeaderViewOptions () {
         
-        profileHeaderView.backgroundColor = AppColors.white
+        profileHeaderView.backgroundColor = APPCOLORS_3.Body_BG
         
         
         labelLine.backgroundColor = APPCOLORS_3.Body_BG
@@ -420,7 +420,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
               cell.lBCount.text = "\(totalCount)"
               }
             
-            
+            setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
         }
         self.viewWillLayoutSubviews()
     }
@@ -457,7 +457,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                         }
                     }
                 }
-                
+                setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
                 return cell
                 
             }else if name == nameShare {
@@ -690,7 +690,8 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.btnLogout.addTarget(self, action: #selector(handleLogoutAction(_:)), for: .touchUpInside)
                 cell.btnDelete.addTarget(self, action: #selector(handleDeleteAction(_:)), for: .touchUpInside)
-                
+                setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
+
                 return cell
                 
             }
@@ -699,6 +700,8 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             cell.icon.image = arrIcons[indexPath.row]?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 cell.icon.tintColor = APPCOLORS_3.GreyTextFont
             cell.lBTitle.text = arrNames[indexPath.row]
+                setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
+
             return cell
            }
             else if name == nameDeletAccount{

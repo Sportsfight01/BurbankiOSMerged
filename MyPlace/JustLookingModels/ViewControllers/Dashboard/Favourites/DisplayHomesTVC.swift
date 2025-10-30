@@ -71,6 +71,7 @@ class DisplayHomesTVC: UITableViewCell {
         lBCount.layer.cornerRadius = lBCount.frame.size.height/2
         icon.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         icon.tintColor = .black
+        
        
     }
     

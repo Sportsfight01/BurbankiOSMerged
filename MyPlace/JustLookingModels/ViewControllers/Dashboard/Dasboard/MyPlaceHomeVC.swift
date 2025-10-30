@@ -248,7 +248,7 @@ class MyPlaceHomeVC: UIViewController {
         
         favCountLb.text = "\(totalFavCount)"
         
-        favCountLb.backgroundColor = .gray
+        favCountLb.backgroundColor = APPCOLORS_3.Black_BG
         favCountLb.textColor = .white
         favCountLb.font = FONT_LABEL_SUB_HEADING(size: 12.0)
         favCountLb.layer.cornerRadius = 9
