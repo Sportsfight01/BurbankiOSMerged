@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6w-qd-s8r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6w-qd-s8r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -128,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-9L-Dch">
-                                <rect key="frame" x="10" y="258" width="373" height="361"/>
+                                <rect key="frame" x="10" y="270.66666666666669" width="373" height="361.00000000000006"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW WIDE IS YOUR LOT?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bV-e8-F4Z">
                                         <rect key="frame" x="20" y="80" width="333" height="20"/>
@@ -137,7 +138,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1P-IE-Vob">
-                                        <rect key="frame" x="123" y="248" width="127" height="90"/>
+                                        <rect key="frame" x="123" y="247.99999999999994" width="127" height="90"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E.g: 12.5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8d-th-9Cu">
                                                 <rect key="frame" x="8.6666666666666572" y="8" width="110" height="35"/>
@@ -164,7 +165,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METRES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot6-YH-8pH">
                                                 <rect key="frame" x="30.666666666666657" y="51" width="66" height="15"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
-                                                <color key="textColor" red="0.36078431372549019" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="Black_BG_3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -186,20 +187,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uf9-K6-bnl">
-                                        <rect key="frame" x="71.666666666666686" y="117.66666666666669" width="230" height="110"/>
+                                        <rect key="frame" x="71.666666666666686" y="117.33333333333331" width="230" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37e-0T-QsA">
                                                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Question" translatesAutoresizingMaskIntoConstraints="NO" id="0Mj-Q8-VKK">
-                                                        <rect key="frame" x="38.333333333333329" y="28.333333333333314" width="33" height="33"/>
-                                                        <color key="tintColor" red="0.36078431372549019" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="38.333333333333329" y="28.666666666666686" width="33" height="33"/>
+                                                        <color key="tintColor" name="Black_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="0Mj-Q8-VKK" secondAttribute="height" multiplier="1:1" id="2CT-l6-5vU"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Don't Have Land Yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcC-hw-MLL">
-                                                        <rect key="frame" x="6.3333333333333286" y="71.333333333333314" width="97" height="10"/>
+                                                        <rect key="frame" x="6.3333333333333286" y="71.666666666666686" width="97" height="10"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="10"/>
                                                         <color key="textColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -230,14 +231,14 @@
                                                 <rect key="frame" x="120" y="0.0" width="110" height="110"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ico-Rite" translatesAutoresizingMaskIntoConstraints="NO" id="AdR-iQ-idb">
-                                                        <rect key="frame" x="38.333333333333343" y="28.333333333333314" width="33" height="33"/>
-                                                        <color key="tintColor" red="0.36078431372549019" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="38.333333333333343" y="28.666666666666686" width="33" height="33"/>
+                                                        <color key="tintColor" name="Black_BG_3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="AdR-iQ-idb" secondAttribute="height" multiplier="1:1" id="r8u-HT-MLy"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I HAVE LAND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fd-NA-UQs">
-                                                        <rect key="frame" x="24.333333333333343" y="71.333333333333314" width="61" height="10"/>
+                                                        <rect key="frame" x="24.333333333333343" y="71.666666666666686" width="61" height="10"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="10"/>
                                                         <color key="textColor" red="0.96470588239999999" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -935,7 +936,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="113" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cl-7I-mMF">
-                                <rect key="frame" x="10" y="69" width="373" height="739"/>
+                                <rect key="frame" x="10" y="128" width="373" height="646"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT'S YOUR PRICE RANGE?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2e-OF-PVr">
                                         <rect key="frame" x="10" y="50" width="353" height="20"/>
@@ -944,10 +945,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPC-Pq-aO8">
-                                        <rect key="frame" x="10" y="80" width="353" height="639"/>
+                                        <rect key="frame" x="10" y="80" width="353" height="546"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63K-at-9Mk">
-                                                <rect key="frame" x="0.0" y="0.0" width="353" height="639"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="546"/>
                                                 <connections>
                                                     <segue destination="Zwp-k5-tUa" kind="embed" identifier="priceRange" id="MbH-rR-kYW"/>
                                                 </connections>
@@ -1655,11 +1656,11 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zwp-k5-tUa" customClass="PriceRangeVC" customModule="BurbankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w5p-xq-wqG">
-                        <rect key="frame" x="0.0" y="0.0" width="353" height="639"/>
+                        <rect key="frame" x="0.0" y="0.0" width="353" height="546"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6Z-d1-XUz">
-                                <rect key="frame" x="0.0" y="0.0" width="353" height="639"/>
+                                <rect key="frame" x="0.0" y="0.0" width="353" height="546"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwO-f6-KNo">
                                         <rect key="frame" x="0.0" y="5" width="353" height="30"/>
@@ -1669,13 +1670,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price range" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaG-0J-VMW">
-                                        <rect key="frame" x="10" y="45" width="333" height="132.33333333333334"/>
+                                        <rect key="frame" x="10" y="45" width="333" height="113"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oSo-4a-m77">
-                                        <rect key="frame" x="5" y="187.33333333333334" width="343" height="451.66666666666663"/>
+                                        <rect key="frame" x="5" y="168" width="343" height="378"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bv5-40-iKd">
                                             <size key="itemSize" width="50" height="50"/>
@@ -1919,6 +1920,9 @@
         <image name="Ico-Single" width="32" height="32"/>
         <image name="Ico-Wrong" width="67.333335876464844" height="67.333335876464844"/>
         <image name="default" width="219" height="169"/>
+        <namedColor name="Black_BG_3">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -138,18 +138,21 @@ extension FavouritesVC : UITableViewDelegate,UITableViewDataSource{
         if cell.isKind(of: FavouritesTVCell.self) {
             let cell = cell as! FavouritesTVCell
             cell.icon.image = arrIcons[indexPath.row]
-            cell.lBTitle.text = arrNames[indexPath.row]
+//            cell.lBTitle.text = arrNames[indexPath.row]
             let name = arrNames[indexPath.row]
             cell.lBCount.isHidden = false
             cell.lBCount.text = "0"
             if name == nameMyDesign {
                 cell.lBCount.text = "\(kDesignFavoritesCount)"
+                _ = setAttributetitleFor(view: cell.lBTitle, title: "HomeDesigns", rangeStrings: ["Home","Designs"], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_16),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
             }else if name == nameHL {
                 cell.lBCount.text = "\(kHomeLandFavoritesCount)"
+                _ = setAttributetitleFor(view: cell.lBTitle, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [APPCOLORS_3.Black_BG, APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_16), FONT_LABEL_BODY(size: FONT_13),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
             }else if name == nameDisplayHomes{
                 cell.lBCount.text = "\(self.displayFavorites.count)"
+                _ = setAttributetitleFor(view: cell.lBTitle, title: "DisplayHomes", rangeStrings: ["Display","Homes"], colors: [APPCOLORS_3.Black_BG,APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_16),FONT_LABEL_SUB_HEADING(size: FONT_16)], alignmentCenter: false)
             }
-           
+          
         }
         else if cell.isKind(of: MyDesignsTVC.self)
         {

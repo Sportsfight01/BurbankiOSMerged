@@ -812,7 +812,7 @@ extension HomeLandVC: UITableViewDelegate, UITableViewDataSource, UIScrollViewDe
                 dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourite Packages " + "(\(packages.count))"
             }
             
-            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.DarkGrey_BG)
+            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
             
             setAppearanceFor(view: dataLabel, backgroundColor: nil, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
             

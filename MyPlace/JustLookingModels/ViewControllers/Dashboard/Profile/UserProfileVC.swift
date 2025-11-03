@@ -419,7 +419,7 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                let totalCount = kDesignFavoritesCount + kHomeLandFavoritesCount + self.displayFavorites.count
               cell.lBCount.text = "\(totalCount)"
               }
-            
+            setAppearanceFor(view: cell.lBCount, backgroundColor: APPCOLORS_3.EnabledOrange_BG)
             setAppearanceFor(view: cell, backgroundColor: APPCOLORS_3.Body_BG)
         }
         self.viewWillLayoutSubviews()

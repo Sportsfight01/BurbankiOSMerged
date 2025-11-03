@@ -53,7 +53,7 @@ class DesignsVC: HeaderVC {
         searchResultsTable.tableFooterView = UIView()
         headerLogoText = "HomeDesigns"
         isFromProfile = true
-
+        
         //        if isFromCollection {
         if btnBack.isHidden {
             showBackButton()
@@ -89,15 +89,15 @@ class DesignsVC: HeaderVC {
         }
         setAppearanceFor(view: self.view, backgroundColor: APPCOLORS_3.Body_BG)
         setAppearanceFor(view: self.searchResultsTable, backgroundColor: APPCOLORS_3.Body_BG)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        btnMap.setTitle("  0 DESIGNS  ", for: .normal)
-//        setFramesForOptionsViews()
-//        btnTotalCollectionCount.setTitle(" TOTAL 0 DESIGNS ", for: .normal)
+        //        btnMap.setTitle("  0 DESIGNS  ", for: .normal)
+        //        setFramesForOptionsViews()
+        //        btnTotalCollectionCount.setTitle(" TOTAL 0 DESIGNS ", for: .normal)
         
         if isFavorites {
             self.addBreadCrumb(from: "Favourite Designs")
@@ -115,7 +115,7 @@ class DesignsVC: HeaderVC {
         }
         
         if isFavorites {
-//            setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
+            //            setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
             getFavoriteDesigns()
         }
         
@@ -183,10 +183,10 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
             cell.homeDesign = arrHomeDesigns[indexPath.row]
         }
         
-//        if Int(kUserID)! > 0 { print(log: kUserID) }
-//        else {
-//            cell.btnFavourite.isHidden = true
-//        }
+        //        if Int(kUserID)! > 0 { print(log: kUserID) }
+        //        else {
+        //            cell.btnFavourite.isHidden = true
+        //        }
         
         cell.favoriteAction = {
             if noNeedofGuestUserToast(self, message: "Please login to add favourites") {
@@ -208,8 +208,8 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
                             DispatchQueue.main.async(execute: {
                                 ActivityManager.showToast("Item removed from favourites", self)
                             })
-
-                         }
+                            
+                        }
                         
                         var updateDefaults = false
                         
@@ -286,7 +286,7 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
             CodeManager.sharedInstance.sendScreenName (burbank_homeDesigns_results_homeDetail_tableCell_touch)
             
             designsDetailsVC.homeDesignData = arrHomeDesigns[indexPath.row]
-          
+            
         }
         
         designsDetailsVC.displayText = self.displayText
@@ -337,7 +337,7 @@ extension DesignsVC: UITableViewDelegate, UITableViewDataSource {
                 dataLabel.text =  (packages[0].favouritedUser?.userFirstName?.capitalized ?? packages[0].favouritedUser?.userEmail ?? "") + "'s  Favourite Designs " + "(\(packages.count))"
             }
             
-            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.DarkGrey_BG)
+            setAppearanceFor(view: viewHeader, backgroundColor: APPCOLORS_3.LightGreyDisabled_BG)
             
             setAppearanceFor(view: dataLabel, backgroundColor: nil, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_16))
             
@@ -401,19 +401,19 @@ extension DesignsVC: ChildVCDelegate {
                 self.arrFavouriteHomeDesigns.removeAll()
                 self.arrHomeDesigns.removeAll()
                 
-               
+                
                 
                 
                 if isFavorites {
                     
-                  //  setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
+                    //  setAppearanceFor(view: btnMyProfile, backgroundColor: APPCOLORS_3.HeaderFooter_white_BG, textColor: APPCOLORS_3.Orange_BG, textFont: btnMyProfile.titleLabel!.font)
                     
                     getFavoriteDesigns()
                     
                 }else {
                     
-                   // setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: btnMyProfile.titleLabel!.font)
-                        getCollectionDesigns (selectedFeatures ?? [])
+                    // setAppearanceFor(view: btnMyProfile, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: btnMyProfile.titleLabel!.font)
+                    getCollectionDesigns (selectedFeatures ?? [])
                     self.searchResultsTable.isScrollEnabled = true
                 }
                 searchResultsTable.reloadData()
@@ -438,20 +438,20 @@ extension DesignsVC {
         params.setValue(kUserState, forKey: "StateId")
         params.setValue(1, forKey: "IncludePackages") //1 for packages
         params.setValue(0, forKey: "SortByPrice")
-       // params.setValue("", forKey: "Feature")
+        // params.setValue("", forKey: "Feature")
         
         if selectedFeatures.count == 0 {
             params.setValue(nil, forKey: "newhomesjson")
         }else {
             params.setValue(selectedFeatures, forKey: "newhomesjson")
         }
-//      if selectedFeatures.count == 1 { //Lot width
-//        if selectedFeatures[0].value(forKey: "Answer") as? String == "I don't mind"
-//        {
-            params.setValue("8", forKey: "FeatureAllFilter")
-//        }
-//
-//      }
+        //      if selectedFeatures.count == 1 { //Lot width
+        //        if selectedFeatures[0].value(forKey: "Answer") as? String == "I don't mind"
+        //        {
+        params.setValue("8", forKey: "FeatureAllFilter")
+        //        }
+        //
+        //      }
         
         
         _ = Networking.shared.POST_request(url: ServiceAPI.shared.URL_HomeDesignDesignCount, parameters: params, userInfo: nil, success: { (json, response) in
@@ -486,7 +486,7 @@ extension DesignsVC {
                                 
                                 recent.append(count)
                                 
-                               
+                                
                                 
                                 ProfileDataManagement.shared.saveRecentSearch(recent, SearchType.shared.newHomes, kUserID) { (success) in
                                     if success == true {
@@ -495,20 +495,19 @@ extension DesignsVC {
                                 }
                                 
                             }
-                           
+                            
                         }
                         self.btnTotalCollectionCount.setTitle("   TOTAL \(self.arrHomeDesigns.count) DESIGNS   ", for: .normal)
                         self.setFramesForOptionsViews()
                     }
                     
-                }else {
+                } else {
                     
                     print(log: "no data found")
                 }
-            }else {
+            } else {
                 
             }
-            
             self.arrHomeDesigns.count == 0 ? self.searchResultsTable.setEmptyMessage("No Designs found", bgColor: APPCOLORS_3.Body_BG) : self.searchResultsTable.setEmptyMessage("", bgColor: COLOR_CLEAR)
             
             self.searchResultsTable.reloadData()
@@ -673,7 +672,7 @@ extension DesignsVC {
             
             if isJSONerror {
                 
-            }else {
+            } else {
                 
             }
             

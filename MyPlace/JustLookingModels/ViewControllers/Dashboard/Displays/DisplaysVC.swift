@@ -115,15 +115,15 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
         designIcon.setImage(designImg?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
         regionIcon.setImage(regionImg?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
         mapIcon.setImage(mapImg?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
-        nearbyIcon.tintColor = .darkGray
-        designIcon.tintColor = .darkGray
-        regionIcon.tintColor = .darkGray
-        mapIcon.tintColor = .darkGray
+        nearbyIcon.tintColor = APPCOLORS_3.Black_BG
+        designIcon.tintColor = APPCOLORS_3.Black_BG
+        regionIcon.tintColor = APPCOLORS_3.Black_BG
+        mapIcon.tintColor = APPCOLORS_3.Black_BG
         
-        nearByBTN.setTitleColor(.darkGray, for: .normal)
-        designBTN.setTitleColor(.darkGray, for: .normal)
-        regionBTN.setTitleColor(.darkGray, for: .normal)
-        mapBTN.setTitleColor(.darkGray, for: .normal)
+        nearByBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
+        designBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
+        regionBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
+        mapBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
         
     }
    
@@ -186,21 +186,21 @@ class DisplaysVC: HeaderVC, ChildVCDelegate {
         }
         
        
-        nearbyIcon.tintColor = .darkGray
-        designIcon.tintColor = .darkGray
-        regionIcon.tintColor = .darkGray
-        mapIcon.tintColor = .darkGray
+        nearbyIcon.tintColor = APPCOLORS_3.Black_BG
+        designIcon.tintColor = APPCOLORS_3.Black_BG
+        regionIcon.tintColor = APPCOLORS_3.Black_BG
+        mapIcon.tintColor = APPCOLORS_3.Black_BG
         
-        nearByBTN.setTitleColor(.darkGray, for: .normal)
-        designBTN.setTitleColor(.darkGray, for: .normal)
-        regionBTN.setTitleColor(.darkGray, for: .normal)
-        mapBTN.setTitleColor(.darkGray, for: .normal)
+        nearByBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
+        designBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
+        regionBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
+        mapBTN.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
         
         nearbyVCContainerView.isHidden = true
         designsVCContainerView.isHidden = true
         regionsVCContainerView.isHidden = true
         mapVCContainerView.isHidden = true
-        sender.setTitleColor(.darkGray, for: .normal)
+        sender.setTitleColor(APPCOLORS_3.Black_BG, for: .normal)
         if sender.tag == 11 {
             
             nearbyVCContainerView.isHidden = false

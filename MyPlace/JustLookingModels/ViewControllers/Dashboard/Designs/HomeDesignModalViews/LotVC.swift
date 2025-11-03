@@ -232,7 +232,7 @@ class LotCell: UICollectionViewCell {
                 _ = setAttributetitleFor(view: buttonLot, title: "?\nI Don’t Have \nLand Yet", rangeStrings: ["?", "I Don’t Have \nLand Yet"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
                 buttonLot.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             }else{
-            _ = setAttributetitleFor(view: buttonLot, title: "\(lotWidth!)\nMETRES", rangeStrings: [lotWidth!, "METRES"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.HeaderFooter_white_BG], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
+            _ = setAttributetitleFor(view: buttonLot, title: "\(lotWidth!)\nMETRES", rangeStrings: [lotWidth!, "METRES"], colors: [APPCOLORS_3.GreyTextFont, APPCOLORS_3.Black_BG], fonts: [FONT_LABEL_BODY(size: FONT_22), FONT_LABEL_SUB_HEADING(size: FONT_9)], alignmentCenter: true)
             
             buttonLot.superview?.backgroundColor = APPCOLORS_3.Orange_BG
             }
