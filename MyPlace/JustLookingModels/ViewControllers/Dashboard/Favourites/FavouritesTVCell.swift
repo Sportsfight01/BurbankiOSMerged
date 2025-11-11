@@ -34,7 +34,7 @@ class FavouritesTVCell: UITableViewCell {
         
         lBCount.text = "0"
         btnArrow.setImage(UIImage(named: "Ico-DownArrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        btnArrow.tintColor = .lightGray
+        btnArrow.tintColor = APPCOLORS_3.Black_BG
         btnArrow.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
         
         

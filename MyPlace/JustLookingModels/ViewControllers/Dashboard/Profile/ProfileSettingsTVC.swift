@@ -76,10 +76,11 @@ class ProfileSettingsTVC: UITableViewCell {
         lBHeading.superview?.layer.cornerRadius = radius_5
         
         
-        lBCount.isHidden = false
+        
 
         lBCount.text = ""
-        btnArrow.tintColor = .gray
+        lBCount.isHidden = true
+        btnArrow.tintColor = APPCOLORS_3.Black_BG
         
         
     }

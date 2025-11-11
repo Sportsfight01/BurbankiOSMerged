@@ -119,7 +119,7 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
         btnUpdate.layer.cornerRadius = radius_5 //5.0
         
         lBCount.layer.cornerRadius = lBCount.frame.size.height/2
-
+        lBCount.isHidden = true
         if let viewProfilePiccc = viewProfilePic {
             btnSelect.layer.cornerRadius = radius_5
             viewProfilePiccc.layer.cornerRadius = radius_5
@@ -149,7 +149,7 @@ class ProfileDetailsTVCell: UITableViewCell, UITextFieldDelegate {
     
     func fillDetails () {
         self.txtName.isUserInteractionEnabled = false
-        lBCount.isHidden = false
+        lBCount.isHidden = true
         lBCount.text = ""
         self.txtName.text = "\(appDelegate.userData?.user?.userFirstName?.capitalized ?? "") \(appDelegate.userData?.user?.userLastName?.capitalized ?? "")"
         self.txtEmail.text = appDelegate.userData?.user?.userEmail

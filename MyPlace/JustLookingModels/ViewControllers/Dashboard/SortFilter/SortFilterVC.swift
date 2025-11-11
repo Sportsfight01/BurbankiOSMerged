@@ -81,7 +81,7 @@ class SortFilterVC: UIViewController {
         filter.priceSorting = .lowtoHigh
         
         
-        segmentStoreys.setOldLayout(tintColor: .white, selectedColor: APPCOLORS_3.GreyTextFont)
+        segmentStoreys.setOldLayout(tintColor: .white, selectedColor: APPCOLORS_3.Black_BG)
         segmentBedrooms.setOldLayout(tintColor: .white)
         segmentCarSpaces.setOldLayout(tintColor: .white)
         segmentBathrooms.setOldLayout(tintColor: .white)

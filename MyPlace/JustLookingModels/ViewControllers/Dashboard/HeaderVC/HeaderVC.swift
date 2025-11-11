@@ -441,6 +441,7 @@ class HeaderVC: UIViewController {
         
         
         btnBack.setBackgroundImage(imageBack, for: .normal)
+        btnBack.contentMode = .scaleAspectFit
         btnBack.tintColor = APPCOLORS_3.Black_BG
         btnBack.clipsToBounds = true
         btnBack.isHidden = true
@@ -449,7 +450,7 @@ class HeaderVC: UIViewController {
         
         headerView_header.addSubview(btnBackFull)
         btnBackFull.isHidden = true
-       // btnBackFull.backgroundColor = .red
+        btnBackFull.tintColor = APPCOLORS_3.Black_BG
         
         
         btnBackProfile.setBackgroundImage(imageBack, for: .normal)
@@ -458,7 +459,8 @@ class HeaderVC: UIViewController {
         btnBackProfile.isHidden = true
         headerView_header.addSubview(btnBackProfile)
         btnBackProfile.addTarget(self, action: #selector(handleProfileBackAction), for: .touchUpInside)
-        
+        btnBackProfile.contentMode = .scaleAspectFit
+        btnBackFull.contentMode = .scaleAspectFit
         
         headerView_header.addSubview(optionsView)
         

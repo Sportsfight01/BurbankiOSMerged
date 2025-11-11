@@ -387,8 +387,8 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
             
             
             if name == nameMyDetails {
-              //  cell.lBCount.isHidden = true
-                cell.lBCount.text = ""
+                cell.lBCount.isHidden = true
+//                cell.lBCount.text = ""
             }else if name == nameShare {
                 
                 cell.lBCount.text = "\(kShareCount)"
@@ -408,12 +408,12 @@ extension UserProfileVC: UITableViewDelegate, UITableViewDataSource {
                 cell.lBCount.text = "\(self.displayFavorites.count)"
             }
             else if name == nameSettings {
-               // cell.lBCount.isHidden = true
-                cell.lBCount.text = ""
+                cell.lBCount.isHidden = true
+//                cell.lBCount.text = ""
             }
             else if name == nameDeletAccount {
-//                cell.lBCount.isHidden = true
-                cell.lBCount.text = ""
+                cell.lBCount.isHidden = true
+//                cell.lBCount.text = ""
             }
             else if name == nameFavourites {
                let totalCount = kDesignFavoritesCount + kHomeLandFavoritesCount + self.displayFavorites.count
