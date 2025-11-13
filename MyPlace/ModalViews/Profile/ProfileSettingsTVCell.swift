@@ -77,7 +77,7 @@ class ProfileSettingsTVCell: UITableViewCell {
         lBCount.isHidden = false
 
         lBCount.text = ""
-        btnArrow.tintColor = .gray
+        btnArrow.tintColor = APPCOLORS_3.Black_BG
         
         
     }

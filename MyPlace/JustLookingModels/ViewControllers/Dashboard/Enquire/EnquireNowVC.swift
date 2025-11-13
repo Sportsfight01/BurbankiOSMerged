@@ -261,20 +261,41 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         pickerView.dataSource = self
         
         WebCacheCleaner.clean()
+        
+        
+        // use this hubspot url's only while testing & dev.
+        hubspotTestingUrls()
+        
+        // use this hubspot url's only when live.
+       // hubspotProductionUrls()
+    }
+    
+    
+    func hubspotTestingUrls() {
+        if kUserStateName.contains("NSW"){
+            webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1ncdi4qLFQBm_5tVINWrJEwr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_nsw_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+        }else if kUserStateName.contains("South"){
+            webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1wk-EWPRcQairXIbos5oM7Qr78x7?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_sa_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+        }else if kUserStateName.contains("Queensland"){
+            webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1xNYzAlZxSpqcpWbgAES5oAr78x7?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_qld_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App& &build_address=\(buildAddress)")!))
+        }else if kUserStateName.contains("Victoria"){
+            webView.load(URLRequest(url: URL(string:  "https://share.hsforms.com/16EIGnKc6ReGd8wXef5sASQr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+        }
+    }
+    
+    
+    func hubspotProductionUrls() {
+         
         if kUserStateName.contains("NSW"){
             webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1ewRKuUVHSDG1nbIfAUZrQgqcx0d?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_nsw_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
         }else if kUserStateName.contains("South"){
             webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1tVwIL7lISIigrybQm7kN9wqcx0d?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_sa_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
         }else if kUserStateName.contains("Queensland"){
             webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1gs51ik2dTDW_5LmNHMKJHAqcx0d?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_qld_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App& &build_address=\(buildAddress)")!))
-
         }else if kUserStateName.contains("Victoria"){
             webView.load(URLRequest(url: URL(string:  "https://share.hsforms.com/1pTObYsRpSLa10d4MGWJBQgqcx0d?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
         }
-    
-       
     }
-    
     
     @IBAction func didTappedOnHomeBTN(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)

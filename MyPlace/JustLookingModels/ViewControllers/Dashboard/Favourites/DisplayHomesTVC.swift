@@ -65,7 +65,7 @@ class DisplayHomesTVC: UITableViewCell {
         
         setAppearanceFor(view: btnSavedDesigns, backgroundColor: APPCOLORS_3.EnabledOrange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING (size: FONT_14))
         
-        btnArrow.tintColor = .lightGray
+        btnArrow.tintColor = APPCOLORS_3.Black_BG
         btnSavedDesigns.layer.cornerRadius = radius_5 //5.0
         
         lBCount.layer.cornerRadius = lBCount.frame.size.height/2
