@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGl-OE-ifO">
                                 <rect key="frame" x="0.0" y="10" width="428" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSL-Nm-ECI">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSL-Nm-ECI">
                                         <rect key="frame" x="40" y="2.6666666666666661" width="25" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -41,14 +41,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-37-w5A">
-                                        <rect key="frame" x="75" y="2.6666666666666661" width="32" height="25"/>
+                                        <rect key="frame" x="25" y="2.6666666666666661" width="32" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="724-lu-C5k"/>
                                             <constraint firstAttribute="width" constant="32" id="lgV-Az-6JZ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home &amp; Land" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZd-MZ-GRS">
-                                        <rect key="frame" x="132" y="5" width="248" height="20.333333333333332"/>
+                                        <rect key="frame" x="82" y="5" width="298" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                                     <constraint firstItem="cVb-37-w5A" firstAttribute="centerY" secondItem="OSL-Nm-ECI" secondAttribute="centerY" id="1T4-5l-32N"/>
                                     <constraint firstItem="nZd-MZ-GRS" firstAttribute="trailing" secondItem="gzN-b8-ZwP" secondAttribute="leading" constant="-10" id="4So-3e-Oa4"/>
                                     <constraint firstItem="nZd-MZ-GRS" firstAttribute="leading" secondItem="cVb-37-w5A" secondAttribute="trailing" constant="25" id="6w0-sY-feW"/>
-                                    <constraint firstItem="cVb-37-w5A" firstAttribute="leading" secondItem="OSL-Nm-ECI" secondAttribute="trailing" constant="10" id="DaB-Nw-ZlR"/>
+                                    <constraint firstItem="cVb-37-w5A" firstAttribute="leading" secondItem="JGl-OE-ifO" secondAttribute="leading" constant="25" id="DaB-Nw-ZlR"/>
                                     <constraint firstItem="gzN-b8-ZwP" firstAttribute="centerY" secondItem="OSL-Nm-ECI" secondAttribute="centerY" id="QAM-wi-rZu"/>
                                     <constraint firstItem="OSL-Nm-ECI" firstAttribute="leading" secondItem="JGl-OE-ifO" secondAttribute="leading" constant="40" id="ae0-Hv-3IH"/>
                                     <constraint firstAttribute="height" constant="50" id="es4-vR-P8w"/>
@@ -432,10 +432,10 @@
             <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightGreyDisabled_BG_3">
-            <color red="0.60784313725490191" green="0.60392156862745094" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.60799998044967651" green="0.60399997234344482" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange_BG_3">
-            <color red="1" green="0.38431372549019605" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.38400000333786011" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="darkGray">
             <color red="0.25499999523162842" green="0.25099998712539673" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

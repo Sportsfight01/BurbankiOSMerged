@@ -132,5 +132,10 @@ func getInfoCentreDetails() -> String{
 
 //MARK: - FAQ'S Url
 func getFaq() -> String{
+//    LoginDataManagement.shared.handleDefaultLoginforToken {
+//        loadMainView()
+//    }
     return "https://www.burbank.com.au/api/api/myplace/faq"
+   // https://www.burbank.com.au/api-v2/api/myplace/faq
 }
+

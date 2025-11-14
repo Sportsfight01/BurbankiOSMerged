@@ -22,7 +22,7 @@ func showAlert (_ message: String, _ vc: UIViewController = kWindow.rootViewCont
     alert.showAlert(kAPPNAME, message, vc, buttons, actionReturnHandler)
 }
 
-func showUpdatePopup(appStoreVersion: String) {
+func s {
     let alertController = UIAlertController(
         title: "Update Available",
         message: "A new version (\(appStoreVersion)) of the app is available. Please update to enjoy the latest features.",
