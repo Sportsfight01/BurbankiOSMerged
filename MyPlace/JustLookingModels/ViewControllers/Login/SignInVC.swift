@@ -234,14 +234,14 @@ class SignInVC: UIViewController {
         
         
         setAppearanceFor(view: btnContinue, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
-        setAppearanceFor(view: btnSignIn, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
+        setAppearanceFor(view: btnSignIn, backgroundColor: APPCOLORS_3.Charcoal_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_SUB_HEADING(size: FONT_16))
 
         
         viewGoogle.cardView(backgroundColor: AppColors.white)
         viewFacebook.layer.cornerRadius = 5.0
         viewFacebook.isHidden = true
 //        viewFacebook.cardView()
-        viewEmail.cardView(backgroundColor: APPCOLORS_3.Black_BG)
+        viewEmail.cardView(backgroundColor: APPCOLORS_3.Charcoal_BG)
         
 //        viewApple.cardView()
 //        viewApple.backgroundColor = APPCOLORS_3.LightGreyDisabled_BG

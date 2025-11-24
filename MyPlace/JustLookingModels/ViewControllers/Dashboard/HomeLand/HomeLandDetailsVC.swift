@@ -207,7 +207,7 @@ class HomeLandDetailsVC: HeaderVC {
         self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
         if Int(kUserID)! > 0 {// Current User
             self.btnFavorite.setBackgroundImage(self.homeLand?.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
-            self.btnSaveDesign.backgroundColor = self.homeLand?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
+            self.btnSaveDesign.backgroundColor = self.homeLand?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Charcoal_BG
 //            if isFromFavorites == true {
 //                btnFavorite.isHidden = homeLand?.favouritedUser?.userID != kUserID
 //            }
@@ -441,7 +441,7 @@ extension HomeLandDetailsVC {
 
 
         setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY (size: FONT_14))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Charcoal_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
     }
     

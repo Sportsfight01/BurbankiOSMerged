@@ -56,7 +56,7 @@ class ProfileSettingsTVC: UITableViewCell {
         setAppearanceFor(view: lBNotifications, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: lBLocationServices, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_SUB_HEADING (size: FONT_14))
         setAppearanceFor(view: btnLogout, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
-        setAppearanceFor(view: btnDelete, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
+        setAppearanceFor(view: btnDelete, backgroundColor: APPCOLORS_3.Charcoal_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_LABEL_BODY(size: FONT_14))
 
 
 //        btnLogoutIcon.setTitle("", for: .normal)

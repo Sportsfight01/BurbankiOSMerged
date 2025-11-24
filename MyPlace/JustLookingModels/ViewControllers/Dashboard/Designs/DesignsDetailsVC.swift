@@ -260,12 +260,12 @@ class DesignsDetailsVC: HeaderVC {
         self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
         if Int(kUserID)! > 0 { // LoggedInUser
             self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
-            self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
+            self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Charcoal_BG
             
         }else { // Guest User
         
             self.btnFavorite.setImage(imageUNFavorite, for: .normal)
-            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Black_BG
+            self.btnSaveDesign.backgroundColor = APPCOLORS_3.Charcoal_BG
         }
         
        // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
@@ -392,12 +392,12 @@ class DesignsDetailsVC: HeaderVC {
                 self.btnFavorite.tintColor = APPCOLORS_3.GreyTextFont
                 if Int(kUserID)! > 0 { // LoggedInUser
                     self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
-                    self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
+                    self.btnSaveDesign.backgroundColor = self.homeDesignData?.isFav == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Charcoal_BG
                     
                 }else { // Guest User
                 
                     self.btnFavorite.setImage(imageUNFavorite, for: .normal)
-                    self.btnSaveDesign.backgroundColor = APPCOLORS_3.Black_BG
+                    self.btnSaveDesign.backgroundColor = APPCOLORS_3.Charcoal_BG
                 }
                 
                // self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
@@ -740,7 +740,7 @@ class DesignsDetailsVC: HeaderVC {
                     self.btnFavorite.setImage(self.homeDesignData!.isFav == true ? imageFavorite : imageUNFavorite, for: .normal)
                     
                     self.btnSaveDesign.isHidden = self.btnFavorite.isHidden
-                    self.btnSaveDesign.backgroundColor = (self.homeDesignData?.isFav ?? false) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Black_BG
+                    self.btnSaveDesign.backgroundColor = (self.homeDesignData?.isFav ?? false) == true ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.Charcoal_BG
                     
                     
                    // if self.homeDesign!.favouritedUser?.userID == kUserID {
@@ -943,7 +943,7 @@ extension DesignsDetailsVC {
         setAppearanceFor(view: lBOnDisplay, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Orange_BG, textFont: FONT_LABEL_LIGHT(size: FONT_14))
         
         setAppearanceFor(view: btnEnquire, backgroundColor: APPCOLORS_3.Orange_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
-        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Black_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
+        setAppearanceFor(view: btnSaveDesign, backgroundColor: APPCOLORS_3.Charcoal_BG, textColor: APPCOLORS_3.HeaderFooter_white_BG, textFont: FONT_BUTTON_BODY(size: FONT_14))
 
 //        lBMyPlace.text = "Interactive \nHome Tour"
 //        lBHomeLand.text = "House & Land"
