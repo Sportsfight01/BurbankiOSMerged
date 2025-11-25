@@ -264,10 +264,10 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         
         
         // use this hubspot url's only while testing & dev.
-       // hubspotTestingUrls()
+        hubspotTestingUrls()
         
         // use this hubspot url's only when live.
-        hubspotProductionUrls()
+       // hubspotProductionUrls()
     }
     
     
