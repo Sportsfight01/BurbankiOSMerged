@@ -173,11 +173,13 @@ class MyPlaceHomeVC: UIViewController {
 
         // Card shadows
         [viewHomeDesign, viewHomeLand, viewHomeDisplay].forEach {
-            $0?.layer.shadowColor = UIColor.black.cgColor
-            $0?.layer.shadowOpacity = 0.15
-            $0?.layer.shadowOffset = CGSize(width: 0, height: 4)
-            $0?.layer.shadowRadius = 8
+//            $0?.layer.shadowColor = UIColor.black.cgColor
+//            $0?.layer.shadowOpacity = 0.15
+//            $0?.layer.shadowOffset = CGSize(width: 0, height: 4)
+//            $0?.layer.shadowRadius = 8
             $0?.layer.masksToBounds = false
+            $0?.layer.cornerRadius = 16
+
         }
 
         // Enquire button shadow
@@ -203,7 +205,7 @@ class MyPlaceHomeVC: UIViewController {
         NSLayoutConstraint.activate([
 
             // 🔹 Banner
-            bannerContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            bannerContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
             bannerContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             bannerContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             bannerContainerView.heightAnchor.constraint(equalToConstant: 200),
@@ -212,24 +214,25 @@ class MyPlaceHomeVC: UIViewController {
             bannerPageControl.topAnchor.constraint(equalTo: bannerContainerView.bottomAnchor, constant: 8),
             bannerPageControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            // 🔹 MyPlace label
+            // 🔹 MyPlace title
             lBMyPlace.topAnchor.constraint(equalTo: bannerPageControl.bottomAnchor, constant: 25),
             lBMyPlace.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            // 🔹 Subtitle
+            // 🔹 Subtitle (screen title, not card subtitle)
             lBChooseMethod.topAnchor.constraint(equalTo: lBMyPlace.bottomAnchor, constant: 10),
             lBChooseMethod.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            // 🔹 Cards stack
-            cardsStackView.topAnchor.constraint(equalTo: lBChooseMethod.bottomAnchor, constant: 32),
-            cardsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            cardsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            cardsStackView.heightAnchor.constraint(equalToConstant: 180),
+            // 🔹 Card Stack View (FINAL DESIGN)
+            cardsStackView.topAnchor.constraint(equalTo: lBChooseMethod.bottomAnchor, constant: 25),
+            cardsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            cardsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            cardsStackView.heightAnchor.constraint(equalToConstant: 160),
 
-            // 🔹 Bottom of scroll content
-            cardsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -48)
+            // 🔹 Scroll content bottom
+            contentView.bottomAnchor.constraint(equalTo: cardsStackView.bottomAnchor, constant: 32)
         ])
     }
+
 
 
     func setupBannerSection() {
@@ -276,7 +279,7 @@ class MyPlaceHomeVC: UIViewController {
     func setupCardsStack() {
         cardsStackView.axis = .horizontal
         cardsStackView.distribution = .fillEqually
-        cardsStackView.spacing = 12
+        cardsStackView.spacing = 5
         cardsStackView.translatesAutoresizingMaskIntoConstraints = false
 
         cardsStackView.addArrangedSubview(viewHomeDesign)
@@ -464,8 +467,9 @@ class MyPlaceHomeVC: UIViewController {
         setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
+        _ = setAttributetitleFor(view: lBHomeLandTitle, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [AppColors.black, AppColors.black, AppColors.black], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_13),FONT_LABEL_HEADING(size: FONT_13) , FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
+       // setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
-        setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
