@@ -69,6 +69,38 @@ class MyPlaceHomeVC: UIViewController {
     private let fetchedPackgesApi = "fetchedPackgesApi"
     var firstTimeLoading = true
     
+    private let cardsStackView = UIStackView()
+
+    // MARK: - Banner UI
+    private var bannerContainerView = UIView()
+    private var bannerCollectionView: UICollectionView!
+    private var bannerPageControl = UIPageControl()
+    private var btnEnquireNow = UIButton()
+
+    private var bannerTimer: Timer?
+    
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    
+    struct BannerItem {
+        let imageURL: String
+        let title: String
+        let subtitle: String
+    }
+    
+    private let bannerItems: [BannerItem] = [
+        BannerItem(
+            imageURL: "https://picsum.photos/800/400?1",
+            title: "10% OFF",
+            subtitle: "NEW HOME DESIGNS"
+        ),
+        BannerItem(
+            imageURL: "https://picsum.photos/800/400?2",
+            title: "EXPLORE",
+            subtitle: "HOUSE & LAND PACKAGES"
+        )
+    ]
+
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -77,7 +109,16 @@ class MyPlaceHomeVC: UIViewController {
         // Do any additional setup after loading the view.
         handleUISetup()
         
-        LocationServices.shared.requestUsertoAllowLocationPermissions(completion: {_ in 
+        setupEnquireButton()     // 1️⃣ add button FIRST
+        setupScrollLayout()      // 2️⃣ now safe to reference it
+        setupBannerSection()
+        setupCardsStack()
+
+        relayoutHomeScreenViews()
+        applyFinalConstraints()
+
+        
+        LocationServices.shared.requestUsertoAllowLocationPermissions(completion: {_ in
             
         })
         
@@ -122,10 +163,190 @@ class MyPlaceHomeVC: UIViewController {
         
         CodeManager.sharedInstance.sendScreenName(burbank_dashboard_screen_loading)
     
-        
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        applyVisualPolish()
+    }
+    func applyVisualPolish() {
+
+        // Card shadows
+        [viewHomeDesign, viewHomeLand, viewHomeDisplay].forEach {
+            $0?.layer.shadowColor = UIColor.black.cgColor
+            $0?.layer.shadowOpacity = 0.15
+            $0?.layer.shadowOffset = CGSize(width: 0, height: 4)
+            $0?.layer.shadowRadius = 8
+            $0?.layer.masksToBounds = false
+        }
+
+        // Enquire button shadow
+        btnEnquireNow.layer.shadowColor = UIColor.black.cgColor
+        btnEnquireNow.layer.shadowOpacity = 0.2
+        btnEnquireNow.layer.shadowOffset = CGSize(width: 0, height: 6)
+        btnEnquireNow.layer.shadowRadius = 10
+        btnEnquireNow.layer.masksToBounds = false
+    }
+
+    func relayoutHomeScreenViews() {
+        [viewHomeDesign,
+         viewHomeLand,
+         viewHomeDisplay
+        ].forEach {
+            $0?.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+
     
+    func applyFinalConstraints() {
+
+        NSLayoutConstraint.activate([
+
+            // 🔹 Banner
+            bannerContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            bannerContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            bannerContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            bannerContainerView.heightAnchor.constraint(equalToConstant: 200),
+
+            // 🔹 Page control
+            bannerPageControl.topAnchor.constraint(equalTo: bannerContainerView.bottomAnchor, constant: 8),
+            bannerPageControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            // 🔹 MyPlace label
+            lBMyPlace.topAnchor.constraint(equalTo: bannerPageControl.bottomAnchor, constant: 25),
+            lBMyPlace.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            // 🔹 Subtitle
+            lBChooseMethod.topAnchor.constraint(equalTo: lBMyPlace.bottomAnchor, constant: 10),
+            lBChooseMethod.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            // 🔹 Cards stack
+            cardsStackView.topAnchor.constraint(equalTo: lBChooseMethod.bottomAnchor, constant: 32),
+            cardsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            cardsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            cardsStackView.heightAnchor.constraint(equalToConstant: 180),
+
+            // 🔹 Bottom of scroll content
+            cardsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -48)
+        ])
+    }
+
+
+    func setupBannerSection() {
+
+        // Container
+        bannerContainerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerContainerView.layer.cornerRadius = 20
+        bannerContainerView.clipsToBounds = true
+
+        // Collection Layout
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+
+        bannerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        bannerCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        bannerCollectionView.isPagingEnabled = true
+        bannerCollectionView.showsHorizontalScrollIndicator = false
+        bannerCollectionView.backgroundColor = .clear
+
+        bannerCollectionView.delegate = self
+        bannerCollectionView.dataSource = self
+
+        bannerCollectionView.register(BannerCell.self, forCellWithReuseIdentifier: "BannerCell")
+
+        bannerContainerView.addSubview(bannerCollectionView)
+
+        NSLayoutConstraint.activate([
+            bannerCollectionView.topAnchor.constraint(equalTo: bannerContainerView.topAnchor),
+            bannerCollectionView.bottomAnchor.constraint(equalTo: bannerContainerView.bottomAnchor),
+            bannerCollectionView.leadingAnchor.constraint(equalTo: bannerContainerView.leadingAnchor),
+            bannerCollectionView.trailingAnchor.constraint(equalTo: bannerContainerView.trailingAnchor)
+        ])
+
+        // Page Control
+        bannerPageControl.translatesAutoresizingMaskIntoConstraints = false
+        bannerPageControl.numberOfPages = bannerItems.count
+        bannerPageControl.currentPage = 0
+        bannerPageControl.pageIndicatorTintColor = .lightGray
+        bannerPageControl.currentPageIndicatorTintColor = APPCOLORS_3.EnabledOrange_BG
+
+    }
+    
+    func setupCardsStack() {
+        cardsStackView.axis = .horizontal
+        cardsStackView.distribution = .fillEqually
+        cardsStackView.spacing = 12
+        cardsStackView.translatesAutoresizingMaskIntoConstraints = false
+
+        cardsStackView.addArrangedSubview(viewHomeDesign)
+        cardsStackView.addArrangedSubview(viewHomeLand)
+        cardsStackView.addArrangedSubview(viewHomeDisplay)
+
+        contentView.addSubview(cardsStackView)
+    }
+
+
+    func setupEnquireButton() {
+
+        btnEnquireNow.translatesAutoresizingMaskIntoConstraints = false
+        btnEnquireNow.setTitle("ENQUIRE NOW", for: .normal)
+        btnEnquireNow.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+        btnEnquireNow.setTitleColor(.white, for: .normal)
+        btnEnquireNow.titleLabel?.font = FONT_BUTTON_SUB_HEADING(size: 16)
+        btnEnquireNow.layer.cornerRadius = 16
+
+        btnEnquireNow.addTarget(self, action: #selector(enquireTapped), for: .touchUpInside)
+
+        view.addSubview(btnEnquireNow)
+
+        NSLayoutConstraint.activate([
+            btnEnquireNow.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            btnEnquireNow.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            btnEnquireNow.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                constant: -12
+            ),
+            btnEnquireNow.heightAnchor.constraint(equalToConstant: 56)
+        ])
+    }
+    
+    func setupScrollLayout() {
+
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+
+        scrollView.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+
+            scrollView.topAnchor.constraint(equalTo: stateView.bottomAnchor, constant: 12),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: btnEnquireNow.topAnchor, constant: -16),
+
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+
+        // 🔴 ADD VIEWS ONLY ONCE — ORDER MATTERS
+        contentView.addSubview(bannerContainerView)
+        contentView.addSubview(bannerPageControl)
+        contentView.addSubview(lBMyPlace)
+        contentView.addSubview(lBChooseMethod)
+    }
+
+    @objc func enquireTapped() {
+        CodeManager.sharedInstance.sendScreenName("dashboard_enquire_now")
+        let vc = kStoryboardMain.instantiateViewController(withIdentifier: "EnquiryVC")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -160,6 +381,13 @@ class MyPlaceHomeVC: UIViewController {
        
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        bannerTimer?.invalidate()
+        bannerTimer = nil
+    }
+
     
     
     //MARK: - Segue
@@ -205,10 +433,25 @@ class MyPlaceHomeVC: UIViewController {
     
     func handleUISetup () {
         
+        lBWelcome.isHidden = true
+        btnMyProfile.isHidden = true
+        lBHomeDesignSubTitle.isHidden = true
+        lBHomeLandSubTitle.isHidden = true
+        lBHomeDisplaySubTitle.isHidden = true
+        lBMyPlace.text = "MyPlace"
+        lBChooseMethod.text = "What would you like to do today?"
+            
+            // 🔹 STEP 2: Disable autoresizing masks
+                lBMyPlace.translatesAutoresizingMaskIntoConstraints = false
+                lBChooseMethod.translatesAutoresizingMaskIntoConstraints = false
+                viewHomeDesign.translatesAutoresizingMaskIntoConstraints = false
+                viewHomeLand.translatesAutoresizingMaskIntoConstraints = false
+                viewHomeDisplay.translatesAutoresizingMaskIntoConstraints = false
+        
         btnMyProfile.backgroundColor = kUserID == "0" ? APPCOLORS_3.LightGreyDisabled_BG : APPCOLORS_3.EnabledOrange_BG
         btnMyProfile.layer.cornerRadius = 5.0
         
-        _ = setAttributetitleFor(view: lBMyPlace, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 55) , FONT_LABEL_SUB_HEADING(size: 55)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: lBMyPlace, title: "MyPlace", rangeStrings: ["My", "Place"], colors: [AppColors.black, AppColors.black ], fonts: [FONT_LABEL_BODY(size: 48) , FONT_LABEL_SUB_HEADING(size: 48)], alignmentCenter: true)
         setAppearanceFor(view: view, backgroundColor: AppColors.white)
         
         setAppearanceFor(view: btnState, backgroundColor: COLOR_CLEAR, textColor: AppColors.darkGray , textFont: FONT_BUTTON_SUB_HEADING(size: FONT_13))
@@ -218,18 +461,19 @@ class MyPlaceHomeVC: UIViewController {
         setAppearanceFor(view: lBChooseMethod, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         
-        setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
         
-        setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
-        setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_11))
+        setAppearanceFor(view: lBHomeDisplayTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lBHomeDisplaySubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         self.view.backgroundColor = APPCOLORS_3.Body_BG
+            
         //make card vuew
-        
+            
         viewHomeLand.cardView()
         viewHomeDesign.cardView()
         viewHomeDisplay.cardView()
@@ -239,8 +483,8 @@ class MyPlaceHomeVC: UIViewController {
         stateView.layer.borderWidth = 1.0
         stateView.layer.borderColor = APPCOLORS_3.Black_BG.cgColor
         
-        self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
-        self.btnIcon.clipsToBounds = true
+        self.btnMyProfile.layer.cornerRadius = self.btnMyProfile.frame.size.height/2
+        self.btnMyProfile.clipsToBounds = true
         
         let totalFavCount = kDesignFavoritesCount + kHomeLandFavoritesCount + kDisplayHomesFavoritesCount
         
@@ -1042,3 +1286,108 @@ extension MyPlaceHomeVC {
     }
     
 }
+
+class BannerCell: UICollectionViewCell {
+
+    let imageView = UIImageView()
+    let titleLabel = UILabel()
+    let subtitleLabel = UILabel()
+    let learnMoreButton = UIButton()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupUI() {
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+
+        let overlay = UIView()
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.35)
+
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = FONT_LABEL_SUB_HEADING(size: 22)
+        titleLabel.textColor = .white
+
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.font = FONT_LABEL_BODY(size: 18)
+        subtitleLabel.textColor = .white
+        subtitleLabel.numberOfLines = 2
+
+        learnMoreButton.translatesAutoresizingMaskIntoConstraints = false
+        learnMoreButton.setTitle("LEARN MORE", for: .normal)
+        learnMoreButton.backgroundColor = APPCOLORS_3.EnabledOrange_BG
+        learnMoreButton.layer.cornerRadius = 8
+
+        contentView.addSubview(imageView)
+        contentView.addSubview(overlay)
+        overlay.addSubview(titleLabel)
+        overlay.addSubview(subtitleLabel)
+        overlay.addSubview(learnMoreButton)
+
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            overlay.topAnchor.constraint(equalTo: contentView.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            overlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            titleLabel.leadingAnchor.constraint(equalTo: overlay.leadingAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: overlay.topAnchor, constant: 24),
+
+            subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+
+            learnMoreButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            learnMoreButton.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 14),
+            learnMoreButton.widthAnchor.constraint(equalToConstant: 140),
+            learnMoreButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+}
+extension MyPlaceHomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        bannerItems.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "BannerCell",
+            for: indexPath
+        ) as! BannerCell
+
+        let item = bannerItems[indexPath.row]
+        cell.titleLabel.text = item.title
+        cell.subtitleLabel.text = item.subtitle
+        cell.imageView.sd_setImage(with: URL(string: item.imageURL))
+
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        collectionView.frame.size
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        bannerPageControl.currentPage = page
+    }
+}
+
