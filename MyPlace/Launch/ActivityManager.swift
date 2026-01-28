@@ -24,6 +24,32 @@ class ActivityManager {
         vc.view.makeToast(message, duration: 2)
     }
     
+    class func getPromos(completion: @escaping ([[String: Any]]) -> Void) {
+
+        _ = Networking.shared.GET_request(
+            url: ServiceAPI.shared.URL_promos(kUserStateName),
+            userInfo: nil,
+            success: { (json, response) in
+
+                guard
+                    let result = json as? NSDictionary,
+                    let isSuccess = result["Code"] as? Bool,
+                    isSuccess,
+                    let promos = result["Data"] as? [[String: Any]]
+                else {
+                    completion([])
+                    return
+                }
+
+                completion(promos)
+            },
+            errorblock: { _, _ in
+                completion([])
+            },
+            progress: nil
+        )
+    }
+    
 }
 
 
@@ -194,6 +220,7 @@ func getStates () {
     }, progress: nil)
     
 }
+
 
 
 func handleNotificationNavigation(pushnotificatons: pushNtfcnModelInfo) {

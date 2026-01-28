@@ -14,18 +14,18 @@ import Foundation
 // Using VPN
 //let Base = "http://172.17.0.40:7777"
 //For Live / UAT
-let My_Place3DBASEURL = "https://www.burbank.com.au"
-//let My_Place3DBASEURL = "http://10.6.45.14:8085"  // Test
+//let My_Place3DBASEURL = "https://www.burbank.com.au"
+let My_Place3DBASEURL = "http://10.6.45.14:8085"  // Test
 
 //let Base = "http://dev.burbank.com.au" //Test
 
-let Base = "https://www.burbank.com.au"
-//let Base = "http://10.6.45.14:8085" // test
+//let Base = "https://www.burbank.com.au"
+let Base = "http://10.6.45.14:8085" // test
 //    "http://10.6.45.14:8081" //Test
 
-//let BaseURL = Base + "/api/api/" // Used for velow v3.6 Versions
+let BaseURL = Base + "/api/api/" // Used for velow v3.6 Versions
 
-let BaseURL = Base + "/api-v2/api/" // started using after v3.6 Versions
+//let BaseURL = Base + "/api-v2/api/" // started using after v3.6 Versions
 
 
 
@@ -108,6 +108,9 @@ struct ServiceAPI {
 
     
     let URL_states = BaseURL + "Common/GetStates"
+    
+    func URL_promos (_ statename: String) -> String { return BaseURL + "Common/GetPromotions?state=" + statename }
+
     
     func URL_regions (_ st: String) -> String { return BaseURL + "Common/GetRegions?StateId=" + st }
     

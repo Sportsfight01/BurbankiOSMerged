@@ -84,23 +84,10 @@ class MyPlaceHomeVC: UIViewController {
     
     struct BannerItem {
         let imageURL: String
-        let title: String
-        let subtitle: String
+        let pageURL: String
     }
-    
-    private let bannerItems: [BannerItem] = [
-        BannerItem(
-            imageURL: "https://picsum.photos/800/400?1",
-            title: "10% OFF",
-            subtitle: "NEW HOME DESIGNS"
-        ),
-        BannerItem(
-            imageURL: "https://picsum.photos/800/400?2",
-            title: "EXPLORE",
-            subtitle: "HOUSE & LAND PACKAGES"
-        )
-    ]
 
+    private var bannerItems: [BannerItem] = []
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -129,6 +116,7 @@ class MyPlaceHomeVC: UIViewController {
         }else {
             
             setRegionText() //state
+            loadPromos()
             
             DashboardDataManagement.shared.getRegions(stateId: kUserState, showActivity: false) { (regions) in
                 
@@ -162,7 +150,43 @@ class MyPlaceHomeVC: UIViewController {
         
         
         CodeManager.sharedInstance.sendScreenName(burbank_dashboard_screen_loading)
+        
+        loadPromos()
+
     
+    }
+    
+    func loadPromos() {
+
+        ActivityManager.getPromos { [weak self] (promos: [[String: Any]]) in
+            guard let self = self else { return }
+
+            self.bannerItems = promos.compactMap { dict in
+
+                let pageURL = dict["PageUrl"] as? String ?? ""
+
+                let imagePath = dict["Image"] as? String
+                let finalImageURL: String
+
+                if let path = imagePath, path != "<null>", path.isEmpty == false {
+                    // ✅ Valid image from API
+                    finalImageURL = ServiceAPI.shared.URL_imageUrl(path)
+                } else {
+                    // ✅ Fallback to local sample image
+                    finalImageURL = "local:HouseIMG"
+                }
+
+                return BannerItem(
+                    imageURL: finalImageURL,
+                    pageURL: pageURL
+                )
+            }
+
+            DispatchQueue.main.async {
+                self.bannerPageControl.numberOfPages = self.bannerItems.count
+                self.bannerCollectionView.reloadData()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -467,7 +491,7 @@ class MyPlaceHomeVC: UIViewController {
         setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
-        _ = setAttributetitleFor(view: lBHomeLandTitle, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [AppColors.black, AppColors.black, AppColors.black], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_13),FONT_LABEL_HEADING(size: FONT_13) , FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: lBHomeLandTitle, title: "House`&Land", rangeStrings: ["House","&","Land"], colors: [AppColors.black, AppColors.black, AppColors.black], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_13),FONT_LABEL_HEADING(size: FONT_13) , FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
        // setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
@@ -1114,6 +1138,7 @@ extension MyPlaceHomeVC: RegionVCDelegate, StateSelectionVCDelegate {
         appDelegate.userData?.saveUserDetails()
         
         setRegionText()
+        loadPromos()
     }
     
     func handleStateSelectionDelegate(close: Bool, stateBtn: Bool, state: State) {
@@ -1160,6 +1185,7 @@ extension MyPlaceHomeVC: RegionVCDelegate, StateSelectionVCDelegate {
         showToast(String(format: "Selected State: %@", appDelegate.userData?.user?.userDetails?.userState ?? ""), self)
         
         self.setRegionText()
+        loadPromos()
         
         removeRegionsfromDefaults ()
         
@@ -1336,6 +1362,8 @@ class BannerCell: UICollectionViewCell {
         overlay.addSubview(titleLabel)
         overlay.addSubview(subtitleLabel)
         overlay.addSubview(learnMoreButton)
+        
+        learnMoreButton.isHidden = true
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -1376,11 +1404,27 @@ extension MyPlaceHomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDat
         ) as! BannerCell
 
         let item = bannerItems[indexPath.row]
-        cell.titleLabel.text = item.title
-        cell.subtitleLabel.text = item.subtitle
-        cell.imageView.sd_setImage(with: URL(string: item.imageURL))
+
+        if item.imageURL.hasPrefix("local:") {
+            let imageName = item.imageURL.replacingOccurrences(of: "local:", with: "")
+            cell.imageView.image = UIImage(named: imageName)
+        } else {
+            cell.imageView.sd_setImage(
+                with: URL(string: item.imageURL),
+                placeholderImage: UIImage(named: "HouseIMG")
+            )
+        }
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let item = bannerItems[indexPath.row]
+
+        guard let url = URL(string: item.pageURL) else { return }
+
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView,
