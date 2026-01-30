@@ -78,13 +78,22 @@ class MyPlaceHomeVC: UIViewController {
     private var btnEnquireNow = UIButton()
 
     private var bannerTimer: Timer?
+    private var currentBannerIndex = 0
+    private var didStartAutoScroll = false
+    private var didSetupBannerAutoScroll = false
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
     struct BannerItem {
-        let imageURL: String
+        let imageSource: ImageSource
         let pageURL: String
+    }
+    
+    enum ImageSource{
+        
+        case remote(String)
+        case local(String)
     }
 
     private var bannerItems: [BannerItem] = []
@@ -126,8 +135,8 @@ class MyPlaceHomeVC: UIViewController {
         
         if (Int(kUserID) ?? 0) > 0 {
             
-            btnBackWidth.constant = 0
-            btnStateLeading.constant = 0
+            btnBackWidth.constant = 10
+            btnStateLeading.constant = 15
             
             ProfileDataManagement.shared.getProfileDetails(appDelegate.userData?.user ?? UserBean.init()) {
                 //                            if let url = appDelegate.userData?.user?.userProfileImageURL {
@@ -161,37 +170,104 @@ class MyPlaceHomeVC: UIViewController {
         ActivityManager.getPromos { [weak self] (promos: [[String: Any]]) in
             guard let self = self else { return }
 
-            self.bannerItems = promos.compactMap { dict in
+            // 🔹 SCENARIO 1: No promotions at all
+            if promos.isEmpty {
+                self.bannerItems = [
+                    BannerItem(
+                        imageSource: .local("MobileBanner"),
+                        pageURL: ""
+                    )
+                ]
+
+                DispatchQueue.main.async {
+                    self.currentBannerIndex = 0
+                    self.bannerPageControl.currentPage = 0
+                    self.bannerPageControl.numberOfPages = self.bannerItems.count
+                    self.bannerPageControl.isHidden = self.bannerItems.count <= 1
+                    self.bannerCollectionView.reloadData()
+                }
+                return
+            }
+
+            // 🔹 SCENARIO 2 & 3: Promotions available
+            self.bannerItems = promos.map { dict in
 
                 let pageURL = dict["PageUrl"] as? String ?? ""
+                let imageValue = dict["Image"] as? String
 
-                let imagePath = dict["Image"] as? String
-                let finalImageURL: String
+                // Scenario 2: Valid image
+                if let image = imageValue,
+                   image != "<null>",
+                   image.isEmpty == false {
 
-                if let path = imagePath, path != "<null>", path.isEmpty == false {
-                    // ✅ Valid image from API
-                    finalImageURL = ServiceAPI.shared.URL_imageUrl(path)
-                } else {
-                    // ✅ Fallback to local sample image
-                    finalImageURL = "local:HouseIMG"
+                    let fullURL = ServiceAPI.shared.URL_imageUrl(image)
+                    return BannerItem(
+                        imageSource: .remote(fullURL),
+                        pageURL: pageURL
+                    )
                 }
 
+                // Scenario 3: Image is null
                 return BannerItem(
-                    imageURL: finalImageURL,
+                    imageSource: .local("ImageNotAvailable"),
                     pageURL: pageURL
                 )
             }
 
             DispatchQueue.main.async {
                 self.bannerPageControl.numberOfPages = self.bannerItems.count
+                self.bannerPageControl.isHidden = self.bannerItems.count <= 1
                 self.bannerCollectionView.reloadData()
             }
         }
     }
     
+    func startBannerAutoScroll() {
+
+        stopBannerAutoScroll()   // safety first
+
+        guard bannerItems.count > 1 else { return } // ❌ no auto-slide for single image
+
+        bannerTimer = Timer.scheduledTimer(
+            timeInterval: 2.0,
+            target: self,
+            selector: #selector(scrollBannerAutomatically),
+            userInfo: nil,
+            repeats: true
+        )
+        
+        RunLoop.main.add(bannerTimer!, forMode: .common)
+    }
+
+    func stopBannerAutoScroll() {
+        bannerTimer?.invalidate()
+        bannerTimer = nil
+    }
+    
+    @objc func scrollBannerAutomatically() {
+
+        guard bannerItems.count > 1 else { return }
+
+        currentBannerIndex = (currentBannerIndex + 1) % bannerItems.count
+
+        let xOffset = CGFloat(currentBannerIndex) * bannerCollectionView.frame.width
+        
+        bannerCollectionView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
+
+        bannerPageControl.currentPage = currentBannerIndex
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         applyVisualPolish()
+        
+        guard !didSetupBannerAutoScroll else { return }
+        guard bannerItems.count > 1 else { return }
+        
+        if bannerCollectionView.contentSize.width > bannerCollectionView.frame.width {
+            didSetupBannerAutoScroll = true
+            startBannerAutoScroll()
+        }
     }
     func applyVisualPolish() {
 
@@ -405,14 +481,16 @@ class MyPlaceHomeVC: UIViewController {
      
         self.btnIcon.layer.cornerRadius = self.btnIcon.frame.size.height/2
        // favCountLb.isHidden = totalFavCount > 0 ? false : true
-       
+        
+        guard !didStartAutoScroll else {return}
+        didStartAutoScroll = true
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        bannerTimer?.invalidate()
-        bannerTimer = nil
+        stopBannerAutoScroll()
+        didSetupBannerAutoScroll = false
     }
 
     
@@ -491,7 +569,7 @@ class MyPlaceHomeVC: UIViewController {
         setAppearanceFor(view: lBHomeDesignTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         setAppearanceFor(view: lBHomeDesignSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
         
-        _ = setAttributetitleFor(view: lBHomeLandTitle, title: "House`&Land", rangeStrings: ["House","&","Land"], colors: [AppColors.black, AppColors.black, AppColors.black], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_13),FONT_LABEL_HEADING(size: FONT_13) , FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
+        _ = setAttributetitleFor(view: lBHomeLandTitle, title: "House&Land", rangeStrings: ["House","&","Land"], colors: [AppColors.black, .lightGray, AppColors.black], fonts: [FONT_LABEL_SUB_HEADING(size: FONT_13),FONT_LABEL_SEMIBOLD(size: FONT_13) , FONT_LABEL_SUB_HEADING(size: FONT_13)], alignmentCenter: true)
        // setAppearanceFor(view: lBHomeLandTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.Black_BG, textFont: FONT_LABEL_SUB_HEADING(size: FONT_13))
         
         setAppearanceFor(view: lBHomeLandSubTitle, backgroundColor: COLOR_CLEAR, textColor: APPCOLORS_3.GreyTextFont , textFont: FONT_LABEL_BODY(size: FONT_10))
@@ -530,10 +608,12 @@ class MyPlaceHomeVC: UIViewController {
        
         if isFavAvailable{
 //            favCountLb.isHidden = false
-            btnMyProfile.addSubview(favCountLb)
+          //  btnMyProfile.addSubview(favCountLb)
+            btnIcon.addSubview(favCountLb)
+
             favCountLb.translatesAutoresizingMaskIntoConstraints = false
-            favCountLb.topAnchor.constraint(equalTo: btnMyProfile.topAnchor , constant: -9).isActive = true
-            favCountLb.trailingAnchor.constraint(equalTo: btnMyProfile.trailingAnchor, constant: 9).isActive = true
+            favCountLb.topAnchor.constraint(equalTo: btnIcon.topAnchor , constant: -9).isActive = true
+            favCountLb.trailingAnchor.constraint(equalTo: btnIcon.trailingAnchor, constant: 9).isActive = true
             favCountLb.heightAnchor.constraint(equalToConstant: 18).isActive = true
             favCountLb.widthAnchor.constraint(equalToConstant: 18).isActive = true
         }
@@ -740,20 +820,24 @@ class MyPlaceHomeVC: UIViewController {
             
         }else if sender == btnIcon {
             
-            //if user is logged in need to show the logoutpopUp
-            if kUserID != "0" // not a guest user
-            {
-                //show popup
-                BurbankApp.showAlert("Are you sure, you want to Logout?", self, ["NO", "YES"]) { (str) in
-                    
-                    if str == "YES" {
-                        logoutUser()
-                    }
-                }
-            }else {
-                //go to main screen
-                loadMainView()
-            }
+//            //if user is logged in need to show the logoutpopUp
+//            if kUserID != "0" // not a guest user
+//            {
+//                //show popup
+//                BurbankApp.showAlert("Are you sure, you want to Logout?", self, ["NO", "YES"]) { (str) in
+//                    
+//                    if str == "YES" {
+//                        logoutUser()
+//                    }
+//                }
+//            }else {
+//                //go to main screen
+//                loadMainView()
+//            }
+            
+            CodeManager.sharedInstance.sendScreenName (burbank_dashboard_profile_button_touch)
+            
+            handleProfileImageAction(sender)
             
         }else if sender == btnState {
             
@@ -1405,14 +1489,15 @@ extension MyPlaceHomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDat
 
         let item = bannerItems[indexPath.row]
 
-        if item.imageURL.hasPrefix("local:") {
-            let imageName = item.imageURL.replacingOccurrences(of: "local:", with: "")
-            cell.imageView.image = UIImage(named: imageName)
-        } else {
+        switch item.imageSource {
+        case .remote(let urlString):
             cell.imageView.sd_setImage(
-                with: URL(string: item.imageURL),
-                placeholderImage: UIImage(named: "HouseIMG")
+                with: URL(string: urlString),
+                placeholderImage: UIImage(named: "ImageNotAvailable")
             )
+
+        case .local(let imageName):
+            cell.imageView.image = UIImage(named: imageName)
         }
 
         return cell
@@ -1421,10 +1506,12 @@ extension MyPlaceHomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let item = bannerItems[indexPath.row]
+        guard item.pageURL.isEmpty == false,
+              let url = URL(string: item.pageURL) else {
+            return
+        }
 
-        guard let url = URL(string: item.pageURL) else { return }
-
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        UIApplication.shared.open(url)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -1436,6 +1523,16 @@ extension MyPlaceHomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDat
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
         bannerPageControl.currentPage = page
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        stopBannerAutoScroll()
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        currentBannerIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        bannerPageControl.currentPage = currentBannerIndex
+        startBannerAutoScroll()
     }
 }
 
