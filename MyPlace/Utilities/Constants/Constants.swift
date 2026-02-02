@@ -34,7 +34,7 @@ let kStoryboardMain_OLD: UIStoryboard = UIStoryboard(name: "Main_OLD", bundle: B
 
 
 let kUserDefaults = UserDefaults.standard
-
+var generalEnquiry : Bool = false
 
 
 let SCREEN_WIDTH =  UIScreen.main.bounds.size.width

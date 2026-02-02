@@ -266,7 +266,7 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         // use this hubspot url's only while testing & dev.
         hubspotTestingUrls()
         
-        // use this hubspot url's only when live.
+        // use this hubspot url's only when live. Checklist 3/3
        // hubspotProductionUrls()
     }
     
@@ -279,7 +279,16 @@ class EnquireNowVC: BurbankAppVC, UITextFieldDelegate , UIPickerViewDelegate , U
         }else if kUserStateName.contains("Queensland"){
             webView.load(URLRequest(url: URL(string: "https://share.hsforms.com/1xNYzAlZxSpqcpWbgAES5oAr78x7?firstname=\(self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=test&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_qld_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App& &build_address=\(buildAddress)")!))
         }else if kUserStateName.contains("Victoria"){
-            webView.load(URLRequest(url: URL(string:  "https://share.hsforms.com/16EIGnKc6ReGd8wXef5sASQr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+            if generalEnquiry == true{
+                webView.load(URLRequest(url: URL(string:  "https://share.hsforms.com/1LzPnJZ1mSIOTU5qoeLnfXAr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_=&i_accept_burbank_s_privacy_policy_and_collection_statement_=&i_agree_to_receive_the_latest_news_and_offers_from_burbank_and_its_subsidiaries_and_partners=&i_wish_to_be_contacted_by_burbanks_finance_partner_national_pacific_finance_home_loan_expert=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+                
+               // i_accept_burbank_s_privacy_policy_and_collection_statement_
+                //i_agree_to_receive_the_latest_news_and_offers_from_burbank_and_its_subsidiaries_and_partners
+                //i_wish_to_be_contacted_by_burbanks_finance_partner_national_pacific_finance_home_loan_expert
+            }
+            else {
+                webView.load(URLRequest(url: URL(string:  "https://share.hsforms.com/16EIGnKc6ReGd8wXef5sASQr78x7?firstname=\( self.frstNameTF.text ?? "")&lastname=\( self.lastNameTF.text ?? "")&email=\(self.emailTF.text ?? "")&message=&phone=\(self.phoneTF.text ?? "")&where_would_you_like_to_live_=&housename=\(self.whatToBuildTF.text ?? "")&i_accept_burbank_s_privacy_policy_and_collection_statement_=&original_marketing_activity=MyPlace App&build_address=\(buildAddress)")!))
+            }
         }
     }
     

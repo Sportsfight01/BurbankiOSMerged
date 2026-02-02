@@ -445,9 +445,15 @@ class MyPlaceHomeVC: UIViewController {
     }
 
     @objc func enquireTapped() {
+        generalEnquiry = true
         CodeManager.sharedInstance.sendScreenName("dashboard_enquire_now")
-        let vc = kStoryboardMain.instantiateViewController(withIdentifier: "EnquiryVC")
-        navigationController?.pushViewController(vc, animated: true)
+        let enquire = self.storyboard?.instantiateViewController(withIdentifier: "EnquireNowVC") as! EnquireNowVC
+       // enquire.homeDesign = self.homeDesignData!
+        if let navigation = self.tabBarController?.navigationController {
+            navigation.pushViewController(enquire, animated: true)
+        }else {
+            self.navigationController?.pushViewController(enquire, animated: true)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -1420,7 +1426,7 @@ class BannerCell: UICollectionViewCell {
     func setupUI() {
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
 
         let overlay = UIView()

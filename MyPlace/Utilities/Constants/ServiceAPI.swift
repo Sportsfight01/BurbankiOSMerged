@@ -19,13 +19,12 @@ let My_Place3DBASEURL = "http://10.6.45.14:8085"  // Test
 
 //let Base = "http://dev.burbank.com.au" //Test
 
-//let Base = "https://www.burbank.com.au"
+//let Base = "https://www.burbank.com.au" //live Checklist 1/3
 let Base = "http://10.6.45.14:8085" // test
-//    "http://10.6.45.14:8081" //Test
 
-let BaseURL = Base + "/api/api/" // Used for velow v3.6 Versions
+let BaseURL = Base + "/api/api/" // Used for below v3.6 Versions test
 
-//let BaseURL = Base + "/api-v2/api/" // started using after v3.6 Versions
+//let BaseURL = Base + "/api-v2/api/" // started using after v3.6 Versions Checklist 2/3
 
 
 
