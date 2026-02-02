@@ -19,12 +19,12 @@ let My_Place3DBASEURL = "http://10.6.45.14:8085"  // Test
 
 //let Base = "http://dev.burbank.com.au" //Test
 
-//let Base = "https://www.burbank.com.au" //live Checklist 1/3
+//let Base = "https://www.burbank.com.au" //live Checklist 1/4
 let Base = "http://10.6.45.14:8085" // test
 
 let BaseURL = Base + "/api/api/" // Used for below v3.6 Versions test
 
-//let BaseURL = Base + "/api-v2/api/" // started using after v3.6 Versions Checklist 2/3
+//let BaseURL = Base + "/api-v2/api/" // started using after v3.6 Versions Checklist 2/4
 
 
 
