@@ -27,7 +27,7 @@ class ActivityManager {
     class func getPromos(completion: @escaping ([[String: Any]]) -> Void) {
 
         _ = Networking.shared.GET_request(
-            url: ServiceAPI.shared.URL_promos(kUserStateName),
+            url: ServiceAPI.shared.URL_promos(kUserState),
             userInfo: nil,
             success: { (json, response) in
 
