@@ -183,11 +183,11 @@ extension PhotosListVC : UICollectionViewDelegate , UICollectionViewDataSource ,
       
       let title = collectionDataSource[indexPath.section].rowData.first?.title?.capitalized
       section.sectionTitleLb.text = title
-      section.sectionTitleLb.font = ProximaNovaRegular(size: 15.0)
+      section.sectionTitleLb.font = MontserratRegular(size: 15.0)
     
       
       let date = dateFormatter(dateStr: collectionDataSource[indexPath.section].rowData.first?.metaData.createdOn?.components(separatedBy: ".").first ?? "", currentFormate: "yyyy-MM-dd'T'HH:mm:ss", requiredFormate: "EEEE, dd/MM/yy")
-      section.dateLb.font = ProximaNovaRegular(size: 14.0)
+      section.dateLb.font = MontserratRegular(size: 14.0)
       section.dateLb.text = date
       
     

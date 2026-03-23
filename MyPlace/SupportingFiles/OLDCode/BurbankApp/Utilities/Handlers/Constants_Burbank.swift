@@ -70,13 +70,13 @@ func fontSizeOf(size: CGFloat) -> CGFloat
      return preferredSize
 }
 
-func ProximaNovaRegular(size: CGFloat) -> UIFont
+func MontserratRegular(size: CGFloat) -> UIFont
 {
-    return UIFont(name: "ProximaNova-Regular", size: fontSizeOf(size: size))!
+    return UIFont(name: "Montserrat-Regular", size: fontSizeOf(size: size))!
 }
-func ProximaNovaSemiBold(size: CGFloat) -> UIFont
+func MontserratSemiBold(size: CGFloat) -> UIFont
 {
-    return UIFont(name: "ProximaNova-Semibold", size: fontSizeOf(size: size))!
+    return UIFont(name: "Montserrat-Semibold", size: fontSizeOf(size: size))!
 }
 func getWeekName(weekNum : Int) -> String
 {

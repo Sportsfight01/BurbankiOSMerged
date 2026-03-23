@@ -225,8 +225,8 @@ class MyPlaceContactUsVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let descriptionHeight = heightForView(contactUsQLDSAArray[indexPath.row].body, font: UIFont(name: "ProximaNova-Regular", size: 12.0)!, width: SCREEN_WIDTH-76)
-        let charSize = UIFont(name: "ProximaNova-Regular", size: 12.0)!.lineHeight // Get label height based on Font
+        let descriptionHeight = heightForView(contactUsQLDSAArray[indexPath.row].body, font: UIFont(name: "Montserrat-Regular", size: 12.0)!, width: SCREEN_WIDTH-76)
+        let charSize = UIFont(name: "Montserrat-Regular", size: 12.0)!.lineHeight // Get label height based on Font
         var linesRoundedUp = Int(ceil(descriptionHeight/charSize)) // Get number of lines
         linesRoundedUp = linesRoundedUp-1
         
@@ -244,34 +244,6 @@ class MyPlaceContactUsVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDelegat
         
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        let dateText = "By" +  (contactUsQLDSAArray[indexPath.row].authorname + " on " + contactUsQLDSAArray[indexPath.row].notedateWithFormat)
-//
-//        // Top 10 + Label Height + Gap 5 + Date Label Height + Gap 5 + Label height + bottom 10
-//
-//
-//        var descriptionHeight = heightForView(contactUsQLDSAArray[indexPath.row].body, font: UIFont(name: "ProximaNova-Regular", size: 12.0)!, width: SCREEN_WIDTH-76)
-//        let charSize = UIFont(name: "ProximaNova-Regular", size: 12.0)!.lineHeight // Get label height based on Font
-//        var linesRoundedUp = Int(ceil(descriptionHeight/charSize)) // Get number of lines
-//        #if DEDEBUG
-//        print("line numbers \(linesRoundedUp)")
-//        #endif
-//        linesRoundedUp = linesRoundedUp-1
-//
-//        // Show height for two lines
-//        if linesRoundedUp > 2 {
-//
-//            if selectedInde != indexPath.row {
-//                descriptionHeight = (descriptionHeight/3)*2
-//            }
-//        }
-//
-//        return 10 + heightForView(contactUsQLDSAArray[indexPath.row].subject, font: UIFont(name: "ProximaNova-SemiBold", size: 17.0)!, width: SCREEN_WIDTH-76) + 3 + heightForView(dateText, font: UIFont(name: "ProximaNova-SemiBold", size: 12.0)!, width: SCREEN_WIDTH-76) + 6 + descriptionHeight + 10 + 10
-//
-//
-////        return 120
-//    }
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation

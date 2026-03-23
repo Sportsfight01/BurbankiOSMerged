@@ -14,7 +14,7 @@ class FilterOptionsCVCell: UICollectionViewCell
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = ProximaNovaRegular(size: 12.0)
+        label.font = MontserratRegular(size: 12.0)
         label.textAlignment = .center
         return label
         

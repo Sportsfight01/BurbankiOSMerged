@@ -98,7 +98,7 @@ class RegionListTVCell: BurbankTVCell
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         selectionStyle = .gray
         textLabel?.numberOfLines = 0
-        textLabel?.font = ProximaNovaRegular(size: 14.0)
+        textLabel?.font = MontserratRegular(size: 14.0)
         addSubview(bottomLine)
         addSubview(regionSelectedImageView)
        // contentView.addSubview(regionSelectedImageView)

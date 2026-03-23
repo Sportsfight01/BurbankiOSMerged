@@ -573,7 +573,7 @@
 //            let presetnYearStr = "\(dayValue) - \(monthName) - \(date?.presentYear ?? 1)"
 //            let nameText = NSMutableAttributedString()
 //            nameText.append(NSMutableAttributedString(string: "Check out the new photos added on \(presetnYearStr)\n", attributes: [:]))
-//            nameText.append(NSMutableAttributedString(string: "\(date?.getElapsedInterval() ?? "")", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 12),NSAttributedString.Key.foregroundColor: UIColor.black]))
+//            nameText.append(NSMutableAttributedString(string: "\(date?.getElapsedInterval() ?? "")", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 12),NSAttributedString.Key.foregroundColor: UIColor.black]))
 //            cell.nameLabel.attributedText = nameText
 //           // cell.timeLabel.text = "\(date?.timeAgoDisplay() ?? "")"
 //            cell.iconImageView.image = #imageLiteral(resourceName: "Ico-ImageNotify")
@@ -594,8 +594,8 @@
 //            let presetnYearStr = "\(dayValue) - \(monthName) - \(date?.presentYear ?? 1)"
 //            let nameText = NSMutableAttributedString()
 //            nameText.append(NSMutableAttributedString(string: "\"\(completedStage.name ?? "")\" Completed on \(presetnYearStr)\n", attributes: [:]))
-//            nameText.append(NSMutableAttributedString(string: "\(date?.getElapsedInterval() ?? "")", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 12),NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.7)]))
-//          
+//            nameText.append(NSMutableAttributedString(string: "\(date?.getElapsedInterval() ?? "")", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 12),NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.7)]))
+//
 //            cell.nameLabel.attributedText = nameText
 //         //   cell.timeLabel.text = "\(date?.timeAgoDisplay() ?? "")"
 //            cell.iconImageView.image = #imageLiteral(resourceName: "Ico-StageNotify")
@@ -616,7 +616,7 @@
 //            let presetnYearStr = "\(dayValue) - \(monthName) - \(date?.presentYear ?? 1)"
 //            let nameText = NSMutableAttributedString()
 //            nameText.append(NSMutableAttributedString(string: "\"\(stageChange.name ?? "")\" changed from \(stageChange.previousStatus ?? "") to \(stageChange.currentStatus ?? "") on \(presetnYearStr)\n", attributes: [:]))
-//            nameText.append(NSMutableAttributedString(string: "\(date?.getElapsedInterval() ?? "")", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 12),NSAttributedString.Key.foregroundColor: UIColor.lightGray]))
+//            nameText.append(NSMutableAttributedString(string: "\(date?.getElapsedInterval() ?? "")", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 12),NSAttributedString.Key.foregroundColor: UIColor.lightGray]))
 //            cell.nameLabel.attributedText = nameText
 //          //  cell.timeLabel.text = "\(date?.timeAgoDisplay() ?? "")"
 //            cell.iconImageView.image = #imageLiteral(resourceName: "Ico-StageNotify")
@@ -683,7 +683,7 @@
 //        {
 //            let stageChange = value as! MyPlaceStoredProgressDetails
 //            let text = "\"\(stageChange.name ?? "")\" is changed from \(stageChange.previousStatus ?? "") to \(stageChange.currentStatus ?? "")on 31-January-2018\n"
-//            let rect = text.rectForText(font: ProximaNovaRegular(size: 15), maxSize: CGSize(width: 0, height: 100))
+//            let rect = text.rectForText(font: MontserratRegular(size: 15), maxSize: CGSize(width: 0, height: 100))
 //            return 75 + rect
 //        }
 //        return 75

@@ -148,14 +148,14 @@ class FInanceViewController: BurbankAppVC/*MyPlaceWithTabBarVC*/, UITableViewDat
                     
                     let leftHeadingLabel = UILabel(frame: CGRect(x: 20, y: y_Gap, width: 160, height: labelHeight))
                     leftHeadingLabel.text = (tempArray.object(at: i) as! NSDictionary).value(forKey: "Description") as? String
-                    leftHeadingLabel.font = ProximaNovaRegular(size: 12.0)
+                    leftHeadingLabel.font = MontserratRegular(size: 12.0)
                     leftHeadingLabel.tag = 11
                     leftHeadingLabel.textColor = UIColor.black
                     customCell.fieldsView .addSubview(leftHeadingLabel)
                     
                     let priceValueLabel = UILabel(frame: CGRect(x: customCell.fieldsView.frame.size.width-120, y: y_Gap, width: 100, height: labelHeight))
                     
-                    priceValueLabel.font = ProximaNovaRegular(size: 12.0)
+                    priceValueLabel.font = MontserratRegular(size: 12.0)
                     priceValueLabel.textAlignment = .right
                     priceValueLabel.backgroundColor = UIColor.clear
                     priceValueLabel.tag = 12

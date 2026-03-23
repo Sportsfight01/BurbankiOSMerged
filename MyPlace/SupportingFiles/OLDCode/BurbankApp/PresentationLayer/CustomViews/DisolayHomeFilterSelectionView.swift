@@ -61,7 +61,7 @@ class DisolayHomeFilterSelectionView: UIControl,UITableViewDataSource,UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) //as! DisplayLocationsCell
         cell.textLabel?.text = selectionListArray[indexPath.row]
-        cell.textLabel?.font = ProximaNovaRegular(size: 10.0)
+        cell.textLabel?.font = MontserratRegular(size: 10.0)
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         
         if indexPath.row == 0

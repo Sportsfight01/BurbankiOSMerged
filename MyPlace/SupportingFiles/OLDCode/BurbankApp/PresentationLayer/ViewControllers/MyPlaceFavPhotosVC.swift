@@ -210,7 +210,7 @@ class MyPlaceFavPhotosVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UITableViewDataSou
     @objc func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         let note = "Notes:\n\n\n\(MyPlacePhotoNote.fetchPhotoNote("\(imageID ?? "0")")?.noteDescription ?? "")"
-        let noteTextHeight = note.rectForText(font: ProximaNovaRegular(size: 16.0), maxSize: CGSize(width: 100, height: 0))
+        let noteTextHeight = note.rectForText(font: MontserratRegular(size: 16.0), maxSize: CGSize(width: 100, height: 0))
         let height = noteTextHeight > 260 ? noteTextHeight/4 : 0
         let CELLHEIGHT = tableView.frame.size.height/1.26
         return CELLHEIGHT + height

@@ -72,7 +72,7 @@ class MyPlaceTabbarDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionVie
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = ProximaNovaSemiBold(size: 18.0)
+        label.font = MontserratSemiBold(size: 18.0)
         return label
     }()
     var surveyImageView: UIImageView! = {
@@ -459,7 +459,6 @@ class MyPlaceTabbarDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionVie
         }
         
         
-//        mutableText.append(NSAttributedString(string: "\nName: \(contactName)", attributes: [NSFontAttributeName: ProximaNovaRegular(size: 14)]))
         
 //        cell.callBackGroundView.alpha = 0
 //        if contactEmail.isValidEmail()
@@ -490,7 +489,6 @@ class MyPlaceTabbarDetailVC: BurbankAppVC/*MyPlaceWithTabBarVC*/,UICollectionVie
         
 //        cell.nameLabel.text = contactName
         
-    //    mutableText.append(NSAttributedString(string: "\nEmail: \(contactEmail)", attributes: [NSFontAttributeName: ProximaNovaRegular(size: 14)]))
 //        cell.nameLabel.attributedText = mutableText
         return cell
     }//HeightConstraintID

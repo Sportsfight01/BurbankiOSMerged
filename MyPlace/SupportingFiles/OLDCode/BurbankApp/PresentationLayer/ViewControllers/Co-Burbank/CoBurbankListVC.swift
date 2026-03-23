@@ -284,15 +284,15 @@ class CoBurbankListVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
         if let name = coBurbankUser.name //&& coBurbankUser.statusMessage != ""
         {
           //  cell.statusMessageLabelBottomConstraint.constant = 8
-            nameText.append(NSMutableAttributedString(string: "\(name)", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 16.0)]))
+            nameText.append(NSMutableAttributedString(string: "\(name)", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 16.0)]))
         }
         
         if let email = coBurbankUser.email
         {
             if nameText.string.count > 0 {
-                nameText.append(NSMutableAttributedString(string: "\n", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 13.0)]))
+                nameText.append(NSMutableAttributedString(string: "\n", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 13.0)]))
             }
-            nameText.append(NSMutableAttributedString(string: "\(email)", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 13.0)]))
+            nameText.append(NSMutableAttributedString(string: "\(email)", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 13.0)]))
           //  cell.contactDetailsLabel.text = String(format: "%@", email)
         }
 //        cell.statusMessage.numberOfLines = 3
@@ -300,14 +300,14 @@ class CoBurbankListVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
         if let sta = coBurbankUser.statusMessage {
             if sta.count > 0 {
                 if nameText.string.count > 0 {
-                    nameText.append(NSMutableAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 13.0)]))
+                    nameText.append(NSMutableAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 13.0)]))
                 }
-                nameText.append(NSMutableAttributedString(string: "\(sta)", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 11.0)]))
+                nameText.append(NSMutableAttributedString(string: "\(sta)", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 11.0)]))
             }else {
-                nameText.append(NSMutableAttributedString(string: "\n", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 13.0)]))
+                nameText.append(NSMutableAttributedString(string: "\n", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 13.0)]))
             }
         }else{
-            nameText.append(NSMutableAttributedString(string: "\n", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 13.0)]))
+            nameText.append(NSMutableAttributedString(string: "\n", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 13.0)]))
         }
         
         cell.nameLabel.attributedText = nameText
@@ -316,23 +316,23 @@ class CoBurbankListVC: BurbankAppVC,UITableViewDataSource,UITableViewDelegate
             dele.tag = indexPath.row
         }
         cell.statusButton.isUserInteractionEnabled = false
-        cell.statusButton.titleLabel?.font = ProximaNovaRegular(size: 12.0)
+        cell.statusButton.titleLabel?.font = MontserratRegular(size: 12.0)
         
         if let dele = cell.deleteButton {
-            dele.titleLabel?.font = ProximaNovaRegular(size: 12.0)
+            dele.titleLabel?.font = MontserratRegular(size: 12.0)
         }
 
         
         if coBurbankUser.primaryApplicant == true
         {
             cell.statusButton.setTitle("   Primary Applicant   ", for: .normal)
-            cell.statusButton.titleLabel?.font = ProximaNovaRegular(size: 14.0)
+            cell.statusButton.titleLabel?.font = MontserratRegular(size: 14.0)
         }
         
         if coBurbankUser.coBurbank == true
         {
             cell.statusButton.setTitle("   Partner   ", for: .normal)
-            cell.statusButton.titleLabel?.font = ProximaNovaRegular(size: 12.0)
+            cell.statusButton.titleLabel?.font = MontserratRegular(size: 12.0)
         }
         if coBurbankUser.reffered == true
         {

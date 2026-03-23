@@ -17,7 +17,7 @@ class BurbankAlertVC: UIViewController
         label.textAlignment = .left
         label.textColor = UIColor.orangeBurBankColor()
         //label.font = burbankFont(size: 14.0)
-            label.font = ProximaNovaSemiBold(size: 16.0)
+            label.font = MontserratSemiBold(size: 16.0)
 
         return label
     }()
@@ -26,7 +26,7 @@ class BurbankAlertVC: UIViewController
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = UIColor.black
-        label.font = ProximaNovaRegular(size: 15.0)
+        label.font = MontserratRegular(size: 15.0)
         label.numberOfLines = 0
         
         return label

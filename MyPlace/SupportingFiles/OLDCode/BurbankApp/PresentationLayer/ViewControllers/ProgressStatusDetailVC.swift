@@ -469,8 +469,8 @@ class ProgressStatusDetailVC: BurbankAppVC, UITableViewDataSource, UITableViewDe
             progressCutomCell.titleLabel.text = selectesStageDetails.name
             progressCutomCell.statusImageView.image =  selectesStageDetails.status == kStageCompleted ? #imageLiteral(resourceName: "Asset 1") : #imageLiteral(resourceName: "Ico-Pending")
             let dateText = NSMutableAttributedString()
-            dateText.append(NSAttributedString(string: "\(selectesStageDetails.status)\n", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 9.0),NSAttributedString.Key.foregroundColor: UIColor.lightGray]))
-            dateText.append(NSAttributedString(string: "\(dateConvertMonthString)", attributes: [NSAttributedString.Key.font: ProximaNovaRegular(size: 15.0),NSAttributedString.Key.foregroundColor: UIColor.black]))
+            dateText.append(NSAttributedString(string: "\(selectesStageDetails.status)\n", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 9.0),NSAttributedString.Key.foregroundColor: UIColor.lightGray]))
+            dateText.append(NSAttributedString(string: "\(dateConvertMonthString)", attributes: [NSAttributedString.Key.font: MontserratRegular(size: 15.0),NSAttributedString.Key.foregroundColor: UIColor.black]))
             progressCutomCell.statusLabel.text = selectesStageDetails.status
             if progressCutomCell.statusLabel.text == "Completed" {
                 progressCutomCell.statusLabel.text = "Completed Date"

@@ -43,8 +43,8 @@ class ImageSliderCVCell: UICollectionViewCell {
     {
         prevBtn.isHidden = currentIndex == 0 ? true : false
         nextBtn.isHidden = currentIndex + 1 < totalCollectionCount ? false : true
-        setAppearanceFor(view: photoTitle_Lb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaSemiBold(size: 20.0))
-        setAppearanceFor(view: dateLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: ProximaNovaRegular(size: 16.0))
+        setAppearanceFor(view: photoTitle_Lb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: MontserratSemiBold(size: 20.0))
+        setAppearanceFor(view: dateLb, backgroundColor: .clear, textColor: AppColors.darkGray, textFont: MontserratRegular(size: 16.0))
         
         photoTitle_Lb.text = item.title.lowercased().capitalized
         dateLb.text = item.docDate
